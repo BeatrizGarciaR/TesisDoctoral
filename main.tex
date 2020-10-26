@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%
+% Documento maestro %
+%%%%%%%%%%%%%%%%%%%%%
+\documentclass{fime}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cargando paquetes y definiendo opciones %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AquÃ­ puedes cargar los paquetes que vas a usar. La clase
+% fime ya incluye babel, inputenc, graphicx y los de la AMS.
+% Cargar un paquete estÃ¡ a tu libertad (y responsabilidad).
+\usepackage{hyperref}
+    \hypersetup{breaklinks=true,colorlinks=true,
+        linkcolor=black,citecolor=black,urlcolor=black}
+\usepackage[Algoritmo]{algorithm}
+\selectlanguage{spanish} 
+\usepackage[noend]{algpseudocode}
+\usepackage{graphicx} % figuras
+\usepackage{subfigure} % subfiguras
+\usepackage{pdfpages}
+\usepackage{multirow}
+%\usepackage[spanish,onelanguage]{algorithm2e} 
+%%%%%%%%%%%%%%%%%%%%%
+% Definiendo campos %
+%%%%%%%%%%%%%%%%%%%%%
+\def\titulo{}
+\def\autor{Beatriz Alejandra García Ramos}
+\def\matricula{1550385}
+\def\grado{Doctorado en Ciencias en Ingeniería de Sistemas}
+% En caso de que el grado tenga orientaciÃ³n o especialidad llenar el siguiente
+% campo dejando un ESPACIO INICIAL, en caso contrario, dejar vacÃ­o
+%\def\orientacion{ con orientaciÃ³n en DiseÃ±o y AnÃ¡lisis}
+\def\orientacion{}
+\def\fecha{2024} % Coloca el mes con mayÃºscula inicial
+
+\def\asesor{Dr. Roger Z. Ríos Mercado}
+\def\revisorA{Dra. Yasmín Águeda Ríos Solís}
+\def\revisorB{Nombre del revisor B}
+% En el caso de que tu tesis sea de doctorado activa la variable cambiÃ¡ndola a \doctoradotrue
+% y define tus otros dos revisores
+\newif\ifdoctorado\doctoradotrue
+\def\revisorC{Nombre del revisor C}
+\def\revisorD{Nombre del revisor D}
+% El visto bueno siempre va
+\def\vobo{}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Inicia el documento %
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\frontmatter
+\pagestyle{main}
+
+%%% Incluye PortillasM si tu tesis es de MaestrÃ­a
+%%% y PortillasD si es de doctorado.
+\include{Portadas}
+%\includepdf[noautoscale, fitpaper=true]{CCF_000001.pdf}
+\include{Dedicatoria}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{Agradecimientos}
+\include{Resumen}
+
+\mainmatter
+\pagestyle{fime}
+
+%%% Haz un documento para cada capÃ­tulo
+\include{Capitulo}
+
+\appendix
+%%% Haz un documento para cada apÃ©ndice
+\include{Apendice}
+
+\backmatter
+\pagestyle{main}
+
+%%% AquÃ­ va la bibliografÃ­a, puedes usar el entorno de LaTeX (thebibliography)
+%%% o la herramienta BibTeX. En caso de que optes por BibTeX, puedes usar
+%%% alguno de los archivos de estilo (mighelbib.bst o mighelnat.bst) incluidos
+%%% en el paquete, cuyos diseÃ±os armonizan con el diseÃ±o de tesis provisto por
+%%% fime.cls. Para muestra, basta un botÃ³n:
+
+\bibliographystyle{plain}
+\bibliography{MiBiblio}
+
+\label{lastpage}
+\include{Autobiografia}
+
+\end{document}
