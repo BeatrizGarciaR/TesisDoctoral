@@ -1,0 +1,159 @@
+\chapter{Introduction}
+
+Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the 9-1-1. 
+
+EMS systems have two phases. The first phase is the response to an emergency call: an operator response to the call, ask some questions to identify the type of emergency (dismissing prank calls) and, if the patient needs medical care, then the operator contact some ambulance (commonly the nearest) and ask for attention at the emergency scene. 
+
+The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend the patient, ambulance leaves its base, arrives to scene, attend the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
+
+EMS systems have significantly impacted operational research and medical investigations in the last decades. Scientists are concerned about the impact of calls emergency' average response time for attending a patient who suffers a medical incident. Not having human and material resources can cause deficient patients' attention. And the cost of buying material resources, medical vehicles, or building a new medical center, among other things, can limit the service to patients.
+
+The most studied problem is reducing the average response time when an emergency call arrives at a call center and someone needs medical attention. 
+The objective is to provide, as soon as possible, the initial treatment for a patient that has a medical problem caused by an accident, a trauma, or a natural disaster to reduce patients' mortality. For short response time, more likely people survive. 
+
+Another objective that EMS system problems consider is to maximize coverage to attend all emergency calls that enter the system. Also, some problems exist that consider improving the patients' survival or reducing the patients' mortality. 
+
+There exist different types of problems. Various focus on statics systems, where the decisions are fixed after they are taken. Others are dynamic, where decisions change throughout time passing or after a change on the system, for example, when a call is received.
+
+Many investigations focus their problems on solving optimal locations of their ambulances to improve the system. In contrast, others want to obtain optimal policies to decide which ambulance or ambulances are the best to attend the e\-mer\-gen\-cy calls received.
+
+EMS systems have different types of planning that are strategic, tactical, and operational. Strategic planning is focused on long terms decisions, as fixed potential locations or acquisition of resources.
+
+Tactical plannings made decisions for a middle time, such as locating am\-bu\-lan\-ces at potential sites or planning which is the best option to dispatch an ambulance for all emergency calls types. 
+
+Finally, operational planning takes decisions in a short time. These decisions are made frequently when a call enters the system and are divided into online and offline decisions. Online decisions are taken over the full service of a call, and offline decisions are taken when a call is received following the plannings made at tactical plannings, for example, to decide which ambulance will send to attend to the patient.
+
+Our interest is in the Mexico's EMS systems. In Mexico exists the {9-1\--1} number controled by the C-5 organization (\textit{Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado}), which receives e\-mer\-gen\-cy calls. Some calls are for medical emergencies, others for police emergencies, and others for fire emergencies. 
+
+When a call enters the system, and an operator decides that it is a medical emergency, the operator has to determine if it is necessary to send an ambulance or not. Also, a doctor can continue the call to guide the person on the phone if the patient needs immediate attention while the ambulance arrives. Then the paramedics can attend to the patient and transfer the patient to a hospital.
+
+The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (\textit{Centro Regulador de Urgencias Médicas}) and Red Cross. There exists in some states the \textit{Protección Civil} and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system.
+
+CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. That is one of the reasons why exists an uncoordinated system in our country. Each service provider decides where to locate their ambulances without consulting the other. And when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention and Red Cross dispatch ambulances that are supposed to be available 9-1-1 systems.
+
+We could improve this uncoordinated system if each service provider made its decisions considering others. 
+
+Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes that the rest of the hospitals have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
+
+We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching considering two service providers to obtain a coordinate EMS system. 
+
+The following sections present the background investigations about EMS sys\-tems (Chapter \ref{cap:back}) and the usually used models. We describe the problem and factors that affect the EMS system in Mexico (Chapter \ref{cap:problem}). Then, we solve the problem and define the model (Chapter \ref{cap:exper}) used to do the experiments. Finally, we show conclusions (Chapter \ref{cap:concl}) that we obtain from experiments that we describe in the previous section.
+
+\section{Motivation}
+Our interest is to improve the Emergency Medical Service System in Mexico. This system has different characteristics than others that have been studied. Especially in Mexico, public and private organizations work together, but they do not communicate what others do to make their decisions. 
+
+Also, since the Covid-19 pandemic in Mexico started, fewer hospitals are attending general medical emergencies, and ambulances do queues outside the hos\-pi\-tals waiting for patient attention due there are no available rooms for new patients. 
+
+\section{Hypothesis}
+This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system.
+
+The model includes characteristics of each service provider, and the decisions are taken coordinate considering these characteristics. The ambulance location and dispatching in the system are optimized.
+
+
+\section{Objectives}
+This investigation aims to improve an Emergency Medical Services System with more than one service provider. The main idea is to obtain an optimal ambulance location and optimal policies for ambulance dispatching.
+
+The system that we consider for the problem to solve includes different factors that affect the system. Those factors are:
+\begin{itemize}
+
+\item Various types of accidents and variations on maximal response times depending on accident types; 
+
+\item Different ambulances types, which are ambulances for basic life support (BLS) and ambulances for advanced life support (ALS);
+
+\item Variation in demand points depending on the day of the week and the hour of the day, which can be considered making different scenarios;
+
+\item And queues at hospitals for patients' attention that increase the service time for an emergency call.
+
+\end{itemize} 
+
+The objective for solving the problem is to create a scenario-based stochastical programming model with resources considering more than one service provider in\-vol\-ved in the system to attend incoming emergency calls. 
+
+
+\section{Contribution}
+
+
+
+\chapter{Background}\label{cap:back}
+
+When scientists talk about EMS systems, there are many terms used to explain the problem. Two of these terms are demand points and potential sites. Demand points are sites where an emergency call is usually done. Commonly, there is a different demand for each point depending on the number of calls made within a period. Potential sites are places where a vehicle (ambulance) could be located if necessary to cover some demand points either statically or dynamically.
+
+There exist many models to solve the problems of EMS systems. These models are used to solve static or dynamic EMS systems problems, divided into deterministic, probabilistic, and stochastic problems. The first problem that we studied is static. 
+
+\section{Static models}
+
+These types of models are used to solve a system that only considers a particular point in time. When these models are used to solve EMS systems, it refers to allocating ambulances that will not be moved from the base. 
+
+There are two early models for statics problems that are Location Set Covering Model (LSCM) and Maximal Covering Location Problem (MCLP), which are pro\-blems focused on covering the maximal demand points in the entire zone.
+
+
+\subsection{Deterministic models}
+
+Later, other models were created to solve static problems because emergency calls sometimes need to be attended for different vehicle types. Most of them are covered once, like the Backup Coverage Problem (BACOP) or the Double Standard Model (DSM), which use two different radii of coverage \cite{li2011covering}; these types of models are called deterministic static models. Some deterministic models are the tandem equipment allocation model (TEAM) or the facility-location equipment-emplacement technique (FLEET), which consider two types of vehicles (one for basic life support and another for advanced life support), or the fact that sometimes more than one ambulance has to be located on a potential site to maximize that a demand point is covered twice. 
+
+
+Research that uses a deterministic static model was done for Dibene et al. \cite{dibene2017optimizing}; these authors use an extension of DSM, which is called the Robust Double Standard Model. They added to original DSM demand scenarios. These scenarios divide weeks into workdays and weekends, divided into four periods: night, morning, afternoon, and evening. They added eight scenarios applied to optimize the Red Cross Tijuana, Mexico system, increasing the coverage of demand points to more than 95\% locating ambulances on different points of the city that are not the original bases.  
+
+\subsection{Probabilistic models}
+
+In the eighties, some researchers thought about problems that are involved with probabilities. One of these probabilities involved in EMS systems is the probability of an ambulance being busy responding to an emergency call. This probability is called the \textit{busy fraction}. The maximum expected covering location problem (MEXCLP) uses this probability. An extension of this model is the TIMEXCLP which considers travel speed variations during the day. Another extension is the adjusted MEXCLP model (AMEXCLP), which considers different busy probabilities for each potential site to locate ambulances. All these models can use the hypercube queueing model to calculate the busy fraction\cite{galvao2008emergency}.
+
+Two other models were proposed to maximize the coverage of the demand points with a probability $\alpha$ used to calculate the busy fraction; one of them is the maximal availability location problem I (MALPI) which considers that the busy fraction is the same for all potential sites. The other model is the MALPII which uses the hypercube model to assume different busy fractions for each potential site.
+
+Finally, there exist two other probabilistic models created in the nineties. The first is an extended version of the LSCM called Rel-P; this version considers that more than one ambulance can be located at the same potential site, but each potential site has a probability to has ambulances that are available to respond to a call and consider the probability of the busy fraction too. 
+
+The second model is the two-tiered model (TTM), which consider two types of vehicles to allocate at potential sites (BLS and ALS) considering two different coverage radii and having an associated probability for the combination of how many ALS vehicles can be located at the radius A, how many ALS can be located at the radius B and how many BLS vehicles can be located at the same radius B for each demand point. 
+
+Laura Albert and Maria Mayorga researched the EMS systems of Hanover, Virginia. All these investigations about Hanover, Virginia, were applied to this county to obtain practical solutions, but all models can be used to any other EMS system changing data inputs.
+The first research is focused on considering a new approach to calculate the response time threshold (RTT), a class of EMS performance measures \cite{mclay2010evaluating}. The approach uses the patient survival rate considering that patients have a cardiac arrest and random response times that depend on the distance between demand points and potential sites instead of patient outcomes, which is most used. 
+
+Then, they use these measures on a hypercube model to evaluate different RTTs needed to input a model that considers fire stations and rescue stations to be potential sites where ambulances could be located distributed on Hanover's rural and urban areas. This model optimizes the location of ambulances on potential sites to maximize patient survival. 
+
+Later, Albert and Mayorga et al. used the performance measures as an input of the performance measure dispatching problem. According to survival patient rate, they used a Markov decision process that identifies the best and robust RTT to maximize the covering level, prioritizing patient location. The research concludes that the optimal survival rate is obtained when the system has an eight minutes RTT \cite{mclay2011evaluating}. 
+
+However, this time for RTT does not apply to Hanover because of the number of the ambulance that they have, so they started a pilot program called quick-response vehicle to have more vehicles for patient attention obtaining a nine minutes RTT, these new vehicles are as ALS vehicles without transporting patients to the hospital, only attending patients at the scene and BLS ambulances transport patients if is necessary \cite{mclay2012hanover}. The idea of including these quick-response vehicles is to minimize the need to use ALS ambulances.
+
+When talking about optimizing EMS systems, one can also speak about dis\-pat\-ching. Toro-Diaz et al. \cite{toro2013joint} involves location and dispatching decisions for EMS vehicles in the same mathematical model with two focuses, minimizing the mean response time that takes since an emergency call is received and maximizing the expected coverage demand, using a continuous-time Markov process to balancing flow equations needed to control the busy fraction for each ambulance. Balancing these equations takes exponential time, and authors consider a genetic algorithm to obtain some solutions and combine them to create new solutions to reduce the computational time. This genetic algorithm was applied to Hanover, Virginia, and when they have mid-size problems, the nearest dispatch rule is the best solution. It can vary depending on the zone where it is applied.
+
+
+\section{Dynamic models}
+
+A dynamic model on EMS systems is used to locate and relocate ambulances from their base to another if necessary for real-time. These types of models are called dynamic because the system is changing over time. Usually, the \textit{real time} that is used in an EMS system is when an emergency call is received. 
+
+One of these models is the Dynamic Double Standard Model at time $t$, an extension of DSM. Some differences for this model are that every time $t$, ambulances are moved to another base to cover once demand points at a minimum probability $\alpha$. There is a cost to move the ambulances from its base to another potential site. This cost is a penalty in the objective function. 
+
+Another model of these types of models is the dynamically available coverage location (DACL). For this model, the system changes when the demand of demand points changes during the day and uses the hypercube theory to calculate the busy probability for potential sites every time. 
+
+\chapter{The Uncoordinated EMS System Problem}\label{cap:problem}
+The Uncoordinated Emergency Medical Service System (UEMSS) Problem is focused on improving an EMS system that involves more than one service provider. 
+
+We have a few factors that affect service provider decisions for this system that we discuss below. We called patients at people who need some medical attention due to an accident or a medical condition that affects the person's health. 
+
+There are some demand points where someone made an emergency call because the patient needs medical attention. Also, some potential sites are spaces in the zones attending to the EMS system where ambulances can be located in the system.
+
+An uncoordinated EMS system has more than one service provider involved in the emergency number system to attend emergency calls. These service providers have a certain number of ambulances that are available for patients' medical attention. The total ambulance number may vary depending on the day of the week and the period time of the day. 
+
+The ambulances need some material resources but also human resources. The EMS system has to consider the paramedics that can attend to the patients. If there are not enough paramedics for the total ambulances, then not all the ambulances are available for the system. 
+
+Also, hospitals are considered to know where patients will move after their attention. Paramedics need to know if a patient has health insurance to decide where a patient will be transferred. 
+
+For our UEMSS Problem, we consider different accident types. For a preliminar model, we classified if an accident needs one, two, or three ambulances for patients' attention. And we consider the response time between every potential site to every demand point.
+
+The following is a preliminar model for UEMSS Problem. We will describe the sets, parameters, and variables we used and the assumptions we took to model this problem.
+
+\section{Preliminar model for the UEMSS Problem}
+
+
+\chapter{Experimental work}\label{cap:exper}
+
+
+
+\chapter{Conclusions}\label{cap:concl}
+
+
+
+\section{Main contributions and conclusions}
+
+
+
+\section{Future work}
+

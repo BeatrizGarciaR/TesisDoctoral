@@ -1,0 +1,7 @@
+100 8 50 1 located 1 2 1 
+100 8 50 1 located 2 1 2 
+100 8 50 1 located 2 2 1 
+100 8 50 1 located 3 1 1 
+100 8 50 1 located 5 1 1 
+100 8 50 1 located 7 1 1 
+100 8 50 1 located 7 2 1 

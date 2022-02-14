@@ -1,0 +1,8 @@
+100 20 20 4 located 1 1 1 
+100 20 20 4 located 1 2 1 
+100 20 20 4 located 2 1 1 
+100 20 20 4 located 6 1 1 
+100 20 20 4 located 8 1 1 
+100 20 20 4 located 17 1 1 
+100 20 20 4 located 18 2 1 
+100 20 20 4 located 20 2 1 

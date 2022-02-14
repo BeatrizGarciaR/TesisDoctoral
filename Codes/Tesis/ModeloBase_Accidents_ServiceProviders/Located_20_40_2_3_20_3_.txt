@@ -1,0 +1,8 @@
+20 40 20 3 located 2 2 1 
+20 40 20 3 located 9 1 1 
+20 40 20 3 located 10 1 1 
+20 40 20 3 located 27 1 1 
+20 40 20 3 located 35 1 1 
+20 40 20 3 located 38 1 1 
+20 40 20 3 located 39 2 1 
+20 40 20 3 located 40 2 1 

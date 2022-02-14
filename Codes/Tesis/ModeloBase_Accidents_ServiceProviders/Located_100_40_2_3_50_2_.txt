@@ -1,0 +1,8 @@
+100 40 50 2 located 1 2 1 
+100 40 50 2 located 2 1 1 
+100 40 50 2 located 3 1 1 
+100 40 50 2 located 8 1 1 
+100 40 50 2 located 17 1 1 
+100 40 50 2 located 24 2 1 
+100 40 50 2 located 31 2 1 
+100 40 50 2 located 37 1 1 

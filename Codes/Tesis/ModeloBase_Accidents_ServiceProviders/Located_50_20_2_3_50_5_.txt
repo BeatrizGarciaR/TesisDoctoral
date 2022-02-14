@@ -1,0 +1,8 @@
+50 20 50 5 located 4 2 1 
+50 20 50 5 located 5 1 1 
+50 20 50 5 located 9 1 1 
+50 20 50 5 located 9 2 1 
+50 20 50 5 located 12 1 1 
+50 20 50 5 located 13 1 1 
+50 20 50 5 located 15 1 1 
+50 20 50 5 located 20 2 1 

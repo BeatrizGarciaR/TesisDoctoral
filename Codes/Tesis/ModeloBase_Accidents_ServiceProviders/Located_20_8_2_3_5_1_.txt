@@ -1,0 +1,7 @@
+20 8 5 1 located 1 1 1 
+20 8 5 1 located 1 2 1 
+20 8 5 1 located 3 1 2 
+20 8 5 1 located 4 1 1 
+20 8 5 1 located 4 2 1 
+20 8 5 1 located 5 1 1 
+20 8 5 1 located 7 2 1 

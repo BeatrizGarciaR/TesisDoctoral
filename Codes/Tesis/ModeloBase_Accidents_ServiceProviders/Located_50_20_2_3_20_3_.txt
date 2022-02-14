@@ -1,0 +1,6 @@
+50 20 20 3 located 1 1 2 
+50 20 20 3 located 1 2 2 
+50 20 20 3 located 3 1 1 
+50 20 20 3 located 7 1 1 
+50 20 20 3 located 12 1 1 
+50 20 20 3 located 20 2 1 

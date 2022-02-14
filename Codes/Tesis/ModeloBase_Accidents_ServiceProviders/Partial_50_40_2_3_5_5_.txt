@@ -1,0 +1,5 @@
+50 40 5 5 partial 2 21 2 1 
+50 40 5 5 partial 4 14 2 1 
+50 40 5 5 partial 5 5 2 1 
+50 40 5 5 partial 5 34 2 1 
+50 40 5 5 partial 5 47 2 1 

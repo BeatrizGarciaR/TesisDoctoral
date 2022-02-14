@@ -1,0 +1,17 @@
+20 40 50 4 partial 1 4 2 1 
+20 40 50 4 partial 1 13 2 1 
+20 40 50 4 partial 9 1 2 1 
+20 40 50 4 partial 10 13 2 1 
+20 40 50 4 partial 12 8 2 1 
+20 40 50 4 partial 12 10 2 1 
+20 40 50 4 partial 12 12 2 1 
+20 40 50 4 partial 12 17 2 1 
+20 40 50 4 partial 13 6 2 1 
+20 40 50 4 partial 16 4 2 1 
+20 40 50 4 partial 16 14 2 1 
+20 40 50 4 partial 16 18 2 1 
+20 40 50 4 partial 24 20 2 1 
+20 40 50 4 partial 31 3 2 1 
+20 40 50 4 partial 42 4 2 1 
+20 40 50 4 partial 42 15 2 1 
+20 40 50 4 partial 49 20 2 1 
