@@ -135,10 +135,10 @@ for s in range(len(S)):
     
     for i in I:
         if S[s][i-1][0] != 0 or S[s][i-1][1] != 0:
-            if S[s][i-1][0] != 0:
-                model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] for k in K for l in L) + znull_vars[s+1,i] >= 1, "c5")
-            if S[s][i-1][1] != 0:
-                model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) + znull_vars[s+1,i] >= 1, "c5")
+            #if S[s][i-1][0] != 0:
+            model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] for k in K for l in L) + znull_vars[s+1,i] >= 1, "c5")
+            # if S[s][i-1][1] != 0:
+            #     model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) + znull_vars[s+1,i] >= 1, "c5")
 
             
 # Optimize model
