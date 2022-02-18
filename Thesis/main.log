@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  7 DEC 2021 00:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  17 FEB 2022 21:32
 entering extended mode
 **./main.tex
 (main.tex
@@ -523,7 +523,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./Figuras/uanl-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/uanl-eps-converted-to.pdf, id=75, 87.32625pt x 78.2925pt>
+<Figuras/uanl-eps-converted-to.pdf, id=79, 87.32625pt x 78.2925pt>
 File: Figuras/uanl-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/uanl-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/uanl-eps-converted-to.pdf  used on input line 
@@ -556,7 +556,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./Figuras/fime-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/fime-eps-converted-to.pdf, id=90, 108.405pt x 143.53625pt>
+<Figuras/fime-eps-converted-to.pdf, id=94, 108.405pt x 143.53625pt>
 File: Figuras/fime-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/fime-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/fime-eps-converted-to.pdf  used on input line 
@@ -657,40 +657,76 @@ Chapter 1.
 
 
 
-] [2]
+]
+Overfull \hbox (6.72726pt too wide) in paragraph at lines 18--19
+\OT1/cmr/m/n/12 policies to decide which ambulance or ambulances are the best t
+o attend the emergency
+ []
+
+
+Overfull \hbox (3.34988pt too wide) in paragraph at lines 20--21
+[]\OT1/cmr/m/n/12 EMS systems have different strategic, tactical, and operation
+al types of planning
+ []
+
+
+Overfull \hbox (3.87683pt too wide) in paragraph at lines 20--21
+\OT1/cmr/m/n/12 [[]]. Strategic planning focuses on long-term decisions, such a
+s fixed potential locations
+ []
+
+
+Overfull \hbox (5.2831pt too wide) in paragraph at lines 22--23
+[]\OT1/cmr/m/n/12 Tactical plannings made decisions for a middle time, such as 
+locating ambulances
+ []
+
+
+Overfull \hbox (4.07266pt too wide) in paragraph at lines 26--27
+\OT1/cmr/m/n/12 emergency calls. Some calls are for medical emergencies, others
+ for police emergencies,
+ []
+
+[2]
 Overfull \hbox (2.21898pt too wide) in paragraph at lines 43--44
 \OT1/cmr/m/n/12 Mexico, public and private organizations work together, but the
 y do not communicate
  []
 
 [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 59.
+Overfull \hbox (7.91096pt too wide) in paragraph at lines 64--65
+[]\OT1/cmr/m/n/12 For our UEMSS Problem, we consider scenarios with information
+ about accidents
+ []
+
+[4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 78.
  ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
- [4]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
+ [5]
 Chapter 2.
-[5
+[6
 
-] [6]
-Overfull \hbox (0.3205pt too wide) in paragraph at lines 106--108
+] [7]
+Overfull \hbox (0.3205pt too wide) in paragraph at lines 123--125
 \OT1/cmr/m/n/12 approach to calculate the response time threshold (RTT), a clas
 s of EMS performance
  []
 
-[7] [8]
+[8] [9]
 Chapter 3.
 
-Overfull \hbox (3.72452pt too wide) in paragraph at lines 133--134
-\OT1/cmr/m/n/12 have a certain number of ambulances that are available for pati
-ents' medical attention.
+Overfull \hbox (5.45229pt too wide) in paragraph at lines 146--147
+\OT1/cmr/m/n/12 For a preliminar model, we classified if an accident needs one,
+ two, or three ambulances
  []
 
-[9
+[10
 
-] [10]
+]
 Chapter 4.
 [11
 
@@ -722,7 +758,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 92.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B1B4CFAF205609829AD930E887EE11C5;1094.
+(rerunfilecheck)             Checksum: 548594031054DD167F1A6F6BD96CB018;1161.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
  )
 (\end occurred inside a group at level 1)
@@ -730,13 +766,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
 ### simple group (level 1) entered at line 74 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8970 strings out of 492945
- 132167 string characters out of 3126252
- 242359 words of memory out of 3000000
- 12599 multiletter control sequences out of 15000+200000
+ 8972 strings out of 492945
+ 132191 string characters out of 3126252
+ 242360 words of memory out of 3000000
+ 12600 multiletter control sequences out of 15000+200000
  10740 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,41p,921b,611s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,8n,41p,921b,623s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Progra
@@ -745,9 +781,9 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/beatr/AppData
 eatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmti12.pfb>
-Output written on main.pdf (24 pages, 415506 bytes).
+Output written on main.pdf (24 pages, 416702 bytes).
 PDF statistics:
- 275 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 285 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

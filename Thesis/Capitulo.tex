@@ -2,40 +2,40 @@
 
 Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the 9-1-1. 
 
-EMS systems have two phases. The first phase is the response to an emergency call: an operator response to the call, ask some questions to identify the type of emergency (dismissing prank calls) and, if the patient needs medical care, then the operator contact some ambulance (commonly the nearest) and ask for attention at the emergency scene. 
+EMS systems have two phases. The first phase is the response to an emergency call: an operator responds to the call and identifies the emergency type, such as medical emergencies, security emergencies, and fire emergencies. The operator asks some questions to identify the type of emergency (dismissing prank calls). If the patient needs medical care, the operator contacts an ambulance (commonly the nearest) and asks for attention at the emergency scene. 
 
-The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend the patient, ambulance leaves its base, arrives to scene, attend the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
+The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend to the patient, ambulance leaves its base, arrives to scene, treat the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
 
-EMS systems have significantly impacted operational research and medical investigations in the last decades. Scientists are concerned about the impact of calls emergency' average response time for attending a patient who suffers a medical incident. Not having human and material resources can cause deficient patients' attention. And the cost of buying material resources, medical vehicles, or building a new medical center, among other things, can limit the service to patients.
+EMS systems have significantly impacted operational research and medical investigations in the last decades. Scientists are concerned about the impact of calls emergency' average response time for attending a patient who suffers a medical incident. Moreover, the cost of buying material resources, medical vehicles, or building a new medical center, among other things, can limit the service to patients. Not having human and material resources can cause deficient patients' attention.
 
 The most studied problem is reducing the average response time when an emergency call arrives at a call center and someone needs medical attention. 
 The objective is to provide, as soon as possible, the initial treatment for a patient that has a medical problem caused by an accident, a trauma, or a natural disaster to reduce patients' mortality. For short response time, more likely people survive. 
 
 Another objective that EMS system problems consider is to maximize coverage to attend all emergency calls that enter the system. Also, some problems exist that consider improving the patients' survival or reducing the patients' mortality. 
 
-There exist different types of problems. Various focus on statics systems, where the decisions are fixed after they are taken. Others are dynamic, where decisions change throughout time passing or after a change on the system, for example, when a call is received.
+There exist different types of problems. Various focus on statics systems, where the decisions are fixed after they are taken. Others are dynamic~\cite{brotcorne2003ambulance}, where decisions change throughout time passing or after a change on the system, for example, when a call is received.
 
-Many investigations focus their problems on solving optimal locations of their ambulances to improve the system. In contrast, others want to obtain optimal policies to decide which ambulance or ambulances are the best to attend the e\-mer\-gen\-cy calls received.
+Many investigations focus their problems on solving optimal locations of their ambulances to improve the system. In contrast, others want to obtain optimal policies to decide which ambulance or ambulances are the best to attend the emergency calls received.
 
-EMS systems have different types of planning that are strategic, tactical, and operational. Strategic planning is focused on long terms decisions, as fixed potential locations or acquisition of resources.
+EMS systems have different strategic, tactical, and operational types of planning \cite{galvao2008emergency}. Strategic planning focuses on long-term decisions, such as fixed potential locations or the acquisition of resources~\cite{aboueljinane2013review}.
 
-Tactical plannings made decisions for a middle time, such as locating am\-bu\-lan\-ces at potential sites or planning which is the best option to dispatch an ambulance for all emergency calls types. 
+Tactical plannings made decisions for a middle time, such as locating ambulances at potential sites or planning which is the best option to dispatch an ambulance for all emergency calls types. 
 
-Finally, operational planning takes decisions in a short time. These decisions are made frequently when a call enters the system and are divided into online and offline decisions. Online decisions are taken over the full service of a call, and offline decisions are taken when a call is received following the plannings made at tactical plannings, for example, to decide which ambulance will send to attend to the patient.
+Finally, operational planning takes decisions in a short time. These decisions are made frequently when a call enters the system and are divided into online and offline decisions. Online decisions are taken over the full service of a call, and offline decisions are taken when a call is received following the plannings made at tactical plannings, for example, to decide which ambulance will send to attend to the patient~\cite{hulshof2012taxonomic}.
 
-Our interest is in the Mexico's EMS systems. In Mexico exists the {9-1\--1} number controled by the C-5 organization (\textit{Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado}), which receives e\-mer\-gen\-cy calls. Some calls are for medical emergencies, others for police emergencies, and others for fire emergencies. 
+Our interest is in the EMS systems of Mexico. In Mexico exists the 9-1~-1 number controled by the C-5 organization (Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado), which receives emergency calls. Some calls are for medical emergencies, others for police emergencies, and others for fire emergencies. 
 
 When a call enters the system, and an operator decides that it is a medical emergency, the operator has to determine if it is necessary to send an ambulance or not. Also, a doctor can continue the call to guide the person on the phone if the patient needs immediate attention while the ambulance arrives. Then the paramedics can attend to the patient and transfer the patient to a hospital.
 
-The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (\textit{Centro Regulador de Urgencias Médicas}) and Red Cross. There exists in some states the \textit{Protección Civil} and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system.
+The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (Centro Regulador de Urgencias Medicas) and Red Cross. There exists in some states the Proteccion Civil and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system.
 
-CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. That is one of the reasons why exists an uncoordinated system in our country. Each service provider decides where to locate their ambulances without consulting the other. And when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention and Red Cross dispatch ambulances that are supposed to be available 9-1-1 systems.
+That is one reason why an uncoordinated system exists in our country. CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. Each service provider decides where to locate their ambulances without consulting the other. Furthermore, when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention. Red Cross dispatch ambulances that are supposed to be available in 9-1-1 systems for its direct emergency calls.
 
 We could improve this uncoordinated system if each service provider made its decisions considering others. 
 
-Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes that the rest of the hospitals have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
+Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes the rest of the hospitals to have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
 
-We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching considering two service providers to obtain a coordinate EMS system. 
+We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching, considering two service providers to obtain a coordinated EMS system to solve those problems. 
 
 The following sections present the background investigations about EMS sys\-tems (Chapter \ref{cap:back}) and the usually used models. We describe the problem and factors that affect the EMS system in Mexico (Chapter \ref{cap:problem}). Then, we solve the problem and define the model (Chapter \ref{cap:exper}) used to do the experiments. Finally, we show conclusions (Chapter \ref{cap:concl}) that we obtain from experiments that we describe in the previous section.
 
@@ -43,6 +43,25 @@ The following sections present the background investigations about EMS sys\-tems
 Our interest is to improve the Emergency Medical Service System in Mexico. This system has different characteristics than others that have been studied. Especially in Mexico, public and private organizations work together, but they do not communicate what others do to make their decisions. 
 
 Also, since the Covid-19 pandemic in Mexico started, fewer hospitals are attending general medical emergencies, and ambulances do queues outside the hos\-pi\-tals waiting for patient attention due there are no available rooms for new patients. 
+
+\section{Problem Description}
+The Uncoordinated Emergency Medical Service System (UEMSS) Problem is focused on improving an EMS system that involves more than one service provider. 
+
+We have factors that affect service provider decisions for this system that we discuss below. We called patients at people who need some medical attention due to an accident or a medical condition that affects the person's health. 
+
+There are some demand points where someone made an emergency call because the patient needs medical attention. Also, some potential sites are spaces in the zones attending to the EMS system where ambulances can be located in the system.
+
+An uncoordinated EMS system has more than one service provider involved in the emergency number system to attend emergency calls. These service providers have a certain number of ambulances available for patients' medical attention. The total ambulance available number may vary depending on the day of the week and the period time of the day. 
+
+The ambulances need some material resources but also human resources. The EMS system has to consider the paramedics attending to the patients. If there are not enough paramedics for the total ambulances, not all the ambulances are available for the system. 
+
+There are two different ambulance types: basic life support (BLS), which attend not severity accidents, and advanced life support, which attend severity accidents. 
+
+Each ambulance has a response time for travel from the potential site where it is located to the demand point where the patient will be served. 
+
+Also, hospitals know where patients will move after their attention. Paramedics need to know if a patient has health insurance to decide where a patient will be transferred. 
+
+For our UEMSS Problem, we consider scenarios with information about accidents at the demand point. Each element of one scenario has information about how many BLS and ALS need each demand point, and the sum of ambulances needed can be one, two, or three ambulances for point.
 
 \section{Hypothesis}
 This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system.
@@ -68,8 +87,6 @@ The system that we consider for the problem to solve includes different factors 
 
 The objective for solving the problem is to create a scenario-based stochastical programming model with resources considering more than one service provider in\-vol\-ved in the system to attend incoming emergency calls. 
 
-
-\section{Contribution}
 
 
 
@@ -123,20 +140,10 @@ One of these models is the Dynamic Double Standard Model at time $t$, an extensi
 
 Another model of these types of models is the dynamically available coverage location (DACL). For this model, the system changes when the demand of demand points changes during the day and uses the hypercube theory to calculate the busy probability for potential sites every time. 
 
+\section{Contribution}
+
 \chapter{The Uncoordinated EMS System Problem}\label{cap:problem}
-The Uncoordinated Emergency Medical Service System (UEMSS) Problem is focused on improving an EMS system that involves more than one service provider. 
-
-We have a few factors that affect service provider decisions for this system that we discuss below. We called patients at people who need some medical attention due to an accident or a medical condition that affects the person's health. 
-
-There are some demand points where someone made an emergency call because the patient needs medical attention. Also, some potential sites are spaces in the zones attending to the EMS system where ambulances can be located in the system.
-
-An uncoordinated EMS system has more than one service provider involved in the emergency number system to attend emergency calls. These service providers have a certain number of ambulances that are available for patients' medical attention. The total ambulance number may vary depending on the day of the week and the period time of the day. 
-
-The ambulances need some material resources but also human resources. The EMS system has to consider the paramedics that can attend to the patients. If there are not enough paramedics for the total ambulances, then not all the ambulances are available for the system. 
-
-Also, hospitals are considered to know where patients will move after their attention. Paramedics need to know if a patient has health insurance to decide where a patient will be transferred. 
-
-For our UEMSS Problem, we consider different accident types. For a preliminar model, we classified if an accident needs one, two, or three ambulances for patients' attention. And we consider the response time between every potential site to every demand point.
+For a preliminar model, we classified if an accident needs one, two, or three ambulances for patients' attention. And we consider the response time between every potential site to every demand point.
 
 The following is a preliminar model for UEMSS Problem. We will describe the sets, parameters, and variables we used and the assumptions we took to model this problem.
 
