@@ -6,6 +6,50 @@ L.~Aboueljinane, E.~Sahin, and Z.~Jemai.
   operations.
 \newblock {\em Computers \& Industrial Engineering}, 66(4):734--750, 2013.
 
+\bibitem{amorim2019traffic}
+M.~Amorim, S.~Ferreira, and A.~Couto.
+\newblock How do traffic and demand daily changes define urban emergency
+  medical service (uems) strategic decisions?: A robust survival model.
+\newblock {\em Journal of Transport \& Health}, 12:60--74, 2019.
+
+\bibitem{bandara2012optimal}
+D.~Bandara, M.~E. Mayorga, and L.~A. McLay.
+\newblock Optimal dispatching strategies for emergency vehicles to increase
+  patient survivability.
+\newblock {\em International Journal of Operational Research}, 15(2):195--214,
+  2012.
+
+\bibitem{belanger2019recent}
+V.~B{\'e}langer, A.~Ruiz, and P.~Soriano.
+\newblock Recent optimization models and trends in location, relocation, and
+  dispatching of emergency medical vehicles.
+\newblock {\em European Journal of Operational Research}, 272(1):1--23, 2019.
+
+\bibitem{berman2003gradual}
+O.~Berman, D.~Krass, and Z.~Drezner.
+\newblock The gradual covering decay location problem on a network.
+\newblock {\em European Journal of Operational Research}, 151(3):474--480,
+  2003.
+
+\bibitem{bertsimas2019robust}
+D.~Bertsimas and Y.~Ng.
+\newblock Robust and stochastic formulations for ambulance deployment and
+  dispatch.
+\newblock {\em European Journal of Operational Research}, 279(2):557--571,
+  2019.
+
+\bibitem{biel2022efficient}
+M.~Biel and M.~Johansson.
+\newblock Efficient stochastic programming in julia.
+\newblock {\em INFORMS Journal on Computing}, 2022.
+
+\bibitem{boujemaa2018stochastic}
+R.~Boujemaa, A.~Jebali, S.~Hammami, A.~Ruiz, and H.~Bouchriha.
+\newblock A stochastic approach for designing two-tiered emergency medical
+  service systems.
+\newblock {\em Flexible Services and Manufacturing Journal}, 30(1):123--152,
+  2018.
+
 \bibitem{brotcorne2003ambulance}
 L.~Brotcorne, G.~Laporte, and F.~Semet.
 \newblock Ambulance location and relocation models.
@@ -31,6 +75,12 @@ P.~J.~H. Hulshof, N.~Kortbeek, R.~J. Boucherie, E.~W. Hans, and P.~J.~M.
 \newblock Taxonomic classification of planning decisions in health care: a
   structured review of the state of the art in or/ms.
 \newblock {\em Health systems}, 1(2):129--175, 2012.
+
+\bibitem{karasakal2004maximal}
+O.~Karasakal and E.~K. Karasakal.
+\newblock A maximal covering location model in the presence of partial
+  coverage.
+\newblock {\em Computers \& Operations Research}, 31(9):1515--1526, 2004.
 
 \bibitem{li2011covering}
 X.~Li, Z.~Zhao, X.~Zhu, and T.~Wyatt.
@@ -58,9 +108,20 @@ L.~A. McLay and H.~Moore.
 \newblock {\em Interfaces}, 42(4):380--394, 2012.
 
 \bibitem{toro2013joint}
-H.~Toro-D{\'\i}Az, M.~E. Mayorga, S.~Chanta, and L.~A. Mclay.
+H.~Toro-D{\'\i}az, M.~E. Mayorga, S.~Chanta, and L.~A. Mclay.
 \newblock Joint location and dispatching decisions for emergency medical
   services.
 \newblock {\em Computers \& Industrial Engineering}, 64(4):917--928, 2013.
+
+\bibitem{wang2016new}
+J.~Wang, H.~Liu, S.~An, and N.~Cui.
+\newblock A new partial coverage locating model for cooperative fire services.
+\newblock {\em Information Sciences}, 373:527--538, 2016.
+
+\bibitem{yoon2021stochastic}
+S.~Yoon, L.~A. Albert, and V.~M. White.
+\newblock A stochastic programming approach for locating and dispatching two
+  types of ambulances.
+\newblock {\em Transportation Science}, 55(2):275--296, 2021.
 
 \end{thebibliography}
