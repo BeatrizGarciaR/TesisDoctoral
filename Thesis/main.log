@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  6 MAY 2022 03:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  9 JUN 2022 18:09
 entering extended mode
 **./main.tex
 (main.tex
@@ -651,22 +651,17 @@ Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
 ]
 \openout2 = `Agradecimientos.aux'.
 
- (Agradecimientos.tex) [9
+ (Agradecimientos.tex [9
 
 
-]
+]) [10]
 \openout2 = `Resumen.aux'.
 
- (Resumen.tex
-Overfull \hbox (25.90579pt too wide) in paragraph at lines 28--32
- []|\OT1/cmr/m/sc/12 Contribuciones y conclusiones:[] [] 
- []
-
-) [10
+ (Resumen.tex [11
 
 
 
-]
+]) [12]
 \openout2 = `Capitulo.aux'.
 
  (Capitulo.tex
@@ -676,55 +671,33 @@ Chapter 1.
 
 
 
-]
-Overfull \hbox (3.34988pt too wide) in paragraph at lines 16--17
-[]\OT1/cmr/m/n/12 EMS systems have different strategic, tactical, and operation
-al types of planning
- []
-
-
-Overfull \hbox (16.64938pt too wide) in paragraph at lines 16--17
-\OT1/cmr/m/n/12 plannings, for example, to decide which ambulance will send to 
-attend to the patient [[]]. 
- []
-
-
-Overfull \hbox (4.07266pt too wide) in paragraph at lines 18--19
-\OT1/cmr/m/n/12 emergency calls. Some calls are for medical emergencies, others
- for police emergencies,
- []
-
-[2]
-Overfull \hbox (2.21898pt too wide) in paragraph at lines 31--32
+] [2]
+Overfull \hbox (2.21898pt too wide) in paragraph at lines 21--22
 \OT1/cmr/m/n/12 Mexico, public and private organizations work together, but the
 y do not communicate
  []
 
-[3]
-Overfull \hbox (7.91096pt too wide) in paragraph at lines 44--45
-[]\OT1/cmr/m/n/12 For our UEMSS Problem, we consider scenarios with information
- about accidents
- []
+[3] [4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
 
-[4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
- ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
- [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
+
+[5]
 Chapter 2.
 [6
 
 ] [7]
-Overfull \hbox (0.3205pt too wide) in paragraph at lines 109--111
+Overfull \hbox (0.3205pt too wide) in paragraph at lines 91--93
 \OT1/cmr/m/n/12 approach to calculate the response time threshold (RTT), a clas
 s of EMS performance
  []
 
 [8] [9]
-Overfull \hbox (3.13702pt too wide) in paragraph at lines 130--131
+Overfull \hbox (3.13702pt too wide) in paragraph at lines 112--113
 \OT1/cmr/m/n/12 minimize the fraction of late-arrivals without requiring ambula
 nces to be repositioned,
  []
@@ -732,7 +705,7 @@ nces to be repositioned,
 [10] [11] [12]
 Chapter 3.
 
-Overfull \hbox (5.45229pt too wide) in paragraph at lines 154--155
+Overfull \hbox (5.45229pt too wide) in paragraph at lines 136--137
 \OT1/cmr/m/n/12 For a preliminar model, we classified if an accident needs one,
  two, or three ambulances
  []
@@ -742,7 +715,7 @@ Overfull \hbox (5.45229pt too wide) in paragraph at lines 154--155
 ]
 Chapter 4.
 
-Overfull \hbox (3.33286pt too wide) in paragraph at lines 172--174
+Overfull \hbox (3.33286pt too wide) in paragraph at lines 154--156
 \OT1/cmr/m/n/12 ambulances within potential sites, and the second is how to dis
 patch them to accidents
  []
@@ -750,7 +723,7 @@ patch them to accidents
 [14
 
 ]
-Overfull \hbox (21.08823pt too wide) in paragraph at lines 175--176
+Overfull \hbox (21.08823pt too wide) in paragraph at lines 157--158
 \OT1/cmr/m/n/12 receiving emergency calls will have policies to determine what 
 ambulance (or ambulances)
  []
@@ -759,7 +732,7 @@ ambulance (or ambulances)
 Chapter 5.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 192.
+               Default added (so using `tbp') on input line 174.
 
 [16
 
@@ -768,34 +741,52 @@ LaTeX Warning: No positions in optional float specifier.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.224 
+l.206 
       ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 225.
+               Default added (so using `tbp') on input line 207.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 261.
+               Default added (so using `tbp') on input line 243.
 
 [18pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.308 \chapter
+l.290 \chapter
               {Conclusions}\label{cap:concl}] [19pdfTeX warning (ext4): destina
 tion with the same identifier (name{table.5.3}) has been already used, duplicat
 e ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.308 \chapter
+l.290 \chapter
               {Conclusions}\label{cap:concl}]
 Chapter 6.
-) [20
 
-]
+Overfull \hbox (8.24623pt too wide) in paragraph at lines 296--297
+\OT1/cmr/m/n/12 solved because the solver has not had sufficient memory to supp
+ort them. Nevertheless,
+ []
+
+
+Overfull \hbox (17.23688pt too wide) in paragraph at lines 296--297
+\OT1/cmr/m/n/12 small instances results generate feasible solutions for ambulan
+ce location and dispatching
+ []
+
+
+Overfull \hbox (8.28584pt too wide) in paragraph at lines 298--299
+[]\OT1/cmr/m/n/12 These results help us cover more demand points in the system,
+ allowing beginning
+ []
+
+[20
+
+]) [21]
 \openout2 = `Apendice.aux'.
 
  (Apendice.tex) (main.bbl
@@ -804,16 +795,16 @@ Underfull \hbox (badness 2111) in paragraph at lines 35--40
 Operational Research\OT1/cmr/m/n/12 ,
  []
 
-[21
+[22
 
 
 
 
 
-]) [22]
+]) [23]
 \openout2 = `Autobiografia.aux'.
 
- (Autobiografia.tex) [23
+ (Autobiografia.tex) [24
 
 
 ]
@@ -824,8 +815,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
 (Autobiografia.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D4C2E9972B56509C7E25DC886C8FD3F2;1430.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: D4C2E9972B56509C7E25DC886C8FD3F2;1430
+(rerunfilecheck)             After:  23DF41302C45120A1B883D795B378A01;1344.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
  )
 (\end occurred inside a group at level 1)
@@ -833,27 +831,30 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
 ### simple group (level 1) entered at line 74 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 9126 strings out of 492945
- 134317 string characters out of 3126252
+ 9124 strings out of 492945
+ 134251 string characters out of 3126252
  264879 words of memory out of 3000000
- 12721 multiletter control sequences out of 15000+200000
+ 12718 multiletter control sequences out of 15000+200000
  12288 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,41p,1250b,768s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/beatr/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/b
-eatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
-><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/beatr/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (33 pages, 490084 bytes).
+ 34i,16n,41p,1492b,746s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{section.3.1} has been referenced bu
+t does not exist, replaced by a fixed one
+
+<C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/beatr/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/beatr/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/beatr
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (36 pages, 497191 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
  195 words of extra memory for PDF output out of 10000 (max. 10000000)
 

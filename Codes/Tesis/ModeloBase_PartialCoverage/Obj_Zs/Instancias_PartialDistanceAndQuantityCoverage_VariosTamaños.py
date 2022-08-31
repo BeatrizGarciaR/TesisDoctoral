@@ -19,9 +19,10 @@ import random
 # tamaños_L = [10, 25, 40]
 # tamaños_S = [3, 7, 12]
 
-tamaños_I = [50, 200, 350]
-tamaños_L = [20, 40, 55]
-tamaños_S = [15, 50, 75]
+tamaños_I = [20, 50, 80, 95]
+tamaños_L = [40, 50, 70, 85]
+tamaños_S = [12, 25, 30, 40]
+
 
 porcentaje_L1 = 0.55
 porcentaje_L2 = 0.85
