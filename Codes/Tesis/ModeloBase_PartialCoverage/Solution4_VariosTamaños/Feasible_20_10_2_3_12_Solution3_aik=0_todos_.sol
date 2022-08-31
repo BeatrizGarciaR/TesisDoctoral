@@ -1,0 +1,54 @@
+Objective value
+4.0642
+
+Eta
+[7, 4]
+
+Ambulance located
+[3, 2]
+
+Ambulance location
+['less than eta', 'less than eta']
+
+Scnenario
+[[0, 0], [0, 2], [0, 0], [0, 0], [0, 1], [1, 0], [0, 0], [1, 0], [0, 0], [0, 0], [1, 0], [0, 0], [0, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0]]
+[[0, 0], [0, 0], [0, 0], [2, 0], [0, 1], [0, 0], [0, 0], [2, 1], [0, 0], [0, 2], [0, 0], [2, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 2]]
+[[0, 1], [0, 0], [0, 0], [0, 2], [1, 3], [1, 1], [0, 1], [0, 0], [0, 1], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 2], [1, 1], [1, 0], [0, 0], [0, 0]]
+[[1, 0], [2, 0], [0, 1], [0, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [1, 0], [0, 0], [1, 0], [0, 1], [0, 1], [0, 0], [0, 0], [0, 1]]
+[[0, 0], [0, 1], [0, 0], [0, 0], [0, 1], [0, 1], [0, 0], [0, 0], [0, 2], [0, 0], [0, 2], [0, 1], [0, 0], [1, 0], [0, 1], [0, 0], [1, 0], [0, 2], [0, 1], [0, 0]]
+[[0, 0], [1, 0], [0, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [2, 0], [0, 0], [3, 0], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0]]
+[[0, 2], [0, 0], [0, 0], [2, 0], [0, 1], [0, 0], [2, 1], [0, 0], [0, 0], [0, 1], [1, 1], [1, 0], [2, 1], [2, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[0, 0], [0, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 2], [0, 0], [0, 0], [0, 2], [0, 0], [0, 1], [0, 0], [1, 0], [2, 1], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[1, 1], [0, 0], [0, 0], [0, 0], [1, 2], [0, 1], [0, 1], [0, 0], [0, 0], [0, 1], [0, 3], [0, 2], [0, 0], [0, 1], [0, 0], [1, 2], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[0, 0], [0, 2], [0, 0], [0, 0], [1, 2], [0, 0], [0, 0], [2, 0], [0, 1], [0, 0], [0, 0], [0, 2], [0, 0], [1, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 2], [3, 3]]
+[[0, 0], [1, 0], [0, 0], [0, 0], [0, 1], [0, 3], [1, 0], [0, 0], [0, 0], [0, 0], [1, 1], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 2], [0, 0], [0, 2], [0, 1]]
+[[1, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [0, 0], [0, 1], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 1], [1, 1], [0, 0], [1, 1], [0, 1], [0, 2]]
+
+Dispatches
+[[0, 0], [0, 1], [0, 0], [0, 0], [0, 1], [1, 0], [0, 0], [1, 0], [0, 0], [0, 0], [1, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0]]
+[[0, 0], [0, 0], [0, 0], [2, 0], [0, 1], [0, 0], [0, 0], [2, 1], [0, 0], [0, 1], [0, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1]]
+[[0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [0, 1], [0, 0], [0, 1], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 1], [1, 0], [0, 0], [0, 0]]
+[[1, 0], [2, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [1, 0], [0, 0], [1, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 1]]
+[[0, 0], [0, 1], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [0, 1], [0, 0], [1, 0], [0, 0], [0, 1], [0, 0]]
+[[0, 0], [1, 0], [0, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [2, 0], [0, 0], [3, 0], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0]]
+[[0, 0], [0, 0], [0, 0], [1, 0], [0, 1], [0, 0], [0, 1], [0, 0], [0, 0], [0, 1], [1, 1], [1, 0], [1, 0], [2, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[0, 0], [0, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 2], [0, 0], [0, 0], [0, 1], [0, 0], [0, 1], [0, 0], [1, 0], [2, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[1, 0], [0, 0], [0, 0], [0, 0], [1, 0], [0, 1], [0, 1], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[[0, 0], [0, 1], [0, 0], [0, 0], [1, 0], [0, 0], [0, 0], [2, 0], [0, 1], [0, 0], [0, 0], [0, 1], [0, 0], [1, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 1], [1, 0]]
+[[0, 0], [1, 0], [0, 0], [0, 0], [0, 1], [0, 0], [1, 0], [0, 0], [0, 0], [0, 0], [1, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 1], [0, 0], [0, 0], [0, 1]]
+[[1, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [0, 0], [0, 1], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [0, 0], [1, 0], [0, 1], [0, 1]]
+
+Coverage
+[['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['full', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident']]
+[['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'full'], ['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial']]
+[['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'null'], ['full', 'null'], ['full', 'null'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'null'], ['full', 'full'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident']]
+[['full', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full']]
+[['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'null'], ['no accident', 'null'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'null'], ['no accident', 'full'], ['no accident', 'no accident']]
+[['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident']]
+[['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['partial', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['null', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['full', 'full'], ['full', 'no accident'], ['partial', 'null'], ['full', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident']]
+[['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['full', 'no accident'], ['full', 'null'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident']]
+[['full', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'full'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'null'], ['no accident', 'null'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident']]
+[['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['full', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial'], ['partial', 'null']]
+[['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'null'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'partial'], ['no accident', 'no accident'], ['no accident', 'null'], ['no accident', 'full']]
+[['full', 'no accident'], ['no accident', 'full'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'full'], ['full', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['no accident', 'no accident'], ['full', 'null'], ['full', 'null'], ['no accident', 'no accident'], ['full', 'null'], ['no accident', 'full'], ['no accident', 'partial']]
+

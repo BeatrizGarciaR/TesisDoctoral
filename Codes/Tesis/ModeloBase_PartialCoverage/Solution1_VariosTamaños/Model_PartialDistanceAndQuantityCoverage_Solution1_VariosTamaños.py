@@ -19,9 +19,9 @@ from gurobipy import GRB
 # tamaños_S = [5, 20, 50]
 #repeticiones = 5
 
-tamaños_I = [5]
-tamaños_L = [10]
-tamaños_S = [3]
+tamaños_I = [5, 10, 20]
+tamaños_L = [10, 25, 40]
+tamaños_S = [3, 7, 12]
 K = [1,2]
 
 
@@ -116,12 +116,12 @@ for iconj in range(len(tamaños_I)):
                 for i in range(len(I)):
                     r_li2[l].append(int(line[i]))
                     
-            cil = []
-            for i in range(len(I)):
+            cli = []
+            for l in range(len(L)):
                 line = archivo.readline().strip().split()
-                cil.append([])
-                for l in range(len(L)):
-                    cil[i].append(float(line[l]))   
+                cli.append([])
+                for i in range(len(I)):
+                    cli[l].append(float(line[i]))   
             
             
             # Other parameters #
@@ -130,74 +130,6 @@ for iconj in range(len(tamaños_I)):
             t = 10
             tmax = 25
 
-            
-
-######################################################################
-######################  INSTANCES ####################################
-######################################################################
-
-#import gurobipy as gp
-#from gurobipy import GRB
-
-#Sets
-
-# I = [1, 2 ,3]
-# L = [1, 2, 3, 4, 5]
-# #Li = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
-#K = [1, 2]
-# N = [[1, 2, 3], [1, 2, 3]]   
-
-# S = [[[2, 0], [0, 0], [0, 1]],  #accidentes originales
-#       [[1, 1], [2, 0], [0, 0]],
-#       [[0, 1], [1, 0], [2, 1]]]
- 
-# # S = [[[2, 0], [0, 0], [2, 0]],  #Puros accidentes tipo 1
-# #      [[1, 0], [3, 0], [0, 0]],
-# #      [[1, 0], [1, 0], [2, 0]]]
-
-# # S = [[[0, 2], [0, 0], [0, 2]], #Puros accidentes tipo 2
-#       # [[0, 2], [0, 3], [0, 0]],
-#       # [[0, 1], [0, 1], [0, 2]]]
-
-
-# # a = []
-# # for s in range(len(S)):
-# #     a.append([])
-# #     for i in I:
-# #         a[s].append([])
-# #         for num in range(2):
-# #             if S[s][i-1][num] == 0:
-# #                 a[s][i-1].append(0)
-# #             else:
-# #                 a[s][i-1].append(S[s][i-1][num])
-
-# # a_aux = []
-# # for s in range(len(S)):
-# #     a_aux.append([])
-# #     for i in I:
-# #         a_aux[s].append([])
-# #         for n in (2,3):
-# #             if S[s][i-1][0] == 0 or S[s][i-1][n] == 0: #Todos los aik
-# #             #if S[s][i-1][0] == 0: #solo cuando i = 0
-# #                 a_aux[s][i-1].append(1000)
-# #             else:
-# #                 a_aux[s][i-1].append(S[s][i-1][n])
-
-# #Parameters
-
-# p = 0.3
-# eta = [2,1]
-# #n1 = 2
-# #n2 = 1
-# t = 10
-# tmax = 25
-# ril = [[18, 25, 20, 26, 26],
-#        [26, 10, 19, 18, 26],
-#        [26, 26, 13, 22, 16]]
-
-# cil = [[0.47, 0.06, 0.3, 0, 0],
-#        [0, 1, 0.36, 0.42, 0],
-#        [0, 0, 0.82, 0.18, 0.54]]
                 
             ######################################################################
             ######################    MODEL   ####################################
@@ -239,12 +171,12 @@ for iconj in range(len(tamaños_I)):
                 for i in I:
                     #print("S[s][i]", S[s][i-1])
                     if S[s][i-1][0]!=0:
-                        print("entra 1er if")
-                        obj += gp.quicksum(cil[i-1][l-1]*y_vars[s+1,l,k,i] for l in L for k in K)/(len(S)*(S[s][i-1][0]))
+                        #print("entra 1er if")
+                        obj += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,k,i] for l in L for k in K)/(len(S)*(S[s][i-1][0]))
                     
                     if S[s][i-1][1]!=0:
-                        print("entra 2do if")
-                        obj += gp.quicksum(cil[i-1][l-1]*y_vars[s+1,l,2,i] for l in L)/(len(S)*(S[s][i-1][1]))
+                        #print("entra 2do if")
+                        obj += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)/(len(S)*(S[s][i-1][1]))
             
             model.setObjective(obj, GRB.MAXIMIZE)  
             
@@ -260,9 +192,9 @@ for iconj in range(len(tamaños_I)):
                     for k in K:
                         model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] for i in I) <= x_vars[l,k], "c3")
                         
-                # for i in I:
-                #     for k in K:
-                #         model.addConstr(gp.quicksum(y_vars[s+1,i,l,k] for l in L) <= S[s][i-1][k-1], "c4")
+                for i in I:
+                    for k in K:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] for l in L) <= S[s][i-1][k-1], "c4")
                 
                 # for i in I:
                 #     if S[s][i-1][0] != 0:
@@ -290,13 +222,231 @@ for iconj in range(len(tamaños_I)):
             for v in model.getVars():
                 f.write('%s %g' % (v.varName, v.x))
                 f.write('\n')
-                
+            
             #imprimir el valor objetivo
             print('Obj: %g' % model.objVal)
             print("Finished")
             print(" ")
+            print(" ")
             
             f.close()
+            
+            ########################################
+            # VERIFICANDO SI LA SOLUCION ES FACTIBLE 
+            ########################################
+            
+            feasible = open ('Feasible_'
+                          +str(len(I))+str('_')
+                          +str(len(L))+str('_')
+                          +str(len(K))+str('_')
+                          +str(len(N))+str('_')
+                          +str(len(S))+str('_')
+                          +str('Solution1_aik=0_todos')+'_.sol','w')
+            
+            # Guardando la información de x
+            ambulancesNumber = []
+            for k in K:
+                conteo = 0
+                for l in L:
+                    a = x_vars[l,k]
+                    if (a.x == 1):
+                        conteo = conteo + 1
+                        #print(a.varName, a.x)
+                ambulancesNumber.append(conteo)
+            #print(ambulancenNumber)
+            #print()
+            
+            
+            # VERIFICANDO QUE NO SE SOBREPASE LA CANTIDAD DE AMBULANCIAS LOCALIZADAS
+            ambulanceLocation = []
+            for k in K:
+                if(ambulancesNumber[k-1] == eta[k-1]):
+                    ambulanceLocation.append("equal to eta")
+                    
+                if(ambulancesNumber[k-1] < eta[k-1]):
+                    ambulanceLocation.append("less than eta")
+                    
+                if(ambulancesNumber[k-1] > eta[k-1]):
+                    ambulanceLocation.append("more to eta")
+            #print(ambulanceLocation)
+            #print()
+            
+            for k in K:
+                if(ambulanceLocation[k-1] == 'more than eta'):
+                    feasible.write("MORE AMBULANCE THAN AVAILABLE")
+                    feasible.write("\n")
+                    print("MORE AMBULANCE THAN AVAILABLE")
+                    
+            
+            # Guardando la información de y
+            dispatches = []
+            for s in range(len(S)):
+                dispatches.append([])
+                for i in I: 
+                    dispatches[s].append([])
+                    for k in K: 
+                        conteo = 0
+                        for l in L:
+                            a = y_vars[s+1,l,k,i]
+                            if (a.x == 1):
+                                conteo = conteo + 1
+                                #print("ver si acomoda por i", a, a.x)
+                        dispatches[s][i-1].append(conteo)                         
+            #print(dispatches)
+            #print()
+            
+        
+            # VERIFICANDO LAS COBERTURAS
+            coverage = []
+            for s in range(len(S)):
+                coverage.append([])
+                for i in I: 
+                    coverage[s].append([])
+                    for k in K: 
+                        if(S[s][i-1][k-1] == dispatches[s][i-1][k-1] and S[s][i-1][k-1] == 0):
+                            coverage[s][i-1].append("no accident")
+                            
+                        if(S[s][i-1][k-1] == dispatches[s][i-1][k-1] and S[s][i-1][k-1] != 0):
+                            coverage[s][i-1].append("full")
+                            
+                        if(S[s][i-1][k-1] > dispatches[s][i-1][k-1] and S[s][i-1][k-1] != 0 and dispatches[s][i-1][k-1] != 0):
+                            coverage[s][i-1].append("partial")
+                            
+                        if(S[s][i-1][k-1] > 0 and dispatches[s][i-1][k-1] == 0):
+                            coverage[s][i-1].append("null")
+                    
+                        if(S[s][i-1][k-1] < dispatches[s][i-1][k-1]):
+                            coverage[s][i-1].append("over serviced")
+                            
+            #for s in range(len(S)):
+            #    print(coverage[s]) 
+            #print()
+            
+            
+            # VERIFICANDO QUE NO HAYA SOBRE COBERTURA
+            for s in range(len(S)):
+                for i in I: 
+                    for k in K:
+                        if (coverage[s][i-1][k-1] == 'over serviced'):
+                            feasible.write("MODEL OVER SERVICED")
+                            feasible.write("\n")
+                            print("MODEL OVER SERVICED")
+              
+            # Número de ambulancias despachadas
+            numberDispatched = []
+            for s in range(len(S)):
+                numberDispatched.append([])
+                for l in L:
+                    numberDispatched[s].append([])
+                    for k in K:
+                        conteo = 0
+                        for i in I:
+                            a = y_vars[s+1,l,k,i]
+                            if (a.x == 1):
+                                conteo = conteo + 1
+                        numberDispatched[s][l-1].append(conteo)
+                    
+            #print(numberDispatched)
+            #print(" ")
+            
+            #Número de ambulancias localizadas 
+            locationQuantity = []
+            for l in L:
+                locationQuantity.append([])
+                for k in K:
+                    a = x_vars[l,k]
+                    if(a.x == -0.0):
+                        locationQuantity[l-1].append(0)
+                    else:
+                        locationQuantity[l-1].append(int(a.x))
+            
+            #print(locationQuantity)
+            #print(" ")
+                    
+            
+            # Verificando que se despachen la cantidad de ambulancias que están localizadas
+            feasibleDispatched = []
+            for s in range(len(S)):
+                feasibleDispatched.append([])
+                for l in L:
+                    feasibleDispatched[s].append([])
+                    for k in K:
+                        if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] != 0):
+                            feasibleDispatched[s][l-1].append("all used")
+                        
+                        if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] == 0):
+                            feasibleDispatched[s][l-1].append("not located")
+                        
+                        if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] == 0):
+                            feasibleDispatched[s][l-1].append("not used")
+                        
+                        if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] != 0):
+                            feasibleDispatched[s][l-1].append("not all used")
+                            
+                        if(numberDispatched[s][l-1][k-1] > locationQuantity[l-1][k-1]):
+                            feasibleDispatched[s][l-1].append("over used")
+            #print(feasibleDispatched)
+            #print(" ")
+                        
+            # VERIFICANDO QUE NO SE DESPACHEN DE MÁS LAS AMBULANCIAS}
+            for s in range(len(S)):
+                for l in L:
+                    for k in K:
+                         if (feasibleDispatched[s][l-1][k-1] == 'over used'):
+                            feasible.write("MODEL OVER USED")
+                            feasible.write("\n")
+                            print("MODEL OVER USED")
+                        
+            
+             
+            feasible.write("Objective value")
+            feasible.write("\n")
+            feasible.write('%g' % model.objVal)
+            feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Eta")
+            feasible.write("\n")
+            feasible.write(str(eta))
+            feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Ambulance located")
+            feasible.write("\n")
+            feasible.write(str(ambulancesNumber))
+            feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Ambulance location")
+            feasible.write("\n")
+            feasible.write(str(ambulanceLocation))
+            feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Scnenario")
+            feasible.write("\n")
+            for s in range(len(S)):
+                feasible.write(str(S[s]))
+                feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Dispatches")
+            feasible.write("\n")
+            for s in range(len(S)):
+                feasible.write(str(dispatches[s]))
+                feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.write("Coverage")
+            feasible.write("\n")
+            for s in range(len(S)):
+                feasible.write(str(coverage[s]))
+                feasible.write("\n")
+            feasible.write("\n")
+            
+            feasible.close()
+            
+            
             
             model.write('model_'+str(len(I))+str('_')
                           +str(len(L))+str('_')
@@ -310,102 +460,102 @@ for iconj in range(len(tamaños_I)):
                           +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.mps')
             
             
-            resultados = open ('Resultados_Prueba_'
-                          +str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','r')
+            # resultados = open ('Resultados_Prueba_'
+            #               +str(len(I))+str('_')
+            #               +str(len(L))+str('_')
+            #               +str(len(K))+str('_')
+            #               +str(len(N))+str('_')
+            #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','r')
             
-            line = resultados.readline()
+            # line = resultados.readline()
             
-            # Funcion Objetivo
+            # # Funcion Objetivo
             
-            fobj = open ('FObj_'
-                          +str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+            # fobj = open ('FObj_'
+            #               +str(len(I))+str('_')
+            #               +str(len(L))+str('_')
+            #               +str(len(K))+str('_')
+            #               +str(len(N))+str('_')
+            #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
             
-            fobj.write(str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str(' ')
-                          +line)
+            # fobj.write(str(len(I))+str('_')
+            #               +str(len(L))+str('_')
+            #               +str(len(K))+str('_')
+            #               +str(len(N))+str('_')
+            #               +str(len(S))+str('_')+str(' ')
+            #               +line)
             
-            fobj.close()
+            # fobj.close()
             
-            #Located
+            # #Located
               
-            located = open ('Located_'
-                          +str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+            # located = open ('Located_'
+            #               +str(len(I))+str('_')
+            #               +str(len(L))+str('_')
+            #               +str(len(K))+str('_')
+            #               +str(len(N))+str('_')
+            #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
             
             
-            count = 0
-            for i in range(len(x_vars)):
-                aux = []
-                line = resultados.readline().strip().split()
-                if int(line[len(line)-1]) != 0 or int(line[len(line)-1]) != -0:
-                    count = count + 1
-                    for i in range(len(line)):
-                        if i == 0:
-                            aux.append(line[i])
-                        else:
-                            aux.append(int(line[i]))
+            # count = 0
+            # for i in range(len(x_vars)):
+            #     aux = []
+            #     line = resultados.readline().strip().split()
+            #     if int(line[len(line)-1]) != 0 or int(line[len(line)-1]) != -0:
+            #         count = count + 1
+            #         for i in range(len(line)):
+            #             if i == 0:
+            #                 aux.append(line[i])
+            #             else:
+            #                 aux.append(int(line[i]))
                 
-                    # located.write(str(len(I))+str('_')
-                    #       +str(len(L))+str('_')
-                    #       +str(len(K))+str('_')
-                    #       +str(len(N))+str('_')
-                    #       +str(len(S))+str('_'))
-                    for j in range(len(aux)):
-                        located.write(str(aux[j])+str(" "))
-                    located.write("\n")
-            if count == 0:
-                for j in range(8):
-                    located.write("NA"+str(' '))
+            #         # located.write(str(len(I))+str('_')
+            #         #       +str(len(L))+str('_')
+            #         #       +str(len(K))+str('_')
+            #         #       +str(len(N))+str('_')
+            #         #       +str(len(S))+str('_'))
+            #         for j in range(len(aux)):
+            #             located.write(str(aux[j])+str(" "))
+            #         located.write("\n")
+            # if count == 0:
+            #     for j in range(8):
+            #         located.write("NA"+str(' '))
                 
-            located.close()
+            # located.close()
             
-            # Dispatched
+            # # Dispatched
             
-            dispatched = open ('Dispatched_'
-                          +str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+            # dispatched = open ('Dispatched_'
+            #               +str(len(I))+str('_')
+            #               +str(len(L))+str('_')
+            #               +str(len(K))+str('_')
+            #               +str(len(N))+str('_')
+            #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
             
-            count = 0
-            for i in range(len(y_vars)):
-                aux = []
-                line = resultados.readline().strip().split()
-                if int(line[len(line)-1]) != 0 or int(line[len(line)-1]) != -0:
-                    count = count + 1
-                    for i in range(len(line)):
-                        if i == 0:
-                            aux.append(line[i])
-                        else:
-                            aux.append(int(line[i]))
-                    # dispatched.write(str(len(I))+str('_')
-                    #       +str(len(L))+str('_')
-                    #       +str(len(K))+str('_')
-                    #       +str(len(N))+str('_')
-                    #       +str(len(S))+str('_'))
-                    for j in range(len(aux)):
-                        dispatched.write(str(aux[j])+str(" "))
-                    dispatched.write("\n")
-            if count == 0:
-                for j in range(11):
-                    dispatched.write("NA"+str(' '))
+            # count = 0
+            # for i in range(len(y_vars)):
+            #     aux = []
+            #     line = resultados.readline().strip().split()
+            #     if int(line[len(line)-1]) != 0 or int(line[len(line)-1]) != -0:
+            #         count = count + 1
+            #         for i in range(len(line)):
+            #             if i == 0:
+            #                 aux.append(line[i])
+            #             else:
+            #                 aux.append(int(line[i]))
+            #         # dispatched.write(str(len(I))+str('_')
+            #         #       +str(len(L))+str('_')
+            #         #       +str(len(K))+str('_')
+            #         #       +str(len(N))+str('_')
+            #         #       +str(len(S))+str('_'))
+            #         for j in range(len(aux)):
+            #             dispatched.write(str(aux[j])+str(" "))
+            #         dispatched.write("\n")
+            # if count == 0:
+            #     for j in range(11):
+            #         dispatched.write("NA"+str(' '))
             
-            dispatched.close()
+            # dispatched.close()
             
             # Null
             
@@ -441,4 +591,4 @@ for iconj in range(len(tamaños_I)):
             
             # null.close()
             
-            resultados.close()
+            #resultados.close()
