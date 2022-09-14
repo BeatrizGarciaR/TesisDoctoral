@@ -2,9 +2,9 @@
 ###### Instancias ######
 ########################
 
-tamaños_I <- c(20, 50, 80)
-tamaños_L <- c(40, 50, 70)
-tamaños_S <- c(12, 25, 30)
+tamaños_I <- c(20, 50, 80, 95)
+tamaños_L <- c(40, 50, 70, 85)
+tamaños_S <- c(12, 25, 30, 40)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25

@@ -73,54 +73,69 @@ for iconj in range(len(tamaños_I)):
                 #Nombre: Instancias_Prueba_I_L_M_N_S_Rep
                 
                 
+            # archivo = open('Instancias_Prueba_'
+            #           +str(tamaños_I[iconj])+str('_')
+            #           +str(tamaños_L[jconj])+str('_')
+            #           +'2'+str('_')
+            #           +'3'+str('_')
+            #           +str(tamaños_S[sconj])+str('_')
+            #           #+str(rep+1)
+            #           +'_.txt', "r")
+            
             archivo = open('Instancias_Prueba_'
                       +str(tamaños_I[iconj])+str('_')
                       +str(tamaños_L[jconj])+str('_')
-                      +'2'+str('_')
-                      +'3'+str('_')
-                      +str(tamaños_S[sconj])+str('_')
-                      #+str(rep+1)
-                      +'_.txt', "r")
+                      +str(tamaños_S[sconj])
+                      +'.txt', "r")
             
             len_I = int(archivo.readline())
             len_L = int(archivo.readline())
-            len_M = int(archivo.readline())
-            len_N = int(archivo.readline())
+            #len_M = int(archivo.readline())
+            #len_N = int(archivo.readline())
             len_S = int(archivo.readline())
             #repite = int(archivo.readline())
             
             # Sets #
+            
             I = []
-            line = archivo.readline().strip().split()
             for i in range(len_I):
-                I.append(int(line[i]))
+                I.append(int(i+1))
                 
             L = []
-            line = archivo.readline().strip().split()
             for i in range(len_L):
-                L.append(int(line[i]))
+                L.append(int(i+1))
             
-            len_L1 = int(archivo.readline())
-            L1 = []
-            line = archivo.readline().strip().split()
-            for i in range(len_L1):
-                L1.append(int(line[i]))
+            # I = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_I):
+            #     I.append(int(line[i]))
+                
+            # L = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_L):
+            #     L.append(int(line[i]))
+            
+            # len_L1 = int(archivo.readline())
+            # L1 = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_L1):
+            #     L1.append(int(line[i]))
         
-            len_L2 = int(archivo.readline())
-            L2 = []
-            line = archivo.readline().strip().split()
-            for i in range(len_L2):
-                L2.append(int(line[i]))
+            # len_L2 = int(archivo.readline())
+            # L2 = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_L2):
+            #     L2.append(int(line[i]))
                 
-            M = []
-            line = archivo.readline().strip().split()
-            for i in range(len_M):
-                M.append(int(line[i]))
+            # M = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_M):
+            #     M.append(int(line[i]))
                 
-            N = []
-            line = archivo.readline().strip().split()
-            for i in range(len_N):
-                N.append(int(line[i]))
+            # N = []
+            # line = archivo.readline().strip().split()
+            # for i in range(len_N):
+            #     N.append(int(line[i]))
                 
             
             #Scenarios
@@ -150,12 +165,12 @@ for iconj in range(len(tamaños_I)):
                     r_li1[l].append(int(line[i]))   
               
             # Red Cross Response times
-            r_li2 = []
-            for l in range(len(L)):
-                line = archivo.readline().strip().split()
-                r_li2.append([])
-                for i in range(len(I)):
-                    r_li2[l].append(int(line[i]))
+            # r_li2 = []
+            # for l in range(len(L)):
+            #     line = archivo.readline().strip().split()
+            #     r_li2.append([])
+            #     for i in range(len(I)):
+            #         r_li2[l].append(int(line[i]))
                     
             cli = []
             for l in range(len(L)):
@@ -346,9 +361,9 @@ for iconj in range(len(tamaños_I)):
             
             with open('data'+str(len(I))+str('_')
                           +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+'.csv', 'w') as f:
+                          #+str(len(K))+str('_')
+                          #+str(len(N))+str('_')
+                          +str(len(S))+'.csv', 'w') as f:
                 writer = csv.writer(f)
                 writer.writerows(model._data)
                 
@@ -384,10 +399,9 @@ for iconj in range(len(tamaños_I)):
             f = open ('Resultados_Prueba_'
                           +str(len(I))+str('_')
                           +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')
-                          +str('Solution1_aik=0_todos')+'_.txt','w')
+                          #+str(len(K))+str('_')
+                          #+str(len(N))+str('_')
+                          +str(len(S))+'.txt','w')
             
             #f.write("Start time: ")
             #f.write(str(start_time))
@@ -442,10 +456,7 @@ for iconj in range(len(tamaños_I)):
             feasible = open ('Feasible_'
                           +str(len(I))+str('_')
                           +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')
-                          +str('Solution1_aik=0_todos')+'_.sol','w')
+                          +str(len(S))+'.sol','w')
             
             # Guardando la información de x
             ambulancesNumber = []
@@ -708,14 +719,12 @@ for iconj in range(len(tamaños_I)):
             
             model.write('model_'+str(len(I))+str('_')
                           +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.lp')
+                          #+str(len(K))+str('_')
+                          #+str(len(N))+str('_')
+                          +str(len(S))+'.lp')
             model.write('model_'+str(len(I))+str('_')
                           +str(len(L))+str('_')
-                          +str(len(K))+str('_')
-                          +str(len(N))+str('_')
-                          +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.mps')
+                          +str(len(S))+'.mps')
             
             
             # resultados = open ('Resultados_Prueba_'
