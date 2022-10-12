@@ -24,9 +24,9 @@ import math
 # tamaños_L = [85]
 # tamaños_S = [100]
 
-tamaños_I = [20]
-tamaños_L = [40]
-tamaños_S = [12]
+tamaños_I = [50]
+tamaños_L = [50]
+tamaños_S = [25]
 
 K = [1, 2]
 
@@ -217,9 +217,9 @@ for iconj in range(len(tamaños_I)):
                     
                     puntosCubiertosAux1 = puntosCubiertos1[indicemaxTipo1]
                     for puntoAeliminar1 in range(len(puntosCubiertosAux1)):
-                        print("for 1 ", puntoAeliminar1)
-                        print("punto a eliminar 1 ", puntosCubiertosAux1[0])
-                        print(" ")
+                        #print("for 1 ", puntoAeliminar1)
+                        #print("punto a eliminar 1 ", puntosCubiertosAux1[0])
+                        #print(" ")
                         for puntosCubiertos in range(len(puntosCubiertos1)):
                             # print("entra otro for ", puntosCubiertos)
                             # print(" ")
@@ -234,9 +234,9 @@ for iconj in range(len(tamaños_I)):
                     
                     puntosCubiertosAux2 = puntosCubiertos2[indicemaxTipo2]
                     for puntoAeliminar2 in range(len(puntosCubiertosAux2)):
-                        print("for 2 ", puntoAeliminar2)
-                        print("punto a eliminar 2 ", puntosCubiertosAux2[0])
-                        print(" ")
+                        #print("for 2 ", puntoAeliminar2)
+                        #print("punto a eliminar 2 ", puntosCubiertosAux2[0])
+                        #print(" ")
                         for puntosCubiertos in range(len(puntosCubiertos2)):
                             # print("entra otro for ", puntosCubiertos)
                             # print(" ")
@@ -260,7 +260,7 @@ for iconj in range(len(tamaños_I)):
                     for p in range(len(Cobertura1)):
                         if Cobertura1[p] > 0:
                             randoms1.append(p)
-                    print("posiciones random 1 ", randoms1)
+                    #print("posiciones random 1 ", randoms1)
                     
                     random_positions1 = random.sample(randoms1, eta[0] - len(initialSolution1))
                     for y in range(len(random_positions1)):
@@ -270,7 +270,7 @@ for iconj in range(len(tamaños_I)):
                     for p in range(len(Cobertura2)):
                         if Cobertura2[p] > 0:
                             randoms2.append(p)
-                    print("posiciones random 2 ", randoms2)
+                    #print("posiciones random 2 ", randoms2)
                     
                     random_positions2 = random.sample(randoms2, eta[1] - len(initialSolution2))
                     for y in range(len(random_positions2)):
@@ -297,23 +297,26 @@ for iconj in range(len(tamaños_I)):
                     initialSolution[lenL].append(0) 
 
             
-            print("La solucion inicial es ")
+            print("La solucion inicial final es ")
             print(initialSolution)
             print(" ")
             print( " ")
             #break 
+            
+            
         
             ######################################################################
             ######################    MODEL   ####################################
             ######################################################################
             
-            model = gp.Model("TabuSearchWithSAA")
-            
+            model = gp.Model("TabuSearchWithSAA")            
             model.setParam('TimeLimit', 5*60)
             model._obj = None
             model._bd = None
             model._data = []
             model._start = time.time()
+            
+            sumaelapsed = 0
             
             # Create variables #
             y_vars = {}
@@ -708,24 +711,17 @@ for iconj in range(len(tamaños_I)):
                         model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
         
             # Optimize model
+            
             model.optimize(callback=data_cb)
             
             end_time = time.time()
             
-            elapsed_time = end_time - model._start 
+            elapsed_time = end_time - model._start
+            
+            sumaelapsed = sumaelapsed + elapsed_time
             
             #imprimir variables 
-            
-            with open('data'+str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(S))+'.csv', 'w') as f:
-                writer = csv.writer(f)
-                writer.writerows(model._data)
-                
-            
-            
-            #archivo = xlsxwriter.Workbook('tesis.csv')
-            #hoja = archivo.add_worksheet()
+
             colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
             for column in range(len(colnames)):
                 sheet.write(0, column, colnames[column])
@@ -735,11 +731,17 @@ for iconj in range(len(tamaños_I)):
             sheet.write(countcsv, 2, len(L))
             sheet.write(countcsv, 3, len(S))
             if len(model._data) != 0:
+                print(" Entra datos for ")
                 datos = model._data[len(model._data)-1]
                 for row in range(len(datos)):
                     sheet.write(countcsv, row+4, datos[row])
             countcsv = countcsv + 1
         
+            with open('data'+str(len(I))+str('_')
+                              +str(len(L))+str('_')
+                              +str(len(S))+'.csv', 'w') as fi:
+                    writer = csv.writer(fi)
+                    writer.writerows(model._data)
             
             #Nombre: Resultados_Prueba_I_L_M_N_S
             
@@ -856,14 +858,13 @@ for iconj in range(len(tamaños_I)):
                 print(initialSolution)
                 print(" ")
                 
-                    
+
                 ######################################################################
                 ######################    MODEL   ####################################
                 ######################################################################
                 
-                model = gp.Model("TabuSearchWithSAA")
-                
-                model.setParam('TimeLimit', 1*60)
+                model = gp.Model("TabuSearchWithSAA")            
+                model.setParam('TimeLimit', 5*60)
                 model._obj = None
                 model._bd = None
                 model._data = []
@@ -952,9 +953,9 @@ for iconj in range(len(tamaños_I)):
                 for s in range(len(S)):
                     for i in I:
                         if S[s][i-1][0]:
-                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - p*gamma_vars[s+1,i]) * (1/len(S))
+                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                         if S[s][i-1][1]:
-                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - p*gamma_vars[s+1,i]) * (1/len(S))
+                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                 model.setObjective(obj, GRB.MAXIMIZE)  
             
             
@@ -1262,24 +1263,18 @@ for iconj in range(len(tamaños_I)):
                             model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
             
                 # Optimize model
+                
                 model.optimize(callback=data_cb)
                 
                 end_time = time.time()
                 
-                elapsed_time = end_time - model._start 
+                elapsed_time = end_time - model._start
+                
+                sumaelapsed = sumaelapsed + elapsed_time
+                
                 
                 #imprimir variables 
-                
-                with open('data'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              +str(len(S))+'.csv', 'w') as f:
-                    writer = csv.writer(f)
-                    writer.writerows(model._data)
-                    
-                
-                
-                #archivo = xlsxwriter.Workbook('tesis.csv')
-                #hoja = archivo.add_worksheet()
+         
                 colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
                 for column in range(len(colnames)):
                     sheet.write(0, column, colnames[column])
@@ -1289,11 +1284,19 @@ for iconj in range(len(tamaños_I)):
                 sheet.write(countcsv, 2, len(L))
                 sheet.write(countcsv, 3, len(S))
                 if len(model._data) != 0:
+                    print("Entra datos for 2")
                     datos = model._data[len(model._data)-1]
                     for row in range(len(datos)):
                         sheet.write(countcsv, row+4, datos[row])
                 countcsv = countcsv + 1
             
+                #writer.writerows(name)
+                with open('data'+str(len(I))+str('_')
+                              +str(len(L))+str('_')
+                              +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
+                    writer = csv.writer(f)
+                    writer.writerows("new")
+                    writer.writerows(model._data)
                 
                 #Nombre: Resultados_Prueba_I_L_M_N_S
                 
@@ -1330,7 +1333,15 @@ for iconj in range(len(tamaños_I)):
                 model.write('model_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.mps')
-        
+
+            
+print("Elapsed time total ")
+print(sumaelapsed)
+print(" ")
+
+sheet.write(countcsv+1, 0, "Total Elapsed Time")
+sheet.write(countcsv+1, 1, sumaelapsed)
+            
             ########### HACER EL CICLO PARA MEJORAR LA SOLUCION INICIAL
             
             # listaTabu = []      
@@ -1420,5 +1431,6 @@ for iconj in range(len(tamaños_I)):
                 
             #     model(countcsv)
 
+fi.close()
 book.save('TesisTS.xls') 
             
