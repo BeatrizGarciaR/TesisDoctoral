@@ -19,9 +19,9 @@ import random
 # tamaños_L = [10, 25, 40]
 # tamaños_S = [3, 7, 12]
 
-tamaños_I = [20, 50, 80, 95]
-tamaños_L = [40, 50, 70, 85]
-tamaños_S = [12, 25, 30, 40]
+tamaños_I = [20, 50, 80, 95, 100, 300, 500, 1000]
+tamaños_L = [40, 50, 70, 85, 100]
+tamaños_S = [12, 25, 30, 40, 50, 100, 500]
 
 
 porcentaje_L1 = 0.55
@@ -139,39 +139,39 @@ for iconj in range(len(tamaños_I)):
             
             #Set of potential sites L1
               
-            f.write(str(pickL1))
-            f.write("\n")
+            # f.write(str(pickL1))
+            # f.write("\n")
             
-            for l in range(len(L1)):
-                f.write(str(L1[l])+str(" "))
-            f.write("\n")
+            # for l in range(len(L1)):
+            #     f.write(str(L1[l])+str(" "))
+            # f.write("\n")
             
-            #Set of potential sites L2
+            # #Set of potential sites L2
             
-            f.write(str(pickL2))
-            f.write("\n")
+            # f.write(str(pickL2))
+            # f.write("\n")
                 
-            for l in range(len(L2)):
-                f.write(str(L2[l])+str(" "))
-            f.write("\n")
+            # for l in range(len(L2)):
+            #     f.write(str(L2[l])+str(" "))
+            # f.write("\n")
         
-            #Set of ambulance types
-            M = []
-            for m in range(len_M):
-                M.append(m)
+            # #Set of ambulance types
+            # M = []
+            # for m in range(len_M):
+            #     M.append(m)
             
-            for m in range(len(M)):
-                f.write(str(M[m]+1)+str(" "))
-            f.write("\n")
+            # for m in range(len(M)):
+            #     f.write(str(M[m]+1)+str(" "))
+            # f.write("\n")
             
-            #Set of accident types
-            N = []
-            for n in range(len_N):
-                N.append(n)
+            # #Set of accident types
+            # N = []
+            # for n in range(len_N):
+            #     N.append(n)
             
-            for n in range(len(N)):
-                f.write(str(N[n]+1)+str(" "))
-            f.write("\n")
+            # for n in range(len(N)):
+            #     f.write(str(N[n]+1)+str(" "))
+            # f.write("\n")
                 
             
             ################################

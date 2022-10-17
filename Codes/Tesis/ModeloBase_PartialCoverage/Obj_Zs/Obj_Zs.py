@@ -28,17 +28,22 @@ import xlwt
 # tamaños_S = [5, 20, 50]
 #repeticiones = 5
 
-tamaños_I = [20, 50, 80, 95]
-tamaños_L = [40, 50, 70, 85]
-tamaños_S = [12, 25, 30, 40]
+# tamaños_I = [20, 50, 80, 95]
+# tamaños_L = [40, 50, 70, 85]
+# tamaños_S = [12, 25, 30, 40]
 
 # tamaños_I = [50, 200, 350]
 # tamaños_L = [20, 40, 55]
 # tamaños_S = [15, 50, 75]
 
-# tamaños_I = [50]
-# tamaños_L = [20]
-# tamaños_S = [15]
+tamaños_I = [20, 50, 80, 95, 100]
+tamaños_L = [40, 50, 70, 85, 100]
+tamaños_S = [12, 25, 30, 40]
+
+
+# tamaños_I = [1000]
+# tamaños_L = [40]
+# tamaños_S = [50]
 
 K = [1,2]
 
@@ -84,14 +89,14 @@ for iconj in range(len(tamaños_I)):
             
             archivo = open('Instancias_Prueba_'
                       +str(tamaños_I[iconj])+str('_')
-                      +str(tamaños_L[jconj])+str('_')
-                      +str(tamaños_S[sconj])
+                      +str(tamaños_L[jconj])+str('_')+"2"+"_"+"3"+"_"
+                      +str(tamaños_S[sconj])+"__"
                       +'.txt', "r")
             
             len_I = int(archivo.readline())
             len_L = int(archivo.readline())
-            #len_M = int(archivo.readline())
-            #len_N = int(archivo.readline())
+            len_M = int(archivo.readline())
+            len_N = int(archivo.readline())
             len_S = int(archivo.readline())
             #repite = int(archivo.readline())
             
@@ -162,15 +167,16 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 r_li1.append([])
                 for i in range(len(I)):
+
                     r_li1[l].append(int(line[i]))   
               
-            # Red Cross Response times
-            # r_li2 = []
-            # for l in range(len(L)):
-            #     line = archivo.readline().strip().split()
-            #     r_li2.append([])
-            #     for i in range(len(I)):
-            #         r_li2[l].append(int(line[i]))
+            #Red Cross Response times
+            r_li2 = []
+            for l in range(len(L)):
+                line = archivo.readline().strip().split()
+                r_li2.append([])
+                for i in range(len(I)):
+                    r_li2[l].append(int(line[i]))
                     
             cli = []
             for l in range(len(L)):
@@ -197,7 +203,7 @@ for iconj in range(len(tamaños_I)):
             
             model = gp.Model("PartialRateCoverage")
             
-            model.setParam('TimeLimit', 1*60)
+            model.setParam('TimeLimit', 120*60)
             
             model._obj = None
             model._bd = None
