@@ -36,9 +36,13 @@ import xlwt
 # tamaños_L = [20, 40, 55]
 # tamaños_S = [15, 50, 75]
 
-tamaños_I = [20, 50, 80, 95, 100]
-tamaños_L = [40, 50, 70, 85, 100]
-tamaños_S = [12, 25, 30, 40]
+# tamaños_I = [100, 300, 500, 1000]
+# tamaños_L = [70, 100, 200, 500]
+# tamaños_S = [1000]
+
+tamaños_I = [100, 300, 500, 1000]
+tamaños_L = [70, 100, 200, 500]
+tamaños_S = [50, 100, 500]
 
 
 # tamaños_I = [1000]
@@ -203,7 +207,7 @@ for iconj in range(len(tamaños_I)):
             
             model = gp.Model("PartialRateCoverage")
             
-            model.setParam('TimeLimit', 120*60)
+            model.setParam('TimeLimit', 60*60)
             
             model._obj = None
             model._bd = None
@@ -455,271 +459,271 @@ for iconj in range(len(tamaños_I)):
             
             f.close()
             
-            ########################################
-            # VERIFICANDO SI LA SOLUCION ES FACTIBLE 
-            ########################################
+#             ########################################
+#             # VERIFICANDO SI LA SOLUCION ES FACTIBLE 
+#             ########################################
             
-            feasible = open ('Feasible_'
-                          +str(len(I))+str('_')
-                          +str(len(L))+str('_')
-                          +str(len(S))+'.sol','w')
+#             feasible = open ('Feasible_'
+#                           +str(len(I))+str('_')
+#                           +str(len(L))+str('_')
+#                           +str(len(S))+'.sol','w')
             
-            # Guardando la información de x
-            ambulancesNumber = []
-            for k in K:
-                conteo = 0
-                for l in L:
-                    a = x_vars[l,k]
-                    if (a.x != 0):
-                        conteo = conteo + a.x
-                        #print(a.varName, a.x)
-                ambulancesNumber.append(conteo)
-            #print(ambulancenNumber)
-            #print()
+#             # Guardando la información de x
+#             ambulancesNumber = []
+#             for k in K:
+#                 conteo = 0
+#                 for l in L:
+#                     a = x_vars[l,k]
+#                     if (a.x != 0):
+#                         conteo = conteo + a.x
+#                         #print(a.varName, a.x)
+#                 ambulancesNumber.append(conteo)
+#             #print(ambulancenNumber)
+#             #print()
             
             
-            # VERIFICANDO QUE NO SE SOBREPASE LA CANTIDAD DE AMBULANCIAS LOCALIZADAS
-            ambulanceLocation = []
-            for k in K:
-                if(ambulancesNumber[k-1] == eta[k-1]):
-                    ambulanceLocation.append("equal to eta")
+#             # VERIFICANDO QUE NO SE SOBREPASE LA CANTIDAD DE AMBULANCIAS LOCALIZADAS
+#             ambulanceLocation = []
+#             for k in K:
+#                 if(ambulancesNumber[k-1] == eta[k-1]):
+#                     ambulanceLocation.append("equal to eta")
                     
-                if(ambulancesNumber[k-1] < eta[k-1]):
-                    ambulanceLocation.append("less than eta")
+#                 if(ambulancesNumber[k-1] < eta[k-1]):
+#                     ambulanceLocation.append("less than eta")
                     
-                if(ambulancesNumber[k-1] > eta[k-1]):
-                    ambulanceLocation.append("more to eta")
-            #print(ambulanceLocation)
-            #print()
+#                 if(ambulancesNumber[k-1] > eta[k-1]):
+#                     ambulanceLocation.append("more to eta")
+#             #print(ambulanceLocation)
+#             #print()
             
-            for k in K:
-                if(ambulanceLocation[k-1] == 'more than eta'):
-                    feasible.write("MORE AMBULANCE THAN AVAILABLE")
-                    feasible.write("\n")
-                    print("MORE AMBULANCE THAN AVAILABLE")
-                    print()
+#             for k in K:
+#                 if(ambulanceLocation[k-1] == 'more than eta'):
+#                     feasible.write("MORE AMBULANCE THAN AVAILABLE")
+#                     feasible.write("\n")
+#                     print("MORE AMBULANCE THAN AVAILABLE")
+#                     print()
             
-            # Guardando la información de y
-            dispatches_original = []
-            for s in range(len(S)):
-                dispatches_original.append([])
-                for i in I: 
-                    dispatches_original[s].append([])
-                    for k in K: 
-                        conteo = 0
-                        for l in L:
-                            a = y_vars[s+1,l,k,i] 
-                            if (a.x == 1):
-                                conteo = conteo + 1
-                                #print("ver si acomoda por i", a, a.x)
-                        dispatches_original[s][i-1].append(conteo)
+#             # Guardando la información de y
+#             dispatches_original = []
+#             for s in range(len(S)):
+#                 dispatches_original.append([])
+#                 for i in I: 
+#                     dispatches_original[s].append([])
+#                     for k in K: 
+#                         conteo = 0
+#                         for l in L:
+#                             a = y_vars[s+1,l,k,i] 
+#                             if (a.x == 1):
+#                                 conteo = conteo + 1
+#                                 #print("ver si acomoda por i", a, a.x)
+#                         dispatches_original[s][i-1].append(conteo)
 
-            # dispatches_copia = []
-            # for s in range(len(S)):
-            #     dispatches_copia.append([])
-            #     for i in I: 
-            #         dispatches_copia[s].append([])
-            #         for k in K: 
-            #             conteo = 0
-            #             if k == 1:
-            #                 dispatches_copia[s][i-1].append(0)  
-            #             else:
-            #                 for l in L:
-            #                     a = ycopia_vars[s+1,l,2,i] 
-            #                     if (a.x == 1):
-            #                         conteo = conteo + 1
-            #                         #print("ver si acomoda por i", a, a.x)
-            #                 dispatches_copia[s][i-1].append(conteo)         
+#             # dispatches_copia = []
+#             # for s in range(len(S)):
+#             #     dispatches_copia.append([])
+#             #     for i in I: 
+#             #         dispatches_copia[s].append([])
+#             #         for k in K: 
+#             #             conteo = 0
+#             #             if k == 1:
+#             #                 dispatches_copia[s][i-1].append(0)  
+#             #             else:
+#             #                 for l in L:
+#             #                     a = ycopia_vars[s+1,l,2,i] 
+#             #                     if (a.x == 1):
+#             #                         conteo = conteo + 1
+#             #                         #print("ver si acomoda por i", a, a.x)
+#             #                 dispatches_copia[s][i-1].append(conteo)         
                         
-            dispatches = []
-            for s in range(len(S)):
-                dispatches.append([])
-                for i in I: 
-                    dispatches[s].append([])
-                    for k in K: 
-                        dispatches[s][i-1].append(dispatches_original[s][i-1][k-1])
-            #print(dispatches)
-            #print()
+#             dispatches = []
+#             for s in range(len(S)):
+#                 dispatches.append([])
+#                 for i in I: 
+#                     dispatches[s].append([])
+#                     for k in K: 
+#                         dispatches[s][i-1].append(dispatches_original[s][i-1][k-1])
+#             #print(dispatches)
+#             #print()
             
         
-            # VERIFICANDO LAS COBERTURAS
-            ###################################
-##################### CHECAR BIEN ESTO PORQUE NO ESTA BIEN
-########################################
+#             # VERIFICANDO LAS COBERTURAS
+#             ###################################
+# ##################### CHECAR BIEN ESTO PORQUE NO ESTA BIEN
+# ########################################
 
-            coverage = []
-            for s in range(len(S)):
-                coverage.append([])
-                for i in I: 
-                    coverage[s].append([])
-                    for k in K: 
-                        if k == 1:
-                            if S[s][i-1][0] == 0:
-                                coverage[s][i-1].append("no accident")
+#             coverage = []
+#             for s in range(len(S)):
+#                 coverage.append([])
+#                 for i in I: 
+#                     coverage[s].append([])
+#                     for k in K: 
+#                         if k == 1:
+#                             if S[s][i-1][0] == 0:
+#                                 coverage[s][i-1].append("no accident")
                                 
-                            if S[s][i-1][0] != 0:
-                                if dispatches[s][i-1][1] != 0:
-                                    if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] == S[s][i-1][0]:
-                                        coverage[s][i-1].append("full")
-                                else:
-                                    if dispatches[s][i-1][0] == S[s][i-1][0]:
-                                        coverage[s][i-1].append("full")
+#                             if S[s][i-1][0] != 0:
+#                                 if dispatches[s][i-1][1] != 0:
+#                                     if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] == S[s][i-1][0]:
+#                                         coverage[s][i-1].append("full")
+#                                 else:
+#                                     if dispatches[s][i-1][0] == S[s][i-1][0]:
+#                                         coverage[s][i-1].append("full")
                                     
-                                if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] < S[s][i-1][0] and dispatches[s][i-1][0] + dispatches[s][i-1][1] != 0:
-                                    coverage[s][i-1].append("partial")
+#                                 if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] < S[s][i-1][0] and dispatches[s][i-1][0] + dispatches[s][i-1][1] != 0:
+#                                     coverage[s][i-1].append("partial")
                                 
-                                if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] == 0 or dispatches[s][i-1][0] + dispatches[s][i-1][1] == 0:
-                                    coverage[s][i-1].append("null")
+#                                 if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] == 0 or dispatches[s][i-1][0] + dispatches[s][i-1][1] == 0:
+#                                     coverage[s][i-1].append("null")
                                 
-                                if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] > S[s][i-1][0]:
-                                    coverage[s][i-1].append("over serviced")
+#                                 if dispatches[s][i-1][0] + dispatches[s][i-1][1] - S[s][i-1][1] > S[s][i-1][0]:
+#                                     coverage[s][i-1].append("over serviced")
                                 
-                        if k == 2:
-                            if S[s][i-1][1] == 0:
-                                coverage[s][i-1].append("no accident")
+#                         if k == 2:
+#                             if S[s][i-1][1] == 0:
+#                                 coverage[s][i-1].append("no accident")
                                 
-                            if S[s][i-1][1] != 0:
-                                if dispatches[s][i-1][1] == S[s][i-1][1]:
-                                    coverage[s][i-1].append("full")
+#                             if S[s][i-1][1] != 0:
+#                                 if dispatches[s][i-1][1] == S[s][i-1][1]:
+#                                     coverage[s][i-1].append("full")
                                 
-                                if dispatches[s][i-1][1] < S[s][i-1][1] and dispatches[s][i-1][1] != 0:
-                                    coverage[s][i-1].append("partial")
+#                                 if dispatches[s][i-1][1] < S[s][i-1][1] and dispatches[s][i-1][1] != 0:
+#                                     coverage[s][i-1].append("partial")
                                 
-                                if dispatches[s][i-1][1] == 0:
-                                    coverage[s][i-1].append("null")
+#                                 if dispatches[s][i-1][1] == 0:
+#                                     coverage[s][i-1].append("null")
                                     
-                                if dispatches[s][i-1][1] > S[s][i-1][1]:
-                                    coverage[s][i-1].append("over serviced")
+#                                 if dispatches[s][i-1][1] > S[s][i-1][1]:
+#                                     coverage[s][i-1].append("over serviced")
                             
-            #for s in range(len(S)):
-            #    print(coverage[s]) 
-            #print()
+#             #for s in range(len(S)):
+#             #    print(coverage[s]) 
+#             #print()
             
             
-            # VERIFICANDO QUE NO HAYA SOBRE COBERTURA
-            for s in range(len(S)):
-                for i in I: 
-                    for k in K:
-                        if (coverage[s][i-1][k-1] == 'over serviced'):
-                            feasible.write("MODEL OVER SERVICED")
-                            feasible.write("\n")
-                            print("MODEL OVER SERVICED")
-                            print()
+#             # VERIFICANDO QUE NO HAYA SOBRE COBERTURA
+#             for s in range(len(S)):
+#                 for i in I: 
+#                     for k in K:
+#                         if (coverage[s][i-1][k-1] == 'over serviced'):
+#                             feasible.write("MODEL OVER SERVICED")
+#                             feasible.write("\n")
+#                             print("MODEL OVER SERVICED")
+#                             print()
               
-            # Número de ambulancias despachadas
-            numberDispatched = []
-            for s in range(len(S)):
-                numberDispatched.append([])
-                for l in L:
-                    numberDispatched[s].append([])
-                    for k in K:
-                        conteo = 0
-                        for i in I:
-                            a = y_vars[s+1,l,k,i]
-                            if (a.x == 1):
-                                conteo = conteo + 1
-                        numberDispatched[s][l-1].append(conteo)
+#             # Número de ambulancias despachadas
+#             numberDispatched = []
+#             for s in range(len(S)):
+#                 numberDispatched.append([])
+#                 for l in L:
+#                     numberDispatched[s].append([])
+#                     for k in K:
+#                         conteo = 0
+#                         for i in I:
+#                             a = y_vars[s+1,l,k,i]
+#                             if (a.x == 1):
+#                                 conteo = conteo + 1
+#                         numberDispatched[s][l-1].append(conteo)
                     
-            #print(numberDispatched)
-            #print(" ")
+#             #print(numberDispatched)
+#             #print(" ")
             
-            #Número de ambulancias localizadas 
-            locationQuantity = []
-            for l in L:
-                locationQuantity.append([])
-                for k in K:
-                    a = x_vars[l,k]
-                    if(a.x == -0.0):
-                        locationQuantity[l-1].append(0)
-                    else:
-                        locationQuantity[l-1].append(int(a.x))
+#             #Número de ambulancias localizadas 
+#             locationQuantity = []
+#             for l in L:
+#                 locationQuantity.append([])
+#                 for k in K:
+#                     a = x_vars[l,k]
+#                     if(a.x == -0.0):
+#                         locationQuantity[l-1].append(0)
+#                     else:
+#                         locationQuantity[l-1].append(int(a.x))
             
-            #print(locationQuantity)
-            #print(" ")
+#             #print(locationQuantity)
+#             #print(" ")
                     
             
-            # Verificando que se despachen la cantidad de ambulancias que están localizadas
-            feasibleDispatched = []
-            for s in range(len(S)):
-                feasibleDispatched.append([])
-                for l in L:
-                    feasibleDispatched[s].append([])
-                    for k in K:
-                        if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] != 0):
-                            feasibleDispatched[s][l-1].append("all used")
+#             # Verificando que se despachen la cantidad de ambulancias que están localizadas
+#             feasibleDispatched = []
+#             for s in range(len(S)):
+#                 feasibleDispatched.append([])
+#                 for l in L:
+#                     feasibleDispatched[s].append([])
+#                     for k in K:
+#                         if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] != 0):
+#                             feasibleDispatched[s][l-1].append("all used")
                         
-                        if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] == 0):
-                            feasibleDispatched[s][l-1].append("not located")
+#                         if(numberDispatched[s][l-1][k-1] == locationQuantity[l-1][k-1] and locationQuantity[l-1][k-1] == 0):
+#                             feasibleDispatched[s][l-1].append("not located")
                         
-                        if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] == 0):
-                            feasibleDispatched[s][l-1].append("not used")
+#                         if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] == 0):
+#                             feasibleDispatched[s][l-1].append("not used")
                         
-                        if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] != 0):
-                            feasibleDispatched[s][l-1].append("not all used")
+#                         if(numberDispatched[s][l-1][k-1] < locationQuantity[l-1][k-1] and numberDispatched[s][l-1][k-1] != 0):
+#                             feasibleDispatched[s][l-1].append("not all used")
                             
-                        if(numberDispatched[s][l-1][k-1] > locationQuantity[l-1][k-1]):
-                            feasibleDispatched[s][l-1].append("over used")
-            #print(feasibleDispatched)
-            #print(" ")
+#                         if(numberDispatched[s][l-1][k-1] > locationQuantity[l-1][k-1]):
+#                             feasibleDispatched[s][l-1].append("over used")
+#             #print(feasibleDispatched)
+#             #print(" ")
                         
-            # VERIFICANDO QUE NO SE DESPACHEN DE MÁS LAS AMBULANCIAS}
-            for s in range(len(S)):
-                for l in L:
-                    for k in K:
-                         if (feasibleDispatched[s][l-1][k-1] == 'over used'):
-                            feasible.write("MODEL OVER USED")
-                            feasible.write("\n")
-                            print("MODEL OVER USED")
-                            print()
+#             # VERIFICANDO QUE NO SE DESPACHEN DE MÁS LAS AMBULANCIAS}
+#             for s in range(len(S)):
+#                 for l in L:
+#                     for k in K:
+#                          if (feasibleDispatched[s][l-1][k-1] == 'over used'):
+#                             feasible.write("MODEL OVER USED")
+#                             feasible.write("\n")
+#                             print("MODEL OVER USED")
+#                             print()
                         
             
              
-            feasible.write("Objective value")
-            feasible.write("\n")
-            feasible.write('%g' % model.objVal)
-            feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Objective value")
+#             feasible.write("\n")
+#             feasible.write('%g' % model.objVal)
+#             feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Eta")
-            feasible.write("\n")
-            feasible.write(str(eta))
-            feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Eta")
+#             feasible.write("\n")
+#             feasible.write(str(eta))
+#             feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Ambulance located")
-            feasible.write("\n")
-            feasible.write(str(ambulancesNumber))
-            feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Ambulance located")
+#             feasible.write("\n")
+#             feasible.write(str(ambulancesNumber))
+#             feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Ambulance location")
-            feasible.write("\n")
-            feasible.write(str(ambulanceLocation))
-            feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Ambulance location")
+#             feasible.write("\n")
+#             feasible.write(str(ambulanceLocation))
+#             feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Scnenario")
-            feasible.write("\n")
-            for s in range(len(S)):
-                feasible.write(str(S[s]))
-                feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Scnenario")
+#             feasible.write("\n")
+#             for s in range(len(S)):
+#                 feasible.write(str(S[s]))
+#                 feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Dispatches")
-            feasible.write("\n")
-            for s in range(len(S)):
-                feasible.write(str(dispatches[s]))
-                feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Dispatches")
+#             feasible.write("\n")
+#             for s in range(len(S)):
+#                 feasible.write(str(dispatches[s]))
+#                 feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.write("Coverage")
-            feasible.write("\n")
-            for s in range(len(S)):
-                feasible.write(str(coverage[s]))
-                feasible.write("\n")
-            feasible.write("\n")
+#             feasible.write("Coverage")
+#             feasible.write("\n")
+#             for s in range(len(S)):
+#                 feasible.write(str(coverage[s]))
+#                 feasible.write("\n")
+#             feasible.write("\n")
             
-            feasible.close()
+#             feasible.close()
             
             
             
