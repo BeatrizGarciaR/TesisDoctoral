@@ -60,6 +60,8 @@ def data_cb(m, where):
 for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
         for sconj in range(len(tamaños_S)):
+            
+            valorObjetivo = 0
     
             #Nombre: Instancias_Prueba_I_L_S
                 
@@ -781,14 +783,19 @@ for iconj in range(len(tamaños_I)):
                     
             #break 
             
+            valorObjetivo = model.objVal
         
             ####################################
-            ####### LOCAL SEARCH ##############
+            ####### LOCAL SEARCH ###############
             ####################################
             
-            for localsearch in range(10): ## Hay que cambiar esto para que se haga 
-                                            ## la repetición varias veces pero consciente
+            localsearch = 0
             
+            while(1): ## Hay que cambiar esto para que se haga 
+                        ## la repetición varias veces pero consciente
+            
+                localsearch += 1
+                
                 #Vecindad
                 posiblesVecinos1 = []
                 for i in range(len(cantidadCobertura1)):
@@ -1333,6 +1340,23 @@ for iconj in range(len(tamaños_I)):
                 model.write('model_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.mps')
+                
+                if model.objVal > valorObjetivo:
+                    print("   ")
+                    print("   ")
+                    print("entra ultimo if", localsearch)
+                    print("   ")
+                    print("   ")
+                    break
+                
+                else:
+                    if posiblesVecinos1 == [] or posiblesVecinos2 == []:
+                        print("   ")
+                        print("   ")
+                        print("entra ultimo else", localsearch)
+                        print("   ")
+                        print("   ")
+                        break
 
             
 print("Elapsed time total ")
