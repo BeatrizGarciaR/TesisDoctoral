@@ -791,9 +791,9 @@ for iconj in range(len(tamaños_I)):
             
             localsearch = 0
             
-            while(1): ## Hay que cambiar esto para que se haga 
-                        ## la repetición varias veces pero consciente
-            
+            while(1): # MODIFICAR PARA QUE SEAN DISTINTAS VECINDADES Y VER CON 
+                        # CUAL FUNCIONA MEJOR Y HACER CORRIDAS GRANDES 
+                                
                 localsearch += 1
                 
                 #Vecindad
