@@ -40,14 +40,14 @@ import xlwt
 # tamaños_L = [70, 100, 200, 500]
 # tamaños_S = [1000]
 
-tamaños_I = [100, 300, 500, 1000]
-tamaños_L = [70, 100, 200, 500]
-tamaños_S = [50, 100, 500]
+# tamaños_I = [100, 300, 500, 1000]
+# tamaños_L = [70, 100, 200, 500]
+# tamaños_S = [50, 100, 500]
 
 
-# tamaños_I = [1000]
-# tamaños_L = [40]
-# tamaños_S = [50]
+tamaños_I = [50]
+tamaños_L = [20]
+tamaños_S = [15]
 
 K = [1,2]
 
@@ -197,7 +197,7 @@ for iconj in range(len(tamaños_I)):
             tmax = 25
             wi = [1, 0.85, 0.6, 0.3]
             
-            V = [1,2,3]
+            V = [1,2]
                 
             ######################################################################
             ######################    MODEL   ####################################
@@ -296,15 +296,16 @@ for iconj in range(len(tamaños_I)):
                         if k == 1:
                             model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for i in I) <= x_vars[l,k], "c3")
                         else:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + y_vars[s+1,l,3,i] for i in I) <= x_vars[l,k], "c4")
+                            #model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + y_vars[s+1,l,3,i] for i in I) <= x_vars[l,k], "c4")
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for i in I) <= x_vars[l,k], "c4")
                             
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,3,i] for l in L) <= S[s][i-1][0], "c5")
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,3,i] for l in L) <= S[s][i-1][0], "c5")
                     
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) <= S[s][i-1][1], "c6")
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) <= S[s][i-1][1], "c6")
                 
                 for i in I:
                     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
@@ -341,10 +342,13 @@ for iconj in range(len(tamaños_I)):
                 for i in I:
                     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                         model.addConstr(zpartial3_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_15")
-                    
+
                 for i in I:
                     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(np.amin(cli)*zpartial3_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")
+                        model.addConstr(zpartial3_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")                    
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(np.amin(cli)*zpartial3_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")
                     
                 for i in I:
                     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
