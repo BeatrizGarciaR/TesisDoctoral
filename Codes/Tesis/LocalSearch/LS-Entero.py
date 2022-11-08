@@ -7,6 +7,7 @@ Created on Nov 03 2022
 
 import gurobipy as gp
 from gurobipy import GRB
+from statistics import mean
 import random 
 import numpy as np
 import csv
@@ -146,13 +147,13 @@ for iconj in range(len(tamaños_I)):
                         puntosCubiertos1[l].append(i)
                 Cobertura1.append(coberturaDemanda)
                 
-            print("puntos cubiertos 1")
-            print(puntosCubiertos1)
-            print(" ")
+            # print("puntos cubiertos 1") # demand points 
+            # print(puntosCubiertos1)
+            # print(" ")
             
-            print("Cantidad Cobertura")
-            print(Cobertura1)
-            print( " ")
+            # print("Cantidad Cobertura") # how many demand points 
+            # print(Cobertura1)
+            # print( " ")
             
             Cobertura2 = []
             puntosCubiertos2 = []
@@ -165,17 +166,18 @@ for iconj in range(len(tamaños_I)):
                         puntosCubiertos2[l].append(i)
                 Cobertura2.append(coberturaDemanda)
                 
-            print("puntos cubiertos 2")
-            print(puntosCubiertos2)
-            print(" ")
+            # print("puntos cubiertos 2") #demand points
+            # print(puntosCubiertos2)
+            # print(" ")
             
-            print("Cantidad Cobertura 2")
-            print(Cobertura2)
-            print( " ")
+            # print("Cantidad Cobertura 2") # how many demand points 
+            # print(Cobertura2)
+            # print( " ")
             
             
             initialSolution1 = []
             initialSolution2 = []
+            
             
             for i in range(math.ceil(len(L)*(0.5))): 
                 
@@ -183,39 +185,41 @@ for iconj in range(len(tamaños_I)):
                 for l in range(len(L)):
                     cantidadCobertura1.append(len(puntosCubiertos1[l]))
                     
-                print("Cantidad Cobertura 1")
-                print(cantidadCobertura1)
-                print( " ")
+                # print("Cantidad Cobertura 1")
+                # print(cantidadCobertura1)
+                # print( " ")
                     
                 cantidadCobertura2 = []
                 for l in range(len(L)):
                     cantidadCobertura2.append(len(puntosCubiertos2[l]))
                     
-                print("Cantidad Cobertura 2")
-                print(cantidadCobertura2)
-                print( " ")
+                # print("Cantidad Cobertura 2")
+                # print(cantidadCobertura2)
+                # print( " ")
                 
-                if any(cantidadCobertura1):
+                
+                if any(cantidadCobertura1): #Se llena el arreglo de initsol
+                                            #hsta que ya se cubren todos los puntos
                 
                     maxtipo1 = max(cantidadCobertura1)
                     indicemaxTipo1 = cantidadCobertura1.index(maxtipo1)
                     Cobertura1[indicemaxTipo1] = -1
-                    print(indicemaxTipo1)
-                    print(puntosCubiertos1[indicemaxTipo1])
+                    #print(indicemaxTipo1)
+                    #print(puntosCubiertos1[indicemaxTipo1])
                     
                     maxtipo2 = max(cantidadCobertura2)
                     indicemaxTipo2 = cantidadCobertura2.index(maxtipo2)
                     Cobertura2[indicemaxTipo2] = -1
-                    print(indicemaxTipo2)
-                    print(puntosCubiertos2[indicemaxTipo2])
+                    #print(indicemaxTipo2)
+                    #print(puntosCubiertos2[indicemaxTipo2])
                     
                     initialSolution1.append(indicemaxTipo1)
                     initialSolution2.append(indicemaxTipo2)
                     
-                    print("la solucion inicial es ") 
-                    print(initialSolution1)
-                    print(initialSolution2)
-                    print(" ")
+                    # print("la solucion inicial es ") 
+                    # print(initialSolution1)
+                    # print(initialSolution2)
+                    # print(" ")
                     
                     puntosCubiertosAux1 = puntosCubiertos1[indicemaxTipo1]
                     for puntoAeliminar1 in range(len(puntosCubiertosAux1)):
@@ -230,9 +234,9 @@ for iconj in range(len(tamaños_I)):
                         puntosCubiertos1[indicemaxTipo1].remove(puntosCubiertosAux1[0])
      
                     
-                    print("Nuevos puntos cubiertos 1")
-                    print(puntosCubiertos1)
-                    print(" ")
+                    # print("Nuevos puntos cubiertos 1")
+                    # print(puntosCubiertos1)
+                    # print(" ")
                     
                     puntosCubiertosAux2 = puntosCubiertos2[indicemaxTipo2]
                     for puntoAeliminar2 in range(len(puntosCubiertosAux2)):
@@ -246,17 +250,17 @@ for iconj in range(len(tamaños_I)):
                                 puntosCubiertos2[puntosCubiertos].remove(puntosCubiertosAux2[0])
                         puntosCubiertos2[indicemaxTipo2].remove(puntosCubiertosAux2[0])
                     
-                    print("Nuevos puntos cubiertos 2")
-                    print(puntosCubiertos2)
-                    print(" ")               
+                    # print("Nuevos puntos cubiertos 2")
+                    # print(puntosCubiertos2)
+                    # print(" ")               
 
                 
-                else:
+                else: # se llenan al azar los puntos que faltan de acuerdo a la cantidad 
                     
-                    print("Cobertura 1 inicial ", Cobertura1)
-                    print(" ")
-                    print("Cobertura 2 inicial ", Cobertura2)
-                    print(" ")
+                    # print("Cobertura 1 inicial ", Cobertura1)
+                    # print(" ")
+                    # print("Cobertura 2 inicial ", Cobertura2)
+                    # print(" ")
                     
                     randoms1 = []
                     for p in range(len(Cobertura1)):
@@ -283,22 +287,114 @@ for iconj in range(len(tamaños_I)):
                     print(" ")
                     
                     break
+            
+            # Vamos a ver de esos puntos cuáles tienen más demanda 
+            
+            demandtype1 = []
+            demandtype2 = []
+            for i in range(len(I)):
+                for k in range(len(K)):
+                    demandcount = 0
+                    if k == 1:
+                        for s in range(len(S)):
+                            demandcount += S[s][i][k]
+                        demandtype1.append(demandcount)
+                    else:
+                        for s in range(len(S)):
+                            demandcount += S[s][i][k]
+                        demandtype2.append(demandcount)
+                        
+            # print("Demand count type 1") # me dice cuántos accidentes hubo
+            # print(demandtype1)
+            # print(" ")  
+            
+            # print("Demand count type 2") # me dice cuántos accidentes hubo
+            # print(demandtype2)
+            # print(" ") 
+            
+            puntosCubiertos1 = []
+            for l in range(len(L)):
+                puntosCubiertos1.append([])
+                for i in range(len(I)):
+                    if r_li[l][i] < 15:
+                        puntosCubiertos1[l].append(i)
+            
+            puntosCubiertos2 = []
+            for l in range(len(L)):
+                puntosCubiertos2.append([])
+                for i in range(len(I)):
+                    if r_li[l][i] < 15:
+                        puntosCubiertos2[l].append(i)
+                        
+            accidentesesperados1 = []
+            for potentialsites1 in initialSolution1:
+                accidentesConteo1 = 0
+                for puntos1 in puntosCubiertos1[potentialsites1]:
+                    accidentesConteo1 += demandtype1[puntos1]
+                accidentesesperados1.append(accidentesConteo1/len(puntosCubiertos1[potentialsites1]))
+                
+            #print(accidentesesperados1)
+            
+            accidentesesperados2 = []
+            for potentialsites2 in initialSolution2:
+                accidentesConteo2 = 0
+                for puntos2 in puntosCubiertos2[potentialsites2]:
+                    accidentesConteo2 += demandtype2[puntos2]
+                accidentesesperados2.append(accidentesConteo2/len(puntosCubiertos2[potentialsites2]))
+                
+            #print(accidentesesperados2)
+            
+            # ASIGNEMOS AMBULANCIAS 
+            
+            middle1 = min(accidentesesperados1) + (max(accidentesesperados1) - min(accidentesesperados1))/2
+            oneambulance1 = []
+            twoambulances1 = []
+            countAmb1 = 0
+            for i in range(len(accidentesesperados1)):
+                if accidentesesperados1[i] >= middle1 and countAmb1+2 <= eta[0]:
+                    twoambulances1.append(initialSolution1[i])
+                    countAmb1 += 2
+                else:
+                    if countAmb1+1 <= eta[0]:
+                        oneambulance1.append(initialSolution1[i])
+                        countAmb1 += 1
+            print(oneambulance1)
+            print(twoambulances1)
+        
+            middle2 = min(accidentesesperados2) + (max(accidentesesperados2) - min(accidentesesperados2))/2
+            oneambulance2 = []
+            twoambulances2 = []
+            countAmb2 = 0
+            for i in range(len(accidentesesperados2)):
+                if accidentesesperados2[i] >= middle2 and countAmb2+2 <= eta[1]:
+                    twoambulances2.append(initialSolution2[i])
+                    countAmb2 += 2
+                else:
+                    if countAmb2+1 <= eta[1]:
+                        oneambulance2.append(initialSolution2[i])
+                        countAmb2 += 1
+            print(oneambulance2)          
+            print(twoambulances2)
                  
             for lenL in range(len(L)):
                 
                 initialSolution.append([])
                 
-                if lenL in initialSolution1:
+                if lenL in oneambulance1:
                     initialSolution[lenL].append(1)
+                elif lenL in twoambulances1:
+                    initialSolution[lenL].append(2)
                 else:
                     initialSolution[lenL].append(0)
                     
-                if lenL in initialSolution2:
+                if lenL in oneambulance2:
                     initialSolution[lenL].append(1)
+                elif  lenL in twoambulances2:
+                    initialSolution[lenL].append(2)
                 else:
                     initialSolution[lenL].append(0) 
 
-            
+            # Solamente se asignan 1 y 2... hay que modificar eso
             print("La solucion inicial final es ")
             print(initialSolution)
             print(" ")
