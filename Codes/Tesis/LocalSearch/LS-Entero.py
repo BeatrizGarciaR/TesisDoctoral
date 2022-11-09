@@ -399,10 +399,15 @@ for iconj in range(len(tamaños_I)):
             print(initialSolution)
             print(" ")
             print( " ")
+            
+            puntosDemandaActivos = []
+            for i in range(len(initialSolution)):
+                if any(initialSolution[i]):
+                    puntosDemandaActivos.append(i)
+            print(puntosDemandaActivos)
+            
             #break 
             
-            
-        
             ######################################################################
             ######################    MODEL   ####################################
             ######################################################################
