@@ -421,13 +421,13 @@ for iconj in range(len(tamaños_I)):
             for s in range(len(S)):
                 
                 for l in L:
-                    if initialSolution[l-1][0] == 1:
+                    if initialSolution[l-1][0] > 0:
                         for i in I:
                             if S[s][i-1][0] != 0:
                                 y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                               
-                    if initialSolution[l-1][1] == 1:
+                    if initialSolution[l-1][1] > 0:
                         for i in I:
                             for k in K:
                                 if S[s][i-1][1] != 0:
@@ -1206,13 +1206,13 @@ for iconj in range(len(tamaños_I)):
                     for s in range(len(S)):
                         
                         for l in L:
-                            if initialSolution[l-1][0] == 1:
+                            if initialSolution[l-1][0] > 0:
                                 for i in I:
                                     if S[s][i-1][0] != 0:
                                         y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                       
-                            if initialSolution[l-1][1] == 1:
+                            if initialSolution[l-1][1] > 0:
                                 for i in I:
                                     for k in K:
                                         if S[s][i-1][1] != 0:
