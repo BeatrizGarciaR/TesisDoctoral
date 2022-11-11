@@ -5,9 +5,9 @@
 # tamaños_I <- c(20, 50, 80, 95)
 # tamaños_L <- c(40, 50, 70, 85)
 # tamaños_S <- c(12, 25, 30, 40)
-tamaños_I <- c(1000)
-tamaños_L <- c(85)
-tamaños_S <- c(100)
+tamaños_I <- c(95)
+tamaños_L <- c(100)
+tamaños_S <- c(40)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25

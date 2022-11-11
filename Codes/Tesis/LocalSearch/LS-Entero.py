@@ -7,7 +7,7 @@ Created on Nov 03 2022
 
 import gurobipy as gp
 from gurobipy import GRB
-from statistics import mean
+#from statistics import mean
 import random 
 import numpy as np
 import csv
@@ -25,9 +25,13 @@ import math
 # tamaños_L = [85]
 # tamaños_S = [100]
 
-tamaños_I = [50]
-tamaños_L = [50]
-tamaños_S = [25]
+tamaños_I = [95]
+tamaños_L = [100]
+tamaños_S = [40]
+
+# tamaños_I = [50]
+# tamaños_L = [50]
+# tamaños_S = [25]
 
 K = [1, 2]
 
@@ -1109,6 +1113,11 @@ for iconj in range(len(tamaños_I)):
             ####################################
             ####### LOCAL SEARCH ###############
             ####################################
+            
+            # vecindad = []
+            # for i in range(len(I)):
+            #     if puntosDemandaActivos[i] == i:
+                    
             
             localsearch = 0
             entraSale1 = []
