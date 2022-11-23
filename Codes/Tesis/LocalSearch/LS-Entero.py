@@ -25,13 +25,13 @@ import math
 # tamaños_L = [85]
 # tamaños_S = [100]
 
-tamaños_I = [95]
-tamaños_L = [100]
-tamaños_S = [40]
+# tamaños_I = [95]
+# tamaños_L = [100]
+# tamaños_S = [40]
 
-# tamaños_I = [50]
-# tamaños_L = [50]
-# tamaños_S = [25]
+tamaños_I = [50]
+tamaños_L = [50]
+tamaños_S = [25]
 
 K = [1, 2]
 
@@ -43,6 +43,8 @@ t = 10
 tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
+
+elapsedtimeStop = 30
 
 countcsv = 1
 
@@ -57,6 +59,7 @@ def data_cb(m, where):
         status = gp.GRB.OPTIMAL
         m._data.append(["time", "best", "best bound", "gap %", "status"])
         m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
+        
         
 ###########################################################################
 ################ REPETICIONES DE INSTANCIAS ###############################
@@ -403,6 +406,12 @@ for iconj in range(len(tamaños_I)):
             print(initialSolution)
             print(" ")
             print( " ")
+
+            with open('SolutionX_'+str(len(I))+str('_')
+                              +str(len(L))+str('_')
+                              +str(len(S))+'.csv', 'w') as solutionX:            
+                solutionX.write(str(initialSolution))
+                solutionX.write('\n')
             
             puntosDemandaActivos = []
             for i in range(len(initialSolution)):
@@ -417,7 +426,7 @@ for iconj in range(len(tamaños_I)):
             ######################################################################
             
             model = gp.Model("TabuSearchWithSAA")            
-            model.setParam('TimeLimit', 5*60)
+            model.setParam('TimeLimit', elapsedtimeStop)
             model._obj = None
             model._bd = None
             model._data = []
@@ -1095,7 +1104,9 @@ for iconj in range(len(tamaños_I)):
             print(" ")
             print(" ")
             
-            f.close()                
+            f.close()       
+            
+            ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
             
             archivo.close()
             
@@ -1114,815 +1125,884 @@ for iconj in range(len(tamaños_I)):
             ####### LOCAL SEARCH ###############
             ####################################
             
-            # vecindad = []
-            # for i in range(len(I)):
-            #     if puntosDemandaActivos[i] == i:
-                    
-            
             localsearch = 0
-            entraSale1 = []
-            entraSale2 = []
-
-            while(1): # MODIFICAR PARA QUE SEAN DISTINTAS VECINDADES Y VER CON 
-                        # CUAL FUNCIONA MEJOR Y HACER CORRIDAS GRANDES 
-                                
+            
+            while(1):
                 localsearch += 1
+                vecindad = []
+                print(" Entra al while de nuevo ")
+                print(" ")
+                for initialI in range(len(I)):
+                    print(" i del while", initialI)
+                    print(" ")
+                    if initialI in puntosDemandaActivos:
+                        aux = initialSolution[initialI][0]
+                        aux1 = initialSolution[initialI][1]
+                        # print(initialSolution)
+                        # print(" ")
+                        for j in range(len(I)):
+                            if j != initialI:
+                                initialSolution[j][0] += initialSolution[initialI][0]
+                                initialSolution[j][1] += initialSolution[initialI][1]
+                                # print(initialSolution)
+                                # print(" ")
+                                initialSolution[initialI][0] = 0
+                                initialSolution[initialI][1] = 0
+                                # print(initialSolution)
+                                # print(" ")
+                                
+                                # initialSolution[initialI][0] = aux
+                                # initialSolution[initialI][1] = aux1
+                                # initialSolution[j][0] -= aux
+                                # initialSolution[j][1] -= aux1
+                                # print(initialSolution)
+                                # print(" ")
+                                # print(" ")
+                                #break
+       
+                                model = gp.Model("TabuSearchWithSAA")            
+                                model.setParam('TimeLimit', elapsedtimeStop)
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()
+                                
+                                # Create variables #
+                                y_vars = {}
+                                for s in range(len(S)):
+                                    
+                                    for l in L:
+                                        if initialSolution[l-1][0] > 0:
+                                            for i in I:
+                                                if S[s][i-1][0] != 0:
+                                                    y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                  
+                                        if initialSolution[l-1][1] > 0:
+                                            for i in I:
+                                                for k in K:
+                                                    if S[s][i-1][1] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                    if S[s][i-1][0] != 0:
+                                                        y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
+                                            
+                                    
+                                    # for l in L:
+                                    #     if initialSolution[l-1][0] == 1:
+                                    #         for i in I:
+                                    #             for v in V:
+                                    #                 if v == 2:
+                                    #                     if S[s][i-1][1] != 0:
+                                    #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+                                    #                 else:
+                                    #                     if S[s][i-1][0] != 0:
+                                    #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+                                                  
+                                    #     if initialSolution[l-1][1] == 1:
+                                    #         for i in I:
+                                    #             for v in V:
+                                    #                 if v == 2:
+                                    #                     if S[s][i-1][1] != 0:
+                                    #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+                                    #                 else:
+                                    #                     if S[s][i-1][0] != 0:
+                                    #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+                                    
+                                
+                                alpha_vars = {}  ## z full
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0] != 0:
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Full "+str(s+1)+str(' ')+str(i))
+                                        if S[s][i-1][1] != 0:
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Full "+str(s+1)+str(' ')+str(i))
+                                
+                                beta_vars = {}  ## z partial 1
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0] != 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                        if S[s][i-1][1] != 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                
+                                delta_vars = {}  ## z partial 2
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0] != 0:
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                        if S[s][i-1][1] != 0:
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                
+                                phi_vars = {}   ## z partial 3
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0] != 0:
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                        if S[s][i-1][1] != 0:
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                
+                                gamma_vars = {} ## z null
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0] != 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                     name="Null "+str(s+1)+str(' ')+str(i))
+                                        if S[s][i-1][1] != 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                     name="Null "+str(s+1)+str(' ')+str(i))
+                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if S[s][i-1][0]:
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                        if S[s][i-1][1]:
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                            
+                            
+                                ## Add constraints 
+                                
+                                for s in range(len(S)):
+                                    
+                                    for l in L:
+                                        for k in K:
+                                            if k == 1 and initialSolution[l-1][k-1] != 0:
+                                                suma = 0
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += y_vars[s+1,l,1,i]
+                                                model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                            
+                                            if k == 2 and initialSolution[l-1][k-1] != 0:
+                                                suma = 0
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += y_vars[s+1,l,1,i]
+                                                    if S[s][i-1][1] != 0:
+                                                        suma += y_vars[s+1,l,k,i] 
+                                                model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                                                
+                                    # for l in L:
+                                    #     for k in K:
+                                    #         if initialSolution[l-1][k-1] != 0:
+                                    #             suma = 0
+                                    #             for i in I:
+                                    #                 if S[s][i-1][0] != 0:
+                                    #                     suma += y_vars[s+1,l,1,i]
+                                    #                     model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                            
+                                    #         if initialSolution[l-1][k-1] != 0:
+                                    #             suma = 0
+                                    #             for i in I:
+                                    #                 if S[s][i-1][0] != 0:
+                                    #                     suma += y_vars[s+1,l,3,i]
+                                    #                 if S[s][i-1][1] != 0:
+                                    #                     suma += y_vars[s+1,l,2,i] 
+                                    #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                                
+                                    # for i in I:
+                                    #     if S[s][i-1][0] != 0:
+                                    #         suma = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 suma += y_vars[s+1,l,1,i] + y_vars[s+1,l,3,i]
+                                    #         model.addConstr(suma <= S[s][i-1][0], "c5")
+                                        
+                                    # for i in I:
+                                    #     if S[s][i-1][1] != 0:
+                                    #         suma = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 suma += y_vars[s+1,l,2,i]
+                                    #                 model.addConstr(suma <= S[s][i-1][1], "c6")
+                    
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] != 0:
+                                            suma = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                            model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                                            
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] != 0:
+                                    #         suma = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
+                                    
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")
+                                 
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma = 0
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                                            
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma = 0
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
+                                            
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                                      
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
+                                        
+                                    
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma = 0
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
+                                        
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma = 0
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma = 0
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                             suma1 += y_vars[s+1,l,k,i]  
+                                            model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                                        
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma = 0
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
+                                        
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma = 0
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                             suma1 += y_vars[s+1,l,k,i]  
+                                            model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
+                                        
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma = 0
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
+                    
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            suma1 = 0
+                                            for l in L:
+                                                if initialSolution[l-1][0] != 0:
+                                                    if S[s][i-1][0] != 0:
+                                                        suma1 += y_vars[s+1,l,1,i] 
+                                                if initialSolution[l-1][1] != 0:
+                                                    for k in K:
+                                                         if S[s][i-1][1] != 0:
+                                                             suma1 += y_vars[s+1,l,2,i] 
+                                                         if S[s][i-1][0] != 0:
+                                                             suma1 += y_vars[s+1,l,k,i] 
+                                            model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
+                                        
+                                    # for i in I:
+                                    #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                    #         suma1 = 0
+                                    #         for l in L:
+                                    #             if initialSolution[l-1][0] != 0:
+                                    #                 for v in V:
+                                    #                     if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                     else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #             if initialSolution[l-1][1] != 0:
+                                    #                 for v in V:
+                                    #                      if v == 2:
+                                    #                         if S[s][i-1][1] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #                      else: 
+                                    #                         if S[s][i-1][0] != 0:
+                                    #                             suma1 += y_vars[s+1,l,v,i] 
+                                    #         model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
+                                       
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                                
+                                # Optimize model
+                                
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start
+                                
+                                sumaelapsed = sumaelapsed + elapsed_time
+                                
+                                print(" ")
+                                print(" ")
+                                print("suma elapsed = " , sumaelapsed)
+                                print(" ")
+                                print(" ")
+                                
+                                #imprimir variables 
+                            
+                                #writer.writerows(name)
+                                with open('data'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
+                                    writer = csv.writer(f)
+                                    writer.writerows("new")
+                                    writer.writerows(model._data)
+                                
+                                #Nombre: Resultados_Prueba_I_L_M_N_S
+                                
+                                f = open ('Resultados_Prueba_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              +str(len(S))+'.txt','w')
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                            
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                for v in model.getVars():
+                                    f.write('%s %g' % (v.varName, v.x))
+                                    f.write('\n')
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()                
+                                
+                                archivo.close()
+                                
+                                model.write('model_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              +str(len(S))+'.lp')
+                                model.write('model_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              +str(len(S))+'.mps')
+
+                                if sumaelapsed > elapsedtimeStop:
+                                        print("   ")
+                                        print("   ")
+                                        print("entra if de elapsed", localsearch)
+                                        print("   ")
+                                        print("   ")
+                                        break
+                                
+                                if model.objVal > valorObjetivo:
+                                    print("   ")
+                                    print("   ")
+                                    print("entra if better solution", localsearch)
+                                    print(initialSolution)
+                                    
+                                    with open('SolutionX_'+str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.csv', 'a') as solutionX:            
+                                        solutionX.write(str(initialSolution))
+                                        solutionX.write('\n')
+                                    
+                                    valorObjetivo = model.objVal
+                                    print("   ")
+                                    print("   ")
+                                    
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
+                                    for column in range(len(colnames)):
+                                        sheet.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
+                                    sheet.write(countcsv, 0, name)
+                                    sheet.write(countcsv, 1, len(I))
+                                    sheet.write(countcsv, 2, len(L))
+                                    sheet.write(countcsv, 3, len(S))
+                                    if len(model._data) != 0:
+                                        print("Entra datos for 2")
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet.write(countcsv, row+4, datos[row])
+                                    countcsv = countcsv + 1
+                                    break
+                                
+                                else:
+                                    print("entra else que repite solution")
+                                    print(" ")
+                                    print(" ")
+                                    initialSolution[initialI][0] = aux
+                                    initialSolution[initialI][1] = aux1
+                                    initialSolution[j][0] -= aux
+                                    initialSolution[j][1] -= aux1
+                                    print(initialSolution)
+                                    print(" ")
+                                    print(" ")
+                                
+                if sumaelapsed > elapsedtimeStop:
+                    print("   ")
+                    print("   ")
+                    print("entra if de elapsed", localsearch)
+                    print("   ")
+                    print("   ")
+                    break                
+                                        
+                    #break        
+            #break    
+
+         
+            
+            # localsearch = 0
+            # entraSale1 = []
+            # entraSale2 = []
+
+            # while(1): # MODIFICAR PARA QUE SEAN DISTINTAS VECINDADES Y VER CON 
+            #             # CUAL FUNCIONA MEJOR Y HACER CORRIDAS GRANDES 
+                                
+            #     localsearch += 1
     
-                #Vecindad
-                posiblesVecinos1 = []
-                for i in range(len(cantidadCobertura1)):
-                    if cantidadCobertura1[i] != -1:
-                        posiblesVecinos1.append(i)
+            #     #Vecindad
+            #     posiblesVecinos1 = []
+            #     for i in range(len(cantidadCobertura1)):
+            #         if cantidadCobertura1[i] != -1:
+            #             posiblesVecinos1.append(i)
     
-                print("posibles vecinos")
-                print(posiblesVecinos1)
-                print(" ")
+            #     print("posibles vecinos")
+            #     print(posiblesVecinos1)
+            #     print(" ")
                 
-                cantidadVecinos1 = math.ceil(len(posiblesVecinos1)*(0.1))
-                vecindad1 = random.sample(posiblesVecinos1, cantidadVecinos1)
-                print(posiblesVecinos1)
-                print(vecindad1)
-                print(" ")
+            #     cantidadVecinos1 = math.ceil(len(posiblesVecinos1)*(0.1))
+            #     vecindad1 = random.sample(posiblesVecinos1, cantidadVecinos1)
+            #     print(posiblesVecinos1)
+            #     print(vecindad1)
+            #     print(" ")
                 
-                vecino1 = random.sample(vecindad1, 1)
-                indiceaux1 = []
-                for i in range(len(initialSolution)):
-                    if initialSolution[i][0] != 0:
-                        indiceaux1.append(i)
-                puntoQueSale1 = random.sample(indiceaux1, 1)
+            #     vecino1 = random.sample(vecindad1, 1)
+            #     indiceaux1 = []
+            #     for i in range(len(initialSolution)):
+            #         if initialSolution[i][0] != 0:
+            #             indiceaux1.append(i)
+            #     puntoQueSale1 = random.sample(indiceaux1, 1)
                 
-                print("initial solution")
-                print(initialSolution)
-                print(" ")
+            #     print("initial solution")
+            #     print(initialSolution)
+            #     print(" ")
                 
-                print("Sale1: ", puntoQueSale1[0])
-                print("vecino1: ", vecino1[0]-1)
-                print(" ")
+            #     print("Sale1: ", puntoQueSale1[0])
+            #     print("vecino1: ", vecino1[0]-1)
+            #     print(" ")
                 
-                initialSolution[puntoQueSale1[0]][0] = 0
-                initialSolution[vecino1[0]-1][0] = 1
+            #     initialSolution[puntoQueSale1[0]][0] = 0
+            #     initialSolution[vecino1[0]-1][0] = 1
                 
-                posiblesVecinos2 = []
-                for i in range(len(cantidadCobertura2)):
-                    if cantidadCobertura2[i] != -1:
-                        posiblesVecinos2.append(i)
+            #     posiblesVecinos2 = []
+            #     for i in range(len(cantidadCobertura2)):
+            #         if cantidadCobertura2[i] != -1:
+            #             posiblesVecinos2.append(i)
                         
-                print("posibles vecinos")
-                print(posiblesVecinos2)
-                print(" ")
+            #     print("posibles vecinos")
+            #     print(posiblesVecinos2)
+            #     print(" ")
                 
      
-                cantidadVecinos2 = math.ceil(len(posiblesVecinos2)*(0.1))
-                vecindad2 = random.sample(posiblesVecinos2, cantidadVecinos2)
-                print(posiblesVecinos2)
-                print(vecindad2)
-                print(" ")
+            #     cantidadVecinos2 = math.ceil(len(posiblesVecinos2)*(0.1))
+            #     vecindad2 = random.sample(posiblesVecinos2, cantidadVecinos2)
+            #     print(posiblesVecinos2)
+            #     print(vecindad2)
+            #     print(" ")
                 
-                vecino2 = random.sample(vecindad2, 1)
-                indiceaux2 = []
-                for i in range(len(initialSolution)):
-                    if initialSolution[i][0] != 0:
-                        indiceaux2.append(i)
-                puntoQueSale2 = random.sample(indiceaux2, 1)
+            #     vecino2 = random.sample(vecindad2, 1)
+            #     indiceaux2 = []
+            #     for i in range(len(initialSolution)):
+            #         if initialSolution[i][0] != 0:
+            #             indiceaux2.append(i)
+            #     puntoQueSale2 = random.sample(indiceaux2, 1)
                 
                 
-                print("Sale2: ", puntoQueSale2[0])
-                print("vecino2: ", vecino2[0]-1)
-                print(" ")
+            #     print("Sale2: ", puntoQueSale2[0])
+            #     print("vecino2: ", vecino2[0]-1)
+            #     print(" ")
                 
-                initialSolution[puntoQueSale2[0]][1] = 0
-                initialSolution[vecino2[0]-1][1] = 1
+            #     initialSolution[puntoQueSale2[0]][1] = 0
+            #     initialSolution[vecino2[0]-1][1] = 1
 
 
-                print("initial solution nueva")
-                print(initialSolution)
-                print(" ")
+            #     print("initial solution nueva")
+            #     print(initialSolution)
+            #     print(" ")
                 
 
-                ######################################################################
-                ######################    MODEL   ####################################
-                ######################################################################
-                
-                if (puntoQueSale1[0],vecino1[0]-1) not in entraSale1 and (puntoQueSale2[0],vecino2[0]-1) not in entraSale2:
-                
-                    entraSale1.append((puntoQueSale1[0],vecino1[0]-1))    
-                    entraSale2.append((puntoQueSale2[0],vecino2[0]-1))
-                
-                    model = gp.Model("TabuSearchWithSAA")            
-                    model.setParam('TimeLimit', 5*60)
-                    model._obj = None
-                    model._bd = None
-                    model._data = []
-                    model._start = time.time()
-                    
-                    # Create variables #
-                    y_vars = {}
-                    for s in range(len(S)):
-                        
-                        for l in L:
-                            if initialSolution[l-1][0] > 0:
-                                for i in I:
-                                    if S[s][i-1][0] != 0:
-                                        y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                        name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                      
-                            if initialSolution[l-1][1] > 0:
-                                for i in I:
-                                    for k in K:
-                                        if S[s][i-1][1] != 0:
-                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                        if S[s][i-1][0] != 0:
-                                            y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                
-                        
-                        # for l in L:
-                        #     if initialSolution[l-1][0] == 1:
-                        #         for i in I:
-                        #             for v in V:
-                        #                 if v == 2:
-                        #                     if S[s][i-1][1] != 0:
-                        #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
-                        #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
-                        #                 else:
-                        #                     if S[s][i-1][0] != 0:
-                        #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
-                        #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
-                                      
-                        #     if initialSolution[l-1][1] == 1:
-                        #         for i in I:
-                        #             for v in V:
-                        #                 if v == 2:
-                        #                     if S[s][i-1][1] != 0:
-                        #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
-                        #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
-                        #                 else:
-                        #                     if S[s][i-1][0] != 0:
-                        #                         y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
-                        #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
-                        
-                    
-                    alpha_vars = {}  ## z full
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Full "+str(s+1)+str(' ')+str(i))
-                            if S[s][i-1][1] != 0:
-                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Full "+str(s+1)+str(' ')+str(i))
-                    
-                    beta_vars = {}  ## z partial 1
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                            if S[s][i-1][1] != 0:
-                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                    
-                    delta_vars = {}  ## z partial 2
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                            if S[s][i-1][1] != 0:
-                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                    
-                    phi_vars = {}   ## z partial 3
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                            if S[s][i-1][1] != 0:
-                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                    
-                    gamma_vars = {} ## z null
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                         name="Null "+str(s+1)+str(' ')+str(i))
-                            if S[s][i-1][1] != 0:
-                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                         name="Null "+str(s+1)+str(' ')+str(i))
-                
-                    obj = gp.LinExpr()
-                    for s in range(len(S)):
-                        for i in I:
-                            if S[s][i-1][0]:
-                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                            if S[s][i-1][1]:
-                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                    model.setObjective(obj, GRB.MAXIMIZE)  
-                
-                
-                    ## Add constraints 
-                    
-                    for s in range(len(S)):
-                        
-                        for l in L:
-                            for k in K:
-                                if k == 1 and initialSolution[l-1][k-1] != 0:
-                                    suma = 0
-                                    for i in I:
-                                        if S[s][i-1][0] != 0:
-                                            suma += y_vars[s+1,l,1,i]
-                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                
-                                if k == 2 and initialSolution[l-1][k-1] != 0:
-                                    suma = 0
-                                    for i in I:
-                                        if S[s][i-1][0] != 0:
-                                            suma += y_vars[s+1,l,1,i]
-                                        if S[s][i-1][1] != 0:
-                                            suma += y_vars[s+1,l,k,i] 
-                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                                    
-                        # for l in L:
-                        #     for k in K:
-                        #         if initialSolution[l-1][k-1] != 0:
-                        #             suma = 0
-                        #             for i in I:
-                        #                 if S[s][i-1][0] != 0:
-                        #                     suma += y_vars[s+1,l,1,i]
-                        #                     model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                
-                        #         if initialSolution[l-1][k-1] != 0:
-                        #             suma = 0
-                        #             for i in I:
-                        #                 if S[s][i-1][0] != 0:
-                        #                     suma += y_vars[s+1,l,3,i]
-                        #                 if S[s][i-1][1] != 0:
-                        #                     suma += y_vars[s+1,l,2,i] 
-                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                    
-                        # for i in I:
-                        #     if S[s][i-1][0] != 0:
-                        #         suma = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 suma += y_vars[s+1,l,1,i] + y_vars[s+1,l,3,i]
-                        #         model.addConstr(suma <= S[s][i-1][0], "c5")
-                            
-                        # for i in I:
-                        #     if S[s][i-1][1] != 0:
-                        #         suma = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 suma += y_vars[s+1,l,2,i]
-                        #                 model.addConstr(suma <= S[s][i-1][1], "c6")
-        
-                        for i in I:
-                            if S[s][i-1][0] + S[s][i-1][1] != 0:
-                                suma = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                                
-                        # for i in I:
-                        #     if S[s][i-1][0] + S[s][i-1][1] != 0:
-                        #         suma = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #         model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-                        
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")
-                     
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma = 0
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-                                
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma = 0
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-                                
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                          
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-                            
-                        
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma = 0
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-                            
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma = 0
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma = 0
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                 suma1 += y_vars[s+1,l,k,i]  
-                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-                            
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma = 0
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-                            
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma = 0
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                 suma1 += y_vars[s+1,l,k,i]  
-                                model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-                            
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma = 0
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma += cli[l-1][i-1]*y_vars[s+1,l,v,i] 
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-        
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                suma1 = 0
-                                for l in L:
-                                    if initialSolution[l-1][0] != 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma1 += y_vars[s+1,l,1,i] 
-                                    if initialSolution[l-1][1] != 0:
-                                        for k in K:
-                                             if S[s][i-1][1] != 0:
-                                                 suma1 += y_vars[s+1,l,2,i] 
-                                             if S[s][i-1][0] != 0:
-                                                 suma1 += y_vars[s+1,l,k,i] 
-                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                            
-                        # for i in I:
-                        #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        #         suma1 = 0
-                        #         for l in L:
-                        #             if initialSolution[l-1][0] != 0:
-                        #                 for v in V:
-                        #                     if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                     else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #             if initialSolution[l-1][1] != 0:
-                        #                 for v in V:
-                        #                      if v == 2:
-                        #                         if S[s][i-1][1] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #                      else: 
-                        #                         if S[s][i-1][0] != 0:
-                        #                             suma1 += y_vars[s+1,l,v,i] 
-                        #         model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                           
-                        for i in I:
-                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
-                    
-                    # Optimize model
-                    
-                    model.optimize(callback=data_cb)
-                    
-                    end_time = time.time()
-                    
-                    elapsed_time = end_time - model._start
-                    
-                    sumaelapsed = sumaelapsed + elapsed_time
-                    
-                    
-                    #imprimir variables 
-             
-                    colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
-                    for column in range(len(colnames)):
-                        sheet.write(0, column, colnames[column])
-                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
-                    sheet.write(countcsv, 0, name)
-                    sheet.write(countcsv, 1, len(I))
-                    sheet.write(countcsv, 2, len(L))
-                    sheet.write(countcsv, 3, len(S))
-                    if len(model._data) != 0:
-                        print("Entra datos for 2")
-                        datos = model._data[len(model._data)-1]
-                        for row in range(len(datos)):
-                            sheet.write(countcsv, row+4, datos[row])
-                    countcsv = countcsv + 1
-                
-                    #writer.writerows(name)
-                    with open('data'+str(len(I))+str('_')
-                                  +str(len(L))+str('_')
-                                  +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
-                        writer = csv.writer(f)
-                        writer.writerows("new")
-                        writer.writerows(model._data)
-                    
-                    #Nombre: Resultados_Prueba_I_L_M_N_S
-                    
-                    f = open ('Resultados_Prueba_'
-                                  +str(len(I))+str('_')
-                                  +str(len(L))+str('_')
-                                  +str(len(S))+'.txt','w')
-                    
-                    f.write("Elapsed time: ")
-                    f.write(str(elapsed_time))
-                    f.write('\n')
-                
-                            
-                    f.write('Obj: %g' % model.objVal)
-                    f.write('\n')
-                    
-                    for v in model.getVars():
-                        f.write('%s %g' % (v.varName, v.x))
-                        f.write('\n')
-                    
-                    #imprimir el valor objetivo
-                    print('Obj: %g' % model.objVal)
-                    print("Finished")
-                    print(" ")
-                    print(" ")
-                    
-                    f.close()                
-                    
-                    archivo.close()
-                    
-                    model.write('model_'+str(len(I))+str('_')
-                                  +str(len(L))+str('_')
-                                  +str(len(S))+'.lp')
-                    model.write('model_'+str(len(I))+str('_')
-                                  +str(len(L))+str('_')
-                                  +str(len(S))+'.mps')
-                    
-                if model.objVal > valorObjetivo:
-                    print("   ")
-                    print("   ")
-                    print("entra ultimo if", localsearch)
-                    print("   ")
-                    print("   ")
-                    break
-                
-                else:
-                    if sumaelapsed > 300:
-                        print("   ")
-                        print("   ")
-                        print("entra ultimo else", localsearch)
-                        print("   ")
-                        print("   ")
-                        break
+            #     ######################################################################
+            #     ######################    MODEL   ####################################
+            #     ######################################################################
 
-            
+            #     if (puntoQueSale1[0],vecino1[0]-1) not in entraSale1 and (puntoQueSale2[0],vecino2[0]-1) not in entraSale2:
+                
+            #         entraSale1.append((puntoQueSale1[0],vecino1[0]-1))    
+            #         entraSale2.append((puntoQueSale2[0],vecino2[0]-1))   
+    
 print("Elapsed time total ")
 print(sumaelapsed)
 print(" ")
 
 sheet.write(countcsv+1, 0, "Total Elapsed Time")
 sheet.write(countcsv+1, 1, sumaelapsed)
+solutionX.close()
             
             ########### HACER EL CICLO PARA MEJORAR LA SOLUCION INICIAL
             

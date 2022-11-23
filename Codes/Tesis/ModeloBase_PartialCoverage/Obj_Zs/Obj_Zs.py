@@ -46,8 +46,8 @@ import xlwt
 
 
 tamaños_I = [50]
-tamaños_L = [20]
-tamaños_S = [15]
+tamaños_L = [50]
+tamaños_S = [25]
 
 K = [1,2]
 
