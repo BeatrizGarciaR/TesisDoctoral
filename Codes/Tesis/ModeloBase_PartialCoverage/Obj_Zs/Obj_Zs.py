@@ -91,16 +91,22 @@ for iconj in range(len(tamaños_I)):
             #           #+str(rep+1)
             #           +'_.txt', "r")
             
+            # archivo = open('Instancias_Prueba_'
+            #           +str(tamaños_I[iconj])+str('_')
+            #           +str(tamaños_L[jconj])+str('_')+"2"+"_"+"3"+"_"
+            #           +str(tamaños_S[sconj])+"__"
+            #           +'.txt', "r")
+
             archivo = open('Instancias_Prueba_'
                       +str(tamaños_I[iconj])+str('_')
-                      +str(tamaños_L[jconj])+str('_')+"2"+"_"+"3"+"_"
-                      +str(tamaños_S[sconj])+"__"
+                      +str(tamaños_L[jconj])+str('_')
+                      +str(tamaños_S[sconj])
                       +'.txt', "r")
             
             len_I = int(archivo.readline())
             len_L = int(archivo.readline())
-            len_M = int(archivo.readline())
-            len_N = int(archivo.readline())
+            #len_M = int(archivo.readline())
+            #len_N = int(archivo.readline())
             len_S = int(archivo.readline())
             #repite = int(archivo.readline())
             
@@ -149,6 +155,8 @@ for iconj in range(len(tamaños_I)):
             
             #Scenarios
             S = []
+            TotalAccidentes = 0
+            auxI = [0, 0]
             for l in range(len_S):
                 count = 0
                 line = archivo.readline().strip().split()
@@ -156,12 +164,19 @@ for iconj in range(len(tamaños_I)):
                 S.append([])
                 for i in range(len(I)):
                     #print("line[i]", line[count])
+                    #print("line[i]", line)
                     S[l].append([])
                     for k in range(len(K)):
                         #print("line[count]", line[count])
                         S[l][i].append(int(line[count]))
+                        if k == 0:
+                            auxI[0] = int(line[count])
+                        else:
+                            auxI[1] = int(line[count])
                         if count < len(line)-1:
                             count += 1
+                    if any(auxI):
+                        TotalAccidentes += 1
                         #S[l][i].append(int(line[i+1]))
                     
             
@@ -174,13 +189,13 @@ for iconj in range(len(tamaños_I)):
 
                     r_li1[l].append(int(line[i]))   
               
-            #Red Cross Response times
-            r_li2 = []
-            for l in range(len(L)):
-                line = archivo.readline().strip().split()
-                r_li2.append([])
-                for i in range(len(I)):
-                    r_li2[l].append(int(line[i]))
+            # #Red Cross Response times
+            # r_li2 = []
+            # for l in range(len(L)):
+            #     line = archivo.readline().strip().split()
+            #     r_li2.append([])
+            #     for i in range(len(I)):
+            #         r_li2[l].append(int(line[i]))
                     
             cli = []
             for l in range(len(L)):
@@ -511,7 +526,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaTotal += 1
-            coberturas.write(str(coberturaTotal/len(S)))
+            coberturas.write(str(coberturaTotal/TotalAccidentes))
             coberturas.write('\n')
             
             #print("line1", line)
@@ -521,7 +536,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial1 += 1
-            coberturas.write(str(coberturaParcial1/len(S)))
+            coberturas.write(str(coberturaParcial1/TotalAccidentes))
             coberturas.write('\n')
             
             #print("line2", line)
@@ -531,7 +546,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial2 += 1
-            coberturas.write(str(coberturaParcial2/len(S)))
+            coberturas.write(str(coberturaParcial2/TotalAccidentes))
             coberturas.write('\n')
             
             #print("line3", line)
@@ -541,7 +556,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial3 += 1
-            coberturas.write(str(coberturaParcial3/len(S)))
+            coberturas.write(str(coberturaParcial3/TotalAccidentes))
             coberturas.write('\n')
 
             #print("line4", line)
@@ -551,7 +566,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaNula += 1
-            coberturas.write(str(coberturaNula/len(S)))
+            coberturas.write(str(coberturaNula/TotalAccidentes))
             coberturas.write('\n')
             
             #print("line5", line)

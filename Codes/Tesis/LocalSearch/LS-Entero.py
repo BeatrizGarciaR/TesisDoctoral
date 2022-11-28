@@ -44,7 +44,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 30
+elapsedtimeStop = 600
 
 countcsv = 1
 
@@ -94,6 +94,8 @@ for iconj in range(len(tamaños_I)):
             
             #Scenarios
             S = []
+            TotalAccidentes = 0
+            auxI = [0, 0]
             for l in range(len_S):
                 count = 0
                 line = archivo.readline().strip().split()
@@ -101,14 +103,21 @@ for iconj in range(len(tamaños_I)):
                 S.append([])
                 for i in range(len(I)):
                     #print("line[i]", line[count])
+                    #print("line[i]", line)
                     S[l].append([])
                     for k in range(len(K)):
                         #print("line[count]", line[count])
                         S[l][i].append(int(line[count]))
+                        if k == 0:
+                            auxI[0] = int(line[count])
+                        else:
+                            auxI[1] = int(line[count])
                         if count < len(line)-1:
                             count += 1
+                    if any(auxI):
+                        TotalAccidentes += 1
                         #S[l][i].append(int(line[i+1]))
-                              
+            #break                   
             #Response times
             r_li = []
             for l in range(len(L)):
@@ -1146,7 +1155,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaTotal += 1
-            coberturas.write(str(coberturaTotal/len(S)))
+            coberturas.write(str(coberturaTotal/TotalAccidentes))
             coberturas.write('\n')
 
             coberturaParcial1 = 0
@@ -1154,7 +1163,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial1 += 1
-            coberturas.write(str(coberturaParcial1/len(S)))
+            coberturas.write(str(coberturaParcial1/TotalAccidentes))
             coberturas.write('\n')
             
             coberturaParcial2 = 0
@@ -1162,7 +1171,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial2 += 1
-            coberturas.write(str(coberturaParcial2/len(S)))
+            coberturas.write(str(coberturaParcial2/TotalAccidentes))
             coberturas.write('\n')
             
             coberturaParcial3 = 0
@@ -1170,7 +1179,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaParcial3 += 1
-            coberturas.write(str(coberturaParcial3/len(S)))
+            coberturas.write(str(coberturaParcial3/TotalAccidentes))
             coberturas.write('\n')
 
             coberturaNula = 0
@@ -1178,7 +1187,7 @@ for iconj in range(len(tamaños_I)):
                 line = lectura.readline()
                 if int(line[len(line)-2]) == 1:
                     coberturaNula += 1
-            coberturas.write(str(coberturaNula/len(S)))
+            coberturas.write(str(coberturaNula/TotalAccidentes))
             coberturas.write('\n')
             
             coberturas.write(str(-1))
@@ -2000,7 +2009,7 @@ for iconj in range(len(tamaños_I)):
                                         line = lectura.readline()
                                         if int(line[len(line)-2]) == 1:
                                             coberturaTotal += 1
-                                    coberturas.write(str(coberturaTotal/len(S)))
+                                    coberturas.write(str(coberturaTotal/TotalAccidentes))
                                     coberturas.write('\n')
                         
                                     coberturaParcial1 = 0
@@ -2008,7 +2017,7 @@ for iconj in range(len(tamaños_I)):
                                         line = lectura.readline()
                                         if int(line[len(line)-2]) == 1:
                                             coberturaParcial1 += 1
-                                    coberturas.write(str(coberturaParcial1/len(S)))
+                                    coberturas.write(str(coberturaParcial1/TotalAccidentes))
                                     coberturas.write('\n')
                                     
                                     coberturaParcial2 = 0
@@ -2016,7 +2025,7 @@ for iconj in range(len(tamaños_I)):
                                         line = lectura.readline()
                                         if int(line[len(line)-2]) == 1:
                                             coberturaParcial2 += 1
-                                    coberturas.write(str(coberturaParcial2/len(S)))
+                                    coberturas.write(str(coberturaParcial2/TotalAccidentes))
                                     coberturas.write('\n')
                                     
                                     coberturaParcial3 = 0
@@ -2024,7 +2033,7 @@ for iconj in range(len(tamaños_I)):
                                         line = lectura.readline()
                                         if int(line[len(line)-2]) == 1:
                                             coberturaParcial3 += 1
-                                    coberturas.write(str(coberturaParcial3/len(S)))
+                                    coberturas.write(str(coberturaParcial3/TotalAccidentes))
                                     coberturas.write('\n')
                         
                                     coberturaNula = 0
@@ -2032,7 +2041,7 @@ for iconj in range(len(tamaños_I)):
                                         line = lectura.readline()
                                         if int(line[len(line)-2]) == 1:
                                             coberturaNula += 1
-                                    coberturas.write(str(coberturaNula/len(S)))
+                                    coberturas.write(str(coberturaNula/TotalAccidentes))
                                     coberturas.write('\n')
                                     
                                     coberturas.write(str(-1))
