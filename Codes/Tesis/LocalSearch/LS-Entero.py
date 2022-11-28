@@ -25,9 +25,9 @@ import math
 # tamaños_L = [85]
 # tamaños_S = [100]
 
-# tamaños_I = [95]
-# tamaños_L = [100]
-# tamaños_S = [40]
+# tamaños_I = [20]
+# tamaños_L = [40]
+# tamaños_S = [12]
 
 tamaños_I = [50]
 tamaños_L = [50]
@@ -49,7 +49,7 @@ elapsedtimeStop = 30
 countcsv = 1
 
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis', cell_overwrite_ok=True)
+sheet = book.add_sheet('TesisTS', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIP:
@@ -435,15 +435,16 @@ for iconj in range(len(tamaños_I)):
             sumaelapsed = 0
             
             # Create variables #
-            y_vars = {}
-            for s in range(len(S)):
-                
+            y_vars = {}    
+            cantVarY = 0
+            for s in range(len(S)):        
                 for l in L:
                     if initialSolution[l-1][0] > 0:
                         for i in I:
                             if S[s][i-1][0] != 0:
                                 y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                cantVarY += 1
                               
                     if initialSolution[l-1][1] > 0:
                         for i in I:
@@ -451,9 +452,11 @@ for iconj in range(len(tamaños_I)):
                                 if S[s][i-1][1] != 0:
                                     y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
                                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                    cantVarY += 1
                                 if S[s][i-1][0] != 0:
                                     y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
                                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
+                                    cantVarY += 1
                         
                 
                 # for l in L:
@@ -483,54 +486,69 @@ for iconj in range(len(tamaños_I)):
                 
             
             alpha_vars = {}  ## z full
+            cantVarAlpha = 0
             for s in range(len(S)):
                 for i in I:
                     if S[s][i-1][0] != 0:
                         alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Full "+str(s+1)+str(' ')+str(i))
+                        cantVarAlpha += 1
                     if S[s][i-1][1] != 0:
                         alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Full "+str(s+1)+str(' ')+str(i))
+                        cantVarAlpha += 1
             
             beta_vars = {}  ## z partial 1
+            cantVarBeta = 0
             for s in range(len(S)):
                 for i in I:
                     if S[s][i-1][0] != 0:
                         beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial1 "+str(s+1)+str(' ')+str(i))
+                        cantVarBeta += 1
                     if S[s][i-1][1] != 0:
                         beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial1 "+str(s+1)+str(' ')+str(i))
+                        cantVarBeta += 1
             
             delta_vars = {}  ## z partial 2
+            cantVarDelta = 0
             for s in range(len(S)):
                 for i in I:
                     if S[s][i-1][0] != 0:
                         delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial2 "+str(s+1)+str(' ')+str(i))
+                        cantVarDelta += 1
                     if S[s][i-1][1] != 0:
                         delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial2 "+str(s+1)+str(' ')+str(i))
+                        cantVarDelta += 1
             
             phi_vars = {}   ## z partial 3
+            cantVarPhi = 0
             for s in range(len(S)):
                 for i in I:
                     if S[s][i-1][0] != 0:
                         phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial3 "+str(s+1)+str(' ')+str(i))
+                        cantVarPhi += 1
                     if S[s][i-1][1] != 0:
                         phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial3 "+str(s+1)+str(' ')+str(i))
+                        cantVarPhi += 1
             
             gamma_vars = {} ## z null
+            cantVarGamma = 0
             for s in range(len(S)):
                 for i in I:
                     if S[s][i-1][0] != 0:
                         gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                  name="Null "+str(s+1)+str(' ')+str(i))
+                        cantVarGamma += 1
                     if S[s][i-1][1] != 0:
                         gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                  name="Null "+str(s+1)+str(' ')+str(i))
+                        cantVarGamma += 1
         
             obj = gp.LinExpr()
             for s in range(len(S)):
@@ -1108,6 +1126,66 @@ for iconj in range(len(tamaños_I)):
             
             ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
             
+            coberturas = open ('Coberturas_'
+                          +str(len(I))+str('_')
+                          +str(len(L))+str('_')
+                          +str(len(S))+'.txt','w')                      
+            
+            lectura = open ('Resultados_Prueba_'
+                          +str(len(I))+str('_')
+                          +str(len(L))+str('_')
+                          +str(len(S))+'.txt','r')
+            lectura.readline()
+            lectura.readline()
+            
+            for salto in range(cantVarY):
+                lectura.readline()
+             
+            coberturaTotal = 0
+            for salto1 in range(cantVarAlpha):
+                line = lectura.readline()
+                if int(line[len(line)-2]) == 1:
+                    coberturaTotal += 1
+            coberturas.write(str(coberturaTotal/len(S)))
+            coberturas.write('\n')
+
+            coberturaParcial1 = 0
+            for salto2 in range(cantVarBeta):
+                line = lectura.readline()
+                if int(line[len(line)-2]) == 1:
+                    coberturaParcial1 += 1
+            coberturas.write(str(coberturaParcial1/len(S)))
+            coberturas.write('\n')
+            
+            coberturaParcial2 = 0
+            for salto3 in range(cantVarDelta):
+                line = lectura.readline()
+                if int(line[len(line)-2]) == 1:
+                    coberturaParcial2 += 1
+            coberturas.write(str(coberturaParcial2/len(S)))
+            coberturas.write('\n')
+            
+            coberturaParcial3 = 0
+            for salto4 in range(cantVarPhi):
+                line = lectura.readline()
+                if int(line[len(line)-2]) == 1:
+                    coberturaParcial3 += 1
+            coberturas.write(str(coberturaParcial3/len(S)))
+            coberturas.write('\n')
+
+            coberturaNula = 0
+            for salto5 in range(cantVarGamma):
+                line = lectura.readline()
+                if int(line[len(line)-2]) == 1:
+                    coberturaNula += 1
+            coberturas.write(str(coberturaNula/len(S)))
+            coberturas.write('\n')
+            
+            coberturas.write(str(-1))
+            coberturas.write('\n')
+            
+            lectura.close()
+            
             archivo.close()
             
             model.write('model_'+str(len(I))+str('_')
@@ -1168,15 +1246,16 @@ for iconj in range(len(tamaños_I)):
                                 model._start = time.time()
                                 
                                 # Create variables #
-                                y_vars = {}
-                                for s in range(len(S)):
-                                    
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
                                     for l in L:
                                         if initialSolution[l-1][0] > 0:
                                             for i in I:
                                                 if S[s][i-1][0] != 0:
                                                     y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                     name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                    cantVarY += 1
                                                   
                                         if initialSolution[l-1][1] > 0:
                                             for i in I:
@@ -1184,9 +1263,11 @@ for iconj in range(len(tamaños_I)):
                                                     if S[s][i-1][1] != 0:
                                                         y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
                                                                          name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
                                                     if S[s][i-1][0] != 0:
                                                         y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
                                                                          name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
+                                                        cantVarY += 1
                                             
                                     
                                     # for l in L:
@@ -1216,55 +1297,70 @@ for iconj in range(len(tamaños_I)):
                                     
                                 
                                 alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
                                 for s in range(len(S)):
                                     for i in I:
                                         if S[s][i-1][0] != 0:
                                             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
                                         if S[s][i-1][1] != 0:
                                             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
                                 
                                 beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
                                 for s in range(len(S)):
                                     for i in I:
                                         if S[s][i-1][0] != 0:
                                             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
                                         if S[s][i-1][1] != 0:
                                             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
                                 
                                 delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
                                 for s in range(len(S)):
                                     for i in I:
                                         if S[s][i-1][0] != 0:
                                             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
                                         if S[s][i-1][1] != 0:
                                             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
                                 
                                 phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
                                 for s in range(len(S)):
                                     for i in I:
                                         if S[s][i-1][0] != 0:
                                             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
                                         if S[s][i-1][1] != 0:
                                             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
                                 
                                 gamma_vars = {} ## z null
+                                cantVarGamma = 0
                                 for s in range(len(S)):
                                     for i in I:
                                         if S[s][i-1][0] != 0:
                                             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
                                         if S[s][i-1][1] != 0:
                                             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                      name="Null "+str(s+1)+str(' ')+str(i))
-                            
+                                            cantVarGamma += 1   
+                                            
                                 obj = gp.LinExpr()
                                 for s in range(len(S)):
                                     for i in I:
@@ -1830,7 +1926,9 @@ for iconj in range(len(tamaños_I)):
                                 print(" ")
                                 print(" ")
                                 
-                                f.close()                
+                                f.close()  
+                                                    
+
                                 
                                 archivo.close()
                                 
@@ -1880,6 +1978,68 @@ for iconj in range(len(tamaños_I)):
                                         for row in range(len(datos)):
                                             sheet.write(countcsv, row+4, datos[row])
                                     countcsv = countcsv + 1
+                                    
+                                
+                                    coberturas = open ('Coberturas_'
+                                                  +str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.txt','a')                      
+                                    
+                                    lectura = open ('Resultados_Prueba_'
+                                                  +str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.txt','r')
+                                    lectura.readline()
+                                    lectura.readline()
+                                    
+                                    for salto in range(cantVarY):
+                                        lectura.readline()
+                                     
+                                    coberturaTotal = 0
+                                    for salto1 in range(cantVarAlpha):
+                                        line = lectura.readline()
+                                        if int(line[len(line)-2]) == 1:
+                                            coberturaTotal += 1
+                                    coberturas.write(str(coberturaTotal/len(S)))
+                                    coberturas.write('\n')
+                        
+                                    coberturaParcial1 = 0
+                                    for salto2 in range(cantVarBeta):
+                                        line = lectura.readline()
+                                        if int(line[len(line)-2]) == 1:
+                                            coberturaParcial1 += 1
+                                    coberturas.write(str(coberturaParcial1/len(S)))
+                                    coberturas.write('\n')
+                                    
+                                    coberturaParcial2 = 0
+                                    for salto3 in range(cantVarDelta):
+                                        line = lectura.readline()
+                                        if int(line[len(line)-2]) == 1:
+                                            coberturaParcial2 += 1
+                                    coberturas.write(str(coberturaParcial2/len(S)))
+                                    coberturas.write('\n')
+                                    
+                                    coberturaParcial3 = 0
+                                    for salto4 in range(cantVarPhi):
+                                        line = lectura.readline()
+                                        if int(line[len(line)-2]) == 1:
+                                            coberturaParcial3 += 1
+                                    coberturas.write(str(coberturaParcial3/len(S)))
+                                    coberturas.write('\n')
+                        
+                                    coberturaNula = 0
+                                    for salto5 in range(cantVarGamma):
+                                        line = lectura.readline()
+                                        if int(line[len(line)-2]) == 1:
+                                            coberturaNula += 1
+                                    coberturas.write(str(coberturaNula/len(S)))
+                                    coberturas.write('\n')
+                                    
+                                    coberturas.write(str(-1))
+                                    coberturas.write('\n')
+                                    
+                                    lectura.close()
+                                    
                                     break
                                 
                                 else:
@@ -1905,7 +2065,17 @@ for iconj in range(len(tamaños_I)):
                     #break        
             #break    
 
+initial1 = 0
+initial2 = 0
+for sol in range(len(initialSolution)):
+    for solK in range(len(K)):
+        if solK == 0:
+            initial1 += initialSolution[sol][solK]
+        else:
+            initial2 += initialSolution[sol][solK]
          
+print("amb tipo 1 = ", initial1, "  eta 1 = ", eta[0])
+print("amb tipo 2 = ", initial2, "  eta 2 = ", eta[1])
             
             # localsearch = 0
             # entraSale1 = []
@@ -2002,7 +2172,10 @@ print(" ")
 
 sheet.write(countcsv+1, 0, "Total Elapsed Time")
 sheet.write(countcsv+1, 1, sumaelapsed)
+fi.close()
+book.save('TesisTS.xls') 
 solutionX.close()
+coberturas.close()
             
             ########### HACER EL CICLO PARA MEJORAR LA SOLUCION INICIAL
             
@@ -2093,6 +2266,5 @@ solutionX.close()
                 
             #     model(countcsv)
 
-fi.close()
-book.save('TesisTS.xls') 
+
             
