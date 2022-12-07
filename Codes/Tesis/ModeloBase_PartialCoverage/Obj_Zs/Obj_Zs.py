@@ -28,6 +28,10 @@ import xlwt
 # tamaños_S = [5, 20, 50]
 #repeticiones = 5
 
+# tamaños_I = [20, 50, 80]
+# tamaños_L = [40, 50, 70]
+# tamaños_S = [12, 25, 30]
+
 # tamaños_I = [20, 50, 80, 95]
 # tamaños_L = [40, 50, 70, 85]
 # tamaños_S = [12, 25, 30, 40]
@@ -45,11 +49,13 @@ import xlwt
 # tamaños_S = [50, 100, 500]
 
 
-tamaños_I = [50]
-tamaños_L = [50]
-tamaños_S = [25]
+tamaños_I = [1000]
+tamaños_L = [85]
+tamaños_S = [100]
 
 K = [1,2]
+
+timelim = 3600
 
 countcsv = 1
 
@@ -222,7 +228,7 @@ for iconj in range(len(tamaños_I)):
             
             model = gp.Model("PartialRateCoverage")
             
-            model.setParam('TimeLimit', 60*60)
+            model.setParam('TimeLimit', timelim)
             
             model._obj = None
             model._bd = None

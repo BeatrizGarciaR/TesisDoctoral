@@ -29,9 +29,9 @@ import math
 # tamaños_L = [40]
 # tamaños_S = [12]
 
-tamaños_I = [50]
-tamaños_L = [50]
-tamaños_S = [25]
+tamaños_I = [1000]
+tamaños_L = [85]
+tamaños_S = [100]
 
 K = [1, 2]
 
@@ -44,7 +44,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 600
+elapsedtimeStop = 3600
 
 countcsv = 1
 
@@ -57,8 +57,8 @@ def data_cb(m, where):
         cur_bd = m.cbGet(gp.GRB.Callback.MIP_OBJBND)
         gap = abs((cur_obj - cur_bd) / cur_obj)*100  
         status = gp.GRB.OPTIMAL
-        m._data.append(["time", "best", "best bound", "gap %", "status"])
-        m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
+        m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
+        m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
         
         
 ###########################################################################
@@ -440,6 +440,7 @@ for iconj in range(len(tamaños_I)):
             model._bd = None
             model._data = []
             model._start = time.time()
+            model._sumaelapsed = None
             
             sumaelapsed = 0
             
@@ -1075,17 +1076,19 @@ for iconj in range(len(tamaños_I)):
         
             # Optimize model
             
-            model.optimize(callback=data_cb)
-            
             end_time = time.time()
             
             elapsed_time = end_time - model._start
             
             sumaelapsed = sumaelapsed + elapsed_time
             
+            model._sumaelapsed = sumaelapsed
+            
+            model.optimize(callback=data_cb)
+            
             #imprimir variables 
 
-            colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
+            colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
             for column in range(len(colnames)):
                 sheet.write(0, column, colnames[column])
             name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
@@ -1886,13 +1889,15 @@ for iconj in range(len(tamaños_I)):
                                 
                                 # Optimize model
                                 
-                                model.optimize(callback=data_cb)
-                                
                                 end_time = time.time()
                                 
                                 elapsed_time = end_time - model._start
                                 
                                 sumaelapsed = sumaelapsed + elapsed_time
+                                
+                                model._sumaelapsed = sumaelapsed
+                                
+                                model.optimize(callback=data_cb)
                                 
                                 print(" ")
                                 print(" ")
@@ -1973,7 +1978,7 @@ for iconj in range(len(tamaños_I)):
                                     print("   ")
                                     
                                     
-                                    colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
+                                    colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
                                     for column in range(len(colnames)):
                                         sheet.write(0, column, colnames[column])
                                     name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
@@ -2069,7 +2074,11 @@ for iconj in range(len(tamaños_I)):
                     print("entra if de elapsed", localsearch)
                     print("   ")
                     print("   ")
-                    break                
+                    break       
+        
+        countcsv += 3
+        sheet.write(countcsv, 1,"newinstance")
+        countcsv += 3
                                         
                     #break        
             #break    
