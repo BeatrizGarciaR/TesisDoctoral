@@ -1,0 +1,124 @@
+Elapsed time: 0.014480352401733398
+Obj: -0.251
+dispatched 1 3 1 4 0
+dispatched 1 3 1 5 0
+dispatched 1 3 2 1 0
+dispatched 1 3 2 1 0
+dispatched 1 3 1 4 0
+dispatched 1 3 2 4 0
+dispatched 1 3 1 5 0
+dispatched 1 3 2 5 0
+dispatched 1 4 1 4 0
+dispatched 1 4 1 5 0
+dispatched 1 4 2 1 0
+dispatched 1 4 2 1 0
+dispatched 1 4 1 4 0
+dispatched 1 4 2 4 1
+dispatched 1 4 1 5 0
+dispatched 1 4 2 5 0
+dispatched 2 3 1 2 0
+dispatched 2 3 1 2 0
+dispatched 2 3 2 2 0
+dispatched 2 3 2 3 0
+dispatched 2 3 2 3 0
+dispatched 2 4 1 2 0
+dispatched 2 4 1 2 0
+dispatched 2 4 2 2 0
+dispatched 2 4 2 3 0
+dispatched 2 4 2 3 0
+dispatched 3 3 1 2 0
+dispatched 3 3 2 2 0
+dispatched 3 3 1 2 0
+dispatched 3 3 2 2 0
+dispatched 3 3 2 2 0
+dispatched 3 3 2 3 0
+dispatched 3 3 2 3 0
+dispatched 3 3 2 4 0
+dispatched 3 3 2 4 0
+dispatched 3 4 1 2 0
+dispatched 3 4 2 2 0
+dispatched 3 4 1 2 0
+dispatched 3 4 2 2 0
+dispatched 3 4 2 2 0
+dispatched 3 4 2 3 0
+dispatched 3 4 2 3 0
+dispatched 3 4 2 4 0
+dispatched 3 4 2 4 0
+dispatched 4 3 1 2 0
+dispatched 4 3 1 3 0
+dispatched 4 3 1 2 0
+dispatched 4 3 2 2 0
+dispatched 4 3 1 3 0
+dispatched 4 3 2 3 0
+dispatched 4 4 1 2 0
+dispatched 4 4 1 3 0
+dispatched 4 4 1 2 0
+dispatched 4 4 2 2 0
+dispatched 4 4 1 3 0
+dispatched 4 4 2 3 0
+dispatched 5 3 1 3 0
+dispatched 5 3 1 3 0
+dispatched 5 3 2 3 0
+dispatched 5 4 1 3 0
+dispatched 5 4 1 3 0
+dispatched 5 4 2 3 0
+Full 1 1 0
+Full 1 4 1
+Full 1 5 0
+Full 2 2 0
+Full 2 3 0
+Full 3 2 0
+Full 3 2 0
+Full 3 3 0
+Full 3 4 0
+Full 4 2 0
+Full 4 3 0
+Full 5 3 0
+Partial1 1 1 0
+Partial1 1 4 0
+Partial1 1 5 0
+Partial1 2 2 0
+Partial1 2 3 0
+Partial1 3 2 0
+Partial1 3 2 0
+Partial1 3 3 0
+Partial1 3 4 0
+Partial1 4 2 0
+Partial1 4 3 0
+Partial1 5 3 0
+Partial2 1 1 0
+Partial2 1 4 0
+Partial2 1 5 0
+Partial2 2 2 0
+Partial2 2 3 0
+Partial2 3 2 0
+Partial2 3 2 0
+Partial2 3 3 0
+Partial2 3 4 0
+Partial2 4 2 0
+Partial2 4 3 0
+Partial2 5 3 0
+Partial3 1 1 0
+Partial3 1 4 0
+Partial3 1 5 0
+Partial3 2 2 0
+Partial3 2 3 0
+Partial3 3 2 0
+Partial3 3 2 0
+Partial3 3 3 0
+Partial3 3 4 0
+Partial3 4 2 0
+Partial3 4 3 0
+Partial3 5 3 0
+Null 1 1 1
+Null 1 4 0
+Null 1 5 1
+Null 2 2 1
+Null 2 3 1
+Null 3 2 0
+Null 3 2 1
+Null 3 3 1
+Null 3 4 1
+Null 4 2 1
+Null 4 3 1
+Null 5 3 1
