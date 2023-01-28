@@ -48,14 +48,14 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 600
+elapsedtimeStop = 1200
 
 countcsv = 1
 
 soluciones = []
 
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('TesisTS', cell_overwrite_ok=True)
+sheet = book.add_sheet('TesisTS_Localizacion_Demanda_', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIP:
@@ -426,7 +426,7 @@ for iconj in range(len(tamaños_I)):
             
             soluciones.append(initialSolution)
 
-            with open('SolutionX_'+str(len(I))+str('_')
+            with open('SolutionX_Localizacion_Demanda_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.csv', 'w') as solutionX:            
                 solutionX.write(str(initialSolution))
@@ -1113,7 +1113,7 @@ for iconj in range(len(tamaños_I)):
                     sheet.write(countcsv, row+4, datos[row])
             countcsv = countcsv + 1
         
-            with open('data'+str(len(I))+str('_')
+            with open('data_Localizacion_Demanda_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.csv', 'w') as fi:
                     writer = csv.writer(fi)
@@ -1121,7 +1121,7 @@ for iconj in range(len(tamaños_I)):
             
             #Nombre: Resultados_Prueba_I_L_M_N_S
             
-            f = open ('Resultados_Prueba_'
+            f = open ('Resultados_Prueba_Localizacion_Demanda_'
                           +str(len(I))+str('_')
                           +str(len(L))+str('_')
                           +str(len(S))+'.txt','w')
@@ -1150,12 +1150,12 @@ for iconj in range(len(tamaños_I)):
             
             ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
             
-            coberturas = open ('Coberturas_'
+            coberturas = open ('Coberturas_Localizacion_Demanda_'
                           +str(len(I))+str('_')
                           +str(len(L))+str('_')
                           +str(len(S))+'.txt','w')                      
             
-            lectura = open ('Resultados_Prueba_'
+            lectura = open ('Resultados_Prueba_Localizacion_Demanda_'
                           +str(len(I))+str('_')
                           +str(len(L))+str('_')
                           +str(len(S))+'.txt','r')
@@ -1212,10 +1212,10 @@ for iconj in range(len(tamaños_I)):
             
             archivo.close()
             
-            model.write('model_'+str(len(I))+str('_')
+            model.write('model_Localizacion_Demanda_'+str(len(I))+str('_')
                           +str(len(L))+str('_')
                           +str(len(S))+'.lp')
-            model.write('model_'+str(len(I))+str('_')
+            model.write('model_Localizacion_Demanda_'+str(len(I))+str('_')
                           +str(len(L))+str('_')
                           +str(len(S))+'.mps')
                     
@@ -1229,7 +1229,7 @@ for iconj in range(len(tamaños_I)):
             
             localsearch = 0
             
-            mejoras = open ("mejoras_"
+            mejoras = open ("mejoras_Localizacion_Demanda_"
                             +str(len(I))+str('_')
                             +str(len(L))+str('_')
                             +str(len(S))+'.txt','w')
@@ -1626,7 +1626,7 @@ for iconj in range(len(tamaños_I)):
                                 #imprimir variables 
                             
                                 #writer.writerows(name)
-                                with open('data'+str(len(I))+str('_')
+                                with open('data_Localizacion_Demanda_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
                                     writer = csv.writer(f)
@@ -1635,7 +1635,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_Prueba_I_L_M_N_S
                                 
-                                f = open ('Resultados_Prueba_'
+                                f = open ('Resultados_Prueba_Localizacion_Demanda_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.txt','w')
@@ -1664,14 +1664,14 @@ for iconj in range(len(tamaños_I)):
                                 
                                 archivo.close()
                                 
-                                model.write('model_'+str(len(I))+str('_')
+                                model.write('model_Localizacion_Demanda_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.lp')
-                                model.write('model_'+str(len(I))+str('_')
+                                model.write('model_Localizacion_Demanda_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.mps')
                                 
-                                mejoras = open ("mejoras_"
+                                mejoras = open ("mejoras_Localizacion_Demanda_"
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.txt','a')
@@ -1686,7 +1686,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     soluciones.append(initialSolution)
                                     
-                                    with open('SolutionX_'+str(len(I))+str('_')
+                                    with open('SolutionX_Localizacion_Demanda_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.csv', 'a') as solutionX:            
                                         solutionX.write(str(initialSolution))
@@ -1702,7 +1702,7 @@ for iconj in range(len(tamaños_I)):
                                     print("   ")
                                     print("   ")
                                     
-                                    mejoras = open ("mejoras_"
+                                    mejoras = open ("mejoras_Localizacion_Demanda_"
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               +str(len(S))+'.txt','a')
@@ -1727,12 +1727,12 @@ for iconj in range(len(tamaños_I)):
                                     countcsv = countcsv + 1
                                     
                                 
-                                    coberturas = open ('Coberturas_'
+                                    coberturas = open ('Coberturas_Localizacion_Demanda_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')                      
                                     
-                                    lectura = open ('Resultados_Prueba_'
+                                    lectura = open ('Resultados_Prueba_Localizacion_Demanda_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','r')
@@ -1886,7 +1886,7 @@ print(" ")
 sheet.write(countcsv+1, 0, "Total Elapsed Time")
 sheet.write(countcsv+1, 1, sumaelapsed)
 fi.close()
-book.save('TesisTS.xls') 
+book.save('TesisTS_Localizacion_Demanda_.xls') 
 solutionX.close()
 coberturas.close()
 mejoras.close()
