@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 1200
+elapsedtimeStop = 300
 
 countcsv = 1
 
@@ -1315,7 +1315,8 @@ for iconj in range(len(tamaños_I)):
                         aux = initialSolution[initialL][0]
                         aux1 = initialSolution[initialL][1]
                         for j in range(len(L)):
-                            if j != initialL:
+                            #if j != initialL:
+                            if j not in potentialSiteActivos:
                                 
                                 breakaux = 0
                                 
