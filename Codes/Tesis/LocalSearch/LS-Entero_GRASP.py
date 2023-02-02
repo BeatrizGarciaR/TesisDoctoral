@@ -54,6 +54,8 @@ sumaelapsed = 0
 
 countcsv = 1
 
+alpha_def = 0.20
+
 soluciones = []
 
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
@@ -230,25 +232,44 @@ for iconj in range(len(tamaños_I)):
                     for i in range(len(L)):
                         LCR1.append(i)
                 else:
-                    lenLCR1 = max(eta[0], int(len(L)*0.5))
-                    for i in range(lenLCR1):
-                        indice_LCR1 = accidentesesperados1.index(max(accidentesesperados1))
-                        LCR1.append(indice_LCR1)
-                        accidentesesperados1[indice_LCR1] = -1
-                        
+                    funcion_maximo = max(accidentesesperados1)
+                    funcion_minimo = min(accidentesesperados1)
+                    funcion_diferencia = funcion_maximo - funcion_minimo
+                    alpha_mejor = funcion_diferencia * alpha_def
+                    #lenLCR1 = max(eta[0], int(len(L)*0.5))
+                    for i in range(len(L)):
+                        if accidentesesperados1[i] >= (funcion_maximo - alpha_mejor):
+                            LCR1.append(i)
+
                 LCR2 = []
                 if len(L) <= eta[1]:
                     for i in range(len(L)):
                         LCR2.append(i)
                 else:
-                    lenLCR2 = max(eta[1], int(len(L)*0.5))
-                    for i in range(lenLCR2):
-                        indice_LCR2 = accidentesesperados2.index(max(accidentesesperados2))
-                        LCR2.append(indice_LCR2)
-                        accidentesesperados2[indice_LCR2] = -1
+                    funcion_maximo = max(accidentesesperados2)
+                    funcion_minimo = min(accidentesesperados2)
+                    funcion_diferencia = funcion_maximo - funcion_minimo
+                    alpha_mejor = funcion_diferencia * alpha_def
+                    #lenLCR1 = max(eta[0], int(len(L)*0.5))
+                    for i in range(len(L)):
+                        if accidentesesperados2[i] >= (funcion_maximo - alpha_mejor):
+                            LCR2.append(i)
+                        
+                # LCR2 = []
+                # if len(L) <= eta[1]:
+                #     for i in range(len(L)):
+                #         LCR2.append(i)
+                # else:
+                #     lenLCR2 = max(eta[1], int(len(L)*0.5))
+                #     for i in range(lenLCR2):
+                #         indice_LCR2 = accidentesesperados2.index(max(accidentesesperados2))
+                #         LCR2.append(indice_LCR2)
+                #         accidentesesperados2[indice_LCR2] = -1
                 
-                #print(LCR1)
-                #print(LCR2)
+                print(LCR1)
+                print(LCR2)
+                
+                ###### FALTA LLENAR BIEN LA LCR PARA QUE SEA UNA CANTIDAD BUENA DE AMBULANCIAS
                 
                 contamb1 = 0
                 while contamb1 < eta[0]:
@@ -297,7 +318,7 @@ for iconj in range(len(tamaños_I)):
                 print(" ")
                 print( " ")
                 
-                #break
+                break
                 
                 soluciones.append(initialSolution)
     
