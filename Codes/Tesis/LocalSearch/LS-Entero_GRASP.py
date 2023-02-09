@@ -25,13 +25,13 @@ import xlwt
 # tamaños_L = [40]
 # tamaños_S = [12]
 
-tamaños_I = [80]
-tamaños_L = [70]
-tamaños_S = [30]
+# tamaños_I = [80]
+# tamaños_L = [70]
+# tamaños_S = [30]
 
-# tamaños_I = [95]
-# tamaños_L = [100]
-# tamaños_S = [40]
+tamaños_I = [95]
+tamaños_L = [100]
+tamaños_S = [40]
 
 # tamaños_I = [10]
 # tamaños_L = [10]
@@ -54,7 +54,7 @@ sumaelapsed = 0
 
 countcsv = 1
 
-alpha_def = 0.20
+alpha_def = 0.30
 
 soluciones = []
 
@@ -228,6 +228,7 @@ for iconj in range(len(tamaños_I)):
                     initialSolution.append([0,0])
                 
                 LCR1 = []
+                restodepuntos1 = []
                 if len(L) <= eta[0]:
                     for i in range(len(L)):
                         LCR1.append(i)
@@ -240,8 +241,12 @@ for iconj in range(len(tamaños_I)):
                     for i in range(len(L)):
                         if accidentesesperados1[i] >= (funcion_maximo - alpha_mejor):
                             LCR1.append(i)
+                    for l in range(len(L)):
+                        if l not in LCR1:
+                            restodepuntos1.append(l)  
 
                 LCR2 = []
+                restodepuntos2 = []
                 if len(L) <= eta[1]:
                     for i in range(len(L)):
                         LCR2.append(i)
@@ -254,6 +259,9 @@ for iconj in range(len(tamaños_I)):
                     for i in range(len(L)):
                         if accidentesesperados2[i] >= (funcion_maximo - alpha_mejor):
                             LCR2.append(i)
+                    for l in range(len(L)):
+                        if l not in LCR2:
+                            restodepuntos2.append(l)
                         
                 # LCR2 = []
                 # if len(L) <= eta[1]:
@@ -266,8 +274,10 @@ for iconj in range(len(tamaños_I)):
                 #         LCR2.append(indice_LCR2)
                 #         accidentesesperados2[indice_LCR2] = -1
                 
-                print(LCR1)
-                print(LCR2)
+                #print(LCR1)
+                #print(LCR2)
+                
+                #break
                 
                 ###### FALTA LLENAR BIEN LA LCR PARA QUE SEA UNA CANTIDAD BUENA DE AMBULANCIAS
                 
@@ -275,41 +285,65 @@ for iconj in range(len(tamaños_I)):
                 while contamb1 < eta[0]:
                     a = random.uniform(0,1)
                     if eta[0] - contamb1 == 1:
-                        b = random.choice(LCR1)
-                        initialSolution[b][0] = 1
-                        contamb1 += 1
-                        LCR1.remove(b)
-                    else:
-                        if a < 0.85: 
+                        if LCR1 != []:
                             b = random.choice(LCR1)
-                            initialSolution[b][0] = 1
-                            contamb1 += 1
                             LCR1.remove(b)
                         else:
-                            b = random.choice(LCR1)
+                            b = random.choice(restodepuntos1)
+                            restodepuntos1.remove(b)
+                        initialSolution[b][0] = 1
+                        contamb1 += 1                  
+                    else:
+                        if a < 0.85: 
+                            if LCR1 != []:
+                                b = random.choice(LCR1)
+                                LCR1.remove(b)
+                            else:
+                                b = random.choice(restodepuntos1)
+                                restodepuntos1.remove(b)
+                            initialSolution[b][0] = 1
+                            contamb1 += 1
+                        else:
+                            if LCR1 != []:
+                                b = random.choice(LCR1)
+                                LCR1.remove(b)
+                            else:
+                                b = random.choice(restodepuntos1)
+                                restodepuntos1.remove(b)
                             initialSolution[b][0] = 2
                             contamb1 += 2
-                            LCR1.remove(b)
                             
                 contamb2 = 0
                 while contamb2 < eta[1]:
                     a = random.uniform(0,1)
                     if eta[1] - contamb2 == 1:
-                        b = random.choice(LCR2)
-                        initialSolution[b][1] = 1
-                        contamb2 += 1
-                        LCR2.remove(b)
-                    else:
-                        if a < 0.85: 
+                        if LCR2 != []:
                             b = random.choice(LCR2)
-                            initialSolution[b][1] = 1
-                            contamb2 += 1
                             LCR2.remove(b)
                         else:
-                            b = random.choice(LCR2)
+                            b = random.choice(restodepuntos2)
+                            restodepuntos2.remove(b)
+                        initialSolution[b][1] = 1
+                        contamb2 += 1                  
+                    else:
+                        if a < 0.85: 
+                            if LCR2 != []:
+                                b = random.choice(LCR2)
+                                LCR2.remove(b)
+                            else:
+                                b = random.choice(restodepuntos2)
+                                restodepuntos2.remove(b)
+                            initialSolution[b][1] = 1
+                            contamb2 += 1
+                        else:
+                            if LCR2 != []:
+                                b = random.choice(LCR2)
+                                LCR2.remove(b)
+                            else:
+                                b = random.choice(restodepuntos2)
+                                restodepuntos2.remove(b)
                             initialSolution[b][1] = 2
                             contamb2 += 2
-                            LCR2.remove(b)
                 
     
                 # Solamente se asignan 1 y 2... hay que modificar eso
@@ -318,7 +352,7 @@ for iconj in range(len(tamaños_I)):
                 print(" ")
                 print( " ")
                 
-                break
+                #break
                 
                 soluciones.append(initialSolution)
     
@@ -933,7 +967,8 @@ for iconj in range(len(tamaños_I)):
                             aux1 = initialSolution[initialL][1]
                             for j in range(len(L)):
                                 #if j != initialL:
-                                if j not in potentialSiteActivos:
+                                #if j not in potentialSiteActivos:  #LS1
+                                if j in potentialSiteActivos and j != initialL: #LS2
                                     
                                     breakaux = 0
                                     

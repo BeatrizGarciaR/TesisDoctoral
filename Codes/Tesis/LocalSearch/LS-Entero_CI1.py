@@ -25,13 +25,13 @@ import math
 # tamaños_L = [40]
 # tamaños_S = [12]
 
-tamaños_I = [80]
-tamaños_L = [70]
-tamaños_S = [30]
+# tamaños_I = [80]
+# tamaños_L = [70]
+# tamaños_S = [30]
 
-# tamaños_I = [95]
-# tamaños_L = [100]
-# tamaños_S = [40]
+tamaños_I = [95]
+tamaños_L = [100]
+tamaños_S = [40]
 
 # tamaños_I = [10]
 # tamaños_L = [10]
@@ -1248,7 +1248,9 @@ for iconj in range(len(tamaños_I)):
                         aux = initialSolution[initialL][0]
                         aux1 = initialSolution[initialL][1]
                         for j in range(len(L)):
-                            if j != initialL:
+                            #if j != initialL:
+                            #if j not in potentialSiteActivos:  #LS1
+                            if j in potentialSiteActivos and j != initialL: #LS2
                                 
                                 breakaux = 0
                                 

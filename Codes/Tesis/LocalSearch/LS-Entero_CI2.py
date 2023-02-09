@@ -25,13 +25,13 @@ import xlwt
 # tamaños_L = [40]
 # tamaños_S = [12]
 
-# tamaños_I = [20]
-# tamaños_L = [40]
-# tamaños_S = [12]
+tamaños_I = [95]
+tamaños_L = [100]
+tamaños_S = [40]
 
-tamaños_I = [80]
-tamaños_L = [70]
-tamaños_S = [30]
+# tamaños_I = [80]
+# tamaños_L = [70]
+# tamaños_S = [30]
 
 # tamaños_I = [10]
 # tamaños_L = [10]
@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 300
+elapsedtimeStop = 1200
 
 countcsv = 1
 
@@ -388,29 +388,29 @@ for iconj in range(len(tamaños_I)):
             # ####################
             # ## OPCION 1 ########
             # ####################
-            # amb1 = 0
-            # countamb = 0
-            # for i in initialSolution1:
-            #     if amb1 < eta[0]:
-            #         if countamb < 2:
-            #             initialSolution[i][0] = 2
-            #             amb1 += 2
-            #             countamb += 1
-            #         else:
-            #             initialSolution[i][0] = 1
-            #             amb1 += 1
+            amb1 = 0
+            countamb = 0
+            for i in initialSolution1:
+                if amb1 < eta[0]:
+                    if countamb < 2:
+                        initialSolution[i][0] = 2
+                        amb1 += 2
+                        countamb += 1
+                    else:
+                        initialSolution[i][0] = 1
+                        amb1 += 1
 
-            # amb2 = 0
-            # countamb = 0
-            # for i in initialSolution2:
-            #     if amb2 < eta[1]:
-            #         if countamb < 1:
-            #             initialSolution[i][1] = 2
-            #             amb2 += 2
-            #             countamb += 1
-            #         else:
-            #             initialSolution[i][1] = 1
-            #             amb2 += 1
+            amb2 = 0
+            countamb = 0
+            for i in initialSolution2:
+                if amb2 < eta[1]:
+                    if countamb < 1:
+                        initialSolution[i][1] = 2
+                        amb2 += 2
+                        countamb += 1
+                    else:
+                        initialSolution[i][1] = 1
+                        amb2 += 1
                         
             # print(initialSolution)
             
@@ -418,19 +418,19 @@ for iconj in range(len(tamaños_I)):
             ####################
             ## OPCION 2 ########
             ####################
-            amb1 = 0
-            for i in initialSolution1:
-                if amb1 < eta[0]:
-                    initialSolution[i][0] = 1 
-                    amb1 += 1
+            # amb1 = 0
+            # for i in initialSolution1:
+            #     if amb1 < eta[0]:
+            #         initialSolution[i][0] = 1 
+            #         amb1 += 1
                     
-            amb2 = 0
-            for i in initialSolution2:
-                if amb2 < eta[1]:
-                    initialSolution[i][1] = 1
-                    amb2 += 1
+            # amb2 = 0
+            # for i in initialSolution2:
+            #     if amb2 < eta[1]:
+            #         initialSolution[i][1] = 1
+            #         amb2 += 1
                         
-            print(initialSolution)
+            # print(initialSolution)
             
             
             #break
@@ -1316,7 +1316,8 @@ for iconj in range(len(tamaños_I)):
                         aux1 = initialSolution[initialL][1]
                         for j in range(len(L)):
                             #if j != initialL:
-                            if j not in potentialSiteActivos:
+                            #if j not in potentialSiteActivos:  #LS1
+                            if j in potentialSiteActivos and j != initialL: #LS2
                                 
                                 breakaux = 0
                                 
