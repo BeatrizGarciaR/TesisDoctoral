@@ -49,6 +49,7 @@ wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
 elapsedtimeStop = 1200
+modelStopTime = 60
 
 sumaelapsed = 0
 
@@ -375,7 +376,7 @@ for iconj in range(len(tamaños_I)):
                 ######################################################################
                 
                 model = gp.Model("TabuSearchWithSAA")            
-                model.setParam('TimeLimit', elapsedtimeStop)
+                model.setParam('TimeLimit', modelStopTime)
                 model._obj = None
                 model._bd = None
                 model._data = []
@@ -997,7 +998,7 @@ for iconj in range(len(tamaños_I)):
                                     print(initialSolution)                                
            
                                     model = gp.Model("TabuSearchWithSAA")            
-                                    model.setParam('TimeLimit', elapsedtimeStop)
+                                    model.setParam('TimeLimit', modelStopTime)
                                     model._obj = None
                                     model._bd = None
                                     model._data = []
@@ -1499,6 +1500,21 @@ for iconj in range(len(tamaños_I)):
                                         breakaux = 1
                                         
                                         break
+                                    
+                                    # else:
+                                        
+                                    #     mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                    #     mejoras.write('\n')
+                                    #     print("entra else que repite solution")
+                                    #     print(" ")
+                                    #     print(" ")
+                                    #     initialSolution[initialL][0] = aux
+                                    #     initialSolution[initialL][1] = aux1
+                                    #     initialSolution[j][0] = 0
+                                    #     initialSolution[j][1] = 0
+                                    #     # print(initialSolution)
+                                    #     # print(" ")
+                                    #     # print(" ")
                                     
                                     else:
                                         
