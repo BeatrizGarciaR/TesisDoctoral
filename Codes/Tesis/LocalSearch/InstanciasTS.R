@@ -2,21 +2,21 @@
 ###### Instancias ######
 ########################
 
-# tamaños_I <- c(20, 50, 80, 95)
-# tamaños_L <- c(40, 50, 70, 85)
-# tamaños_S <- c(12, 25, 30, 40)
-tamaños_I <- c(5)
-tamaños_L <- c(5)
-tamaños_S <- c(5)
+# tamanos_I <- c(20, 50, 80, 95)
+# tamanos_L <- c(40, 50, 70, 85)
+# tamanos_S <- c(12, 25, 30, 40)
+tamanos_I <- c(5)
+tamanos_L <- c(5)
+tamanos_S <- c(5)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
 K <- c(1, 2)
 
-for (iconj in 1:length(tamaños_I)){
-  for (jconj in 1:length(tamaños_L)){
-    len_I = tamaños_I[iconj]
-    len_L = tamaños_L[jconj]
+for (iconj in 1:length(tamanos_I)){
+  for (jconj in 1:length(tamanos_L)){
+    len_I = tamanos_I[iconj]
+    len_L = tamanos_L[jconj]
     I <- c()
     for (i in 1:len_I){
       I <- cbind(I, i)
@@ -27,7 +27,7 @@ for (iconj in 1:length(tamaños_I)){
       L <- cbind(L, l)
     }
     
-    pickL1 = as.integer(tamaños_L[jconj]*porcentaje_L1)
+    pickL1 = as.integer(tamanos_L[jconj]*porcentaje_L1)
     L1 = sample(1:len_L, pickL1)
     
     # Specify sample size
@@ -42,11 +42,11 @@ for (iconj in 1:length(tamaños_I)){
       r_li <- rbind(r_li, as.integer(y_rgamma)) 
     }
     
-    for (sconj in 1:length(tamaños_S)){
+    for (sconj in 1:length(tamanos_S)){
       #Nombre: Instancias_Prueba_I_L_S
       
-      instancename <- paste('Instancias_Prueba_',toString(tamaños_I[iconj]),'_',
-                            toString(tamaños_L[jconj]),'_', toString(tamaños_S[sconj]),'.txt', sep = "")
+      instancename <- paste('Instancias_Prueba_',toString(tamanos_I[iconj]),'_',
+                            toString(tamanos_L[jconj]),'_', toString(tamanos_S[sconj]),'.txt', sep = "")
 
       ################################
       ############# SETS #############
@@ -56,31 +56,30 @@ for (iconj in 1:length(tamaños_I)){
       
       write(len_L, file = instancename, append=TRUE)
       
-      len_S = tamaños_S[sconj]
+      len_S = tamanos_S[sconj]
       write(len_S, file = instancename, append=TRUE)
       
       ################################
       ########## SCENARIOS ###########
       ################################
       
-      S <- c()
+      S <- matrix(nrow=len_S, ncol=len_I*length(K))
       for (s in 1:len_S){
-        sigma = 0.6 # parametro
-        lognormal = stats.lognorm(sigma)
-        x = np.linspace(lognormal.ppf(0.01),
-                        lognormal.ppf(1.99), 1)
-        if (x <= 1){
-          S <- rbind(S, 1)
-        }
-        else{
-          S <- rbind(S, 2)
-        }
+       for (len in 1:len_I*length(K)){
+         x <- rlnorm(1)
+         if (x[len] < 5){
+           S[s][len] <- 1
+         }
+         else{
+           S[s][len] <- 2
+         }
+       }
       }
       
-      S <- c()
-      for (s in 1:len_S){
-        S <- rbind(S, rbinom(len_I*length(K), 2, 0.1))
-      }
+      # S <- c()
+      # for (s in 1:len_S){
+      #   S <- rbind(S, rbinom(len_I*length(K), 2, 0.1))
+      # }
       write.table(S, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
       ################################
