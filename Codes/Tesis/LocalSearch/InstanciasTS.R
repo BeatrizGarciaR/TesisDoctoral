@@ -5,9 +5,9 @@
 # tamanos_I <- c(20, 50, 80, 95)
 # tamanos_L <- c(40, 50, 70, 85)
 # tamanos_S <- c(12, 25, 30, 40)
-tamanos_I <- c(5)
-tamanos_L <- c(5)
-tamanos_S <- c(5)
+tamanos_I <- c(95)
+tamanos_L <- c(100)
+tamanos_S <- c(40)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
@@ -45,7 +45,7 @@ for (iconj in 1:length(tamanos_I)){
     for (sconj in 1:length(tamanos_S)){
       #Nombre: Instancias_Prueba_I_L_S
       
-      instancename <- paste('Instancias_Prueba_',toString(tamanos_I[iconj]),'_',
+      instancename <- paste('Instancias_PruebaNueva_',toString(tamanos_I[iconj]),'_',
                             toString(tamanos_L[jconj]),'_', toString(tamanos_S[sconj]),'.txt', sep = "")
 
       ################################
@@ -65,15 +65,21 @@ for (iconj in 1:length(tamanos_I)){
       
       S <- matrix(nrow=len_S, ncol=len_I*length(K))
       for (s in 1:len_S){
-       for (len in 1:len_I*length(K)){
-         x <- rlnorm(1)
-         if (x[len] < 5){
-           S[s][len] <- 1
-         }
-         else{
-           S[s][len] <- 2
-         }
-       }
+        for (len in 1:(len_I*length(K))){
+          #print(paste("s es ", s))
+          #print(paste("len es ", len))
+          x <- rlnorm(1)
+          #print(paste("x es ", x))
+          if (x < 5){
+            S[s, len] = 0
+          }
+          else if (x < 8){
+            S[s, len] = 1
+          }
+          else{
+            S[s, len] = 2
+          }
+        }
       }
       
       # S <- c()
