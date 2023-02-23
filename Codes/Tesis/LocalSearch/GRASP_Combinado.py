@@ -84,7 +84,7 @@ for iconj in range(len(tamaños_I)):
     
             #Nombre: Instancias_Prueba_I_L_S
                 
-            archivo = open('Instancias_Prueba_'
+            archivo = open('Instancias_PruebaNueva_'
                       +str(tamaños_I[iconj])+str('_')
                       +str(tamaños_L[jconj])+str('_')
                       +str(tamaños_S[sconj])
@@ -219,7 +219,7 @@ for iconj in range(len(tamaños_I)):
             
             
             #########################################
-            #######3 CONSTRUCT GRASP #############
+            ########## CONSTRUCT GRASP #############
             ########################################
             
             while sumaelapsed < elapsedtimeStop:
@@ -720,7 +720,7 @@ for iconj in range(len(tamaños_I)):
                         sheet.write(countcsv, row+4, datos[row])
                 countcsv = countcsv + 1
             
-                with open('data_GRASP_'+str(len(I))+str('_')
+                with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.csv', 'w') as fi:
                         writer = csv.writer(fi)
@@ -728,7 +728,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_Prueba_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_GRASP_'
+                f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','w')
@@ -757,12 +757,12 @@ for iconj in range(len(tamaños_I)):
                 
                 ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
                 
-                coberturas = open ('Coberturas_GRASP_'
+                coberturas = open ('Coberturas_GRASP_PruebaNueva_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','w')                      
                 
-                lectura = open ('Resultados_Prueba_GRASP_'
+                lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','r')
@@ -819,10 +819,10 @@ for iconj in range(len(tamaños_I)):
                 
                 archivo.close()
                 
-                model.write('model_GRASP_'+str(len(I))+str('_')
+                model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.lp')
-                model.write('model_GRASP_'+str(len(I))+str('_')
+                model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.mps')
                         
@@ -840,7 +840,7 @@ for iconj in range(len(tamaños_I)):
                     
                     soluciones.append(initialSolution)
                     
-                    with open('SolutionX_GRASP_'+str(len(I))+str('_')
+                    with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.csv', 'a') as solutionX:            
                         solutionX.write(str(initialSolution))
@@ -856,7 +856,7 @@ for iconj in range(len(tamaños_I)):
                     print("   ")
                     print("   ")
                     
-                    mejoras = open ("mejoras_GRASP_"
+                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','a')
@@ -881,12 +881,12 @@ for iconj in range(len(tamaños_I)):
                     countcsv = countcsv + 1
                     
                 
-                    coberturas = open ('Coberturas_GRASP_'
+                    coberturas = open ('Coberturas_GRASP_PruebaNueva_'
                                   +str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.txt','a')                      
                     
-                    lectura = open ('Resultados_Prueba_GRASP_'
+                    lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                                   +str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.txt','r')
@@ -948,7 +948,7 @@ for iconj in range(len(tamaños_I)):
                 
                 localsearch = 0
                 
-                mejoras = open ("mejoras_GRASP_"
+                mejoras = open ("mejoras_GRASP_PruebaNueva_"
                                 +str(len(I))+str('_')
                                 +str(len(L))+str('_')
                                 +str(len(S))+'.txt','a')
@@ -972,551 +972,7 @@ for iconj in range(len(tamaños_I)):
                                 #####################################################
                                 ##################### LS1 ###########################
                                 #####################################################
-                                # if j not in potentialSiteActivos:  #LS1
-                                #     breakaux = 0
-                                    
-                                #     initialSolution[j][0] += initialSolution[initialL][0]
-                                #     initialSolution[j][1] += initialSolution[initialL][1]
-                                #     initialSolution[initialL][0] = 0
-                                #     initialSolution[initialL][1] = 0
-                                    
-                                #     print ("initial solution de potentialSiteActivos")
-                                #     print(" ")
-                                #     print(initialSolution)
-           
-                                #     model = gp.Model("TabuSearchWithSAA")            
-                                #     model.setParam('TimeLimit', modelStopTime)
-                                #     model._obj = None
-                                #     model._bd = None
-                                #     model._data = []
-                                #     model._start = time.time()
-                                    
-                                #     # Create variables #
-                                #     y_vars = {}    
-                                #     cantVarY = 0
-                                #     for s in range(len(S)):        
-                                #         for l in L:
-                                #             if initialSolution[l-1][0] > 0:
-                                #                 for i in I:
-                                #                     if S[s][i-1][0] != 0:
-                                #                         y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                #                         cantVarY += 1
-                                                      
-                                #             if initialSolution[l-1][1] > 0:
-                                #                 for i in I:
-                                #                     for k in K:
-                                #                         if S[s][i-1][1] != 0:
-                                #                             y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                               name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                #                             cantVarY += 1
-                                #                         if S[s][i-1][0] != 0:
-                                #                             y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                               name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                  
-                                #     alpha_vars = {}  ## z full
-                                #     cantVarAlpha = 0
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0] != 0:
-                                #                 alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Full "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarAlpha += 1
-                                #             if S[s][i-1][1] != 0:
-                                #                 alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Full "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarAlpha += 1
-                                    
-                                #     beta_vars = {}  ## z partial 1
-                                #     cantVarBeta = 0
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0] != 0:
-                                #                 beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarBeta += 1
-                                #             if S[s][i-1][1] != 0:
-                                #                 beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarBeta += 1
-                                    
-                                #     delta_vars = {}  ## z partial 2
-                                #     cantVarDelta = 0
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0] != 0:
-                                #                 delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarDelta += 1
-                                #             if S[s][i-1][1] != 0:
-                                #                 delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarDelta += 1
-                                    
-                                #     phi_vars = {}   ## z partial 3
-                                #     cantVarPhi = 0
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0] != 0:
-                                #                 phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarPhi += 1
-                                #             if S[s][i-1][1] != 0:
-                                #                 phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarPhi += 1
-                                    
-                                #     gamma_vars = {} ## z null
-                                #     cantVarGamma = 0
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0] != 0:
-                                #                 gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Null "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarGamma += 1
-                                #             if S[s][i-1][1] != 0:
-                                #                 gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                #                                           name="Null "+str(s+1)+str(' ')+str(i))
-                                #                 cantVarGamma += 1   
-                                                
-                                #     obj = gp.LinExpr()
-                                #     for s in range(len(S)):
-                                #         for i in I:
-                                #             if S[s][i-1][0]:
-                                #                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                #             if S[s][i-1][1]:
-                                #                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                #     model.setObjective(obj, GRB.MAXIMIZE)  
-                                
-                                
-                                #     ## Add constraints 
-                                    
-                                #     for s in range(len(S)):
-                                        
-                                #         for l in L:
-                                #             for k in K:
-                                #                 if k == 1 and initialSolution[l-1][k-1] != 0:
-                                #                     suma = 0
-                                #                     for i in I:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += y_vars[s+1,l,1,i]
-                                #                     model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                                
-                                #                 if k == 2 and initialSolution[l-1][k-1] != 0:
-                                #                     suma = 0
-                                #                     for i in I:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += y_vars[s+1,l,1,i]
-                                #                         if S[s][i-1][1] != 0:
-                                #                             suma += y_vars[s+1,l,k,i] 
-                                #                     model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-    
-                                #         for i in I:
-                                #             if S[s][i-1][0] + S[s][i-1][1] != 0:
-                                #                 suma = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                                                                                   
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                 model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-                                                                         
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma = 0
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-                                                                   
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-                                                
-                      
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                                                                             
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-                                            
-                                                
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma = 0
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-                                            
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma = 0
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                                   suma1 += y_vars[s+1,l,k,i]  
-                                #                 model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-                                            
-                       
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-                                            
-                       
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma = 0
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                #                                   suma1 += y_vars[s+1,l,k,i]  
-                                #                 model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-                                            
-                  
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 suma1 = 0
-                                #                 for l in L:
-                                #                     if initialSolution[l-1][0] != 0:
-                                #                         if S[s][i-1][0] != 0:
-                                #                             suma1 += y_vars[s+1,l,1,i] 
-                                #                     if initialSolution[l-1][1] != 0:
-                                #                         for k in K:
-                                #                               if S[s][i-1][1] != 0:
-                                #                                   suma1 += y_vars[s+1,l,2,i] 
-                                #                               if S[s][i-1][0] != 0:
-                                #                                   suma1 += y_vars[s+1,l,k,i] 
-                                #                 model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                                            
-          
-                                #         for i in I:
-                                #             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                #                 model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
-                                    
-                                #     # Optimize model
-                                    
-                                #     end_time = time.time()
-                                    
-                                #     elapsed_time = end_time - model._start
-                                    
-                                #     sumaelapsed = sumaelapsed + elapsed_time
-                                    
-                                #     model._sumaelapsed = sumaelapsed
-                                    
-                                #     model.optimize(callback=data_cb)
-                                    
-                                #     print(" ")
-                                #     print(" ")
-                                #     print("suma elapsed = " , sumaelapsed)
-                                #     print(" ")
-                                #     print(" ")
-                                    
-                                #     #imprimir variables 
-                                
-                                #     #writer.writerows(name)
-                                #     with open('data_GRASP_'+str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
-                                #         writer = csv.writer(f)
-                                #         writer.writerows("new")
-                                #         writer.writerows(model._data)
-                                    
-                                #     #Nombre: Resultados_Prueba_I_L_M_N_S
-                                    
-                                #     f = open ('Resultados_Prueba_GRASP_'
-                                #                   +str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.txt','w')
-                                    
-                                #     f.write("Elapsed time: ")
-                                #     f.write(str(elapsed_time))
-                                #     f.write('\n')
-                                
-                                            
-                                #     f.write('Obj: %g' % model.objVal)
-                                #     f.write('\n')
-                                    
-                                #     for v in model.getVars():
-                                #         f.write('%s %g' % (v.varName, v.x))
-                                #         f.write('\n')
-                                    
-                                #     #imprimir el valor objetivo
-                                #     print('Obj: %g' % model.objVal)
-                                #     print("Finished")
-                                #     print(" ")
-                                #     print(" ")
-                                    
-                                #     f.close()  
-                                                        
-    
-                                    
-                                #     archivo.close()
-                                    
-                                #     model.write('model_GRASP_'+str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.lp')
-                                #     model.write('model_GRASP_'+str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.mps')
-                                    
-                                #     mejoras = open ("mejoras_GRASP_"
-                                #                   +str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.txt','a')
-                                        
-                                    
-                                #     if model.objVal > valorObjetivo:
-                                #         print("   ")
-                                #         print("   ")
-                                #         print("entra if better solution", localsearch)
-                                #         print("   ")
-                                #         #print(initialSolution)
-                                        
-                                #         soluciones.append(initialSolution)
-                                        
-                                #         with open('SolutionX_GRASP_'+str(len(I))+str('_')
-                                #                       +str(len(L))+str('_')
-                                #                       +str(len(S))+'.csv', 'a') as solutionX:            
-                                #             solutionX.write(str(initialSolution))
-                                #             solutionX.write('\n')
-                                        
-                                #         potentialSiteActivos = []
-                                #         for i in range(len(initialSolution)):
-                                #             if any(initialSolution[i]):
-                                #                 potentialSiteActivos.append(i)
-                                #         print(potentialSiteActivos)
-                                        
-                                #         valorObjetivo = model.objVal
-                                #         print("   ")
-                                #         print("   ")
-                                        
-                                #         mejoras = open ("mejoras_GRASP_"
-                                #                   +str(len(I))+str('_')
-                                #                   +str(len(L))+str('_')
-                                #                   +str(len(S))+'.txt','a')
-                                        
-                                #         mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '  LS1')
-                                #         mejoras.write('\n')
-                                        
-                                        
-                                #         colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
-                                #         for column in range(len(colnames)):
-                                #             sheet.write(0, column, colnames[column])
-                                #         name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
-                                #         sheet.write(countcsv, 0, name)
-                                #         sheet.write(countcsv, 1, len(I))
-                                #         sheet.write(countcsv, 2, len(L))
-                                #         sheet.write(countcsv, 3, len(S))
-                                #         if len(model._data) != 0:
-                                #             print("Entra datos for 2")
-                                #             datos = model._data[len(model._data)-1]
-                                #             for row in range(len(datos)):
-                                #                 sheet.write(countcsv, row+4, datos[row])
-                                #         countcsv = countcsv + 1
-                                        
-                                    
-                                #         coberturas = open ('Coberturas_GRASP_'
-                                #                       +str(len(I))+str('_')
-                                #                       +str(len(L))+str('_')
-                                #                       +str(len(S))+'.txt','a')                      
-                                        
-                                #         lectura = open ('Resultados_Prueba_GRASP_'
-                                #                       +str(len(I))+str('_')
-                                #                       +str(len(L))+str('_')
-                                #                       +str(len(S))+'.txt','r')
-                                #         lectura.readline()
-                                #         lectura.readline()
-                                        
-                                #         for salto in range(cantVarY):
-                                #             lectura.readline()
-                                         
-                                #         coberturaTotal = 0
-                                #         for salto1 in range(cantVarAlpha):
-                                #             line = lectura.readline()
-                                #             if int(line[len(line)-2]) == 1:
-                                #                 coberturaTotal += 1
-                                #         coberturas.write(str(coberturaTotal/TotalAccidentes))
-                                #         coberturas.write('\n')
-                            
-                                #         coberturaParcial1 = 0
-                                #         for salto2 in range(cantVarBeta):
-                                #             line = lectura.readline()
-                                #             if int(line[len(line)-2]) == 1:
-                                #                 coberturaParcial1 += 1
-                                #         coberturas.write(str(coberturaParcial1/TotalAccidentes))
-                                #         coberturas.write('\n')
-                                        
-                                #         coberturaParcial2 = 0
-                                #         for salto3 in range(cantVarDelta):
-                                #             line = lectura.readline()
-                                #             if int(line[len(line)-2]) == 1:
-                                #                 coberturaParcial2 += 1
-                                #         coberturas.write(str(coberturaParcial2/TotalAccidentes))
-                                #         coberturas.write('\n')
-                                        
-                                #         coberturaParcial3 = 0
-                                #         for salto4 in range(cantVarPhi):
-                                #             line = lectura.readline()
-                                #             if int(line[len(line)-2]) == 1:
-                                #                 coberturaParcial3 += 1
-                                #         coberturas.write(str(coberturaParcial3/TotalAccidentes))
-                                #         coberturas.write('\n')
-                            
-                                #         coberturaNula = 0
-                                #         for salto5 in range(cantVarGamma):
-                                #             line = lectura.readline()
-                                #             if int(line[len(line)-2]) == 1:
-                                #                 coberturaNula += 1
-                                #         coberturas.write(str(coberturaNula/TotalAccidentes))
-                                #         coberturas.write('\n')
-                                        
-                                #         coberturas.write(str(-1))
-                                #         coberturas.write('\n')
-                                        
-                                #         lectura.close()
-                                        
-                                #         breakaux = 1
-                                        
-                                #         break
-                                    
-                                #     else:
-                                        
-                                #         mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
-                                #         mejoras.write('\n')
-                                #         print("entra else que repite solution")
-                                #         print(" ")
-                                #         print(" ")
-                                #         initialSolution[initialL][0] = aux
-                                #         initialSolution[initialL][1] = aux1
-                                #         initialSolution[j][0] -= aux
-                                #         initialSolution[j][1] -= aux1
-                                #         # print(initialSolution)
-                                #         # print(" ")
-                                #         # print(" ")
-                                        
-                                #     if sumaelapsed > elapsedtimeStop:
-                                #             print("   ")
-                                #             print("   ")
-                                #             print("entra if de elapsed", localsearch)
-                                #             print("   ")
-                                #             print("   ")
-                                #             break
-                                        
-                                #####################################################
-                                ##################### LS2 ###########################
-                                #####################################################
-                                
-                                if j in potentialSiteActivos and j != initialL: #LS2
-                                    
+                                if j not in potentialSiteActivos:  #LS1
                                     breakaux = 0
                                     
                                     initialSolution[j][0] += initialSolution[initialL][0]
@@ -1876,7 +1332,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_Prueba_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Prueba_GRASP_'
+                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','w')
@@ -1905,14 +1361,14 @@ for iconj in range(len(tamaños_I)):
                                     
                                     archivo.close()
                                     
-                                    model.write('model_GRASP_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.lp')
-                                    model.write('model_GRASP_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.mps')
                                     
-                                    mejoras = open ("mejoras_GRASP_"
+                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1927,7 +1383,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         soluciones.append(initialSolution)
                                         
-                                        with open('SolutionX_GRASP_'+str(len(I))+str('_')
+                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.csv', 'a') as solutionX:            
                                             solutionX.write(str(initialSolution))
@@ -1943,7 +1399,551 @@ for iconj in range(len(tamaños_I)):
                                         print("   ")
                                         print("   ")
                                         
-                                        mejoras = open ("mejoras_GRASP_"
+                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                                  +str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.txt','a')
+                                        
+                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '  LS1')
+                                        mejoras.write('\n')
+                                        
+                                        
+                                        colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
+                                        for column in range(len(colnames)):
+                                            sheet.write(0, column, colnames[column])
+                                        name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
+                                        sheet.write(countcsv, 0, name)
+                                        sheet.write(countcsv, 1, len(I))
+                                        sheet.write(countcsv, 2, len(L))
+                                        sheet.write(countcsv, 3, len(S))
+                                        if len(model._data) != 0:
+                                            print("Entra datos for 2")
+                                            datos = model._data[len(model._data)-1]
+                                            for row in range(len(datos)):
+                                                sheet.write(countcsv, row+4, datos[row])
+                                        countcsv = countcsv + 1
+                                        
+                                    
+                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                                                      +str(len(I))+str('_')
+                                                      +str(len(L))+str('_')
+                                                      +str(len(S))+'.txt','a')                      
+                                        
+                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                                      +str(len(I))+str('_')
+                                                      +str(len(L))+str('_')
+                                                      +str(len(S))+'.txt','r')
+                                        lectura.readline()
+                                        lectura.readline()
+                                        
+                                        for salto in range(cantVarY):
+                                            lectura.readline()
+                                         
+                                        coberturaTotal = 0
+                                        for salto1 in range(cantVarAlpha):
+                                            line = lectura.readline()
+                                            if int(line[len(line)-2]) == 1:
+                                                coberturaTotal += 1
+                                        coberturas.write(str(coberturaTotal/TotalAccidentes))
+                                        coberturas.write('\n')
+                            
+                                        coberturaParcial1 = 0
+                                        for salto2 in range(cantVarBeta):
+                                            line = lectura.readline()
+                                            if int(line[len(line)-2]) == 1:
+                                                coberturaParcial1 += 1
+                                        coberturas.write(str(coberturaParcial1/TotalAccidentes))
+                                        coberturas.write('\n')
+                                        
+                                        coberturaParcial2 = 0
+                                        for salto3 in range(cantVarDelta):
+                                            line = lectura.readline()
+                                            if int(line[len(line)-2]) == 1:
+                                                coberturaParcial2 += 1
+                                        coberturas.write(str(coberturaParcial2/TotalAccidentes))
+                                        coberturas.write('\n')
+                                        
+                                        coberturaParcial3 = 0
+                                        for salto4 in range(cantVarPhi):
+                                            line = lectura.readline()
+                                            if int(line[len(line)-2]) == 1:
+                                                coberturaParcial3 += 1
+                                        coberturas.write(str(coberturaParcial3/TotalAccidentes))
+                                        coberturas.write('\n')
+                            
+                                        coberturaNula = 0
+                                        for salto5 in range(cantVarGamma):
+                                            line = lectura.readline()
+                                            if int(line[len(line)-2]) == 1:
+                                                coberturaNula += 1
+                                        coberturas.write(str(coberturaNula/TotalAccidentes))
+                                        coberturas.write('\n')
+                                        
+                                        coberturas.write(str(-1))
+                                        coberturas.write('\n')
+                                        
+                                        lectura.close()
+                                        
+                                        breakaux = 1
+                                        
+                                        break
+                                    
+                                    else:
+                                        
+                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                        mejoras.write('\n')
+                                        print("entra else que repite solution")
+                                        print(" ")
+                                        print(" ")
+                                        initialSolution[initialL][0] = aux
+                                        initialSolution[initialL][1] = aux1
+                                        initialSolution[j][0] -= aux
+                                        initialSolution[j][1] -= aux1
+                                        # print(initialSolution)
+                                        # print(" ")
+                                        # print(" ")
+                                        
+                                    if sumaelapsed > elapsedtimeStop:
+                                            print("   ")
+                                            print("   ")
+                                            print("entra if de elapsed", localsearch)
+                                            print("   ")
+                                            print("   ")
+                                            break
+                                        
+                                #####################################################
+                                ##################### LS2 ###########################
+                                #####################################################
+                                
+                                if j in potentialSiteActivos and j != initialL: #LS2
+                                    
+                                    breakaux = 0
+                                    
+                                    initialSolution[j][0] += initialSolution[initialL][0]
+                                    initialSolution[j][1] += initialSolution[initialL][1]
+                                    initialSolution[initialL][0] = 0
+                                    initialSolution[initialL][1] = 0
+                                    
+                                    print ("initial solution de potentialSiteActivos")
+                                    print(" ")
+                                    print(initialSolution)
+           
+                                    model = gp.Model("TabuSearchWithSAA")            
+                                    model.setParam('TimeLimit', modelStopTime)
+                                    model._obj = None
+                                    model._bd = None
+                                    model._data = []
+                                    model._start = time.time()
+                                    
+                                    # Create variables #
+                                    y_vars = {}    
+                                    cantVarY = 0
+                                    for s in range(len(S)):        
+                                        for l in L:
+                                            if initialSolution[l-1][0] > 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                        name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                        cantVarY += 1
+                                                      
+                                            if initialSolution[l-1][1] > 0:
+                                                for i in I:
+                                                    for k in K:
+                                                        if S[s][i-1][1] != 0:
+                                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                            cantVarY += 1
+                                                        if S[s][i-1][0] != 0:
+                                                            y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
+                                  
+                                    alpha_vars = {}  ## z full
+                                    cantVarAlpha = 0
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Full "+str(s+1)+str(' ')+str(i))
+                                                cantVarAlpha += 1
+                                            if S[s][i-1][1] != 0:
+                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Full "+str(s+1)+str(' ')+str(i))
+                                                cantVarAlpha += 1
+                                    
+                                    beta_vars = {}  ## z partial 1
+                                    cantVarBeta = 0
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                                cantVarBeta += 1
+                                            if S[s][i-1][1] != 0:
+                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                                cantVarBeta += 1
+                                    
+                                    delta_vars = {}  ## z partial 2
+                                    cantVarDelta = 0
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                                cantVarDelta += 1
+                                            if S[s][i-1][1] != 0:
+                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                                cantVarDelta += 1
+                                    
+                                    phi_vars = {}   ## z partial 3
+                                    cantVarPhi = 0
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                                cantVarPhi += 1
+                                            if S[s][i-1][1] != 0:
+                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                                cantVarPhi += 1
+                                    
+                                    gamma_vars = {} ## z null
+                                    cantVarGamma = 0
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Null "+str(s+1)+str(' ')+str(i))
+                                                cantVarGamma += 1
+                                            if S[s][i-1][1] != 0:
+                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                          name="Null "+str(s+1)+str(' ')+str(i))
+                                                cantVarGamma += 1   
+                                                
+                                    obj = gp.LinExpr()
+                                    for s in range(len(S)):
+                                        for i in I:
+                                            if S[s][i-1][0]:
+                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                            if S[s][i-1][1]:
+                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                    ## Add constraints 
+                                    
+                                    for s in range(len(S)):
+                                        
+                                        for l in L:
+                                            for k in K:
+                                                if k == 1 and initialSolution[l-1][k-1] != 0:
+                                                    suma = 0
+                                                    for i in I:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += y_vars[s+1,l,1,i]
+                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                                
+                                                if k == 2 and initialSolution[l-1][k-1] != 0:
+                                                    suma = 0
+                                                    for i in I:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += y_vars[s+1,l,1,i]
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += y_vars[s+1,l,k,i] 
+                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+    
+                                        for i in I:
+                                            if S[s][i-1][0] + S[s][i-1][1] != 0:
+                                                suma = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                                                                                   
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
+                                                                         
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                                                                   
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
+                                                
+                      
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                                                                             
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
+                                            
+                                                
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
+                                            
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                                  suma1 += y_vars[s+1,l,k,i]  
+                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                                            
+                       
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
+                                            
+                       
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
+                                                                  suma1 += y_vars[s+1,l,k,i]  
+                                                model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
+                                            
+                  
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        for k in K:
+                                                              if S[s][i-1][1] != 0:
+                                                                  suma1 += y_vars[s+1,l,2,i] 
+                                                              if S[s][i-1][0] != 0:
+                                                                  suma1 += y_vars[s+1,l,k,i] 
+                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
+                                            
+          
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                                    
+                                    # Optimize model
+                                    
+                                    end_time = time.time()
+                                    
+                                    elapsed_time = end_time - model._start
+                                    
+                                    sumaelapsed = sumaelapsed + elapsed_time
+                                    
+                                    model._sumaelapsed = sumaelapsed
+                                    
+                                    model.optimize(callback=data_cb)
+                                    
+                                    print(" ")
+                                    print(" ")
+                                    print("suma elapsed = " , sumaelapsed)
+                                    print(" ")
+                                    print(" ")
+                                    
+                                    #imprimir variables 
+                                
+                                    #writer.writerows(name)
+                                    with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
+                                        writer = csv.writer(f)
+                                        writer.writerows("new")
+                                        writer.writerows(model._data)
+                                    
+                                    #Nombre: Resultados_Prueba_I_L_M_N_S
+                                    
+                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                                  +str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.txt','w')
+                                    
+                                    f.write("Elapsed time: ")
+                                    f.write(str(elapsed_time))
+                                    f.write('\n')
+                                
+                                            
+                                    f.write('Obj: %g' % model.objVal)
+                                    f.write('\n')
+                                    
+                                    for v in model.getVars():
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                    #imprimir el valor objetivo
+                                    print('Obj: %g' % model.objVal)
+                                    print("Finished")
+                                    print(" ")
+                                    print(" ")
+                                    
+                                    f.close()  
+                                                        
+    
+                                    
+                                    archivo.close()
+                                    
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.lp')
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.mps')
+                                    
+                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                                  +str(len(I))+str('_')
+                                                  +str(len(L))+str('_')
+                                                  +str(len(S))+'.txt','a')
+                                        
+                                    
+                                    if model.objVal > valorObjetivo:
+                                        print("   ")
+                                        print("   ")
+                                        print("entra if better solution", localsearch)
+                                        print("   ")
+                                        #print(initialSolution)
+                                        
+                                        soluciones.append(initialSolution)
+                                        
+                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                                      +str(len(L))+str('_')
+                                                      +str(len(S))+'.csv', 'a') as solutionX:            
+                                            solutionX.write(str(initialSolution))
+                                            solutionX.write('\n')
+                                        
+                                        potentialSiteActivos = []
+                                        for i in range(len(initialSolution)):
+                                            if any(initialSolution[i]):
+                                                potentialSiteActivos.append(i)
+                                        print(potentialSiteActivos)
+                                        
+                                        valorObjetivo = model.objVal
+                                        print("   ")
+                                        print("   ")
+                                        
+                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1968,12 +1968,12 @@ for iconj in range(len(tamaños_I)):
                                         countcsv = countcsv + 1
                                         
                                     
-                                        coberturas = open ('Coberturas_GRASP_'
+                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','a')                      
                                         
-                                        lectura = open ('Resultados_Prueba_GRASP_'
+                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','r')
@@ -2415,7 +2415,7 @@ for iconj in range(len(tamaños_I)):
                                     #imprimir variables 
                                 
                                     #writer.writerows(name)
-                                    with open('data_GRASP_'+str(len(I))+str('_')
+                                    with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
                                         writer = csv.writer(f)
@@ -2424,7 +2424,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_Prueba_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Prueba_GRASP_'
+                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','w')
@@ -2453,14 +2453,14 @@ for iconj in range(len(tamaños_I)):
                                     
                                     archivo.close()
                                     
-                                    model.write('model_GRASP_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.lp')
-                                    model.write('model_GRASP_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.mps')
                                     
-                                    mejoras = open ("mejoras_GRASP_"
+                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -2475,7 +2475,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         soluciones.append(initialSolution)
                                         
-                                        with open('SolutionX_GRASP_'+str(len(I))+str('_')
+                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.csv', 'a') as solutionX:            
                                             solutionX.write(str(initialSolution))
@@ -2491,7 +2491,7 @@ for iconj in range(len(tamaños_I)):
                                         print("   ")
                                         print("   ")
                                         
-                                        mejoras = open ("mejoras_GRASP_"
+                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -2516,12 +2516,12 @@ for iconj in range(len(tamaños_I)):
                                         countcsv = countcsv + 1
                                         
                                     
-                                        coberturas = open ('Coberturas_GRASP_'
+                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','a')                      
                                         
-                                        lectura = open ('Resultados_Prueba_GRASP_'
+                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','r')
@@ -2580,21 +2580,6 @@ for iconj in range(len(tamaños_I)):
                                         
                                         break
                                     
-                                    # else:
-                                        
-                                    #     mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
-                                    #     mejoras.write('\n')
-                                    #     print("entra else que repite solution")
-                                    #     print(" ")
-                                    #     print(" ")
-                                    #     initialSolution[initialL][0] = aux
-                                    #     initialSolution[initialL][1] = aux1
-                                    #     initialSolution[j][0] = 0
-                                    #     initialSolution[j][1] = 0
-                                    #     # print(initialSolution)
-                                    #     # print(" ")
-                                    #     # print(" ")
-                                    
                                     else:
                                         
                                         mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
@@ -2617,6 +2602,8 @@ for iconj in range(len(tamaños_I)):
                                             print("   ")
                                             print("   ")
                                             break
+                                
+                                ######## AQUI TERMINA LS3
                                 
                             if breakaux == 1:    
                                 print ("break de breakaux") 
@@ -2683,7 +2670,7 @@ print(" ")
 sheet.write(countcsv+1, 0, "Total Elapsed Time")
 sheet.write(countcsv+1, 1, sumaelapsed)
 fi.close()
-book.save('TesisTS_GRASP_.xls') 
+book.save('TesisTS_GRASP_PruebaNueva_.xls') 
 solutionX.close()
 coberturas.close()
 mejoras.close()

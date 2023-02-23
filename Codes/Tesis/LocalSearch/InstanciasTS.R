@@ -36,11 +36,24 @@ for (iconj in 1:length(tamanos_I)){
     r_li <- c()
     for (sites in 1:len_L){
       # Draw N gamma distributed values
-      y_rgamma <- rgamma(N, shape = 14.2, rate = .85) 
-      
+      y_rgamma <- rgamma(N, shape = 14.2, rate = .85)
+
       # Print values to RStudio console
-      r_li <- rbind(r_li, as.integer(y_rgamma)) 
+      r_li <- rbind(r_li, as.integer(y_rgamma))
     }
+    
+    # r_li <- c()
+    # for (sites in 1:len_L){
+    #   # Draw N gamma distributed values
+    #   #y_rgamma <- rgamma(N, shape = 14.2, rate = .85) 
+    #   y_rgamma <- c()
+    #   for(n in 1:N){
+    #     y_gamma <- rnorm(1, 20, 6)
+    #     # Print values to RStudio console
+    #     y_rgamma <- cbind(y_rgamma, as.integer(y_gamma))
+    #   }
+    #   r_li <- rbind(r_li, y_rgamma) 
+    # }
     
     for (sconj in 1:length(tamanos_S)){
       #Nombre: Instancias_Prueba_I_L_S
@@ -63,24 +76,75 @@ for (iconj in 1:length(tamanos_I)){
       ########## SCENARIOS ###########
       ################################
       
+      xs <- rexp(len_S*len_I*length(K), rate = 1)
       S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      for (s in 1:len_S){
-        for (len in 1:(len_I*length(K))){
-          #print(paste("s es ", s))
-          #print(paste("len es ", len))
-          x <- rlnorm(1)
-          #print(paste("x es ", x))
-          if (x < 5){
+      sig <- 0
+      for (len in 1:(len_I*length(K))){
+        rand = rnorm(1)
+        if (rand < 1){
+          for (s in 1:len_S){
             S[s, len] = 0
           }
-          else if (x < 8){
-            S[s, len] = 1
-          }
-          else{
-            S[s, len] = 2
+        }
+        else{
+          for (s in 1:len_S){
+            sig <- sig + 1
+            if (xs[sig] < 1){
+              S[s, len] = 0
+            }
+            else if (xs[sig] < 2){
+              S[s, len] = 1
+            }
+            else{
+              S[s, len] = 2
+            }
           }
         }
       }
+      
+      
+      # xs <- rexp(len_S*len_I*length(K), rate = 2)
+      # #xs <- rbinom(len_S*len_I*length(K), 1, 0.5)
+      # S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      # sig <- 0
+      # for (s in 1:len_S){
+      #   rand = rnorm(1)
+      #   if (rand < 1){
+      #     for (len in 1:(len_I*length(K))){
+      #       S[s, len] = 0
+      #     }
+      #   }
+      #   else{
+      #     for (len in 1:(len_I*length(K))){
+      #       #x <- rexp(1, rate = 2)
+      #       #if (len < len_I*length(K)/3 || len > len_I*length(K) - len_I*length(K)/3){
+      #       randi = rnorm(1)
+      #       if (randi < 0.8){
+      #         S[s, len] = 0
+      #       }
+      #       else{
+      #         sig = sig + 1
+      #         x = xs[sig]
+      #         # if (x == 0){
+      #         #   S[s, len] = 1
+      #         # }
+      #         # else{
+      #         #   S[s, len] = 2
+      #         # }
+      #         if (x < 0.5){
+      #           S[s, len] = 0
+      #         }
+      #         else if (x < 2){
+      #           S[s, len] = 1
+      #         }
+      #         else{
+      #           S[s, len] = 2
+      #         }
+      #       }
+      #     
+      #     }
+      #   }
+      # }
       
       # S <- c()
       # for (s in 1:len_S){
