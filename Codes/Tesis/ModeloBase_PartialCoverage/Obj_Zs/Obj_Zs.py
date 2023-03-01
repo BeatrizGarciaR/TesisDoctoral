@@ -59,7 +59,7 @@ tamaños_S = [40]
 
 K = [1,2]
 
-timelim = 1200
+timelim = 7200
 
 countcsv = 1
 

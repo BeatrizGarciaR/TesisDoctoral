@@ -29,13 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [95]
-tamaños_L = [100]
-tamaños_S = [40]
+# tamaños_I = [95]
+# tamaños_L = [100]
+# tamaños_S = [40]
 
-# tamaños_I = [10]
-# tamaños_L = [10]
-# tamaños_S = [5]
+tamaños_I = [2000]
+tamaños_L = [100]
+tamaños_S = [100]
 
 K = [1, 2]
 
@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 1200
-modelStopTime = 60
+elapsedtimeStop = 86400
+modelStopTime = 30
 
 sumaelapsed = 0
 
@@ -1490,7 +1490,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     else:
                                         
-                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS1")
                                         mejoras.write('\n')
                                         print("entra else que repite solution")
                                         print(" ")
@@ -2034,7 +2034,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     else:
                                         
-                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS2")
                                         mejoras.write('\n')
                                         print("entra else que repite solution")
                                         print(" ")
@@ -2496,7 +2496,7 @@ for iconj in range(len(tamaños_I)):
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
                                         
-                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
                                         mejoras.write('\n')
                                         
                                         
@@ -2582,7 +2582,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     else:
                                         
-                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch))
+                                        mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
                                         mejoras.write('\n')
                                         print("entra else que repite solution")
                                         print(" ")

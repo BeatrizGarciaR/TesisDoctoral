@@ -5,9 +5,9 @@
 # tamanos_I <- c(20, 50, 80, 95)
 # tamanos_L <- c(40, 50, 70, 85)
 # tamanos_S <- c(12, 25, 30, 40)
-tamanos_I <- c(95)
+tamanos_I <- c(2000)
 tamanos_L <- c(100)
-tamanos_S <- c(40)
+tamanos_S <- c(100)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
@@ -58,7 +58,7 @@ for (iconj in 1:length(tamanos_I)){
     for (sconj in 1:length(tamanos_S)){
       #Nombre: Instancias_Prueba_I_L_S
       
-      instancename <- paste('Instancias_PruebaNueva_',toString(tamanos_I[iconj]),'_',
+      instancename <- paste('Instancias_Prueba_',toString(tamanos_I[iconj]),'_',
                             toString(tamanos_L[jconj]),'_', toString(tamanos_S[sconj]),'.txt', sep = "")
 
       ################################
@@ -76,75 +76,75 @@ for (iconj in 1:length(tamanos_I)){
       ########## SCENARIOS ###########
       ################################
       
-      xs <- rexp(len_S*len_I*length(K), rate = 1)
-      S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      sig <- 0
-      for (len in 1:(len_I*length(K))){
-        rand = rnorm(1)
-        if (rand < 1){
-          for (s in 1:len_S){
-            S[s, len] = 0
-          }
-        }
-        else{
-          for (s in 1:len_S){
-            sig <- sig + 1
-            if (xs[sig] < 1){
-              S[s, len] = 0
-            }
-            else if (xs[sig] < 2){
-              S[s, len] = 1
-            }
-            else{
-              S[s, len] = 2
-            }
-          }
-        }
-      }
-      
-      
-      # xs <- rexp(len_S*len_I*length(K), rate = 2)
-      # #xs <- rbinom(len_S*len_I*length(K), 1, 0.5)
+      # xs <- rexp(len_S*len_I*length(K), rate = 1)
       # S <- matrix(nrow=len_S, ncol=len_I*length(K))
       # sig <- 0
-      # for (s in 1:len_S){
+      # for (len in 1:(len_I*length(K))){
       #   rand = rnorm(1)
       #   if (rand < 1){
-      #     for (len in 1:(len_I*length(K))){
+      #     for (s in 1:len_S){
       #       S[s, len] = 0
       #     }
       #   }
       #   else{
-      #     for (len in 1:(len_I*length(K))){
-      #       #x <- rexp(1, rate = 2)
-      #       #if (len < len_I*length(K)/3 || len > len_I*length(K) - len_I*length(K)/3){
-      #       randi = rnorm(1)
-      #       if (randi < 0.8){
+      #     for (s in 1:len_S){
+      #       sig <- sig + 1
+      #       if (xs[sig] < 1){
       #         S[s, len] = 0
       #       }
-      #       else{
-      #         sig = sig + 1
-      #         x = xs[sig]
-      #         # if (x == 0){
-      #         #   S[s, len] = 1
-      #         # }
-      #         # else{
-      #         #   S[s, len] = 2
-      #         # }
-      #         if (x < 0.5){
-      #           S[s, len] = 0
-      #         }
-      #         else if (x < 2){
-      #           S[s, len] = 1
-      #         }
-      #         else{
-      #           S[s, len] = 2
-      #         }
+      #       else if (xs[sig] < 2){
+      #         S[s, len] = 1
       #       }
-      #     
+      #       else{
+      #         S[s, len] = 2
+      #       }
       #     }
       #   }
       # }
+      
+      
+      xs <- rexp(len_S*len_I*length(K), rate = 2)
+      #xs <- rbinom(len_S*len_I*length(K), 1, 0.5)
+      S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      sig <- 0
+      for (s in 1:len_S){
+        rand = rnorm(1)
+        if (rand < 1){
+          for (len in 1:(len_I*length(K))){
+            S[s, len] = 0
+          }
+        }
+        else{
+          for (len in 1:(len_I*length(K))){
+            #x <- rexp(1, rate = 2)
+            #if (len < len_I*length(K)/3 || len > len_I*length(K) - len_I*length(K)/3){
+            randi = rnorm(1)
+            if (randi < 0.8){
+              S[s, len] = 0
+            }
+            else{
+              sig = sig + 1
+              x = xs[sig]
+              # if (x == 0){
+              #   S[s, len] = 1
+              # }
+              # else{
+              #   S[s, len] = 2
+              # }
+              if (x < 0.5){
+                S[s, len] = 0
+              }
+              else if (x < 2){
+                S[s, len] = 1
+              }
+              else{
+                S[s, len] = 2
+              }
+            }
+
+          }
+        }
+      }
       
       # S <- c()
       # for (s in 1:len_S){
