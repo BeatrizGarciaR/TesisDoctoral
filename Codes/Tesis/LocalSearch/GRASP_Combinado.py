@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 86400
-modelStopTime = 30
+elapsedtimeStop = 14400
+modelStopTime = 1800
 
 sumaelapsed = 0
 

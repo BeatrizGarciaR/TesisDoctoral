@@ -53,13 +53,13 @@ import xlwt
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [95]
+tamaños_I = [2000]
 tamaños_L = [100]
-tamaños_S = [40]
+tamaños_S = [100]
 
 K = [1,2]
 
-timelim = 7200
+timelim = 172800
 
 countcsv = 1
 
