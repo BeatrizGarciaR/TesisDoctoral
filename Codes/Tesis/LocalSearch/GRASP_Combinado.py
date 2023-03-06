@@ -29,13 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-# tamaños_I = [95]
-# tamaños_L = [100]
-# tamaños_S = [40]
-
-tamaños_I = [2000]
+tamaños_I = [95]
 tamaños_L = [100]
-tamaños_S = [100]
+tamaños_S = [40]
+
+# tamaños_I = [2000]
+# tamaños_L = [100]
+# tamaños_S = [100]
 
 K = [1, 2]
 

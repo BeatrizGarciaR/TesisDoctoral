@@ -57,6 +57,10 @@ tamaños_I = [2000]
 tamaños_L = [100]
 tamaños_S = [100]
 
+# tamaños_I = [95]
+# tamaños_L = [100]
+# tamaños_S = [40]
+
 K = [1,2]
 
 timelim = 172800
