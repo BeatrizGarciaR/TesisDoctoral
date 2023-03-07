@@ -29,13 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [95]
-tamaños_L = [100]
-tamaños_S = [40]
-
-# tamaños_I = [2000]
+# tamaños_I = [95]
 # tamaños_L = [100]
-# tamaños_S = [100]
+# tamaños_S = [40]
+
+tamaños_I = [1500]
+tamaños_L = [100]
+tamaños_S = [100]
 
 K = [1, 2]
 
@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 14400
+elapsedtimeStop = 1200
 modelStopTime = 1800
 
 sumaelapsed = 0
@@ -84,7 +84,7 @@ for iconj in range(len(tamaños_I)):
     
             #Nombre: Instancias_Prueba_I_L_S
                 
-            archivo = open('Instancias_PruebaNueva_'
+            archivo = open('Instancias_Prueba_'
                       +str(tamaños_I[iconj])+str('_')
                       +str(tamaños_L[jconj])+str('_')
                       +str(tamaños_S[sconj])
@@ -720,7 +720,7 @@ for iconj in range(len(tamaños_I)):
                         sheet.write(countcsv, row+4, datos[row])
                 countcsv = countcsv + 1
             
-                with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                with open('data_GRASP_Prueba_'+str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.csv', 'w') as fi:
                         writer = csv.writer(fi)
@@ -728,7 +728,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_Prueba_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                f = open ('Resultados_Prueba_GRASP_Prueba_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','w')
@@ -757,12 +757,12 @@ for iconj in range(len(tamaños_I)):
                 
                 ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
                 
-                coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                coberturas = open ('Coberturas_GRASP_Prueba_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','w')                      
                 
-                lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                lectura = open ('Resultados_Prueba_GRASP_Prueba_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','r')
@@ -819,10 +819,10 @@ for iconj in range(len(tamaños_I)):
                 
                 archivo.close()
                 
-                model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.lp')
-                model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.mps')
                         
@@ -840,7 +840,7 @@ for iconj in range(len(tamaños_I)):
                     
                     soluciones.append(initialSolution)
                     
-                    with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                    with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.csv', 'a') as solutionX:            
                         solutionX.write(str(initialSolution))
@@ -856,7 +856,7 @@ for iconj in range(len(tamaños_I)):
                     print("   ")
                     print("   ")
                     
-                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                    mejoras = open ("mejoras_GRASP_Prueba_"
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'.txt','a')
@@ -881,12 +881,12 @@ for iconj in range(len(tamaños_I)):
                     countcsv = countcsv + 1
                     
                 
-                    coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                    coberturas = open ('Coberturas_GRASP_Prueba_'
                                   +str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.txt','a')                      
                     
-                    lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                    lectura = open ('Resultados_Prueba_GRASP_Prueba_'
                                   +str(len(I))+str('_')
                                   +str(len(L))+str('_')
                                   +str(len(S))+'.txt','r')
@@ -948,7 +948,7 @@ for iconj in range(len(tamaños_I)):
                 
                 localsearch = 0
                 
-                mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                mejoras = open ("mejoras_GRASP_Prueba_"
                                 +str(len(I))+str('_')
                                 +str(len(L))+str('_')
                                 +str(len(S))+'.txt','a')
@@ -1332,7 +1332,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_Prueba_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                    f = open ('Resultados_Prueba_GRASP_Prueba_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','w')
@@ -1361,14 +1361,14 @@ for iconj in range(len(tamaños_I)):
                                     
                                     archivo.close()
                                     
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.lp')
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.mps')
                                     
-                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                    mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1383,7 +1383,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         soluciones.append(initialSolution)
                                         
-                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                        with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.csv', 'a') as solutionX:            
                                             solutionX.write(str(initialSolution))
@@ -1399,7 +1399,7 @@ for iconj in range(len(tamaños_I)):
                                         print("   ")
                                         print("   ")
                                         
-                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                        mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1424,12 +1424,12 @@ for iconj in range(len(tamaños_I)):
                                         countcsv = countcsv + 1
                                         
                                     
-                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                                        coberturas = open ('Coberturas_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','a')                      
                                         
-                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                        lectura = open ('Resultados_Prueba_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','r')
@@ -1867,7 +1867,7 @@ for iconj in range(len(tamaños_I)):
                                     #imprimir variables 
                                 
                                     #writer.writerows(name)
-                                    with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    with open('data_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
                                         writer = csv.writer(f)
@@ -1876,7 +1876,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_Prueba_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                    f = open ('Resultados_Prueba_GRASP_Prueba_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','w')
@@ -1905,14 +1905,14 @@ for iconj in range(len(tamaños_I)):
                                     
                                     archivo.close()
                                     
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.lp')
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.mps')
                                     
-                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                    mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1927,7 +1927,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         soluciones.append(initialSolution)
                                         
-                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                        with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.csv', 'a') as solutionX:            
                                             solutionX.write(str(initialSolution))
@@ -1943,7 +1943,7 @@ for iconj in range(len(tamaños_I)):
                                         print("   ")
                                         print("   ")
                                         
-                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                        mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -1968,12 +1968,12 @@ for iconj in range(len(tamaños_I)):
                                         countcsv = countcsv + 1
                                         
                                     
-                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                                        coberturas = open ('Coberturas_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','a')                      
                                         
-                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                        lectura = open ('Resultados_Prueba_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','r')
@@ -2415,7 +2415,7 @@ for iconj in range(len(tamaños_I)):
                                     #imprimir variables 
                                 
                                     #writer.writerows(name)
-                                    with open('data_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    with open('data_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.csv', 'a') as f: #Cambiar de w a a
                                         writer = csv.writer(f)
@@ -2424,7 +2424,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_Prueba_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                    f = open ('Resultados_Prueba_GRASP_Prueba_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','w')
@@ -2453,14 +2453,14 @@ for iconj in range(len(tamaños_I)):
                                     
                                     archivo.close()
                                     
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.lp')
-                                    model.write('model_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                    model.write('model_GRASP_Prueba_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.mps')
                                     
-                                    mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                    mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -2475,7 +2475,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         soluciones.append(initialSolution)
                                         
-                                        with open('SolutionX_GRASP_PruebaNueva_'+str(len(I))+str('_')
+                                        with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.csv', 'a') as solutionX:            
                                             solutionX.write(str(initialSolution))
@@ -2491,7 +2491,7 @@ for iconj in range(len(tamaños_I)):
                                         print("   ")
                                         print("   ")
                                         
-                                        mejoras = open ("mejoras_GRASP_PruebaNueva_"
+                                        mejoras = open ("mejoras_GRASP_Prueba_"
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   +str(len(S))+'.txt','a')
@@ -2516,12 +2516,12 @@ for iconj in range(len(tamaños_I)):
                                         countcsv = countcsv + 1
                                         
                                     
-                                        coberturas = open ('Coberturas_GRASP_PruebaNueva_'
+                                        coberturas = open ('Coberturas_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','a')                      
                                         
-                                        lectura = open ('Resultados_Prueba_GRASP_PruebaNueva_'
+                                        lectura = open ('Resultados_Prueba_GRASP_Prueba_'
                                                       +str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+'.txt','r')
@@ -2670,7 +2670,7 @@ print(" ")
 sheet.write(countcsv+1, 0, "Total Elapsed Time")
 sheet.write(countcsv+1, 1, sumaelapsed)
 fi.close()
-book.save('TesisTS_GRASP_PruebaNueva_.xls') 
+book.save('TesisTS_GRASP_Prueba_.xls') 
 solutionX.close()
 coberturas.close()
 mejoras.close()

@@ -53,13 +53,13 @@ import xlwt
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [2000]
-tamaños_L = [100]
-tamaños_S = [100]
-
-# tamaños_I = [95]
+# tamaños_I = [1500]
 # tamaños_L = [100]
-# tamaños_S = [40]
+# tamaños_S = [100]
+
+tamaños_I = [95]
+tamaños_L = [100]
+tamaños_S = [40]
 
 K = [1,2]
 
@@ -101,7 +101,7 @@ for iconj in range(len(tamaños_I)):
             #           +str(tamaños_L[jconj])+str('_')
             #           +'2'+str('_')
             #           +'3'+str('_')
-            #           +str(tamaños_S[sconj])+str('_')
+            #           +str(tam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            años_S[sconj])+str('_')
             #           #+str(rep+1)
             #           +'_.txt', "r")
             
@@ -220,7 +220,7 @@ for iconj in range(len(tamaños_I)):
             
             
             # Other parameters #
-            p = np.amax(cli)/len(S) + 0.005
+            pi = np.amax(cli)/len(S) + 0.005
             eta = [20, 11]
             t = 10
             tmax = 25
@@ -251,86 +251,182 @@ for iconj in range(len(tamaños_I)):
                     x_vars[l,k] = model.addVar(vtype=GRB.INTEGER, 
                                      name="located "+str(l)+str(' ')+str(k))
                     cantVarX += 1
-            
-            y_vars = {}
+                    
+                    
+            y_vars = {}    
             cantVarY = 0
-            for s in range(len(S)):
+            for s in range(len(S)):        
                 for l in L:
                     for i in I:
-                        for v in V:
-                            y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
-                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+                        if S[s][i-1][0] != 0:
+                            y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                            name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                             cantVarY += 1
-                            
-             
- 
-            zfull_vars = {}
+                        if S[s][i-1][1] != 0:
+                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                            if S[s][i-1][0] == 0:
+                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                     name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                cantVarY += 1
+                     
+            
+            # y_vars = {}
+            # cantVarY = 0
+            # for s in range(len(S)):
+            #     for l in L:
+            #         for i in I:
+            #             for v in V:
+            #                 y_vars[s+1,l,v,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                      name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(v)+str(' ')+str(i))
+            #                 cantVarY += 1
+            
+            
+            alpha_vars = {}  ## z full
             cantVarAlpha = 0
             for s in range(len(S)):
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        zfull_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                    if S[s][i-1][0] != 0:
+                        alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Full "+str(s+1)+str(' ')+str(i))
                         cantVarAlpha += 1
-                    else:
-                        zfull_vars[s+1,i] = 0
-                        #cantVarAlpha += 1
+                    if S[s][i-1][1] != 0:
+                        alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                  name="Full "+str(s+1)+str(' ')+str(i))
+                        cantVarAlpha += 1
+ 
+            # zfull_vars = {}
+            # cantVarAlpha = 0
+            # for s in range(len(S)):
+            #     for i in I:
+            #         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+            #             zfull_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                       name="Full "+str(s+1)+str(' ')+str(i))
+            #             cantVarAlpha += 1
+            #         else:
+            #             zfull_vars[s+1,i] = 0
+            #             #cantVarAlpha += 1
             
-            zpartial1_vars = {}
+            
+            beta_vars = {}  ## z partial 1
             cantVarBeta = 0
             for s in range(len(S)):
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        zpartial1_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                    if S[s][i-1][0] != 0:
+                        beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial1 "+str(s+1)+str(' ')+str(i))
                         cantVarBeta += 1
-                    else:
-                        zpartial1_vars[s+1,i] = 0
-                        #cantVarBeta += 1
+                    if S[s][i-1][1] != 0:
+                        beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                  name="Partial1 "+str(s+1)+str(' ')+str(i))
+                        cantVarBeta += 1
+      
             
-            zpartial2_vars = {}
+            # zpartial1_vars = {}
+            # cantVarBeta = 0
+            # for s in range(len(S)):
+            #     for i in I:
+            #         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+            #             zpartial1_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+            #             cantVarBeta += 1
+            #         else:
+            #             zpartial1_vars[s+1,i] = 0
+            #             #cantVarBeta += 1
+            
+            
+            delta_vars = {}  ## z partial 2
             cantVarDelta = 0
             for s in range(len(S)):
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        zpartial2_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                    if S[s][i-1][0] != 0:
+                        delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial2 "+str(s+1)+str(' ')+str(i))
                         cantVarDelta += 1
-                    else:
-                        zpartial2_vars[s+1,i] = 0
-                        #cantVarDelta += 1
+                    if S[s][i-1][1] != 0:
+                        delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                  name="Partial2 "+str(s+1)+str(' ')+str(i))
+                        cantVarDelta += 1
             
+            # zpartial2_vars = {}
+            # cantVarDelta = 0
+            # for s in range(len(S)):
+            #     for i in I:
+            #         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+            #             zpartial2_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+            #             cantVarDelta += 1
+            #         else:
+            #             zpartial2_vars[s+1,i] = 0
+            #             #cantVarDelta += 1
             
-            zpartial3_vars = {}
+            phi_vars = {}   ## z partial 3
             cantVarPhi = 0
             for s in range(len(S)):
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        zpartial3_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                    if S[s][i-1][0] != 0:
+                        phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                   name="Partial3 "+str(s+1)+str(' ')+str(i))
                         cantVarPhi += 1
-                    else:
-                        zpartial3_vars[s+1,i] = 0
-                        #cantVarPhi += 1
+                    if S[s][i-1][1] != 0:
+                        phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                  name="Partial3 "+str(s+1)+str(' ')+str(i))
+                        cantVarPhi += 1
             
             
-            gamma_vars = {} ## znull
+            # zpartial3_vars = {}
+            # cantVarPhi = 0
+            # for s in range(len(S)):
+            #     for i in I:
+            #         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+            #             zpartial3_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+            #             cantVarPhi += 1
+            #         else:
+            #             zpartial3_vars[s+1,i] = 0
+            #             #cantVarPhi += 1
+            
+            gamma_vars = {} ## z null
             cantVarGamma = 0
             for s in range(len(S)):
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                    if S[s][i-1][0] != 0:
                         gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                  name="Null "+str(s+1)+str(' ')+str(i))
                         cantVarGamma += 1
-                    else:
-                        gamma_vars[s+1,i] = 0
-                        #cantVarGamma += 1
-
+                    if S[s][i-1][1] != 0:
+                        gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                 name="Null "+str(s+1)+str(' ')+str(i))
+                        cantVarGamma += 1
+            
+            
+            # gamma_vars = {} ## znull
+            # cantVarGamma = 0
+            # for s in range(len(S)):
+            #     for i in I:
+            #         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+            #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+            #                                      name="Null "+str(s+1)+str(' ')+str(i))
+            #             cantVarGamma += 1
+            #         else:
+            #             gamma_vars[s+1,i] = 0
+            #             #cantVarGamma += 1
+                        
+                        
             obj = gp.LinExpr()
             for s in range(len(S)):
                 for i in I:
-                    obj += (wi[0]*zfull_vars[s+1,i] + wi[1]*zpartial1_vars[s+1,i] + wi[2]*zpartial2_vars[s+1,i] + wi[3]*zpartial3_vars[s+1,i] - p*gamma_vars[s+1,i]) * (1/len(S))
+                    if S[s][i-1][0]:
+                        obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                    if S[s][i-1][1]:
+                        obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
             model.setObjective(obj, GRB.MAXIMIZE)  
+
+            # obj = gp.LinExpr()
+            # for s in range(len(S)):
+            #     for i in I:
+            #         obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - p*gamma_vars[s+1,i]) * (1/len(S))
+            # model.setObjective(obj, GRB.MAXIMIZE)  
             
             
             # Add constraints
@@ -340,13 +436,22 @@ for iconj in range(len(tamaños_I)):
                 for k in K:
                     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c2")
                 
-                for l in L:
-                    for k in K:
-                        if k == 1:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for i in I) <= x_vars[l,k], "c3")
-                        else:
-                            #model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + y_vars[s+1,l,3,i] for i in I) <= x_vars[l,k], "c4")
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for i in I) <= x_vars[l,k], "c4")
+                for l in L:  #Checar aquí porque debe haber una quicksum de i
+                    for i in I:
+                        if S[s][s-1][0] != 0:
+                            model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
+                        if S[s][s-1][1] != 0:
+                            model.addConstr(y_vars[s+1,l,2,i] <= x_vars[l,2], "c4")
+                            if S[s][s-1][0] == 0:
+                                model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
+                            
+                # for l in L  :      
+                #     for k in K:
+                #         if k == 1:
+                #             model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for i in I) <= x_vars[l,k], "c3")
+                #         else:
+                #             #model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + y_vars[s+1,l,3,i] for i in I) <= x_vars[l,k], "c4")
+                #             model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for i in I) <= x_vars[l,k], "c4")
                             
                 # for i in I:
                 #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
@@ -357,55 +462,165 @@ for iconj in range(len(tamaños_I)):
                 #         model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) <= S[s][i-1][1], "c6")
                 
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= zfull_vars[s+1,i] - 1, "c7")
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i]  for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                        if S[s][i-1][0] == 0:
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
                 
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*zfull_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c8")
-                
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(2*gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*zpartial1_vars[s+1,i], "c9" )
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*zpartial1_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_10")
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - 1 <= (S[s][i-1][0]+S[s][i-1][1])*zpartial2_vars[s+1,i], "c_11")
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(zpartial2_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_12")
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L)*zpartial2_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_13")
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L) <= (S[s][i-1][0]+S[s][i-1][1])*zpartial3_vars[s+1,i], "c_14")
-                    
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(zpartial3_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_15")
-
-                for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(zpartial3_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")                    
                 # for i in I:
                 #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                #         model.addConstr(np.amin(cli)*zpartial3_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L), "c8")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L), "c8")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i]  for l in L), "c8")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c8")
+                
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(2*gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(2*gp.quicksum(y_vars[s+1,l,2,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(2*gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(2*gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L) - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_10")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,2,i] for l in L), "c_10")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_10")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_10")
+                   
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
+                  
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_12")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,2,i] for l in L), "c_12")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_12")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_12")
+                   
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L)*delta_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L), "c_13")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L)*delta_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L), "c_13")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L)*delta_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L), "c_13")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L)*delta_vars[s+1,i] <= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_13")
                     
+                
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) + gamma_vars[s+1,i] >= 1, "c_17")
-                        
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L) <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L) <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L) <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L) <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
+                 
                 for i in I:
-                    if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                        model.addConstr(zfull_vars[s+1,i] + zpartial1_vars[s+1,i] + zpartial2_vars[s+1,i] + zpartial3_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_15")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,2,i] for l in L), "c_15")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,1,i] for l in L), "c_15")
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L), "c_15")
+
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(phi_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L), "c_16")    
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(phi_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,2,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L), "c_16")    
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(phi_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,1,i] for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] for l in L), "c_16")    
+                
+                
+
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(phi_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")                    
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) - gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,v,i] for v in V for l in L), "c_16")
+                   
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) + gamma_vars[s+1,i] >= 1, "c_17")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,i] >= 1, "c_17")
+                        if S[s][i-1][0] == 0:
+                           model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) + gamma_vars[s+1,i] >= 1, "c_17")
+                     
+                
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(gp.quicksum(y_vars[s+1,l,v,i] for v in V for l in L) + gamma_vars[s+1,i] >= 1, "c_17")
+                     
+                for i in I:
+                    if S[s][i-1][0] != 0:
+                        model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                    if S[s][i-1][1] != 0:
+                        model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                     
+                
+                # for i in I:
+                #     if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                #         model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
                 
                     
                 
@@ -976,7 +1191,7 @@ for iconj in range(len(tamaños_I)):
             
             
             # count = 0
-            # for i in range(len(zfull_vars)):
+            # for i in range(len(alpha_vars)):
             #     aux = []
             #     line = resultados.readline().strip().split()
             #     if int(line[len(line)-1]) != 0 or int(line[len(line)-1]) != -0:
