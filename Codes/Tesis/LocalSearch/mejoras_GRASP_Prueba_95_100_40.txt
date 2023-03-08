@@ -1,0 +1,7 @@
+mejoró 11.9445  GRASP
+mejoró 12.2095 en initial L 1 con j = 0 localsearch 1  LS1
+no mejoró 11.9445 en initial L 0 con j = 1 localsearch 2LS1
+no mejoró 11.9037 en initial L 0 con j = 2 localsearch 2LS1
+no mejoró 11.9552 en initial L 0 con j = 3 localsearch 2LS1
+no mejoró 11.8887 en initial L 0 con j = 4 localsearch 2LS2
+no mejoró 12.2095 en initial L 0 con j = 4 localsearch 2LS3

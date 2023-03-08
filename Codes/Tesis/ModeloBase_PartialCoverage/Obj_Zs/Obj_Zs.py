@@ -57,13 +57,13 @@ import xlwt
 # tamaños_L = [100]
 # tamaños_S = [100]
 
-tamaños_I = [95]
+tamaños_I = [150]
 tamaños_L = [100]
-tamaños_S = [40]
+tamaños_S = [50]
 
 K = [1,2]
 
-timelim = 172800
+timelim = 1200
 
 countcsv = 1
 
@@ -262,13 +262,17 @@ for iconj in range(len(tamaños_I)):
                             y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                             cantVarY += 1
+                        else:
+                            if S[s][i-1][1] != 0:
+                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                     name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                cantVarY += 1        
                         if S[s][i-1][1] != 0:
                             y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
                                                  name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                            if S[s][i-1][0] == 0:
-                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                     name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                cantVarY += 1
+                            cantVarY += 1
+    
+                                
                      
             
             # y_vars = {}
@@ -436,14 +440,31 @@ for iconj in range(len(tamaños_I)):
                 for k in K:
                     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c2")
                 
+                amb1 = gp.LinExpr()
                 for l in L:  #Checar aquí porque debe haber una quicksum de i
                     for i in I:
-                        if S[s][s-1][0] != 0:
-                            model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
-                        if S[s][s-1][1] != 0:
-                            model.addConstr(y_vars[s+1,l,2,i] <= x_vars[l,2], "c4")
-                            if S[s][s-1][0] == 0:
-                                model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
+                        if S[s][i-1][0] != 0:
+                            amb1 += y_vars[s+1,l,1,i] 
+                        else:
+                            if S[s][i-1][1] != 0:
+                                amb1 += y_vars[s+1,l,1,i] 
+                    model.addConstr(amb1 <= x_vars[l,1], "c3")
+                
+                amb2 = gp.LinExpr()
+                for l in L:
+                    for i in I:
+                        if S[s][i-1][1] != 0:
+                            amb2 += y_vars[s+1,l,2,i]
+                    model.addConstr(amb2 <= x_vars[l,2], "c4")
+                            
+                
+                    # for i in I:
+                    #     if S[s][s-1][0] != 0:
+                    #         model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
+                    #     if S[s][s-1][1] != 0:
+                    #         model.addConstr(y_vars[s+1,l,2,i] <= x_vars[l,2], "c4")
+                    #         if S[s][s-1][0] == 0:
+                    #             model.addConstr(y_vars[s+1,l,1,i] <= x_vars[l,1], "c3")
                             
                 # for l in L  :      
                 #     for k in K:
