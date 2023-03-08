@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 600
+elapsedtimeStop = 60
 modelStopTime = 180
 
 sumaelapsed = 0
@@ -404,10 +404,10 @@ for iconj in range(len(tamaños_I)):
                                         y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
                                                          name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
                                         cantVarY += 1
-                                    if S[s][i-1][0] != 0:
-                                        y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                        cantVarY += 1
+                                        if S[s][i-1][0] == 0:
+                                            y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                            cantVarY += 1
  
                 alpha_vars = {}  ## z full
                 cantVarAlpha = 0
@@ -495,15 +495,16 @@ for iconj in range(len(tamaños_I)):
                                 for i in I:
                                     if S[s][i-1][0] != 0:
                                         suma += y_vars[s+1,l,1,i]
+                                    else: 
+                                        if S[s][i-1][0] != 0:
+                                            suma += y_vars[s+1,l,1,i]
                                 model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
                             
                             if k == 2 and initialSolution[l-1][k-1] != 0:
                                 suma = 0
                                 for i in I:
                                     if S[s][i-1][0] != 0:
-                                        suma += y_vars[s+1,l,1,i]
-                                    if S[s][i-1][1] != 0:
-                                        suma += y_vars[s+1,l,k,i] 
+                                        suma += y_vars[s+1,l,2,i]
                                 model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
                                   
                     for i in I:
