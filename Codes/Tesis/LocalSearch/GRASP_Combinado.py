@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 60
+elapsedtimeStop = 300
 modelStopTime = 180
 
 sumaelapsed = 0
@@ -137,8 +137,7 @@ for iconj in range(len(tamaños_I)):
                 for i in range(len(I)):
                     r_li[l].append(int(line[i]))   
                 
-              
-                    
+                 
             cli = []
             for l in range(len(L)):
                 line = archivo.readline().strip().split()
@@ -386,7 +385,7 @@ for iconj in range(len(tamaños_I)):
                 #sumaelapsed = 0
                 
                 # Create variables #
-                y_vars = {}     # CHECAR QUE LAS VARIABLES SE ESTÉN ACTIVANDO CORRECTAMENTE 
+                y_vars = {}    
                 cantVarY = 0
                 for s in range(len(S)):        
                     for l in L:
@@ -396,117 +395,198 @@ for iconj in range(len(tamaños_I)):
                                     y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                     name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                     cantVarY += 1
+                                
                                   
                         if initialSolution[l-1][1] > 0:
                             for i in I:
-                                for k in K:
-                                    if S[s][i-1][1] != 0:
-                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                if S[s][i-1][1] != 0:
+                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
                                                          name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                        cantVarY += 1
-                                        if S[s][i-1][0] == 0:
-                                            y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                            cantVarY += 1
- 
+                                    cantVarY += 1
+                                if S[s][i-1][0] != 0:
+                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                    cantVarY += 1
+
+    
                 alpha_vars = {}  ## z full
                 cantVarAlpha = 0
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0] != 0:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Full "+str(s+1)+str(' ')+str(i))
+                                                           name="Full "+str(s+1)+str(' ')+str(i))
                             cantVarAlpha += 1
-                        if S[s][i-1][1] != 0:
-                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Full "+str(s+1)+str(' ')+str(i))
-                            cantVarAlpha += 1
+                            
                 
                 beta_vars = {}  ## z partial 1
                 cantVarBeta = 0
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0] != 0:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
                             cantVarBeta += 1
-                        if S[s][i-1][1] != 0:
-                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
-                            cantVarBeta += 1
+                            
                 
                 delta_vars = {}  ## z partial 2
                 cantVarDelta = 0
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0] != 0:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
                             cantVarDelta += 1
-                        if S[s][i-1][1] != 0:
-                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
-                            cantVarDelta += 1
+                       
                 
                 phi_vars = {}   ## z partial 3
                 cantVarPhi = 0
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0] != 0:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
                             cantVarPhi += 1
-                        if S[s][i-1][1] != 0:
-                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
-                            cantVarPhi += 1
+                       
                 
                 gamma_vars = {} ## z null
                 cantVarGamma = 0
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0] != 0:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                      name="Null "+str(s+1)+str(' ')+str(i))
                             cantVarGamma += 1
-                        if S[s][i-1][1] != 0:
-                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                     name="Null "+str(s+1)+str(' ')+str(i))
-                            cantVarGamma += 1
-            
+                            
                 obj = gp.LinExpr()
                 for s in range(len(S)):
                     for i in I:
-                        if S[s][i-1][0]:
-                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                        if S[s][i-1][1]:
+                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                 model.setObjective(obj, GRB.MAXIMIZE)  
+
+                                          
+ 
+                # alpha_vars = {}  ## z full
+                # cantVarAlpha = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0] != 0:
+                #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                #             cantVarAlpha += 1
+                #         if S[s][i-1][1] != 0:
+                #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                #             cantVarAlpha += 1
+                
+                # beta_vars = {}  ## z partial 1
+                # cantVarBeta = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0] != 0:
+                #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                #             cantVarBeta += 1
+                #         if S[s][i-1][1] != 0:
+                #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                #             cantVarBeta += 1
+                
+                # delta_vars = {}  ## z partial 2
+                # cantVarDelta = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0] != 0:
+                #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                #             cantVarDelta += 1
+                #         if S[s][i-1][1] != 0:
+                #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                #             cantVarDelta += 1
+                
+                # phi_vars = {}   ## z partial 3
+                # cantVarPhi = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0] != 0:
+                #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                #             cantVarPhi += 1
+                #         if S[s][i-1][1] != 0:
+                #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                #             cantVarPhi += 1
+                
+                # gamma_vars = {} ## z null
+                # cantVarGamma = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0] != 0:
+                #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                #             cantVarGamma += 1
+                #         if S[s][i-1][1] != 0:
+                #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                #             cantVarGamma += 1
+            
+                # obj = gp.LinExpr()
+                # for s in range(len(S)):
+                #     for i in I:
+                #         if S[s][i-1][0]:
+                #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                #         if S[s][i-1][1]:
+                #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                # model.setObjective(obj, GRB.MAXIMIZE)  
             
             
                 ## Add constraints 
                 
                 for s in range(len(S)):
                     
+                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
+                    amb1 = gp.LinExpr()
                     for l in L:
-                        for k in K:
-                            if k == 1 and initialSolution[l-1][k-1] != 0:
-                                suma = 0
-                                for i in I:
-                                    if S[s][i-1][0] != 0:
-                                        suma += y_vars[s+1,l,1,i]
-                                    else: 
-                                        if S[s][i-1][0] != 0:
-                                            suma += y_vars[s+1,l,1,i]
-                                model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                        if initialSolution[l-1][0] != 0:
+                            for i in I:
+                                if S[s][i-1][0] != 0:
+                                    amb1 += y_vars[s+1,l,1,i] 
+                        model.addConstr(amb1 <= initialSolution[l-1][0], "c4")
+                        
+                    # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
+                    amb2 = gp.LinExpr()
+                    for l in L:
+                        if initialSolution[l-1][1] != 0:
+                            for i in I:
+                                if S[s][i-1][0] != 0:
+                                    amb2 += y_vars[s+1,l,2,i] 
+                                if S[s][i-1][1] != 0:
+                                    amb2 += y_vars[s+1,l,2,i] 
+                        model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                             
-                            if k == 2 and initialSolution[l-1][k-1] != 0:
-                                suma = 0
-                                for i in I:
-                                    if S[s][i-1][0] != 0:
-                                        suma += y_vars[s+1,l,2,i]
-                                model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                                  
+                    
+                    # for l in L:
+                    #     for k in K:
+                    #         if k == 1 and initialSolution[l-1][k-1] != 0:
+                    #             suma = 0
+                    #             for i in I:
+                    #                 if S[s][i-1][0] != 0:
+                    #                     suma += y_vars[s+1,l,1,i]
+                    #                 else: 
+                    #                     if S[s][i-1][0] != 0:
+                    #                         suma += y_vars[s+1,l,1,i]
+                    #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                            
+                    #         if k == 2 and initialSolution[l-1][k-1] != 0:
+                    #             suma = 0
+                    #             for i in I:
+                    #                 if S[s][i-1][0] != 0:
+                    #                     suma += y_vars[s+1,l,2,i]
+                    #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                     
+                    # Restricción 6: Activar alpha (cobertura total) 
                     for i in I:
                         if S[s][i-1][0] + S[s][i-1][1] != 0:
                             suma = 0
@@ -515,13 +595,13 @@ for iconj in range(len(tamaños_I)):
                                     if S[s][i-1][0] != 0:
                                         suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                            model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                            model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
                   
+                    # Restricción 7: Desactivar alpha (cobertura total)
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                             suma = 0
@@ -530,77 +610,13 @@ for iconj in range(len(tamaños_I)):
                                     if S[s][i-1][0] != 0:
                                         suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            suma = 0
-                            suma1 = 0
-                            for l in L:
-                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
                                     if S[s][i-1][0] != 0:
-                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                        suma1 += y_vars[s+1,l,1,i] 
-                                if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c7")             
 
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            suma1 = 0
-                            for l in L:
-                                if initialSolution[l-1][0] != 0:
-                                    if S[s][i-1][0] != 0:
-                                        suma1 += y_vars[s+1,l,1,i] 
-                                if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            suma1 = 0
-                            for l in L:
-                                if initialSolution[l-1][0] != 0:
-                                    if S[s][i-1][0] != 0:
-                                        suma1 += y_vars[s+1,l,1,i] 
-                                if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            suma1 = 0
-                            for l in L:
-                                if initialSolution[l-1][0] != 0:
-                                    if S[s][i-1][0] != 0:
-                                        suma1 += y_vars[s+1,l,1,i] 
-                                if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-
+                    # Restricción 8: Activación de beta (cobertura parcial 1)
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                             suma = 0
@@ -611,15 +627,60 @@ for iconj in range(len(tamaños_I)):
                                         suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                         suma1 += y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
 
+                    # Restricción 9: Desactivar beta (cobertura parcial 1)
+                    for i in I:
+                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                            suma1 = 0
+                            for l in L:
+                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,1,i] 
+                                if initialSolution[l-1][1] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c9")
+
+                    # Restricción 10: Activar delta (cobertura parcial 2)
+                    for i in I:
+                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                            suma1 = 0
+                            for l in L:
+                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,1,i] 
+                                if initialSolution[l-1][1] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+
+                    # Restricción 11: Desactivar delta (cobertura parcial 2)
+                    for i in I:
+                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                            suma1 = 0
+                            for l in L:
+                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,1,i] 
+                                if initialSolution[l-1][1] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_11")
+
+                    # Restricción 12: Desactivar delta (cobertura parcial 2)   
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                             suma = 0
@@ -630,30 +691,15 @@ for iconj in range(len(tamaños_I)):
                                         suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                         suma1 += y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                             suma1 += y_vars[s+1,l,k,i]  
-                            model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            suma1 = 0
-                            for l in L:
-                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
                                     if S[s][i-1][0] != 0:
-                                        suma1 += y_vars[s+1,l,1,i] 
-                                if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_12")
 
+                    # Restricción 13: Activar phi (cobertura parcial 3)
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                             suma = 0
@@ -664,15 +710,15 @@ for iconj in range(len(tamaños_I)):
                                         suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                         suma1 += y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                             suma1 += y_vars[s+1,l,k,i]  
-                            model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i]  
+                            model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
 
+                    # Restricción 14: Desactivar phi (cobertura parcial 3)
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                             suma1 = 0
@@ -681,16 +727,50 @@ for iconj in range(len(tamaños_I)):
                                     if S[s][i-1][0] != 0:
                                         suma1 += y_vars[s+1,l,1,i] 
                                 if initialSolution[l-1][1] != 0:
-                                    for k in K:
-                                         if S[s][i-1][1] != 0:
-                                             suma1 += y_vars[s+1,l,2,i] 
-                                         if S[s][i-1][0] != 0:
-                                             suma1 += y_vars[s+1,l,k,i] 
-                            model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
+                                    if S[s][i-1][1] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_14")
+
+                    # Restricción 15: Desactivar phi (cobertura parcial 3)
+                    for i in I:
+                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                            suma = 0
+                            suma1 = 0
+                            for l in L:
+                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][0] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                        suma1 += y_vars[s+1,l,1,i] 
+                                if initialSolution[l-1][1] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                        suma1 += y_vars[s+1,l,2,i]  
+                            model.addConstr(phi_vars[s+1,i] <= suma1 - suma, "c_15")
+
+                    # Restricción 16: Activar gamma (cobertura nula)
+                    for i in I:
+                        if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                            suma1 = 0
+                            for l in L:
+                                if initialSolution[l-1][0] != 0:
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,1,i] 
+                                if initialSolution[l-1][1] != 0:
+                                    if S[s][i-1][1] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                                    if S[s][i-1][0] != 0:
+                                        suma1 += y_vars[s+1,l,2,i] 
+                            model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_16")
  
+                    # Restricción 17: Solo se puede activar un tipo de cobertura     
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_17")
             
                 # Optimize model
                 
@@ -860,7 +940,7 @@ for iconj in range(len(tamaños_I)):
                     mejoras = open ("mejoras_GRASP_Prueba_"
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
-                              +str(len(S))+'.txt','a')
+                              +str(len(S))+'.txt','r')
                     
                     mejoras.write('mejoró %g' % model.objVal + '  GRASP' )
                     mejoras.write('\n')
@@ -1003,115 +1083,198 @@ for iconj in range(len(tamaños_I)):
                                                         y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                                         cantVarY += 1
+                                                    
                                                       
                                             if initialSolution[l-1][1] > 0:
                                                 for i in I:
-                                                    for k in K:
-                                                        if S[s][i-1][1] != 0:
-                                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                            cantVarY += 1
-                                                        if S[s][i-1][0] != 0:
-                                                            y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                  
+                                                    if S[s][i-1][1] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                                                    if S[s][i-1][0] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                        name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                    
+                        
                                     alpha_vars = {}  ## z full
                                     cantVarAlpha = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
+                                                                               name="Full "+str(s+1)+str(' ')+str(i))
                                                 cantVarAlpha += 1
-                                            if S[s][i-1][1] != 0:
-                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
-                                                cantVarAlpha += 1
+                                                
                                     
                                     beta_vars = {}  ## z partial 1
                                     cantVarBeta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial1 "+str(s+1)+str(' ')+str(i))
                                                 cantVarBeta += 1
-                                            if S[s][i-1][1] != 0:
-                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                                cantVarBeta += 1
+                                                
                                     
                                     delta_vars = {}  ## z partial 2
                                     cantVarDelta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial2 "+str(s+1)+str(' ')+str(i))
                                                 cantVarDelta += 1
-                                            if S[s][i-1][1] != 0:
-                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                                cantVarDelta += 1
+                                           
                                     
                                     phi_vars = {}   ## z partial 3
                                     cantVarPhi = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial3 "+str(s+1)+str(' ')+str(i))
                                                 cantVarPhi += 1
-                                            if S[s][i-1][1] != 0:
-                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                                cantVarPhi += 1
+                                           
                                     
                                     gamma_vars = {} ## z null
                                     cantVarGamma = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
+                                                                         name="Null "+str(s+1)+str(' ')+str(i))
                                                 cantVarGamma += 1
-                                            if S[s][i-1][1] != 0:
-                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
-                                                cantVarGamma += 1   
                                                 
                                     obj = gp.LinExpr()
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0]:
-                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                            if S[s][i-1][1]:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                     model.setObjective(obj, GRB.MAXIMIZE)  
+                    
+                                                              
+                     
+                                    # alpha_vars = {}  ## z full
+                                    # cantVarAlpha = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    
+                                    # beta_vars = {}  ## z partial 1
+                                    # cantVarBeta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    
+                                    # delta_vars = {}  ## z partial 2
+                                    # cantVarDelta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    
+                                    # phi_vars = {}   ## z partial 3
+                                    # cantVarPhi = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    
+                                    # gamma_vars = {} ## z null
+                                    # cantVarGamma = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                
+                                    # obj = gp.LinExpr()
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    #         if S[s][i-1][1]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    # model.setObjective(obj, GRB.MAXIMIZE)  
                                 
                                 
                                     ## Add constraints 
                                     
                                     for s in range(len(S)):
                                         
+                                        # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
+                                        amb1 = gp.LinExpr()
                                         for l in L:
-                                            for k in K:
-                                                if k == 1 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                            if initialSolution[l-1][0] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb1 += y_vars[s+1,l,1,i] 
+                                            model.addConstr(amb1 <= initialSolution[l-1][0], "c4")
+                                            
+                                        # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
+                                        amb2 = gp.LinExpr()
+                                        for l in L:
+                                            if initialSolution[l-1][1] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                                    if S[s][i-1][1] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                            model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                                                 
-                                                if k == 2 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                        if S[s][i-1][1] != 0:
-                                                            suma += y_vars[s+1,l,k,i] 
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-    
+                                        
+                                        # for l in L:
+                                        #     for k in K:
+                                        #         if k == 1 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,1,i]
+                                        #                 else: 
+                                        #                     if S[s][i-1][0] != 0:
+                                        #                         suma += y_vars[s+1,l,1,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                                
+                                        #         if k == 2 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,2,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                                         
+                                        # Restricción 6: Activar alpha (cobertura total) 
                                         for i in I:
                                             if S[s][i-1][0] + S[s][i-1][1] != 0:
                                                 suma = 0
@@ -1120,13 +1283,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                                                                                   
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                      
+                                        # Restricción 7: Desactivar alpha (cobertura total)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1135,79 +1298,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-                                                                         
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma = 0
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-                                                                   
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-                                                
-                      
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                                                                             
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-                                            
-                                                
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c7")             
+                    
+                                        # Restricción 8: Activación de beta (cobertura parcial 1)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1218,15 +1315,60 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-                                            
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
+                    
+                                        # Restricción 9: Desactivar beta (cobertura parcial 1)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c9")
+                    
+                                        # Restricción 10: Activar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                    
+                                        # Restricción 11: Desactivar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_11")
+                    
+                                        # Restricción 12: Desactivar delta (cobertura parcial 2)   
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1237,32 +1379,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-                                            
-                       
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-                                            
-                       
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_12")
+                    
+                                        # Restricción 13: Activar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1273,16 +1398,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-                                            
-                  
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                    
+                                        # Restricción 14: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma1 = 0
@@ -1291,18 +1415,51 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                                            
-          
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_14")
+                    
+                                        # Restricción 15: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
-                                    
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(phi_vars[s+1,i] <= suma1 - suma, "c_15")
+                    
+                                        # Restricción 16: Activar gamma (cobertura nula)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_16")
+                     
+                                        # Restricción 17: Solo se puede activar un tipo de cobertura     
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_17")
+                                                          
                                     # Optimize model
                                     
                                     end_time = time.time()
@@ -1547,115 +1704,198 @@ for iconj in range(len(tamaños_I)):
                                                         y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                                         cantVarY += 1
+                                                    
                                                       
                                             if initialSolution[l-1][1] > 0:
                                                 for i in I:
-                                                    for k in K:
-                                                        if S[s][i-1][1] != 0:
-                                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                            cantVarY += 1
-                                                        if S[s][i-1][0] != 0:
-                                                            y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                  
+                                                    if S[s][i-1][1] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                                                    if S[s][i-1][0] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                        name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                    
+                        
                                     alpha_vars = {}  ## z full
                                     cantVarAlpha = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
+                                                                               name="Full "+str(s+1)+str(' ')+str(i))
                                                 cantVarAlpha += 1
-                                            if S[s][i-1][1] != 0:
-                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
-                                                cantVarAlpha += 1
+                                                
                                     
                                     beta_vars = {}  ## z partial 1
                                     cantVarBeta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial1 "+str(s+1)+str(' ')+str(i))
                                                 cantVarBeta += 1
-                                            if S[s][i-1][1] != 0:
-                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                                cantVarBeta += 1
+                                                
                                     
                                     delta_vars = {}  ## z partial 2
                                     cantVarDelta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial2 "+str(s+1)+str(' ')+str(i))
                                                 cantVarDelta += 1
-                                            if S[s][i-1][1] != 0:
-                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                                cantVarDelta += 1
+                                           
                                     
                                     phi_vars = {}   ## z partial 3
                                     cantVarPhi = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial3 "+str(s+1)+str(' ')+str(i))
                                                 cantVarPhi += 1
-                                            if S[s][i-1][1] != 0:
-                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                                cantVarPhi += 1
+                                           
                                     
                                     gamma_vars = {} ## z null
                                     cantVarGamma = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
+                                                                         name="Null "+str(s+1)+str(' ')+str(i))
                                                 cantVarGamma += 1
-                                            if S[s][i-1][1] != 0:
-                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
-                                                cantVarGamma += 1   
                                                 
                                     obj = gp.LinExpr()
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0]:
-                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                            if S[s][i-1][1]:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                     model.setObjective(obj, GRB.MAXIMIZE)  
+                    
+                                                              
+                     
+                                    # alpha_vars = {}  ## z full
+                                    # cantVarAlpha = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    
+                                    # beta_vars = {}  ## z partial 1
+                                    # cantVarBeta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    
+                                    # delta_vars = {}  ## z partial 2
+                                    # cantVarDelta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    
+                                    # phi_vars = {}   ## z partial 3
+                                    # cantVarPhi = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    
+                                    # gamma_vars = {} ## z null
+                                    # cantVarGamma = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                
+                                    # obj = gp.LinExpr()
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    #         if S[s][i-1][1]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    # model.setObjective(obj, GRB.MAXIMIZE)  
                                 
                                 
                                     ## Add constraints 
                                     
                                     for s in range(len(S)):
                                         
+                                        # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
+                                        amb1 = gp.LinExpr()
                                         for l in L:
-                                            for k in K:
-                                                if k == 1 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                            if initialSolution[l-1][0] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb1 += y_vars[s+1,l,1,i] 
+                                            model.addConstr(amb1 <= initialSolution[l-1][0], "c4")
+                                            
+                                        # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
+                                        amb2 = gp.LinExpr()
+                                        for l in L:
+                                            if initialSolution[l-1][1] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                                    if S[s][i-1][1] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                            model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                                                 
-                                                if k == 2 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                        if S[s][i-1][1] != 0:
-                                                            suma += y_vars[s+1,l,k,i] 
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-    
+                                        
+                                        # for l in L:
+                                        #     for k in K:
+                                        #         if k == 1 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,1,i]
+                                        #                 else: 
+                                        #                     if S[s][i-1][0] != 0:
+                                        #                         suma += y_vars[s+1,l,1,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                                
+                                        #         if k == 2 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,2,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                                         
+                                        # Restricción 6: Activar alpha (cobertura total) 
                                         for i in I:
                                             if S[s][i-1][0] + S[s][i-1][1] != 0:
                                                 suma = 0
@@ -1664,13 +1904,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                                                                                   
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                      
+                                        # Restricción 7: Desactivar alpha (cobertura total)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1679,79 +1919,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-                                                                         
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma = 0
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-                                                                   
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-                                                
-                      
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                                                                             
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-                                            
-                                                
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c7")             
+                    
+                                        # Restricción 8: Activación de beta (cobertura parcial 1)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1762,15 +1936,60 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-                                            
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
+                    
+                                        # Restricción 9: Desactivar beta (cobertura parcial 1)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c9")
+                    
+                                        # Restricción 10: Activar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                    
+                                        # Restricción 11: Desactivar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_11")
+                    
+                                        # Restricción 12: Desactivar delta (cobertura parcial 2)   
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1781,32 +2000,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-                                            
-                       
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-                                            
-                       
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_12")
+                    
+                                        # Restricción 13: Activar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -1817,16 +2019,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-                                            
-                  
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                    
+                                        # Restricción 14: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma1 = 0
@@ -1835,19 +2036,51 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                                            
-          
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_14")
+                    
+                                        # Restricción 15: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
-                                    
-                                    # Optimize model
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(phi_vars[s+1,i] <= suma1 - suma, "c_15")
+                    
+                                        # Restricción 16: Activar gamma (cobertura nula)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_16")
+                     
+                                        # Restricción 17: Solo se puede activar un tipo de cobertura     
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_17")
+                                                                       # Optimize model
                                     
                                     end_time = time.time()
                                     
@@ -2095,115 +2328,198 @@ for iconj in range(len(tamaños_I)):
                                                         y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                         name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                                         cantVarY += 1
+                                                    
                                                       
                                             if initialSolution[l-1][1] > 0:
                                                 for i in I:
-                                                    for k in K:
-                                                        if S[s][i-1][1] != 0:
-                                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                            cantVarY += 1
-                                                        if S[s][i-1][0] != 0:
-                                                            y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                              name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(k)+str(' ')+str(i))
-                                  
+                                                    if S[s][i-1][1] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                             name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                                                    if S[s][i-1][0] != 0:
+                                                        y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                        name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                        cantVarY += 1
+                    
+                        
                                     alpha_vars = {}  ## z full
                                     cantVarAlpha = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
+                                                                               name="Full "+str(s+1)+str(' ')+str(i))
                                                 cantVarAlpha += 1
-                                            if S[s][i-1][1] != 0:
-                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Full "+str(s+1)+str(' ')+str(i))
-                                                cantVarAlpha += 1
+                                                
                                     
                                     beta_vars = {}  ## z partial 1
                                     cantVarBeta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial1 "+str(s+1)+str(' ')+str(i))
                                                 cantVarBeta += 1
-                                            if S[s][i-1][1] != 0:
-                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                                cantVarBeta += 1
+                                                
                                     
                                     delta_vars = {}  ## z partial 2
                                     cantVarDelta = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial2 "+str(s+1)+str(' ')+str(i))
                                                 cantVarDelta += 1
-                                            if S[s][i-1][1] != 0:
-                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                                cantVarDelta += 1
+                                           
                                     
                                     phi_vars = {}   ## z partial 3
                                     cantVarPhi = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
                                                                           name="Partial3 "+str(s+1)+str(' ')+str(i))
                                                 cantVarPhi += 1
-                                            if S[s][i-1][1] != 0:
-                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                                cantVarPhi += 1
+                                           
                                     
                                     gamma_vars = {} ## z null
                                     cantVarGamma = 0
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0] != 0:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
+                                                                         name="Null "+str(s+1)+str(' ')+str(i))
                                                 cantVarGamma += 1
-                                            if S[s][i-1][1] != 0:
-                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
-                                                cantVarGamma += 1   
                                                 
                                     obj = gp.LinExpr()
                                     for s in range(len(S)):
                                         for i in I:
-                                            if S[s][i-1][0]:
-                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                            if S[s][i-1][1]:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                                                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                     model.setObjective(obj, GRB.MAXIMIZE)  
+                    
+                                                              
+                     
+                                    # alpha_vars = {}  ## z full
+                                    # cantVarAlpha = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarAlpha += 1
+                                    
+                                    # beta_vars = {}  ## z partial 1
+                                    # cantVarBeta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarBeta += 1
+                                    
+                                    # delta_vars = {}  ## z partial 2
+                                    # cantVarDelta = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarDelta += 1
+                                    
+                                    # phi_vars = {}   ## z partial 3
+                                    # cantVarPhi = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarPhi += 1
+                                    
+                                    # gamma_vars = {} ## z null
+                                    # cantVarGamma = 0
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                    #         if S[s][i-1][1] != 0:
+                                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                    #             cantVarGamma += 1
+                                
+                                    # obj = gp.LinExpr()
+                                    # for s in range(len(S)):
+                                    #     for i in I:
+                                    #         if S[s][i-1][0]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    #         if S[s][i-1][1]:
+                                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                    # model.setObjective(obj, GRB.MAXIMIZE)  
                                 
                                 
                                     ## Add constraints 
                                     
                                     for s in range(len(S)):
                                         
+                                        # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
+                                        amb1 = gp.LinExpr()
                                         for l in L:
-                                            for k in K:
-                                                if k == 1 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                            if initialSolution[l-1][0] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb1 += y_vars[s+1,l,1,i] 
+                                            model.addConstr(amb1 <= initialSolution[l-1][0], "c4")
+                                            
+                                        # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
+                                        amb2 = gp.LinExpr()
+                                        for l in L:
+                                            if initialSolution[l-1][1] != 0:
+                                                for i in I:
+                                                    if S[s][i-1][0] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                                    if S[s][i-1][1] != 0:
+                                                        amb2 += y_vars[s+1,l,2,i] 
+                                            model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                                                 
-                                                if k == 2 and initialSolution[l-1][k-1] != 0:
-                                                    suma = 0
-                                                    for i in I:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma += y_vars[s+1,l,1,i]
-                                                        if S[s][i-1][1] != 0:
-                                                            suma += y_vars[s+1,l,k,i] 
-                                                    model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-    
+                                        
+                                        # for l in L:
+                                        #     for k in K:
+                                        #         if k == 1 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,1,i]
+                                        #                 else: 
+                                        #                     if S[s][i-1][0] != 0:
+                                        #                         suma += y_vars[s+1,l,1,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
+                                                
+                                        #         if k == 2 and initialSolution[l-1][k-1] != 0:
+                                        #             suma = 0
+                                        #             for i in I:
+                                        #                 if S[s][i-1][0] != 0:
+                                        #                     suma += y_vars[s+1,l,2,i]
+                                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
+                                         
+                                        # Restricción 6: Activar alpha (cobertura total) 
                                         for i in I:
                                             if S[s][i-1][0] + S[s][i-1][1] != 0:
                                                 suma = 0
@@ -2212,13 +2528,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c7")
-                                                                                   
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                      
+                                        # Restricción 7: Desactivar alpha (cobertura total)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -2227,79 +2543,13 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c8")             
-                                                                         
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma = 0
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c9" )
-                                                                   
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c_10")
-                                                
-                      
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_11")
-                                                                             
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
-                                                        if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_12")
-                                            
-                                                
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma, "c7")             
+                    
+                                        # Restricción 8: Activación de beta (cobertura parcial 1)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -2310,15 +2560,60 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_13")
-                                            
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(2*suma1 - suma - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
+                    
+                                        # Restricción 9: Desactivar beta (cobertura parcial 1)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma1, "c9")
+                    
+                                        # Restricción 10: Activar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                    
+                                        # Restricción 11: Desactivar delta (cobertura parcial 2)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_11")
+                    
+                                        # Restricción 12: Desactivar delta (cobertura parcial 2)   
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -2329,32 +2624,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_14")
-                                            
-                       
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                suma1 = 0
-                                                for l in L:
-                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
                                                         if S[s][i-1][0] != 0:
-                                                            suma1 += y_vars[s+1,l,1,i] 
-                                                    if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_15")
-                                            
-                       
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1*delta_vars[s+1,i] <= suma, "c_12")
+                    
+                                        # Restricción 13: Activar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma = 0
@@ -2365,16 +2643,15 @@ for iconj in range(len(tamaños_I)):
                                                             suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma += cli[l-1][i-1]*y_vars[s+1,l,k,i] 
-                                                                  suma1 += y_vars[s+1,l,k,i]  
-                                                model.addConstr(np.amin(cli)*phi_vars[s+1,i] <= suma1 - suma, "c_16")
-                                            
-                  
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(suma1 - suma <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                    
+                                        # Restricción 14: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
                                                 suma1 = 0
@@ -2383,19 +2660,51 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][0] != 0:
                                                             suma1 += y_vars[s+1,l,1,i] 
                                                     if initialSolution[l-1][1] != 0:
-                                                        for k in K:
-                                                              if S[s][i-1][1] != 0:
-                                                                  suma1 += y_vars[s+1,l,2,i] 
-                                                              if S[s][i-1][0] != 0:
-                                                                  suma1 += y_vars[s+1,l,k,i] 
-                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_17")
-                                            
-          
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma1, "c_14")
+                    
+                                        # Restricción 15: Desactivar phi (cobertura parcial 3)
                                         for i in I:
                                             if (S[s][i-1][0] + S[s][i-1][1]) != 0:
-                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
-                                    
-                                    # Optimize model
+                                                suma = 0
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,1,i] 
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma += cli[l-1][i-1]*y_vars[s+1,l,2,i] 
+                                                            suma1 += y_vars[s+1,l,2,i]  
+                                                model.addConstr(phi_vars[s+1,i] <= suma1 - suma, "c_15")
+                    
+                                        # Restricción 16: Activar gamma (cobertura nula)
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                suma1 = 0
+                                                for l in L:
+                                                    if initialSolution[l-1][0] != 0:
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,1,i] 
+                                                    if initialSolution[l-1][1] != 0:
+                                                        if S[s][i-1][1] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                        if S[s][i-1][0] != 0:
+                                                            suma1 += y_vars[s+1,l,2,i] 
+                                                model.addConstr(suma1 + gamma_vars[s+1,i] >= 1, "c_16")
+                     
+                                        # Restricción 17: Solo se puede activar un tipo de cobertura     
+                                        for i in I:
+                                            if (S[s][i-1][0] + S[s][i-1][1]) != 0:
+                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_17")
+                                                         # Optimize model
                                     
                                     end_time = time.time()
                                     
