@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 300
-modelStopTime = 180
+elapsedtimeStop = 18000
+modelStopTime = 60
 
 sumaelapsed = 0
 
@@ -940,7 +940,7 @@ for iconj in range(len(tamaños_I)):
                     mejoras = open ("mejoras_GRASP_Prueba_"
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
-                              +str(len(S))+'.txt','r')
+                              +str(len(S))+'.txt','w')
                     
                     mejoras.write('mejoró %g' % model.objVal + '  GRASP' )
                     mejoras.write('\n')
