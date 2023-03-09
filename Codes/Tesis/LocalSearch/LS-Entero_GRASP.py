@@ -753,7 +753,7 @@ for iconj in range(len(tamaños_I)):
                 
                 f.close()    
                 
-                #break
+                break
                 
                 ### LEER AQUI ARCHIVO DE RESULTADO Y CONTAR LAS COBERTURAS
                 

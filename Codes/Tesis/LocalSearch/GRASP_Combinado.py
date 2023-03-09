@@ -29,13 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [150]
-tamaños_L = [100]
-tamaños_S = [50]
+tamaños_I = [1500]
+tamaños_L = [150]
+tamaños_S = [150]
 
-# tamaños_I = [1500]
+# tamaños_I = [150]
 # tamaños_L = [100]
-# tamaños_S = [100]
+# tamaños_S = [50]
 
 K = [1, 2]
 
@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 18000
-modelStopTime = 60
+elapsedtimeStop = 64800
+modelStopTime = 1200
 
 sumaelapsed = 0
 
@@ -822,9 +822,10 @@ for iconj in range(len(tamaños_I)):
                 f.write('Obj: %g' % model.objVal)
                 f.write('\n')
                 
-                for v in model.getVars():
-                    f.write('%s %g' % (v.varName, v.x))
-                    f.write('\n')
+                if len(model.getVars()) != 0:
+                    for v in model.getVars():
+                        f.write('%s %g' % (v.varName, v.x))
+                        f.write('\n')
                 
                 #imprimir el valor objetivo
                 print('Obj: %g' % model.objVal)
@@ -1503,9 +1504,10 @@ for iconj in range(len(tamaños_I)):
                                     f.write('Obj: %g' % model.objVal)
                                     f.write('\n')
                                     
-                                    for v in model.getVars():
-                                        f.write('%s %g' % (v.varName, v.x))
-                                        f.write('\n')
+                                    if len(model.getVars()) != 0:
+                                        for v in model.getVars():
+                                            f.write('%s %g' % (v.varName, v.x))
+                                            f.write('\n')
                                     
                                     #imprimir el valor objetivo
                                     print('Obj: %g' % model.objVal)
@@ -2123,9 +2125,10 @@ for iconj in range(len(tamaños_I)):
                                     f.write('Obj: %g' % model.objVal)
                                     f.write('\n')
                                     
-                                    for v in model.getVars():
-                                        f.write('%s %g' % (v.varName, v.x))
-                                        f.write('\n')
+                                    if len(model.getVars()) != 0:
+                                        for v in model.getVars():
+                                            f.write('%s %g' % (v.varName, v.x))
+                                            f.write('\n')
                                     
                                     #imprimir el valor objetivo
                                     print('Obj: %g' % model.objVal)
@@ -2747,9 +2750,10 @@ for iconj in range(len(tamaños_I)):
                                     f.write('Obj: %g' % model.objVal)
                                     f.write('\n')
                                     
-                                    for v in model.getVars():
-                                        f.write('%s %g' % (v.varName, v.x))
-                                        f.write('\n')
+                                    if len(model.getVars()) != 0:
+                                        for v in model.getVars():
+                                            f.write('%s %g' % (v.varName, v.x))
+                                            f.write('\n')
                                     
                                     #imprimir el valor objetivo
                                     print('Obj: %g' % model.objVal)
