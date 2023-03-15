@@ -57,16 +57,16 @@ import xlwt
 # tamaños_L = [100]
 # tamaños_S = [100]
 
-tamaños_I = [1500]
+tamaños_I = [500]
 tamaños_L = [150]
-tamaños_S = [500]
+tamaños_S = [300]
 
 K = [1,2]
 
-timelim = 7200
+timelim = 64800 #18 horas 
 
 countcsv = 1
-
+       
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
 sheet = book.add_sheet('Tesis_Obj_Zs_', cell_overwrite_ok=True)
 

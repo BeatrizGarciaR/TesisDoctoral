@@ -31,7 +31,7 @@ import math
 
 tamaños_I = [1500]
 tamaños_L = [150]
-tamaños_S = [150]
+tamaños_S = [500]
 
 # tamaños_I = [150]
 # tamaños_L = [100]
