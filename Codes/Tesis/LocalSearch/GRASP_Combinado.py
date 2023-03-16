@@ -31,11 +31,11 @@ import math
 
 tamaños_I = [1500]
 tamaños_L = [150]
-tamaños_S = [500]
+tamaños_S = [150]
 
-# tamaños_I = [150]
-# tamaños_L = [100]
-# tamaños_S = [50]
+# tamaños_I = [300]
+# tamaños_L = [50]
+# tamaños_S = [100]
 
 K = [1, 2]
 
@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 64800
-modelStopTime = 1200
+elapsedtimeStop = 18000
+modelStopTime = 2700
 
 sumaelapsed = 0
 
