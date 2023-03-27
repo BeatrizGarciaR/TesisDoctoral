@@ -29,9 +29,9 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [1500]
-tamaños_L = [150]
-tamaños_S = [150]
+tamaños_I = [50]
+tamaños_L = [20]
+tamaños_S = [10]
 
 # tamaños_I = [300]
 # tamaños_L = [50]
@@ -48,8 +48,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 18000
-modelStopTime = 2700
+elapsedtimeStop = 1200
+modelStopTime = 27
 
 sumaelapsed = 0
 
@@ -59,18 +59,7 @@ alpha_def = 0.30
 
 soluciones = []
 
-book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('TesisTS_GRASP_', cell_overwrite_ok=True)
 
-def data_cb(m, where):
-    if where == gp.GRB.Callback.MIP:
-        cur_obj = m.cbGet(gp.GRB.Callback.MIP_OBJBST)
-        cur_bd = m.cbGet(gp.GRB.Callback.MIP_OBJBND)
-        gap = abs((cur_obj - cur_bd) / cur_obj)*100  
-        status = gp.GRB.OPTIMAL
-        m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
-        m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
-        
         
 ###########################################################################
 ################ REPETICIONES DE INSTANCIAS ###############################
@@ -79,6 +68,21 @@ def data_cb(m, where):
 for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
         for sconj in range(len(tamaños_S)):
+            
+            nameInstance = 'TesisTS_GRASP_' + str(tamaños_I[iconj]) + '_' + str(tamaños_L[jconj]) + '_' +str(tamaños_S[sconj]) + '_'
+            
+            book=xlwt.Workbook(encoding="utf-8",style_compression=0)
+            sheet = book.add_sheet(nameInstance, cell_overwrite_ok=True)
+            
+            def data_cb(m, where):
+                if where == gp.GRB.Callback.MIP:
+                    cur_obj = m.cbGet(gp.GRB.Callback.MIP_OBJBST)
+                    cur_bd = m.cbGet(gp.GRB.Callback.MIP_OBJBND)
+                    gap = abs((cur_obj - cur_bd) / cur_obj)*100  
+                    status = gp.GRB.OPTIMAL
+                    m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
+                    m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
+                    
             
             valorObjetivo = 0
     
@@ -102,6 +106,11 @@ for iconj in range(len(tamaños_I)):
             L = []
             for i in range(len_L):
                 L.append(int(i+1))
+                
+            Demand = []
+            line = archivo.readline().strip().split()
+            for i in range(len_I):
+                Demand.append(line[i])
             
             #Scenarios
             S = []
@@ -2959,34 +2968,34 @@ for iconj in range(len(tamaños_I)):
                 #         print(" ")
                 #         break
             
-        countcsv += 3
-        sheet.write(countcsv, 1,"newinstance")
-        countcsv += 3
-  
-
-initial1 = 0
-initial2 = 0
-for sol in range(len(initialSolution)):
-    for solK in range(len(K)):
-        if solK == 0:
-            initial1 += initialSolution[sol][solK]
-        else:
-            initial2 += initialSolution[sol][solK]
-         
-print("amb tipo 1 = ", initial1, "  eta 1 = ", eta[0])
-print("amb tipo 2 = ", initial2, "  eta 2 = ", eta[1])
-            
+            countcsv += 3
+            sheet.write(countcsv, 1,"newinstance")
+            countcsv += 3
+      
     
-print("Elapsed time total ")
-print(sumaelapsed)
-print(" ")
-
-sheet.write(countcsv+1, 0, "Total Elapsed Time")
-sheet.write(countcsv+1, 1, sumaelapsed)
-fi.close()
-book.save('TesisTS_GRASP_Prueba_.xls') 
-solutionX.close()
-coberturas.close()
-mejoras.close()
+            initial1 = 0
+            initial2 = 0
+            for sol in range(len(initialSolution)):
+                for solK in range(len(K)):
+                    if solK == 0:
+                        initial1 += initialSolution[sol][solK]
+                    else:
+                        initial2 += initialSolution[sol][solK]
+                     
+            print("amb tipo 1 = ", initial1, "  eta 1 = ", eta[0])
+            print("amb tipo 2 = ", initial2, "  eta 2 = ", eta[1])
+                        
+                
+            print("Elapsed time total ")
+            print(sumaelapsed)
+            print(" ")
+            
+            sheet.write(countcsv+1, 0, "Total Elapsed Time")
+            sheet.write(countcsv+1, 1, sumaelapsed)
+            fi.close()
+            book.save(nameInstance + '.xls') 
+            solutionX.close()
+            coberturas.close()
+            mejoras.close()
             
   

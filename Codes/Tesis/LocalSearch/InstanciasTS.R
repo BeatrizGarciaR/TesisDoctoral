@@ -5,9 +5,9 @@
 # tamanos_I <- c(20, 50, 80, 95)
 # tamanos_L <- c(40, 50, 70, 85)
 # tamanos_S <- c(12, 25, 30, 40)
-tamanos_I <- c(1000)
-tamanos_L <- c(200)
-tamanos_S <- c(500)
+tamanos_I <- c(50)
+tamanos_L <- c(20)
+tamanos_S <- c(10)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
@@ -33,6 +33,9 @@ for (iconj in 1:length(tamanos_I)){
     # Specify sample size
     N <- len_I  ### Quiero i valores pero en cada potencial l
     
+    #############################
+    ###### tiempo de traslado ###
+    #############################
     r_li <- c()
     for (sites in 1:len_L){
       # Draw N gamma distributed values
@@ -72,86 +75,132 @@ for (iconj in 1:length(tamanos_I)){
       len_S = tamanos_S[sconj]
       write(len_S, file = instancename, append=TRUE)
       
-      ################################
-      ########## SCENARIOS ###########
-      ################################
       
-      ###### NORMALIZADO 
-      xs <- rexp(len_S*len_I*length(K), rate = 1)
-      S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      sig <- 0
-      for (len in 1:(len_I*length(K))){
-        rand = rnorm(1)
-        if (rand < 1){
-          for (s in 1:len_S){
-            S[s, len] = 0
-          }
-        }
-        else{
-          for (s in 1:len_S){
-            sig <- sig + 1
-            if (xs[sig] < 1){
-              S[s, len] = 0
-            }
-            else if (xs[sig] < 2){
-              S[s, len] = 1
-            }
-            else{
-              S[s, len] = 2
-            }
-          }
-        }
+      ###############################
+      ########## DEMANDA ###########
+      ##############################
+      
+      Demand <- matrix(nrow=1, ncol=len_I)
+      rand = rnorm(1, mean = 0.5, sd = 0.2)
+      this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+      for (len in 1:len_I){
+        Demand[len] = as.integer(this[len]*500)
       }
+      write.table(Demand, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
-      
-      ###### NO NORMALIZADO 
-      # xs <- rexp(len_S*len_I*length(K), rate = 2)
-      # #xs <- rbinom(len_S*len_I*length(K), 1, 0.5)
+      # ###### NORMALIZADO 
+      # xs <- rexp(len_S*len_I*length(K), rate = 1)
       # S <- matrix(nrow=len_S, ncol=len_I*length(K))
       # sig <- 0
-      # for (s in 1:len_S){
+      # for (len in 1:(len_I*length(K))){
       #   rand = rnorm(1)
       #   if (rand < 1){
-      #     for (len in 1:(len_I*length(K))){
+      #     for (s in 1:len_S){
       #       S[s, len] = 0
       #     }
       #   }
       #   else{
-      #     for (len in 1:(len_I*length(K))){
-      #       #x <- rexp(1, rate = 2)
-      #       #if (len < len_I*length(K)/3 || len > len_I*length(K) - len_I*length(K)/3){
-      #       randi = rnorm(1)
-      #       if (randi < 0.8){
+      #     for (s in 1:len_S){
+      #       sig <- sig + 1
+      #       if (xs[sig] < 1){
       #         S[s, len] = 0
       #       }
-      #       else{
-      #         sig = sig + 1
-      #         x = xs[sig]
-      #         # if (x == 0){
-      #         #   S[s, len] = 1
-      #         # }
-      #         # else{
-      #         #   S[s, len] = 2
-      #         # }
-      #         if (x < 0.5){
-      #           S[s, len] = 0
-      #         }
-      #         else if (x < 2){
-      #           S[s, len] = 1
-      #         }
-      #         else{
-      #           S[s, len] = 2
-      #         }
+      #       else if (xs[sig] < 2){
+      #         S[s, len] = 1
       #       }
-      # 
+      #       else{
+      #         S[s, len] = 2
+      #       }
       #     }
       #   }
       # }
+      # 
+      # 
+      # ###### NO NORMALIZADO 
+      # # xs <- rexp(len_S*len_I*length(K), rate = 2)
+      # # #xs <- rbinom(len_S*len_I*length(K), 1, 0.5)
+      # # S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      # # sig <- 0
+      # # for (s in 1:len_S){
+      # #   rand = rnorm(1)
+      # #   if (rand < 1){
+      # #     for (len in 1:(len_I*length(K))){
+      # #       S[s, len] = 0
+      # #     }
+      # #   }
+      # #   else{
+      # #     for (len in 1:(len_I*length(K))){
+      # #       #x <- rexp(1, rate = 2)
+      # #       #if (len < len_I*length(K)/3 || len > len_I*length(K) - len_I*length(K)/3){
+      # #       randi = rnorm(1)
+      # #       if (randi < 0.8){
+      # #         S[s, len] = 0
+      # #       }
+      # #       else{
+      # #         sig = sig + 1
+      # #         x = xs[sig]
+      # #         # if (x == 0){
+      # #         #   S[s, len] = 1
+      # #         # }
+      # #         # else{
+      # #         #   S[s, len] = 2
+      # #         # }
+      # #         if (x < 0.5){
+      # #           S[s, len] = 0
+      # #         }
+      # #         else if (x < 2){
+      # #           S[s, len] = 1
+      # #         }
+      # #         else{
+      # #           S[s, len] = 2
+      # #         }
+      # #       }
+      # # 
+      # #     }
+      # #   }
+      # # }
+      # 
+      # # S <- c()
+      # # for (s in 1:len_S){
+      # #   S <- rbind(S, rbinom(len_I*length(K), 2, 0.1))
+      # # }
+      # write.table(S, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
+      # 
       
-      # S <- c()
-      # for (s in 1:len_S){
-      #   S <- rbind(S, rbinom(len_I*length(K), 2, 0.1))
-      # }
+      ################################
+      ########## SCENARIOS ###########
+      ################################
+      
+      S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      for (s in 1:len_S){
+        len = 0
+        for (i in 1:len_I){
+          totalaccidentes = sample(Demand[i], 1)
+          rand = rnorm(1)
+          if (rand < 0){
+            rand = rand*(-1)
+          }
+          if (rand > 1){
+            rand = 1
+          }
+          if (rand < 0.7){
+            accidentes1 = as.numeric(as.integer(totalaccidentes*(rand)))
+            len = len + 1
+            S[s, len] = accidentes1
+            len = len + 1
+            S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(rand)))
+            
+          }
+          else{
+            accidentes1 = totalaccidentes*(1-rand)
+            len = len + 1
+            S[s, len] = as.numeric(as.integer(accidentes1))
+            len = len + 1
+            S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(1-rand)))
+            
+          }
+        }
+      }
       write.table(S, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
       ################################
