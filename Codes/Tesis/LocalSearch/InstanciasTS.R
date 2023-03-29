@@ -174,6 +174,7 @@ for (iconj in 1:length(tamanos_I)){
       ################################
       
       #S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      S <- c()
       proporcion_i <- c()
       sumatotal = 0
       for (i in 1:len_I){
