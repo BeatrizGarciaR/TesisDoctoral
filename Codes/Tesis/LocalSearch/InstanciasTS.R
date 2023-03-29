@@ -83,8 +83,10 @@ for (iconj in 1:length(tamanos_I)){
       Demand <- matrix(nrow=1, ncol=len_I)
       rand = rnorm(1, mean = 0.5, sd = 0.2)
       this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+      totalAccidentes = 0
       for (len in 1:len_I){
         Demand[len] = as.integer(this[len]*500)
+        totalAccidentes = totalAccidentes + as.integer(this[len]*500)
       }
       write.table(Demand, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
@@ -172,35 +174,43 @@ for (iconj in 1:length(tamanos_I)){
       ################################
       
       S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      for (s in 1:len_S){
-        len = 0
-        for (i in 1:len_I){
-          totalaccidentes = sample(Demand[i], 1)
-          rand = rnorm(1)
-          if (rand < 0){
-            rand = rand*(-1)
-          }
-          if (rand > 1){
-            rand = 1
-          }
-          if (rand < 0.7){
-            accidentes1 = as.numeric(as.integer(totalaccidentes*(rand)))
-            len = len + 1
-            S[s, len] = accidentes1
-            len = len + 1
-            S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(rand)))
-            
-          }
-          else{
-            accidentes1 = totalaccidentes*(1-rand)
-            len = len + 1
-            S[s, len] = as.numeric(as.integer(accidentes1))
-            len = len + 1
-            S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(1-rand)))
-            
-          }
-        }
+      proporcion <- c()
+      sumatotal = 0
+      for (i in 1:len_I){
+        proporcion_i <- cbind(proporcion_i, Demand[i]/totalAccidentes)
+        sumatotal = sumatotal + Demand[i]/totalAccidentes
       }
+      
+      # S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      # for (s in 1:len_S){
+      #   len = 0
+      #   for (i in 1:len_I){
+      #     totalaccidentes = sample(Demand[i], 1)
+      #     rand = rnorm(1)
+      #     if (rand < 0){
+      #       rand = rand*(-1)
+      #     }
+      #     if (rand > 1){
+      #       rand = 1
+      #     }
+      #     if (rand < 0.7){
+      #       accidentes1 = as.numeric(as.integer(totalaccidentes*(rand)))
+      #       len = len + 1
+      #       S[s, len] = accidentes1
+      #       len = len + 1
+      #       S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(rand)))
+      #       
+      #     }
+      #     else{
+      #       accidentes1 = totalaccidentes*(1-rand)
+      #       len = len + 1
+      #       S[s, len] = as.numeric(as.integer(accidentes1))
+      #       len = len + 1
+      #       S[s, len] = as.numeric(as.integer((totalaccidentes-accidentes1)*(1-rand)))
+      #       
+      #     }
+      #   }
+      # }
       write.table(S, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
       ################################

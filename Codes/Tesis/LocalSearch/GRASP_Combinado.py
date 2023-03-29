@@ -83,7 +83,6 @@ for iconj in range(len(tamaños_I)):
                     m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
                     m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
                     
-            
             valorObjetivo = 0
     
             #Nombre: Instancias_Prueba_I_L_S
