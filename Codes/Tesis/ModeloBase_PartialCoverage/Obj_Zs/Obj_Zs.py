@@ -63,7 +63,7 @@ tamaños_S = [300]
 
 K = [1,2]
 
-timelim = 64800 #18 horas 
+timelim = 129600 #36 horas 
 
 countcsv = 1
        

@@ -173,13 +173,14 @@ for (iconj in 1:length(tamanos_I)){
       ########## SCENARIOS ###########
       ################################
       
-      S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      proporcion <- c()
+      #S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      proporcion_i <- c()
       sumatotal = 0
       for (i in 1:len_I){
         proporcion_i <- cbind(proporcion_i, Demand[i]/totalAccidentes)
         sumatotal = sumatotal + Demand[i]/totalAccidentes
       }
+      S <- sample.int(totalAccidentes, size=len_I, replace=TRUE, prob=proporcion_i)
       
       # S <- matrix(nrow=len_S, ncol=len_I*length(K))
       # for (s in 1:len_S){
