@@ -111,7 +111,7 @@ for iconj in range(len(tamaños_I)):
                 Demand.append([])
                 line = archivo.readline().strip().split()
                 for i in range(len_I):
-                    Demand[s].append(line[i])
+                    Demand[s].append(int(line[i]))
             
             #Scenarios
             S = []
@@ -178,20 +178,30 @@ for iconj in range(len(tamaños_I)):
             L2 = random.sample(L, pickL2)
             
             # Vamos a ver de esos puntos cuáles tienen más demanda 
-            
             demandtype1 = []
             demandtype2 = []
+            
             for i in range(len(I)):
-                for k in range(len(K)):
-                    demandcount = 0
-                    if k == 0:
-                        for s in range(len(S)):
-                            demandcount += S[s][i][k]
-                        demandtype1.append(demandcount)
-                    else:
-                        for s in range(len(S)):
-                            demandcount += S[s][i][k]
-                        demandtype2.append(demandcount)
+                demandcount = 0
+                for s in range(len(S)):
+                    demandcount += Demand[s][i]
+                    demandtype1.append(int(2*demandcount/3))
+                    demandtype2.append(int(demandcount/3))
+            
+            
+            # demandtype1 = []
+            # demandtype2 = []
+            # for i in range(len(I)):
+            #     for k in range(len(K)):
+            #         demandcount = 0
+            #         if k == 0:
+            #             for s in range(len(S)):
+            #                 demandcount += S[s][i][k]
+            #             demandtype1.append(demandcount)
+            #         else:
+            #             for s in range(len(S)):
+            #                 demandcount += S[s][i][k]
+            #             demandtype2.append(demandcount)
                         
             print("Demand count type 1") # me dice cuántos accidentes hubo
             print(demandtype1)
@@ -229,6 +239,13 @@ for iconj in range(len(tamaños_I)):
                     accidentesConteo2 += demandtype2[puntos2]
                 accidentesesperados2.append(accidentesConteo2/len(puntosCubiertos2[potentialsites2]))
     
+            print("accidentes esperados type 1") # me dice cuántos accidentes se esperan
+            print(accidentesesperados1)
+            print(" ")  
+            
+            print("accidentes esperados type 2") # me dice cuántos accidentes se esperan
+            print(accidentesesperados2)
+            print(" ") 
                 
             #print(initialSolution)
             
@@ -279,6 +296,14 @@ for iconj in range(len(tamaños_I)):
                         if l not in LCR2:
                             restodepuntos2.append(l)
                         
+                print("LCR1") # 
+                print(LCR1)
+                print(" ")  
+                
+                print("LCR2") #
+                print(LCR2)
+                print(" ") 
+                
                 # LCR2 = []
                 # if len(L) <= eta[1]:
                 #     for i in range(len(L)):
@@ -293,7 +318,6 @@ for iconj in range(len(tamaños_I)):
                 #print(LCR1)
                 #print(LCR2)
                 
-                #break
                 
                 ###### FALTA LLENAR BIEN LA LCR PARA QUE SEA UNA CANTIDAD BUENA DE AMBULANCIAS
                 
@@ -384,7 +408,7 @@ for iconj in range(len(tamaños_I)):
                         potentialSiteActivos.append(i)
                 print(potentialSiteActivos)
                 
-                #break 
+                break 
                 
                 ######################################################################
                 ######################    MODEL   ####################################
