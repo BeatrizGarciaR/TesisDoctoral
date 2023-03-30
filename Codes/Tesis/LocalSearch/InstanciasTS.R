@@ -80,14 +80,40 @@ for (iconj in 1:length(tamanos_I)){
       ########## DEMANDA ###########
       ##############################
       
-      Demand <- matrix(nrow=1, ncol=len_I)
-      rand = rnorm(1, mean = 0.5, sd = 0.2)
-      this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+      # Demanda solo para una muestra 
+      # Demand <- matrix(nrow=1, ncol=len_I)
+      # rand = rnorm(1, mean = 0.5, sd = 0.2)
+      # this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+      # totalAccidentes = 0
+      # for (len in 1:len_I){
+      #   Demand[len] = as.integer(this[len]*500)
+      #   totalAccidentes = totalAccidentes + as.integer(this[len]*500)
+      # }
+      # for (len in 1:len_I){
+      #   if (Demand[len] == 0){
+      #     Demand[len] = 1
+      #   }
+      # }
+      
+      #Demanda para vaias muestras (s muestras) de cada i
+      Demand <- matrix(nrow=len_S, ncol=len_I)
       totalAccidentes = 0
-      for (len in 1:len_I){
-        Demand[len] = as.integer(this[len]*500)
-        totalAccidentes = totalAccidentes + as.integer(this[len]*500)
+      for (s in 1:len_S){
+        rand = rnorm(1, mean = 0.5, sd = 0.2)
+        this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+        
+        for (len in 1:len_I){
+          Demand[s,len] = as.integer(this[len]*500)
+          totalAccidentes = totalAccidentes + as.integer(this[len]*500)
+        }
+        for (len in 1:len_I){
+          if (Demand[s,len] == 0){
+            Demand[s,len] = 1
+          }
+        }
       }
+      
+      
       write.table(Demand, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE)
       
       # ###### NORMALIZADO 
@@ -174,14 +200,28 @@ for (iconj in 1:length(tamanos_I)){
       ################################
       
       #S <- matrix(nrow=len_S, ncol=len_I*length(K))
-      S <- c()
       proporcion_i <- c()
       sumatotal = 0
       for (i in 1:len_I){
-        proporcion_i <- cbind(proporcion_i, Demand[i]/totalAccidentes)
-        sumatotal = sumatotal + Demand[i]/totalAccidentes
+        Demand_i = sum(Demand[,i])
+        proporcion_i <- cbind(proporcion_i, Demand_i/totalAccidentes)
+        sumatotal = sumatotal + Demand_i/totalAccidentes
       }
-      S <- sample.int(totalAccidentes, size=len_I, replace=TRUE, prob=proporcion_i)
+      
+      S <- matrix(nrow=len_S, ncol=len_I*length(K))
+      for (s in 1:len_S){
+        count = 1
+        for (i in 1:len_I){
+          Demand_i = sample(Demand[,i], 1)
+          aux <- sample(1:Demand_i, 1, prob=rexp(1:Demand_i, proporcion_i[i]))
+          S[s,count] = as.integer((2*aux)/3)
+          count = count + 1
+          S[s,count] = as.integer(aux/3)
+          count = count + 1
+        }
+      }
+      
+      #S <- sample(Demand, size=length(Demand), replace=TRUE, prob=proporcion_i)
       
       # S <- matrix(nrow=len_S, ncol=len_I*length(K))
       # for (s in 1:len_S){
@@ -246,6 +286,9 @@ for (iconj in 1:length(tamanos_I)){
       }
       
       write.table(c_li, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE) 
+      
+      cantMaxAmbulancias <- c(as.integer(runif(len_L, 1, 5)))
+      write.table(cantMaxAmbulancias, file = instancename, row.names = FALSE, col.names = FALSE, append=TRUE) 
       
     }
   }

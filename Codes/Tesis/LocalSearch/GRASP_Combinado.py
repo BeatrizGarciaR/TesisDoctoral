@@ -48,7 +48,7 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 V = [1,2,3]
 
-elapsedtimeStop = 1200
+elapsedtimeStop = 60
 modelStopTime = 27
 
 sumaelapsed = 0
@@ -107,9 +107,11 @@ for iconj in range(len(tamaños_I)):
                 L.append(int(i+1))
                 
             Demand = []
-            line = archivo.readline().strip().split()
-            for i in range(len_I):
-                Demand.append(line[i])
+            for s in range(len_S):
+                Demand.append([])
+                line = archivo.readline().strip().split()
+                for i in range(len_I):
+                    Demand[s].append(line[i])
             
             #Scenarios
             S = []
@@ -151,7 +153,13 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 cli.append([])
                 for i in range(len(I)):
-                    cli[l].append(float(line[i]))   
+                    cli[l].append(float(line[i]))
+                    
+            
+            ambMax = []
+            for l in range(len(L)):
+                line = archivo.readline().strip().split()
+                ambMax.append(int(line[0]))
             
             
             # Other parameters #
