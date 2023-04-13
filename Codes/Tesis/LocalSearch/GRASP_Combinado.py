@@ -46,7 +46,7 @@ eta = [20, 11]
 t = 10
 tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
-V = [1,2,3]
+#V = [1,2,3]
 
 elapsedtimeStop = 60
 modelStopTime = 27
@@ -321,69 +321,258 @@ for iconj in range(len(tamaños_I)):
                 
                 ###### FALTA LLENAR BIEN LA LCR PARA QUE SEA UNA CANTIDAD BUENA DE AMBULANCIAS
                 
+                minimoaccidentes1 = min(accidentesesperados1)
+                maximoaccidentes1 = max(accidentesesperados1)
+                diferencia1 = maximoaccidentes1 - minimoaccidentes1
+                
+                particion1_1 = diferencia1*0.3
+                particion1_2 = diferencia1*0.6
+                #particion1_3 = diferencia1*0.6
+                #particion1_4 = diferencia1*0.8
+                
+                intervalo1_1 = minimoaccidentes1 + particion1_1
+                intervalo1_2 = minimoaccidentes1 + particion1_2
+                intervalo1_3 = maximoaccidentes1
+                #intervalo1_3 = minimoaccidentes1 + particion1_3
+                #intervalo1_4 = minimoaccidentes1 + particion1_4
+                #intervalo1_5 = maximoaccidentes1
+                
                 contamb1 = 0
                 while contamb1 < eta[0]:
-                    a = random.uniform(0,1)
-                    if eta[0] - contamb1 == 1:
-                        if LCR1 != []:
-                            b = random.choice(LCR1)
-                            LCR1.remove(b)
+                    if LCR1 != []:
+                        localidadaux = random.choice(LCR1)
+                        accidentespuntoaux = accidentesesperados1[localidadaux]
+                        if accidentespuntoaux <= intervalo1_1:
+                            if (contamb1 + 1) <= eta[0]:
+                                initialSolution[localidadaux][0] = 1
+                                LCR1.remove(localidadaux)
+                                contamb1 += 1
+                        
                         else:
-                            b = random.choice(restodepuntos1)
-                            restodepuntos1.remove(b)
-                        initialSolution[b][0] = 1
-                        contamb1 += 1                  
-                    else:
-                        if a < 0.85: 
-                            if LCR1 != []:
-                                b = random.choice(LCR1)
-                                LCR1.remove(b)
-                            else:
-                                b = random.choice(restodepuntos1)
-                                restodepuntos1.remove(b)
-                            initialSolution[b][0] = 1
-                            contamb1 += 1
-                        else:
-                            if LCR1 != []:
-                                b = random.choice(LCR1)
-                                LCR1.remove(b)
-                            else:
-                                b = random.choice(restodepuntos1)
-                                restodepuntos1.remove(b)
-                            initialSolution[b][0] = 2
-                            contamb1 += 2
+                            if accidentespuntoaux <= intervalo1_2:
+                                if (contamb1 + 2) <= eta[0]:
+                                    initialSolution[localidadaux][0] = 2
+                                    LCR1.remove(localidadaux)
+                                    contamb1 += 2
+                                else:
+                                    if (contamb1 + 1) <= eta[0]:
+                                        initialSolution[localidadaux][0] = 1
+                                        LCR1.remove(localidadaux)
+                                        contamb1 += 1
                             
+                            else:    
+                                if accidentespuntoaux <= intervalo1_3:
+                                    if (contamb1 + 3) <= eta[0]:
+                                        initialSolution[localidadaux][0] = 3
+                                        LCR1.remove(localidadaux)
+                                        contamb1 += 3
+                                    else:
+                                        if (contamb1 + 2) <= eta[0]:
+                                            initialSolution[localidadaux][0] = 2
+                                            LCR1.remove(localidadaux)
+                                            contamb1 += 2
+                                        else:
+                                            if (contamb1 + 1) <= eta[0]:
+                                                initialSolution[localidadaux][0] = 1
+                                                LCR1.remove(localidadaux)
+                                                contamb1 += 1
+                    else:
+                        localidadaux = random.choice(restodepuntos1)
+                        accidentespuntoaux = accidentesesperados1[localidadaux]
+                        if accidentespuntoaux <= intervalo1_1:
+                            if (contamb1 + 1) <= eta[0]:
+                                initialSolution[localidadaux][0] = 1
+                                restodepuntos1.remove(localidadaux)
+                                contamb1 += 1
+                        
+                        else:
+                            if accidentespuntoaux <= intervalo1_2:
+                                if (contamb1 + 2) <= eta[0]:
+                                    initialSolution[localidadaux][0] = 2
+                                    restodepuntos1.remove(localidadaux)
+                                    contamb1 += 2
+                                else:
+                                    if (contamb1 + 1) <= eta[0]:
+                                        initialSolution[localidadaux][0] = 1
+                                        restodepuntos1.remove(localidadaux)
+                                        contamb1 += 1
+                            
+                            else:    
+                                if accidentespuntoaux <= intervalo1_3:
+                                    if (contamb1 + 3) <= eta[0]:
+                                        initialSolution[localidadaux][0] = 3
+                                        restodepuntos1.remove(localidadaux)
+                                        contamb1 += 3
+                                    else:
+                                        if (contamb1 + 2) <= eta[0]:
+                                            initialSolution[localidadaux][0] = 2
+                                            restodepuntos1.remove(localidadaux)
+                                            contamb1 += 2
+                                        else:
+                                            if (contamb1 + 1) <= eta[0]:
+                                                initialSolution[localidadaux][0] = 1
+                                                restodepuntos1.remove(localidadaux)
+                                                contamb1 += 1
+
+
+                minimoaccidentes2 = min(accidentesesperados2)
+                maximoaccidentes2 = max(accidentesesperados2)
+                diferencia2 = maximoaccidentes2 - minimoaccidentes2
+                
+                particion2_1 = diferencia2*0.3
+                particion2_2 = diferencia2*0.6
+                #particion1_3 = diferencia1*0.6
+                #particion1_4 = diferencia1*0.8
+                
+                intervalo2_1 = minimoaccidentes2 + particion2_1
+                intervalo2_2 = minimoaccidentes2 + particion2_2
+                intervalo2_3 = maximoaccidentes2
+                #intervalo1_3 = minimoaccidentes1 + particion1_3
+                #intervalo1_4 = minimoaccidentes1 + particion1_4
+                #intervalo1_5 = maximoaccidentes1
+
                 contamb2 = 0
                 while contamb2 < eta[1]:
-                    a = random.uniform(0,1)
-                    if eta[1] - contamb2 == 1:
-                        if LCR2 != []:
-                            b = random.choice(LCR2)
-                            LCR2.remove(b)
+                    if LCR2 != []:
+                        localidadaux = random.choice(LCR2)
+                        accidentespuntoaux = accidentesesperados2[localidadaux]
+                        if accidentespuntoaux <= intervalo2_1:
+                            if (contamb2 + 1) <= eta[1]:
+                                initialSolution[localidadaux][1] = 1
+                                LCR2.remove(localidadaux)
+                                contamb2 += 1
+                        
                         else:
-                            b = random.choice(restodepuntos2)
-                            restodepuntos2.remove(b)
-                        initialSolution[b][1] = 1
-                        contamb2 += 1                  
+                            if accidentespuntoaux <= intervalo2_2:
+                                if (contamb2 + 2) <= eta[1]:
+                                    initialSolution[localidadaux][1] = 2
+                                    LCR2.remove(localidadaux)
+                                    contamb2 += 2
+                                else:
+                                    if (contamb2 + 1) <= eta[1]:
+                                        initialSolution[localidadaux][1] = 1
+                                        LCR2.remove(localidadaux)
+                                        contamb2 += 1
+                            
+                            else:    
+                                if accidentespuntoaux <= intervalo2_3:
+                                    if (contamb2 + 3) <= eta[1]:
+                                        initialSolution[localidadaux][1] = 3
+                                        LCR2.remove(localidadaux)
+                                        contamb2 += 3
+                                    else:
+                                        if (contamb2 + 2) <= eta[1]:
+                                            initialSolution[localidadaux][1] = 2
+                                            LCR2.remove(localidadaux)
+                                            contamb2 += 2
+                                        else:
+                                            if (contamb2 + 1) <= eta[1]:
+                                                initialSolution[localidadaux][1] = 1
+                                                LCR2.remove(localidadaux)
+                                                contamb2 += 1
                     else:
-                        if a < 0.85: 
-                            if LCR2 != []:
-                                b = random.choice(LCR2)
-                                LCR2.remove(b)
-                            else:
-                                b = random.choice(restodepuntos2)
-                                restodepuntos2.remove(b)
-                            initialSolution[b][1] = 1
-                            contamb2 += 1
+                        localidadaux = random.choice(restodepuntos2)
+                        accidentespuntoaux = accidentesesperados2[localidadaux]
+                        if accidentespuntoaux <= intervalo2_1:
+                            if (contamb2 + 1) <= eta[1]:
+                                initialSolution[localidadaux][1] = 1
+                                restodepuntos2.remove(localidadaux)
+                                contamb2 += 1
+                        
                         else:
-                            if LCR2 != []:
-                                b = random.choice(LCR2)
-                                LCR2.remove(b)
-                            else:
-                                b = random.choice(restodepuntos2)
-                                restodepuntos2.remove(b)
-                            initialSolution[b][1] = 2
-                            contamb2 += 2
+                            if accidentespuntoaux <= intervalo2_2:
+                                if (contamb2 + 2) <= eta[1]:
+                                    initialSolution[localidadaux][1] = 2
+                                    restodepuntos2.remove(localidadaux)
+                                    contamb2 += 2
+                                else:
+                                    if (contamb2 + 1) <= eta[1]:
+                                        initialSolution[localidadaux][1] = 1
+                                        restodepuntos2.remove(localidadaux)
+                                        contamb2 += 1
+                            
+                            else:    
+                                if accidentespuntoaux <= intervalo2_3:
+                                    if (contamb2 + 3) <= eta[1]:
+                                        initialSolution[localidadaux][1] = 3
+                                        restodepuntos2.remove(localidadaux)
+                                        contamb2 += 3
+                                    else:
+                                        if (contamb2 + 2) <= eta[1]:
+                                            initialSolution[localidadaux][1] = 2
+                                            restodepuntos2.remove(localidadaux)
+                                            contamb2 += 2
+                                        else:
+                                            if (contamb2 + 1) <= eta[1]:
+                                                initialSolution[localidadaux][1] = 1
+                                                restodepuntos2.remove(localidadaux)
+                                                contamb2 += 1
+
+                #break
+                
+                # contamb1 = 0
+                # while contamb1 < eta[0]:
+                #     a = random.uniform(0,1)
+                #     if eta[0] - contamb1 == 1:
+                #         if LCR1 != []:
+                #             b = random.choice(LCR1)
+                #             LCR1.remove(b)
+                #         else:
+                #             b = random.choice(restodepuntos1)
+                #             restodepuntos1.remove(b)
+                #         initialSolution[b][0] = 1
+                #         contamb1 += 1                  
+                #     else:
+                #         if a < 0.85: 
+                #             if LCR1 != []:
+                #                 b = random.choice(LCR1)
+                #                 LCR1.remove(b)
+                #             else:
+                #                 b = random.choice(restodepuntos1)
+                #                 restodepuntos1.remove(b)
+                #             initialSolution[b][0] = 1
+                #             contamb1 += 1
+                #         else:
+                #             if LCR1 != []:
+                #                 b = random.choice(LCR1)
+                #                 LCR1.remove(b)
+                #             else:
+                #                 b = random.choice(restodepuntos1)
+                #                 restodepuntos1.remove(b)
+                #             initialSolution[b][0] = 2
+                #             contamb1 += 2
+                            
+                # contamb2 = 0
+                # while contamb2 < eta[1]:
+                #     a = random.uniform(0,1)
+                #     if eta[1] - contamb2 == 1:
+                #         if LCR2 != []:
+                #             b = random.choice(LCR2)
+                #             LCR2.remove(b)
+                #         else:
+                #             b = random.choice(restodepuntos2)
+                #             restodepuntos2.remove(b)
+                #         initialSolution[b][1] = 1
+                #         contamb2 += 1                  
+                #     else:
+                #         if a < 0.85: 
+                #             if LCR2 != []:
+                #                 b = random.choice(LCR2)
+                #                 LCR2.remove(b)
+                #             else:
+                #                 b = random.choice(restodepuntos2)
+                #                 restodepuntos2.remove(b)
+                #             initialSolution[b][1] = 1
+                #             contamb2 += 1
+                #         else:
+                #             if LCR2 != []:
+                #                 b = random.choice(LCR2)
+                #                 LCR2.remove(b)
+                #             else:
+                #                 b = random.choice(restodepuntos2)
+                #                 restodepuntos2.remove(b)
+                #             initialSolution[b][1] = 2
+                #             contamb2 += 2
                 
     
                 # Solamente se asignan 1 y 2... hay que modificar eso
@@ -408,7 +597,7 @@ for iconj in range(len(tamaños_I)):
                         potentialSiteActivos.append(i)
                 print(potentialSiteActivos)
                 
-                break 
+                #break 
                 
                 ######################################################################
                 ######################    MODEL   ####################################
@@ -1063,7 +1252,7 @@ for iconj in range(len(tamaños_I)):
                     
                     lectura.close()
                                         
-   
+                break
                 ####################################
                 ####### LOCAL SEARCH ###############
                 ####################################
