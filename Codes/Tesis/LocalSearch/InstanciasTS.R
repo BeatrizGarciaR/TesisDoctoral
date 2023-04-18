@@ -5,9 +5,9 @@
 # tamanos_I <- c(20, 50, 80, 95)
 # tamanos_L <- c(40, 50, 70, 85)
 # tamanos_S <- c(12, 25, 30, 40)
-tamanos_I <- c(50)
-tamanos_L <- c(20)
-tamanos_S <- c(10)
+tamanos_I <- c(168, 270, 500, 900, 1500)
+tamanos_L <- c(16, 30, 50, 70, 100)
+tamanos_S <- c(10, 50, 100, 150, 200)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
@@ -103,8 +103,14 @@ for (iconj in 1:length(tamanos_I)){
         this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
         
         for (len in 1:len_I){
-          Demand[s,len] = as.integer(this[len]*500)
-          totalAccidentes = totalAccidentes + as.integer(this[len]*500)
+          if(is.na(this) == TRUE){
+            Demand[s,len] = 1
+            totalAccidentes = totalAccidentes + 1
+          }
+          else{
+            Demand[s,len] = as.integer(this[len]*500)
+            totalAccidentes = totalAccidentes + as.integer(this[len]*500)
+          }
         }
         for (len in 1:len_I){
           if (Demand[s,len] == 0){
