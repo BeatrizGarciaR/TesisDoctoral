@@ -29,9 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [168, 270, 500, 900, 1500]
-tamaños_L = [16, 30, 50, 70, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+# tamaños_I = [168, 270, 500, 900, 1500]
+# tamaños_L = [16, 30, 50, 70, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
+
+tamaños_I = [168]
+tamaños_L = [16, 30]
+tamaños_S = [10, 50, 100]
 
 # tamaños_I = [300]
 # tamaños_L = [50]
@@ -48,12 +52,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 3600
-modelStopTime = 300
-
-sumaelapsed = 0
-
-countcsv = 1
+elapsedtimeStop = 60
+modelStopTime = 15
 
 alpha_def = 0.30
 
@@ -69,6 +69,10 @@ for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
         for sconj in range(len(tamaños_S)):
             
+            sumaelapsed = 0
+            valorObjetivo = 0
+            countcsv = 1
+            
             nameInstance = 'TesisTS_GRASP_' + str(tamaños_I[iconj]) + '_' + str(tamaños_L[jconj]) + '_' +str(tamaños_S[sconj]) + '_' + str(eta[0]) + "_" + str(eta[1])
             
             book=xlwt.Workbook(encoding="utf-8",style_compression=0)
@@ -82,9 +86,8 @@ for iconj in range(len(tamaños_I)):
                     status = gp.GRB.OPTIMAL
                     m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
                     m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
-                    
-            valorObjetivo = 0
-    
+
+
             #Nombre: Instancias_Prueba_I_L_S
                 
             archivo = open('Instancias_Prueba_'
@@ -1619,7 +1622,7 @@ for iconj in range(len(tamaños_I)):
                                         #imprimir variables 
                                     
                                         #writer.writerows(name)
-                                        with open('data_GRASP_'+str(len(I))+str('_')
+                                        with open('data_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as f: #Cambiar de w a a
                                             writer = csv.writer(f)
@@ -2327,7 +2330,7 @@ for iconj in range(len(tamaños_I)):
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                             
-                                            mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
+                                            mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS2")
                                             mejoras.write('\n')
                                             
                                             
@@ -2413,7 +2416,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         else:
                                             
-                                            mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
+                                            mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS2")
                                             mejoras.write('\n')
                                             print("entra else que repite solution")
                                             print(" ")
@@ -3576,7 +3579,7 @@ for iconj in range(len(tamaños_I)):
                                                       +str(len(L))+str('_')
                                                       +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                             
-                                            mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '   LS2 ')
+                                            mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '   LS4 ')
                                             mejoras.write('\n')
                                             
                                             
@@ -3662,7 +3665,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         else:
                                             
-                                            mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS2")
+                                            mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS4")
                                             mejoras.write('\n')
                                             print("entra else que repite solution")
                                             print(" ")
@@ -3748,12 +3751,12 @@ for iconj in range(len(tamaños_I)):
                 print(sumaelapsed)
                 print(" ")
                 
-                sheet.write(countcsv+1, 0, "Total Elapsed Time")
-                sheet.write(countcsv+1, 1, sumaelapsed)
-                fi.close()
-                book.save(nameInstance + '.xls') 
-                solutionX.close()
-                coberturas.close()
-                mejoras.close()
+            sheet.write(countcsv+1, 0, "Total Elapsed Time")
+            sheet.write(countcsv+1, 1, sumaelapsed)
+            fi.close()
+            book.save(nameInstance + '.xls') 
+            solutionX.close()
+            coberturas.close()
+            mejoras.close()
                 
       
