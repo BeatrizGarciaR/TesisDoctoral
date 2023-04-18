@@ -52,8 +52,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 60
-modelStopTime = 15
+elapsedtimeStop = 30
+modelStopTime = 5
 
 alpha_def = 0.30
 
@@ -70,7 +70,7 @@ for iconj in range(len(tamaños_I)):
         for sconj in range(len(tamaños_S)):
             
             sumaelapsed = 0
-            valorObjetivo = 0
+            valorObjetivo = -1000000000000000
             countcsv = 1
             
             nameInstance = 'TesisTS_GRASP_' + str(tamaños_I[iconj]) + '_' + str(tamaños_L[jconj]) + '_' +str(tamaños_S[sconj]) + '_' + str(eta[0]) + "_" + str(eta[1])
@@ -590,7 +590,7 @@ for iconj in range(len(tamaños_I)):
                     
                     soluciones.append(initialSolution)
         
-                    with open('SolutionX_GRASP_'+str(len(I))+str('_')
+                    with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
                                       +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'w') as solutionX:            
                         solutionX.write(str(initialSolution))
@@ -1033,6 +1033,11 @@ for iconj in range(len(tamaños_I)):
                         datos = model._data[len(model._data)-1]
                         for row in range(len(datos)):
                             sheet.write(countcsv, row+4, datos[row])
+                    else:
+                        sheet.write(countcsv, 4, time.time()-model._start)
+                        sheet.write(countcsv, 5, model._sumaelapsed)
+                        sheet.write(countcsv, 6, model.objVal)
+                        sheet.write(countcsv, 7, model.objVal)
                     countcsv = countcsv + 1
                 
                     with open('data_GRASP_Prueba_'+str(len(I))+str('_')
@@ -1190,10 +1195,15 @@ for iconj in range(len(tamaños_I)):
                         sheet.write(countcsv, 2, len(L))
                         sheet.write(countcsv, 3, len(S))
                         if len(model._data) != 0:
-                            print("Entra datos for 2")
+                            print(" Entra datos for ")
                             datos = model._data[len(model._data)-1]
                             for row in range(len(datos)):
                                 sheet.write(countcsv, row+4, datos[row])
+                        else:
+                            sheet.write(countcsv, 4, time.time()-model._start)
+                            sheet.write(countcsv, 5, model._sumaelapsed)
+                            sheet.write(countcsv, 6, model.objVal)
+                            sheet.write(countcsv, 7, model.objVal)
                         countcsv = countcsv + 1
                         
                     
@@ -1717,10 +1727,15 @@ for iconj in range(len(tamaños_I)):
                                             sheet.write(countcsv, 2, len(L))
                                             sheet.write(countcsv, 3, len(S))
                                             if len(model._data) != 0:
-                                                print("Entra datos for 2")
+                                                print(" Entra datos for ")
                                                 datos = model._data[len(model._data)-1]
                                                 for row in range(len(datos)):
                                                     sheet.write(countcsv, row+4, datos[row])
+                                            else:
+                                                sheet.write(countcsv, 4, time.time()-model._start)
+                                                sheet.write(countcsv, 5, model._sumaelapsed)
+                                                sheet.write(countcsv, 6, model.objVal)
+                                                sheet.write(countcsv, 7, model.objVal)
                                             countcsv = countcsv + 1
                                             
                                         
@@ -2343,10 +2358,15 @@ for iconj in range(len(tamaños_I)):
                                             sheet.write(countcsv, 2, len(L))
                                             sheet.write(countcsv, 3, len(S))
                                             if len(model._data) != 0:
-                                                print("Entra datos for 2")
+                                                print(" Entra datos for ")
                                                 datos = model._data[len(model._data)-1]
                                                 for row in range(len(datos)):
                                                     sheet.write(countcsv, row+4, datos[row])
+                                            else:
+                                                sheet.write(countcsv, 4, time.time()-model._start)
+                                                sheet.write(countcsv, 5, model._sumaelapsed)
+                                                sheet.write(countcsv, 6, model.objVal)
+                                                sheet.write(countcsv, 7, model.objVal)
                                             countcsv = countcsv + 1
                                             
                                         
@@ -2968,10 +2988,15 @@ for iconj in range(len(tamaños_I)):
                                             sheet.write(countcsv, 2, len(L))
                                             sheet.write(countcsv, 3, len(S))
                                             if len(model._data) != 0:
-                                                print("Entra datos for 2")
+                                                print(" Entra datos for ")
                                                 datos = model._data[len(model._data)-1]
                                                 for row in range(len(datos)):
                                                     sheet.write(countcsv, row+4, datos[row])
+                                            else:
+                                                sheet.write(countcsv, 4, time.time()-model._start)
+                                                sheet.write(countcsv, 5, model._sumaelapsed)
+                                                sheet.write(countcsv, 6, model.objVal)
+                                                sheet.write(countcsv, 7, model.objVal)
                                             countcsv = countcsv + 1
                                             
                                         
@@ -3592,10 +3617,15 @@ for iconj in range(len(tamaños_I)):
                                             sheet.write(countcsv, 2, len(L))
                                             sheet.write(countcsv, 3, len(S))
                                             if len(model._data) != 0:
-                                                print("Entra datos for 2")
+                                                print(" Entra datos for ")
                                                 datos = model._data[len(model._data)-1]
                                                 for row in range(len(datos)):
                                                     sheet.write(countcsv, row+4, datos[row])
+                                            else:
+                                                sheet.write(countcsv, 4, time.time()-model._start)
+                                                sheet.write(countcsv, 5, model._sumaelapsed)
+                                                sheet.write(countcsv, 6, model.objVal)
+                                                sheet.write(countcsv, 7, model.objVal)
                                             countcsv = countcsv + 1
                                             
                                         
