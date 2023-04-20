@@ -29,8 +29,8 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [500, 900]
-tamaños_L = [16, 30, 100]
+tamaños_I = [270]
+tamaños_L = [16]
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168]

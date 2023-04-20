@@ -1,0 +1,3228 @@
+Elapsed time: 0.14656925201416016
+Obj: -3.192
+dispatched 1 3 1 77 0
+dispatched 1 3 1 97 0
+dispatched 1 3 1 99 0
+dispatched 1 3 1 110 0
+dispatched 1 3 1 111 0
+dispatched 1 3 1 112 0
+dispatched 1 3 1 114 0
+dispatched 1 3 1 115 0
+dispatched 1 3 1 118 0
+dispatched 1 3 1 119 0
+dispatched 1 3 1 120 0
+dispatched 1 3 1 126 0
+dispatched 1 3 1 131 0
+dispatched 1 3 1 132 0
+dispatched 1 3 1 133 0
+dispatched 1 3 1 144 0
+dispatched 1 3 1 146 0
+dispatched 1 3 1 166 0
+dispatched 1 3 1 173 0
+dispatched 1 3 1 174 0
+dispatched 1 3 1 175 0
+dispatched 1 3 1 177 0
+dispatched 1 3 1 179 0
+dispatched 1 3 1 181 0
+dispatched 1 3 1 185 0
+dispatched 1 3 1 188 0
+dispatched 1 3 1 202 0
+dispatched 1 3 1 204 0
+dispatched 1 3 1 205 0
+dispatched 1 3 1 207 0
+dispatched 1 3 1 211 0
+dispatched 1 3 1 214 0
+dispatched 1 3 2 77 0
+dispatched 1 3 2 77 0
+dispatched 1 3 2 97 0
+dispatched 1 3 2 99 0
+dispatched 1 3 2 99 0
+dispatched 1 3 2 110 0
+dispatched 1 3 2 110 0
+dispatched 1 3 2 111 0
+dispatched 1 3 2 112 0
+dispatched 1 3 2 112 0
+dispatched 1 3 2 114 0
+dispatched 1 3 2 114 0
+dispatched 1 3 2 115 0
+dispatched 1 3 2 115 0
+dispatched 1 3 2 118 0
+dispatched 1 3 2 118 0
+dispatched 1 3 2 119 0
+dispatched 1 3 2 119 0
+dispatched 1 3 2 120 0
+dispatched 1 3 2 120 0
+dispatched 1 3 2 126 0
+dispatched 1 3 2 126 0
+dispatched 1 3 2 131 0
+dispatched 1 3 2 131 0
+dispatched 1 3 2 132 0
+dispatched 1 3 2 132 0
+dispatched 1 3 2 133 0
+dispatched 1 3 2 133 0
+dispatched 1 3 2 144 0
+dispatched 1 3 2 144 0
+dispatched 1 3 2 146 0
+dispatched 1 3 2 166 0
+dispatched 1 3 2 166 0
+dispatched 1 3 2 173 0
+dispatched 1 3 2 174 0
+dispatched 1 3 2 174 0
+dispatched 1 3 2 175 0
+dispatched 1 3 2 175 0
+dispatched 1 3 2 177 0
+dispatched 1 3 2 177 0
+dispatched 1 3 2 179 0
+dispatched 1 3 2 179 0
+dispatched 1 3 2 181 0
+dispatched 1 3 2 181 0
+dispatched 1 3 2 185 0
+dispatched 1 3 2 185 0
+dispatched 1 3 2 188 0
+dispatched 1 3 2 202 0
+dispatched 1 3 2 204 0
+dispatched 1 3 2 205 0
+dispatched 1 3 2 205 0
+dispatched 1 3 2 207 0
+dispatched 1 3 2 207 0
+dispatched 1 3 2 211 0
+dispatched 1 3 2 214 0
+dispatched 1 3 2 214 0
+dispatched 1 15 1 77 0
+dispatched 1 15 1 97 0
+dispatched 1 15 1 99 0
+dispatched 1 15 1 110 0
+dispatched 1 15 1 111 0
+dispatched 1 15 1 112 0
+dispatched 1 15 1 114 0
+dispatched 1 15 1 115 0
+dispatched 1 15 1 118 0
+dispatched 1 15 1 119 0
+dispatched 1 15 1 120 0
+dispatched 1 15 1 126 0
+dispatched 1 15 1 131 0
+dispatched 1 15 1 132 0
+dispatched 1 15 1 133 0
+dispatched 1 15 1 144 0
+dispatched 1 15 1 146 0
+dispatched 1 15 1 166 0
+dispatched 1 15 1 173 0
+dispatched 1 15 1 174 0
+dispatched 1 15 1 175 0
+dispatched 1 15 1 177 0
+dispatched 1 15 1 179 0
+dispatched 1 15 1 181 0
+dispatched 1 15 1 185 0
+dispatched 1 15 1 188 0
+dispatched 1 15 1 202 0
+dispatched 1 15 1 204 0
+dispatched 1 15 1 205 0
+dispatched 1 15 1 207 0
+dispatched 1 15 1 211 0
+dispatched 1 15 1 214 0
+dispatched 1 15 2 77 0
+dispatched 1 15 2 77 0
+dispatched 1 15 2 97 0
+dispatched 1 15 2 99 0
+dispatched 1 15 2 99 0
+dispatched 1 15 2 110 0
+dispatched 1 15 2 110 0
+dispatched 1 15 2 111 0
+dispatched 1 15 2 112 0
+dispatched 1 15 2 112 0
+dispatched 1 15 2 114 0
+dispatched 1 15 2 114 0
+dispatched 1 15 2 115 0
+dispatched 1 15 2 115 0
+dispatched 1 15 2 118 0
+dispatched 1 15 2 118 0
+dispatched 1 15 2 119 0
+dispatched 1 15 2 119 0
+dispatched 1 15 2 120 0
+dispatched 1 15 2 120 0
+dispatched 1 15 2 126 0
+dispatched 1 15 2 126 0
+dispatched 1 15 2 131 0
+dispatched 1 15 2 131 0
+dispatched 1 15 2 132 0
+dispatched 1 15 2 132 0
+dispatched 1 15 2 133 0
+dispatched 1 15 2 133 0
+dispatched 1 15 2 144 0
+dispatched 1 15 2 144 0
+dispatched 1 15 2 146 0
+dispatched 1 15 2 166 0
+dispatched 1 15 2 166 0
+dispatched 1 15 2 173 0
+dispatched 1 15 2 174 0
+dispatched 1 15 2 174 0
+dispatched 1 15 2 175 0
+dispatched 1 15 2 175 0
+dispatched 1 15 2 177 0
+dispatched 1 15 2 177 0
+dispatched 1 15 2 179 0
+dispatched 1 15 2 179 0
+dispatched 1 15 2 181 0
+dispatched 1 15 2 181 0
+dispatched 1 15 2 185 0
+dispatched 1 15 2 185 0
+dispatched 1 15 2 188 0
+dispatched 1 15 2 202 0
+dispatched 1 15 2 204 0
+dispatched 1 15 2 205 0
+dispatched 1 15 2 205 0
+dispatched 1 15 2 207 0
+dispatched 1 15 2 207 0
+dispatched 1 15 2 211 0
+dispatched 1 15 2 214 0
+dispatched 1 15 2 214 0
+dispatched 2 3 1 78 0
+dispatched 2 3 1 91 0
+dispatched 2 3 1 96 0
+dispatched 2 3 1 97 0
+dispatched 2 3 1 105 0
+dispatched 2 3 1 109 0
+dispatched 2 3 1 112 0
+dispatched 2 3 1 115 0
+dispatched 2 3 1 117 0
+dispatched 2 3 1 118 0
+dispatched 2 3 1 120 0
+dispatched 2 3 1 121 0
+dispatched 2 3 1 122 0
+dispatched 2 3 1 129 0
+dispatched 2 3 1 134 0
+dispatched 2 3 1 145 0
+dispatched 2 3 1 147 0
+dispatched 2 3 1 157 0
+dispatched 2 3 1 160 0
+dispatched 2 3 1 165 0
+dispatched 2 3 1 166 0
+dispatched 2 3 1 170 0
+dispatched 2 3 1 177 0
+dispatched 2 3 1 178 0
+dispatched 2 3 1 180 0
+dispatched 2 3 1 183 0
+dispatched 2 3 1 187 0
+dispatched 2 3 1 189 0
+dispatched 2 3 1 193 0
+dispatched 2 3 1 195 0
+dispatched 2 3 1 197 0
+dispatched 2 3 1 200 0
+dispatched 2 3 1 206 0
+dispatched 2 3 2 78 0
+dispatched 2 3 2 78 0
+dispatched 2 3 2 91 0
+dispatched 2 3 2 91 0
+dispatched 2 3 2 96 0
+dispatched 2 3 2 96 0
+dispatched 2 3 2 97 0
+dispatched 2 3 2 97 0
+dispatched 2 3 2 105 0
+dispatched 2 3 2 109 0
+dispatched 2 3 2 109 0
+dispatched 2 3 2 112 0
+dispatched 2 3 2 112 0
+dispatched 2 3 2 115 0
+dispatched 2 3 2 115 0
+dispatched 2 3 2 117 0
+dispatched 2 3 2 117 0
+dispatched 2 3 2 118 0
+dispatched 2 3 2 118 0
+dispatched 2 3 2 120 0
+dispatched 2 3 2 120 0
+dispatched 2 3 2 121 0
+dispatched 2 3 2 121 0
+dispatched 2 3 2 122 0
+dispatched 2 3 2 122 0
+dispatched 2 3 2 129 0
+dispatched 2 3 2 129 0
+dispatched 2 3 2 134 0
+dispatched 2 3 2 134 0
+dispatched 2 3 2 145 0
+dispatched 2 3 2 145 0
+dispatched 2 3 2 147 0
+dispatched 2 3 2 157 0
+dispatched 2 3 2 157 0
+dispatched 2 3 2 160 0
+dispatched 2 3 2 160 0
+dispatched 2 3 2 165 0
+dispatched 2 3 2 165 0
+dispatched 2 3 2 166 0
+dispatched 2 3 2 166 0
+dispatched 2 3 2 170 0
+dispatched 2 3 2 170 0
+dispatched 2 3 2 177 0
+dispatched 2 3 2 177 0
+dispatched 2 3 2 178 0
+dispatched 2 3 2 178 0
+dispatched 2 3 2 180 0
+dispatched 2 3 2 180 0
+dispatched 2 3 2 183 0
+dispatched 2 3 2 183 0
+dispatched 2 3 2 187 0
+dispatched 2 3 2 187 0
+dispatched 2 3 2 189 0
+dispatched 2 3 2 189 0
+dispatched 2 3 2 193 0
+dispatched 2 3 2 193 0
+dispatched 2 3 2 195 0
+dispatched 2 3 2 195 0
+dispatched 2 3 2 197 0
+dispatched 2 3 2 197 0
+dispatched 2 3 2 200 0
+dispatched 2 3 2 200 0
+dispatched 2 3 2 206 0
+dispatched 2 3 2 206 0
+dispatched 2 15 1 78 0
+dispatched 2 15 1 91 0
+dispatched 2 15 1 96 0
+dispatched 2 15 1 97 0
+dispatched 2 15 1 105 0
+dispatched 2 15 1 109 0
+dispatched 2 15 1 112 0
+dispatched 2 15 1 115 0
+dispatched 2 15 1 117 0
+dispatched 2 15 1 118 0
+dispatched 2 15 1 120 0
+dispatched 2 15 1 121 0
+dispatched 2 15 1 122 0
+dispatched 2 15 1 129 0
+dispatched 2 15 1 134 0
+dispatched 2 15 1 145 0
+dispatched 2 15 1 147 0
+dispatched 2 15 1 157 0
+dispatched 2 15 1 160 0
+dispatched 2 15 1 165 0
+dispatched 2 15 1 166 0
+dispatched 2 15 1 170 0
+dispatched 2 15 1 177 0
+dispatched 2 15 1 178 0
+dispatched 2 15 1 180 0
+dispatched 2 15 1 183 0
+dispatched 2 15 1 187 0
+dispatched 2 15 1 189 0
+dispatched 2 15 1 193 0
+dispatched 2 15 1 195 0
+dispatched 2 15 1 197 0
+dispatched 2 15 1 200 0
+dispatched 2 15 1 206 0
+dispatched 2 15 2 78 0
+dispatched 2 15 2 78 0
+dispatched 2 15 2 91 0
+dispatched 2 15 2 91 0
+dispatched 2 15 2 96 0
+dispatched 2 15 2 96 0
+dispatched 2 15 2 97 0
+dispatched 2 15 2 97 0
+dispatched 2 15 2 105 0
+dispatched 2 15 2 109 0
+dispatched 2 15 2 109 0
+dispatched 2 15 2 112 0
+dispatched 2 15 2 112 0
+dispatched 2 15 2 115 0
+dispatched 2 15 2 115 0
+dispatched 2 15 2 117 0
+dispatched 2 15 2 117 0
+dispatched 2 15 2 118 0
+dispatched 2 15 2 118 0
+dispatched 2 15 2 120 0
+dispatched 2 15 2 120 0
+dispatched 2 15 2 121 0
+dispatched 2 15 2 121 0
+dispatched 2 15 2 122 0
+dispatched 2 15 2 122 0
+dispatched 2 15 2 129 0
+dispatched 2 15 2 129 0
+dispatched 2 15 2 134 0
+dispatched 2 15 2 134 0
+dispatched 2 15 2 145 0
+dispatched 2 15 2 145 0
+dispatched 2 15 2 147 0
+dispatched 2 15 2 157 0
+dispatched 2 15 2 157 0
+dispatched 2 15 2 160 0
+dispatched 2 15 2 160 0
+dispatched 2 15 2 165 0
+dispatched 2 15 2 165 0
+dispatched 2 15 2 166 0
+dispatched 2 15 2 166 0
+dispatched 2 15 2 170 0
+dispatched 2 15 2 170 0
+dispatched 2 15 2 177 0
+dispatched 2 15 2 177 0
+dispatched 2 15 2 178 0
+dispatched 2 15 2 178 0
+dispatched 2 15 2 180 0
+dispatched 2 15 2 180 0
+dispatched 2 15 2 183 0
+dispatched 2 15 2 183 0
+dispatched 2 15 2 187 0
+dispatched 2 15 2 187 0
+dispatched 2 15 2 189 0
+dispatched 2 15 2 189 0
+dispatched 2 15 2 193 0
+dispatched 2 15 2 193 0
+dispatched 2 15 2 195 0
+dispatched 2 15 2 195 0
+dispatched 2 15 2 197 0
+dispatched 2 15 2 197 0
+dispatched 2 15 2 200 0
+dispatched 2 15 2 200 0
+dispatched 2 15 2 206 0
+dispatched 2 15 2 206 0
+dispatched 3 3 1 76 0
+dispatched 3 3 1 78 0
+dispatched 3 3 1 90 0
+dispatched 3 3 1 91 0
+dispatched 3 3 1 92 0
+dispatched 3 3 1 105 0
+dispatched 3 3 1 106 0
+dispatched 3 3 1 110 0
+dispatched 3 3 1 114 0
+dispatched 3 3 1 115 0
+dispatched 3 3 1 118 0
+dispatched 3 3 1 119 0
+dispatched 3 3 1 120 0
+dispatched 3 3 1 122 0
+dispatched 3 3 1 123 0
+dispatched 3 3 1 124 0
+dispatched 3 3 1 126 0
+dispatched 3 3 1 128 0
+dispatched 3 3 1 131 0
+dispatched 3 3 1 145 0
+dispatched 3 3 1 162 0
+dispatched 3 3 1 173 0
+dispatched 3 3 1 174 0
+dispatched 3 3 1 175 0
+dispatched 3 3 1 177 0
+dispatched 3 3 1 178 0
+dispatched 3 3 1 187 0
+dispatched 3 3 1 190 0
+dispatched 3 3 1 191 0
+dispatched 3 3 1 196 0
+dispatched 3 3 1 201 0
+dispatched 3 3 1 207 0
+dispatched 3 3 2 76 0
+dispatched 3 3 2 76 0
+dispatched 3 3 2 78 0
+dispatched 3 3 2 78 0
+dispatched 3 3 2 90 0
+dispatched 3 3 2 91 0
+dispatched 3 3 2 92 0
+dispatched 3 3 2 105 0
+dispatched 3 3 2 105 0
+dispatched 3 3 2 106 0
+dispatched 3 3 2 106 0
+dispatched 3 3 2 110 0
+dispatched 3 3 2 110 0
+dispatched 3 3 2 114 0
+dispatched 3 3 2 114 0
+dispatched 3 3 2 115 0
+dispatched 3 3 2 115 0
+dispatched 3 3 2 118 0
+dispatched 3 3 2 118 0
+dispatched 3 3 2 119 0
+dispatched 3 3 2 119 0
+dispatched 3 3 2 120 0
+dispatched 3 3 2 122 0
+dispatched 3 3 2 122 0
+dispatched 3 3 2 123 0
+dispatched 3 3 2 123 0
+dispatched 3 3 2 124 0
+dispatched 3 3 2 126 0
+dispatched 3 3 2 126 0
+dispatched 3 3 2 128 0
+dispatched 3 3 2 128 0
+dispatched 3 3 2 131 0
+dispatched 3 3 2 131 0
+dispatched 3 3 2 145 0
+dispatched 3 3 2 162 0
+dispatched 3 3 2 162 0
+dispatched 3 3 2 173 0
+dispatched 3 3 2 174 0
+dispatched 3 3 2 174 0
+dispatched 3 3 2 175 0
+dispatched 3 3 2 175 0
+dispatched 3 3 2 177 0
+dispatched 3 3 2 177 0
+dispatched 3 3 2 178 0
+dispatched 3 3 2 178 0
+dispatched 3 3 2 187 0
+dispatched 3 3 2 190 0
+dispatched 3 3 2 191 0
+dispatched 3 3 2 191 0
+dispatched 3 3 2 196 0
+dispatched 3 3 2 196 0
+dispatched 3 3 2 201 0
+dispatched 3 3 2 201 0
+dispatched 3 3 2 207 0
+dispatched 3 15 1 76 0
+dispatched 3 15 1 78 0
+dispatched 3 15 1 90 0
+dispatched 3 15 1 91 0
+dispatched 3 15 1 92 0
+dispatched 3 15 1 105 0
+dispatched 3 15 1 106 0
+dispatched 3 15 1 110 0
+dispatched 3 15 1 114 0
+dispatched 3 15 1 115 0
+dispatched 3 15 1 118 0
+dispatched 3 15 1 119 0
+dispatched 3 15 1 120 0
+dispatched 3 15 1 122 0
+dispatched 3 15 1 123 0
+dispatched 3 15 1 124 0
+dispatched 3 15 1 126 0
+dispatched 3 15 1 128 0
+dispatched 3 15 1 131 0
+dispatched 3 15 1 145 0
+dispatched 3 15 1 162 0
+dispatched 3 15 1 173 0
+dispatched 3 15 1 174 0
+dispatched 3 15 1 175 0
+dispatched 3 15 1 177 0
+dispatched 3 15 1 178 0
+dispatched 3 15 1 187 0
+dispatched 3 15 1 190 0
+dispatched 3 15 1 191 0
+dispatched 3 15 1 196 0
+dispatched 3 15 1 201 0
+dispatched 3 15 1 207 0
+dispatched 3 15 2 76 0
+dispatched 3 15 2 76 0
+dispatched 3 15 2 78 0
+dispatched 3 15 2 78 0
+dispatched 3 15 2 90 0
+dispatched 3 15 2 91 0
+dispatched 3 15 2 92 0
+dispatched 3 15 2 105 0
+dispatched 3 15 2 105 0
+dispatched 3 15 2 106 0
+dispatched 3 15 2 106 0
+dispatched 3 15 2 110 0
+dispatched 3 15 2 110 0
+dispatched 3 15 2 114 0
+dispatched 3 15 2 114 0
+dispatched 3 15 2 115 0
+dispatched 3 15 2 115 0
+dispatched 3 15 2 118 0
+dispatched 3 15 2 118 0
+dispatched 3 15 2 119 0
+dispatched 3 15 2 119 0
+dispatched 3 15 2 120 0
+dispatched 3 15 2 122 0
+dispatched 3 15 2 122 0
+dispatched 3 15 2 123 0
+dispatched 3 15 2 123 0
+dispatched 3 15 2 124 0
+dispatched 3 15 2 126 0
+dispatched 3 15 2 126 0
+dispatched 3 15 2 128 0
+dispatched 3 15 2 128 0
+dispatched 3 15 2 131 0
+dispatched 3 15 2 131 0
+dispatched 3 15 2 145 0
+dispatched 3 15 2 162 0
+dispatched 3 15 2 162 0
+dispatched 3 15 2 173 0
+dispatched 3 15 2 174 0
+dispatched 3 15 2 174 0
+dispatched 3 15 2 175 0
+dispatched 3 15 2 175 0
+dispatched 3 15 2 177 0
+dispatched 3 15 2 177 0
+dispatched 3 15 2 178 0
+dispatched 3 15 2 178 0
+dispatched 3 15 2 187 0
+dispatched 3 15 2 190 0
+dispatched 3 15 2 191 0
+dispatched 3 15 2 191 0
+dispatched 3 15 2 196 0
+dispatched 3 15 2 196 0
+dispatched 3 15 2 201 0
+dispatched 3 15 2 201 0
+dispatched 3 15 2 207 0
+dispatched 4 3 1 93 0
+dispatched 4 3 1 96 0
+dispatched 4 3 1 98 0
+dispatched 4 3 1 105 0
+dispatched 4 3 1 112 0
+dispatched 4 3 1 113 0
+dispatched 4 3 1 123 0
+dispatched 4 3 1 124 0
+dispatched 4 3 1 126 0
+dispatched 4 3 1 134 0
+dispatched 4 3 1 140 0
+dispatched 4 3 1 164 0
+dispatched 4 3 1 173 0
+dispatched 4 3 1 176 0
+dispatched 4 3 1 180 0
+dispatched 4 3 1 187 0
+dispatched 4 3 1 190 0
+dispatched 4 3 1 199 0
+dispatched 4 3 1 204 0
+dispatched 4 3 1 212 0
+dispatched 4 3 1 217 0
+dispatched 4 3 2 93 0
+dispatched 4 3 2 93 0
+dispatched 4 3 2 96 0
+dispatched 4 3 2 96 0
+dispatched 4 3 2 98 0
+dispatched 4 3 2 98 0
+dispatched 4 3 2 105 0
+dispatched 4 3 2 112 0
+dispatched 4 3 2 112 0
+dispatched 4 3 2 113 0
+dispatched 4 3 2 113 0
+dispatched 4 3 2 123 0
+dispatched 4 3 2 124 0
+dispatched 4 3 2 126 0
+dispatched 4 3 2 134 0
+dispatched 4 3 2 134 0
+dispatched 4 3 2 140 0
+dispatched 4 3 2 140 0
+dispatched 4 3 2 164 0
+dispatched 4 3 2 164 0
+dispatched 4 3 2 173 0
+dispatched 4 3 2 173 0
+dispatched 4 3 2 176 0
+dispatched 4 3 2 176 0
+dispatched 4 3 2 180 0
+dispatched 4 3 2 180 0
+dispatched 4 3 2 187 0
+dispatched 4 3 2 187 0
+dispatched 4 3 2 190 0
+dispatched 4 3 2 190 0
+dispatched 4 3 2 199 0
+dispatched 4 3 2 199 0
+dispatched 4 3 2 204 0
+dispatched 4 3 2 204 0
+dispatched 4 3 2 212 0
+dispatched 4 3 2 212 0
+dispatched 4 3 2 217 0
+dispatched 4 3 2 217 0
+dispatched 4 15 1 93 0
+dispatched 4 15 1 96 0
+dispatched 4 15 1 98 0
+dispatched 4 15 1 105 0
+dispatched 4 15 1 112 0
+dispatched 4 15 1 113 0
+dispatched 4 15 1 123 0
+dispatched 4 15 1 124 0
+dispatched 4 15 1 126 0
+dispatched 4 15 1 134 0
+dispatched 4 15 1 140 0
+dispatched 4 15 1 164 0
+dispatched 4 15 1 173 0
+dispatched 4 15 1 176 0
+dispatched 4 15 1 180 0
+dispatched 4 15 1 187 0
+dispatched 4 15 1 190 0
+dispatched 4 15 1 199 0
+dispatched 4 15 1 204 0
+dispatched 4 15 1 212 0
+dispatched 4 15 1 217 0
+dispatched 4 15 2 93 0
+dispatched 4 15 2 93 0
+dispatched 4 15 2 96 0
+dispatched 4 15 2 96 0
+dispatched 4 15 2 98 0
+dispatched 4 15 2 98 0
+dispatched 4 15 2 105 0
+dispatched 4 15 2 112 0
+dispatched 4 15 2 112 0
+dispatched 4 15 2 113 0
+dispatched 4 15 2 113 0
+dispatched 4 15 2 123 0
+dispatched 4 15 2 124 0
+dispatched 4 15 2 126 0
+dispatched 4 15 2 134 0
+dispatched 4 15 2 134 0
+dispatched 4 15 2 140 0
+dispatched 4 15 2 140 0
+dispatched 4 15 2 164 0
+dispatched 4 15 2 164 0
+dispatched 4 15 2 173 0
+dispatched 4 15 2 173 0
+dispatched 4 15 2 176 0
+dispatched 4 15 2 176 0
+dispatched 4 15 2 180 0
+dispatched 4 15 2 180 0
+dispatched 4 15 2 187 0
+dispatched 4 15 2 187 0
+dispatched 4 15 2 190 0
+dispatched 4 15 2 190 0
+dispatched 4 15 2 199 0
+dispatched 4 15 2 199 0
+dispatched 4 15 2 204 0
+dispatched 4 15 2 204 0
+dispatched 4 15 2 212 0
+dispatched 4 15 2 212 0
+dispatched 4 15 2 217 0
+dispatched 4 15 2 217 0
+dispatched 5 3 1 84 0
+dispatched 5 3 1 88 0
+dispatched 5 3 1 97 0
+dispatched 5 3 1 104 0
+dispatched 5 3 1 115 0
+dispatched 5 3 1 117 0
+dispatched 5 3 1 119 0
+dispatched 5 3 1 121 0
+dispatched 5 3 1 124 0
+dispatched 5 3 1 126 0
+dispatched 5 3 1 131 0
+dispatched 5 3 1 132 0
+dispatched 5 3 1 137 0
+dispatched 5 3 1 144 0
+dispatched 5 3 1 146 0
+dispatched 5 3 1 164 0
+dispatched 5 3 1 174 0
+dispatched 5 3 1 177 0
+dispatched 5 3 1 178 0
+dispatched 5 3 1 184 0
+dispatched 5 3 1 195 0
+dispatched 5 3 1 197 0
+dispatched 5 3 1 199 0
+dispatched 5 3 1 210 0
+dispatched 5 3 2 84 0
+dispatched 5 3 2 84 0
+dispatched 5 3 2 88 0
+dispatched 5 3 2 88 0
+dispatched 5 3 2 97 0
+dispatched 5 3 2 97 0
+dispatched 5 3 2 104 0
+dispatched 5 3 2 104 0
+dispatched 5 3 2 115 0
+dispatched 5 3 2 115 0
+dispatched 5 3 2 117 0
+dispatched 5 3 2 117 0
+dispatched 5 3 2 119 0
+dispatched 5 3 2 119 0
+dispatched 5 3 2 121 0
+dispatched 5 3 2 121 0
+dispatched 5 3 2 124 0
+dispatched 5 3 2 124 0
+dispatched 5 3 2 126 0
+dispatched 5 3 2 131 0
+dispatched 5 3 2 131 0
+dispatched 5 3 2 132 0
+dispatched 5 3 2 132 0
+dispatched 5 3 2 137 0
+dispatched 5 3 2 137 0
+dispatched 5 3 2 144 0
+dispatched 5 3 2 144 0
+dispatched 5 3 2 146 0
+dispatched 5 3 2 164 0
+dispatched 5 3 2 164 0
+dispatched 5 3 2 174 0
+dispatched 5 3 2 174 0
+dispatched 5 3 2 177 0
+dispatched 5 3 2 177 0
+dispatched 5 3 2 178 0
+dispatched 5 3 2 178 0
+dispatched 5 3 2 184 0
+dispatched 5 3 2 184 0
+dispatched 5 3 2 195 0
+dispatched 5 3 2 195 0
+dispatched 5 3 2 197 0
+dispatched 5 3 2 197 0
+dispatched 5 3 2 199 0
+dispatched 5 3 2 199 0
+dispatched 5 3 2 210 0
+dispatched 5 3 2 210 0
+dispatched 5 15 1 84 0
+dispatched 5 15 1 88 0
+dispatched 5 15 1 97 0
+dispatched 5 15 1 104 0
+dispatched 5 15 1 115 0
+dispatched 5 15 1 117 0
+dispatched 5 15 1 119 0
+dispatched 5 15 1 121 0
+dispatched 5 15 1 124 0
+dispatched 5 15 1 126 0
+dispatched 5 15 1 131 0
+dispatched 5 15 1 132 0
+dispatched 5 15 1 137 0
+dispatched 5 15 1 144 0
+dispatched 5 15 1 146 0
+dispatched 5 15 1 164 0
+dispatched 5 15 1 174 0
+dispatched 5 15 1 177 0
+dispatched 5 15 1 178 0
+dispatched 5 15 1 184 0
+dispatched 5 15 1 195 0
+dispatched 5 15 1 197 0
+dispatched 5 15 1 199 0
+dispatched 5 15 1 210 0
+dispatched 5 15 2 84 0
+dispatched 5 15 2 84 0
+dispatched 5 15 2 88 0
+dispatched 5 15 2 88 0
+dispatched 5 15 2 97 0
+dispatched 5 15 2 97 0
+dispatched 5 15 2 104 0
+dispatched 5 15 2 104 0
+dispatched 5 15 2 115 0
+dispatched 5 15 2 115 0
+dispatched 5 15 2 117 0
+dispatched 5 15 2 117 0
+dispatched 5 15 2 119 0
+dispatched 5 15 2 119 0
+dispatched 5 15 2 121 0
+dispatched 5 15 2 121 0
+dispatched 5 15 2 124 0
+dispatched 5 15 2 124 0
+dispatched 5 15 2 126 0
+dispatched 5 15 2 131 0
+dispatched 5 15 2 131 0
+dispatched 5 15 2 132 0
+dispatched 5 15 2 132 0
+dispatched 5 15 2 137 0
+dispatched 5 15 2 137 0
+dispatched 5 15 2 144 0
+dispatched 5 15 2 144 0
+dispatched 5 15 2 146 0
+dispatched 5 15 2 164 0
+dispatched 5 15 2 164 0
+dispatched 5 15 2 174 0
+dispatched 5 15 2 174 0
+dispatched 5 15 2 177 0
+dispatched 5 15 2 177 0
+dispatched 5 15 2 178 0
+dispatched 5 15 2 178 0
+dispatched 5 15 2 184 0
+dispatched 5 15 2 184 0
+dispatched 5 15 2 195 0
+dispatched 5 15 2 195 0
+dispatched 5 15 2 197 0
+dispatched 5 15 2 197 0
+dispatched 5 15 2 199 0
+dispatched 5 15 2 199 0
+dispatched 5 15 2 210 0
+dispatched 5 15 2 210 0
+dispatched 6 3 1 77 0
+dispatched 6 3 1 79 0
+dispatched 6 3 1 81 0
+dispatched 6 3 1 92 0
+dispatched 6 3 1 103 0
+dispatched 6 3 1 110 0
+dispatched 6 3 1 118 0
+dispatched 6 3 1 119 0
+dispatched 6 3 1 120 0
+dispatched 6 3 1 124 0
+dispatched 6 3 1 127 0
+dispatched 6 3 1 135 0
+dispatched 6 3 1 139 0
+dispatched 6 3 1 155 0
+dispatched 6 3 1 156 0
+dispatched 6 3 1 160 0
+dispatched 6 3 1 164 0
+dispatched 6 3 1 170 0
+dispatched 6 3 1 172 0
+dispatched 6 3 1 173 0
+dispatched 6 3 1 175 0
+dispatched 6 3 1 177 0
+dispatched 6 3 1 179 0
+dispatched 6 3 1 181 0
+dispatched 6 3 1 183 0
+dispatched 6 3 1 186 0
+dispatched 6 3 1 187 0
+dispatched 6 3 1 188 0
+dispatched 6 3 1 190 0
+dispatched 6 3 1 191 0
+dispatched 6 3 1 196 0
+dispatched 6 3 1 209 0
+dispatched 6 3 2 77 0
+dispatched 6 3 2 77 0
+dispatched 6 3 2 79 0
+dispatched 6 3 2 79 0
+dispatched 6 3 2 81 0
+dispatched 6 3 2 81 0
+dispatched 6 3 2 92 0
+dispatched 6 3 2 92 0
+dispatched 6 3 2 103 0
+dispatched 6 3 2 110 0
+dispatched 6 3 2 118 0
+dispatched 6 3 2 119 0
+dispatched 6 3 2 119 0
+dispatched 6 3 2 120 0
+dispatched 6 3 2 120 0
+dispatched 6 3 2 124 0
+dispatched 6 3 2 124 0
+dispatched 6 3 2 127 0
+dispatched 6 3 2 127 0
+dispatched 6 3 2 135 0
+dispatched 6 3 2 135 0
+dispatched 6 3 2 139 0
+dispatched 6 3 2 139 0
+dispatched 6 3 2 155 0
+dispatched 6 3 2 156 0
+dispatched 6 3 2 156 0
+dispatched 6 3 2 160 0
+dispatched 6 3 2 164 0
+dispatched 6 3 2 164 0
+dispatched 6 3 2 170 0
+dispatched 6 3 2 170 0
+dispatched 6 3 2 172 0
+dispatched 6 3 2 173 0
+dispatched 6 3 2 173 0
+dispatched 6 3 2 175 0
+dispatched 6 3 2 177 0
+dispatched 6 3 2 177 0
+dispatched 6 3 2 179 0
+dispatched 6 3 2 179 0
+dispatched 6 3 2 181 0
+dispatched 6 3 2 181 0
+dispatched 6 3 2 183 0
+dispatched 6 3 2 186 0
+dispatched 6 3 2 187 0
+dispatched 6 3 2 187 0
+dispatched 6 3 2 188 0
+dispatched 6 3 2 188 0
+dispatched 6 3 2 190 0
+dispatched 6 3 2 190 0
+dispatched 6 3 2 191 0
+dispatched 6 3 2 191 0
+dispatched 6 3 2 196 0
+dispatched 6 3 2 196 0
+dispatched 6 3 2 209 0
+dispatched 6 3 2 209 0
+dispatched 6 15 1 77 0
+dispatched 6 15 1 79 0
+dispatched 6 15 1 81 0
+dispatched 6 15 1 92 0
+dispatched 6 15 1 103 0
+dispatched 6 15 1 110 0
+dispatched 6 15 1 118 0
+dispatched 6 15 1 119 0
+dispatched 6 15 1 120 0
+dispatched 6 15 1 124 0
+dispatched 6 15 1 127 0
+dispatched 6 15 1 135 0
+dispatched 6 15 1 139 0
+dispatched 6 15 1 155 0
+dispatched 6 15 1 156 0
+dispatched 6 15 1 160 0
+dispatched 6 15 1 164 0
+dispatched 6 15 1 170 0
+dispatched 6 15 1 172 0
+dispatched 6 15 1 173 0
+dispatched 6 15 1 175 0
+dispatched 6 15 1 177 0
+dispatched 6 15 1 179 0
+dispatched 6 15 1 181 0
+dispatched 6 15 1 183 0
+dispatched 6 15 1 186 0
+dispatched 6 15 1 187 0
+dispatched 6 15 1 188 0
+dispatched 6 15 1 190 0
+dispatched 6 15 1 191 0
+dispatched 6 15 1 196 0
+dispatched 6 15 1 209 0
+dispatched 6 15 2 77 0
+dispatched 6 15 2 77 0
+dispatched 6 15 2 79 0
+dispatched 6 15 2 79 0
+dispatched 6 15 2 81 0
+dispatched 6 15 2 81 0
+dispatched 6 15 2 92 0
+dispatched 6 15 2 92 0
+dispatched 6 15 2 103 0
+dispatched 6 15 2 110 0
+dispatched 6 15 2 118 0
+dispatched 6 15 2 119 0
+dispatched 6 15 2 119 0
+dispatched 6 15 2 120 0
+dispatched 6 15 2 120 0
+dispatched 6 15 2 124 0
+dispatched 6 15 2 124 0
+dispatched 6 15 2 127 0
+dispatched 6 15 2 127 0
+dispatched 6 15 2 135 0
+dispatched 6 15 2 135 0
+dispatched 6 15 2 139 0
+dispatched 6 15 2 139 0
+dispatched 6 15 2 155 0
+dispatched 6 15 2 156 0
+dispatched 6 15 2 156 0
+dispatched 6 15 2 160 0
+dispatched 6 15 2 164 0
+dispatched 6 15 2 164 0
+dispatched 6 15 2 170 0
+dispatched 6 15 2 170 0
+dispatched 6 15 2 172 0
+dispatched 6 15 2 173 0
+dispatched 6 15 2 173 0
+dispatched 6 15 2 175 0
+dispatched 6 15 2 177 0
+dispatched 6 15 2 177 0
+dispatched 6 15 2 179 0
+dispatched 6 15 2 179 0
+dispatched 6 15 2 181 0
+dispatched 6 15 2 181 0
+dispatched 6 15 2 183 0
+dispatched 6 15 2 186 0
+dispatched 6 15 2 187 0
+dispatched 6 15 2 187 0
+dispatched 6 15 2 188 0
+dispatched 6 15 2 188 0
+dispatched 6 15 2 190 0
+dispatched 6 15 2 190 0
+dispatched 6 15 2 191 0
+dispatched 6 15 2 191 0
+dispatched 6 15 2 196 0
+dispatched 6 15 2 196 0
+dispatched 6 15 2 209 0
+dispatched 6 15 2 209 0
+dispatched 7 3 1 88 0
+dispatched 7 3 1 102 0
+dispatched 7 3 1 103 0
+dispatched 7 3 1 104 0
+dispatched 7 3 1 106 0
+dispatched 7 3 1 108 0
+dispatched 7 3 1 112 0
+dispatched 7 3 1 116 0
+dispatched 7 3 1 117 0
+dispatched 7 3 1 119 0
+dispatched 7 3 1 121 0
+dispatched 7 3 1 122 0
+dispatched 7 3 1 133 0
+dispatched 7 3 1 156 0
+dispatched 7 3 1 158 0
+dispatched 7 3 1 164 0
+dispatched 7 3 1 166 0
+dispatched 7 3 1 169 0
+dispatched 7 3 1 173 0
+dispatched 7 3 1 175 0
+dispatched 7 3 1 178 0
+dispatched 7 3 1 184 0
+dispatched 7 3 1 187 0
+dispatched 7 3 1 188 0
+dispatched 7 3 1 190 0
+dispatched 7 3 1 191 0
+dispatched 7 3 1 201 0
+dispatched 7 3 1 204 0
+dispatched 7 3 1 212 0
+dispatched 7 3 2 88 0
+dispatched 7 3 2 88 0
+dispatched 7 3 2 102 0
+dispatched 7 3 2 102 0
+dispatched 7 3 2 103 0
+dispatched 7 3 2 103 0
+dispatched 7 3 2 104 0
+dispatched 7 3 2 104 0
+dispatched 7 3 2 106 0
+dispatched 7 3 2 106 0
+dispatched 7 3 2 108 0
+dispatched 7 3 2 108 0
+dispatched 7 3 2 112 0
+dispatched 7 3 2 112 0
+dispatched 7 3 2 116 0
+dispatched 7 3 2 117 0
+dispatched 7 3 2 117 0
+dispatched 7 3 2 119 0
+dispatched 7 3 2 119 0
+dispatched 7 3 2 121 0
+dispatched 7 3 2 121 0
+dispatched 7 3 2 122 0
+dispatched 7 3 2 122 0
+dispatched 7 3 2 133 0
+dispatched 7 3 2 133 0
+dispatched 7 3 2 156 0
+dispatched 7 3 2 156 0
+dispatched 7 3 2 158 0
+dispatched 7 3 2 164 0
+dispatched 7 3 2 164 0
+dispatched 7 3 2 166 0
+dispatched 7 3 2 166 0
+dispatched 7 3 2 169 0
+dispatched 7 3 2 169 0
+dispatched 7 3 2 173 0
+dispatched 7 3 2 173 0
+dispatched 7 3 2 175 0
+dispatched 7 3 2 175 0
+dispatched 7 3 2 178 0
+dispatched 7 3 2 178 0
+dispatched 7 3 2 184 0
+dispatched 7 3 2 184 0
+dispatched 7 3 2 187 0
+dispatched 7 3 2 187 0
+dispatched 7 3 2 188 0
+dispatched 7 3 2 188 0
+dispatched 7 3 2 190 0
+dispatched 7 3 2 190 0
+dispatched 7 3 2 191 0
+dispatched 7 3 2 191 0
+dispatched 7 3 2 201 0
+dispatched 7 3 2 201 0
+dispatched 7 3 2 204 0
+dispatched 7 3 2 204 0
+dispatched 7 3 2 212 0
+dispatched 7 3 2 212 0
+dispatched 7 15 1 88 0
+dispatched 7 15 1 102 0
+dispatched 7 15 1 103 0
+dispatched 7 15 1 104 0
+dispatched 7 15 1 106 0
+dispatched 7 15 1 108 0
+dispatched 7 15 1 112 0
+dispatched 7 15 1 116 0
+dispatched 7 15 1 117 0
+dispatched 7 15 1 119 0
+dispatched 7 15 1 121 0
+dispatched 7 15 1 122 0
+dispatched 7 15 1 133 0
+dispatched 7 15 1 156 0
+dispatched 7 15 1 158 0
+dispatched 7 15 1 164 0
+dispatched 7 15 1 166 0
+dispatched 7 15 1 169 0
+dispatched 7 15 1 173 0
+dispatched 7 15 1 175 0
+dispatched 7 15 1 178 0
+dispatched 7 15 1 184 0
+dispatched 7 15 1 187 0
+dispatched 7 15 1 188 0
+dispatched 7 15 1 190 0
+dispatched 7 15 1 191 0
+dispatched 7 15 1 201 0
+dispatched 7 15 1 204 0
+dispatched 7 15 1 212 0
+dispatched 7 15 2 88 0
+dispatched 7 15 2 88 0
+dispatched 7 15 2 102 0
+dispatched 7 15 2 102 0
+dispatched 7 15 2 103 0
+dispatched 7 15 2 103 0
+dispatched 7 15 2 104 0
+dispatched 7 15 2 104 0
+dispatched 7 15 2 106 0
+dispatched 7 15 2 106 0
+dispatched 7 15 2 108 0
+dispatched 7 15 2 108 0
+dispatched 7 15 2 112 0
+dispatched 7 15 2 112 0
+dispatched 7 15 2 116 0
+dispatched 7 15 2 117 0
+dispatched 7 15 2 117 0
+dispatched 7 15 2 119 0
+dispatched 7 15 2 119 0
+dispatched 7 15 2 121 0
+dispatched 7 15 2 121 0
+dispatched 7 15 2 122 0
+dispatched 7 15 2 122 0
+dispatched 7 15 2 133 0
+dispatched 7 15 2 133 0
+dispatched 7 15 2 156 0
+dispatched 7 15 2 156 0
+dispatched 7 15 2 158 0
+dispatched 7 15 2 164 0
+dispatched 7 15 2 164 0
+dispatched 7 15 2 166 0
+dispatched 7 15 2 166 0
+dispatched 7 15 2 169 0
+dispatched 7 15 2 169 0
+dispatched 7 15 2 173 0
+dispatched 7 15 2 173 0
+dispatched 7 15 2 175 0
+dispatched 7 15 2 175 0
+dispatched 7 15 2 178 0
+dispatched 7 15 2 178 0
+dispatched 7 15 2 184 0
+dispatched 7 15 2 184 0
+dispatched 7 15 2 187 0
+dispatched 7 15 2 187 0
+dispatched 7 15 2 188 0
+dispatched 7 15 2 188 0
+dispatched 7 15 2 190 0
+dispatched 7 15 2 190 0
+dispatched 7 15 2 191 0
+dispatched 7 15 2 191 0
+dispatched 7 15 2 201 0
+dispatched 7 15 2 201 0
+dispatched 7 15 2 204 0
+dispatched 7 15 2 204 0
+dispatched 7 15 2 212 0
+dispatched 7 15 2 212 0
+dispatched 8 3 1 75 0
+dispatched 8 3 1 77 0
+dispatched 8 3 1 79 0
+dispatched 8 3 1 89 0
+dispatched 8 3 1 94 0
+dispatched 8 3 1 99 0
+dispatched 8 3 1 103 0
+dispatched 8 3 1 112 0
+dispatched 8 3 1 113 0
+dispatched 8 3 1 115 0
+dispatched 8 3 1 125 0
+dispatched 8 3 1 130 0
+dispatched 8 3 1 132 0
+dispatched 8 3 1 138 0
+dispatched 8 3 1 145 0
+dispatched 8 3 1 157 0
+dispatched 8 3 1 158 0
+dispatched 8 3 1 159 0
+dispatched 8 3 1 162 0
+dispatched 8 3 1 167 0
+dispatched 8 3 1 170 0
+dispatched 8 3 1 176 0
+dispatched 8 3 1 179 0
+dispatched 8 3 1 181 0
+dispatched 8 3 1 182 0
+dispatched 8 3 1 184 0
+dispatched 8 3 1 193 0
+dispatched 8 3 1 194 0
+dispatched 8 3 1 196 0
+dispatched 8 3 1 197 0
+dispatched 8 3 1 199 0
+dispatched 8 3 1 213 0
+dispatched 8 3 1 215 0
+dispatched 8 3 2 75 0
+dispatched 8 3 2 77 0
+dispatched 8 3 2 79 0
+dispatched 8 3 2 79 0
+dispatched 8 3 2 89 0
+dispatched 8 3 2 89 0
+dispatched 8 3 2 94 0
+dispatched 8 3 2 94 0
+dispatched 8 3 2 99 0
+dispatched 8 3 2 99 0
+dispatched 8 3 2 103 0
+dispatched 8 3 2 112 0
+dispatched 8 3 2 112 0
+dispatched 8 3 2 113 0
+dispatched 8 3 2 113 0
+dispatched 8 3 2 115 0
+dispatched 8 3 2 115 0
+dispatched 8 3 2 125 0
+dispatched 8 3 2 130 0
+dispatched 8 3 2 130 0
+dispatched 8 3 2 132 0
+dispatched 8 3 2 132 0
+dispatched 8 3 2 138 0
+dispatched 8 3 2 138 0
+dispatched 8 3 2 145 0
+dispatched 8 3 2 157 0
+dispatched 8 3 2 158 0
+dispatched 8 3 2 158 0
+dispatched 8 3 2 159 0
+dispatched 8 3 2 159 0
+dispatched 8 3 2 162 0
+dispatched 8 3 2 167 0
+dispatched 8 3 2 167 0
+dispatched 8 3 2 170 0
+dispatched 8 3 2 176 0
+dispatched 8 3 2 176 0
+dispatched 8 3 2 179 0
+dispatched 8 3 2 179 0
+dispatched 8 3 2 181 0
+dispatched 8 3 2 181 0
+dispatched 8 3 2 182 0
+dispatched 8 3 2 182 0
+dispatched 8 3 2 184 0
+dispatched 8 3 2 184 0
+dispatched 8 3 2 193 0
+dispatched 8 3 2 193 0
+dispatched 8 3 2 194 0
+dispatched 8 3 2 194 0
+dispatched 8 3 2 196 0
+dispatched 8 3 2 196 0
+dispatched 8 3 2 197 0
+dispatched 8 3 2 197 0
+dispatched 8 3 2 199 0
+dispatched 8 3 2 199 0
+dispatched 8 3 2 213 0
+dispatched 8 3 2 213 0
+dispatched 8 3 2 215 0
+dispatched 8 3 2 215 0
+dispatched 8 15 1 75 0
+dispatched 8 15 1 77 0
+dispatched 8 15 1 79 0
+dispatched 8 15 1 89 0
+dispatched 8 15 1 94 0
+dispatched 8 15 1 99 0
+dispatched 8 15 1 103 0
+dispatched 8 15 1 112 0
+dispatched 8 15 1 113 0
+dispatched 8 15 1 115 0
+dispatched 8 15 1 125 0
+dispatched 8 15 1 130 0
+dispatched 8 15 1 132 0
+dispatched 8 15 1 138 0
+dispatched 8 15 1 145 0
+dispatched 8 15 1 157 0
+dispatched 8 15 1 158 0
+dispatched 8 15 1 159 0
+dispatched 8 15 1 162 0
+dispatched 8 15 1 167 0
+dispatched 8 15 1 170 0
+dispatched 8 15 1 176 0
+dispatched 8 15 1 179 0
+dispatched 8 15 1 181 0
+dispatched 8 15 1 182 0
+dispatched 8 15 1 184 0
+dispatched 8 15 1 193 0
+dispatched 8 15 1 194 0
+dispatched 8 15 1 196 0
+dispatched 8 15 1 197 0
+dispatched 8 15 1 199 0
+dispatched 8 15 1 213 0
+dispatched 8 15 1 215 0
+dispatched 8 15 2 75 0
+dispatched 8 15 2 77 0
+dispatched 8 15 2 79 0
+dispatched 8 15 2 79 0
+dispatched 8 15 2 89 0
+dispatched 8 15 2 89 0
+dispatched 8 15 2 94 0
+dispatched 8 15 2 94 0
+dispatched 8 15 2 99 0
+dispatched 8 15 2 99 0
+dispatched 8 15 2 103 0
+dispatched 8 15 2 112 0
+dispatched 8 15 2 112 0
+dispatched 8 15 2 113 0
+dispatched 8 15 2 113 0
+dispatched 8 15 2 115 0
+dispatched 8 15 2 115 0
+dispatched 8 15 2 125 0
+dispatched 8 15 2 130 0
+dispatched 8 15 2 130 0
+dispatched 8 15 2 132 0
+dispatched 8 15 2 132 0
+dispatched 8 15 2 138 0
+dispatched 8 15 2 138 0
+dispatched 8 15 2 145 0
+dispatched 8 15 2 157 0
+dispatched 8 15 2 158 0
+dispatched 8 15 2 158 0
+dispatched 8 15 2 159 0
+dispatched 8 15 2 159 0
+dispatched 8 15 2 162 0
+dispatched 8 15 2 167 0
+dispatched 8 15 2 167 0
+dispatched 8 15 2 170 0
+dispatched 8 15 2 176 0
+dispatched 8 15 2 176 0
+dispatched 8 15 2 179 0
+dispatched 8 15 2 179 0
+dispatched 8 15 2 181 0
+dispatched 8 15 2 181 0
+dispatched 8 15 2 182 0
+dispatched 8 15 2 182 0
+dispatched 8 15 2 184 0
+dispatched 8 15 2 184 0
+dispatched 8 15 2 193 0
+dispatched 8 15 2 193 0
+dispatched 8 15 2 194 0
+dispatched 8 15 2 194 0
+dispatched 8 15 2 196 0
+dispatched 8 15 2 196 0
+dispatched 8 15 2 197 0
+dispatched 8 15 2 197 0
+dispatched 8 15 2 199 0
+dispatched 8 15 2 199 0
+dispatched 8 15 2 213 0
+dispatched 8 15 2 213 0
+dispatched 8 15 2 215 0
+dispatched 8 15 2 215 0
+dispatched 9 3 1 74 0
+dispatched 9 3 1 90 0
+dispatched 9 3 1 102 0
+dispatched 9 3 1 103 0
+dispatched 9 3 1 106 0
+dispatched 9 3 1 108 0
+dispatched 9 3 1 109 0
+dispatched 9 3 1 112 0
+dispatched 9 3 1 113 0
+dispatched 9 3 1 114 0
+dispatched 9 3 1 115 0
+dispatched 9 3 1 118 0
+dispatched 9 3 1 119 0
+dispatched 9 3 1 122 0
+dispatched 9 3 1 123 0
+dispatched 9 3 1 124 0
+dispatched 9 3 1 125 0
+dispatched 9 3 1 126 0
+dispatched 9 3 1 128 0
+dispatched 9 3 1 129 0
+dispatched 9 3 1 132 0
+dispatched 9 3 1 136 0
+dispatched 9 3 1 146 0
+dispatched 9 3 1 155 0
+dispatched 9 3 1 159 0
+dispatched 9 3 1 164 0
+dispatched 9 3 1 171 0
+dispatched 9 3 1 173 0
+dispatched 9 3 1 181 0
+dispatched 9 3 1 183 0
+dispatched 9 3 1 189 0
+dispatched 9 3 1 191 0
+dispatched 9 3 1 195 0
+dispatched 9 3 1 198 0
+dispatched 9 3 1 199 0
+dispatched 9 3 1 205 0
+dispatched 9 3 1 213 0
+dispatched 9 3 2 74 0
+dispatched 9 3 2 90 0
+dispatched 9 3 2 90 0
+dispatched 9 3 2 102 0
+dispatched 9 3 2 102 0
+dispatched 9 3 2 103 0
+dispatched 9 3 2 103 0
+dispatched 9 3 2 106 0
+dispatched 9 3 2 106 0
+dispatched 9 3 2 108 0
+dispatched 9 3 2 108 0
+dispatched 9 3 2 109 0
+dispatched 9 3 2 112 0
+dispatched 9 3 2 112 0
+dispatched 9 3 2 113 0
+dispatched 9 3 2 113 0
+dispatched 9 3 2 114 0
+dispatched 9 3 2 115 0
+dispatched 9 3 2 115 0
+dispatched 9 3 2 118 0
+dispatched 9 3 2 118 0
+dispatched 9 3 2 119 0
+dispatched 9 3 2 119 0
+dispatched 9 3 2 122 0
+dispatched 9 3 2 122 0
+dispatched 9 3 2 123 0
+dispatched 9 3 2 123 0
+dispatched 9 3 2 124 0
+dispatched 9 3 2 124 0
+dispatched 9 3 2 125 0
+dispatched 9 3 2 125 0
+dispatched 9 3 2 126 0
+dispatched 9 3 2 126 0
+dispatched 9 3 2 128 0
+dispatched 9 3 2 128 0
+dispatched 9 3 2 129 0
+dispatched 9 3 2 129 0
+dispatched 9 3 2 132 0
+dispatched 9 3 2 132 0
+dispatched 9 3 2 136 0
+dispatched 9 3 2 136 0
+dispatched 9 3 2 146 0
+dispatched 9 3 2 155 0
+dispatched 9 3 2 159 0
+dispatched 9 3 2 164 0
+dispatched 9 3 2 164 0
+dispatched 9 3 2 171 0
+dispatched 9 3 2 171 0
+dispatched 9 3 2 173 0
+dispatched 9 3 2 181 0
+dispatched 9 3 2 181 0
+dispatched 9 3 2 183 0
+dispatched 9 3 2 183 0
+dispatched 9 3 2 189 0
+dispatched 9 3 2 189 0
+dispatched 9 3 2 191 0
+dispatched 9 3 2 195 0
+dispatched 9 3 2 195 0
+dispatched 9 3 2 198 0
+dispatched 9 3 2 198 0
+dispatched 9 3 2 199 0
+dispatched 9 3 2 199 0
+dispatched 9 3 2 205 0
+dispatched 9 3 2 205 0
+dispatched 9 3 2 213 0
+dispatched 9 3 2 213 0
+dispatched 9 15 1 74 0
+dispatched 9 15 1 90 0
+dispatched 9 15 1 102 0
+dispatched 9 15 1 103 0
+dispatched 9 15 1 106 0
+dispatched 9 15 1 108 0
+dispatched 9 15 1 109 0
+dispatched 9 15 1 112 0
+dispatched 9 15 1 113 0
+dispatched 9 15 1 114 0
+dispatched 9 15 1 115 0
+dispatched 9 15 1 118 0
+dispatched 9 15 1 119 0
+dispatched 9 15 1 122 0
+dispatched 9 15 1 123 0
+dispatched 9 15 1 124 0
+dispatched 9 15 1 125 0
+dispatched 9 15 1 126 0
+dispatched 9 15 1 128 0
+dispatched 9 15 1 129 0
+dispatched 9 15 1 132 0
+dispatched 9 15 1 136 0
+dispatched 9 15 1 146 0
+dispatched 9 15 1 155 0
+dispatched 9 15 1 159 0
+dispatched 9 15 1 164 0
+dispatched 9 15 1 171 0
+dispatched 9 15 1 173 0
+dispatched 9 15 1 181 0
+dispatched 9 15 1 183 0
+dispatched 9 15 1 189 0
+dispatched 9 15 1 191 0
+dispatched 9 15 1 195 0
+dispatched 9 15 1 198 0
+dispatched 9 15 1 199 0
+dispatched 9 15 1 205 0
+dispatched 9 15 1 213 0
+dispatched 9 15 2 74 0
+dispatched 9 15 2 90 0
+dispatched 9 15 2 90 0
+dispatched 9 15 2 102 0
+dispatched 9 15 2 102 0
+dispatched 9 15 2 103 0
+dispatched 9 15 2 103 0
+dispatched 9 15 2 106 0
+dispatched 9 15 2 106 0
+dispatched 9 15 2 108 0
+dispatched 9 15 2 108 0
+dispatched 9 15 2 109 0
+dispatched 9 15 2 112 0
+dispatched 9 15 2 112 0
+dispatched 9 15 2 113 0
+dispatched 9 15 2 113 0
+dispatched 9 15 2 114 0
+dispatched 9 15 2 115 0
+dispatched 9 15 2 115 0
+dispatched 9 15 2 118 0
+dispatched 9 15 2 118 0
+dispatched 9 15 2 119 0
+dispatched 9 15 2 119 0
+dispatched 9 15 2 122 0
+dispatched 9 15 2 122 0
+dispatched 9 15 2 123 0
+dispatched 9 15 2 123 0
+dispatched 9 15 2 124 0
+dispatched 9 15 2 124 0
+dispatched 9 15 2 125 0
+dispatched 9 15 2 125 0
+dispatched 9 15 2 126 0
+dispatched 9 15 2 126 0
+dispatched 9 15 2 128 0
+dispatched 9 15 2 128 0
+dispatched 9 15 2 129 0
+dispatched 9 15 2 129 0
+dispatched 9 15 2 132 0
+dispatched 9 15 2 132 0
+dispatched 9 15 2 136 0
+dispatched 9 15 2 136 0
+dispatched 9 15 2 146 0
+dispatched 9 15 2 155 0
+dispatched 9 15 2 159 0
+dispatched 9 15 2 164 0
+dispatched 9 15 2 164 0
+dispatched 9 15 2 171 0
+dispatched 9 15 2 171 0
+dispatched 9 15 2 173 0
+dispatched 9 15 2 181 0
+dispatched 9 15 2 181 0
+dispatched 9 15 2 183 0
+dispatched 9 15 2 183 0
+dispatched 9 15 2 189 0
+dispatched 9 15 2 189 0
+dispatched 9 15 2 191 0
+dispatched 9 15 2 195 0
+dispatched 9 15 2 195 0
+dispatched 9 15 2 198 0
+dispatched 9 15 2 198 0
+dispatched 9 15 2 199 0
+dispatched 9 15 2 199 0
+dispatched 9 15 2 205 0
+dispatched 9 15 2 205 0
+dispatched 9 15 2 213 0
+dispatched 9 15 2 213 0
+dispatched 10 3 1 85 0
+dispatched 10 3 1 95 0
+dispatched 10 3 1 96 0
+dispatched 10 3 1 97 0
+dispatched 10 3 1 108 0
+dispatched 10 3 1 111 0
+dispatched 10 3 1 113 0
+dispatched 10 3 1 116 0
+dispatched 10 3 1 118 0
+dispatched 10 3 1 120 0
+dispatched 10 3 1 121 0
+dispatched 10 3 1 124 0
+dispatched 10 3 1 130 0
+dispatched 10 3 1 134 0
+dispatched 10 3 1 157 0
+dispatched 10 3 1 166 0
+dispatched 10 3 1 169 0
+dispatched 10 3 1 170 0
+dispatched 10 3 1 172 0
+dispatched 10 3 1 174 0
+dispatched 10 3 1 175 0
+dispatched 10 3 1 176 0
+dispatched 10 3 1 181 0
+dispatched 10 3 1 187 0
+dispatched 10 3 1 189 0
+dispatched 10 3 1 190 0
+dispatched 10 3 1 192 0
+dispatched 10 3 1 193 0
+dispatched 10 3 1 196 0
+dispatched 10 3 1 201 0
+dispatched 10 3 1 212 0
+dispatched 10 3 2 85 0
+dispatched 10 3 2 95 0
+dispatched 10 3 2 95 0
+dispatched 10 3 2 96 0
+dispatched 10 3 2 97 0
+dispatched 10 3 2 97 0
+dispatched 10 3 2 108 0
+dispatched 10 3 2 111 0
+dispatched 10 3 2 111 0
+dispatched 10 3 2 113 0
+dispatched 10 3 2 113 0
+dispatched 10 3 2 116 0
+dispatched 10 3 2 116 0
+dispatched 10 3 2 118 0
+dispatched 10 3 2 118 0
+dispatched 10 3 2 120 0
+dispatched 10 3 2 121 0
+dispatched 10 3 2 121 0
+dispatched 10 3 2 124 0
+dispatched 10 3 2 124 0
+dispatched 10 3 2 130 0
+dispatched 10 3 2 130 0
+dispatched 10 3 2 134 0
+dispatched 10 3 2 134 0
+dispatched 10 3 2 157 0
+dispatched 10 3 2 157 0
+dispatched 10 3 2 166 0
+dispatched 10 3 2 166 0
+dispatched 10 3 2 169 0
+dispatched 10 3 2 169 0
+dispatched 10 3 2 170 0
+dispatched 10 3 2 170 0
+dispatched 10 3 2 172 0
+dispatched 10 3 2 172 0
+dispatched 10 3 2 174 0
+dispatched 10 3 2 174 0
+dispatched 10 3 2 175 0
+dispatched 10 3 2 175 0
+dispatched 10 3 2 176 0
+dispatched 10 3 2 176 0
+dispatched 10 3 2 181 0
+dispatched 10 3 2 181 0
+dispatched 10 3 2 187 0
+dispatched 10 3 2 187 0
+dispatched 10 3 2 189 0
+dispatched 10 3 2 189 0
+dispatched 10 3 2 190 0
+dispatched 10 3 2 192 0
+dispatched 10 3 2 192 0
+dispatched 10 3 2 193 0
+dispatched 10 3 2 193 0
+dispatched 10 3 2 196 0
+dispatched 10 3 2 201 0
+dispatched 10 3 2 201 0
+dispatched 10 3 2 212 0
+dispatched 10 3 2 212 0
+dispatched 10 15 1 85 0
+dispatched 10 15 1 95 0
+dispatched 10 15 1 96 0
+dispatched 10 15 1 97 0
+dispatched 10 15 1 108 0
+dispatched 10 15 1 111 0
+dispatched 10 15 1 113 0
+dispatched 10 15 1 116 0
+dispatched 10 15 1 118 0
+dispatched 10 15 1 120 0
+dispatched 10 15 1 121 0
+dispatched 10 15 1 124 0
+dispatched 10 15 1 130 0
+dispatched 10 15 1 134 0
+dispatched 10 15 1 157 0
+dispatched 10 15 1 166 0
+dispatched 10 15 1 169 0
+dispatched 10 15 1 170 0
+dispatched 10 15 1 172 0
+dispatched 10 15 1 174 0
+dispatched 10 15 1 175 0
+dispatched 10 15 1 176 0
+dispatched 10 15 1 181 0
+dispatched 10 15 1 187 0
+dispatched 10 15 1 189 0
+dispatched 10 15 1 190 0
+dispatched 10 15 1 192 0
+dispatched 10 15 1 193 0
+dispatched 10 15 1 196 0
+dispatched 10 15 1 201 0
+dispatched 10 15 1 212 0
+dispatched 10 15 2 85 0
+dispatched 10 15 2 95 0
+dispatched 10 15 2 95 0
+dispatched 10 15 2 96 0
+dispatched 10 15 2 97 0
+dispatched 10 15 2 97 0
+dispatched 10 15 2 108 0
+dispatched 10 15 2 111 0
+dispatched 10 15 2 111 0
+dispatched 10 15 2 113 0
+dispatched 10 15 2 113 0
+dispatched 10 15 2 116 0
+dispatched 10 15 2 116 0
+dispatched 10 15 2 118 0
+dispatched 10 15 2 118 0
+dispatched 10 15 2 120 0
+dispatched 10 15 2 121 0
+dispatched 10 15 2 121 0
+dispatched 10 15 2 124 0
+dispatched 10 15 2 124 0
+dispatched 10 15 2 130 0
+dispatched 10 15 2 130 0
+dispatched 10 15 2 134 0
+dispatched 10 15 2 134 0
+dispatched 10 15 2 157 0
+dispatched 10 15 2 157 0
+dispatched 10 15 2 166 0
+dispatched 10 15 2 166 0
+dispatched 10 15 2 169 0
+dispatched 10 15 2 169 0
+dispatched 10 15 2 170 0
+dispatched 10 15 2 170 0
+dispatched 10 15 2 172 0
+dispatched 10 15 2 172 0
+dispatched 10 15 2 174 0
+dispatched 10 15 2 174 0
+dispatched 10 15 2 175 0
+dispatched 10 15 2 175 0
+dispatched 10 15 2 176 0
+dispatched 10 15 2 176 0
+dispatched 10 15 2 181 0
+dispatched 10 15 2 181 0
+dispatched 10 15 2 187 0
+dispatched 10 15 2 187 0
+dispatched 10 15 2 189 0
+dispatched 10 15 2 189 0
+dispatched 10 15 2 190 0
+dispatched 10 15 2 192 0
+dispatched 10 15 2 192 0
+dispatched 10 15 2 193 0
+dispatched 10 15 2 193 0
+dispatched 10 15 2 196 0
+dispatched 10 15 2 201 0
+dispatched 10 15 2 201 0
+dispatched 10 15 2 212 0
+dispatched 10 15 2 212 0
+Full 1 77 0
+Full 1 97 0
+Full 1 99 0
+Full 1 110 0
+Full 1 111 0
+Full 1 112 0
+Full 1 114 0
+Full 1 115 0
+Full 1 118 0
+Full 1 119 0
+Full 1 120 0
+Full 1 126 0
+Full 1 131 0
+Full 1 132 0
+Full 1 133 0
+Full 1 144 0
+Full 1 146 0
+Full 1 166 0
+Full 1 173 0
+Full 1 174 0
+Full 1 175 0
+Full 1 177 0
+Full 1 179 0
+Full 1 181 0
+Full 1 185 0
+Full 1 188 0
+Full 1 202 0
+Full 1 204 0
+Full 1 205 0
+Full 1 207 0
+Full 1 211 0
+Full 1 214 0
+Full 2 78 0
+Full 2 91 0
+Full 2 96 0
+Full 2 97 0
+Full 2 105 0
+Full 2 109 0
+Full 2 112 0
+Full 2 115 0
+Full 2 117 0
+Full 2 118 0
+Full 2 120 0
+Full 2 121 0
+Full 2 122 0
+Full 2 129 0
+Full 2 134 0
+Full 2 145 0
+Full 2 147 0
+Full 2 157 0
+Full 2 160 0
+Full 2 165 0
+Full 2 166 0
+Full 2 170 0
+Full 2 177 0
+Full 2 178 0
+Full 2 180 0
+Full 2 183 0
+Full 2 187 0
+Full 2 189 0
+Full 2 193 0
+Full 2 195 0
+Full 2 197 0
+Full 2 200 0
+Full 2 206 0
+Full 3 76 0
+Full 3 78 0
+Full 3 90 0
+Full 3 91 0
+Full 3 92 0
+Full 3 105 0
+Full 3 106 0
+Full 3 110 0
+Full 3 114 0
+Full 3 115 0
+Full 3 118 0
+Full 3 119 0
+Full 3 120 0
+Full 3 122 0
+Full 3 123 0
+Full 3 124 0
+Full 3 126 0
+Full 3 128 0
+Full 3 131 0
+Full 3 145 0
+Full 3 162 0
+Full 3 173 0
+Full 3 174 0
+Full 3 175 0
+Full 3 177 0
+Full 3 178 0
+Full 3 187 0
+Full 3 190 0
+Full 3 191 0
+Full 3 196 0
+Full 3 201 0
+Full 3 207 0
+Full 4 93 0
+Full 4 96 0
+Full 4 98 0
+Full 4 105 0
+Full 4 112 0
+Full 4 113 0
+Full 4 123 0
+Full 4 124 0
+Full 4 126 0
+Full 4 134 0
+Full 4 140 0
+Full 4 164 0
+Full 4 173 0
+Full 4 176 0
+Full 4 180 0
+Full 4 187 0
+Full 4 190 0
+Full 4 199 0
+Full 4 204 0
+Full 4 212 0
+Full 4 217 0
+Full 5 84 0
+Full 5 88 0
+Full 5 97 0
+Full 5 104 0
+Full 5 115 0
+Full 5 117 0
+Full 5 119 0
+Full 5 121 0
+Full 5 124 0
+Full 5 126 0
+Full 5 131 0
+Full 5 132 0
+Full 5 137 0
+Full 5 144 0
+Full 5 146 0
+Full 5 164 0
+Full 5 174 0
+Full 5 177 0
+Full 5 178 0
+Full 5 184 0
+Full 5 195 0
+Full 5 197 0
+Full 5 199 0
+Full 5 210 0
+Full 6 77 0
+Full 6 79 0
+Full 6 81 0
+Full 6 92 0
+Full 6 103 0
+Full 6 110 0
+Full 6 118 0
+Full 6 119 0
+Full 6 120 0
+Full 6 124 0
+Full 6 127 0
+Full 6 135 0
+Full 6 139 0
+Full 6 155 0
+Full 6 156 0
+Full 6 160 0
+Full 6 164 0
+Full 6 170 0
+Full 6 172 0
+Full 6 173 0
+Full 6 175 0
+Full 6 177 0
+Full 6 179 0
+Full 6 181 0
+Full 6 183 0
+Full 6 186 0
+Full 6 187 0
+Full 6 188 0
+Full 6 190 0
+Full 6 191 0
+Full 6 196 0
+Full 6 209 0
+Full 7 88 0
+Full 7 102 0
+Full 7 103 0
+Full 7 104 0
+Full 7 106 0
+Full 7 108 0
+Full 7 112 0
+Full 7 116 0
+Full 7 117 0
+Full 7 119 0
+Full 7 121 0
+Full 7 122 0
+Full 7 133 0
+Full 7 156 0
+Full 7 158 0
+Full 7 164 0
+Full 7 166 0
+Full 7 169 0
+Full 7 173 0
+Full 7 175 0
+Full 7 178 0
+Full 7 184 0
+Full 7 187 0
+Full 7 188 0
+Full 7 190 0
+Full 7 191 0
+Full 7 201 0
+Full 7 204 0
+Full 7 212 0
+Full 8 75 0
+Full 8 77 0
+Full 8 79 0
+Full 8 89 0
+Full 8 94 0
+Full 8 99 0
+Full 8 103 0
+Full 8 112 0
+Full 8 113 0
+Full 8 115 0
+Full 8 125 0
+Full 8 130 0
+Full 8 132 0
+Full 8 138 0
+Full 8 145 0
+Full 8 157 0
+Full 8 158 0
+Full 8 159 0
+Full 8 162 0
+Full 8 167 0
+Full 8 170 0
+Full 8 176 0
+Full 8 179 0
+Full 8 181 0
+Full 8 182 0
+Full 8 184 0
+Full 8 193 0
+Full 8 194 0
+Full 8 196 0
+Full 8 197 0
+Full 8 199 0
+Full 8 213 0
+Full 8 215 0
+Full 9 74 0
+Full 9 90 0
+Full 9 102 0
+Full 9 103 0
+Full 9 106 0
+Full 9 108 0
+Full 9 109 0
+Full 9 112 0
+Full 9 113 0
+Full 9 114 0
+Full 9 115 0
+Full 9 118 0
+Full 9 119 0
+Full 9 122 0
+Full 9 123 0
+Full 9 124 0
+Full 9 125 0
+Full 9 126 0
+Full 9 128 0
+Full 9 129 0
+Full 9 132 0
+Full 9 136 0
+Full 9 146 0
+Full 9 155 0
+Full 9 159 0
+Full 9 164 0
+Full 9 171 0
+Full 9 173 0
+Full 9 181 0
+Full 9 183 0
+Full 9 189 0
+Full 9 191 0
+Full 9 195 0
+Full 9 198 0
+Full 9 199 0
+Full 9 205 0
+Full 9 213 0
+Full 10 85 0
+Full 10 95 0
+Full 10 96 0
+Full 10 97 0
+Full 10 108 0
+Full 10 111 0
+Full 10 113 0
+Full 10 116 0
+Full 10 118 0
+Full 10 120 0
+Full 10 121 0
+Full 10 124 0
+Full 10 130 0
+Full 10 134 0
+Full 10 157 0
+Full 10 166 0
+Full 10 169 0
+Full 10 170 0
+Full 10 172 0
+Full 10 174 0
+Full 10 175 0
+Full 10 176 0
+Full 10 181 0
+Full 10 187 0
+Full 10 189 0
+Full 10 190 0
+Full 10 192 0
+Full 10 193 0
+Full 10 196 0
+Full 10 201 0
+Full 10 212 0
+Partial1 1 77 0
+Partial1 1 97 0
+Partial1 1 99 0
+Partial1 1 110 0
+Partial1 1 111 0
+Partial1 1 112 0
+Partial1 1 114 0
+Partial1 1 115 0
+Partial1 1 118 0
+Partial1 1 119 0
+Partial1 1 120 0
+Partial1 1 126 0
+Partial1 1 131 0
+Partial1 1 132 0
+Partial1 1 133 0
+Partial1 1 144 0
+Partial1 1 146 0
+Partial1 1 166 0
+Partial1 1 173 0
+Partial1 1 174 0
+Partial1 1 175 0
+Partial1 1 177 0
+Partial1 1 179 0
+Partial1 1 181 0
+Partial1 1 185 0
+Partial1 1 188 0
+Partial1 1 202 0
+Partial1 1 204 0
+Partial1 1 205 0
+Partial1 1 207 0
+Partial1 1 211 0
+Partial1 1 214 0
+Partial1 2 78 0
+Partial1 2 91 0
+Partial1 2 96 0
+Partial1 2 97 0
+Partial1 2 105 0
+Partial1 2 109 0
+Partial1 2 112 0
+Partial1 2 115 0
+Partial1 2 117 0
+Partial1 2 118 0
+Partial1 2 120 0
+Partial1 2 121 0
+Partial1 2 122 0
+Partial1 2 129 0
+Partial1 2 134 0
+Partial1 2 145 0
+Partial1 2 147 0
+Partial1 2 157 0
+Partial1 2 160 0
+Partial1 2 165 0
+Partial1 2 166 0
+Partial1 2 170 0
+Partial1 2 177 0
+Partial1 2 178 0
+Partial1 2 180 0
+Partial1 2 183 0
+Partial1 2 187 0
+Partial1 2 189 0
+Partial1 2 193 0
+Partial1 2 195 0
+Partial1 2 197 0
+Partial1 2 200 0
+Partial1 2 206 0
+Partial1 3 76 0
+Partial1 3 78 0
+Partial1 3 90 0
+Partial1 3 91 0
+Partial1 3 92 0
+Partial1 3 105 0
+Partial1 3 106 0
+Partial1 3 110 0
+Partial1 3 114 0
+Partial1 3 115 0
+Partial1 3 118 0
+Partial1 3 119 0
+Partial1 3 120 0
+Partial1 3 122 0
+Partial1 3 123 0
+Partial1 3 124 0
+Partial1 3 126 0
+Partial1 3 128 0
+Partial1 3 131 0
+Partial1 3 145 0
+Partial1 3 162 0
+Partial1 3 173 0
+Partial1 3 174 0
+Partial1 3 175 0
+Partial1 3 177 0
+Partial1 3 178 0
+Partial1 3 187 0
+Partial1 3 190 0
+Partial1 3 191 0
+Partial1 3 196 0
+Partial1 3 201 0
+Partial1 3 207 0
+Partial1 4 93 0
+Partial1 4 96 0
+Partial1 4 98 0
+Partial1 4 105 0
+Partial1 4 112 0
+Partial1 4 113 0
+Partial1 4 123 0
+Partial1 4 124 0
+Partial1 4 126 0
+Partial1 4 134 0
+Partial1 4 140 0
+Partial1 4 164 0
+Partial1 4 173 0
+Partial1 4 176 0
+Partial1 4 180 0
+Partial1 4 187 0
+Partial1 4 190 0
+Partial1 4 199 0
+Partial1 4 204 0
+Partial1 4 212 0
+Partial1 4 217 0
+Partial1 5 84 0
+Partial1 5 88 0
+Partial1 5 97 0
+Partial1 5 104 0
+Partial1 5 115 0
+Partial1 5 117 0
+Partial1 5 119 0
+Partial1 5 121 0
+Partial1 5 124 0
+Partial1 5 126 0
+Partial1 5 131 0
+Partial1 5 132 0
+Partial1 5 137 0
+Partial1 5 144 0
+Partial1 5 146 0
+Partial1 5 164 0
+Partial1 5 174 0
+Partial1 5 177 0
+Partial1 5 178 0
+Partial1 5 184 0
+Partial1 5 195 0
+Partial1 5 197 0
+Partial1 5 199 0
+Partial1 5 210 0
+Partial1 6 77 0
+Partial1 6 79 0
+Partial1 6 81 0
+Partial1 6 92 0
+Partial1 6 103 0
+Partial1 6 110 0
+Partial1 6 118 0
+Partial1 6 119 0
+Partial1 6 120 0
+Partial1 6 124 0
+Partial1 6 127 0
+Partial1 6 135 0
+Partial1 6 139 0
+Partial1 6 155 0
+Partial1 6 156 0
+Partial1 6 160 0
+Partial1 6 164 0
+Partial1 6 170 0
+Partial1 6 172 0
+Partial1 6 173 0
+Partial1 6 175 0
+Partial1 6 177 0
+Partial1 6 179 0
+Partial1 6 181 0
+Partial1 6 183 0
+Partial1 6 186 0
+Partial1 6 187 0
+Partial1 6 188 0
+Partial1 6 190 0
+Partial1 6 191 0
+Partial1 6 196 0
+Partial1 6 209 0
+Partial1 7 88 0
+Partial1 7 102 0
+Partial1 7 103 0
+Partial1 7 104 0
+Partial1 7 106 0
+Partial1 7 108 0
+Partial1 7 112 0
+Partial1 7 116 0
+Partial1 7 117 0
+Partial1 7 119 0
+Partial1 7 121 0
+Partial1 7 122 0
+Partial1 7 133 0
+Partial1 7 156 0
+Partial1 7 158 0
+Partial1 7 164 0
+Partial1 7 166 0
+Partial1 7 169 0
+Partial1 7 173 0
+Partial1 7 175 0
+Partial1 7 178 0
+Partial1 7 184 0
+Partial1 7 187 0
+Partial1 7 188 0
+Partial1 7 190 0
+Partial1 7 191 0
+Partial1 7 201 0
+Partial1 7 204 0
+Partial1 7 212 0
+Partial1 8 75 0
+Partial1 8 77 0
+Partial1 8 79 0
+Partial1 8 89 0
+Partial1 8 94 0
+Partial1 8 99 0
+Partial1 8 103 0
+Partial1 8 112 0
+Partial1 8 113 0
+Partial1 8 115 0
+Partial1 8 125 0
+Partial1 8 130 0
+Partial1 8 132 0
+Partial1 8 138 0
+Partial1 8 145 0
+Partial1 8 157 0
+Partial1 8 158 0
+Partial1 8 159 0
+Partial1 8 162 0
+Partial1 8 167 0
+Partial1 8 170 0
+Partial1 8 176 0
+Partial1 8 179 0
+Partial1 8 181 0
+Partial1 8 182 0
+Partial1 8 184 0
+Partial1 8 193 0
+Partial1 8 194 0
+Partial1 8 196 0
+Partial1 8 197 0
+Partial1 8 199 0
+Partial1 8 213 0
+Partial1 8 215 0
+Partial1 9 74 0
+Partial1 9 90 0
+Partial1 9 102 0
+Partial1 9 103 0
+Partial1 9 106 0
+Partial1 9 108 0
+Partial1 9 109 0
+Partial1 9 112 0
+Partial1 9 113 0
+Partial1 9 114 0
+Partial1 9 115 0
+Partial1 9 118 0
+Partial1 9 119 0
+Partial1 9 122 0
+Partial1 9 123 0
+Partial1 9 124 0
+Partial1 9 125 0
+Partial1 9 126 0
+Partial1 9 128 0
+Partial1 9 129 0
+Partial1 9 132 0
+Partial1 9 136 0
+Partial1 9 146 0
+Partial1 9 155 0
+Partial1 9 159 0
+Partial1 9 164 0
+Partial1 9 171 0
+Partial1 9 173 0
+Partial1 9 181 0
+Partial1 9 183 0
+Partial1 9 189 0
+Partial1 9 191 0
+Partial1 9 195 0
+Partial1 9 198 0
+Partial1 9 199 0
+Partial1 9 205 0
+Partial1 9 213 0
+Partial1 10 85 0
+Partial1 10 95 0
+Partial1 10 96 0
+Partial1 10 97 0
+Partial1 10 108 0
+Partial1 10 111 0
+Partial1 10 113 0
+Partial1 10 116 0
+Partial1 10 118 0
+Partial1 10 120 0
+Partial1 10 121 0
+Partial1 10 124 0
+Partial1 10 130 0
+Partial1 10 134 0
+Partial1 10 157 0
+Partial1 10 166 0
+Partial1 10 169 0
+Partial1 10 170 0
+Partial1 10 172 0
+Partial1 10 174 0
+Partial1 10 175 0
+Partial1 10 176 0
+Partial1 10 181 0
+Partial1 10 187 0
+Partial1 10 189 0
+Partial1 10 190 0
+Partial1 10 192 0
+Partial1 10 193 0
+Partial1 10 196 0
+Partial1 10 201 0
+Partial1 10 212 0
+Partial2 1 77 0
+Partial2 1 97 0
+Partial2 1 99 0
+Partial2 1 110 0
+Partial2 1 111 0
+Partial2 1 112 0
+Partial2 1 114 0
+Partial2 1 115 0
+Partial2 1 118 0
+Partial2 1 119 0
+Partial2 1 120 0
+Partial2 1 126 0
+Partial2 1 131 0
+Partial2 1 132 0
+Partial2 1 133 0
+Partial2 1 144 0
+Partial2 1 146 0
+Partial2 1 166 0
+Partial2 1 173 0
+Partial2 1 174 0
+Partial2 1 175 0
+Partial2 1 177 0
+Partial2 1 179 0
+Partial2 1 181 0
+Partial2 1 185 0
+Partial2 1 188 0
+Partial2 1 202 0
+Partial2 1 204 0
+Partial2 1 205 0
+Partial2 1 207 0
+Partial2 1 211 0
+Partial2 1 214 0
+Partial2 2 78 0
+Partial2 2 91 0
+Partial2 2 96 0
+Partial2 2 97 0
+Partial2 2 105 0
+Partial2 2 109 0
+Partial2 2 112 0
+Partial2 2 115 0
+Partial2 2 117 0
+Partial2 2 118 0
+Partial2 2 120 0
+Partial2 2 121 0
+Partial2 2 122 0
+Partial2 2 129 0
+Partial2 2 134 0
+Partial2 2 145 0
+Partial2 2 147 0
+Partial2 2 157 0
+Partial2 2 160 0
+Partial2 2 165 0
+Partial2 2 166 0
+Partial2 2 170 0
+Partial2 2 177 0
+Partial2 2 178 0
+Partial2 2 180 0
+Partial2 2 183 0
+Partial2 2 187 0
+Partial2 2 189 0
+Partial2 2 193 0
+Partial2 2 195 0
+Partial2 2 197 0
+Partial2 2 200 0
+Partial2 2 206 0
+Partial2 3 76 0
+Partial2 3 78 0
+Partial2 3 90 0
+Partial2 3 91 0
+Partial2 3 92 0
+Partial2 3 105 0
+Partial2 3 106 0
+Partial2 3 110 0
+Partial2 3 114 0
+Partial2 3 115 0
+Partial2 3 118 0
+Partial2 3 119 0
+Partial2 3 120 0
+Partial2 3 122 0
+Partial2 3 123 0
+Partial2 3 124 0
+Partial2 3 126 0
+Partial2 3 128 0
+Partial2 3 131 0
+Partial2 3 145 0
+Partial2 3 162 0
+Partial2 3 173 0
+Partial2 3 174 0
+Partial2 3 175 0
+Partial2 3 177 0
+Partial2 3 178 0
+Partial2 3 187 0
+Partial2 3 190 0
+Partial2 3 191 0
+Partial2 3 196 0
+Partial2 3 201 0
+Partial2 3 207 0
+Partial2 4 93 0
+Partial2 4 96 0
+Partial2 4 98 0
+Partial2 4 105 0
+Partial2 4 112 0
+Partial2 4 113 0
+Partial2 4 123 0
+Partial2 4 124 0
+Partial2 4 126 0
+Partial2 4 134 0
+Partial2 4 140 0
+Partial2 4 164 0
+Partial2 4 173 0
+Partial2 4 176 0
+Partial2 4 180 0
+Partial2 4 187 0
+Partial2 4 190 0
+Partial2 4 199 0
+Partial2 4 204 0
+Partial2 4 212 0
+Partial2 4 217 0
+Partial2 5 84 0
+Partial2 5 88 0
+Partial2 5 97 0
+Partial2 5 104 0
+Partial2 5 115 0
+Partial2 5 117 0
+Partial2 5 119 0
+Partial2 5 121 0
+Partial2 5 124 0
+Partial2 5 126 0
+Partial2 5 131 0
+Partial2 5 132 0
+Partial2 5 137 0
+Partial2 5 144 0
+Partial2 5 146 0
+Partial2 5 164 0
+Partial2 5 174 0
+Partial2 5 177 0
+Partial2 5 178 0
+Partial2 5 184 0
+Partial2 5 195 0
+Partial2 5 197 0
+Partial2 5 199 0
+Partial2 5 210 0
+Partial2 6 77 0
+Partial2 6 79 0
+Partial2 6 81 0
+Partial2 6 92 0
+Partial2 6 103 0
+Partial2 6 110 0
+Partial2 6 118 0
+Partial2 6 119 0
+Partial2 6 120 0
+Partial2 6 124 0
+Partial2 6 127 0
+Partial2 6 135 0
+Partial2 6 139 0
+Partial2 6 155 0
+Partial2 6 156 0
+Partial2 6 160 0
+Partial2 6 164 0
+Partial2 6 170 0
+Partial2 6 172 0
+Partial2 6 173 0
+Partial2 6 175 0
+Partial2 6 177 0
+Partial2 6 179 0
+Partial2 6 181 0
+Partial2 6 183 0
+Partial2 6 186 0
+Partial2 6 187 0
+Partial2 6 188 0
+Partial2 6 190 0
+Partial2 6 191 0
+Partial2 6 196 0
+Partial2 6 209 0
+Partial2 7 88 0
+Partial2 7 102 0
+Partial2 7 103 0
+Partial2 7 104 0
+Partial2 7 106 0
+Partial2 7 108 0
+Partial2 7 112 0
+Partial2 7 116 0
+Partial2 7 117 0
+Partial2 7 119 0
+Partial2 7 121 0
+Partial2 7 122 0
+Partial2 7 133 0
+Partial2 7 156 0
+Partial2 7 158 0
+Partial2 7 164 0
+Partial2 7 166 0
+Partial2 7 169 0
+Partial2 7 173 0
+Partial2 7 175 0
+Partial2 7 178 0
+Partial2 7 184 0
+Partial2 7 187 0
+Partial2 7 188 0
+Partial2 7 190 0
+Partial2 7 191 0
+Partial2 7 201 0
+Partial2 7 204 0
+Partial2 7 212 0
+Partial2 8 75 0
+Partial2 8 77 0
+Partial2 8 79 0
+Partial2 8 89 0
+Partial2 8 94 0
+Partial2 8 99 0
+Partial2 8 103 0
+Partial2 8 112 0
+Partial2 8 113 0
+Partial2 8 115 0
+Partial2 8 125 0
+Partial2 8 130 0
+Partial2 8 132 0
+Partial2 8 138 0
+Partial2 8 145 0
+Partial2 8 157 0
+Partial2 8 158 0
+Partial2 8 159 0
+Partial2 8 162 0
+Partial2 8 167 0
+Partial2 8 170 0
+Partial2 8 176 0
+Partial2 8 179 0
+Partial2 8 181 0
+Partial2 8 182 0
+Partial2 8 184 0
+Partial2 8 193 0
+Partial2 8 194 0
+Partial2 8 196 0
+Partial2 8 197 0
+Partial2 8 199 0
+Partial2 8 213 0
+Partial2 8 215 0
+Partial2 9 74 0
+Partial2 9 90 0
+Partial2 9 102 0
+Partial2 9 103 0
+Partial2 9 106 0
+Partial2 9 108 0
+Partial2 9 109 0
+Partial2 9 112 0
+Partial2 9 113 0
+Partial2 9 114 0
+Partial2 9 115 0
+Partial2 9 118 0
+Partial2 9 119 0
+Partial2 9 122 0
+Partial2 9 123 0
+Partial2 9 124 0
+Partial2 9 125 0
+Partial2 9 126 0
+Partial2 9 128 0
+Partial2 9 129 0
+Partial2 9 132 0
+Partial2 9 136 0
+Partial2 9 146 0
+Partial2 9 155 0
+Partial2 9 159 0
+Partial2 9 164 0
+Partial2 9 171 0
+Partial2 9 173 0
+Partial2 9 181 0
+Partial2 9 183 0
+Partial2 9 189 0
+Partial2 9 191 0
+Partial2 9 195 0
+Partial2 9 198 0
+Partial2 9 199 0
+Partial2 9 205 0
+Partial2 9 213 0
+Partial2 10 85 0
+Partial2 10 95 0
+Partial2 10 96 0
+Partial2 10 97 0
+Partial2 10 108 0
+Partial2 10 111 0
+Partial2 10 113 0
+Partial2 10 116 0
+Partial2 10 118 0
+Partial2 10 120 0
+Partial2 10 121 0
+Partial2 10 124 0
+Partial2 10 130 0
+Partial2 10 134 0
+Partial2 10 157 0
+Partial2 10 166 0
+Partial2 10 169 0
+Partial2 10 170 0
+Partial2 10 172 0
+Partial2 10 174 0
+Partial2 10 175 0
+Partial2 10 176 0
+Partial2 10 181 0
+Partial2 10 187 0
+Partial2 10 189 0
+Partial2 10 190 0
+Partial2 10 192 0
+Partial2 10 193 0
+Partial2 10 196 0
+Partial2 10 201 0
+Partial2 10 212 0
+Partial3 1 77 0
+Partial3 1 97 0
+Partial3 1 99 0
+Partial3 1 110 0
+Partial3 1 111 0
+Partial3 1 112 0
+Partial3 1 114 0
+Partial3 1 115 0
+Partial3 1 118 0
+Partial3 1 119 0
+Partial3 1 120 0
+Partial3 1 126 0
+Partial3 1 131 0
+Partial3 1 132 0
+Partial3 1 133 0
+Partial3 1 144 0
+Partial3 1 146 0
+Partial3 1 166 0
+Partial3 1 173 0
+Partial3 1 174 0
+Partial3 1 175 0
+Partial3 1 177 0
+Partial3 1 179 0
+Partial3 1 181 0
+Partial3 1 185 0
+Partial3 1 188 0
+Partial3 1 202 0
+Partial3 1 204 0
+Partial3 1 205 0
+Partial3 1 207 0
+Partial3 1 211 0
+Partial3 1 214 0
+Partial3 2 78 0
+Partial3 2 91 0
+Partial3 2 96 0
+Partial3 2 97 0
+Partial3 2 105 0
+Partial3 2 109 0
+Partial3 2 112 0
+Partial3 2 115 0
+Partial3 2 117 0
+Partial3 2 118 0
+Partial3 2 120 0
+Partial3 2 121 0
+Partial3 2 122 0
+Partial3 2 129 0
+Partial3 2 134 0
+Partial3 2 145 0
+Partial3 2 147 0
+Partial3 2 157 0
+Partial3 2 160 0
+Partial3 2 165 0
+Partial3 2 166 0
+Partial3 2 170 0
+Partial3 2 177 0
+Partial3 2 178 0
+Partial3 2 180 0
+Partial3 2 183 0
+Partial3 2 187 0
+Partial3 2 189 0
+Partial3 2 193 0
+Partial3 2 195 0
+Partial3 2 197 0
+Partial3 2 200 0
+Partial3 2 206 0
+Partial3 3 76 0
+Partial3 3 78 0
+Partial3 3 90 0
+Partial3 3 91 0
+Partial3 3 92 0
+Partial3 3 105 0
+Partial3 3 106 0
+Partial3 3 110 0
+Partial3 3 114 0
+Partial3 3 115 0
+Partial3 3 118 0
+Partial3 3 119 0
+Partial3 3 120 0
+Partial3 3 122 0
+Partial3 3 123 0
+Partial3 3 124 0
+Partial3 3 126 0
+Partial3 3 128 0
+Partial3 3 131 0
+Partial3 3 145 0
+Partial3 3 162 0
+Partial3 3 173 0
+Partial3 3 174 0
+Partial3 3 175 0
+Partial3 3 177 0
+Partial3 3 178 0
+Partial3 3 187 0
+Partial3 3 190 0
+Partial3 3 191 0
+Partial3 3 196 0
+Partial3 3 201 0
+Partial3 3 207 0
+Partial3 4 93 0
+Partial3 4 96 0
+Partial3 4 98 0
+Partial3 4 105 0
+Partial3 4 112 0
+Partial3 4 113 0
+Partial3 4 123 0
+Partial3 4 124 0
+Partial3 4 126 0
+Partial3 4 134 0
+Partial3 4 140 0
+Partial3 4 164 0
+Partial3 4 173 0
+Partial3 4 176 0
+Partial3 4 180 0
+Partial3 4 187 0
+Partial3 4 190 0
+Partial3 4 199 0
+Partial3 4 204 0
+Partial3 4 212 0
+Partial3 4 217 0
+Partial3 5 84 0
+Partial3 5 88 0
+Partial3 5 97 0
+Partial3 5 104 0
+Partial3 5 115 0
+Partial3 5 117 0
+Partial3 5 119 0
+Partial3 5 121 0
+Partial3 5 124 0
+Partial3 5 126 0
+Partial3 5 131 0
+Partial3 5 132 0
+Partial3 5 137 0
+Partial3 5 144 0
+Partial3 5 146 0
+Partial3 5 164 0
+Partial3 5 174 0
+Partial3 5 177 0
+Partial3 5 178 0
+Partial3 5 184 0
+Partial3 5 195 0
+Partial3 5 197 0
+Partial3 5 199 0
+Partial3 5 210 0
+Partial3 6 77 0
+Partial3 6 79 0
+Partial3 6 81 0
+Partial3 6 92 0
+Partial3 6 103 0
+Partial3 6 110 0
+Partial3 6 118 0
+Partial3 6 119 0
+Partial3 6 120 0
+Partial3 6 124 0
+Partial3 6 127 0
+Partial3 6 135 0
+Partial3 6 139 0
+Partial3 6 155 0
+Partial3 6 156 0
+Partial3 6 160 0
+Partial3 6 164 0
+Partial3 6 170 0
+Partial3 6 172 0
+Partial3 6 173 0
+Partial3 6 175 0
+Partial3 6 177 0
+Partial3 6 179 0
+Partial3 6 181 0
+Partial3 6 183 0
+Partial3 6 186 0
+Partial3 6 187 0
+Partial3 6 188 0
+Partial3 6 190 0
+Partial3 6 191 0
+Partial3 6 196 0
+Partial3 6 209 0
+Partial3 7 88 0
+Partial3 7 102 0
+Partial3 7 103 0
+Partial3 7 104 0
+Partial3 7 106 0
+Partial3 7 108 0
+Partial3 7 112 0
+Partial3 7 116 0
+Partial3 7 117 0
+Partial3 7 119 0
+Partial3 7 121 0
+Partial3 7 122 0
+Partial3 7 133 0
+Partial3 7 156 0
+Partial3 7 158 0
+Partial3 7 164 0
+Partial3 7 166 0
+Partial3 7 169 0
+Partial3 7 173 0
+Partial3 7 175 0
+Partial3 7 178 0
+Partial3 7 184 0
+Partial3 7 187 0
+Partial3 7 188 0
+Partial3 7 190 0
+Partial3 7 191 0
+Partial3 7 201 0
+Partial3 7 204 0
+Partial3 7 212 0
+Partial3 8 75 0
+Partial3 8 77 0
+Partial3 8 79 0
+Partial3 8 89 0
+Partial3 8 94 0
+Partial3 8 99 0
+Partial3 8 103 0
+Partial3 8 112 0
+Partial3 8 113 0
+Partial3 8 115 0
+Partial3 8 125 0
+Partial3 8 130 0
+Partial3 8 132 0
+Partial3 8 138 0
+Partial3 8 145 0
+Partial3 8 157 0
+Partial3 8 158 0
+Partial3 8 159 0
+Partial3 8 162 0
+Partial3 8 167 0
+Partial3 8 170 0
+Partial3 8 176 0
+Partial3 8 179 0
+Partial3 8 181 0
+Partial3 8 182 0
+Partial3 8 184 0
+Partial3 8 193 0
+Partial3 8 194 0
+Partial3 8 196 0
+Partial3 8 197 0
+Partial3 8 199 0
+Partial3 8 213 0
+Partial3 8 215 0
+Partial3 9 74 0
+Partial3 9 90 0
+Partial3 9 102 0
+Partial3 9 103 0
+Partial3 9 106 0
+Partial3 9 108 0
+Partial3 9 109 0
+Partial3 9 112 0
+Partial3 9 113 0
+Partial3 9 114 0
+Partial3 9 115 0
+Partial3 9 118 0
+Partial3 9 119 0
+Partial3 9 122 0
+Partial3 9 123 0
+Partial3 9 124 0
+Partial3 9 125 0
+Partial3 9 126 0
+Partial3 9 128 0
+Partial3 9 129 0
+Partial3 9 132 0
+Partial3 9 136 0
+Partial3 9 146 0
+Partial3 9 155 0
+Partial3 9 159 0
+Partial3 9 164 0
+Partial3 9 171 0
+Partial3 9 173 0
+Partial3 9 181 0
+Partial3 9 183 0
+Partial3 9 189 0
+Partial3 9 191 0
+Partial3 9 195 0
+Partial3 9 198 0
+Partial3 9 199 0
+Partial3 9 205 0
+Partial3 9 213 0
+Partial3 10 85 0
+Partial3 10 95 0
+Partial3 10 96 0
+Partial3 10 97 0
+Partial3 10 108 0
+Partial3 10 111 0
+Partial3 10 113 0
+Partial3 10 116 0
+Partial3 10 118 0
+Partial3 10 120 0
+Partial3 10 121 0
+Partial3 10 124 0
+Partial3 10 130 0
+Partial3 10 134 0
+Partial3 10 157 0
+Partial3 10 166 0
+Partial3 10 169 0
+Partial3 10 170 0
+Partial3 10 172 0
+Partial3 10 174 0
+Partial3 10 175 0
+Partial3 10 176 0
+Partial3 10 181 0
+Partial3 10 187 0
+Partial3 10 189 0
+Partial3 10 190 0
+Partial3 10 192 0
+Partial3 10 193 0
+Partial3 10 196 0
+Partial3 10 201 0
+Partial3 10 212 0
+Null 1 77 1
+Null 1 97 1
+Null 1 99 1
+Null 1 110 1
+Null 1 111 1
+Null 1 112 1
+Null 1 114 1
+Null 1 115 1
+Null 1 118 1
+Null 1 119 1
+Null 1 120 1
+Null 1 126 1
+Null 1 131 1
+Null 1 132 1
+Null 1 133 1
+Null 1 144 1
+Null 1 146 1
+Null 1 166 1
+Null 1 173 1
+Null 1 174 1
+Null 1 175 1
+Null 1 177 1
+Null 1 179 1
+Null 1 181 1
+Null 1 185 1
+Null 1 188 1
+Null 1 202 1
+Null 1 204 1
+Null 1 205 1
+Null 1 207 1
+Null 1 211 1
+Null 1 214 1
+Null 2 78 1
+Null 2 91 1
+Null 2 96 1
+Null 2 97 1
+Null 2 105 1
+Null 2 109 1
+Null 2 112 1
+Null 2 115 1
+Null 2 117 1
+Null 2 118 1
+Null 2 120 1
+Null 2 121 1
+Null 2 122 1
+Null 2 129 1
+Null 2 134 1
+Null 2 145 1
+Null 2 147 1
+Null 2 157 1
+Null 2 160 1
+Null 2 165 1
+Null 2 166 1
+Null 2 170 1
+Null 2 177 1
+Null 2 178 1
+Null 2 180 1
+Null 2 183 1
+Null 2 187 1
+Null 2 189 1
+Null 2 193 1
+Null 2 195 1
+Null 2 197 1
+Null 2 200 1
+Null 2 206 1
+Null 3 76 1
+Null 3 78 1
+Null 3 90 1
+Null 3 91 1
+Null 3 92 1
+Null 3 105 1
+Null 3 106 1
+Null 3 110 1
+Null 3 114 1
+Null 3 115 1
+Null 3 118 1
+Null 3 119 1
+Null 3 120 1
+Null 3 122 1
+Null 3 123 1
+Null 3 124 1
+Null 3 126 1
+Null 3 128 1
+Null 3 131 1
+Null 3 145 1
+Null 3 162 1
+Null 3 173 1
+Null 3 174 1
+Null 3 175 1
+Null 3 177 1
+Null 3 178 1
+Null 3 187 1
+Null 3 190 1
+Null 3 191 1
+Null 3 196 1
+Null 3 201 1
+Null 3 207 1
+Null 4 93 1
+Null 4 96 1
+Null 4 98 1
+Null 4 105 1
+Null 4 112 1
+Null 4 113 1
+Null 4 123 1
+Null 4 124 1
+Null 4 126 1
+Null 4 134 1
+Null 4 140 1
+Null 4 164 1
+Null 4 173 1
+Null 4 176 1
+Null 4 180 1
+Null 4 187 1
+Null 4 190 1
+Null 4 199 1
+Null 4 204 1
+Null 4 212 1
+Null 4 217 1
+Null 5 84 1
+Null 5 88 1
+Null 5 97 1
+Null 5 104 1
+Null 5 115 1
+Null 5 117 1
+Null 5 119 1
+Null 5 121 1
+Null 5 124 1
+Null 5 126 1
+Null 5 131 1
+Null 5 132 1
+Null 5 137 1
+Null 5 144 1
+Null 5 146 1
+Null 5 164 1
+Null 5 174 1
+Null 5 177 1
+Null 5 178 1
+Null 5 184 1
+Null 5 195 1
+Null 5 197 1
+Null 5 199 1
+Null 5 210 1
+Null 6 77 1
+Null 6 79 1
+Null 6 81 1
+Null 6 92 1
+Null 6 103 1
+Null 6 110 1
+Null 6 118 1
+Null 6 119 1
+Null 6 120 1
+Null 6 124 1
+Null 6 127 1
+Null 6 135 1
+Null 6 139 1
+Null 6 155 1
+Null 6 156 1
+Null 6 160 1
+Null 6 164 1
+Null 6 170 1
+Null 6 172 1
+Null 6 173 1
+Null 6 175 1
+Null 6 177 1
+Null 6 179 1
+Null 6 181 1
+Null 6 183 1
+Null 6 186 1
+Null 6 187 1
+Null 6 188 1
+Null 6 190 1
+Null 6 191 1
+Null 6 196 1
+Null 6 209 1
+Null 7 88 1
+Null 7 102 1
+Null 7 103 1
+Null 7 104 1
+Null 7 106 1
+Null 7 108 1
+Null 7 112 1
+Null 7 116 1
+Null 7 117 1
+Null 7 119 1
+Null 7 121 1
+Null 7 122 1
+Null 7 133 1
+Null 7 156 1
+Null 7 158 1
+Null 7 164 1
+Null 7 166 1
+Null 7 169 1
+Null 7 173 1
+Null 7 175 1
+Null 7 178 1
+Null 7 184 1
+Null 7 187 1
+Null 7 188 1
+Null 7 190 1
+Null 7 191 1
+Null 7 201 1
+Null 7 204 1
+Null 7 212 1
+Null 8 75 1
+Null 8 77 1
+Null 8 79 1
+Null 8 89 1
+Null 8 94 1
+Null 8 99 1
+Null 8 103 1
+Null 8 112 1
+Null 8 113 1
+Null 8 115 1
+Null 8 125 1
+Null 8 130 1
+Null 8 132 1
+Null 8 138 1
+Null 8 145 1
+Null 8 157 1
+Null 8 158 1
+Null 8 159 1
+Null 8 162 1
+Null 8 167 1
+Null 8 170 1
+Null 8 176 1
+Null 8 179 1
+Null 8 181 1
+Null 8 182 1
+Null 8 184 1
+Null 8 193 1
+Null 8 194 1
+Null 8 196 1
+Null 8 197 1
+Null 8 199 1
+Null 8 213 1
+Null 8 215 1
+Null 9 74 1
+Null 9 90 1
+Null 9 102 1
+Null 9 103 1
+Null 9 106 1
+Null 9 108 1
+Null 9 109 1
+Null 9 112 1
+Null 9 113 1
+Null 9 114 1
+Null 9 115 1
+Null 9 118 1
+Null 9 119 1
+Null 9 122 1
+Null 9 123 1
+Null 9 124 1
+Null 9 125 1
+Null 9 126 1
+Null 9 128 1
+Null 9 129 1
+Null 9 132 1
+Null 9 136 1
+Null 9 146 1
+Null 9 155 1
+Null 9 159 1
+Null 9 164 1
+Null 9 171 1
+Null 9 173 1
+Null 9 181 1
+Null 9 183 1
+Null 9 189 1
+Null 9 191 1
+Null 9 195 1
+Null 9 198 1
+Null 9 199 1
+Null 9 205 1
+Null 9 213 1
+Null 10 85 1
+Null 10 95 1
+Null 10 96 1
+Null 10 97 1
+Null 10 108 1
+Null 10 111 1
+Null 10 113 1
+Null 10 116 1
+Null 10 118 1
+Null 10 120 1
+Null 10 121 1
+Null 10 124 1
+Null 10 130 1
+Null 10 134 1
+Null 10 157 1
+Null 10 166 1
+Null 10 169 1
+Null 10 170 1
+Null 10 172 1
+Null 10 174 1
+Null 10 175 1
+Null 10 176 1
+Null 10 181 1
+Null 10 187 1
+Null 10 189 1
+Null 10 190 1
+Null 10 192 1
+Null 10 193 1
+Null 10 196 1
+Null 10 201 1
+Null 10 212 1
