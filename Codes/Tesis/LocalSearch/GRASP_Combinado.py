@@ -30,11 +30,7 @@ import math
 # tamaños_S = [30]
 
 tamaños_I = [270]
-<<<<<<< Updated upstream
 tamaños_L = [16]
-=======
-tamaños_L = [30, 100]
->>>>>>> Stashed changes
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168]
