@@ -199,6 +199,7 @@ mejoró 0.140667 en initial L 6 con j = 99 localsearch 1  LS1
 no mejoró 0.140667 en initial L 12 con j = 0 localsearch 2LS1
 no mejoró 0.140667 en initial L 12 con j = 0 localsearch 2LS3
 no mejoró 0.140667 en initial L 12 con j = 1 localsearch 2LS1
+<<<<<<< Updated upstream
 no mejoró 0.140667 en initial L 12 con j = 1 localsearch 2LS3
 no mejoró 0.140667 en initial L 12 con j = 2 localsearch 2LS1
 no mejoró 0.140667 en initial L 12 con j = 2 localsearch 2LS3
@@ -303,3 +304,5 @@ no mejoró 0.140667 en initial L 12 con j = 52 localsearch 2LS3
 no mejoró 0.140667 en initial L 12 con j = 53 localsearch 2LS1
 no mejoró 0.140667 en initial L 12 con j = 53 localsearch 2LS3
 no mejoró 0.140667 en initial L 12 con j = 54 localsearch 2LS1
+=======
+>>>>>>> Stashed changes
