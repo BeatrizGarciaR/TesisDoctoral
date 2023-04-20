@@ -29,13 +29,13 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-# tamaños_I = [168, 270, 500, 900, 1500]
-# tamaños_L = [16, 30, 50, 70, 100]
-# tamaños_S = [10, 50, 100, 150, 200]
+tamaños_I = [500, 900]
+tamaños_L = [16, 30, 100]
+tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168]
-tamaños_L = [16, 30]
-tamaños_S = [10, 50, 100]
+# tamaños_I = [168]
+# tamaños_L = [16, 30]
+# tamaños_S = [10, 50, 100]
 
 # tamaños_I = [300]
 # tamaños_L = [50]
@@ -52,8 +52,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 30
-modelStopTime = 5
+elapsedtimeStop = 1800
+modelStopTime = 30
 
 alpha_def = 0.30
 
