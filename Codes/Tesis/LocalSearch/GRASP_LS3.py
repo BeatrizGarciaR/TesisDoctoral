@@ -54,8 +54,8 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 600
-modelStopTime = 5
+elapsedtimeStop = 3600
+modelStopTime = 10
 
 alpha_def = 0.30
 
@@ -1101,9 +1101,11 @@ for iconj in range(len(tamaños_I)):
                     
                     initialL_lista = []
                     
-                    maxIterLS = 2*len(L)
+                    maxIterLS = len(L)*len(L)
                     
-                    while sumaelapsed < elapsedtimeStop or iteracionLS < maxIterLS:
+                    iteracionLS = 0
+                    
+                    while iteracionLS < maxIterLS:
                         localsearch += 1
                         vecindad = []
                         
@@ -1512,6 +1514,9 @@ for iconj in range(len(tamaños_I)):
                                             
                                         
                                         if model.objVal > valorObjetivo:
+                                            
+                                            iteracionLS = 0
+                                            
                                             print("   ")
                                             print("   ")
                                             print("entra if better solution", localsearch)
@@ -1632,6 +1637,8 @@ for iconj in range(len(tamaños_I)):
                                         
                                         else:
                                             
+                                            iteracionLS += 1
+                                            
                                             mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
                                             mejoras.write('\n')
                                             print("entra else que repite solution")
@@ -1645,13 +1652,13 @@ for iconj in range(len(tamaños_I)):
                                             # print(" ")
                                             # print(" ")
                                             
-                                        if sumaelapsed > elapsedtimeStop:
-                                                print("   ")
-                                                print("   ")
-                                                print("entra if de elapsed", localsearch)
-                                                print("   ")
-                                                print("   ")
-                                                break
+                                        # if sumaelapsed > elapsedtimeStop:
+                                        #         print("   ")
+                                        #         print("   ")
+                                        #         print("entra if de elapsed", localsearch)
+                                        #         print("   ")
+                                        #         print("   ")
+                                        #         break
                                         
            
                         #break 
@@ -1662,13 +1669,13 @@ for iconj in range(len(tamaños_I)):
                             print(" ")
                             break
                             
-                        if sumaelapsed > elapsedtimeStop :
-                            print("   ")
-                            print("   ")
-                            print("entra if de elapsed", localsearch)
-                            print("   ")
-                            print("   ")
-                            break   
+                        # if sumaelapsed > elapsedtimeStop :
+                        #     print("   ")
+                        #     print("   ")
+                        #     print("entra if de elapsed", localsearch)
+                        #     print("   ")
+                        #     print("   ")
+                        #     break   
                         
                     # if initialL == len(L)-1:
                     #         print ("break de initialL") 
