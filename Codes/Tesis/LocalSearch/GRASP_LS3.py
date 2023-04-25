@@ -1101,7 +1101,7 @@ for iconj in range(len(tamaños_I)):
                     
                     initialL_lista = []
                     
-                    maxIterLS = len(L)*len(L)
+                    maxIterLS = len(L)*len(L) 
                     
                     iteracionLS = 0
                     
