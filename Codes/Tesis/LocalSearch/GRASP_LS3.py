@@ -1106,11 +1106,14 @@ for iconj in range(len(tamaños_I)):
                     iteracionLS = 0
                     
                     while iteracionLS < maxIterLS:
+                    #while sumaelapsed < elapsedtimeStop or iteracionLS < maxIterLS:
                         localsearch += 1
                         vecindad = []
                         
                         (" Entra al while de nuevo ")
                         print(" ")
+                        
+                        iteracionLS = 0
                         
                         for initialL in range(len(L)): 
                             if initialL in potentialSiteActivos and initialL not in initialL_lista:
@@ -1515,7 +1518,7 @@ for iconj in range(len(tamaños_I)):
                                         
                                         if model.objVal > valorObjetivo:
                                             
-                                            iteracionLS = 0
+                                            iteracionLS += 1
                                             
                                             print("   ")
                                             print("   ")
