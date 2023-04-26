@@ -54,12 +54,12 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 3600
+elapsedtimeStop = 60
 modelStopTime = 10
 
 alpha_def = 0.30
 
-maxIterGRASP = 20
+maxIterGRASP = 40
 
 soluciones = []
 
@@ -76,6 +76,8 @@ for iconj in range(len(tamaños_I)):
             sumaelapsed = 0
             valorObjetivo = -1000000000000000
             countcsv = 1
+            
+            cantIteraciones = []
             
             nameInstance = 'TesisTS_GRASP_LS3_' + str(tamaños_I[iconj]) + '_' + str(tamaños_L[jconj]) + '_' +str(tamaños_S[sconj]) + '_' + str(eta[0]) + "_" + str(eta[1])
             
@@ -251,7 +253,9 @@ for iconj in range(len(tamaños_I)):
                 
                 iteracionGRASP = 0
                 
-                while sumaelapsed < elapsedtimeStop or iteracionGRASP < maxIterGRASP:
+                iteracionesPorWhileVector = []
+                
+                while sumaelapsed < elapsedtimeStop and iteracionGRASP < maxIterGRASP:
                     
                     iteracionGRASP += 1
                     
@@ -1101,12 +1105,13 @@ for iconj in range(len(tamaños_I)):
                     
                     initialL_lista = []
                     
-                    maxIterLS = len(L)*len(L) 
+                    maxIterLS = len(potentialSiteActivos)*len(L) 
                     
                     iteracionLS = 0
                     
+                    
                     while iteracionLS < maxIterLS:
-                    #while sumaelapsed < elapsedtimeStop or iteracionLS < maxIterLS:
+                    #while sumaelapsed < elapsedtimeStop and iteracionLS < maxIterLS:
                         localsearch += 1
                         vecindad = []
                         
@@ -1115,6 +1120,8 @@ for iconj in range(len(tamaños_I)):
                         
                         iteracionLS = 0
                         
+                        iteracionesPorWhile = 0
+                        
                         for initialL in range(len(L)): 
                             if initialL in potentialSiteActivos and initialL not in initialL_lista:
                                 initialL_lista.append(initialL)
@@ -1122,6 +1129,10 @@ for iconj in range(len(tamaños_I)):
                                 aux1 = initialSolution[initialL][1]
                                 for j in range(len(L)):
                                     #if j != initialL:
+                                        
+                                    iteracionLS += 1
+                                    
+                                    iteracionesPorWhile += 1
     
                                     #####################################################
                                     ##################### LS3 ###########################
@@ -1518,8 +1529,6 @@ for iconj in range(len(tamaños_I)):
                                         
                                         if model.objVal > valorObjetivo:
                                             
-                                            iteracionLS += 1
-                                            
                                             print("   ")
                                             print("   ")
                                             print("entra if better solution", localsearch)
@@ -1639,9 +1648,6 @@ for iconj in range(len(tamaños_I)):
                                             break
                                         
                                         else:
-                                            
-                                            iteracionLS += 1
-                                            
                                             mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + "LS3")
                                             mejoras.write('\n')
                                             print("entra else que repite solution")
@@ -1662,8 +1668,13 @@ for iconj in range(len(tamaños_I)):
                                         #         print("   ")
                                         #         print("   ")
                                         #         break
-                                        
-           
+                        
+                        iteracionesPorWhileVector.append(iteracionesPorWhile)
+                        if len(potentialSiteActivos)*len(L) == iteracionesPorWhile:
+                            iteracionesPorWhileVector.append(1)
+                        else:
+                            iteracionesPorWhileVector.append(0)
+                        cantIteraciones.append(iteracionLS) # iteracionLS e iteracionesPorWhile es el mismo valor xD
                         #break 
                         
                         if initialL == len(L)-1:
