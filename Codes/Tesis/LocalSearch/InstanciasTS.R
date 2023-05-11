@@ -5,9 +5,12 @@
 # tamanos_I <- c(20, 50, 80, 95)
 # tamanos_L <- c(40, 50, 70, 85)
 # tamanos_S <- c(12, 25, 30, 40)
-tamanos_I <- c(168, 270, 500, 900, 1500)
-tamanos_L <- c(16, 30, 50, 70, 100)
-tamanos_S <- c(10, 50, 100, 150, 200)
+#tamanos_I <- c(168, 270, 500, 900, 1500)
+#tamanos_L <- c(16, 30, 50, 70, 100)
+#tamanos_S <- c(10, 50, 100, 150, 200)
+tamanos_I <- c(168)
+tamanos_L <- c(16)
+tamanos_S <- c(10)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
