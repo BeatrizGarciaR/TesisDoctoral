@@ -54,12 +54,12 @@ tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
 #V = [1,2,3]
 
-elapsedtimeStop = 60
-modelStopTime = 10
+elapsedtimeStop = 25000
+modelStopTime = 60
 
 alpha_def = 0.30
 
-maxIterGRASP = 40
+maxIterGRASP = 100
 
 soluciones = []
 
