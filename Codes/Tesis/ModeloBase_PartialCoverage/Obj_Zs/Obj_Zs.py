@@ -57,6 +57,7 @@ import xlwt
 # tamaños_L = [100]
 # tamaños_S = [100]
 
+
 tamaños_I = [500]
 tamaños_L = [150]
 tamaños_S = [300]
