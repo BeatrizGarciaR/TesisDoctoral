@@ -55,7 +55,7 @@ wi = [1, 0.85, 0.6, 0.3]
 
 localsearch = 0
 
-elapsedtimeStop = 36000
+elapsedtimeStop = 600
 modelStopTime = 30
 
 alpha_def = 0.30
