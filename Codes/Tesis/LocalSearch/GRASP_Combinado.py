@@ -3841,6 +3841,9 @@ for iconj in range(len(tamaños_I)):
                     #         print(" ")
                     #         break
                 
+                    mejoras.write("iteracion de GRASP # " + str(iteracionGRASP))
+                    mejoras.write("\n")
+                
                 countcsv += 3
                 sheet.write(countcsv, 1,"newinstance")
                 countcsv += 3
