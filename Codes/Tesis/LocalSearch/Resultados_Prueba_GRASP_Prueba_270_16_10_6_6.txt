@@ -1,4 +1,4 @@
-Elapsed time: 0.1829671859741211
+Elapsed time: 0.15244007110595703
 Obj: -3.192
 dispatched 1 3 1 77 0
 dispatched 1 3 1 97 0

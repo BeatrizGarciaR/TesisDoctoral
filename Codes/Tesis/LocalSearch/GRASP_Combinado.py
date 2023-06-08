@@ -1330,7 +1330,7 @@ for iconj in range(len(tamaños_I)):
                         iteracionesPorWhile = 0
                         
                         for initialL in range(len(L)): 
-                            if initialL in potentialSiteActivos and initialL not in initialL_lista:
+                            if initialL in potentialSiteActivos:
                                 initialL_lista.append(initialL)
                                 aux = initialSolution[initialL][0]
                                 aux1 = initialSolution[initialL][1]
@@ -1889,7 +1889,7 @@ for iconj in range(len(tamaños_I)):
                     iteracionLS = 0 
                     
                     while iteracionLS < maxIterLS:
-                        for initialL in range(len(L)): 
+                        for initialL in potentialSiteActivos: 
                         #if initialL in potentialSiteActivos and initialL not in initialL_lista:
                             initialL_lista.append(initialL)
                             aux = initialSolution[initialL][0]
@@ -2547,7 +2547,7 @@ for iconj in range(len(tamaños_I)):
                     iteracionLS = 0 
                     
                     while iteracionLS < maxIterLS:                                    
-                        for initialL in range(len(L)): 
+                        for initialL in potentialSiteActivos: 
                             #if initialL in potentialSiteActivos and initialL not in initialL_lista:
                             initialL_lista.append(initialL)
                             aux = initialSolution[initialL][0]
@@ -3206,7 +3206,7 @@ for iconj in range(len(tamaños_I)):
                     iteracionLS = 0 
                     
                     while iteracionLS < maxIterLS:                                        
-                        for initialL in range(len(L)): 
+                        for initialL in potentialSiteActivos: 
                             #if initialL in potentialSiteActivos and initialL not in initialL_lista:
                             initialL_lista.append(initialL)
                             aux = initialSolution[initialL][0]
