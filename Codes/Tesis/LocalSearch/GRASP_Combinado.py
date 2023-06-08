@@ -55,7 +55,7 @@ wi = [1, 0.85, 0.6, 0.3]
 
 localsearch = 0
 
-elapsedtimeStop = 300
+elapsedtimeStop = 120
 modelStopTime = 30
 
 alpha_def = 0.30
@@ -603,9 +603,15 @@ for iconj in range(len(tamaños_I)):
                     
                     soluciones.append(initialSolution)
         
+                    # with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
+                    #                   +str(len(L))+str('_')
+                    #                   +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'w') as solutionX:            
+                    #     solutionX.write(str(initialSolution))
+                    #     solutionX.write('\n')
+                        
                     with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
-                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'w') as solutionX:            
+                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'w') as solutionX:            
                         solutionX.write(str(initialSolution))
                         solutionX.write('\n')
                     
@@ -1176,7 +1182,9 @@ for iconj in range(len(tamaños_I)):
                         
                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
-                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX: 
+                            solutionX.write(" mejoró ")
+                            solutionX.write('\n')
                             solutionX.write(str(initialSolution))
                             solutionX.write('\n')
                         
@@ -1195,8 +1203,10 @@ for iconj in range(len(tamaños_I)):
                                   +str(len(L))+str('_')
                                   +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','w')
                         
-                        mejoras.write('mejoró %g' % model.objVal + '  GRASP' + " elapsedtime " + str(sumaelapsed) )
+                        mejoras.write('sí mejoró %g' % model.objVal + '  GRASP' + " elapsedtime " + str(sumaelapsed) )
                         mejoras.write('\n')
+                        mejoras.write(str(initialSolution))
+                        mejoras.write("\n")
                         
                         
                         colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
@@ -1283,7 +1293,9 @@ for iconj in range(len(tamaños_I)):
                     else:
                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
-                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                            solutionX.write(" no mejoró ")
+                            solutionX.write('\n')
                             solutionX.write(str(initialSolution))
                             solutionX.write('\n')
                                             
@@ -1729,7 +1741,9 @@ for iconj in range(len(tamaños_I)):
                                             
                                             with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                           +str(len(L))+str('_')
-                                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                                solutionX.write("sí mejoró ")
+                                                solutionX.write('\n')
                                                 solutionX.write(str(initialSolution))
                                                 solutionX.write('\n')
                                             
@@ -1748,8 +1762,10 @@ for iconj in range(len(tamaños_I)):
                                             #           +str(len(L))+str('_')
                                             #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                             
-                                            mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '  LS1' + " elapsedtime " + str(sumaelapsed))
+                                            mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '  LS1' + " elapsedtime " + str(sumaelapsed))
                                             mejoras.write('\n')
+                                            mejoras.write(str(initialSolution))
+                                            mejoras.write("\n")
                                             
                                             
                                             colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
@@ -1841,11 +1857,15 @@ for iconj in range(len(tamaños_I)):
                                         else:
                                             with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                           +str(len(L))+str('_')
-                                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                                solutionX.write(" no mejoró ")
+                                                solutionX.write('\n')
                                                 solutionX.write(str(initialSolution))
                                                 solutionX.write('\n')
                                             mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS1" + " elapsedtime " + str(sumaelapsed))
                                             mejoras.write('\n')
+                                            mejoras.write(str(initialSolution))
+                                            mejoras.write("\n")
                                             print("entra else que repite solution")
                                             print(" ")
                                             print(" ")
@@ -2380,7 +2400,9 @@ for iconj in range(len(tamaños_I)):
                                         
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         
@@ -2399,8 +2421,10 @@ for iconj in range(len(tamaños_I)):
                                         #           +str(len(L))+str('_')
                                         #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                         
-                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS2" + " elapsedtime " + str(sumaelapsed))
+                                        mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS2" + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         
                                         
                                         colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
@@ -2492,11 +2516,15 @@ for iconj in range(len(tamaños_I)):
                                     else:
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" no mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS2" + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         print("entra else que repite solution")
                                         print(" ")
                                         print(" ")
@@ -3030,7 +3058,9 @@ for iconj in range(len(tamaños_I)):
                                         
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         
@@ -3049,8 +3079,10 @@ for iconj in range(len(tamaños_I)):
                                         #           +str(len(L))+str('_')
                                         #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                         
-                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS3" + " elapsedtime " + str(sumaelapsed))
+                                        mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS3" + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         
                                         
                                         colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
@@ -3142,11 +3174,15 @@ for iconj in range(len(tamaños_I)):
                                     else:
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" no mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS3" + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         print("entra else que repite solution")
                                         print(" ")
                                         print(" ")
@@ -3677,7 +3713,9 @@ for iconj in range(len(tamaños_I)):
                                         
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         
@@ -3696,8 +3734,10 @@ for iconj in range(len(tamaños_I)):
                                         #           +str(len(L))+str('_')
                                         #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
                                         
-                                        mejoras.write('mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + ' LS4 ' + " elapsedtime " + str(sumaelapsed))
+                                        mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + ' LS4 ' + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         
                                         
                                         colnames = ["name", "I size", "L size", "S size", "time", "elapsed time", "best obj", "best bound", "gap %"]
@@ -3789,11 +3829,15 @@ for iconj in range(len(tamaños_I)):
                                     else:
                                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                       +str(len(L))+str('_')
-                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
+                                            solutionX.write(" no mejoró ")
+                                            solutionX.write('\n')
                                             solutionX.write(str(initialSolution))
                                             solutionX.write('\n')
                                         mejoras.write('no mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS4" + " elapsedtime " + str(sumaelapsed))
                                         mejoras.write('\n')
+                                        mejoras.write(str(initialSolution))
+                                        mejoras.write("\n")
                                         print("entra else que repite solution")
                                         print(" ")
                                         print(" ")
@@ -3869,7 +3913,7 @@ for iconj in range(len(tamaños_I)):
                     
                     with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                   +str(len(L))+str('_')
-                                  +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'a') as solutionX:            
+                                  +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX:            
                         solutionX.write("iteracion de GRASP # " + str(iteracionGRASP))
                         solutionX.write('\n')
                 
