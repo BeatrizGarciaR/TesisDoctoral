@@ -55,10 +55,10 @@ wi = [1, 0.85, 0.6, 0.3]
 
 localsearch = 0
 
-elapsedtimeStop = 120
+elapsedtimeStop = 12000
 modelStopTime = 30
 
-alpha_def = 0.30
+alpha_def = 0.50
 
 maxIterGRASP = 100
 

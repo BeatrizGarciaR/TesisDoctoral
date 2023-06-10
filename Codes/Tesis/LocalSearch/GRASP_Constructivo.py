@@ -59,7 +59,7 @@ localsearch = 0
 elapsedtimeStop = 60
 modelStopTime = 30
 
-alpha_def = 0.30
+alpha_def = 0.50
 
 maxIterGRASP = 100
 
