@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Feb 14 20:36:39 2023
+Created on Tue Jun 20 13:34:03 2023
 
-@author: beatr
+@author: BeatrizGarcia
 """
 
 import gurobipy as gp
@@ -55,10 +56,10 @@ wi = [1, 0.85, 0.6, 0.3]
 
 localsearch = 0
 
-elapsedtimeStop = 120
+elapsedtimeStop = 60
 modelStopTime = 30
 
-alpha_def = 0.80
+alpha_def = 0.50
 
 maxIterGRASP = 100
 
@@ -200,28 +201,14 @@ for iconj in range(len(tamaños_I)):
                         demandtype1.append(int(2*demandcount/3))
                         demandtype2.append(int(demandcount/3))
                 
-                
-                # demandtype1 = []
-                # demandtype2 = []
-                # for i in range(len(I)):
-                #     for k in range(len(K)):
-                #         demandcount = 0
-                #         if k == 0:
-                #             for s in range(len(S)):
-                #                 demandcount += S[s][i][k]
-                #             demandtype1.append(demandcount)
-                #         else:
-                #             for s in range(len(S)):
-                #                 demandcount += S[s][i][k]
-                #             demandtype2.append(demandcount)
                             
-                print("Demand count type 1") # me dice cuántos accidentes hubo
-                print(demandtype1)
-                print(" ")  
+                #print("Demand count type 1") # me dice cuántos accidentes hubo
+                #print(demandtype1)
+                #print(" ")  
                 
-                print("Demand count type 2") # me dice cuántos accidentes hubo
-                print(demandtype2)
-                print(" ") 
+                #print("Demand count type 2") # me dice cuántos accidentes hubo
+                #print(demandtype2)
+                #print(" ") 
                 
                 puntosCubiertos1 = []
                 for l in range(len(L)):
@@ -322,278 +309,50 @@ for iconj in range(len(tamaños_I)):
                     print(LCR2)
                     print(" ") 
                     
-                    # LCR2 = []
-                    # if len(L) <= eta[1]:
-                    #     for i in range(len(L)):
-                    #         LCR2.append(i)
-                    # else:
-                    #     lenLCR2 = max(eta[1], int(len(L)*0.5))
-                    #     for i in range(lenLCR2):
-                    #         indice_LCR2 = accidentesesperados2.index(max(accidentesesperados2))
-                    #         LCR2.append(indice_LCR2)
-                    #         accidentesesperados2[indice_LCR2] = -1
-                    
-                    #print(LCR1)
-                    #print(LCR2)
-                    
-                    
-                    ###### FALTA LLENAR BIEN LA LCR PARA QUE SEA UNA CANTIDAD BUENA DE AMBULANCIAS
-                    
-                    minimoaccidentes1 = min(accidentesesperados1)
-                    maximoaccidentes1 = max(accidentesesperados1)
-                    diferencia1 = maximoaccidentes1 - minimoaccidentes1
-                    
-                    particion1_1 = diferencia1*0.3
-                    particion1_2 = diferencia1*0.6
-                    #particion1_3 = diferencia1*0.6
-                    #particion1_4 = diferencia1*0.8
-                    
-                    intervalo1_1 = minimoaccidentes1 + particion1_1
-                    intervalo1_2 = minimoaccidentes1 + particion1_2
-                    intervalo1_3 = maximoaccidentes1
-                    #intervalo1_3 = minimoaccidentes1 + particion1_3
-                    #intervalo1_4 = minimoaccidentes1 + particion1_4
-                    #intervalo1_5 = maximoaccidentes1
                     
                     contamb1 = 0
                     while contamb1 < eta[0]:
+                        if eta[0] - contamb1 >= 3:
+                            ambPosibles = [1,2,3]
+                        if eta[0] - contamb1 == 2:
+                            ambPosibles = [1,2]
+                        if eta[0] - contamb1 == 1:
+                            ambPosibles = [1]
                         if LCR1 != []:
                             localidadaux = random.choice(LCR1)
-                            accidentespuntoaux = accidentesesperados1[localidadaux]
-                            if accidentespuntoaux <= intervalo1_1:
-                                if (contamb1 + 1) <= eta[0]:
-                                    initialSolution[localidadaux][0] = 1
-                                    LCR1.remove(localidadaux)
-                                    contamb1 += 1
-                            
-                            else:
-                                if accidentespuntoaux <= intervalo1_2:
-                                    if (contamb1 + 2) <= eta[0]:
-                                        initialSolution[localidadaux][0] = 2
-                                        LCR1.remove(localidadaux)
-                                        contamb1 += 2
-                                    else:
-                                        if (contamb1 + 1) <= eta[0]:
-                                            initialSolution[localidadaux][0] = 1
-                                            LCR1.remove(localidadaux)
-                                            contamb1 += 1
-                                
-                                else:    
-                                    if accidentespuntoaux <= intervalo1_3:
-                                        if (contamb1 + 3) <= eta[0]:
-                                            initialSolution[localidadaux][0] = 3
-                                            LCR1.remove(localidadaux)
-                                            contamb1 += 3
-                                        else:
-                                            if (contamb1 + 2) <= eta[0]:
-                                                initialSolution[localidadaux][0] = 2
-                                                LCR1.remove(localidadaux)
-                                                contamb1 += 2
-                                            else:
-                                                if (contamb1 + 1) <= eta[0]:
-                                                    initialSolution[localidadaux][0] = 1
-                                                    LCR1.remove(localidadaux)
-                                                    contamb1 += 1
+                            cantAleatoria = random.choice(ambPosibles)
+                            initialSolution[localidadaux][0] = cantAleatoria
+                            LCR1.remove(localidadaux)
+                            contamb1 += cantAleatoria
                         else:
                             localidadaux = random.choice(restodepuntos1)
-                            accidentespuntoaux = accidentesesperados1[localidadaux]
-                            if accidentespuntoaux <= intervalo1_1:
-                                if (contamb1 + 1) <= eta[0]:
-                                    initialSolution[localidadaux][0] = 1
-                                    restodepuntos1.remove(localidadaux)
-                                    contamb1 += 1
-                            
-                            else:
-                                if accidentespuntoaux <= intervalo1_2:
-                                    if (contamb1 + 2) <= eta[0]:
-                                        initialSolution[localidadaux][0] = 2
-                                        restodepuntos1.remove(localidadaux)
-                                        contamb1 += 2
-                                    else:
-                                        if (contamb1 + 1) <= eta[0]:
-                                            initialSolution[localidadaux][0] = 1
-                                            restodepuntos1.remove(localidadaux)
-                                            contamb1 += 1
-                                
-                                else:    
-                                    if accidentespuntoaux <= intervalo1_3:
-                                        if (contamb1 + 3) <= eta[0]:
-                                            initialSolution[localidadaux][0] = 3
-                                            restodepuntos1.remove(localidadaux)
-                                            contamb1 += 3
-                                        else:
-                                            if (contamb1 + 2) <= eta[0]:
-                                                initialSolution[localidadaux][0] = 2
-                                                restodepuntos1.remove(localidadaux)
-                                                contamb1 += 2
-                                            else:
-                                                if (contamb1 + 1) <= eta[0]:
-                                                    initialSolution[localidadaux][0] = 1
-                                                    restodepuntos1.remove(localidadaux)
-                                                    contamb1 += 1
-    
-    
-                    minimoaccidentes2 = min(accidentesesperados2)
-                    maximoaccidentes2 = max(accidentesesperados2)
-                    diferencia2 = maximoaccidentes2 - minimoaccidentes2
-                    
-                    particion2_1 = diferencia2*0.3
-                    particion2_2 = diferencia2*0.6
-                    #particion1_3 = diferencia1*0.6
-                    #particion1_4 = diferencia1*0.8
-                    
-                    intervalo2_1 = minimoaccidentes2 + particion2_1
-                    intervalo2_2 = minimoaccidentes2 + particion2_2
-                    intervalo2_3 = maximoaccidentes2
-                    #intervalo1_3 = minimoaccidentes1 + particion1_3
-                    #intervalo1_4 = minimoaccidentes1 + particion1_4
-                    #intervalo1_5 = maximoaccidentes1
-    
+                            cantAleatoria = random.choice(ambPosibles)
+                            initialSolution[localidadaux][0] = cantAleatoria
+                            restodepuntos1.remove(localidadaux) 
+                            contamb1 += cantAleatoria
+
                     contamb2 = 0
                     while contamb2 < eta[1]:
+                        if eta[1] - contamb2 >= 3:
+                            ambPosibles = [1,2,3]
+                        if eta[1] - contamb2 == 2:
+                            ambPosibles = [1,2]
+                        if eta[1] - contamb2 == 1:
+                            ambPosibles = [1]
                         if LCR2 != []:
                             localidadaux = random.choice(LCR2)
-                            accidentespuntoaux = accidentesesperados2[localidadaux]
-                            if accidentespuntoaux <= intervalo2_1:
-                                if (contamb2 + 1) <= eta[1]:
-                                    initialSolution[localidadaux][1] = 1
-                                    LCR2.remove(localidadaux)
-                                    contamb2 += 1
-                            
-                            else:
-                                if accidentespuntoaux <= intervalo2_2:
-                                    if (contamb2 + 2) <= eta[1]:
-                                        initialSolution[localidadaux][1] = 2
-                                        LCR2.remove(localidadaux)
-                                        contamb2 += 2
-                                    else:
-                                        if (contamb2 + 1) <= eta[1]:
-                                            initialSolution[localidadaux][1] = 1
-                                            LCR2.remove(localidadaux)
-                                            contamb2 += 1
-                                
-                                else:    
-                                    if accidentespuntoaux <= intervalo2_3:
-                                        if (contamb2 + 3) <= eta[1]:
-                                            initialSolution[localidadaux][1] = 3
-                                            LCR2.remove(localidadaux)
-                                            contamb2 += 3
-                                        else:
-                                            if (contamb2 + 2) <= eta[1]:
-                                                initialSolution[localidadaux][1] = 2
-                                                LCR2.remove(localidadaux)
-                                                contamb2 += 2
-                                            else:
-                                                if (contamb2 + 1) <= eta[1]:
-                                                    initialSolution[localidadaux][1] = 1
-                                                    LCR2.remove(localidadaux)
-                                                    contamb2 += 1
+                            cantAleatoria = random.choice(ambPosibles)
+                            initialSolution[localidadaux][1] = cantAleatoria
+                            LCR2.remove(localidadaux)
+                            contamb2 += cantAleatoria
                         else:
                             localidadaux = random.choice(restodepuntos2)
-                            accidentespuntoaux = accidentesesperados2[localidadaux]
-                            if accidentespuntoaux <= intervalo2_1:
-                                if (contamb2 + 1) <= eta[1]:
-                                    initialSolution[localidadaux][1] = 1
-                                    restodepuntos2.remove(localidadaux)
-                                    contamb2 += 1
-                            
-                            else:
-                                if accidentespuntoaux <= intervalo2_2:
-                                    if (contamb2 + 2) <= eta[1]:
-                                        initialSolution[localidadaux][1] = 2
-                                        restodepuntos2.remove(localidadaux)
-                                        contamb2 += 2
-                                    else:
-                                        if (contamb2 + 1) <= eta[1]:
-                                            initialSolution[localidadaux][1] = 1
-                                            restodepuntos2.remove(localidadaux)
-                                            contamb2 += 1
-                                
-                                else:    
-                                    if accidentespuntoaux <= intervalo2_3:
-                                        if (contamb2 + 3) <= eta[1]:
-                                            initialSolution[localidadaux][1] = 3
-                                            restodepuntos2.remove(localidadaux)
-                                            contamb2 += 3
-                                        else:
-                                            if (contamb2 + 2) <= eta[1]:
-                                                initialSolution[localidadaux][1] = 2
-                                                restodepuntos2.remove(localidadaux)
-                                                contamb2 += 2
-                                            else:
-                                                if (contamb2 + 1) <= eta[1]:
-                                                    initialSolution[localidadaux][1] = 1
-                                                    restodepuntos2.remove(localidadaux)
-                                                    contamb2 += 1
-    
-                    #break
+                            cantAleatoria = random.choice(ambPosibles)
+                            initialSolution[localidadaux][1] = cantAleatoria
+                            restodepuntos2.remove(localidadaux)
+                            contamb2 += cantAleatoria
                     
-                    # contamb1 = 0
-                    # while contamb1 < eta[0]:
-                    #     a = random.uniform(0,1)
-                    #     if eta[0] - contamb1 == 1:
-                    #         if LCR1 != []:
-                    #             b = random.choice(LCR1)
-                    #             LCR1.remove(b)
-                    #         else:
-                    #             b = random.choice(restodepuntos1)
-                    #             restodepuntos1.remove(b)
-                    #         initialSolution[b][0] = 1
-                    #         contamb1 += 1                  
-                    #     else:
-                    #         if a < 0.85: 
-                    #             if LCR1 != []:
-                    #                 b = random.choice(LCR1)
-                    #                 LCR1.remove(b)
-                    #             else:
-                    #                 b = random.choice(restodepuntos1)
-                    #                 restodepuntos1.remove(b)
-                    #             initialSolution[b][0] = 1
-                    #             contamb1 += 1
-                    #         else:
-                    #             if LCR1 != []:
-                    #                 b = random.choice(LCR1)
-                    #                 LCR1.remove(b)
-                    #             else:
-                    #                 b = random.choice(restodepuntos1)
-                    #                 restodepuntos1.remove(b)
-                    #             initialSolution[b][0] = 2
-                    #             contamb1 += 2
-                                
-                    # contamb2 = 0
-                    # while contamb2 < eta[1]:
-                    #     a = random.uniform(0,1)
-                    #     if eta[1] - contamb2 == 1:
-                    #         if LCR2 != []:
-                    #             b = random.choice(LCR2)
-                    #             LCR2.remove(b)
-                    #         else:
-                    #             b = random.choice(restodepuntos2)
-                    #             restodepuntos2.remove(b)
-                    #         initialSolution[b][1] = 1
-                    #         contamb2 += 1                  
-                    #     else:
-                    #         if a < 0.85: 
-                    #             if LCR2 != []:
-                    #                 b = random.choice(LCR2)
-                    #                 LCR2.remove(b)
-                    #             else:
-                    #                 b = random.choice(restodepuntos2)
-                    #                 restodepuntos2.remove(b)
-                    #             initialSolution[b][1] = 1
-                    #             contamb2 += 1
-                    #         else:
-                    #             if LCR2 != []:
-                    #                 b = random.choice(LCR2)
-                    #                 LCR2.remove(b)
-                    #             else:
-                    #                 b = random.choice(restodepuntos2)
-                    #                 restodepuntos2.remove(b)
-                    #             initialSolution[b][1] = 2
-                    #             contamb2 += 2
-                    
-        
-                    # Solamente se asignan 1 y 2... hay que modificar eso
+
                     print("La solucion inicial final es ")
                     print(initialSolution)
                     print(" ")
@@ -601,13 +360,9 @@ for iconj in range(len(tamaños_I)):
                     
                     #break
                     
+                    
                     soluciones.append(initialSolution)
-        
-                    # with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
-                    #                   +str(len(L))+str('_')
-                    #                   +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.csv', 'w') as solutionX:            
-                    #     solutionX.write(str(initialSolution))
-                    #     solutionX.write('\n')
+
                         
                     with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
@@ -718,82 +473,7 @@ for iconj in range(len(tamaños_I)):
                                 obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                     model.setObjective(obj, GRB.MAXIMIZE)  
     
-                                              
-     
-                    # alpha_vars = {}  ## z full
-                    # cantVarAlpha = 0
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0] != 0:
-                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                    #             cantVarAlpha += 1
-                    #         if S[s][i-1][1] != 0:
-                    #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                    #             cantVarAlpha += 1
-                    
-                    # beta_vars = {}  ## z partial 1
-                    # cantVarBeta = 0
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0] != 0:
-                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarBeta += 1
-                    #         if S[s][i-1][1] != 0:
-                    #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarBeta += 1
-                    
-                    # delta_vars = {}  ## z partial 2
-                    # cantVarDelta = 0
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0] != 0:
-                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarDelta += 1
-                    #         if S[s][i-1][1] != 0:
-                    #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarDelta += 1
-                    
-                    # phi_vars = {}   ## z partial 3
-                    # cantVarPhi = 0
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0] != 0:
-                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarPhi += 1
-                    #         if S[s][i-1][1] != 0:
-                    #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                    #             cantVarPhi += 1
-                    
-                    # gamma_vars = {} ## z null
-                    # cantVarGamma = 0
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0] != 0:
-                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                    #             cantVarGamma += 1
-                    #         if S[s][i-1][1] != 0:
-                    #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                    #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                    #             cantVarGamma += 1
-                
-                    # obj = gp.LinExpr()
-                    # for s in range(len(S)):
-                    #     for i in I:
-                    #         if S[s][i-1][0]:
-                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                    #         if S[s][i-1][1]:
-                    #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                    # model.setObjective(obj, GRB.MAXIMIZE)  
-                
+                                             
                 
                     ## Add constraints 
                     
@@ -819,25 +499,6 @@ for iconj in range(len(tamaños_I)):
                                         amb2 += y_vars[s+1,l,2,i] 
                             model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                                 
-                        
-                        # for l in L:
-                        #     for k in K:
-                        #         if k == 1 and initialSolution[l-1][k-1] != 0:
-                        #             suma = 0
-                        #             for i in I:
-                        #                 if S[s][i-1][0] != 0:
-                        #                     suma += y_vars[s+1,l,1,i]
-                        #                 else: 
-                        #                     if S[s][i-1][0] != 0:
-                        #                         suma += y_vars[s+1,l,1,i]
-                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                
-                        #         if k == 2 and initialSolution[l-1][k-1] != 0:
-                        #             suma = 0
-                        #             for i in I:
-                        #                 if S[s][i-1][0] != 0:
-                        #                     suma += y_vars[s+1,l,2,i]
-                        #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
                          
                         # Restricción 6: Activar alpha (cobertura total) 
                         for i in I:
@@ -1298,12 +959,18 @@ for iconj in range(len(tamaños_I)):
                             solutionX.write('\n')
                             solutionX.write(str(initialSolution))
                             solutionX.write('\n')
-                        
-                        soluciones.append(initialSolution)
-                        
-                        
-                                            
-                    #break
+                        mejoras.write('no mejoró %g' % model.objVal + '  GRASP' + " elapsedtime " + str(sumaelapsed))
+                        mejoras.write('\n')
+                        mejoras.write(str(initialSolution))
+                        mejoras.write("\n")
+
+                                
+                    #mejoras.write("iteracion de GRASP # " + str(iteracionGRASP))
+                    #mejoras.write("\n")
+                    #mejoras.write(str(initialSolution))
+                    #mejoras.write('\n')
+        
+
                     ####################################
                     ####### LOCAL SEARCH ###############
                     ####################################
@@ -1351,6 +1018,15 @@ for iconj in range(len(tamaños_I)):
                                     if j not in potentialSiteActivos:  #LS1
                                         breakaux = 0
                                         
+                                        vecino = []
+                                        # for n in range(len(initialSolution)):
+                                        #     if n != j and n != initialL:
+                                        #         vecino.append(initialSolution[n])
+                                        #     if n == j:
+                                        #         vecino.append([initialSolution[n][0] + aux, initialSolution[n][1] + aux1])
+                                        #     if n == initialL:
+                                        #         vecino.append([0,0])
+                                        
                                         initialSolution[j][0] += initialSolution[initialL][0]
                                         initialSolution[j][1] += initialSolution[initialL][1]
                                         initialSolution[initialL][0] = 0
@@ -1360,7 +1036,10 @@ for iconj in range(len(tamaños_I)):
                                         print(" ")
                                         print(initialSolution)
                                         
-                                        if initialSolution not in soluciones:
+                                        #if vecino not in soluciones:
+                                        if 1 == 1:
+                                            
+                                            print("entra LS1")
                
                                             model = gp.Model("TabuSearchWithSAA")            
                                             model.setParam('TimeLimit', modelStopTime)
@@ -1743,7 +1422,7 @@ for iconj in range(len(tamaños_I)):
                                                 print("   ")
                                                 #print(initialSolution)
                                                 
-                                                soluciones.append(initialSolution)
+                                                soluciones.append(vecino)
                                                 
                                                 with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                               +str(len(L))+str('_')
@@ -1762,12 +1441,7 @@ for iconj in range(len(tamaños_I)):
                                                 valorObjetivo = model.objVal
                                                 print("   ")
                                                 print("   ")
-                                                
-                                                # mejoras = open ("mejoras_GRASP_Prueba_"
-                                                #           +str(len(I))+str('_')
-                                                #           +str(len(L))+str('_')
-                                                #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
-                                                
+                                               
                                                 mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + '  LS1' + " elapsedtime " + str(sumaelapsed))
                                                 mejoras.write('\n')
                                                 mejoras.write(str(initialSolution))
@@ -1875,7 +1549,7 @@ for iconj in range(len(tamaños_I)):
                                                 print("entra else que repite solution")
                                                 print(" ")
                                                 print(" ")
-                                                soluciones.append(initialSolution)
+                                                soluciones.append(vecino)
                                                 initialSolution[initialL][0] = aux
                                                 initialSolution[initialL][1] = aux1
                                                 initialSolution[j][0] -= aux
@@ -1884,16 +1558,6 @@ for iconj in range(len(tamaños_I)):
                                                 # print(" ")
                                                 # print(" ")
                                                 
-                                            # if sumaelapsed > elapsedtimeStop:
-                                            #         print("   ")
-                                            #         print("   ")
-                                            #         print("entra if de elapsed", localsearch)
-                                            #         print("   ")
-                                            #         print("   ")
-                                            #         break
-                                        
-                    break
-
                     iteracionLS = 0 
                     
                     while iteracionLS < maxIterLS:
@@ -1916,6 +1580,25 @@ for iconj in range(len(tamaños_I)):
                                 
                                     breakaux = 0
                                     
+                                    vecino = []
+                                    # for n in range(len(initialSolution)):
+                                    #     if n != j and n != initialL:
+                                    #         vecino.append(initialSolution[n])
+                                    #     if n == j:
+                                    #         vecino.append([0,0])
+                                    #         if aux + aux1 > 1:
+                                    #             if aux > 1:
+                                    #                 vecino[n][0] = initialSolution[n][0] + math.floor(aux/2)
+                                    #             if aux1 > 1:
+                                    #                 vecino[n][1] = initialSolution[n][1] + math.floor(aux1/2)
+                                    #     if n == initialL:
+                                    #         vecino.append(initialSolution[n])
+                                    #         if aux + aux1 > 1:
+                                    #             if aux > 1:
+                                    #                 vecino[n][0] = initialSolution[n][0] - math.floor(aux/2)
+                                    #             if aux1 > 1:
+                                    #                 vecino[n][1] = initialSolution[n][1] - math.floor(aux1/2)
+                                    
                                     if aux + aux1 > 1:
                                         if aux > 1:
                                             initialSolution[j][0] += math.floor(aux/2)
@@ -1930,7 +1613,9 @@ for iconj in range(len(tamaños_I)):
                                     print(" ")
                                     print(initialSolution)   
                                     
-                                    if initialSolution not in soluciones:
+                                    #if vecino not in soluciones:
+                                    if 1 == 1:    
+                                        print("Entra LS2")
            
                                         model = gp.Model("TabuSearchWithSAA")            
                                         model.setParam('TimeLimit', modelStopTime)
@@ -2020,81 +1705,6 @@ for iconj in range(len(tamaños_I)):
                                                     obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                         model.setObjective(obj, GRB.MAXIMIZE)  
                         
-                                                                  
-                         
-                                        # alpha_vars = {}  ## z full
-                                        # cantVarAlpha = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        
-                                        # beta_vars = {}  ## z partial 1
-                                        # cantVarBeta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        
-                                        # delta_vars = {}  ## z partial 2
-                                        # cantVarDelta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        
-                                        # phi_vars = {}   ## z partial 3
-                                        # cantVarPhi = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        
-                                        # gamma_vars = {} ## z null
-                                        # cantVarGamma = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                    
-                                        # obj = gp.LinExpr()
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        #         if S[s][i-1][1]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        # model.setObjective(obj, GRB.MAXIMIZE)  
                                     
                                     
                                         ## Add constraints 
@@ -2120,27 +1730,7 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][1] != 0:
                                                             amb2 += y_vars[s+1,l,2,i] 
                                                 model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
-                                                    
-                                            
-                                            # for l in L:
-                                            #     for k in K:
-                                            #         if k == 1 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,1,i]
-                                            #                 else: 
-                                            #                     if S[s][i-1][0] != 0:
-                                            #                         suma += y_vars[s+1,l,1,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                                    
-                                            #         if k == 2 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,2,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                                             
+                                          
                                             # Restricción 6: Activar alpha (cobertura total) 
                                             for i in I:
                                                 if S[s][i-1][0] + S[s][i-1][1] != 0:
@@ -2406,7 +1996,7 @@ for iconj in range(len(tamaños_I)):
                                             print("   ")
                                             #print(initialSolution)
                                             
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             
                                             with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                           +str(len(L))+str('_')
@@ -2425,12 +2015,7 @@ for iconj in range(len(tamaños_I)):
                                             valorObjetivo = model.objVal
                                             print("   ")
                                             print("   ")
-                                            
-                                            # mejoras = open ("mejoras_GRASP_Prueba_"
-                                            #           +str(len(I))+str('_')
-                                            #           +str(len(L))+str('_')
-                                            #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
-                                            
+                                           
                                             mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS2" + " elapsedtime " + str(sumaelapsed))
                                             mejoras.write('\n')
                                             mejoras.write(str(initialSolution))
@@ -2538,7 +2123,7 @@ for iconj in range(len(tamaños_I)):
                                             print("entra else que repite solution")
                                             print(" ")
                                             print(" ")
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             initialSolution[initialL][0] = aux
                                             initialSolution[initialL][1] = aux1
                                             initialSolution[j][0] -= math.floor(aux/2)
@@ -2546,15 +2131,7 @@ for iconj in range(len(tamaños_I)):
                                             # print(initialSolution)
                                             # print(" ")
                                             # print(" ")
-                                            
-                                        # if sumaelapsed > elapsedtimeStop:
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         print("entra if de elapsed", localsearch)
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         break
-
+                                     
                     iteracionLS = 0 
                     
                     while iteracionLS < maxIterLS:                                    
@@ -2577,6 +2154,25 @@ for iconj in range(len(tamaños_I)):
                                 
                                     breakaux = 0
                                     
+                                    vecino = []
+                                    # for n in range(len(initialSolution)):
+                                    #     if n != j and n != initialL:
+                                    #         vecino.append(initialSolution[n])
+                                    #     if n == j:
+                                    #         vecino.append([0,0])
+                                    #         if aux + aux1 > 1:
+                                    #             if aux > 1:
+                                    #                 vecino[n][0] = initialSolution[n][0] + math.floor(aux/2)
+                                    #             if aux1 > 1:
+                                    #                 vecino[n][1] = initialSolution[n][1] + math.floor(aux1/2)
+                                    #     if n == initialL:
+                                    #         vecino.append(initialSolution[n])
+                                    #         if aux + aux1 > 1:
+                                    #             if aux > 1:
+                                    #                 vecino[n][0] = initialSolution[n][0] - math.floor(aux/2)
+                                    #             if aux1 > 1:
+                                    #                 vecino[n][1] = initialSolution[n][1] - math.floor(aux1/2)
+                                    
                                     if aux + aux1 > 1:
                                         if aux > 1:
                                             initialSolution[j][0] += math.floor(aux/2)
@@ -2591,7 +2187,9 @@ for iconj in range(len(tamaños_I)):
                                     print(" ")
                                     print(initialSolution)      
                                     
-                                    if initialSolution not in soluciones:
+                                    #if vecino not in soluciones:
+                                    if 1 == 1:    
+                                        print("Entra LS3")
            
                                         model = gp.Model("TabuSearchWithSAA")            
                                         model.setParam('TimeLimit', modelStopTime)
@@ -2681,83 +2279,7 @@ for iconj in range(len(tamaños_I)):
                                                     obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                         model.setObjective(obj, GRB.MAXIMIZE)  
                         
-                                                                  
-                         
-                                        # alpha_vars = {}  ## z full
-                                        # cantVarAlpha = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        
-                                        # beta_vars = {}  ## z partial 1
-                                        # cantVarBeta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        
-                                        # delta_vars = {}  ## z partial 2
-                                        # cantVarDelta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        
-                                        # phi_vars = {}   ## z partial 3
-                                        # cantVarPhi = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        
-                                        # gamma_vars = {} ## z null
-                                        # cantVarGamma = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                    
-                                        # obj = gp.LinExpr()
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        #         if S[s][i-1][1]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        # model.setObjective(obj, GRB.MAXIMIZE)  
-                                    
-                                    
+                        
                                         ## Add constraints 
                                         
                                         for s in range(len(S)):
@@ -2781,27 +2303,7 @@ for iconj in range(len(tamaños_I)):
                                                         if S[s][i-1][1] != 0:
                                                             amb2 += y_vars[s+1,l,2,i] 
                                                 model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
-                                                    
-                                            
-                                            # for l in L:
-                                            #     for k in K:
-                                            #         if k == 1 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,1,i]
-                                            #                 else: 
-                                            #                     if S[s][i-1][0] != 0:
-                                            #                         suma += y_vars[s+1,l,1,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                                    
-                                            #         if k == 2 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,2,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                                             
+                                        
                                             # Restricción 6: Activar alpha (cobertura total) 
                                             for i in I:
                                                 if S[s][i-1][0] + S[s][i-1][1] != 0:
@@ -3067,7 +2569,7 @@ for iconj in range(len(tamaños_I)):
                                             print("   ")
                                             #print(initialSolution)
                                             
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             
                                             with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                           +str(len(L))+str('_')
@@ -3087,11 +2589,7 @@ for iconj in range(len(tamaños_I)):
                                             print("   ")
                                             print("   ")
                                             
-                                            # mejoras = open ("mejoras_GRASP_Prueba_"
-                                            #           +str(len(I))+str('_')
-                                            #           +str(len(L))+str('_')
-                                            #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
-                                            
+                                           
                                             mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + " LS3" + " elapsedtime " + str(sumaelapsed))
                                             mejoras.write('\n')
                                             mejoras.write(str(initialSolution))
@@ -3199,23 +2697,14 @@ for iconj in range(len(tamaños_I)):
                                             print("entra else que repite solution")
                                             print(" ")
                                             print(" ")
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             initialSolution[initialL][0] = aux
                                             initialSolution[initialL][1] = aux1
                                             initialSolution[j][0] -= math.floor(aux/2)
                                             initialSolution[j][1] -= math.floor(aux1/2)
                                             # print(initialSolution)
                                             # print(" ")
-                                            # print(" ")
-                                            
-                                        # if sumaelapsed > elapsedtimeStop:
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         print("entra if de elapsed", localsearch)
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         break
-                                            
+                                            # print(" ")                  
 
                     iteracionLS = 0 
                     
@@ -3240,6 +2729,15 @@ for iconj in range(len(tamaños_I)):
                                     
                                     breakaux = 0
                                     
+                                    vecino = []
+                                    # for n in range(len(initialSolution)):
+                                    #     if n != j and n != initialL:
+                                    #         vecino.append(initialSolution[n])
+                                    #     if n == j:
+                                    #         vecino.append([initialSolution[n][0] + aux, initialSolution[n][1] + aux1])
+                                    #     if n == initialL:
+                                    #         vecino.append([0,0])
+                                    
                                     initialSolution[j][0] += initialSolution[initialL][0]
                                     initialSolution[j][1] += initialSolution[initialL][1]
                                     initialSolution[initialL][0] = 0
@@ -3249,7 +2747,10 @@ for iconj in range(len(tamaños_I)):
                                     print(" ")
                                     print(initialSolution)
                                     
-                                    if initialSolution not in soluciones:
+                                    #if vecino not in soluciones:
+                                    if 1 == 1:
+                                        
+                                        print("Entra LS4")
            
                                         model = gp.Model("TabuSearchWithSAA")            
                                         model.setParam('TimeLimit', modelStopTime)
@@ -3339,83 +2840,7 @@ for iconj in range(len(tamaños_I)):
                                                     obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
                                         model.setObjective(obj, GRB.MAXIMIZE)  
                         
-                                                                  
-                         
-                                        # alpha_vars = {}  ## z full
-                                        # cantVarAlpha = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Full "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarAlpha += 1
-                                        
-                                        # beta_vars = {}  ## z partial 1
-                                        # cantVarBeta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarBeta += 1
-                                        
-                                        # delta_vars = {}  ## z partial 2
-                                        # cantVarDelta = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarDelta += 1
-                                        
-                                        # phi_vars = {}   ## z partial 3
-                                        # cantVarPhi = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarPhi += 1
-                                        
-                                        # gamma_vars = {} ## z null
-                                        # cantVarGamma = 0
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                        #         if S[s][i-1][1] != 0:
-                                        #             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                        #                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                        #             cantVarGamma += 1
-                                    
-                                        # obj = gp.LinExpr()
-                                        # for s in range(len(S)):
-                                        #     for i in I:
-                                        #         if S[s][i-1][0]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        #         if S[s][i-1][1]:
-                                        #             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                        # model.setObjective(obj, GRB.MAXIMIZE)  
-                                    
-                                    
+                                
                                         ## Add constraints 
                                         
                                         for s in range(len(S)):
@@ -3440,26 +2865,7 @@ for iconj in range(len(tamaños_I)):
                                                             amb2 += y_vars[s+1,l,2,i] 
                                                 model.addConstr(amb2 <= initialSolution[l-1][1], "c5")
                                                     
-                                            
-                                            # for l in L:
-                                            #     for k in K:
-                                            #         if k == 1 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,1,i]
-                                            #                 else: 
-                                            #                     if S[s][i-1][0] != 0:
-                                            #                         suma += y_vars[s+1,l,1,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c3")
-                                                    
-                                            #         if k == 2 and initialSolution[l-1][k-1] != 0:
-                                            #             suma = 0
-                                            #             for i in I:
-                                            #                 if S[s][i-1][0] != 0:
-                                            #                     suma += y_vars[s+1,l,2,i]
-                                            #             model.addConstr(suma <= initialSolution[l-1][k-1], "c4")
-                                             
+                                    
                                             # Restricción 6: Activar alpha (cobertura total) 
                                             for i in I:
                                                 if S[s][i-1][0] + S[s][i-1][1] != 0:
@@ -3725,7 +3131,7 @@ for iconj in range(len(tamaños_I)):
                                             print("   ")
                                             #print(initialSolution)
                                             
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             
                                             with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                                           +str(len(L))+str('_')
@@ -3744,12 +3150,7 @@ for iconj in range(len(tamaños_I)):
                                             valorObjetivo = model.objVal
                                             print("   ")
                                             print("   ")
-                                            
-                                            # mejoras = open ("mejoras_GRASP_Prueba_"
-                                            #           +str(len(I))+str('_')
-                                            #           +str(len(L))+str('_')
-                                            #           +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt','a')
-                                            
+                                        
                                             mejoras.write('sí mejoró %g' % model.objVal + ' en initial L '+ str(initialL) + ' con j = ' + str(j) + ' localsearch ' + str(localsearch) + ' LS4 ' + " elapsedtime " + str(sumaelapsed))
                                             mejoras.write('\n')
                                             mejoras.write(str(initialSolution))
@@ -3857,7 +3258,7 @@ for iconj in range(len(tamaños_I)):
                                             print("entra else que repite solution")
                                             print(" ")
                                             print(" ")
-                                            soluciones.append(initialSolution)
+                                            soluciones.append(vecino)
                                             initialSolution[initialL][0] = aux
                                             initialSolution[initialL][1] = aux1
                                             initialSolution[j][0] -= aux
@@ -3866,34 +3267,7 @@ for iconj in range(len(tamaños_I)):
                                             # print(" ")
                                             # print(" ")
                                             
-                                        # if sumaelapsed > elapsedtimeStop:
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         print("entra if de elapsed", localsearch)
-                                        #         print("   ")
-                                        #         print("   ")
-                                        #         break
-    
-                                        
-                                    ######## AQUI TERMINA LS3
-                                    
-                                # if breakaux == 1:    
-                                #     print ("break de breakaux") 
-                                #     print(" ")
-                                #     print(" ")
-                                #     break 
-                                # print ("break de potentialSiteActivos") 
-                                # print(" ")
-                                # print(" ")
-                                # break 
-                        
-                            # if sumaelapsed > elapsedtimeStop :
-                            #     print("   ")
-                            #     print("   ")
-                            #     print("entra if de elapsed", localsearch)
-                            #     print("   ")
-                            #     print("   ")
-                            #     break    
+                    
                         
                     iteracionesPorWhileVector.append(iteracionesPorWhile)
                     if len(potentialSiteActivos)*len(L) == iteracionesPorWhile:
@@ -3902,29 +3276,7 @@ for iconj in range(len(tamaños_I)):
                         iteracionesPorWhileVector.append(0)
                     cantIteraciones.append(iteracionLS) # iteracionLS e iteracionesPorWhile es el mismo valor xD
                     #break 
-       
-                    #break 
-                    
-                        # if initialL == len(L)-1:
-                        #     print ("break de initialL") 
-                        #     print(" ")
-                        #     print(" ")
-                        #     break
-                        
-                    # if sumaelapsed > elapsedtimeStop :
-                        #     print("   ")
-                        #     print("   ")
-                        #     print("entra if de elapsed", localsearch)
-                        #     print("   ")
-                        #     print("   ")
-                        #     break   
-                        
-                    # if initialL == len(L)-1:
-                    #         print ("break de initialL") 
-                    #         print(" ")
-                    #         print(" ")
-                    #         break
-                
+      
                     mejoras.write("iteracion de GRASP # " + str(iteracionGRASP))
                     mejoras.write("\n")
                     
