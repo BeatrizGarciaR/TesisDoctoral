@@ -30,7 +30,7 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [270]
+tamaños_I = [168]
 tamaños_L = [16]
 tamaños_S = [10]
 #tamaños_S = [10, 50, 100, 150, 200]
@@ -56,7 +56,7 @@ wi = [1, 0.85, 0.6, 0.3]
 
 localsearch = 0
 
-elapsedtimeStop = 60
+elapsedtimeStop = 36000
 modelStopTime = 30
 
 alpha_def = 0.30
@@ -198,17 +198,17 @@ for iconj in range(len(tamaños_I)):
                     demandcount = 0
                     for s in range(len(S)):
                         demandcount += Demand[s][i]
-                        demandtype1.append(int(2*demandcount/3))
-                        demandtype2.append(int(demandcount/3))
+                    demandtype1.append(int((2*demandcount)/(3*len(S))))
+                    demandtype2.append(int(demandcount/(3*len(S))))
                 
                             
-                #print("Demand count type 1") # me dice cuántos accidentes hubo
-                #print(demandtype1)
-                #print(" ")  
+                print("Demand count type 1") # me dice cuántos accidentes hubo
+                print(demandtype1)
+                print(" ")  
                 
-                #print("Demand count type 2") # me dice cuántos accidentes hubo
-                #print(demandtype2)
-                #print(" ") 
+                print("Demand count type 2") # me dice cuántos accidentes hubo
+                print(demandtype2)
+                print(" ") 
                 
                 puntosCubiertos1 = []
                 for l in range(len(L)):
@@ -237,6 +237,16 @@ for iconj in range(len(tamaños_I)):
                     for puntos2 in puntosCubiertos2[potentialsites2]:
                         accidentesConteo2 += demandtype2[puntos2]
                     accidentesesperados2.append(accidentesConteo2/len(puntosCubiertos2[potentialsites2]))
+                    
+                accidentesesperadosTotal = []
+                for potentialsites1 in range(len(L)):
+                    accidentesconteo = 0
+                    for puntos1 in puntosCubiertos1[potentialsites1]:
+                        accidentesconteo += demandtype1[puntos1]
+                    for puntos2 in puntosCubiertos2[potentialsites1]:
+                        accidentesconteo += demandtype2[puntos2]
+                    accidentesesperadosTotal.append(accidentesconteo/len(puntosCubiertos1[potentialsites1]))
+                    
         
                 print("accidentes esperados type 1") # me dice cuántos accidentes se esperan
                 print(accidentesesperados1)
@@ -245,10 +255,15 @@ for iconj in range(len(tamaños_I)):
                 print("accidentes esperados type 2") # me dice cuántos accidentes se esperan
                 print(accidentesesperados2)
                 print(" ") 
+                
+                print("accidentes esperados total")
+                print(accidentesesperadosTotal)
+                print(" ")
                     
                 #print(initialSolution)
                 
-                
+                #break
+            
                 #########################################
                 ########## CONSTRUCT GRASP #############
                 ########################################
@@ -361,7 +376,7 @@ for iconj in range(len(tamaños_I)):
                     #break
                     
                     
-                    soluciones.append(initialSolution)
+                    #soluciones.append(initialSolution)
 
                         
                     with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
@@ -839,12 +854,12 @@ for iconj in range(len(tamaños_I)):
                         print("   ")
                         #print(initialSolution)
                         
-                        soluciones.append(initialSolution)
+                        #soluciones.append(initialSolution)
                         
                         with open('SolutionX_GRASP_Prueba_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
                                       +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1])+'.txt', 'a') as solutionX: 
-                            solutionX.write(" mejoró ")
+                            solutionX.write("sí mejoró ")
                             solutionX.write('\n')
                             solutionX.write(str(initialSolution))
                             solutionX.write('\n')
