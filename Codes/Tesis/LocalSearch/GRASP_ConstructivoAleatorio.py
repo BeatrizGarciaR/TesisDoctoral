@@ -30,9 +30,9 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [168]
-tamaños_L = [16]
-tamaños_S = [10]
+tamaños_I = [500]
+tamaños_L = [50]
+tamaños_S = [200]
 #tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168]
@@ -57,11 +57,12 @@ wi = [1, 0.85, 0.6, 0.3]
 localsearch = 0
 
 elapsedtimeStop = 36000
-modelStopTime = 30
+modelStopTime = 15
 
 alpha_def = 0.30
 
 maxIterGRASP = 100
+probVerificacion = 0.021
 
 soluciones = []
 
@@ -259,7 +260,15 @@ for iconj in range(len(tamaños_I)):
                 print("accidentes esperados total")
                 print(accidentesesperadosTotal)
                 print(" ")
+                
+                probAccidentes = []
+                for i in accidentesesperadosTotal:
+                    probAccidentes.append(i/sum(accidentesesperadosTotal))
                     
+                
+                print("prob accidentes total")
+                print(probAccidentes)
+                print(" ")
                 #print(initialSolution)
                 
                 #break
@@ -1026,11 +1035,16 @@ for iconj in range(len(tamaños_I)):
                                     iteracionLS += 1
                                     
                                     iteracionesPorWhile += 1
+                                    
+                                    prob_aux = random.random()*probAccidentes[j]
                                         
                                     #####################################################
                                     ##################### LS1 ###########################
                                     #####################################################
-                                    if j not in potentialSiteActivos:  #LS1
+                                    # Se desactiva uno que estaba activo y se asignan esas
+                                    # ambulancias a uno que no estaba activo
+                                    
+                                    if j not in potentialSiteActivos and prob_aux > probVerificacion:  #LS1
                                         breakaux = 0
                                         
                                         vecino = []
@@ -1588,10 +1602,15 @@ for iconj in range(len(tamaños_I)):
                                 
                                 iteracionesPorWhile += 1
                                 
+                                prob_aux = random.random()*probAccidentes[j]
+                                
                                 #####################################################
                                 ##################### LS2 ###########################
                                 #####################################################
-                                if j in potentialSiteActivos and j != initialL: #LS3
+                                # Se le quita la mitad de las ambulancias a uno que está activo
+                                # y se le agregan a uno que está activo también
+                                
+                                if j in potentialSiteActivos and j != initialL and prob_aux > probVerificacion: #LS3
                                 
                                     breakaux = 0
                                     
@@ -1629,7 +1648,7 @@ for iconj in range(len(tamaños_I)):
                                     print(initialSolution)   
                                     
                                     #if vecino not in soluciones:
-                                    if 1 == 1:    
+                                    if aux + aux1 > 1:    
                                         print("Entra LS2")
            
                                         model = gp.Model("TabuSearchWithSAA")            
@@ -2161,11 +2180,16 @@ for iconj in range(len(tamaños_I)):
                                 iteracionLS += 1
                                 
                                 iteracionesPorWhile += 1
+                                
+                                prob_aux = random.random()*probAccidentes[j]
     
                                 #####################################################
                                 ##################### LS3 ###########################
                                 #####################################################
-                                if j not in potentialSiteActivos: #LS3
+                                # Se quita la mitad de las ambulancias a uno que está activo
+                                # y se le asignan a uno que no estaba activo
+                                
+                                if j not in potentialSiteActivos and prob_aux > probVerificacion: #LS3
                                 
                                     breakaux = 0
                                     
@@ -2203,7 +2227,7 @@ for iconj in range(len(tamaños_I)):
                                     print(initialSolution)      
                                     
                                     #if vecino not in soluciones:
-                                    if 1 == 1:    
+                                    if aux + aux1 > 1:    
                                         print("Entra LS3")
            
                                         model = gp.Model("TabuSearchWithSAA")            
@@ -2735,12 +2759,16 @@ for iconj in range(len(tamaños_I)):
                                 iteracionLS += 1
                                 
                                 iteracionesPorWhile += 1
+                                
+                                prob_aux = random.random()*probAccidentes[j]
     
                                 #####################################################
                                 ##################### LS4 ###########################
                                 #####################################################
+                                # Se desactiva uno que estaba activo y se le agregan todas las 
+                                # ambulancias a otro que ya está activo
                                 
-                                if j in potentialSiteActivos and j != initialL: #LS2
+                                if j in potentialSiteActivos and j != initialL and prob_aux > probVerificacion: #LS2
                                     
                                     breakaux = 0
                                     
