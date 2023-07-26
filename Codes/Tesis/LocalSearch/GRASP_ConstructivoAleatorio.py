@@ -62,7 +62,7 @@ modelStopTime = 15
 alpha_def = 0.30
 
 maxIterGRASP = 100
-probVerificacion = 0.021
+probVerificacion = 0
 
 soluciones = []
 
