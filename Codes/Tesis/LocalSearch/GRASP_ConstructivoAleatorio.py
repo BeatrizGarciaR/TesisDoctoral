@@ -30,18 +30,18 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-tamaños_I = [500]
-tamaños_L = [50]
-tamaños_S = [200]
+#tamaños_I = [500]
+#tamaños_L = [50]
+#tamaños_S = [200]
 #tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168]
 # tamaños_L = [16, 30]
 # tamaños_S = [10, 50, 100]
 
-# tamaños_I = [300]
-# tamaños_L = [50]
-# tamaños_S = [100]
+tamaños_I = [168]
+tamaños_L = [16]
+tamaños_S = [10]
 
 K = [1, 2]
 
@@ -62,7 +62,7 @@ modelStopTime = 15
 alpha_def = 0.30
 
 maxIterGRASP = 100
-probVerificacion = 0
+
 
 soluciones = []
 
@@ -270,6 +270,9 @@ for iconj in range(len(tamaños_I)):
                 print(probAccidentes)
                 print(" ")
                 #print(initialSolution)
+                
+                #probVerificacion = min(probAccidentes)
+                probVerificacion = 0 
                 
                 #break
             
