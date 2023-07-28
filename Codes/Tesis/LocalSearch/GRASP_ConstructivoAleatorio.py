@@ -30,9 +30,9 @@ import math
 # tamaños_L = [70]
 # tamaños_S = [30]
 
-#tamaños_I = [500]
-#tamaños_L = [50]
-#tamaños_S = [200]
+# tamaños_I = [500]
+# tamaños_L = [50]
+# tamaños_S = [200]
 #tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168]
@@ -271,10 +271,11 @@ for iconj in range(len(tamaños_I)):
                 print(" ")
                 #print(initialSolution)
                 
-                #probVerificacion = min(probAccidentes)
-                probVerificacion = 0 
+                #probVerificacion = min(probAccidentes) - (max(probAccidentes)-min(probAccidentes))/2
+                probVerificacion = 0.036
                 
                 #break
+                
             
                 #########################################
                 ########## CONSTRUCT GRASP #############
