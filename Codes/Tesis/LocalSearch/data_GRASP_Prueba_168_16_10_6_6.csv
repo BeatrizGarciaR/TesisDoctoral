@@ -70,6 +70,30 @@ w
 n
 e
 w
+time,elapsed time,best,best bound,gap %,status
+0.15085792541503906,842.5400247573853,-1e+100,-1.0895000000000077,100.0,2
+time,elapsed time,best,best bound,gap %,status
+0.1530768871307373,842.5400247573853,-1.1300000000000077,-1.0895000000000077,3.584070796460151,2
+time,elapsed time,best,best bound,gap %,status
+0.1544501781463623,842.5400247573853,-1.1300000000000077,-1.1300000000000077,0.0,2
+n
+e
+w
+n
+e
+w
+n
+e
+w
+n
+e
+w
+n
+e
+w
+n
+e
+w
 n
 e
 w

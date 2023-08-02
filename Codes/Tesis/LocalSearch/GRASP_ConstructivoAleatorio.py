@@ -261,6 +261,7 @@ for iconj in range(len(tamaños_I)):
                 print(accidentesesperadosTotal)
                 print(" ")
                 
+                
                 probAccidentes = []
                 for i in accidentesesperadosTotal:
                     probAccidentes.append(i/sum(accidentesesperadosTotal))
@@ -272,7 +273,7 @@ for iconj in range(len(tamaños_I)):
                 #print(initialSolution)
                 
                 #probVerificacion = min(probAccidentes) - (max(probAccidentes)-min(probAccidentes))/2
-                probVerificacion = 0.036
+                probVerificacion = 0.032
                 
                 #break
                 
