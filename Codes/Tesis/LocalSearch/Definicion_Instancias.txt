@@ -1,0 +1,12 @@
+Definición de los diferentes Sets de instancias 
+
+------> Instancias donde cambian los tiempos de respuesta (Set1)
+	Quedan fijos estos valores en la Demanda (Demand):
+		línea 105: rand = rnorm(1, mean = 0.5, sd = 0.2)
+        	línea 106: this <- dbinom(x = 0:len_I, size = len_I, prob = rand)
+	Cambia el r_li con aux_rate (hacer un for donde aux_rate varíe con 0.3, 0.4 y 0.5):
+		y_rgamma <- rgamma(N, shape = 8, rate = aux_rate)
+	Nombre: 
+		instancename <- paste('Instances_DemandFixed_',toString(tamanos_I[iconj]),'_',
+                              toString(tamanos_L[jconj]),'_', toString(tamanos_S[sconj]),
+                              '_', toString(aux_rate), '_', '.txt', sep = "")

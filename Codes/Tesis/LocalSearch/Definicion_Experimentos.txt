@@ -1,0 +1,5 @@
+Definición de los distintos experimentos 
+
+------> Experimentos con Set1 de instancias 
+	- Se harán 5 iteraciones por instancia por la probabilidad de verificación de vecindarios variada
+	- Se dará un criterio de paro para cada búsqueda local (20% de la cantidad de puntos de demanda de la instancia)
