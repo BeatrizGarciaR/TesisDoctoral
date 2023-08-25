@@ -18,9 +18,17 @@ import math
 
 ### Info de instancias ###
 
-tamaños_I = [168, 270, 500, 900, 1500]
-tamaños_L = [16, 30, 50, 70, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_I = [168]
+tamaños_L = [30]
+tamaños_S = [150, 200]
+
+# tamaños_I = [270, 500, 900, 1500]
+# tamaños_L = [16, 30, 50, 70, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
+
+# tamaños_I = [168, 270, 500, 900, 1500] COMPLETAS
+# tamaños_L = [16, 30, 50, 70, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
 K = [1, 2]
 
 eta = [6, 6]
@@ -39,7 +47,7 @@ maxIterGRASP = 100 #Deben ser 100 aprox
 
         
 ###########################################################################
-################ 0ETICIONES DE INSTANCIAS ###############################
+################ REPETICIONES DE INSTANCIAS ###############################
 ###########################################################################
 
 
@@ -62,8 +70,8 @@ for iconj in range(len(tamaños_I)):
                     m._data.append(["time", "elapsed time", "best", "best bound", "gap %", "status"])
                     m._data.append([time.time() - model._start, model._sumaelapsed, cur_obj, cur_bd, gap, status])
             
-            sumaelapsed = 0
             countcsv = 1 
+            sumaelapsed = 0
             
             for verif in rates:
                 #for 0 in range(5):
