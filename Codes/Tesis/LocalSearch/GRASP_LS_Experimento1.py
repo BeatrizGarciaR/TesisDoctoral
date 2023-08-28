@@ -247,6 +247,10 @@ for iconj in range(len(tamaños_I)):
                     
                     #break
                     
+                    with open('SolutionX_DemandFixed_'+str(len(I))+str('_')
+                                      +str(len(L))+str('_')
+                                      +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1]) + '_' + str(verif) + '_'  +'.txt', 'w') as solutionX:
+                        solutionX.write(str(nameInstance))
                 
                     #########################################
                     ########## CONSTRUCT GRASP #############
@@ -365,7 +369,7 @@ for iconj in range(len(tamaños_I)):
                             
                         with open('SolutionX_DemandFixed_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
-                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1]) + '_' + str(verif) + '_'  +'.txt', 'w') as solutionX:            
+                                          +str(len(S))+ '_' + str(eta[0]) + "_" + str(eta[1]) + '_' + str(verif) + '_'  +'.txt', 'a') as solutionX:            
                             solutionX.write(str(initialSolution))
                             solutionX.write('\n')
                         
