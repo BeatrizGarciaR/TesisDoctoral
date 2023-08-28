@@ -242,7 +242,7 @@ for iconj in range(len(tamaños_I)):
                     pi = np.amax(cli)/len(S) + 0.005
                     probVerificacion = min(probAccidentes) - (max(probAccidentes)-min(probAccidentes))/2
                     maxIterLS = int(len(I)*len(L))
-                    cantIteracionesTotales = int(len(I)*(0.2))
+                    cantIteracionesTotales = int(len(I)*(0.4))
                     #probVerificacion = 0.032
                     
                     #break
