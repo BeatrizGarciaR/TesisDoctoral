@@ -22,9 +22,13 @@ tamaños_I = [168, 270, 500, 900, 1500] #COMPLETAS
 tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
+# tamaños_I = [1500] 
+# tamaños_L = [100]
+# tamaños_S = [150, 200]
+
 K = [1,2]
 
-timelim = 36000 #10 horas 
+timelim = 54000 #15 horas 
 rates = [0.4]
 
 eta = [20, 11]
