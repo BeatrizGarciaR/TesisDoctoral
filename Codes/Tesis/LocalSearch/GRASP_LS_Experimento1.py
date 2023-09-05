@@ -315,10 +315,20 @@ for iconj in range(len(tamaños_I)):
                         
                         contamb1 = 0
                         while contamb1 < eta[0]:
+                            if eta[0] - contamb1 >= 8:
+                                ambPosibles = [1, 2, 3, 4, 5, 6, 7, 8]
+                            if eta[0] - contamb1 >= 7:
+                                ambPosibles = [1, 2, 3, 4, 5, 6, 7]
+                            if eta[0] - contamb1 >= 6:
+                                ambPosibles = [1, 2, 3, 4, 5, 6]
+                            if eta[0] - contamb1 >= 5:
+                                ambPosibles = [1, 2, 3, 4, 5]
+                            if eta[0] - contamb1 >= 4:
+                                ambPosibles = [1, 2, 3, 4]
                             if eta[0] - contamb1 >= 3:
-                                ambPosibles = [1,2,3]
+                                ambPosibles = [1, 2, 3]
                             if eta[0] - contamb1 == 2:
-                                ambPosibles = [1,2]
+                                ambPosibles = [1, 2]
                             if eta[0] - contamb1 == 1:
                                 ambPosibles = [1]
                             if LCR1 != []:
@@ -336,11 +346,21 @@ for iconj in range(len(tamaños_I)):
     
                         contamb2 = 0
                         while contamb2 < eta[1]:
-                            if eta[1] - contamb2 >= 3:
-                                ambPosibles = [1,2,3]
-                            if eta[1] - contamb2 == 2:
-                                ambPosibles = [1,2]
-                            if eta[1] - contamb2 == 1:
+                            if eta[0] - contamb2 >= 8:
+                                ambPosibles = [1, 2, 3, 4, 5, 6, 7, 8]
+                            if eta[0] - contamb2 >= 7:
+                                ambPosibles = [1, 2, 3, 4, 5, 6, 7]
+                            if eta[0] - contamb2 >= 6:
+                                ambPosibles = [1, 2, 3, 4, 5, 6]
+                            if eta[0] - contamb2 >= 5:
+                                ambPosibles = [1, 2, 3, 4, 5]
+                            if eta[0] - contamb2 >= 4:
+                                ambPosibles = [1, 2, 3, 4]
+                            if eta[0] - contamb2 >= 3:
+                                ambPosibles = [1, 2, 3]
+                            if eta[0] - contamb2 == 2:
+                                ambPosibles = [1, 2]
+                            if eta[0] - contamb2 == 1:
                                 ambPosibles = [1]
                             if LCR2 != []:
                                 localidadaux = random.choice(LCR2)
