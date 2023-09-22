@@ -18,20 +18,20 @@ import time
 
 import xlwt
 
-tamaños_I = [168, 270, 500, 900] #Hasta aquí puede bien el modelo
+tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
 tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [1500] #Aquí batalla pero sí lo hace aún
 # tamaños_L = [16, 30, 50, 70, 100]
-# tamaños_S = [10, 50, 100]
+# tamaños_S = [150, 200]
 
 K = [1,2]
 
 timelim = 54000 #15 horas 
 rates = [0.4]
 
-eta = [35, 20]
+eta = [10, 6]
 t = 10
 tmax = 25
 wi = [1, 0.85, 0.6, 0.3]
@@ -39,7 +39,7 @@ wi = [1, 0.85, 0.6, 0.3]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Obj_Zs_180923_', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Obj_Zs_210923_', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIP:
@@ -59,11 +59,14 @@ def data_cb(m, where):
         m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
 
 
+
 for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
         for sconj in range(len(tamaños_S)):
             for verif in rates:
             #for rep in range(repeticiones):
+                
+                initial_time = time.time()
     
                 #Nombre: Instancias_Prueba_I_L_M_N_S_Rep
                 
@@ -410,7 +413,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Obj_Zs_180923_'+str(len(I))+str('_')
+                with open('data_Obj_Zs_210923_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -422,7 +425,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #archivo = xlsxwriter.Workbook('tesis.csv')
                 #hoja = archivo.add_worksheet()
-                colnames = ["name", "I size", "L size", "S size", "time", "best obj", "best bound", "gap %"]
+                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
                 for column in range(len(colnames)):
                     sheet.write(0, column, colnames[column])
                 name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
@@ -434,7 +437,7 @@ for iconj in range(len(tamaños_I)):
                     datos = model._data[len(model._data)-1]
                     for row in range(len(datos)):
                         sheet.write(countcsv, row+4, datos[row])
-                countcsv = countcsv + 1
+                
                 
                 # with open('tesis.csv', 'a') as f:
                 #     writer = csv.writer(f)
@@ -447,7 +450,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_Prueba_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_Obj_Zs_180923_'
+                f = open ('Resultados_Prueba_Obj_Zs_210923_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -501,12 +504,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                coberturas = open ('Coberturas_Obj_Zs_180923_'
+                coberturas = open ('Coberturas_Obj_Zs_210923_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                lectura = open ('Resultados_Prueba_Obj_Zs_180923_'
+                lectura = open ('Resultados_Prueba_Obj_Zs_210923_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -988,6 +991,16 @@ for iconj in range(len(tamaños_I)):
                 # null.close()
                 
                 #resultados.close()
+                
                 archivo.close()
                 coberturas.close()
-book.save('Tesis_Obj_Zs_180923_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                
+                end_time = time.time()
+                total_time = end_time - initial_time 
+                
+                sheet.write(countcsv, 9, total_time)
+                
+                countcsv = countcsv + 1
+                
+                
+book.save('Tesis_Obj_Zs_210923_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
