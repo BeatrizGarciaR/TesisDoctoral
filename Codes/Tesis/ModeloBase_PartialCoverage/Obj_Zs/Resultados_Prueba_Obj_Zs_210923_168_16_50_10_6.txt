@@ -1,4 +1,4 @@
-Elapsed time: 16.380491971969604
+Elapsed time: 16.50884985923767
 Obj: 14.873
 located 1 1 0
 located 1 2 0
