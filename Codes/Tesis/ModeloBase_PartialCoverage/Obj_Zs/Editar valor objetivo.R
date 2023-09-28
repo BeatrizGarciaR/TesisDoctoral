@@ -1,0 +1,1 @@
+read.table("Resultados_Prueba_Obj_Zs_270_16_10.txt", sep = " ", dec = ".")
