@@ -132,12 +132,150 @@ ALS and BLS vehicles are considered for this problem. Any ambulance type can ser
 
 In the literature, we do not find a system where exists more than one service provider and considers all factors that we assume. However, it is essential to study it because public and private service providers are involved in Mexico. Sometimes, there is a conflict with them when dispatching is done for an accident. So we want to consider both of them to obtain a coordinated EMS system. 
 
-\chapter{The Uncoordinated EMS System Problem}\label{cap:problem}
+\chapter{Problem desciption}\label{cap:problem}
 For a preliminar model, we classified if an accident needs one, two, or three ambulances for patients' attention. And we consider the response time between every potential site to every demand point.
 
-The following is a preliminar model for UEMSS Problem. We will describe the sets, parameters, and variables we used and the assumptions we took to model this problem.
+The following is a preliminar model for the Ambulance Location and Dispatching considering Partial Coverage (ALDPC) Problem. We will describe the sets, parameters, and variables we used and the assumptions we took to model this problem.
 
-\section{Preliminar model for the UEMSS Problem}
+\subsection{Mathematical Model}
+
+\begin{table}[h]
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{c}{Sets and Parameters}                                                                                   \\ \hline
+$I$          & Set of demand points                            \\
+$L$          & Set of potential sites                         \\
+$K$          & Set of ambulance types                         \\
+$S$      & Set of scenarios; tuples of accidents at demand points $i \in I$ that need \\
+         & ambulances of type $k_1 \in K$, and ambulances of type $k_2 \in K$           \\
+$a_{ik}$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
+             & in scenario $s \in S$                          \\
+$c_{li}$ & Benefit from traveling from potential site $l \in L$ to demand point $i \in I$   \\
+$r_{li}$ & response time from potential site $l \in L$ to demand point $i \in I$       \\
+$n_k$    & total number of ambulances in the system of type $k \in K$                  \\
+$w_\alpha$   & benefit from covering as Full an accident      \\
+$w_\beta$    & benefit from covering as Partial 1 an accident \\
+$w_\delta$   & benefit from covering as Partial 2 an accident \\
+$w_\varphi$  & benefit from covering as Partial 3 an accident \\
+$\rho$       & a penalty from not covering an accident          \\
+$\tau$       &    ideal response time to cover an accident                                            \\
+$\tau_{max}$ &     maximum response time to cover an accident                                           \\ \hline
+
+\end{tabular}
+\caption{Sets and parameters for SBALD Model }
+\label{tab:my-table1}
+\end{table}
+
+
+\begin{table}[h]
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{c}{Variables}                                                                                   \\ \hline
+$x_{lk}$      & number of ambulances type $k \in K$ located at potential site $l \in L$                         \\
+$y_{lki}^s$   & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched                  \\
+              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                  \\
+$\alpha_i^s$  & $1$ if an accident at demand point $i \in I$ has $Full$ coverage in         \\
+              & scenario $ s \in S$; $0$ otherwise                                                                                   \\
+$\beta_i^s$   & $1$ if an accident at demand point $i \in I$ has $Partial$ $1$ coverage  \\
+              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
+$\delta_i^s$  & $1$ if an accident at demand point $i \in I$ has $Partial$ $2$ coverage  \\
+              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
+$\varphi_i^s$ & $1$ if an accident at demand point $i \in I$ has $Partial$ $3$ coverage  \\
+              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
+$\gamma_i^s$  & $1$ if an accident at demand point $i \in I$ has $Null$ coverage in         \\
+              & scenario $ s \in S$; $0$ otherwise      \\ \hline                                                                            
+\end{tabular}
+\caption{Variables for SBALD Model}
+\label{tab:my-table2}
+\end{table}
+
+
+
+Objective Function
+
+\begin{equation}
+    z = \max_{x} \mathbb{E}_s [ \mathcal{Q}^s(x)]
+\end{equation}
+
+where 
+\begin{equation}
+    \mathcal{Q}^s(x) = \max_{y^s, \alpha^s, \beta^s, \delta^s, \phi^s, \gamma^s} [w_{\alpha} \alpha_i^s + w{_\beta} \beta_i^s + w_{\delta} \delta_i^s + w_{\varphi} \varphi_i^s - p \gamma_i^s]
+\end{equation}
+
+Subject to
+
+\begin{equation}
+    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
+\end{equation}
+
+\begin{equation}
+    \sum_{i\in I}y_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall s \in S,
+\end{equation}
+
+
+\begin{equation}
+    \sum_{i\in I}y_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s - \sum_{k \in K} a_{ik}^s \leq \alpha_{ik}^s -1 \qquad \qquad \qquad  \qquad\qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+\end{equation}
+
+\begin{equation}
+    2 \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s - \sum_{k \in K} a_{ik}^s \leq \sum_{k \in K} a_{ik}^s \beta_i^s \qquad \forall i \in I, \forall s\in S, 
+\end{equation}
+
+\begin{equation}
+   \sum_{k \in K} a_{ik}^s \beta_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+\end{equation}
+
+\begin{equation}
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s -1 \leq \sum_{k \in K} a_{ik}^s \delta_i^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+\end{equation}
+
+\begin{equation}
+    \delta_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+\end{equation}
+
+\begin{equation}
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s \delta_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \leq \sum_{k \in K} a_{ik}^s \varphi_i^s \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \varphi_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \varphi_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s + \gamma_i^s \geq 1 \qquad \qquad \qquad \qquad for \sum_{k \in K} a_{ik}^s \neq 0, \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \alpha_i^s + \beta_i^s + \delta_i^s + \varphi_i^s + \gamma_i^s = 1 \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall k \in K,
+\end{equation}
+
+\begin{equation}
+    y_{lki}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall l \in L, \forall k \in K, \forall s \in S,
+\end{equation}
+
+\begin{equation}
+    \alpha_i^s, \beta_i^s, \delta_i^s, \varphi_i^s, \gamma_i^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S.
+\end{equation}
 
 \chapter{Solution description}
 
