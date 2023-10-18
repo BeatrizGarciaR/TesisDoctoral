@@ -1,0 +1,2 @@
+Elapsed time: 72545.94185996056
+Obj: -inf
