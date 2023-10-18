@@ -5,7 +5,7 @@ Created on Mon Oct  9 11:50:21 2023
 @author: beatr
 """
 
-tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
+tamaños_I = [500, 900] #Hasta aquí puede bien el modelo
 tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
@@ -13,7 +13,7 @@ tamaños_S = [10, 50, 100, 150, 200]
 # tamaños_L = [16]
 # tamaños_S = [10]
 
-eta = [10, 6]
+eta = [35, 20]
 rates = [0.4]
 
 for iconj in range(len(tamaños_I)):
@@ -21,7 +21,7 @@ for iconj in range(len(tamaños_I)):
         for sconj in range(len(tamaños_S)):
             for verif in rates:
 
-                archivo = open('Resultados_Prueba_Obj_Zs_210923_'
+                archivo = open('Resultados_Prueba_Obj_Zs_060923_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
