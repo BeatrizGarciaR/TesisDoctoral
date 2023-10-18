@@ -13,7 +13,7 @@ tamaños_S = [10, 50, 100, 150, 200]
 # tamaños_L = [16]
 # tamaños_S = [10]
 
-eta = [20, 11]
+eta = [10, 6]
 rates = [0.4]
 
 for iconj in range(len(tamaños_I)):
@@ -21,11 +21,11 @@ for iconj in range(len(tamaños_I)):
         for sconj in range(len(tamaños_S)):
             for verif in rates:
 
-                archivo = open('Resultados_Prueba_Obj_Zs_'
+                archivo = open('Resultados_Prueba_Obj_Zs_210923_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
-                          #+'_'+str(eta[0])+'_'+str(eta[1])
+                          +'_'+str(eta[0])+'_'+str(eta[1])
                           +'.txt', "r")
                 
                 line = archivo.readline().strip().split()
@@ -115,41 +115,41 @@ for iconj in range(len(tamaños_I)):
                 r.close()
                 
                 # verif=0.4
-                h = open('Instances_DemandFixed_'
-                          +str(tamaños_I[iconj])+str('_')
-                          +str(tamaños_L[jconj])+str('_')
-                          +str(tamaños_S[sconj])
-                          + '_' + str(verif) + '_'
-                          +'.txt', "r")
+                # h = open('Instances_DemandFixed_'
+                #           +str(tamaños_I[iconj])+str('_')
+                #           +str(tamaños_L[jconj])+str('_')
+                #           +str(tamaños_S[sconj])
+                #           + '_' + str(verif) + '_'
+                #           +'.txt', "r")
                 
-                line_1 = h.readline()
-                line_1 = h.readline()
-                line_1 = h.readline()
+                # line_1 = h.readline()
+                # line_1 = h.readline()
+                # line_1 = h.readline()
                 
-                for cant in range(tamaños_S[sconj]):
-                    line_1 = h.readline()
+                # for cant in range(tamaños_S[sconj]):
+                #     line_1 = h.readline()
                     
                     
-                u = open ('Accidents_Obj_Zs_270923_'
-                              +str(tamaños_I[iconj])+str('_')
-                              +str(tamaños_L[jconj])+str('_')
-                              +str(tamaños_S[sconj])+'.txt','w')
+                # u = open ('Accidents_Obj_Zs_270923_'
+                #               +str(tamaños_I[iconj])+str('_')
+                #               +str(tamaños_L[jconj])+str('_')
+                #               +str(tamaños_S[sconj])+'.txt','w')
                         
                 
-                accidentes = []
-                for cant in range(tamaños_S[sconj]):
-                    line_1 = h.readline().strip().split()
-                    accident = 0
-                    total_accidents = 0
-                    for a in range(tamaños_I[iconj]):
-                        if int(line_1[accident])!=0 or int(line_1[accident+1])!=0:
-                            total_accidents += 1 
-                        accident += 2
-                    accidentes.append(total_accidents)
-                    u.write(str(total_accidents))
-                    u.write(' ')
+                # accidentes = []
+                # for cant in range(tamaños_S[sconj]):
+                #     line_1 = h.readline().strip().split()
+                #     accident = 0
+                #     total_accidents = 0
+                #     for a in range(tamaños_I[iconj]):
+                #         if int(line_1[accident])!=0 or int(line_1[accident+1])!=0:
+                #             total_accidents += 1 
+                #         accident += 2
+                #     accidentes.append(total_accidents)
+                #     u.write(str(total_accidents))
+                #     u.write(' ')
                 
-                u.close()
+                # u.close()
                     
                 
                         
