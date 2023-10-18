@@ -115,41 +115,41 @@ for iconj in range(len(tamaños_I)):
                 r.close()
                 
                 # verif=0.4
-                # h = open('Instances_DemandFixed_'
-                #           +str(tamaños_I[iconj])+str('_')
-                #           +str(tamaños_L[jconj])+str('_')
-                #           +str(tamaños_S[sconj])
-                #           + '_' + str(verif) + '_'
-                #           +'.txt', "r")
+                h = open('Instances_DemandFixed_'
+                          +str(tamaños_I[iconj])+str('_')
+                          +str(tamaños_L[jconj])+str('_')
+                          +str(tamaños_S[sconj])
+                          + '_' + str(verif) + '_'
+                          +'.txt', "r")
                 
-                # line_1 = h.readline()
-                # line_1 = h.readline()
-                # line_1 = h.readline()
+                line_1 = h.readline()
+                line_1 = h.readline()
+                line_1 = h.readline()
                 
-                # for cant in range(tamaños_S[sconj]):
-                #     line_1 = h.readline()
+                for cant in range(tamaños_S[sconj]):
+                    line_1 = h.readline()
                     
                     
-                # u = open ('Accidents_Obj_Zs_270923_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'.txt','w')
+                u = open ('Accidents_Obj_Zs_270923_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'.txt','w')
                         
                 
-                # accidentes = []
-                # for cant in range(tamaños_S[sconj]):
-                #     line_1 = h.readline().strip().split()
-                #     accident = 0
-                #     total_accidents = 0
-                #     for a in range(tamaños_I[iconj]):
-                #         if int(line_1[accident])!=0 or int(line_1[accident+1])!=0:
-                #             total_accidents += 1 
-                #         accident += 2
-                #     accidentes.append(total_accidents)
-                #     u.write(str(total_accidents))
-                #     u.write(' ')
+                accidentes = []
+                for cant in range(tamaños_S[sconj]):
+                    line_1 = h.readline().strip().split()
+                    accident = 0
+                    total_accidents = 0
+                    for a in range(tamaños_I[iconj]):
+                        if int(line_1[accident])!=0 or int(line_1[accident+1])!=0:
+                            total_accidents += 1 
+                        accident += 2
+                    accidentes.append(total_accidents)
+                    u.write(str(total_accidents))
+                    u.write(' ')
                 
-                # u.close()
+                u.close()
                     
                 
                         
