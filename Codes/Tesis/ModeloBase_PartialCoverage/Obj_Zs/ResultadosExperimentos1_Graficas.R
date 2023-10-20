@@ -1,50 +1,50 @@
 # datos COMPLETOS
-amb <- rbind(c(10, 6), c(20, 11), c(35, 20))
+amb <- rbind(c(10, 6), c(20, 11), c(35,20))
 #amb <- rbind(c(35,20))
 # len_I <- c(168, 270, 500, 900, 1500)
 # len_L <- c(16, 30, 50, 70, 100)
 # len_S <- c(10, 50, 100, 150, 200)
 
 len_I <- c(168, 270, 500, 900, 1500)
-len_L <- c(100)
-len_S <- c(100)
+len_L <- c(16, 30, 50, 70, 100)
+len_S <- c(10, 50, 100, 150, 200)
 
-# # run time graphics
-# counti = 0
-# for (i in len_I){
-#   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+25)))
-#   for (a in 1:length(amb[,1])){
-#     eta <- amb[a,]
-#     aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_270923_',eta[1],'_',eta[2],'.csv', sep="")))
-#     aux <- as.data.frame(aux_0[filas, 3:5])
-#     matrix <- matrix(nrow=5, ncol=5)
-#     colnames(matrix) <- len_S
-#     rownames(matrix) <- len_L
-#     count = 1
-#     for (s in 1:5){
-#       for (l in 1:5){
-#         matrix[s,l] = aux[count,3]
-#         count = count + 1
-#       }
-#     }
-#     pdf(paste(i,"_runtime_",eta[1],"_",eta[2],".pdf", sep=""))
-#     barplot(matrix, beside=TRUE, col = 1:5, xlab="scenarios", ylab="run time") 
-#             #main=paste("Run time in seconds for", i, "demand points \n considering",eta[1],
-#                         #"BLS and",eta[2],"ALS ambulances", sep=" "))
-#     legend(x="topleft", legend = len_L, 
-#            fill = 1:5, title = "Sites", cex=1)
-#     dev.off()
-#   }
-#   counti = counti+1
-# }
-# 
-# 
+# run time graphics
+counti = 0
+for (i in len_I){
+  filas = c(seq(from=(1+counti*25), to=((1+counti*25)+25)))
+  for (a in 1:length(amb[,1])){
+    eta <- amb[a,]
+    aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_270923_',eta[1],'_',eta[2],'.csv', sep="")))
+    aux <- as.data.frame(aux_0[filas, 3:5])
+    matrix <- matrix(nrow=5, ncol=5)
+    colnames(matrix) <- len_S
+    rownames(matrix) <- len_L
+    count = 1
+    for (s in 1:5){
+      for (l in 1:5){
+        matrix[s,l] = aux[count,3]
+        count = count + 1
+      }
+    }
+    png(paste(i,"_runtime_",eta[1],"_",eta[2],".png", sep=""))
+    barplot(matrix, beside=TRUE, col = 1:5, xlab="scenarios", ylab="run time")
+            #main=paste("Run time in seconds for", i, "demand points \n considering",eta[1],
+                        #"BLS and",eta[2],"ALS ambulances", sep=" "))
+    legend(x="topleft", legend = len_L,
+           fill = 1:5, title = "Sites", cex=1)
+    dev.off()
+  }
+  counti = counti+1
+}
+
+
 # # objective value graphics
 # counti = 0
 # for (i in len_I){
 #   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+25)))
 #   for (a in 1:length(amb[,1])){
-#     # run time 
+#     # run time
 #     eta <- amb[a,]
 #     aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_270923_',eta[1],'_',eta[2],'.csv', sep="")))
 #     aux <- as.data.frame(aux_0[filas, c(3,4,6)])
@@ -54,11 +54,17 @@ len_S <- c(100)
 #     count = 1
 #     for (s in 1:5){
 #       for (l in 1:5){
-#         matrix[s,l] = aux[count,3]
+#         #matrix[s,l] = aux[count,3]
+#         if (is.na(aux[count,3]) == FALSE){
+#           matrix[s,l] = aux[count,3]
+#         }
+#         else{
+#           matrix[s,l] = 0
+#         }
 #         count = count + 1
 #       }
 #     }
-#     pdf(paste(i,"_objval_",eta[1],"_",eta[2],".pdf", sep=""))
+#     png(paste(i,"_objval_",eta[1],"_",eta[2],".png", sep=""))
 #     plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix)+2),
 #          xlab="scenarios", ylab="objective value", xaxt = "n")
 #          #main=paste("Objective value for", i, "demand points \n considering",eta[1],
@@ -69,17 +75,17 @@ len_S <- c(100)
 #     lines(matrix[6:10], lwd=3, col=2)
 #     points(matrix[11:15], pch=17, cex=1.5, col=3)
 #     lines(matrix[11:15], lwd=3, col=3)
-#     points(matrix[16:20], pch=18, cex=1.5, col=6)
-#     lines(matrix[16:20], lwd=3, col=6)
-#     points(matrix[21:25], pch=19, cex=1.5, col=5)
-#     lines(matrix[21:25], lwd=3, col=5)
-#     legend(x="topright", legend = len_L, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 6, 5), title = "Sites")
+#     points(matrix[16:20], pch=18, cex=1.5, col=4)
+#     lines(matrix[16:20], lwd=3, col=4)
+#     points(matrix[21:25], pch=19, cex=1.5, col=6)
+#     lines(matrix[21:25], lwd=3, col=6)
+#     legend(x="topright", legend = len_L, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Sites")
 #     dev.off()
 #   }
 #   counti = counti+1
 # }
 
-# # coverage graphics
+# # # coverage graphics
 # accidents_covered_total <- data.frame()
 # for (a in 1:length(amb[,1])){
 #   eta <- amb[a,]
@@ -181,23 +187,23 @@ len_S <- c(100)
 #   accidents_covered_total <- rbind(accidents_covered_total, aux)
 # }
 # write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_Obj_Zs_270923_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
-
-for (a in 1:length(amb[,1])){
-  plot(as.integer(accidents_covered_total[a*5-4, 4:8]), pch=15, col=1, cex=1.5,
-       ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n")
-  axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
-  lines(as.integer(accidents_covered_total[a*5-4, 4:8]), lwd=3, col=1)
-  points(as.integer(accidents_covered_total[a*5-3, 4:8]), pch=16, cex=1.5, col=2)
-  lines(as.integer(accidents_covered_total[a*5-3, 4:8]), lwd=3, col=2)
-  points(as.integer(accidents_covered_total[a*5-2, 4:8]), pch=17, cex=1.5, col=3)
-  lines(as.integer(accidents_covered_total[a*5-2, 4:8]), lwd=3, col=3)
-  points(as.integer(accidents_covered_total[a*5-1, 4:8]), pch=18, cex=1.5, col=4)
-  lines(as.integer(accidents_covered_total[a*5-1, 4:8]), lwd=3, col=4)
-  points(as.integer(accidents_covered_total[a*5, 4:8]), pch=19, cex=1.5, col=6)
-  lines(as.integer(accidents_covered_total[a*5, 4:8]), lwd=3, col=6)
-  #legend(x="topright", legend = len_I, cex=0.65, fill = c(1, 2, 3, 4, 6), 
-  #       title = "Demand points", bty="n")
-} 
+# 
+# for (a in 1:length(amb[,1])){
+#   plot(as.integer(accidents_covered_total[a*5-4, 4:8]), pch=15, col=1, cex=1.5,
+#        ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n")
+#   axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
+#   lines(as.integer(accidents_covered_total[a*5-4, 4:8]), lwd=3, col=1)
+#   points(as.integer(accidents_covered_total[a*5-3, 4:8]), pch=16, cex=1.5, col=2)
+#   lines(as.integer(accidents_covered_total[a*5-3, 4:8]), lwd=3, col=2)
+#   points(as.integer(accidents_covered_total[a*5-2, 4:8]), pch=17, cex=1.5, col=3)
+#   lines(as.integer(accidents_covered_total[a*5-2, 4:8]), lwd=3, col=3)
+#   points(as.integer(accidents_covered_total[a*5-1, 4:8]), pch=18, cex=1.5, col=4)
+#   lines(as.integer(accidents_covered_total[a*5-1, 4:8]), lwd=3, col=4)
+#   points(as.integer(accidents_covered_total[a*5, 4:8]), pch=19, cex=1.5, col=6)
+#   lines(as.integer(accidents_covered_total[a*5, 4:8]), lwd=3, col=6)
+#   #legend(x="topright", legend = len_I, cex=0.65, fill = c(1, 2, 3, 4, 6), 
+#   #       title = "Demand points", bty="n")
+# } 
 
 
 # # accidents general
