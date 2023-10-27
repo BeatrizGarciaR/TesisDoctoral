@@ -33,24 +33,24 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168] 
-tamaños_L = [50]
-tamaños_S = [10]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [100]
+tamaños_S = [100]
 
 K = [1,2]
 
-timelim = 54000 #15 horas 
+timelim = 18000 #5 horas 
 rates = [0.4]
 
 eta = [10, 6]
 t = 10
 tmax = 25
-wi = [0, 0.9, 0, 0]
+wi = [1, 0.9, 0.3, 0.1]
 
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Obj_Zs_161023', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Obj_Zs_261023', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -153,8 +153,8 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 # Other parameters #
-                pi = 100000
-                # pi = np.amax(cli)/len(S) + 0.005
+                #pi = 1000
+                pi = np.amax(cli)/len(S) + 0.005
                 V = [1,2]
                     
                 ######################################################################
@@ -247,7 +247,7 @@ for iconj in range(len(tamaños_I)):
                 for s in range(len(S)):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
                                                      name="Null "+str(s+1)+str(' ')+str(i))
                             cantVarGamma += 1
                        
@@ -286,15 +286,15 @@ for iconj in range(len(tamaños_I)):
                                 amb2 += y_vars[s+1,l,2,i]
                         model.addConstr(amb2 <= x_vars[l,2], "c5")
                 
-                    # Restricción 6: Activar alpha (cobertura total) 
-                    suma_alpha = gp.LinExpr()
-                    for i in I: 
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                            model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                    # # Restricción 6: Activar alpha (cobertura total) 
+                    # suma_alpha = gp.LinExpr()
+                    # for i in I: 
+                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                    #         if S[s][i-1][0] != 0:
+                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
     
                     # Restricción 7: Desactivar alpha (cobertura total)
                     suma_alpha2 = gp.LinExpr()
@@ -306,18 +306,18 @@ for iconj in range(len(tamaños_I)):
                                 suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c7")
                 
-                    # Restricción 8: Activación de beta (cobertura parcial 1)
-                    suma_beta = gp.LinExpr()
-                    suma_beta_aux = gp.LinExpr()
-                    for i in I:
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(2*suma_beta - suma_beta_aux - (S[s][i-1][0]+S[s][i-1][1]) <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
+                    # # Restricción 8: Activación de beta (cobertura parcial 1)
+                    # suma_beta = gp.LinExpr()
+                    # suma_beta_aux = gp.LinExpr()
+                    # for i in I:
+                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                    #         if S[s][i-1][0] != 0:
+                    #             suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                    #             suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                    #             suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                    #             suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                    #         model.addConstr(suma_beta - suma_beta_aux <= (S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i], "c8" )
            
                     # Restricción 9: Desactivar beta (cobertura parcial 1)
                     suma_beta2 = gp.LinExpr()
@@ -329,15 +329,15 @@ for iconj in range(len(tamaños_I)):
                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                             model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c9")
                         
-                    # Restricción 10: Activar delta (cobertura parcial 2)
-                    suma_delta = gp.LinExpr()
-                    for i in I:
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                            model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                    # suma_delta = gp.LinExpr()
+                    # for i in I:
+                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                    #         if S[s][i-1][0] != 0:
+                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
                        
                     # Restricción 11: Desactivar delta (cobertura parcial 2)
                     suma_delta2 = gp.LinExpr()
@@ -362,18 +362,18 @@ for iconj in range(len(tamaños_I)):
                                 suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_12")
                                 
-                    # Restricción 13: Activar phi (cobertura parcial 3)
-                    suma_phi = gp.LinExpr()
-                    suma_phi_aux = gp.LinExpr()
-                    for i in I:
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                            model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                    # suma_phi = gp.LinExpr()
+                    # suma_phi_aux = gp.LinExpr()
+                    # for i in I:
+                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                    #         if S[s][i-1][0] != 0:
+                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
                       
                     # Restricción 14: Desactivar phi (cobertura parcial 3)
                     suma_phi2 = gp.LinExpr()
@@ -427,7 +427,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Obj_Zs_161023_'+str(len(I))+str('_')
+                with open('data_Obj_Zs_261023_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -464,7 +464,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_Obj_Zs_161023_'
+                f = open ('Resultados_Prueba_Obj_Zs_261023_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -518,12 +518,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                coberturas = open ('Coberturas_Obj_Zs_161023_'
+                coberturas = open ('Coberturas_Obj_Zs_261023_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                lectura = open ('Resultados_Prueba_Obj_Zs_161023_'
+                lectura = open ('Resultados_Prueba_Obj_Zs_261023_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -1017,4 +1017,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-book.save('Tesis_Obj_Zs_161023_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+book.save('Tesis_Obj_Zs_261023_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
