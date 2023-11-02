@@ -168,7 +168,7 @@ Partial3 6 173 0
 Partial3 6 189 0
 Partial3 6 194 0
 Partial3 6 196 -0
-Partial3 6 218 0
+Partial3 6 218 -0
 Partial3 7 48 0
 Partial3 7 56 0
 Partial3 7 64 0
@@ -2111,9 +2111,9 @@ Partial3 72 180 -0
 Partial3 72 181 -0
 Partial3 72 193 0
 Partial3 72 203 0
-Partial3 72 207 -0
-Partial3 72 217 -0
-Partial3 72 218 -0
+Partial3 72 207 0
+Partial3 72 217 0
+Partial3 72 218 0
 Partial3 73 41 0
 Partial3 73 53 0
 Partial3 73 59 0

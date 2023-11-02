@@ -1792,7 +1792,7 @@ Null 61 197 0
 Null 61 209 0
 Null 61 235 0
 Null 62 34 1
-Null 62 80 0
+Null 62 80 -0
 Null 62 83 -0
 Null 62 90 -0
 Null 62 103 -0
@@ -2203,7 +2203,7 @@ Null 76 109 0
 Null 76 127 0
 Null 76 129 0
 Null 76 133 0
-Null 76 135 0
+Null 76 135 -0
 Null 76 137 0
 Null 76 140 0
 Null 76 142 0
@@ -2459,9 +2459,9 @@ Null 85 174 0
 Null 85 176 0
 Null 85 187 0
 Null 85 188 0
-Null 85 192 -0
+Null 85 192 0
 Null 85 208 0
-Null 85 213 -0
+Null 85 213 0
 Null 85 230 0
 Null 86 30 -0
 Null 86 60 -0
