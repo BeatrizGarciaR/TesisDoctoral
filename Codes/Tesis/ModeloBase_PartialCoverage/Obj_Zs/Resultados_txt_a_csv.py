@@ -5,15 +5,15 @@ Created on Mon Oct  9 11:50:21 2023
 @author: beatr
 """
 
-tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
-tamaños_L = [100]
-tamaños_S = [100]
+tamaños_I = [168, 270, 500] #Hasta aquí puede bien el modelo
+tamaños_L = [16]
+tamaños_S = [10]
 
 # tamaños_I = [1500] 
 # tamaños_L = [100]
 # tamaños_S = [150, 200]
 
-eta = [20, 11]
+eta = [10, 6]
 rates = [0.4]
 
 for iconj in range(len(tamaños_I)):
@@ -21,7 +21,7 @@ for iconj in range(len(tamaños_I)):
         for sconj in range(len(tamaños_S)):
             for verif in rates:
 
-                archivo = open('Resultados_Prueba_Obj_Zs_261023_'
+                archivo = open('Resultados_Prueba_Obj_Zs_041123_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -31,7 +31,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_Obj_Zs_261023_'
+                f = open ('Location_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -44,7 +44,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('Dispatch_Obj_Zs_261023_'
+                g = open ('Dispatch_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -56,7 +56,7 @@ for iconj in range(len(tamaños_I)):
                 g.close()
                 
                 
-                h = open ('Full_Obj_Zs_261023_'
+                h = open ('Full_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -67,7 +67,7 @@ for iconj in range(len(tamaños_I)):
                         
                 h.close()
                 
-                o = open ('Partial1_Obj_Zs_261023_'
+                o = open ('Partial1_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -79,7 +79,7 @@ for iconj in range(len(tamaños_I)):
                 o.close()
                 
                 
-                p = open ('Partial2_Obj_Zs_261023_'
+                p = open ('Partial2_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -91,7 +91,7 @@ for iconj in range(len(tamaños_I)):
                 p.close()
                 
                 
-                q = open ('Partial3_Obj_Zs_261023_'
+                q = open ('Partial3_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -103,7 +103,7 @@ for iconj in range(len(tamaños_I)):
                 q.close()
                     
                 
-                r = open ('Null_Obj_Zs_261023_'
+                r = open ('Null_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -130,7 +130,7 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                     
                     
-                u = open ('Accidents_Obj_Zs_261023_'
+                u = open ('Accidents_Obj_Zs_041123_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
