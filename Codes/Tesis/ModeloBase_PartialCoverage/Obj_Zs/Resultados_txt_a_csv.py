@@ -5,7 +5,7 @@ Created on Mon Oct  9 11:50:21 2023
 @author: beatr
 """
 
-tamaños_I = [168, 270, 500] #Hasta aquí puede bien el modelo
+tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
 tamaños_L = [16]
 tamaños_S = [10]
 

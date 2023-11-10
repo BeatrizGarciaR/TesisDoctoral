@@ -31,9 +31,9 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168, 270, 500] 
-tamaños_L = [16]
-tamaños_S = [10]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [100]
+tamaños_S = [50]
 
 K = [1,2]
 
@@ -43,7 +43,7 @@ rates = [0.4]
 eta = [10, 6]
 t = 10
 tmax = 25
-wi = [0.1, 0.9, 0.05, 0.001]
+wi = [0,5, 0.7, 0.3, 0.1]
 
 countcsv = 1
        
