@@ -270,20 +270,18 @@ for iconj in range(len(tamaños_I)):
                     
                     # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
                     amb1 = gp.LinExpr()
-                    for l in L:  #Checar aquí porque debe haber una quicksum de i
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                amb1 += y_vars[s+1,l,1,i]
+                    for l in L: 
+                        if S[s][i-1][0] != 0:
+                            amb1 += gp.quicksum(y_vars[s+1,l,1,i] for i in I)
                         model.addConstr(amb1 <= x_vars[l,1], "c4")
                     
                     # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
                     amb2 = gp.LinExpr()
                     for l in L:
-                        for i in I:
-                            if S[s][i-1][0] != 0:
-                                amb2 += y_vars[s+1,l,2,i]
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                amb2 += y_vars[s+1,l,2,i]
+                        if S[s][i-1][0] != 0:
+                            amb2 += gp.quicksum(y_vars[s+1,l,2,i] for i in I)
+                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            amb2 += gp.quicksum(y_vars[s+1,l,2,i] for i in I)
                         model.addConstr(amb2 <= x_vars[l,2], "c5")
                 
                     # # Restricción 6: Activar alpha (cobertura total) 
