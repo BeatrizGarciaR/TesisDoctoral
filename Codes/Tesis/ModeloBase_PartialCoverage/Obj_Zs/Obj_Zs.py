@@ -26,19 +26,19 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168] 
-tamaños_L = [16]
-tamaños_S = [10]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [16, 70]
+tamaños_S = [10, 50, 100]
 
 K = [1,2]
 
-timelim = 300 #15 horas 
+timelim = 1800 #15 horas 
 rates = [0.4]
 
 eta = [10, 6]
 t = 10
-tmax = 1000
-wi = [1, 0.9, 0.2, 0.1]
+tmax = 25
+wi = [1, 0.9, 0.35, 0.15]
 
 countcsv = 1
        
@@ -268,17 +268,19 @@ for iconj in range(len(tamaños_I)):
                     # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
                     amb1 = gp.LinExpr()
                     for l in L: 
-                        if S[s][i-1][0] != 0:
-                            amb1 += gp.quicksum(y_vars[s+1,l,1,i] for i in I)
+                        for i in I:
+                            if S[s][i-1][0] != 0:                            
+                                amb1 += y_vars[s+1,l,1,i]
                         model.addConstr(amb1 <= x_vars[l,1], "c4")
                     
                     # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
                     amb2 = gp.LinExpr()
                     for l in L:
-                        if S[s][i-1][0] != 0:
-                            amb2 += gp.quicksum(y_vars[s+1,l,2,i] for i in I)
-                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                            amb2 += gp.quicksum(y_vars[s+1,l,2,i] for i in I)
+                        for i in I:
+                            if S[s][i-1][0] != 0:
+                                amb2 += y_vars[s+1,l,2,i] 
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                amb2 += y_vars[s+1,l,2,i] 
                         model.addConstr(amb2 <= x_vars[l,2], "c5")
                 
                     # Restricción 6: Activar alpha (cobertura total) 
