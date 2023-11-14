@@ -40,7 +40,7 @@ K = [1,2]
 timelim = 1800 #5 horas 
 rates = [0.4]
 
-eta = [10, 6]
+eta = [20, 11]
 t = 10
 tmax = 25
 wi = [1, 0.9, 0.35, 0.15]
@@ -482,9 +482,10 @@ for iconj in range(len(tamaños_I)):
                 f.write('Obj: %g' % model.objVal)
                 f.write('\n')
                 
-                for v in model.getVars():
-                    f.write('%s %g' % (v.varName, v.x))
-                    f.write('\n')
+                if model.objVal != float("-inf"):
+                    for v in model.getVars():
+                        f.write('%s %g' % (v.varName, v.x))
+                        f.write('\n')
                 
                 #imprimir el valor objetivo
                 print('Obj: %g' % model.objVal)

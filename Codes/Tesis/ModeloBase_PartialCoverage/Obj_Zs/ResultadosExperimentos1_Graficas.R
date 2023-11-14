@@ -15,7 +15,7 @@ len_S <- c(10, 50, 100)
 #   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+25)))
 #   for (a in 1:length(amb[,1])){
 #     eta <- amb[a,]
-#     aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_111123_',eta[1],'_',eta[2],'.csv', sep="")))
+#     aux_0 <- as.data.frame(read.csv(paste('Tesis_untitled2_111123_',eta[1],'_',eta[2],'.csv', sep="")))
 #     aux <- as.data.frame(aux_0[filas, 3:5])
 #     matrix <- matrix(nrow=5, ncol=5)
 #     colnames(matrix) <- len_S
@@ -46,7 +46,7 @@ len_S <- c(10, 50, 100)
 #   for (a in 1:length(amb[,1])){
 #     # run time
 #     eta <- amb[a,]
-#     aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_111123_',eta[1],'_',eta[2],'.xls', sep="")))
+#     aux_0 <- as.data.frame(read.csv(paste('Tesis_untitled2_111123_',eta[1],'_',eta[2],'.xls', sep="")))
 #     aux <- as.data.frame(aux_0[filas, c(3,4,6)])
 #     matrix <- matrix(nrow=5, ncol=5)
 #     colnames(matrix) <- len_S
@@ -93,12 +93,12 @@ for (a in 1:length(amb[,1])){
   for (i in 1:length(len_I)){
     for (l in 1:length(len_L)){
       for (s in 1: length(len_S)){
-        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-        print(paste('Accidents_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
+        print(paste('Accidents_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
         datos <- c()
         datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
 
-        full <- as.data.frame(read.table(paste('Full_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        full <- as.data.frame(read.table(paste('Full_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         full_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_full = 0
@@ -114,7 +114,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
 
 
-        partial1 <- as.data.frame(read.table(paste('Partial1_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial1 <- as.data.frame(read.table(paste('Partial1_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial1_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial1 = 0
@@ -130,7 +130,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)
 
 
-        partial2 <- as.data.frame(read.table(paste('Partial2_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial2 <- as.data.frame(read.table(paste('Partial2_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial2_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial2 = 0
@@ -146,7 +146,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial2_expected = mean(partial2_expected)*100)
 
 
-        partial3 <- as.data.frame(read.table(paste('Partial3_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial3 <- as.data.frame(read.table(paste('Partial3_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial3_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial3 = 0
@@ -162,7 +162,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial3_expected = mean(partial3_expected)*100)
 
 
-        null <- as.data.frame(read.table(paste('Null_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        null <- as.data.frame(read.table(paste('Null_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         null_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_null = 0
@@ -181,12 +181,12 @@ for (a in 1:length(amb[,1])){
     }
   }
   colnames(accidents_covered) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage")
-  write.csv(accidents_covered, file = paste('ExpectedCoverage_Obj_Zs_111123_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+  write.csv(accidents_covered, file = paste('ExpectedCoverage_untitled2_111123_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
   aux <- cbind(accidents_covered, eta[1], eta[2])
   colnames(aux) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage", "BLS ambulances", "ALS ambulances")
   accidents_covered_total <- rbind(accidents_covered_total, aux)
 }
-write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_Obj_Zs_1111923_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_untitled2_1111923_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 for (a in 1:length(amb[,1])){
   plot(as.integer(accidents_covered_total[a*5-4, 4:8]), pch=15, col=1, cex=1.5,
@@ -211,8 +211,8 @@ for (a in 1:length(amb[,1])){
 # for (i in 1:length(len_I)){
 #   for (l in 1:length(len_L)){
 #     for (s in 1: length(len_S)){
-#       accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-#       print(paste('Accidents_Obj_Zs_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+#       accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
+#       print(paste('Accidents_untitled2_111123_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
 #       cant_accidents = sum(accidents)/len_S[s]
 #       porcentaje_10_6 = 16/cant_accidents
 #       porcentaje_20_11 = 31/cant_accidents
@@ -222,7 +222,7 @@ for (a in 1:length(amb[,1])){
 #   }
 # }
 # colnames(accidents_prom) <- c("I", "L", "S", "Total Accidents Mean", "% 10 BLS & 6 ALS", "% 20 BLS & 11 ALS", "% 35 BLS & 20 ALS")
-# write.csv(accidents_prom, file = paste('AccidensMean_Obj_Zs_111123.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+# write.csv(accidents_prom, file = paste('AccidensMean_untitled2_111123.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 # 
 # #boxplot(t(full_expected))
 
@@ -246,7 +246,7 @@ for (a in 1:length(amb[,1])){
 
 
 # # DATOS COMPLETOS
-# aux <- as.data.frame(read.csv("Tesis_Obj_Zs_111123_20_11.csv"))
+# aux <- as.data.frame(read.csv("Tesis_untitled2_111123_20_11.csv"))
 # 
 # # 168 DEMAND POINTS
 # aux168 <- as.data.frame(aux[1:25, 3:5])

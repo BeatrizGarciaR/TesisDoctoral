@@ -502,10 +502,10 @@ for iconj in range(len(tamaños_I)):
                 f.write('Obj: %g' % model.objVal)
                 f.write('\n')
                 
-                for v in model.getVars():
-                    #if (v.x > 0.1):
-                    f.write('%s %g' % (v.varName, v.x))
-                    f.write('\n')
+                if model.objVal != float("-inf"):
+                    for v in model.getVars():
+                        f.write('%s %g' % (v.varName, v.x))
+                        f.write('\n')
                 
                 #imprimir el valor objetivo
                 print('Obj: %g' % model.objVal)

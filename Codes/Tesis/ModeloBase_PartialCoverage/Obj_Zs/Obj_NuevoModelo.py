@@ -174,37 +174,97 @@ for iconj in range(len(tamaños_I)):
                                          name="located_"+str(l)+str(' ')+str(k))
                         cantVarX += 1
                         
-                        
+                
                 y_vars = {}    
                 cantVarY = 0
                 for s in range(len(S)):        
                     for l in L:
                         for i in I:
-                            for k in K:
-                                y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
+                            if S[s][i-1][0] != 0:
+                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
                                                 name="OnTime_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                 cantVarY += 1
-
+                                
+                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="OnTime_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarY += 1
+                                
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="OnTime_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarY += 1
+                        
+                        
+                # y_vars = {}    
+                # cantVarY = 0
+                # for s in range(len(S)):        
+                #     for l in L:
+                #         for i in I:
+                #             for k in K:
+                #                 y_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                 name="OnTime_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                #                 cantVarY += 1
+                
                 
                 v_vars = {}    
                 cantVarV = 0
                 for s in range(len(S)):        
                     for l in L:
                         for i in I:
-                            for k in K:
-                                v_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
-                                                name="delayed_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                            if S[s][i-1][0] != 0:
+                                v_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="Delayed_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                 cantVarV += 1
                                 
+                                v_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="Delayed_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarV += 1
+                                
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                v_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="Delayed_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarV += 1
+
                 
-                gamma_vars = {} ## z null
+                # v_vars = {}    
+                # cantVarV = 0
+                # for s in range(len(S)):        
+                #     for l in L:
+                #         for i in I:
+                #             for k in K:
+                #                 v_vars[s+1,l,k,i] = model.addVar(vtype=GRB.BINARY, 
+                #                                 name="delayed_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                #                 cantVarV += 1
+                
+                
+                gamma_vars = {}    
                 cantVarGamma = 0
                 for s in range(len(S)):
-                    for i in I:
-                        for k in K:
-                            gamma_vars[s+1,i,k] = model.addVar(vtype=GRB.BINARY,
-                                                               name="notAssigned"+str(s+1)+str(' ')+str(i)+str(k))
-                            cantVarGamma += 1
+                    for l in L:
+                        for i in I:
+                            if S[s][i-1][0] != 0:
+                                gamma_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                cantVarGamma += 1
+                                
+                                gamma_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarGamma += 1
+                                
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                gamma_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                cantVarGamma += 1
+                                
+                
+                # gamma_vars = {} ## z null
+                # cantVarGamma = 0
+                # for s in range(len(S)):
+                #     for i in I:
+                #         for k in K:
+                #             gamma_vars[s+1,i,k] = model.addVar(vtype=GRB.BINARY,
+                #                                                name="notAssigned"+str(s+1)+str(' ')+str(i)+str(k))
+                #             cantVarGamma += 1
                            
                             
                 obj = gp.LinExpr()
@@ -215,7 +275,8 @@ for iconj in range(len(tamaños_I)):
                                 obj += (w_vars[0]*y_vars[s+1,l,k,i] + w_vars[1]*v_vars[s+1,l,k,i] - pi*gamma_vars[s+1,i,k]) * (1/len(S))
                 model.setObjective(obj, GRB.MAXIMIZE)  
     
-              
+                 
+                break 
                 # Add constraints
                 
                 for s in range(len(S)):
@@ -360,9 +421,10 @@ for iconj in range(len(tamaños_I)):
                 f.write('Obj: %g' % model.objVal)
                 f.write('\n')
                 
-                for v in model.getVars():
-                    f.write('%s %g' % (v.varName, v.x))
-                    f.write('\n')
+                if model.objVal != float("-inf"):
+                    for v in model.getVars():
+                        f.write('%s %g' % (v.varName, v.x))
+                        f.write('\n')
                 
                 #imprimir el valor objetivo
                 print('Obj: %g' % model.objVal)
