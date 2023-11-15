@@ -243,16 +243,16 @@ for iconj in range(len(tamaños_I)):
                     for l in L:
                         for i in I:
                             if S[s][i-1][0] != 0:
-                                gamma_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                gamma_vars[s+1,1,i] = model.addVar(vtype=GRB.INTEGER, 
                                                 name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
                                 cantVarGamma += 1
                                 
-                                gamma_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                gamma_vars[s+1,2,i] = model.addVar(vtype=GRB.INTEGER, 
                                                 name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
                                 cantVarGamma += 1
                                 
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                gamma_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                gamma_vars[s+1,2,i] = model.addVar(vtype=GRB.INTEGER, 
                                                 name="NotAssigned_"+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
                                 cantVarGamma += 1
                                 
@@ -271,12 +271,16 @@ for iconj in range(len(tamaños_I)):
                 for s in range(len(S)):
                     for l in L:    
                         for i in I:
-                            for k in K:
-                                obj += (w_vars[0]*y_vars[s+1,l,k,i] + w_vars[1]*v_vars[s+1,l,k,i] - pi*gamma_vars[s+1,i,k]) * (1/len(S))
+                            if S[s][i-1][0] != 0:
+                                obj += (w_vars[0]*y_vars[s+1,l,1,i] + w_vars[1]*v_vars[s+1,l,1,i] - pi*gamma_vars[s+1,1,i]) * (1/len(S))
+                                obj += (w_vars[0]*y_vars[s+1,l,2,i] + w_vars[1]*v_vars[s+1,l,2,i] - pi*gamma_vars[s+1,2,i]) * (1/len(S))
+                               
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                obj += (w_vars[0]*y_vars[s+1,l,2,i] + w_vars[1]*v_vars[s+1,l,2,i] - pi*gamma_vars[s+1,2,i]) * (1/len(S))
+                               
                 model.setObjective(obj, GRB.MAXIMIZE)  
     
                  
-                break 
                 # Add constraints
                 
                 for s in range(len(S)):
@@ -285,41 +289,120 @@ for iconj in range(len(tamaños_I)):
                     for k in K:
                         model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
                     
-                    # Restricción 4: No enviar más ambulancias de las localizadas
+                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
                     amb1 = gp.LinExpr()
                     for l in L: 
-                        for k in K:
-                            amb1 = gp.quicksum(y_vars[s+1,l,k,i] for i in I)
-                            model.addConstr(amb1 <= x_vars[l,k], "c4")
-                    
-                    # Restricción 6: No enviar más ambulancias de las necesarias
-                    amb1 = gp.LinExpr()
-                    for i in I:  
-                        for k in K:
-                            amb1 = gp.quicksum(y_vars[s+1,l,k,i] for l in L)
-                            model.addConstr(amb1 <= S[s][i-1][k-1], "c6")
-                    
-                    # Restricción 8: No exceder cli
+                        for i in I:
+                            if S[s][i-1][0] != 0:                            
+                                amb1 += y_vars[s+1,l,1,i]
+                        model.addConstr(amb1 <= x_vars[l,1], "c4")                       
+                        
+                    # Restricción 5: No enviar más ambulancias de las localizadas para k = 2
+                    amb2 = gp.LinExpr()
                     for l in L:
                         for i in I:
-                            for k in K:
-                                model.addConstr(y_vars[s+1,l,k,i]  <= cli[l-1][i-1], "c8")
+                            if S[s][i-1][0] != 0:
+                                amb2 += y_vars[s+1,l,2,i] 
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                amb2 += y_vars[s+1,l,2,i] 
+                        model.addConstr(amb2 <= x_vars[l,2], "c5")
+                                     
+                    # Restricción 6: No enviar más ambulancias de las necesarias para k = 1
+                    for i in I: 
+                        if S[s][i-1][0] != 0: 
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c6")   
+                    
+                    # # # Restricción 6: No enviar más ambulancias de las necesarias
+                    # # amb1 = gp.LinExpr()
+                    # # for i in I:  
+                    # #     for k in K:
+                    # #         amb1 = gp.quicksum(y_vars[s+1,l,k,i] for l in L)
+                    # #         model.addConstr(amb1 <= S[s][i-1][k-1], "c6")
+                            
+                    # Restricción 7: No enviar más ambulancias de las necesarias para k = 2
+                    amb = gp.LinExpr()
+                    for i in I:
+                        if S[s][i-1][0] != 0:
+                            amb += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            amb += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                        model.addConstr(amb <= S[s][i-1][1], "c7")
+                        
+                    # Restricción 8: No exceder cli para k = 1
+                    for l in L:
+                        for i in I: 
+                            if S[s][i-1][0] != 0:                       
+                                model.addConstr(y_vars[s+1,l,1,i] <= cli[l-1][i-1], "c8")  
+                    
+                    # # # Restricción 8: No exceder cli
+                    # # for l in L:
+                    # #     for i in I:
+                    # #         for k in K:
+                    # #             model.addConstr(y_vars[s+1,l,k,i]  <= cli[l-1][i-1], "c8")
+                                
+                    # Restricción 9: No exceder cli para k = 2
+                    for l in L:
+                        for i in I: 
+                            if S[s][i-1][0] != 0:
+                                model.addConstr(y_vars[s+1,l,2,i] <= cli[l-1][i-1], "c9")  
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                model.addConstr(y_vars[s+1,l,2,i] <= cli[l-1][i-1], "c9") 
+                                
+                    # Restricción 10: solo se prende y_vars o v_vars o ninguna para k = 1
+                    for l in L:
+                        for i in I: 
+                            if S[s][i-1][0] != 0:                       
+                                model.addConstr(y_vars[s+1,l,1,i] + v_vars[s+1,l,1,i] <= 1, "c10") 
                                     
-                    #Restricción 9: Solo se activa una de las variables y_vars o v_vars
+                    # # #Restricción 10: Solo se activa una de las variables y_vars o v_vars
+                    # # for l in L:
+                    # #     for i in I:
+                    # #         for k in K:
+                    # #             model.addConstr(y_vars[s+1,l,k,i] + v_vars[s+1,l,k,i]  <= 1, "c9")
+                    
+                    # Restricción 11: solo se prende y_vars o v_vars o ninguna para k = 2
                     for l in L:
-                        for i in I:
-                            for k in K:
-                                model.addConstr(y_vars[s+1,l,k,i] + v_vars[s+1,l,k,i]  <= 1, "c9")
+                        for i in I: 
+                            if S[s][i-1][0] != 0:
+                                model.addConstr(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] <= 1, "c11") 
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                model.addConstr(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] <= 1, "c11") 
+                                
+                    # Restricción 12: suma de variables igual a aik para k = 1
+                    for i in I: 
+                        if S[s][i-1][0] != 0:                       
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] + v_vars[s+1,l,1,i] for l in L) + gamma_vars[s+1,1,i] == S[s][i-1][0], "c12") 
                   
-                    # Restricción 10: la suma de las variables es lo que se necesita
+                    # # # Restricción 10: la suma de las variables es lo que se necesita
+                    # # for i in I:
+                    # #     for k in K:
+                    # #         model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] + v_vars[s+1,l,k,i] for l in L) + gamma_vars[s+1,i,k] == 1)
+                    
+                    # Restricción 13: suma de variables igual a aik para k = 2
+                    for i in I: 
+                        if S[s][i-1][0] != 0:
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,2,i] == S[s][i-1][1], "c13") 
+                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,2,i] == S[s][i-1][1], "c13")
+                    
+                    # Restricción 14: No enviar más ambulancias de las necesarias para k = 1
+                    for i in I: 
+                        if S[s][i-1][0] != 0: 
+                            model.addConstr(gp.quicksum(v_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c14") 
+                  
+                    # # # Restricción 11: 
+                    # # for i in I:
+                    # #     for k in K:
+                    # #         model.addConstr(gp.quicksum(v_vars[s+1,l,k,i] for l in L) <= S[s][i-1][k-1], "c11")   
+                    
+                    # Restricción 15: No enviar más ambulancias de las necesarias para k = 2
+                    amb = gp.LinExpr()
                     for i in I:
-                        for k in K:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,k,i] + v_vars[s+1,l,k,i] for l in L) + gamma_vars[s+1,i,k] == 1)
-                                              
-                    # Restricción 11: 
-                    for i in I:
-                        for k in K:
-                            model.addConstr(gp.quicksum(v_vars[s+1,l,k,i] for l in L) <= S[s][i-1][k-1], "c11")   
+                        if S[s][i-1][0] != 0:
+                            amb += gp.quicksum(v_vars[s+1,l,2,i] for l in L) 
+                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            amb += gp.quicksum(v_vars[s+1,l,2,i] for l in L) 
+                        model.addConstr(amb <= S[s][i-1][1], "c15")
                                            
                 # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
                 # objbnd = model.cbGet(GRB.Callback.MIP_OBJBND)
