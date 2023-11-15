@@ -31,7 +31,7 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_I = [168, 270] 
 tamaños_L = [16, 70]
 tamaños_S = [10, 50, 100]
 
@@ -40,7 +40,7 @@ K = [1,2]
 timelim = 1800 #5 horas 
 rates = [0.4]
 
-eta = [20, 11]
+eta = [35, 20]
 t = 10
 tmax = 25
 wi = [1, 0.9, 0.35, 0.15]

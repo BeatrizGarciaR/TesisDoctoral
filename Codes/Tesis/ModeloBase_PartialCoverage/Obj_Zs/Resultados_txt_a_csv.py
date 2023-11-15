@@ -9,11 +9,11 @@ Created on Mon Oct  9 11:50:21 2023
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_I = [168, 270] 
 tamaños_L = [16, 70]
 tamaños_S = [10, 50, 100]
 
-eta = [10, 6]
+eta = [20, 11]
 rates = [0.4]
 
 for iconj in range(len(tamaños_I)):
