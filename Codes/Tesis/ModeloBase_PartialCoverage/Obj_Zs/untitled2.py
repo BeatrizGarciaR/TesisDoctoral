@@ -32,23 +32,23 @@ import xlwt
 # tamaños_S = [150, 200]
 
 tamaños_I = [168, 270] 
-tamaños_L = [16, 70]
-tamaños_S = [10, 50, 100]
+tamaños_L = [100]
+tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
 
-timelim = 1800 #5 horas 
+timelim = 10800 #3 horas 
 rates = [0.4]
 
-eta = [35, 20]
+eta = [10, 6]
 t = 10
-tmax = 25
-wi = [1, 0.9, 0.35, 0.15]
+tmax = 30
+wi = [0.41, 0.375, 0.145, 0.07]
 
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_untitled2_111123', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_ObjZs_ScenarioExperiments_151123', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -327,7 +327,7 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_beta1 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(beta_vars[s+1,i] <= 10000000000*(suma_beta2 - suma_beta1), "c10")
+                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta2 - suma_beta1), "c10")
                      
                     # Restricción 11: Desactivar delta (cobertura parcial 2)
                     suma_delta2 = gp.LinExpr()
@@ -373,7 +373,7 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_15")    
+                            model.addConstr(phi_vars[s+1,i] <= 100000000*(suma_phi3 - suma_phi3_aux), "c_15")    
                     
                     # Restricción 16: Activar gamma (cobertura nula)
                     suma_gamma = gp.LinExpr()
@@ -404,7 +404,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_untitled2_111123_'+str(len(I))+str('_')
+                with open('data_ObjZs_ScenarioExperiments_151123_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -441,7 +441,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_untitled2_111123_'
+                f = open ('Resultados_Prueba_ObjZs_ScenarioExperiments_151123_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -496,82 +496,82 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                coberturas = open ('Coberturas_untitled2_111123_'
-                              +str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
+                # coberturas = open ('Coberturas_ObjZs_ScenarioExperiments_151123_'
+                #               +str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                lectura = open ('Resultados_Prueba_untitled2_111123_'
-                              +str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
-                line = lectura.readline()
-                #print("line", line)
-                line = lectura.readline()
-                #print("line", line)
+                # lectura = open ('Resultados_Prueba_ObjZs_ScenarioExperiments_151123_'
+                #               +str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
+                # line = lectura.readline()
+                # #print("line", line)
+                # line = lectura.readline()
+                # #print("line", line)
                 
-                for salto0 in range(cantVarX):
-                    line = lectura.readline()
-                #print("lineX", line)
+                # for salto0 in range(cantVarX):
+                #     line = lectura.readline()
+                # #print("lineX", line)
                 
-                for salto in range(cantVarY):
-                    line = lectura.readline()
-                #print("lineY", line)
+                # for salto in range(cantVarY):
+                #     line = lectura.readline()
+                # #print("lineY", line)
                  
-                coberturaTotal = 0
-                for salto1 in range(cantVarAlpha):
-                    line = lectura.readline()
-                    if int(line[len(line)-2]) == 1:
-                        coberturaTotal += 1
-                coberturas.write(str(coberturaTotal/TotalAccidentes))
-                coberturas.write('\n')
+                # coberturaTotal = 0
+                # for salto1 in range(cantVarAlpha):
+                #     line = lectura.readline()
+                #     if int(line[len(line)-2]) == 1:
+                #         coberturaTotal += 1
+                # coberturas.write(str(coberturaTotal/TotalAccidentes))
+                # coberturas.write('\n')
                 
-                #print("line1", line)
+                # #print("line1", line)
                 
-                coberturaParcial1 = 0
-                for salto2 in range(cantVarBeta):
-                    line = lectura.readline()
-                    if int(line[len(line)-2]) == 1:
-                        coberturaParcial1 += 1
-                coberturas.write(str(coberturaParcial1/TotalAccidentes))
-                coberturas.write('\n')
+                # coberturaParcial1 = 0
+                # for salto2 in range(cantVarBeta):
+                #     line = lectura.readline()
+                #     if int(line[len(line)-2]) == 1:
+                #         coberturaParcial1 += 1
+                # coberturas.write(str(coberturaParcial1/TotalAccidentes))
+                # coberturas.write('\n')
                 
-                #print("line2", line)
+                # #print("line2", line)
                 
-                coberturaParcial2 = 0
-                for salto3 in range(cantVarDelta):
-                    line = lectura.readline()
-                    if int(line[len(line)-2]) == 1:
-                        coberturaParcial2 += 1
-                coberturas.write(str(coberturaParcial2/TotalAccidentes))
-                coberturas.write('\n')
+                # coberturaParcial2 = 0
+                # for salto3 in range(cantVarDelta):
+                #     line = lectura.readline()
+                #     if int(line[len(line)-2]) == 1:
+                #         coberturaParcial2 += 1
+                # coberturas.write(str(coberturaParcial2/TotalAccidentes))
+                # coberturas.write('\n')
                 
-                #print("line3", line)
+                # #print("line3", line)
                 
-                coberturaParcial3 = 0
-                for salto4 in range(cantVarPhi):
-                    line = lectura.readline()
-                    if int(line[len(line)-2]) == 1:
-                        coberturaParcial3 += 1
-                coberturas.write(str(coberturaParcial3/TotalAccidentes))
-                coberturas.write('\n')
+                # coberturaParcial3 = 0
+                # for salto4 in range(cantVarPhi):
+                #     line = lectura.readline()
+                #     if int(line[len(line)-2]) == 1:
+                #         coberturaParcial3 += 1
+                # coberturas.write(str(coberturaParcial3/TotalAccidentes))
+                # coberturas.write('\n')
     
-                #print("line4", line)
+                # #print("line4", line)
     
-                coberturaNula = 0
-                for salto5 in range(cantVarGamma):
-                    line = lectura.readline()
-                    if int(line[len(line)-2]) == 1:
-                        coberturaNula += 1
-                coberturas.write(str(coberturaNula/TotalAccidentes))
-                coberturas.write('\n')
+                # coberturaNula = 0
+                # for salto5 in range(cantVarGamma):
+                #     line = lectura.readline()
+                #     if int(line[len(line)-2]) == 1:
+                #         coberturaNula += 1
+                # coberturas.write(str(coberturaNula/TotalAccidentes))
+                # coberturas.write('\n')
                 
-                #print("line5", line)
+                # #print("line5", line)
                 
-                coberturas.write(str(-1))
-                coberturas.write('\n')
+                # coberturas.write(str(-1))
+                # coberturas.write('\n')
                 
-                lectura.close()
+                # lectura.close()
                 
     #             ########################################
     #             # VERIFICANDO SI LA SOLUCION ES FACTIBLE 
@@ -985,7 +985,7 @@ for iconj in range(len(tamaños_I)):
                 #resultados.close()
                 
                 archivo.close()
-                coberturas.close()
+                #coberturas.close()
                 
                 end_time = time.time()
                 total_time = end_time - initial_time 
@@ -995,4 +995,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-book.save('Tesis_untitled2_111123_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+book.save('Tesis_ObjZs_ScenarioExperiments_151123_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
