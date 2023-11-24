@@ -29,10 +29,10 @@ import xlwt
 
 # tamaños_I = [1500] #Aquí batalla pero sí lo hace aún
 # tamaños_L = [16, 30, 50, 70, 100]
-# tamaños_S = [150, 200]
+# tamaños_S = [10]
 
-tamaños_I = [168, 270] 
-tamaños_L = [100]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [16]
 tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
@@ -40,7 +40,7 @@ K = [1,2]
 timelim = 10800 #3 horas 
 rates = [0.4]
 
-eta = [10, 6]
+amb = [[10, 6], [20,11], [35,20]]
 t = 10
 tmax = 30
 wi = [0.41, 0.375, 0.145, 0.07]
@@ -72,8 +72,12 @@ def data_cb(m, where):
 for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
         for sconj in range(len(tamaños_S)):
-            for verif in rates:
+            for k in range(len(amb)):
             #for rep in range(repeticiones):
+                
+                verif = rates[0]
+                
+                eta = amb[k]
                 
                 initial_time = time.time()
     
@@ -995,4 +999,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-book.save('Tesis_ObjZs_Scenarios_161123_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_ObjZs_Scenarios_161123_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
