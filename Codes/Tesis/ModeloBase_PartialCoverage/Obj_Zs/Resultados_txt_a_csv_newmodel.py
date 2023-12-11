@@ -10,6 +10,7 @@ tamaños_L = [16]
 tamaños_S = [10, 50, 100, 150, 200]
 
 amb = [[10, 6], [20, 11], [35,20]] 
+#amb = [[10,6]]
 rates = [0.4]
 
 
@@ -23,7 +24,7 @@ for iconj in range(len(tamaños_I)):
                 eta = amb[a]
                 
                 
-                archivo = open('Resultados_Prueba_NewModel_NewModel_161123_'
+                archivo = open('Resultados_Prueba_NewModel_NewModel_031223_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -33,7 +34,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_Obj_NewModel_161123_'
+                f = open ('Location_Obj_NewModel_031223_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -46,11 +47,13 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('OnTime_Obj_NewModel_161123_'
+                g = open ('OnTime_Obj_NewModel_031223_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
+                
+                count_ontime = 0
                 while "OnTime" in line:
                     if line[len(line)-2] == '1':
                         i = 7
@@ -59,16 +62,22 @@ for iconj in range(len(tamaños_I)):
                             line_aux += line[i]
                             i = i+1
                         g.write(line_aux + " " + line)
+                        count_ontime = count_ontime + 1
                     line = archivo.readline()
+                    
+                if count_ontime == 0:
+                    g.write(str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0))
+                    g.write('\n')
                             
                 g.close()
                 
                
-                h = open ('Delayed_Obj_NewModel_161123_'
+                h = open ('Delayed_Obj_NewModel_031223_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
+                count_delayed = 0
                 while "Delayed" in line:
                     if line[len(line)-2] == '1':
                         i = 8
@@ -77,16 +86,22 @@ for iconj in range(len(tamaños_I)):
                             line_aux += line[i]
                             i = i+1
                         h.write(line_aux + " " + line)
+                        count_delayed = count_delayed + 1
                     line = archivo.readline()
                         
+                if count_delayed == 0:
+                    h.write(str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0))
+                    h.write('\n')
+                    
                 h.close()
                 
                 
-                r = open ('NotAssigned_Obj_NewModel_161123_'
+                r = open ('NotAssigned_Obj_NewModel_031223_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
+                count_notassigned = 0
                 while "NotAssigned" in line:
                     if line[len(line)-2] != '0':
                         i = 12
@@ -95,6 +110,7 @@ for iconj in range(len(tamaños_I)):
                             line_aux += line[i]
                             i = i+1
                         r.write(line_aux + " " + line)
+                        count_notassigned = count_notassigned + 1
                     if line[len(line)-2] == '0' and line[len(line)-3] != ' ':
                         i = 12
                         line_aux = str()
@@ -102,7 +118,12 @@ for iconj in range(len(tamaños_I)):
                             line_aux += line[i]
                             i = i+1
                         r.write(line_aux + " " + line)
+                        count_notassigned = count_notassigned + 1
                     line = archivo.readline()
+                    
+                if count_notassigned == 0:
+                    r.write(str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0) + ' ' + str(0))
+                    r.write('\n')
                         
                 r.close()
                 
@@ -125,12 +146,12 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                     
                     
-                # u = open ('Accidents_NewModel_161123_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'.txt','w')
+                u = open ('Accidents_NewModel_031223_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'.txt','w')
                 
-                v = open ('I_Accidents_NewModel_161123_'
+                v = open ('I_Accidents_NewModel_031223_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
@@ -152,11 +173,12 @@ for iconj in range(len(tamaños_I)):
                         accident += 2
                     v.write('\n')
                     accidentes.append(total_accidents)
-                    # u.write(str(total_accidents))
-                    # u.write(' ')
+                    u.write(str(total_accidents))
+                    u.write(' ')
                 
                 v.close()
                 
-                # u.close()
+                u.write('\n')
+                u.close()
                 
    
