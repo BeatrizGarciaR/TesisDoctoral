@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  28 SEP 2023 01:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  8 DEC 2023 11:06
 entering extended mode
 **./main.tex
 (main.tex
@@ -529,15 +529,20 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 
  (Portadas.tex
 Package epstopdf Info: Source file: <Figuras/uanl.eps>
-(epstopdf)                    date: 2023-05-04 01:56:00
+(epstopdf)                    date: 2023-10-18 11:48:59
 (epstopdf)                    size: 828415 bytes
 (epstopdf)             Output file: <Figuras/uanl-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-09-28 01:53:08
+(epstopdf)                    date: 2023-10-18 11:48:58
 (epstopdf)                    size: 51325 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/uanl-eps-converted-
 to.pdf Figuras/uanl.eps>
 (epstopdf)             \includegraphics on input line 20.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=Figuras/uanl-eps-converted-to.pdf Figuras/uanl.eps
+)...executed (allowed).
+
+Package epstopdf Info: Result file: <Figuras/uanl-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-12-08 11:06:16
+(epstopdf)                    size: 51325 bytes.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/uanl-eps-converted-to.pdf): PDF inclus
@@ -562,15 +567,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/Users/beatr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Figuras/u
 anl-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figuras/fime.eps>
-(epstopdf)                    date: 2023-05-04 01:55:59
+(epstopdf)                    date: 2023-10-18 11:48:58
 (epstopdf)                    size: 400640 bytes
 (epstopdf)             Output file: <Figuras/fime-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-05-04 01:55:59
+(epstopdf)                    date: 2023-10-18 11:48:57
 (epstopdf)                    size: 226226 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/fime-eps-converted-
 to.pdf Figuras/fime.eps>
 (epstopdf)             \includegraphics on input line 49.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=Figuras/fime-eps-converted-to.pdf Figuras/fime.eps
+)...executed (allowed).
+
+Package epstopdf Info: Result file: <Figuras/fime-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-12-08 11:06:19
+(epstopdf)                    size: 226226 bytes.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/fime-eps-converted-to.pdf): PDF inclus
@@ -583,10 +593,10 @@ Package pdftex.def Info: Figuras/fime-eps-converted-to.pdf  used on input line
 (pdftex.def)             Requested size: 107.44698pt x 142.26378pt.
 [2 <./Figuras/fime-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figuras/uanl.eps>
-(epstopdf)                    date: 2023-05-04 01:56:00
+(epstopdf)                    date: 2023-10-18 11:48:59
 (epstopdf)                    size: 828415 bytes
 (epstopdf)             Output file: <Figuras/uanl-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-09-28 01:53:08
+(epstopdf)                    date: 2023-12-08 11:06:16
 (epstopdf)                    size: 51325 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/uanl-eps-converted-
 to.pdf Figuras/uanl.eps>
@@ -598,10 +608,10 @@ Package pdftex.def Info: Figuras/uanl-eps-converted-to.pdf  used on input line
 77.
 (pdftex.def)             Requested size: 63.47313pt x 56.9055pt.
 Package epstopdf Info: Source file: <Figuras/fime.eps>
-(epstopdf)                    date: 2023-05-04 01:55:59
+(epstopdf)                    date: 2023-10-18 11:48:58
 (epstopdf)                    size: 400640 bytes
 (epstopdf)             Output file: <Figuras/fime-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-05-04 01:55:59
+(epstopdf)                    date: 2023-12-08 11:06:19
 (epstopdf)                    size: 226226 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/fime-eps-converted-
 to.pdf Figuras/fime.eps>
@@ -628,13 +638,7 @@ Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
  (Dedicatoria.tex) [4
 
 
-] (main.toc
-Overfull \hbox (20.93979pt too wide) in paragraph at lines 16--16
- [] [][][]\OT1/cmr/bx/n/12 The Ambulance Location and Dispatching considering P
-artial Coverage 
- []
-
-[5
+] (main.toc [5
 
 
 ])
@@ -651,7 +655,8 @@ artial Coverage
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
- [8
+
+[8
 
 ]
 \openout2 = `Agradecimientos.aux'.
@@ -662,8 +667,7 @@ artial Coverage
 ]) [10]
 \openout2 = `Resumen.aux'.
 
-
-(Resumen.tex [11
+ (Resumen.tex [11
 
 
 
@@ -736,6 +740,11 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+Overfull \hbox (9.60654pt too wide) in paragraph at lines 179--190
+ [][] 
+ []
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13
@@ -745,88 +754,119 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.242 \end{equation}
-                    ] [15pdfTeX warning (ext4): destination with the same ident
-ifier (name{table.3.2}) has been already used, duplicate ignored
+l.228 \end{equation}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{table.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.266 \end{equation}
-                    ] [16]
+l.228 \end{equation}
+                    ] [15]
+
+LaTeX Warning: Reference `eq3' on page 16 undefined on input line 308.
+
+
+LaTeX Warning: Reference `eq4' on page 16 undefined on input line 308.
+
+
+LaTeX Warning: Reference `eq15' on page 16 undefined on input line 308.
+
+
+LaTeX Warning: Reference `eq4' on page 16 undefined on input line 308.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16] [17pdfTeX warning (ext4): destination with the same identifier (name{table
+.3.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.416 \end{equation}
+                    ] [18pdfTeX warning (ext4): destination with the same ident
+ifier (name{table.3.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.442 \end{equation}
+                    ] [19]
 Chapter 4.
 
-Overfull \hbox (3.33286pt too wide) in paragraph at lines 292--294
+Overfull \hbox (3.33286pt too wide) in paragraph at lines 487--489
 \OT1/cmr/m/n/12 ambulances within potential sites, and the second is how to dis
 patch them to accidents
  []
 
-[17
+[20
 
 ]
-Overfull \hbox (21.08823pt too wide) in paragraph at lines 295--296
+Overfull \hbox (21.08823pt too wide) in paragraph at lines 490--491
 \OT1/cmr/m/n/12 receiving emergency calls will have policies to determine what 
 ambulance (or ambulances)
  []
 
-[18]
+[21]
 Chapter 5.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 312.
+               Default added (so using `tbp') on input line 507.
 
-[19
+[22
 
-] [20pdfTeX warning (ext4): destination with the same identifier (name{table.5.
+] [23pdfTeX warning (ext4): destination with the same identifier (name{table.5.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.344 
+l.539 
       ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 345.
+               Default added (so using `tbp') on input line 540.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 381.
+               Default added (so using `tbp') on input line 576.
 
-[21pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}
+[24pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \chapter
-              {Conclusions}\label{cap:concl}] [22pdfTeX warning (ext4): destina
+l.623 \chapter
+              {Conclusions}\label{cap:concl}] [25pdfTeX warning (ext4): destina
 tion with the same identifier (name{table.5.3}) has been already used, duplicat
 e ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \chapter
+l.623 \chapter
               {Conclusions}\label{cap:concl}]
 Chapter 6.
 
-Overfull \hbox (8.24623pt too wide) in paragraph at lines 434--435
+Overfull \hbox (8.24623pt too wide) in paragraph at lines 629--630
 \OT1/cmr/m/n/12 solved because the solver has not had sufficient memory to supp
 ort them. Nevertheless,
  []
 
 
-Overfull \hbox (17.23688pt too wide) in paragraph at lines 434--435
+Overfull \hbox (17.23688pt too wide) in paragraph at lines 629--630
 \OT1/cmr/m/n/12 small instances results generate feasible solutions for ambulan
 ce location and dispatching
  []
 
 
-Overfull \hbox (8.28584pt too wide) in paragraph at lines 436--437
+Overfull \hbox (8.28584pt too wide) in paragraph at lines 631--632
 []\OT1/cmr/m/n/12 These results help us cover more demand points in the system,
  allowing beginning
  []
 
-[23
+[26
 
-]) [24]
+]) [27]
 \openout2 = `Apendice.aux'.
 
  (Apendice.tex) (main.bbl
@@ -835,16 +875,16 @@ Underfull \hbox (badness 2111) in paragraph at lines 35--40
 Operational Research\OT1/cmr/m/n/12 ,
  []
 
-[25
+[28
 
 
 
 
 
-]) [26]
+]) [29]
 \openout2 = `Autobiografia.aux'.
 
- (Autobiografia.tex) [27
+ (Autobiografia.tex) [30
 
 
 ]
@@ -855,15 +895,12 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
 (Autobiografia.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 1F04079A10600C60327D2E1A9085CEE6;1397.
 
 
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 768EB0F10A246198B3EB57660B7A780A;1454
-(rerunfilecheck)             After:  1F04079A10600C60327D2E1A9085CEE6;1397.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -874,13 +911,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
 ### simple group (level 1) entered at line 74 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 9151 strings out of 492945
- 134621 string characters out of 3126252
- 265030 words of memory out of 3000000
- 12720 multiletter control sequences out of 15000+200000
+ 9212 strings out of 492945
+ 135162 string characters out of 3126252
+ 264973 words of memory out of 3000000
+ 12758 multiletter control sequences out of 15000+200000
  12288 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,41p,1492b,752s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,16n,41p,1492b,755s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Progra
@@ -897,9 +934,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/U
 sers/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 i12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb>
-Output written on main.pdf (39 pages, 545506 bytes).
+Output written on main.pdf (42 pages, 555449 bytes).
 PDF statistics:
- 462 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
  195 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -9,13 +9,13 @@ len_L <- c(16)
 len_S <- c(10, 50, 100, 150, 200)
 
 
-# time value graphics      CHECAR!!
+# time value graphics
 counti = 0
 #for (i in len_I){
 
 for (a in 1:length(amb[,1])){
   # run time
-  eta <- amb[a,]
+  eta <- amb[length(amb[,1]),]
   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
   aux_0 <- as.data.frame(read.csv(paste('Tesis_NewModel_NewModel_031223_',eta[1],'_',eta[2],'.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(3,4,10)])
@@ -64,92 +64,92 @@ for (a in 1:length(amb[,1])){
   for (i in len_I){
     for (l in len_L){
       for (s in len_S){
-        
+
         print(paste('I_Accidents_NewModel_031223_', i,'_',l,'_',s,eta[1],'_',eta[2],'.txt'))
-        
+
         accident_aux <- as.data.frame(read.table(paste('I_Accidents_NewModel_031223_', i,'_',l,'_',s,'.txt', sep="")))
         accidents <- as.data.frame(read.table(paste('Accidents_NewModel_031223_', i,'_',l,'_',s,'.txt', sep="")))
-      
-        
+
+
         aux_0 <- as.data.frame(read.table(paste('OnTime_Obj_NewModel_031223_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_0 <- aux_0[,-2]
         colnames(aux_0) <- c("S", "L", "K", "I", "OnTime")
-        
-        
+
+
         aux_1 <- as.data.frame(read.table(paste('Delayed_Obj_NewModel_031223_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_1 <- aux_1[,-2]
         colnames(aux_1) <- c("S", "L", "K", "I", "Delayed")
-        
-        
+
+
         aux_2 <- as.data.frame(read.table(paste('NotAssigned_Obj_NewModel_031223_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_2 <- aux_2[,-2]
         colnames(aux_2) <- c("S", "L", "K", "I", "NotAssigned")
-        
-        
+
+
         full_expected <- matrix(ncol=s, nrow=1)
         partial1_expected <- matrix(ncol=s, nrow=1)
         partial2_expected <- matrix(ncol=s, nrow=1)
         partial3_expected <- matrix(ncol=s, nrow=1)
         null_expected <- matrix(ncol=s, nrow=1)
-        
+
         datos <- c()
         datos <- cbind(datos, i, l, s)
-        
+
         for (s_aux in 1:s){
-          
+
           demand_points <- matrix(nrow=i, ncol=4)
-          
+
           if (length(aux_0) != 0){
             on_time <- subset(aux_0, S==s_aux)
           } else{
             on_time <- c(0, 0, 0, 0, 0)
             colnames(on_time) <- c("S", "L", "K", "I", "OnTime")
           }
-          
+
           if (length(aux_1) != 0){
             delayed <- subset(aux_1, S==s_aux)
           } else{
             delayed <- c(0, 0, 0, 0, 0)
             colnames(delayed) <- c("S", "L", "K", "I", "Delayed")
           }
-          
+
           if (length(aux_2) != 0){
             notAssigned <- subset(aux_2, S==s_aux)
           } else{
             notAssigned <- c(0, 0, 0, 0, 0)
             colnames(notAssigned) <- c("S", "L", "K", "I", "NotAssigned")
           }
-          
+
           for (i_aux in 1:i){
-            
+
             if (accident_aux[s_aux,i_aux] != 0){
               on_time_1 <- subset(on_time, I==i_aux)
               if (length(on_time_1) > 0){
                 demand_points[i_aux,1] = length(on_time_1[,1])
               }
-              
-              
+
+
               delayed_1 <- subset(delayed, I==i_aux)
               if (length(delayed_1) > 0){
                 demand_points[i_aux,2] = length(delayed_1[,1])
               }
-              
-              
+
+
               notAssigned_1 <- subset(notAssigned, I==i_aux)
               if (length(notAssigned_1) > 0){
                 demand_points[i_aux,3] = sum(notAssigned_1[,5])
               }
-            
+
             } else{
               demand_points[i_aux,1] = 0
               demand_points[i_aux,2] = 0
               demand_points[i_aux,3] = 0
             }
             demand_points[i_aux,4] = accident_aux[s_aux,i_aux]
-          
+
           }
-          
-      
+
+
           total_full = 0
           total_partial1 = 0
           total_partial2 = 0
@@ -196,7 +196,7 @@ for (a in 1:length(amb[,1])){
           partial3_expected[1, s_aux] = partial3_expected_s
           null_expected_s = total_null/as.integer(accidents[s_aux])
           null_expected[1, s_aux] = null_expected_s
-          
+
         }
         datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
         datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)

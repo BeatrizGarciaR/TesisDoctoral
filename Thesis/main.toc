@@ -15,10 +15,10 @@
 \contentsline {section}{\numberline {2.3}Contribution}{11}{section.2.3}% 
 \contentsline {chapter}{\numberline {3}Problem desciption}{13}{chapter.3}% 
 \contentsline {subsection}{\numberline {3.0.1}Mathematical Model}{13}{subsection.3.0.1}% 
-\contentsline {chapter}{\numberline {4}Solution description}{17}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Proposed solution}{17}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Computing tools description}{18}{section.4.2}% 
-\contentsline {chapter}{\numberline {5}Experimental work}{19}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Conclusions}{23}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Main contributions and conclusions}{23}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Future work}{23}{section.6.2}% 
+\contentsline {chapter}{\numberline {4}Solution description}{20}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Proposed solution}{20}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Computing tools description}{21}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Experimental work}{22}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Conclusions}{26}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Main contributions and conclusions}{26}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Future work}{26}{section.6.2}% 

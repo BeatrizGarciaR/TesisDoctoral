@@ -139,16 +139,195 @@ The following is a preliminar model for the Ambulance Location and Dispatching c
 
 \subsection{Mathematical Model}
 
+To describe the location and dispatching for two types of vehicles considering the partial coverage problem we define some sets, parameters in Table \ref{tab:my-table1},  and variables in Table \ref{tab:my-table2} used in the mathematical model presented as follows: 
+
+
+%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%%%%%%%%%%
+%%%%% NEW MODEL
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+
 \begin{table}[h]
+\centering
 \begin{tabular}{ll}
 \hline
-\multicolumn{2}{c}{Sets and Parameters}                                                                                   \\ \hline
+\multicolumn{2}{c}{Sets and Parameters}                                                                         \\ \hline
 $I$          & Set of demand points                            \\
 $L$          & Set of potential sites                         \\
 $K$          & Set of ambulance types                         \\
 $S$      & Set of scenarios; tuples of accidents at demand points $i \in I$ that need \\
          & ambulances of type $k_1 \in K$, and ambulances of type $k_2 \in K$           \\
-$a_{ik}$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
+$a_{ik}^s$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
+& in scenario $s \in S$                          \\
+$c_{li}$ & Benefit from traveling from potential site $l \in L$ to demand point $i \in I$   \\
+$r_{li}$ & response time from potential site $l \in L$ to demand point $i \in I$       \\
+$n_k$    & total number of ambulances in the system of type $k \in K$                  \\
+$\alpha$   & benefit from covering on time an accident      \\
+$\beta$    & benefit from covering delayed an accident \\
+$\rho$       & a penalty from not covering an accident          \\
+$\tau$       &    ideal response time to cover an accident                                  \\
+$\tau_{max}$ &     maximum response time to cover an accident                                           \\ \hline
+
+\end{tabular}
+\caption{Sets and parameters for new Model }
+\label{tab:my-table1}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{c}{Variables}                                                                                   \\ \hline
+$x_{lk}$      & number of ambulances type $k \in K$ located at potential site $l \in L$                         \\                
+$u_{lki}^s$  & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched on time                  \\
+              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                                                                                    \\
+$v_i^s$ & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched delayed                  \\
+              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                                   \\
+$\gamma_i^s$  & $1$ if an ambulance $k \in K$ is not dispatched to an accident at demand point          \\
+              & $i \in I$ in scenario $ s \in S$; $0$ otherwise      \\ \hline                
+\end{tabular}
+\caption{Variables for new Model}
+\label{tab:my-table2}
+\end{table}
+
+Objective Function
+
+\begin{equation}
+    z = \max_{x} \mathbb{E}_s [ \mathcal{Q}^s(x)]
+    \label{obj}
+\end{equation}
+
+where 
+\begin{equation}
+    \mathcal{Q}^s(x) = \max_{u^s, v^s, \gamma^s} \left[ {\sum_{l \in L} \sum_{k \in K} \sum_{i \in I}} (\alpha u_{lki}^s + \beta v_{lki}^s) - \sum_{k \in K} \sum_{i \in I} p \gamma_{ki}^s \right]
+    \label{obj2}
+\end{equation}
+
+Subject to
+
+\begin{equation}
+    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
+    \label{eq3}
+\end{equation}
+
+\begin{equation}
+    \sum_{i\in I}u_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall s \in S,
+    \label{eq4}
+\end{equation}
+
+\begin{equation}
+    \sum_{i\in I}u_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall s \in S,
+    \label{eq5}
+\end{equation}
+
+
+\begin{equation}
+    \sum_{l\in L}u_{l1i}^s \leq a_{1i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq6}
+\end{equation}
+
+\begin{equation}
+    \sum_{l\in L}u_{l2i}^s \leq a_{2i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq7}
+\end{equation}
+
+\begin{equation}
+    u_{l1i}^s \leq c_{li} \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
+    \label{eq8}
+\end{equation}
+
+
+\begin{equation}
+    u_{l2i}^s \leq c_{li} \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
+    \label{eq9}
+\end{equation}
+
+
+\begin{equation}
+    u_{l1i}^s + v_{l1i}^s \leq 1 \qquad \qquad \qquad \qquad \qquad  \textrm{if } a_{1i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
+    \label{eq10}
+\end{equation}
+
+
+\begin{equation}
+    u_{l2i}^s + v_{l2i}^s \leq 1 \qquad \qquad \qquad \qquad \qquad  \textrm{if } a_{2i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
+    \label{eq11}
+\end{equation}
+
+\begin{equation}
+    a_{1i}^s = \sum_{l \in L} (u_{l1i}^s + v_{l1i}^s) + \gamma_{1i}^s \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0,  \forall i \in I, \forall s \in S,
+    \label{eq12}
+\end{equation}
+
+
+\begin{equation}
+    a_{2i}^s = \sum_{l \in L} (u_{l2i}^s + v_{l2i}^s) + \gamma_{2i}^s \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0,  \forall i \in I, \forall s \in S,
+    \label{eq13}
+\end{equation}
+
+
+\begin{equation}
+    \sum_{l\in L}v_{l1i}^s \leq a_{1i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq14}
+\end{equation}
+
+\begin{equation}
+    \sum_{l\in L}v_{l2i}^s \leq a_{2i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq15}
+\end{equation}
+
+
+\begin{equation}
+    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall k \in K,
+    \label{eq16}
+\end{equation}
+
+\begin{equation}
+    \gamma_{1i}^s \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad  \hspace{3.5mm}\textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
+    \label{eq17}
+\end{equation}
+
+\begin{equation}
+    \gamma_{2i}^s \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad  \hspace{3.5mm}\textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
+    \label{eq18}
+\end{equation}
+
+\begin{equation}
+    u_{l1i}^s, v_{l1i}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
+    \label{eq19}
+\end{equation}
+
+\begin{equation}
+    u_{l2i}^s, v_{l2i}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
+    \label{eq20}
+\end{equation}
+
+The objective function maximizes the expected value of the sum of benefits to covering an accident subtracting a penalty value to not covering an accident. The penalties decrease as the types of coverage are defined.
+
+Equation (\ref{eq3}) represents the first stage of the stochastic programming model. This constraint states that the sum of all ambulances located through the potential sites does not exceed the number of ambulances available in the system. From equation (\ref{eq4}) to (\ref{eq15}), we establish the second stage of the model. Equation (\ref{eq4}) 
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%% FIRST MODEL
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+
+% PARAMETERS
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{c}{Sets and Parameters}                                                                         \\ \hline
+$I$          & Set of demand points                            \\
+$L$          & Set of potential sites                         \\
+$K$          & Set of ambulance types                         \\
+$S$      & Set of scenarios; tuples of accidents at demand points $i \in I$ that need \\
+         & ambulances of type $k_1 \in K$, and ambulances of type $k_2 \in K$           \\
+$a_{ki}^s$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
              & in scenario $s \in S$                          \\
 $c_{li}$ & Benefit from traveling from potential site $l \in L$ to demand point $i \in I$   \\
 $r_{li}$ & response time from potential site $l \in L$ to demand point $i \in I$       \\
@@ -163,11 +342,15 @@ $\tau_{max}$ &     maximum response time to cover an accident                   
 
 \end{tabular}
 \caption{Sets and parameters for SBALD Model }
-\label{tab:my-table1}
+\label{tab:table1}
 \end{table}
 
 
+
+% VARIABLES
+
 \begin{table}[h]
+\centering
 \begin{tabular}{ll}
 \hline
 \multicolumn{2}{c}{Variables}                                                                                   \\ \hline
@@ -186,10 +369,11 @@ $\gamma_i^s$  & $1$ if an accident at demand point $i \in I$ has $Null$ coverage
               & scenario $ s \in S$; $0$ otherwise      \\ \hline                                                                            
 \end{tabular}
 \caption{Variables for SBALD Model}
-\label{tab:my-table2}
+\label{tab:table2}
 \end{table}
 
 
+% MODEL
 
 Objective Function
 
@@ -199,82 +383,93 @@ Objective Function
 
 where 
 \begin{equation}
-    \mathcal{Q}^s(x) = \max_{y^s, \alpha^s, \beta^s, \delta^s, \phi^s, \gamma^s} [w_{\alpha} \alpha_i^s + w{_\beta} \beta_i^s + w_{\delta} \delta_i^s + w_{\varphi} \varphi_i^s - p \gamma_i^s]
+    \mathcal{Q}^s(x) = \max_{y^s, \alpha^s, \beta^s, \delta^s, \varphi^s, \gamma^s} \sum_{i \in I} \left[ w_{\alpha} \alpha_i^s + w{_\beta} \beta_i^s + w_{\delta} \delta_i^s + w_{\varphi} \varphi_i^s - p \gamma_i^s \right]
 \end{equation}
 
 Subject to
 
 \begin{equation}
-    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
+    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
+    \label{eq23}
 \end{equation}
 
 \begin{equation}
-    \sum_{i\in I}y_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall s \in S,
+    \sum_{i\in I}y_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall s \in S,
+    \label{eq24}
 \end{equation}
 
 
 \begin{equation}
-    \sum_{i\in I}y_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall s \in S,
+    \sum_{i\in I}y_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall s \in S,
+    \label{eq25}
+\end{equation}
+
+
+\begin{equation}
+    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq26}
 \end{equation}
 
 \begin{equation}
-    \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s - \sum_{k \in K} a_{ik}^s \leq \alpha_{ik}^s -1 \qquad \qquad \qquad  \qquad\qquad \forall i \in I, \forall s \in S,
+    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq27}
 \end{equation}
 
 \begin{equation}
-    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+    \sum_{k \in K } a_{ik}^s \beta_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq28}
 \end{equation}
 
 \begin{equation}
-    2 \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s - \sum_{k \in K} a_{ik}^s \leq \sum_{k \in K} a_{ik}^s \beta_i^s \qquad \forall i \in I, \forall s\in S, 
+    \beta_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right)   \qquad  \qquad  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S, 
+    \label{eq29}
+\end{equation}
+
+
+\begin{equation}
+    \delta_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s  \qquad  \qquad \qquad \qquad  \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S, 
+    \label{eq30}
 \end{equation}
 
 \begin{equation}
-   \sum_{k \in K} a_{ik}^s \beta_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s \delta_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad  \qquad \qquad \qquad \hspace{2mm}  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
+    \label{eq31}
 \end{equation}
 
 \begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s -1 \leq \sum_{k \in K} a_{ik}^s \delta_i^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+    \varphi_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
+    \label{eq32}
 \end{equation}
 
 \begin{equation}
-    \delta_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S, 
+    \varphi_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right) \qquad \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
+    \label{eq33}
 \end{equation}
 
 \begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s \delta_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+    \sum_{l \in L} \sum_{k \in K} y_{lki}^s + \gamma_i^s \geq 1 \qquad \qquad \qquad \qquad \qquad \qquad \hspace{3mm} \textrm{if} \sum_{k \in K} a_{ik}^s \neq 0, \forall i \in I, \forall s \in S,
+    \label{eq34}
 \end{equation}
 
 \begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \leq \sum_{k \in K} a_{ik}^s \varphi_i^s \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+    \alpha_i^s + \beta_i^s + \delta_i^s + \varphi_i^s + \gamma_i^s = 1 \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+    \label{eq35}
 \end{equation}
 
 \begin{equation}
-    \varphi_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \hspace{5mm} \forall l \in L, \forall k \in K,
+    \label{eq36}
 \end{equation}
 
 \begin{equation}
-    \varphi_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
+    \alpha_i^s, \beta_i^s, \delta_i^s, \varphi_i^s, \gamma_i^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \forall i \in I, \forall s \in S.
+    \label{eq37}
 \end{equation}
 
-\begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s + \gamma_i^s \geq 1 \qquad \qquad \qquad \qquad for \sum_{k \in K} a_{ik}^s \neq 0, \forall i \in I, \forall s \in S,
-\end{equation}
 
 \begin{equation}
-    \alpha_i^s + \beta_i^s + \delta_i^s + \varphi_i^s + \gamma_i^s = 1 \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
-\end{equation}
-
-\begin{equation}
-    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall k \in K,
-\end{equation}
-
-\begin{equation}
-    y_{lki}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall l \in L, \forall k \in K, \forall s \in S,
-\end{equation}
-
-\begin{equation}
-    \alpha_i^s, \beta_i^s, \delta_i^s, \varphi_i^s, \gamma_i^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S.
+    y_{lki}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall l \in L, \forall k \in K, \forall s \in S,
+    \label{eq38}
 \end{equation}
 
 \chapter{Solution description}
