@@ -6,14 +6,14 @@
 # tamanos_I <- c(168, 270, 500, 900, 1500)
 # tamanos_L <- c(16, 30, 50, 70, 100)
 # tamanos_S <- c(10, 50, 100, 150, 200)
-tamanos_I <- c(168)
-tamanos_L <- c(16)
-tamanos_S <- c(10)
+tamanos_I <- c(168, 270, 500, 900, 1500)
+tamanos_L <- c(250)
+tamanos_S <- c(500)
 porcentaje_L1 = 0.65
 t = 9
 tmax = 25
 K <- c(1, 2)
-rates = c(0,3, 0.4, 0,5)
+rates = c(0.4)
 
 for (aux_rate in rates){
   for (iconj in 1:length(tamanos_I)){

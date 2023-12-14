@@ -22,13 +22,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [1500] #Aquí batalla pero sí lo hace aún
-# tamaños_L = [16, 30, 50, 70, 100]
-# tamaños_S = [150, 200]
+tamaños_I = [168] #Aquí batalla pero sí lo hace aún
+tamaños_L = [30]
+tamaños_S = [10]
 
-tamaños_I = [168, 270,500, 900, 1500] 
-tamaños_L = [16]
-tamaños_S = [10, 50, 100, 150, 200]
+#tamaños_I = [168, 270, 500, 900, 1500, 2100, 3000] 
+#tamaños_L = [30]
+#tamaños_S = [10, 50, 100, 150, 200, 500]
 
 K = [1,2]
 
@@ -40,14 +40,29 @@ ambulance = [[10, 6], [20,11], [35,20]]
 #ambulance = [[10,6]]
 t = 10
 tmax = 30
-w_vars = [-0.5, -0.9]
+w_vars = [0.7, 0.3]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_NewModel_NewModel_031223', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_NewModel_NewModel_051223', cell_overwrite_ok=True)
 
 def data_cb(m, where):
-    if where == gp.GRB.Callback.MIPSOL:
+    if where == gp.GRB.Callback.MqIPSOL:
+        cur_obj = m.cbGet(gp.GRB.Callback.MIPSOL_OBJ)
+        cur_bd = m.cbGet(gp.GRB.Callback.MIPSOL_OBJBND)
+        #sepa = model.cbGet(GRB.callback.MIP_NODCNT)
+        #sepa2 = model.cbGet(GRB.callback.MIP_ITRCNT)
+        gap = abs((cur_obj - cur_bd) / cur_obj)*100  
+        status = gp.GRB.OPTIMAL
+        #gap = cur_obj - cur_bd
+        # Did objective value or best bound change?
+        # if m._obj != cur_obj or m._bd != cur_bd:
+        #     m._obj = cur_obj
+        #     m._bd = cur_bd
+        #     m._data.append([time.time() - model._start, cur_obj, cur_bd])
+        m._data.append(["time", "best", "best bound", "gap %", "status"])
+        m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
+    else:
         cur_obj = m.cbGet(gp.GRB.Callback.MIPSOL_OBJ)
         cur_bd = m.cbGet(gp.GRB.Callback.MIPSOL_OBJBND)
         #sepa = model.cbGet(GRB.callback.MIP_NODCNT)
@@ -421,7 +436,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_NewModel_NewModel_031223_'+str(len(I))+str('_')
+                with open('data_NewModel_NewModel_051223_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -458,16 +473,17 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                model.write('model_NewModel_NewModel_031223_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
-                model.write('model_NewModel_NewModel_031223_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
-                f = open ('Resultados_Prueba_NewModel_NewModel_031223_'
+                # model.write('model_NewModel_NewModel_051223_'+str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               #+str(len(K))+str('_')
+                #               #+str(len(N))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                # model.write('model_NewModel_NewModel_051223_'+str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
+                
+                f = open ('Resultados_Prueba_NewModel_NewModel_051223_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -531,4 +547,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_NewModel_NewModel_031223_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_NewModel_NewModel_051223_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
