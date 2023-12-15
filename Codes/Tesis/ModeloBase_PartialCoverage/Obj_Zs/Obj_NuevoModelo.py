@@ -22,13 +22,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168] #Aquí batalla pero sí lo hace aún
-tamaños_L = [30]
-tamaños_S = [10]
+# tamaños_I = [168] #Aquí batalla pero sí lo hace aún
+# tamaños_L = [16]
+# tamaños_S = [10]
 
-#tamaños_I = [168, 270, 500, 900, 1500, 2100, 3000] 
-#tamaños_L = [30]
-#tamaños_S = [10, 50, 100, 150, 200, 500]
+tamaños_I = [168, 270, 500, 900, 1500, 2100, 3000] 
+tamaños_L = [30, 50, 70, 100, 250]
+tamaños_S = [10, 50, 100, 150, 200, 500]
 
 K = [1,2]
 
@@ -47,7 +47,7 @@ book=xlwt.Workbook(encoding="utf-8",style_compression=0)
 sheet = book.add_sheet('Tesis_NewModel_NewModel_051223', cell_overwrite_ok=True)
 
 def data_cb(m, where):
-    if where == gp.GRB.Callback.MqIPSOL:
+    if where == gp.GRB.Callback.MIPSOL:
         cur_obj = m.cbGet(gp.GRB.Callback.MIPSOL_OBJ)
         cur_bd = m.cbGet(gp.GRB.Callback.MIPSOL_OBJBND)
         #sepa = model.cbGet(GRB.callback.MIP_NODCNT)
@@ -62,21 +62,21 @@ def data_cb(m, where):
         #     m._data.append([time.time() - model._start, cur_obj, cur_bd])
         m._data.append(["time", "best", "best bound", "gap %", "status"])
         m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
-    else:
-        cur_obj = m.cbGet(gp.GRB.Callback.MIPSOL_OBJ)
-        cur_bd = m.cbGet(gp.GRB.Callback.MIPSOL_OBJBND)
-        #sepa = model.cbGet(GRB.callback.MIP_NODCNT)
-        #sepa2 = model.cbGet(GRB.callback.MIP_ITRCNT)
-        gap = abs((cur_obj - cur_bd) / cur_obj)*100  
-        status = gp.GRB.OPTIMAL
-        #gap = cur_obj - cur_bd
-        # Did objective value or best bound change?
-        # if m._obj != cur_obj or m._bd != cur_bd:
-        #     m._obj = cur_obj
-        #     m._bd = cur_bd
-        #     m._data.append([time.time() - model._start, cur_obj, cur_bd])
-        m._data.append(["time", "best", "best bound", "gap %", "status"])
-        m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
+    # else:
+    #     cur_obj = m.cbGet(gp.GRB.Callback.MIPSOL_OBJ)
+    #     cur_bd = m.cbGet(gp.GRB.Callback.MIPSOL_OBJBND)
+    #     #sepa = model.cbGet(GRB.callback.MIP_NODCNT)
+    #     #sepa2 = model.cbGet(GRB.callback.MIP_ITRCNT)
+    #     gap = abs((cur_obj - cur_bd) / cur_obj)*100  
+    #     status = gp.GRB.OPTIMAL
+    #     #gap = cur_obj - cur_bd
+    #     # Did objective value or best bound change?
+    #     # if m._obj != cur_obj or m._bd != cur_bd:
+    #     #     m._obj = cur_obj
+    #     #     m._bd = cur_bd
+    #     #     m._data.append([time.time() - model._start, cur_obj, cur_bd])
+    #     m._data.append(["time", "best", "best bound", "gap %", "status"])
+    #     m._data.append([time.time() - model._start, cur_obj, cur_bd, gap, status])
 
 
 
@@ -547,4 +547,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_NewModel_NewModel_051223_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_NewModel_NewModel_051223_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
