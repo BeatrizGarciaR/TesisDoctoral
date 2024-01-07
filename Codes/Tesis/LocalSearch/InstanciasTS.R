@@ -6,8 +6,8 @@
 # tamanos_I <- c(168, 270, 500, 900, 1500)
 # tamanos_L <- c(16, 30, 50, 70, 100)
 # tamanos_S <- c(10, 50, 100, 150, 200)
-tamanos_I <- c(168, 270, 500, 900, 1500)
-tamanos_L <- c(250)
+tamanos_I <- c(270, 500, 900, 1500, 2100, 3000)
+tamanos_L <- c(16)
 tamanos_S <- c(500)
 porcentaje_L1 = 0.65
 t = 9
