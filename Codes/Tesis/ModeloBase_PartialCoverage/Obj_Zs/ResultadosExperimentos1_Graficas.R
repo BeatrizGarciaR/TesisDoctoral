@@ -5,88 +5,93 @@ amb <- rbind(c(10,6), c(20,11), c(35,20))
 # len_L <- c(16, 30, 50, 70, 100)
 # len_S <- c(10, 50, 100, 150, 200)
 
-len_I <- c(168)
+len_I <- c(168, 270, 500, 900, 1500)
 len_L <- c(16)
-len_S <- c(10)
-
-# # run time graphics
-# counti = 0
-# for (i in len_I){
-#   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+25)))
-#   for (a in 1:length(amb[,1])){
-#     eta <- amb[a,]
-#     aux_0 <- as.data.frame(read.csv(paste('Tesis_untitled2_111123_',eta[1],'_',eta[2],'.csv', sep="")))
-#     aux <- as.data.frame(aux_0[filas, 3:5])
-#     matrix <- matrix(nrow=5, ncol=5)
-#     colnames(matrix) <- len_S
-#     rownames(matrix) <- len_L
-#     count = 1
-#     for (s in 1:5){
-#       for (l in 1:5){
-#         matrix[s,l] = aux[count,3]
-#         count = count + 1
-#       }
-#     }
-#     png(paste(i,"_runtime_",eta[1],"_",eta[2],".png", sep=""))
-#     barplot(matrix, beside=TRUE, col = 1:5, xlab="scenarios", ylab="run time")
-#             #main=paste("Run time in seconds for", i, "demand points \n considering",eta[1],
-#                         #"BLS and",eta[2],"ALS ambulances", sep=" "))
-#     legend(x="topleft", legend = len_L,
-#            fill = 1:5, title = "Sites", cex=1)
-#     dev.off()
-#   }
-#   counti = counti+1
-# }
+len_S <- c(10, 50, 70, 150, 200)
 
 
-# # objective value graphics
-# counti = 0
-# #for (i in len_I){
-# 
-#   for (a in 1:length(amb[,1])){
-#     # run time
-#     eta <- amb[a,]
-#     filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-#     aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_161123_AllAmb.csv', sep="")))
-#     aux <- as.data.frame(aux_0[filas, c(3,4,6)])
-#     matrix <- matrix(nrow=5, ncol=5)
-#     colnames(matrix) <- len_S
-#     rownames(matrix) <- len_I
-#     count = 1
-#     for (s in 1:5){
-#       for (l in 1:5){
-#         #matrix[s,l] = aux[count,3]
-#         if (is.na(aux[count,3]) == FALSE){
-#           matrix[s,l] = aux[count,3]
-#         }
-#         else{
-#           matrix[s,l] = 0
-#         }
-#         count = count + 1
-#       }
-#     }
-#     pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
-#     plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix)+2),
-#          xlab="demand points", ylab="objective value", xaxt = "n",
-#          main=paste("Objective value for 16 potential sites \n considering",eta[1],
-#                     "BLS and",eta[2],"ALS ambulances", sep=" "))
-#     axis(1, at=1:5, labels=len_I)
-#     lines(matrix[1:5], lwd=3, col=1)
-#     points(matrix[6:10], pch=16, cex=1.5, col=2)
-#     lines(matrix[6:10], lwd=3, col=2)
-#     points(matrix[11:15], pch=17, cex=1.5, col=3)
-#     lines(matrix[11:15], lwd=3, col=3)
-#     points(matrix[16:20], pch=18, cex=1.5, col=4)
-#     lines(matrix[16:20], lwd=3, col=4)
-#     points(matrix[21:25], pch=19, cex=1.5, col=6)
-#     lines(matrix[21:25], lwd=3, col=6)
-#     legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
-#     dev.off()
-#     counti = counti+1
-#   }
-# #}
-# 
-# 
+# objective value graphics
+counti = 0
+#for (i in len_I){
+
+  for (a in 1:length(amb[,1])){
+    # run time
+    eta <- amb[a,]
+    filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
+    aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_161123_AllAmb.csv', sep="")))
+    
+    aux <- as.data.frame(aux_0[filas, c(2,4,6)])
+    matrix <- matrix(nrow=5, ncol=5)
+    colnames(matrix) <- len_S
+    rownames(matrix) <- len_I
+    count = 1
+    for (s in 1:5){
+      for (l in 1:5){
+        #matrix[s,l] = aux[count,3]
+        if (is.na(aux[count,3]) == FALSE){
+          matrix[s,l] = aux[count,3]
+        }
+        else{
+          matrix[s,l] = 0
+        }
+        count = count + 1
+      }
+    }
+    
+    aux_bb <- as.data.frame(aux_0[filas, c(2,4,7)])
+    matrix_bestbound <- matrix(nrow=5, ncol=5)
+    colnames(matrix_bestbound) <- len_S
+    rownames(matrix_bestbound) <- len_I
+    count = 1
+    for (s in 1:5){
+      for (l in 1:5){
+        #matrix[s,l] = aux[count,3]
+        if (is.na(aux_bb[count,3]) == FALSE){
+          matrix_bestbound[s,l] = aux_bb[count,3]
+        }
+        else{
+          matrix_bestbound[s,l] = 0
+        }
+        count = count + 1
+      }
+    }
+    pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix_bestbound)+2),
+         xlab="demand points", ylab="objective value", xaxt = "n",
+         main=paste("Objective value for 16 potential sites \n considering",eta[1],
+                    "BLS and",eta[2],"ALS ambulances", sep=" "))
+    axis(1, at=1:5, labels=len_I)
+    lines(matrix[1:5], lwd=3, col=1)
+    points(matrix_bestbound[1:5], pch=15, cex=1.5, col=1)
+    lines(matrix_bestbound[1:5], lwd=3, col=1, lty=2)
+    points(matrix[6:10], pch=16, cex=1.5, col=2)
+    lines(matrix[6:10], lwd=3, col=2)
+    points(matrix_bestbound[6:10], pch=16, cex=1.5, col=2)
+    lines(matrix_bestbound[6:10], lwd=3, col=2, lty=2)
+    points(matrix[11:15], pch=17, cex=1.5, col=3)
+    lines(matrix[11:15], lwd=3, col=3)
+    points(matrix_bestbound[11:15], pch=17, cex=1.5, col=3)
+    lines(matrix_bestbound[11:15], lwd=3, col=3, lty=2)
+    points(matrix[16:20], pch=18, cex=1.5, col=4)
+    lines(matrix[16:20], lwd=3, col=4)
+    points(matrix_bestbound[16:20], pch=18, cex=1.5, col=4)
+    lines(matrix_bestbound[16:20], lwd=3, col=4, lty=2)
+    points(matrix[21:25], pch=19, cex=1.5, col=6)
+    lines(matrix[21:25], lwd=3, col=6)
+    points(matrix_bestbound[21:25], pch=19, cex=1.5, col=6)
+    lines(matrix_bestbound[21:25], lwd=3, col=6, lty=2)
+    legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
+    legend(x = "bottomright",         # Posición
+           legend = c("best objective", "best bound"), # Textos de la leyenda
+           lty = c(1, 2),          # Tipo de líneas
+           col = c(1, 1),          # Colores de las líneas
+           lwd = 2)  
+    dev.off()
+    counti = counti+1
+  }
+#}
+
+
 # # gap value graphics
 # counti = 0
 # #for (i in len_I){
@@ -133,54 +138,55 @@ len_S <- c(10)
 #   counti = counti+1
 # }
 # #}
-# 
-# 
-# # time value graphics
-# counti = 0
-# #for (i in len_I){
-# 
-# for (a in 1:length(amb[,1])){
-#   # run time
-#   eta <- amb[a,]
-#   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-#   #aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_161123_AllAmb.csv', sep="")))
-#   aux <- as.data.frame(aux_0[filas, c(3,4,10)])
-#   matrix <- matrix(nrow=5, ncol=5)
-#   colnames(matrix) <- len_S
-#   rownames(matrix) <- len_I
-#   count = 1
-#   for (s in 1:5){
-#     for (l in 1:5){
-#       #matrix[s,l] = aux[count,3]
-#       if (is.na(aux[count,3]) == FALSE){
-#         matrix[s,l] = aux[count,3]
-#       }
-#       else{
-#         matrix[s,l] = 0
-#       }
-#       count = count + 1
-#     }
-#   }
-#   pdf(paste("Timeval_",eta[1],"_",eta[2],".pdf", sep=""))
-#   plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
-#        xlab="demand points", ylab="objective value", xaxt = "n",
-#        main=paste("Runtime for 16 potential sites \n considering",eta[1],
-#                   "BLS and",eta[2],"ALS ambulances", sep=" "))
-#   axis(1, at=1:5, labels=len_I)
-#   lines(matrix[1:5], lwd=3, col=1)
-#   points(matrix[6:10], pch=16, cex=1.5, col=2)
-#   lines(matrix[6:10], lwd=3, col=2)
-#   points(matrix[11:15], pch=17, cex=1.5, col=3)
-#   lines(matrix[11:15], lwd=3, col=3)
-#   points(matrix[16:20], pch=18, cex=1.5, col=4)
-#   lines(matrix[16:20], lwd=3, col=4)
-#   points(matrix[21:25], pch=19, cex=1.5, col=6)
-#   lines(matrix[21:25], lwd=3, col=6)
-#   legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
-#   dev.off()
-#   counti = counti+1
-# }
-# #}
+
+
+
+# time value graphics
+counti = 0
+#for (i in len_I){
+
+for (a in 1:length(amb[,1])){
+  # run time
+  eta <- amb[a,]
+  filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_161123_AllAmb.csv', sep="")))
+  aux <- as.data.frame(aux_0[filas, c(2,4,10)])
+  matrix <- matrix(nrow=5, ncol=5)
+  colnames(matrix) <- len_S
+  rownames(matrix) <- len_I
+  count = 1
+  for (s in 1:5){
+    for (l in 1:5){
+      #matrix[s,l] = aux[count,3]
+      if (is.na(aux[count,3]) == FALSE){
+        matrix[s,l] = aux[count,3]
+      }
+      else{
+        matrix[s,l] = 0
+      }
+      count = count + 1
+    }
+  }
+  pdf(paste("Timeval_",eta[1],"_",eta[2],".pdf", sep=""))
+  plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
+       xlab="demand points", ylab="objective value", xaxt = "n",
+       main=paste("Runtime for 16 potential sites \n considering",eta[1],
+                  "BLS and",eta[2],"ALS ambulances", sep=" "))
+  axis(1, at=1:5, labels=len_I)
+  lines(matrix[1:5], lwd=3, col=1)
+  points(matrix[6:10], pch=16, cex=1.5, col=2)
+  lines(matrix[6:10], lwd=3, col=2)
+  points(matrix[11:15], pch=17, cex=1.5, col=3)
+  lines(matrix[11:15], lwd=3, col=3)
+  points(matrix[16:20], pch=18, cex=1.5, col=4)
+  lines(matrix[16:20], lwd=3, col=4)
+  points(matrix[21:25], pch=19, cex=1.5, col=6)
+  lines(matrix[21:25], lwd=3, col=6)
+  legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
+  dev.off()
+  counti = counti+1
+}
+#}
 
 # # coverage graphics
 accidents_covered_total <- data.frame()
@@ -284,6 +290,8 @@ for (a in 1:length(amb[,1])){
   accidents_covered_total <- rbind(accidents_covered_total, aux)
 }
 write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_ObjZs_Scenarios_161123_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+
+
 
 # for (a in 1:length(amb[,1])){
 #   eta = amb[a,]
