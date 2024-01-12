@@ -1,4 +1,4 @@
-Elapsed time: 4.620388031005859
+Elapsed time: 0.8957459926605225
 Obj: 129.522
 located_1 1 -0
 located_1 2 0
@@ -2408,7 +2408,7 @@ OnTime_3 13 1 100 0
 OnTime_3 13 2 100 0
 OnTime_3 13 1 108 0
 OnTime_3 13 2 108 0
-OnTime_3 13 1 129 0
+OnTime_3 13 1 129 -0
 OnTime_3 13 2 129 1
 OnTime_3 13 1 132 1
 OnTime_3 13 2 132 1
@@ -7452,7 +7452,7 @@ OnTime_9 11 1 85 0
 OnTime_9 11 2 85 1
 OnTime_9 11 1 87 0
 OnTime_9 11 2 87 0
-OnTime_9 11 1 96 -0
+OnTime_9 11 1 96 0
 OnTime_9 11 2 96 0
 OnTime_9 11 1 98 0
 OnTime_9 11 2 98 0
