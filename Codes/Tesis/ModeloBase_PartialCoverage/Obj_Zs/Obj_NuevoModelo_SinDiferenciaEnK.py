@@ -49,7 +49,7 @@ w_vars = [0.7, 0.3]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_NewModel_NewModel_061223', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_NewModel_NewModel_010124', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -325,9 +325,7 @@ for iconj in range(len(tamaños_I)):
                     amb2 = gp.LinExpr()
                     for l in L:
                         for i in I:
-                            if S[s][i-1][0] != 0:
-                                amb2 += y_vars[s+1,l,2,i] 
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if S[s][i-1][1] != 0:
                                 amb2 += y_vars[s+1,l,2,i] 
                         model.addConstr(amb2 <= x_vars[l,2], "c5")
                                      
@@ -346,11 +344,8 @@ for iconj in range(len(tamaños_I)):
                     # Restricción 7: No enviar más ambulancias de las necesarias para k = 2
                     amb = gp.LinExpr()
                     for i in I:
-                        if S[s][i-1][0] != 0:
-                            amb += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                            amb += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                        model.addConstr(amb <= S[s][i-1][1], "c7")
+                        if S[s][i-1][1] > 0:
+                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L)  <= S[s][i-1][1], "c7")
                         
                     # Restricción 8: No exceder cli para k = 1
                     for l in L:
@@ -366,10 +361,8 @@ for iconj in range(len(tamaños_I)):
                                 
                     # Restricción 9: No exceder cli para k = 2
                     for l in L:
-                        for i in I: 
-                            if S[s][i-1][0] != 0:
-                                model.addConstr(y_vars[s+1,l,2,i] <= cli[l-1][i-1], "c9")  
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                        for i in I:  
+                            if S[s][i-1][1] != 0:
                                 model.addConstr(y_vars[s+1,l,2,i] <= cli[l-1][i-1], "c9") 
                                 
                     # Restricción 10: solo se prende y_vars o v_vars o ninguna para k = 1
@@ -387,9 +380,7 @@ for iconj in range(len(tamaños_I)):
                     # Restricción 11: solo se prende y_vars o v_vars o ninguna para k = 2
                     for l in L:
                         for i in I: 
-                            if S[s][i-1][0] != 0:
-                                model.addConstr(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] <= 1, "c11") 
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if S[s][i-1][1] != 0:
                                 model.addConstr(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] <= 1, "c11") 
                                 
                     # Restricción 12: suma de variables igual a aik para k = 1
@@ -404,9 +395,7 @@ for iconj in range(len(tamaños_I)):
                     
                     # Restricción 13: suma de variables igual a aik para k = 2
                     for i in I: 
-                        if S[s][i-1][0] != 0:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,2,i] == S[s][i-1][1], "c13") 
-                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                         if S[s][i-1][1] != 0:
                             model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,2,i] == S[s][i-1][1], "c13")
                     
                     # Restricción 14: No enviar más ambulancias de las necesarias para k = 1
@@ -422,11 +411,8 @@ for iconj in range(len(tamaños_I)):
                     # Restricción 15: No enviar más ambulancias de las necesarias para k = 2
                     amb = gp.LinExpr()
                     for i in I:
-                        if S[s][i-1][0] != 0:
-                            amb += gp.quicksum(v_vars[s+1,l,2,i] for l in L) 
-                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                            amb += gp.quicksum(v_vars[s+1,l,2,i] for l in L) 
-                        model.addConstr(amb <= S[s][i-1][1], "c15")
+                        if S[s][i-1][1] != 0:
+                            model.addConstr(gp.quicksum(v_vars[s+1,l,2,i] for l in L)  <= S[s][i-1][1], "c15")
                                            
                 # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
                 # objbnd = model.cbGet(GRB.Callback.MIP_OBJBND)
@@ -441,7 +427,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_NewModel_NewModel_051223_'+str(len(I))+str('_')
+                with open('data_NewModel_NewModel_010124_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -479,16 +465,17 @@ for iconj in range(len(tamaños_I)):
                 #Nombre: Resultados_I_L_M_N_S
                 
                 
-                # model.write('model_NewModel_NewModel_051223_'+str(len(I))+str('_')
-                #               +str(len(L))+str('_')
-                #               #+str(len(K))+str('_')
-                #               #+str(len(N))+str('_')
-                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
-                # model.write('model_NewModel_NewModel_051223_'+str(len(I))+str('_')
+                model.write('model_NewModel_NewModel_010124_'+str(len(I))+str('_')
+                              +str(len(L))+str('_')
+                              #+str(len(K))+str('_')
+                              #+str(len(N))+str('_')
+                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                
+                # model.write('model_NewModel_NewModel_010124_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
-                f = open ('Resultados_Prueba_NewModel_NewModel_051223_'
+                f = open ('Resultados_Prueba_NewModel_NewModel_010124_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -552,4 +539,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_NewModel_NewModel_061223_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
+                book.save('Tesis_NewModel_NewModel_010124_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
