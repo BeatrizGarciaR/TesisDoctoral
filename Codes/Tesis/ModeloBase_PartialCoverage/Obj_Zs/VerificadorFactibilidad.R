@@ -5,9 +5,9 @@ amb <- rbind(c(10, 6), c(20, 11), c(35,20))
 # len_L <- c(16, 30, 50, 70, 100)
 # len_S <- c(10, 50, 100, 150, 200)
 
-len_I <- c(168)
+len_I <- c(168, 270, 500, 900, 1500)
 len_L <- c(16)
-len_S <- c(10)
+len_S <- c(10, 50, 100, 150, 200)
 
 factibilidad <- data.frame()
 for (i in len_I){
