@@ -1,4 +1,7 @@
 "Model","I","L","S","|K1|","|K2|","Locate_K1","Locate_K2","Delay_K1","Delay_K2","OnTime_K1","OnTime_K2","Dispatched_K1","Dispatched_K2"
 "M2Supuesto","168","16","10","10","6","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
+"M1SinSupuesto","168","16","10","10","6","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
 "M2Supuesto","168","16","10","20","11","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
+"M1SinSupuesto","168","16","10","20","11","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
 "M2Supuesto","168","16","10","35","20","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
+"M1SinSupuesto","168","16","10","35","20","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"
