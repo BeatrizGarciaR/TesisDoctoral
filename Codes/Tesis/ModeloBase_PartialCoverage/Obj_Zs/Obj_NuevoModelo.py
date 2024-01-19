@@ -538,11 +538,11 @@ for iconj in range(len(tamaños_I)):
                 #Nombre: Resultados_I_L_M_N_S
                 
                 
-                model.write('model_NewModel_Supuesto_160124_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                # model.write('model_NewModel_Supuesto_160124_'+str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               #+str(len(K))+str('_')
+                #               #+str(len(N))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 # model.write('model_NewModel_Supuesto_160124_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
