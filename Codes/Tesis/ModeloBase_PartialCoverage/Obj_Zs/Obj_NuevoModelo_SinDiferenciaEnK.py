@@ -27,13 +27,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [168, 270] #Aquí batalla pero sí lo hace aún
-# tamaños_L = [16]
-# tamaños_S = [10, 50, 100]
-
-tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_I = [168, 270] #Aquí batalla pero sí lo hace aún
 tamaños_L = [16]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_S = [10, 50]
+
+# tamaños_I = [168, 270, 500, 900, 1500] 
+# tamaños_L = [16]
+# tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
 
@@ -318,10 +318,10 @@ for iconj in range(len(tamaños_I)):
                                 amb2 += y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i]
                         model.addConstr(amb2 <= x_vars[l,2], "c5")
                                      
-                    # Restricción 6: No enviar más ambulancias de las necesarias para k = 1
-                    for i in I: 
-                        if S[s][i-1][0] != 0: 
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c6")   
+                    # # Restricción 6: No enviar más ambulancias de las necesarias para k = 1
+                    # for i in I: 
+                    #     if S[s][i-1][0] != 0: 
+                    #         model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c6")   
                     
                     # # # Restricción 6: No enviar más ambulancias de las necesarias
                     # # amb1 = gp.LinExpr()
@@ -330,10 +330,10 @@ for iconj in range(len(tamaños_I)):
                     # #         amb1 = gp.quicksum(y_vars[s+1,l,k,i] for l in L)
                     # #         model.addConstr(amb1 <= S[s][i-1][k-1], "c6")
                             
-                    # Restricción 7: No enviar más ambulancias de las necesarias para k = 2
-                    for i in I:
-                        if S[s][i-1][1] != 0:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) <= S[s][i-1][1], "c7")
+                    # # Restricción 7: No enviar más ambulancias de las necesarias para k = 2
+                    # for i in I:
+                    #     if S[s][i-1][1] != 0:
+                    #         model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L) <= S[s][i-1][1], "c7")
                             
                     # Restricción 8: No exceder cli para k = 1
                     for l in L:
@@ -386,21 +386,21 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][1] != 0:
                             model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L) + gamma_vars[s+1,2,i] == S[s][i-1][1], "c13") 
                     
-                    # Restricción 14: No enviar más ambulancias de las necesarias para k = 1
-                    for i in I: 
-                        if S[s][i-1][0] != 0: 
-                            model.addConstr(gp.quicksum(v_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c14") 
+                    # # Restricción 14: No enviar más ambulancias de las necesarias para k = 1
+                    # for i in I: 
+                    #     if S[s][i-1][0] != 0: 
+                    #         model.addConstr(gp.quicksum(v_vars[s+1,l,1,i] for l in L) <= S[s][i-1][0], "c14") 
                   
                     # # # Restricción 11: 
                     # # for i in I:
                     # #     for k in K:
                     # #         model.addConstr(gp.quicksum(v_vars[s+1,l,k,i] for l in L) <= S[s][i-1][k-1], "c11")   
                     
-                    # Restricción 15: No enviar más ambulancias de las necesarias para k = 2
+                    # # Restricción 15: No enviar más ambulancias de las necesarias para k = 2
                     
-                    for i in I:
-                        if S[s][i-1][1] != 0 :
-                            model.addConstr(gp.quicksum(v_vars[s+1,l,2,i] for l in L)  <= S[s][i-1][1], "c15")
+                    # for i in I:
+                    #     if S[s][i-1][1] != 0 :
+                    #         model.addConstr(gp.quicksum(v_vars[s+1,l,2,i] for l in L)  <= S[s][i-1][1], "c15")
                      
                     # Restricción 16: No enviar más de las necesarias y + v para k = 1
                     for i in I: 
