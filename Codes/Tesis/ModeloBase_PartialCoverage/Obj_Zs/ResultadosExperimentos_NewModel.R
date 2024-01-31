@@ -16,7 +16,9 @@ len_S <- c(10, 50, 100, 150, 200)
 # time value graphics
 counti = 0
 #for (i in len_I){
-
+#pdf(paste("Timeval_NewModel_Supuesto_160124_",eta[1],"_",eta[2],".pdf", sep=""))
+pdf(paste("Timeval_NewModel_Supuesto_160124.pdf", sep=""), width = 19.5)
+par(mfrow = c(1, 3))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
@@ -39,11 +41,15 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
-  pdf(paste("Timeval_NewModel_Supuesto_160124_",eta[1],"_",eta[2],".pdf", sep=""))
-  plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 100),
-       xlab="demand points", ylab="runtime in seconds", xaxt = "n",
-       main=paste("Runtime for",len_L[1],"potential sites \n considering",eta[1],
-                  "BLS and",eta[2],"ALS ambulances", sep=" "))
+  if(a == 1){
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70),
+         xlab="demand points", ylab="runtime in seconds", xaxt = "n",
+         main=paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "))
+  } else{
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70),
+         xlab="demand points", xaxt = "n", yaxt = "n", ylab = NA,
+         main=paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "))
+  }
   axis(1, at=1:5, labels=len_I)
   lines(matrix[1:5], lwd=3, col=1)
   points(matrix[6:10], pch=16, cex=1.5, col=2)
@@ -58,10 +64,11 @@ for (a in 1:length(amb[,1])){
   lines(matrix[26:30], lwd=3, col=7)
   points(matrix[31:35], pch=20, cex=1.5, col=8)
   lines(matrix[31:35], lwd=3, col=8)
-  legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios")
-  dev.off()
+  legend(x="topleft", legend = len_S, horiz=TRUE, cex = 1,
+         fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   counti = counti+1
 }
+dev.off()
 #}
 
 
@@ -250,13 +257,21 @@ colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % 
 write.csv(prom_coverage, file = paste('MeanCoverageTotal_Obj_NewModel_Supuesto_160124_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
+pdf(paste("Coverage_NewModel_Supuesto_160124.pdf", sep=""), width = 19.5)
+par(mfrow = c(1, 3))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
-  pdf(paste("Coverage_NewModel_Supuesto_160124_",eta[1],"_",eta[2],".pdf", sep=""))
-  plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
-       ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
-       main=paste("Mean coverage percentage for",len_L[1],"potential sites \n considering",eta[1],
-                  "BLS and",eta[2],"ALS ambulances", sep=" "))
+  #pdf(paste("Coverage_NewModel_Supuesto_160124_",eta[1],"_",eta[2],".pdf", sep=""))
+  if(a == 1){
+    plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
+         ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
+         main=paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "))
+  } else{
+    plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
+         ylim=c(0, 100), ylab=NA, xlab = "Coverage type", xaxt = "n", yaxt="n",
+         main=paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "))
+  }
+  
 
   axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
   lines(as.integer(prom_coverage[a*5-4, 5:9]), lwd=3, col=1)
@@ -268,7 +283,8 @@ for (a in 1:length(amb[,1])){
   lines(as.integer(prom_coverage[a*5-1, 5:9]), lwd=3, col=4)
   points(as.integer(prom_coverage[a*5, 5:9]), pch=19, cex=1.5, col=6)
   lines(as.integer(prom_coverage[a*5, 5:9]), lwd=3, col=6)
-  legend(x="topleft", legend = len_I, cex=0.75, fill = c(1, 2, 3, 4, 6),
+  legend(x="topleft", legend = len_I, cex=1, horiz=TRUE, fill = c(1, 2, 3, 4, 6),
          title = "Demand points", bty="n")
-  dev.off()
+  #dev.off()
 }
+dev.off()

@@ -27,9 +27,9 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [168] #Aquí batalla pero sí lo hace aún
+# tamaños_I = [168, 270] #Aquí batalla pero sí lo hace aún
 # tamaños_L = [16]
-# tamaños_S = [10]
+# tamaños_S = [10, 50, 100]
 
 tamaños_I = [168, 270, 500, 900, 1500] 
 tamaños_L = [16]
@@ -49,7 +49,7 @@ w_vars = [0.7, 0.3]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_NewModel_NewModel_160124', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_NewModel_NewModel_300124', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -415,29 +415,29 @@ for iconj in range(len(tamaños_I)):
                             model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] + v_vars[s+1,l,2,i] for l in L)  <= S[s][i-1][1], "c17")
                      
                     
-                    # Restricción 18: 
-                    for i in I: 
-                        if S[s][i-1][0] != 0: 
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) <= x_vars[l,1], "c18") 
+                    # # Restricción 18: 
+                    # for i in I: 
+                    #     if S[s][i-1][0] != 0: 
+                    #         model.addConstr(gp.quicksum(y_vars[s+1,l,1,i] for l in L) <= x_vars[l,1], "c18") 
                             
                     
-                    # Restricción 19: 
+                    # # Restricción 19: 
                     
-                    for i in I:
-                        if S[s][i-1][1] != 0:
-                            model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L)  <= x_vars[l,2], "c19")
+                    # for i in I:
+                    #     if S[s][i-1][1] != 0:
+                    #         model.addConstr(gp.quicksum(y_vars[s+1,l,2,i] for l in L)  <= x_vars[l,2], "c19")
                         
-                    # Restricción 20: 
-                    for i in I: 
-                        if S[s][i-1][0] != 0: 
-                            model.addConstr(gp.quicksum(v_vars[s+1,l,1,i] for l in L) <= x_vars[l,1], "c20") 
+                    # # Restricción 20: 
+                    # for i in I: 
+                    #     if S[s][i-1][0] != 0: 
+                    #         model.addConstr(gp.quicksum(v_vars[s+1,l,1,i] for l in L) <= x_vars[l,1], "c20") 
                             
                     
-                    # Restricción 21: 
+                    # # Restricción 21: 
                     
-                    for i in I:
-                        if S[s][i-1][1] != 0:
-                            model.addConstr(gp.quicksum(v_vars[s+1,l,2,i] for l in L)  <= x_vars[l,2], "c21")
+                    # for i in I:
+                    #     if S[s][i-1][1] != 0:
+                    #         model.addConstr(gp.quicksum(v_vars[s+1,l,2,i] for l in L)  <= x_vars[l,2], "c21")
                         
                                            
                 # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
@@ -453,7 +453,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_NewModel_NewModel_160124_'+str(len(I))+str('_')
+                with open('data_NewModel_NewModel_300124_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -491,17 +491,17 @@ for iconj in range(len(tamaños_I)):
                 #Nombre: Resultados_I_L_M_N_S
                 
                 
-                model.write('model_NewModel_NewModel_160124_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                # model.write('model_NewModel_NewModel_300124_'+str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               #+str(len(K))+str('_')
+                #               #+str(len(N))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 
-                # model.write('model_NewModel_NewModel_160124_'+str(len(I))+str('_')
+                # model.write('model_NewModel_NewModel_300124_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
-                f = open ('Resultados_Prueba_NewModel_NewModel_160124_'
+                f = open ('Resultados_Prueba_NewModel_NewModel_300124_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -565,4 +565,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_NewModel_NewModel_160124_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
+                book.save('Tesis_NewModel_NewModel_300124_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
