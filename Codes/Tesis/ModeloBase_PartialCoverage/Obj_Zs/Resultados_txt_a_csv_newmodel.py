@@ -10,14 +10,14 @@ Created on Wed Nov 15 11:57:32 2023
 # tamaños_S = [10, 50, 100, 150, 200, 500]
 
 
-tamaños_I = [168, 270] 
-tamaños_L = [16]
-tamaños_S = [10, 50]
-
-
-# tamaños_I = [168, 270, 500, 900, 1500] 
+# tamaños_I = [168, 270] 
 # tamaños_L = [16]
-# tamaños_S = [10, 50, 100, 150, 200]
+# tamaños_S = [10, 50]
+
+
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [16]
+tamaños_S = [10, 50, 100, 150, 200]
 
 amb = [[10, 6], [20, 11], [35,20]] 
 #amb = [[10,6]]
@@ -34,7 +34,7 @@ for iconj in range(len(tamaños_I)):
                 eta = amb[a]
                 
                 
-                archivo = open('Resultados_Prueba_NewModel_NewModel_300124_'
+                archivo = open('Resultados_Prueba_NewModel_NewModel_060224_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -44,7 +44,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_Obj_NewModel_NewModel_300124_'
+                f = open ('Location_Obj_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -57,7 +57,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('OnTime_Obj_NewModel_NewModel_300124_'
+                g = open ('OnTime_Obj_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -82,7 +82,7 @@ for iconj in range(len(tamaños_I)):
                 g.close()
                 
                
-                h = open ('Delayed_Obj_NewModel_NewModel_300124_'
+                h = open ('Delayed_Obj_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -106,7 +106,7 @@ for iconj in range(len(tamaños_I)):
                 h.close()
                 
                 
-                r = open ('NotAssigned_Obj_NewModel_NewModel_300124_'
+                r = open ('NotAssigned_Obj_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -156,12 +156,12 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                     
                     
-                u = open ('Accidents_NewModel_NewModel_300124_'
+                u = open ('Accidents_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
                 
-                v = open ('I_Accidents_NewModel_NewModel_300124_'
+                v = open ('I_Accidents_NewModel_NewModel_060224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')

@@ -26,13 +26,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-# tamaños_I = [168, 270, 500, 900, 1500] 
-# tamaños_L = [16]
-# tamaños_S = [10, 50, 100, 150, 200]
-
-tamaños_I = [168] 
+tamaños_I = [168, 270, 500, 900, 1500] 
 tamaños_L = [16]
-tamaños_S = [10]
+tamaños_S = [10, 50, 100, 150, 200]
+
+# tamaños_I = [168] 
+# tamaños_L = [16]
+# tamaños_S = [10]
 
 K = [1,2]
 
@@ -49,7 +49,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Obj_Zs_160124', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Obj_Zs_060224', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -432,7 +432,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Obj_Zs_160124_'+str(len(I))+str('_')
+                with open('data_Obj_Zs_060224_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -469,7 +469,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_Obj_Zs_160124_'
+                f = open ('Resultados_Prueba_ObjZs_Scenarios_060224_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -524,12 +524,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                # coberturas = open ('Coberturas_Obj_Zs_160124_'
+                # coberturas = open ('Coberturas_Obj_Zs_060224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                # lectura = open ('Resultados_Prueba_Obj_Zs_160124_'
+                # lectura = open ('Resultados_Prueba_Obj_Zs_060224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -1023,4 +1023,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_Obj_Zs_160124_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Obj_Zs_060224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
