@@ -1,4 +1,4 @@
-Elapsed time: 5.359842777252197
+Elapsed time: 3.1391119956970215
 Obj: 4.6525
 located 1 1 0
 located 1 2 0
@@ -9567,7 +9567,7 @@ Partial3 1 78 0
 Partial3 1 81 0
 Partial3 1 82 0
 Partial3 1 84 0
-Partial3 1 85 -0
+Partial3 1 85 0
 Partial3 1 87 0
 Partial3 1 88 0
 Partial3 1 97 0
@@ -9575,7 +9575,7 @@ Partial3 1 98 -0
 Partial3 1 104 0
 Partial3 1 107 0
 Partial3 1 110 0
-Partial3 1 130 -0
+Partial3 1 130 0
 Partial3 1 136 0
 Partial3 2 51 0
 Partial3 2 57 0
