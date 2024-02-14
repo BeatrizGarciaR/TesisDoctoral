@@ -18,7 +18,7 @@ counti = 0
     # run time
     eta <- amb[a,]
     filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-    aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_060224_AllAmb.csv', sep="")))
+    aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_Scenarios_060224_AllAmb.csv', sep="")))
 
     aux <- as.data.frame(aux_0[filas, c(2,4,6)])
     matrix <- matrix(nrow=5, ncol=5)
@@ -149,7 +149,7 @@ for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_060224_AllAmb.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Obj_Zs_Scenarios_060224_AllAmb.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix <- matrix(nrow=5, ncol=5)
   colnames(matrix) <- len_S

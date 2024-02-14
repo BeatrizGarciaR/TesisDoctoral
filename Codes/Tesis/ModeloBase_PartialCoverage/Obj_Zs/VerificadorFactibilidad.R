@@ -26,11 +26,11 @@ for (i in len_I){
         k2_located = 0
         located <- delayed <- as.data.frame(read.table(paste("Location_ObjZs_Scenarios_060224_", i,"_", len_L[1],"_", s, "_", eta[1], "_", eta[2],".txt", sep="")))
         for (locate in 1:length(located[,1])){
-          if(located[locate,2] == 1){
-            k1_located = k1_located + located[locate,3]
+          if(located[locate,3] == 1){
+            k1_located = k1_located + located[locate,4]
           }
-          if(located[locate,2] == 2){
-            k2_located = k2_located + located[locate,3]
+          if(located[locate,3] == 2){
+            k2_located = k2_located + located[locate,4]
           }
         }
         if (k1_located <= eta[1]){
@@ -49,6 +49,10 @@ for (i in len_I){
         dispatch <- as.data.frame(read.table(paste("Dispatch_ObjZs_Scenarios_060224_", i,"_", len_L[1],"_", s, "_", eta[1], "_", eta[2],".txt", sep="")))
         new_dispatch <- subset(dispatch, dispatch[,6] == 1)
         
+        k1_del_fact <- c()
+        k2_del_fact <- c()
+        k1_ont_fact <- c()
+        k2_ont_fact <- c()
         k1_disp_fact <- c()
         k2_disp_fact <- c()
         
