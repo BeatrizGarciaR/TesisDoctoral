@@ -349,7 +349,7 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(beta_vars[s+1,i] <= 100000000(suma_beta - suma_beta_aux), "c8" )
+                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
            
                     
            
@@ -427,7 +427,7 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(phi_vars[s+1,i] <= 1000000000000(suma_phi3 - suma_phi3_aux), "c_12")    
+                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
                     
                     # Restricción 16: Activar gamma (cobertura nula)
                     suma_gamma = gp.LinExpr()
