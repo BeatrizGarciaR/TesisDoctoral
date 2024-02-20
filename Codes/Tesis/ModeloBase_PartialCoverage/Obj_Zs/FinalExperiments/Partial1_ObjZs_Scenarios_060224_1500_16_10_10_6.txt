@@ -206,7 +206,7 @@ Partial1 4 1203 0
 Partial1 4 1209 0
 Partial1 4 1212 0
 Partial1 4 1236 0
-Partial1 4 1240 0
+Partial1 4 1240 1
 Partial1 5 291 0
 Partial1 5 293 0
 Partial1 5 295 0
@@ -262,7 +262,7 @@ Partial1 5 1099 0
 Partial1 5 1184 0
 Partial1 5 1191 0
 Partial1 5 1208 0
-Partial1 5 1212 0
+Partial1 5 1212 1
 Partial1 5 1222 0
 Partial1 6 285 0
 Partial1 6 300 0
@@ -322,7 +322,7 @@ Partial1 6 1210 0
 Partial1 6 1226 0
 Partial1 6 1228 0
 Partial1 6 1237 0
-Partial1 6 1241 0
+Partial1 6 1241 1
 Partial1 7 273 0
 Partial1 7 297 0
 Partial1 7 306 0
@@ -373,7 +373,7 @@ Partial1 7 1227 0
 Partial1 7 1229 0
 Partial1 7 1231 0
 Partial1 7 1232 0
-Partial1 7 1233 0
+Partial1 7 1233 1
 Partial1 8 277 0
 Partial1 8 286 0
 Partial1 8 327 0
@@ -467,7 +467,7 @@ Partial1 9 1224 0
 Partial1 9 1227 0
 Partial1 9 1229 0
 Partial1 9 1244 0
-Partial1 10 276 -0
+Partial1 10 276 0
 Partial1 10 284 0
 Partial1 10 285 0
 Partial1 10 300 0

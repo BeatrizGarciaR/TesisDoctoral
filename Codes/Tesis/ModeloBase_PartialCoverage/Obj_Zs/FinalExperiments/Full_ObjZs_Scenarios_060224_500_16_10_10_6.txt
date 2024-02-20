@@ -26,10 +26,10 @@ Full 1 322 0
 Full 1 323 0
 Full 1 346 0
 Full 1 349 0
-Full 1 350 0
-Full 1 466 0
-Full 1 473 0
-Full 1 477 0
+Full 1 350 1
+Full 1 466 1
+Full 1 473 1
+Full 1 477 -0
 Full 1 479 0
 Full 2 7 0
 Full 2 21 0
@@ -87,7 +87,7 @@ Full 3 352 0
 Full 3 353 0
 Full 3 356 0
 Full 3 364 0
-Full 3 469 0
+Full 3 469 1
 Full 3 483 0
 Full 4 9 0
 Full 4 10 0
