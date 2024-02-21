@@ -4,8 +4,8 @@ located 2 1 -0
 located 2 2 -0
 located 3 1 -0
 located 3 2 -0
-located 4 1 0
-located 4 2 0
+located 4 1 -0
+located 4 2 -0
 located 5 1 -0
 located 5 2 -0
 located 6 1 -0
@@ -21,12 +21,12 @@ located 10 2 -0
 located 11 1 1
 located 11 2 0
 located 12 1 1
-located 12 2 1
+located 12 2 -0
 located 13 1 1
-located 13 2 1
+located 13 2 -0
 located 14 1 1
-located 14 2 1
+located 14 2 2
 located 15 1 1
 located 15 2 2
 located 16 1 1
-located 16 2 1
+located 16 2 2
