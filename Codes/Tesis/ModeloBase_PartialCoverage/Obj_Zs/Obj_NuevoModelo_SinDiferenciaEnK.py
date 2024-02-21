@@ -32,7 +32,7 @@ import xlwt
 # tamaños_S = [10]
 
 tamaños_I = [168, 270, 500, 900, 1500] 
-tamaños_L = [16]
+tamaños_L = [30]
 tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
@@ -49,7 +49,7 @@ w_vars = [0.7, 0.3]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_NewModel_NewModel_060224', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_NewModel_NewModel_070224', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -453,7 +453,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_NewModel_NewModel_060224_'+str(len(I))+str('_')
+                with open('data_NewModel_NewModel_070224_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -491,17 +491,17 @@ for iconj in range(len(tamaños_I)):
                 #Nombre: Resultados_I_L_M_N_S
                 
                 
-                # model.write('model_NewModel_NewModel_060224_'+str(len(I))+str('_')
+                # model.write('model_NewModel_NewModel_070224_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               #+str(len(K))+str('_')
                 #               #+str(len(N))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 
-                # model.write('model_NewModel_NewModel_060224_'+str(len(I))+str('_')
+                # model.write('model_NewModel_NewModel_070224_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
-                f = open ('Resultados_Prueba_NewModel_NewModel_060224_'
+                f = open ('Resultados_Prueba_NewModel_NewModel_070224_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -565,4 +565,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_NewModel_NewModel_060224_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
+                book.save('Tesis_NewModel_NewModel_070224_'+str(eta[0])+'_'+str(eta[1])+'.csv') 
