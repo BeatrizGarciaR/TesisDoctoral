@@ -27,7 +27,7 @@ import xlwt
 # tamaños_S = [150, 200]
 
 tamaños_I = [168, 270, 500, 900, 1500] 
-tamaños_L = [16]
+tamaños_L = [30]
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168] 
@@ -49,7 +49,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Obj_Zs_060224', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Obj_Zs_070224', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -429,7 +429,7 @@ for iconj in range(len(tamaños_I)):
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
                     
-                    # Restricción 16: Activar gamma (cobertura nula)
+                    # Restricción 13: Activar gamma (cobertura nula)
                     suma_gamma = gp.LinExpr()
                     for i in I:
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -437,12 +437,12 @@ for iconj in range(len(tamaños_I)):
                                 suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_16")
+                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
                             
-                    #Restricción 17: Solo se puede activar un tipo de cobertura     
+                    #Restricción 14: Solo se puede activar un tipo de cobertura     
                     for i in I:
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_18")
+                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
                     
                     
                 # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
@@ -458,7 +458,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Obj_Zs_060224_'+str(len(I))+str('_')
+                with open('data_Obj_Zs_070224_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -495,7 +495,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_060224_'
+                f = open ('Resultados_Prueba_ObjZs_Scenarios_070224_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -550,12 +550,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                # coberturas = open ('Coberturas_Obj_Zs_060224_'
+                # coberturas = open ('Coberturas_Obj_Zs_070224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                # lectura = open ('Resultados_Prueba_Obj_Zs_060224_'
+                # lectura = open ('Resultados_Prueba_Obj_Zs_070224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -1049,4 +1049,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_Obj_Zs_060224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Obj_Zs_070224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
