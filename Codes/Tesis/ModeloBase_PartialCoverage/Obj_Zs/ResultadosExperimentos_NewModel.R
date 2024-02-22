@@ -9,20 +9,20 @@ amb <- rbind(c(10, 6), c(20, 11), c(35,20))
 # len_S <- c(10, 50, 100, 150, 200, 500)
 
 len_I <- c(168, 270, 500, 900, 1500)
-len_L <- c(16)
+len_L <- c(30)
 len_S <- c(10, 50, 100, 150, 200)
 
 
 # objective value graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_NewModel_Supuesto_060224.pdf", sep=""), width = 20)
+pdf(paste("Objective_NewModel_Supuesto_070224.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_NewModel_Supuesto_060224_35_20.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_NewModel_Supuesto_070224_35_20.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix <- matrix(nrow=5, ncol=5)
   colnames(matrix) <- len_S
@@ -42,12 +42,12 @@ for (a in 1:length(amb[,1])){
   }
 
   if(a == 1){
-    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2,max(matrix)+2),
-         cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value", 
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-20,max(matrix)+2),
+         cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
-    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2,max(matrix)+2),
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-20,max(matrix)+2),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
@@ -96,25 +96,25 @@ dev.off()
 # objective value graphics scenarios vs demand points
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_NewModel_Supuesto_060224_1.pdf", sep=""), width = 20)
+pdf(paste("Objective_NewModel_Supuesto_070224_1.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   matrix_1 <- t(matrix)
-  
+
   if(a == 1){
-    plot(matrix_1[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_1)-2,max(matrix_1)+2),
-         cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value", 
+    plot(matrix_1[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_1)-20,max(matrix_1)+2),
+         cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
-    plot(matrix_1[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_1)-2,max(matrix_1)+2),
-         cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
+    plot(matrix_1[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_1)-20,max(matrix_1)+2),
+         cex.lab=2.7, cex.axis = 2.5,xlab="scenarios", xaxt = "n",
          ylab="objective value", tck = 0.02)
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
-  axis(1, at=1:5, labels=len_I, cex.axis = 2.5, tck = 0.02)
+  axis(1, at=1:5, labels=len_S, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix_bestbound)+2),
   #      xlab="demand points", ylab="objective value", xaxt = "n",
@@ -140,8 +140,8 @@ for (a in 1:length(amb[,1])){
   lines(matrix_1[21:25], lwd=3, col=6)
   #points(matrix_bestbound[21:25], pch=19, cex=1.5, col=6)
   #lines(matrix_bestbound[21:25], lwd=3, col=6, lty=2)
-  legend(x="bottomright", legend = len_S, horiz=TRUE, cex = 2.3,
-         fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
+  legend(x="bottomright", legend = len_I, horiz=TRUE, cex = 2.3,
+         fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   # legend(x = "bottomright",         # Posición
   #        legend = c("best objective", "best bound"), # Textos de la leyenda
@@ -159,14 +159,14 @@ dev.off()
 ### CUANDO SI TIENE TODOS LOS DATOS EN LAS 3 GRAFICAS
 counti = 0
 #for (i in len_I){
-###pdf(paste("Timeval_NewModel_Supuesto_060224_",eta[1],"_",eta[2],".pdf", sep=""))
-pdf(paste("Timeval_NewModel_Supuesto_060224.pdf", sep=""), width = 20)
+###pdf(paste("Timeval_NewModel_Supuesto_070224_",eta[1],"_",eta[2],".pdf", sep=""))
+pdf(paste("Timeval_NewModel_Supuesto_070224.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_NewModel_Supuesto_060224_35_20.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_NewModel_Supuesto_070224_35_20.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(3,4,10)])
   matrix <- matrix(nrow=5, ncol=5)
   colnames(matrix) <- len_S
@@ -185,11 +185,11 @@ for (a in 1:length(amb[,1])){
     }
   }
   if(a == 1){
-    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70), cex.lab=2.7, cex.axis = 2.5,
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2,max(matrix)+20), cex.lab=2.7, cex.axis = 2.5,
          xlab="demand points", ylab="runtime in seconds", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
-    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70), cex.lab=2.7, cex.axis = 2.5,
+    plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2,max(matrix)+20), cex.lab=2.7, cex.axis = 2.5,
          xlab="demand points", xaxt = "n",ylab="runtime in seconds", tck = 0.02)
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
@@ -219,18 +219,18 @@ dev.off()
 ### CUANDO SI TIENE TODOS LOS DATOS EN LAS 3 GRAFICAS
 counti = 0
 #for (i in len_I){
-###pdf(paste("Timeval_NewModel_Supuesto_060224_",eta[1],"_",eta[2],".pdf", sep=""))
-pdf(paste("Timeval_NewModel_Supuesto_060224_1.pdf", sep=""), width = 20)
+###pdf(paste("Timeval_NewModel_Supuesto_070224_",eta[1],"_",eta[2],".pdf", sep=""))
+pdf(paste("Timeval_NewModel_Supuesto_070224_1.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta <- amb[a,]
   matrix_new <- t(matrix)
   if(a == 1){
-    plot(matrix_new[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70), cex.lab=2.7, cex.axis = 2.5,
+    plot(matrix_new[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_new)-2,max(matrix_new)+20), cex.lab=2.7, cex.axis = 2.5,
          xlab="scenarios", ylab="runtime in seconds", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
-    plot(matrix_new[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 70), cex.lab=2.7, cex.axis = 2.5,
+    plot(matrix_new[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix_new)-2,max(matrix_new)+20), cex.lab=2.7, cex.axis = 2.5,
          xlab="scenarios", xaxt = "n",ylab="runtime in seconds", tck = 0.02)
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
@@ -264,23 +264,23 @@ for (a in 1:length(amb[,1])){
     for (l in len_L){
       for (s in len_S){
 
-        print(paste('I_Accidents_NewModel_060224_', i,'_',l,'_',s,eta[1],'_',eta[2],'.txt'))
+        print(paste('I_Accidents_NewModel_070224_', i,'_',l,'_',s,eta[1],'_',eta[2],'.txt'))
 
-        accident_aux <- as.data.frame(read.table(paste('I_Accidents_NewModel_Supuesto_060224_', i,'_',l,'_',s,'.txt', sep="")))
-        accidents <- as.data.frame(read.table(paste('Accidents_NewModel_Supuesto_060224_', i,'_',l,'_',s,'.txt', sep="")))
+        accident_aux <- as.data.frame(read.table(paste('I_Accidents_NewModel_Supuesto_070224_', i,'_',l,'_',s,'.txt', sep="")))
+        accidents <- as.data.frame(read.table(paste('Accidents_NewModel_Supuesto_070224_', i,'_',l,'_',s,'.txt', sep="")))
 
 
-        aux_0 <- as.data.frame(read.table(paste('OnTime_Obj_NewModel_Supuesto_060224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
+        aux_0 <- as.data.frame(read.table(paste('OnTime_Obj_NewModel_Supuesto_070224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_0 <- aux_0[,-2]
         colnames(aux_0) <- c("S", "L", "K", "I", "OnTime")
 
 
-        aux_1 <- as.data.frame(read.table(paste('Delayed_Obj_NewModel_Supuesto_060224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
+        aux_1 <- as.data.frame(read.table(paste('Delayed_Obj_NewModel_Supuesto_070224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_1 <- aux_1[,-2]
         colnames(aux_1) <- c("S", "L", "K", "I", "Delayed")
 
 
-        aux_2 <- as.data.frame(read.table(paste('NotAssigned_Obj_NewModel_Supuesto_060224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
+        aux_2 <- as.data.frame(read.table(paste('NotAssigned_Obj_NewModel_Supuesto_070224_',i,'_',l,'_',s,'_',eta[1],'_',eta[2],'.txt', sep="")))
         aux_2 <- aux_2[,-2]
         colnames(aux_2) <- c("S", "L", "K", "I", "NotAssigned")
 
@@ -408,12 +408,12 @@ for (a in 1:length(amb[,1])){
     }
   }
   colnames(accidents_covered) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage")
-  write.csv(accidents_covered, file = paste('ExpectedCoverage_Obj_NewModel_Supuesto_060224_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+  write.csv(accidents_covered, file = paste('ExpectedCoverage_Obj_NewModel_Supuesto_070224_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
   aux <- cbind(accidents_covered, eta[1], eta[2])
   colnames(aux) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage", "BLS ambulances", "ALS ambulances")
   accidents_covered_total <- rbind(accidents_covered_total, aux)
 }
-write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_Obj_NewModel_Supuesto_060224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_Obj_NewModel_Supuesto_070224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 ###### IR CAMBIANDO ESTO POR LOS L ############
@@ -438,22 +438,22 @@ for (a in 1:length(amb[,1])){
   }
 }
 colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage, file = paste('MeanCoverageTotal_Obj_NewModel_Supuesto_060224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(prom_coverage, file = paste('MeanCoverageTotal_Obj_NewModel_Supuesto_070224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 # MEAN COVERAGE BY SCENARIOS
-pdf(paste("Coverage_NewModel_Supuesto_060224.pdf", sep=""), width = 20)
+pdf(paste("Coverage_NewModel_Supuesto_070224.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
-  #pdf(paste("Coverage_NewModel_Supuesto_060224_",eta[1],"_",eta[2],".pdf", sep=""))
+  #pdf(paste("Coverage_NewModel_Supuesto_070224_",eta[1],"_",eta[2],".pdf", sep=""))
   if(a == 1){
     plot(as.numeric(prom_coverage[(a*5-4), 5:9]), pch=15, col=1, cex=1.5, cex.lab=2.7, cex.axis = 2.5,
          ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(as.numeric(prom_coverage[(a*5-4), 5:9]), pch=15, col=1, cex=1.5, cex.lab=2.7, cex.axis = 2.5,
-         ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", yaxt="n", xaxt= "n", tck = 0.02) #ann = FALSE,
+         ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   }
 
@@ -493,21 +493,21 @@ for (a in 1:length(amb[,1])){
   }
 }
 colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_Obj_NewModel_Supuesto_060224_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_Obj_NewModel_Supuesto_070224_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 # MEAN COVERAGE BY DEMAND POINTS
-pdf(paste("Coverage_NewModel_Supuesto_060224_1.pdf", sep=""), width = 20)
+pdf(paste("Coverage_NewModel_Supuesto_070224_1.pdf", sep=""), width = 20)
 par(mfrow = c(1, 3), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
-  #pdf(paste("Coverage_NewModel_Supuesto_060224_",eta[1],"_",eta[2],".pdf", sep=""))
+  #pdf(paste("Coverage_NewModel_Supuesto_070224_",eta[1],"_",eta[2],".pdf", sep=""))
   if(a == 1){
     plot(as.numeric(prom_coverage_1[(a*5-4), 5:9]), pch=15, col=1, cex=1.5, cex.lab=2.7, cex.axis = 2.5,
          ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(as.numeric(prom_coverage_1[(a*5-4), 5:9]), pch=15, col=1, cex=1.5, cex.lab=2.7, cex.axis = 2.5,
-         ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", yaxt="n", xaxt= "n", tck = 0.02) #ann = FALSE,
+         ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   }
 

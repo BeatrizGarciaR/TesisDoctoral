@@ -1,0 +1,12 @@
+2 Delayed_2 27 1 1088 1
+12 Delayed_12 25 1 412 1
+19 Delayed_19 13 1 796 1
+19 Delayed_19 17 1 210 1
+20 Delayed_20 2 1 640 1
+20 Delayed_20 22 1 882 1
+22 Delayed_22 25 1 863 1
+30 Delayed_30 2 1 477 1
+30 Delayed_30 23 1 693 1
+35 Delayed_35 13 1 476 1
+41 Delayed_41 1 1 995 1
+45 Delayed_45 7 1 566 1
