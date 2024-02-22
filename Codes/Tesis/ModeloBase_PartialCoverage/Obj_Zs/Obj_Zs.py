@@ -26,9 +26,9 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_I = [900] 
 tamaños_L = [30]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_S = [100, 150, 200]
 
 # tamaños_I = [168] 
 # tamaños_L = [16]
@@ -49,7 +49,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Obj_Zs_070224', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Obj_Zs_080224', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -1049,4 +1049,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_Obj_Zs_070224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Obj_Zs_080224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
