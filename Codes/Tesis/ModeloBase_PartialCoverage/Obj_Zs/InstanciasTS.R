@@ -5,7 +5,7 @@
 
 tamanos_I <- c(168, 270, 500, 900, 1500)
 tamanos_L <- c(16, 30, 50, 70, 100)
-tamanos_S <- c(10, 50, 100, 150, 200)
+tamanos_S <- c(60, 70, 80, 90)
 # tamanos_I <- c(168)
 # tamanos_L <- c(16)
 # tamanos_S <- c(10)
