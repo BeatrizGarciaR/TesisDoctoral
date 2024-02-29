@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr  7 03:26:13 2022
+Created on Wed Feb 28 14:13:46 2024
 
 @author: beatr
 """
+
+# EL MODELO 2 SIRVE COMO ENTRADA DEL MODELO 1
 
 ######################################################################
 ######################  INSTANCES ####################################
@@ -36,12 +38,12 @@ tamaños_S = [10]
 
 K = [1,2]
 
-timelim = 1800 #15 horas 
+timelim = 10800 #15 horas 
 rates = [0.4]
 verif = 0.4
 
-#ambulance = [[10,6], [20,11], [35,20]]
-ambulance = [[35,20]]
+#ambulance = [[10, 6], [20,11], [35,20]]
+ambulance = [[35, 20]]
 t = 10
 tmax = 30
 wi = [0.65, 0.2, 0.1, 0.05]
@@ -49,7 +51,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_ObjZs_Scenarios_280224', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_ObjZs_M2M1_280224', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -173,14 +175,27 @@ for iconj in range(len(tamaños_I)):
                 model._data = []
                 model._start = time.time()
                 
+                g = open('Location_Obj_NewModel_Supuesto_280224_'
+                         +str(tamaños_I[iconj])+str('_')
+                         +str(tamaños_L[jconj])+str('_')
+                         +str(tamaños_S[sconj])+'_'
+                         +str(eta[0])+'_'+str(eta[1])+'.txt')
+                
+                
                 # Create variables #
                 x_vars = {}
                 cantVarX = 0
                 for l in L:
                     for k in K:
-                        x_vars[l,k] = model.addVar(vtype=GRB.INTEGER, 
-                                         name="located "+str(l)+str(' ')+str(k))
+                        line = g.readline().strip().split()
+                        #print(line)
+                        #x_vars[l,k] = model.addVar(name="located "+str(l)+str(' ')+str(k))
+                        #print(int(line[len(line)-1]))
+                        x_vars[l,k] = int(line[len(line)-1])
                         cantVarX += 1
+                        
+                
+                g.close()
                         
                         
                 y_vars = {}    
@@ -269,13 +284,12 @@ for iconj in range(len(tamaños_I)):
                 
                 for s in range(len(S)):
                     
-                    # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                    for k in K:
-                        model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                    # for k in K:
+                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
                     
-                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1
-                    
-                    for l in L:
+                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                    for l in L: 
                         amb1 = gp.LinExpr()
                         for i in I:
                             if S[s][i-1][0] != 0:                            
@@ -283,7 +297,6 @@ for iconj in range(len(tamaños_I)):
                         model.addConstr(amb1 <= x_vars[l,1], "c4")
                     
                     # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                    
                     for l in L:
                         amb2 = gp.LinExpr()
                         for i in I:
@@ -295,9 +308,8 @@ for iconj in range(len(tamaños_I)):
                         
                     
                     # # Restricción 5: Desactivar alpha (cobertura total)
-                    
+                    # suma_alpha2 = gp.LinExpr()
                     # for i in I:
-                    #     suma_alpha2 = gp.LinExpr()
                     #     if S[s][i-1][0] + S[s][i-1][1] > 0:
                     #         if S[s][i-1][0] != 0:
                     #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
@@ -307,7 +319,6 @@ for iconj in range(len(tamaños_I)):
                     
                     
                     # Restricción 6: Desactivar alpha (cobertura total)
-                    
                     for i in I:
                         suma_alpha2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -331,7 +342,6 @@ for iconj in range(len(tamaños_I)):
                     
     
                     # Restricción 7: Desactivar beta (cobertura parcial 1)
-                    
                     for i in I:
                         suma_beta2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -344,7 +354,6 @@ for iconj in range(len(tamaños_I)):
                             
                             
                     # Restricción 8: Desactivar beta (cobertura parcial 1)
-                    
                     for i in I:
                         suma_beta = gp.LinExpr()
                         suma_beta_aux = gp.LinExpr()
@@ -360,7 +369,6 @@ for iconj in range(len(tamaños_I)):
                     
            
                     # Restricción 9: Desactivar delta (cobertura parcial 2)
-                    
                     for i in I:
                         suma_delta2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -384,7 +392,6 @@ for iconj in range(len(tamaños_I)):
                        
                               
                     # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                    
                     for i in I:
                         suma_delta3 = gp.LinExpr()
                         suma_delta3_aux = gp.LinExpr()
@@ -399,7 +406,6 @@ for iconj in range(len(tamaños_I)):
                             
                     
                     # Restricción 11: Desactivar phi (cobertura parcial 3)
-                    
                     for i in I:
                         suma_phi2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -426,7 +432,6 @@ for iconj in range(len(tamaños_I)):
                     
                
                     # Restricción 12: Desactivar phi (cobertura parcial 3)
-                    
                     for i in I:
                         suma_phi3 = gp.LinExpr()
                         suma_phi3_aux = gp.LinExpr()
@@ -440,7 +445,6 @@ for iconj in range(len(tamaños_I)):
                             model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
                     
                     # Restricción 13: Activar gamma (cobertura nula)
-                    
                     for i in I:
                         suma_gamma = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
@@ -469,7 +473,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                with open('data_ObjZs_M2M1_280224_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -506,7 +510,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_280224_'
+                f = open ('Resultados_Prueba_ObjZs_M2M1_280224_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -561,12 +565,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                # coberturas = open ('Coberturas_Obj_Zs_280224_'
+                # coberturas = open ('Coberturas_ObjZs_M2M1_280224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                # lectura = open ('Resultados_Prueba_Obj_Zs_280224_'
+                # lectura = open ('Resultados_Prueba_ObjZs_M2M1_280224_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -906,12 +910,12 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 
-                # model.write('model_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_M2M1_280224_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               #+str(len(K))+str('_')
                 #               #+str(len(N))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
-                # model.write('model_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_M2M1_280224_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
@@ -1060,4 +1064,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_ObjZs_Scenarios_280224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_ObjZs_M2M1_280224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
