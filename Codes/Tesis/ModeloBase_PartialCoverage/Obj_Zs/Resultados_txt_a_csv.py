@@ -9,8 +9,8 @@ Created on Mon Oct  9 11:50:21 2023
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168, 270, 500] 
-tamaños_L = [30]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168] 
@@ -20,7 +20,8 @@ tamaños_S = [10, 50, 100, 150, 200]
 rates = [0.4]
 verif = 0.4
 
-ambulance = [[10, 6], [20,11], [35,20]]
+#ambulance = [[10, 6], [20,11], [35,20]]
+ambulance = [[35,20]]
 
 for iconj in range(len(tamaños_I)):
     for jconj in range(len(tamaños_L)):
@@ -30,7 +31,7 @@ for iconj in range(len(tamaños_I)):
                 
                 eta = ambulance[k]
 
-                archivo = open('Resultados_Prueba_ObjZs_Scenarios_070224_'
+                archivo = open('Resultados_Prueba_ObjZs_Scenarios_280224_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -40,7 +41,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_ObjZs_Scenarios_070224_'
+                f = open ('Location_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -53,7 +54,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('Dispatch_ObjZs_Scenarios_070224_'
+                g = open ('Dispatch_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -65,7 +66,7 @@ for iconj in range(len(tamaños_I)):
                 g.close()
                 
                 
-                h = open ('Full_ObjZs_Scenarios_070224_'
+                h = open ('Full_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -76,7 +77,7 @@ for iconj in range(len(tamaños_I)):
                         
                 h.close()
                 
-                o = open ('Partial1_ObjZs_Scenarios_070224_'
+                o = open ('Partial1_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -88,7 +89,7 @@ for iconj in range(len(tamaños_I)):
                 o.close()
                 
                 
-                p = open ('Partial2_ObjZs_Scenarios_070224_'
+                p = open ('Partial2_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -100,7 +101,7 @@ for iconj in range(len(tamaños_I)):
                 p.close()
                 
                 
-                q = open ('Partial3_ObjZs_Scenarios_070224_'
+                q = open ('Partial3_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -112,7 +113,7 @@ for iconj in range(len(tamaños_I)):
                 q.close()
                     
                 
-                r = open ('Null_ObjZs_Scenarios_070224_'
+                r = open ('Null_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -139,12 +140,12 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                 
                 
-                un = open ('ScAccidents_ObjZs_Scenarios_070224_'
+                un = open ('ScAccidents_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
                 
-                u = open ('Accidents_ObjZs_Scenarios_'
+                u = open ('Accidents_ObjZs_Scenarios_280224'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
@@ -191,7 +192,7 @@ for iconj in range(len(tamaños_I)):
                 
                 # u.close()
                 
-                tim = open ('rli_ObjZs_Scenarios_070224_'
+                tim = open ('rli_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
@@ -200,7 +201,7 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                     tim.write(line_1)
                     
-                v = open ('Cli_ObjZs_Scenarios_070224_'
+                v = open ('Cli_ObjZs_Scenarios_280224_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
