@@ -36,7 +36,7 @@ tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
 
-timelim = 1800 #15 horas 
+timelim = 10800 #15 horas 
 rates = [0.4]
 verif = 0.4
 
