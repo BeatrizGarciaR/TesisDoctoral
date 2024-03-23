@@ -1880,7 +1880,7 @@ Full 52 355 0
 Full 52 358 0
 Full 52 367 0
 Full 52 387 1
-Full 52 416 1
+Full 52 416 0
 Full 52 450 0
 Full 52 455 1
 Full 53 158 0
@@ -2165,7 +2165,7 @@ Full 60 387 0
 Full 60 391 0
 Full 60 396 0
 Full 60 414 0
-Full 61 81 0
+Full 61 81 1
 Full 61 116 0
 Full 61 129 0
 Full 61 139 1
@@ -2652,7 +2652,7 @@ Full 74 248 0
 Full 74 251 0
 Full 74 252 0
 Full 74 256 0
-Full 74 258 0
+Full 74 258 1
 Full 74 261 0
 Full 74 293 0
 Full 74 297 1

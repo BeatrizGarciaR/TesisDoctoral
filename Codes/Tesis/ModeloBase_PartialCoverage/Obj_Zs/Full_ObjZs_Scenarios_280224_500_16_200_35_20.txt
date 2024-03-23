@@ -153,7 +153,7 @@ Full 4 339 1
 Full 4 360 0
 Full 4 362 1
 Full 4 367 0
-Full 4 394 0
+Full 4 394 -0
 Full 4 395 0
 Full 4 396 1
 Full 4 441 1
@@ -1391,7 +1391,7 @@ Full 37 381 0
 Full 38 58 0
 Full 38 64 0
 Full 38 72 0
-Full 38 88 -0
+Full 38 88 0
 Full 38 141 1
 Full 38 164 0
 Full 38 167 0
@@ -2194,7 +2194,7 @@ Full 59 175 0
 Full 59 179 0
 Full 59 190 0
 Full 59 191 0
-Full 59 199 1
+Full 59 199 -0
 Full 59 204 1
 Full 59 206 0
 Full 59 211 0
@@ -2221,7 +2221,7 @@ Full 59 328 0
 Full 59 369 0
 Full 59 370 0
 Full 59 394 1
-Full 59 398 -0
+Full 59 398 1
 Full 59 421 0
 Full 60 150 0
 Full 60 151 0
@@ -3076,7 +3076,7 @@ Full 83 263 0
 Full 83 264 1
 Full 83 275 0
 Full 83 276 0
-Full 83 280 0
+Full 83 280 1
 Full 83 281 1
 Full 83 288 0
 Full 83 299 1
@@ -3256,7 +3256,7 @@ Full 88 348 0
 Full 88 355 0
 Full 88 358 0
 Full 88 372 0
-Full 88 388 -0
+Full 88 388 0
 Full 88 402 0
 Full 88 452 0
 Full 89 131 0
@@ -3423,7 +3423,7 @@ Full 93 282 0
 Full 93 288 0
 Full 93 299 0
 Full 93 300 0
-Full 93 331 -0
+Full 93 331 0
 Full 93 350 0
 Full 93 364 1
 Full 93 374 0
@@ -5147,7 +5147,7 @@ Full 139 168 0
 Full 139 177 0
 Full 139 191 0
 Full 139 194 0
-Full 139 197 -0
+Full 139 197 0
 Full 139 211 0
 Full 139 226 0
 Full 139 235 0
@@ -5477,7 +5477,7 @@ Full 148 130 0
 Full 148 135 0
 Full 148 165 0
 Full 148 174 1
-Full 148 176 0
+Full 148 176 -0
 Full 148 184 0
 Full 148 201 0
 Full 148 210 1
@@ -5492,7 +5492,7 @@ Full 148 245 0
 Full 148 271 0
 Full 148 272 0
 Full 148 278 0
-Full 148 280 -0
+Full 148 280 0
 Full 148 283 0
 Full 148 287 1
 Full 148 298 1
@@ -5962,9 +5962,9 @@ Full 162 46 1
 Full 162 52 0
 Full 162 114 0
 Full 162 153 0
-Full 162 156 -0
+Full 162 156 1
 Full 162 159 1
-Full 162 182 1
+Full 162 182 -0
 Full 162 192 0
 Full 162 198 0
 Full 162 202 0
@@ -6503,7 +6503,7 @@ Full 177 333 0
 Full 177 336 0
 Full 177 342 1
 Full 177 362 0
-Full 177 382 0
+Full 177 382 -0
 Full 177 400 0
 Full 177 401 0
 Full 177 410 0
@@ -7176,13 +7176,13 @@ Full 196 263 0
 Full 196 267 0
 Full 196 273 0
 Full 196 278 0
-Full 196 281 1
+Full 196 281 0
 Full 196 283 0
 Full 196 286 0
 Full 196 295 1
 Full 196 361 0
 Full 196 370 0
-Full 196 376 0
+Full 196 376 1
 Full 196 378 0
 Full 196 388 1
 Full 196 392 0
@@ -7266,7 +7266,7 @@ Full 198 316 0
 Full 198 327 0
 Full 198 337 1
 Full 198 340 1
-Full 198 345 0
+Full 198 345 -0
 Full 198 346 0
 Full 198 348 0
 Full 198 351 0

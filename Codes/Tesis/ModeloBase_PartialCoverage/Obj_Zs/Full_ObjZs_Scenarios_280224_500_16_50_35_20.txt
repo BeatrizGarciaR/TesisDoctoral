@@ -1359,7 +1359,7 @@ Full 39 279 0
 Full 39 290 0
 Full 39 291 0
 Full 39 298 1
-Full 39 306 -0
+Full 39 306 0
 Full 39 307 0
 Full 39 309 1
 Full 39 311 0

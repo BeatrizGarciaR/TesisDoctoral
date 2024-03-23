@@ -5,7 +5,7 @@ Full 1 120 0
 Full 1 137 0
 Full 1 145 1
 Full 1 154 1
-Full 1 157 0
+Full 1 157 1
 Full 1 171 0
 Full 1 174 1
 Full 1 176 1
@@ -65,7 +65,7 @@ Full 2 378 0
 Full 2 381 0
 Full 2 396 0
 Full 2 398 0
-Full 2 400 0
+Full 2 400 1
 Full 2 413 1
 Full 2 414 0
 Full 2 455 1
@@ -164,7 +164,7 @@ Full 5 292 1
 Full 5 343 1
 Full 5 349 1
 Full 5 363 0
-Full 5 370 1
+Full 5 370 0
 Full 5 386 1
 Full 5 387 0
 Full 5 395 0
@@ -206,7 +206,7 @@ Full 6 378 0
 Full 6 387 1
 Full 6 388 0
 Full 6 389 1
-Full 6 401 0
+Full 6 401 1
 Full 6 404 1
 Full 6 420 0
 Full 6 424 1
@@ -330,7 +330,7 @@ Full 10 132 0
 Full 10 139 0
 Full 10 141 0
 Full 10 147 0
-Full 10 149 1
+Full 10 149 0
 Full 10 154 1
 Full 10 158 1
 Full 10 161 0
@@ -344,7 +344,7 @@ Full 10 200 0
 Full 10 203 0
 Full 10 204 0
 Full 10 250 1
-Full 10 254 0
+Full 10 254 1
 Full 10 263 0
 Full 10 278 0
 Full 10 284 1

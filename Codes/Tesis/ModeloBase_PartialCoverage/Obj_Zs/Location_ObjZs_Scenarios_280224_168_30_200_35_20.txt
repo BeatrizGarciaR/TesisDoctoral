@@ -3,7 +3,7 @@ located 1 2 1
 located 2 1 1
 located 2 2 -0
 located 3 1 2
-located 3 2 -0
+located 3 2 1
 located 4 1 1
 located 4 2 1
 located 5 1 2
@@ -23,15 +23,15 @@ located 11 2 1
 located 12 1 1
 located 12 2 1
 located 13 1 1
-located 13 2 1
+located 13 2 -0
 located 14 1 1
-located 14 2 -0
+located 14 2 1
 located 15 1 1
 located 15 2 1
 located 16 1 1
 located 16 2 -0
 located 17 1 1
-located 17 2 1
+located 17 2 -0
 located 18 1 1
 located 18 2 -0
 located 19 1 1

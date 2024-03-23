@@ -105,7 +105,7 @@ Full 3 380 0
 Full 3 395 0
 Full 3 397 0
 Full 3 411 0
-Full 3 417 0
+Full 3 417 -0
 Full 3 418 0
 Full 3 421 0
 Full 3 424 0
@@ -159,7 +159,7 @@ Full 4 383 0
 Full 4 386 1
 Full 4 390 0
 Full 4 393 1
-Full 4 394 0
+Full 4 394 -0
 Full 4 400 0
 Full 4 410 0
 Full 4 431 0
@@ -476,7 +476,7 @@ Full 11 291 0
 Full 11 299 0
 Full 11 310 0
 Full 11 324 0
-Full 11 331 0
+Full 11 331 1
 Full 11 334 0
 Full 11 339 0
 Full 11 346 0
@@ -1364,7 +1364,7 @@ Full 31 589 0
 Full 31 590 0
 Full 31 601 0
 Full 31 608 1
-Full 31 624 -0
+Full 31 624 0
 Full 31 627 0
 Full 31 655 0
 Full 31 680 0
@@ -4047,7 +4047,7 @@ Full 94 683 0
 Full 94 733 0
 Full 94 739 0
 Full 94 750 0
-Full 95 169 0
+Full 95 169 -0
 Full 95 199 1
 Full 95 237 1
 Full 95 247 0
@@ -4272,7 +4272,7 @@ Full 100 593 0
 Full 100 595 1
 Full 100 600 0
 Full 100 604 1
-Full 100 610 0
+Full 100 610 -0
 Full 100 616 1
 Full 100 687 0
 Full 100 691 1
@@ -4740,7 +4740,7 @@ Full 111 459 0
 Full 111 467 1
 Full 111 482 0
 Full 111 486 0
-Full 111 489 0
+Full 111 489 -0
 Full 111 541 1
 Full 111 560 0
 Full 111 563 0
@@ -5369,7 +5369,7 @@ Full 126 414 0
 Full 126 415 0
 Full 126 418 0
 Full 126 434 1
-Full 126 438 0
+Full 126 438 -0
 Full 126 441 0
 Full 126 448 0
 Full 126 455 0
@@ -5600,7 +5600,7 @@ Full 132 202 1
 Full 132 214 0
 Full 132 248 1
 Full 132 257 0
-Full 132 278 0
+Full 132 278 1
 Full 132 309 1
 Full 132 316 0
 Full 132 329 1
@@ -5630,7 +5630,7 @@ Full 132 588 1
 Full 132 608 0
 Full 132 621 0
 Full 132 632 0
-Full 132 670 0
+Full 132 670 -0
 Full 132 684 0
 Full 132 721 0
 Full 132 725 0
@@ -5963,7 +5963,7 @@ Full 140 429 0
 Full 140 436 0
 Full 140 454 1
 Full 140 457 0
-Full 140 463 0
+Full 140 463 -0
 Full 140 474 0
 Full 140 478 1
 Full 140 525 0
@@ -6280,7 +6280,7 @@ Full 147 531 0
 Full 147 543 0
 Full 147 546 0
 Full 147 551 0
-Full 147 580 0
+Full 147 580 -0
 Full 147 618 0
 Full 147 627 0
 Full 147 638 0
@@ -6318,7 +6318,7 @@ Full 148 448 0
 Full 148 449 0
 Full 148 451 0
 Full 148 468 0
-Full 148 499 1
+Full 148 499 -0
 Full 148 513 0
 Full 148 522 0
 Full 148 531 1

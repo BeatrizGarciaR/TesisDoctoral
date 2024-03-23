@@ -21,7 +21,7 @@ Full 1 112 0
 Full 1 114 0
 Full 1 118 0
 Full 1 121 0
-Full 1 124 -0
+Full 1 124 0
 Full 1 128 0
 Full 1 163 0
 Full 1 164 0
@@ -58,7 +58,7 @@ Full 3 64 0
 Full 3 67 0
 Full 3 72 0
 Full 3 76 0
-Full 3 78 1
+Full 3 78 0
 Full 3 79 1
 Full 3 84 0
 Full 3 98 0
@@ -120,7 +120,7 @@ Full 5 118 0
 Full 5 121 0
 Full 5 123 0
 Full 5 126 0
-Full 5 129 -0
+Full 5 129 0
 Full 5 130 1
 Full 6 36 1
 Full 6 46 1
@@ -133,7 +133,7 @@ Full 6 63 0
 Full 6 64 0
 Full 6 66 1
 Full 6 67 0
-Full 6 71 -0
+Full 6 71 1
 Full 6 74 0
 Full 6 75 0
 Full 6 79 1
@@ -151,7 +151,7 @@ Full 6 128 0
 Full 6 139 0
 Full 6 149 1
 Full 7 41 1
-Full 7 45 -0
+Full 7 45 0
 Full 7 46 1
 Full 7 54 0
 Full 7 58 1
@@ -161,7 +161,7 @@ Full 7 68 0
 Full 7 72 0
 Full 7 73 1
 Full 7 74 0
-Full 7 78 1
+Full 7 78 0
 Full 7 82 1
 Full 7 84 1
 Full 7 92 0
@@ -226,7 +226,7 @@ Full 9 116 0
 Full 9 119 0
 Full 9 124 0
 Full 9 141 0
-Full 10 28 -0
+Full 10 28 0
 Full 10 32 0
 Full 10 39 1
 Full 10 49 0
@@ -234,11 +234,11 @@ Full 10 50 0
 Full 10 51 0
 Full 10 56 0
 Full 10 61 0
-Full 10 65 -0
+Full 10 65 0
 Full 10 66 0
 Full 10 67 0
 Full 10 76 0
-Full 10 78 -0
+Full 10 78 0
 Full 10 79 1
 Full 10 84 0
 Full 10 92 0
@@ -306,7 +306,7 @@ Full 13 47 0
 Full 13 48 0
 Full 13 59 1
 Full 13 61 0
-Full 13 65 -0
+Full 13 65 0
 Full 13 66 0
 Full 13 74 0
 Full 13 75 0
@@ -317,7 +317,7 @@ Full 13 83 0
 Full 13 91 0
 Full 13 92 0
 Full 13 94 0
-Full 13 95 -0
+Full 13 95 0
 Full 13 97 1
 Full 13 107 0
 Full 13 108 0
@@ -326,7 +326,7 @@ Full 13 111 0
 Full 13 114 0
 Full 13 117 1
 Full 13 120 1
-Full 13 124 -0
+Full 13 124 0
 Full 13 130 0
 Full 14 28 0
 Full 14 38 0
@@ -402,7 +402,7 @@ Full 16 104 0
 Full 16 106 0
 Full 16 107 0
 Full 16 111 0
-Full 16 114 -0
+Full 16 114 0
 Full 16 121 0
 Full 16 122 0
 Full 16 128 0
@@ -464,7 +464,7 @@ Full 19 70 1
 Full 19 71 1
 Full 19 73 0
 Full 19 75 0
-Full 19 77 -0
+Full 19 77 0
 Full 19 81 1
 Full 19 85 1
 Full 19 97 0
@@ -480,7 +480,7 @@ Full 20 48 0
 Full 20 53 1
 Full 20 67 0
 Full 20 68 0
-Full 20 69 -0
+Full 20 69 1
 Full 20 79 1
 Full 20 88 0
 Full 20 89 1
@@ -512,7 +512,7 @@ Full 21 125 0
 Full 21 130 1
 Full 21 161 0
 Full 22 31 0
-Full 22 45 -0
+Full 22 45 0
 Full 22 50 0
 Full 22 53 0
 Full 22 56 1
@@ -535,7 +535,7 @@ Full 22 115 1
 Full 22 118 0
 Full 22 119 1
 Full 22 123 0
-Full 22 124 -0
+Full 22 124 0
 Full 22 143 0
 Full 22 149 1
 Full 23 42 0
@@ -580,7 +580,7 @@ Full 24 73 1
 Full 24 77 0
 Full 24 79 0
 Full 24 83 1
-Full 24 85 -0
+Full 24 85 1
 Full 24 100 0
 Full 24 101 1
 Full 24 107 0
@@ -599,7 +599,7 @@ Full 25 74 0
 Full 25 77 0
 Full 25 81 0
 Full 25 83 0
-Full 25 88 -0
+Full 25 88 0
 Full 25 91 0
 Full 25 93 1
 Full 25 94 0
@@ -640,7 +640,7 @@ Full 27 65 0
 Full 27 69 1
 Full 27 70 0
 Full 27 78 1
-Full 27 79 1
+Full 27 79 0
 Full 27 80 0
 Full 27 81 0
 Full 27 82 0
@@ -706,7 +706,7 @@ Full 30 49 0
 Full 30 51 0
 Full 30 54 0
 Full 30 55 1
-Full 30 62 -0
+Full 30 62 0
 Full 30 64 0
 Full 30 65 0
 Full 30 68 0
@@ -841,7 +841,7 @@ Full 34 116 0
 Full 34 119 0
 Full 34 120 0
 Full 34 122 0
-Full 34 124 -0
+Full 34 124 0
 Full 34 125 0
 Full 34 165 0
 Full 35 28 0
@@ -905,7 +905,7 @@ Full 37 41 0
 Full 37 43 0
 Full 37 47 1
 Full 37 51 0
-Full 37 52 -0
+Full 37 52 0
 Full 37 57 0
 Full 37 63 0
 Full 37 66 1
@@ -922,7 +922,7 @@ Full 37 108 0
 Full 37 111 1
 Full 37 118 0
 Full 37 127 0
-Full 37 130 -0
+Full 37 130 0
 Full 37 134 0
 Full 38 34 1
 Full 38 35 1
@@ -940,7 +940,7 @@ Full 38 74 0
 Full 38 75 0
 Full 38 76 0
 Full 38 77 0
-Full 38 78 1
+Full 38 78 0
 Full 38 81 0
 Full 38 87 0
 Full 38 88 0
@@ -954,7 +954,7 @@ Full 38 110 0
 Full 38 113 1
 Full 38 117 1
 Full 38 120 0
-Full 38 124 -0
+Full 38 124 0
 Full 38 126 1
 Full 38 127 0
 Full 38 132 0
@@ -985,7 +985,7 @@ Full 40 46 1
 Full 40 53 0
 Full 40 56 0
 Full 40 63 1
-Full 40 65 -0
+Full 40 65 0
 Full 40 66 1
 Full 40 84 1
 Full 40 91 0
@@ -1004,7 +1004,7 @@ Full 41 39 0
 Full 41 40 0
 Full 41 70 0
 Full 41 71 1
-Full 41 73 1
+Full 41 73 0
 Full 41 77 1
 Full 41 80 0
 Full 41 81 0
@@ -1017,7 +1017,7 @@ Full 41 111 0
 Full 41 113 0
 Full 41 114 0
 Full 41 116 0
-Full 41 117 0
+Full 41 117 1
 Full 41 119 0
 Full 41 121 0
 Full 41 122 1
@@ -1037,7 +1037,7 @@ Full 42 76 0
 Full 42 84 0
 Full 42 92 1
 Full 42 98 0
-Full 42 103 1
+Full 42 103 0
 Full 42 112 1
 Full 42 113 0
 Full 42 114 0
@@ -1082,7 +1082,7 @@ Full 44 92 0
 Full 44 94 0
 Full 44 103 0
 Full 44 104 0
-Full 44 105 -0
+Full 44 105 0
 Full 44 110 0
 Full 44 114 0
 Full 44 119 0
@@ -1106,7 +1106,7 @@ Full 45 87 0
 Full 45 89 0
 Full 45 93 1
 Full 45 100 0
-Full 45 103 -0
+Full 45 103 0
 Full 45 129 0
 Full 45 130 1
 Full 45 131 1
@@ -1122,7 +1122,7 @@ Full 46 84 1
 Full 46 86 1
 Full 46 87 0
 Full 46 88 1
-Full 46 95 -0
+Full 46 95 0
 Full 46 102 1
 Full 46 103 1
 Full 46 106 0
@@ -1186,7 +1186,7 @@ Full 48 119 0
 Full 49 41 0
 Full 49 53 0
 Full 49 57 0
-Full 49 58 -0
+Full 49 58 0
 Full 49 63 0
 Full 49 64 0
 Full 49 66 0
@@ -1198,7 +1198,7 @@ Full 49 83 0
 Full 49 96 0
 Full 49 99 0
 Full 49 102 0
-Full 49 105 -0
+Full 49 105 0
 Full 49 106 0
 Full 49 113 1
 Full 49 114 0
@@ -1230,6 +1230,6 @@ Full 50 113 0
 Full 50 123 0
 Full 50 126 1
 Full 50 130 1
-Full 50 131 -0
+Full 50 131 1
 Full 50 139 1
 Full 50 163 0

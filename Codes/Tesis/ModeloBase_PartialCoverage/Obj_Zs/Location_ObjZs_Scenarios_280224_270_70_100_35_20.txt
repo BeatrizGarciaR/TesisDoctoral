@@ -16,7 +16,7 @@ located 8 1 -0
 located 8 2 -0
 located 9 1 -0
 located 9 2 -0
-located 10 1 -0
+located 10 1 2
 located 10 2 -0
 located 11 1 -0
 located 11 2 -0
@@ -52,7 +52,7 @@ located 26 1 -0
 located 26 2 -0
 located 27 1 -0
 located 27 2 -0
-located 28 1 -0
+located 28 1 2
 located 28 2 -0
 located 29 1 -0
 located 29 2 -0
@@ -76,7 +76,7 @@ located 38 1 -0
 located 38 2 -0
 located 39 1 -0
 located 39 2 -0
-located 40 1 -0
+located 40 1 2
 located 40 2 -0
 located 41 1 -0
 located 41 2 -0
@@ -94,7 +94,7 @@ located 47 1 -0
 located 47 2 -0
 located 48 1 -0
 located 48 2 -0
-located 49 1 -0
+located 49 1 1
 located 49 2 -0
 located 50 1 -0
 located 50 2 -0
@@ -128,13 +128,13 @@ located 64 1 -0
 located 64 2 -0
 located 65 1 -0
 located 65 2 -0
-located 66 1 -0
+located 66 1 1
 located 66 2 -0
 located 67 1 -0
 located 67 2 -0
 located 68 1 -0
 located 68 2 -0
-located 69 1 35
+located 69 1 27
 located 69 2 20
 located 70 1 -0
 located 70 2 -0
