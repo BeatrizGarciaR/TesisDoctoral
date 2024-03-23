@@ -9,7 +9,7 @@ Created on Mon Oct  9 11:50:21 2023
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168, 270, 500, 900] 
+tamaños_I = [1500] 
 tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
@@ -31,98 +31,98 @@ for iconj in range(len(tamaños_I)):
                 
                 eta = ambulance[k]
 
-                # archivo = open('Resultados_Prueba_ObjZs_Scenarios_280224_'
-                #           +str(tamaños_I[iconj])+str('_')
-                #           +str(tamaños_L[jconj])+str('_')
-                #           +str(tamaños_S[sconj])
-                #           +'_'+str(eta[0])+'_'+str(eta[1])
-                #           +'.txt', "r")
+                archivo = open('Resultados_Prueba_ObjZs_Scenarios_280224_'
+                          +str(tamaños_I[iconj])+str('_')
+                          +str(tamaños_L[jconj])+str('_')
+                          +str(tamaños_S[sconj])
+                          +'_'+str(eta[0])+'_'+str(eta[1])
+                          +'.txt', "r")
                 
-                # line = archivo.readline().strip().split()
-                # line = archivo.readline().strip().split()
+                line = archivo.readline().strip().split()
+                line = archivo.readline().strip().split()
                 
-                # f = open ('Location_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                f = open ('Location_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # for i in range(tamaños_L[jconj]*2):
-                #     line = archivo.readline()
-                #     f.write(line)
+                for i in range(tamaños_L[jconj]*2):
+                    line = archivo.readline()
+                    f.write(line)
                     
-                # f.close()
+                f.close()
                 
                 
-                # line = archivo.readline()
-                # g = open ('Dispatch_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                line = archivo.readline()
+                g = open ('Dispatch_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while len(line) > 15:
-                #     g.write(line)
-                #     line = archivo.readline()
+                while len(line) > 15:
+                    g.write(line)
+                    line = archivo.readline()
                         
-                # g.close()
+                g.close()
                 
                 
-                # h = open ('Full_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                h = open ('Full_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while "Full" in line:
-                #     h.write(line)
-                #     line = archivo.readline()
+                while "Full" in line:
+                    h.write(line)
+                    line = archivo.readline()
                         
-                # h.close()
+                h.close()
                 
-                # o = open ('Partial1_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                o = open ('Partial1_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while "Partial1" in line:
-                #     o.write(line)
-                #     line = archivo.readline()
+                while "Partial1" in line:
+                    o.write(line)
+                    line = archivo.readline()
                         
-                # o.close()
+                o.close()
                 
                 
-                # p = open ('Partial2_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                p = open ('Partial2_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while "Partial2" in line:
-                #     p.write(line)
-                #     line = archivo.readline()
+                while "Partial2" in line:
+                    p.write(line)
+                    line = archivo.readline()
                         
-                # p.close()
+                p.close()
                 
                 
-                # q = open ('Partial3_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                q = open ('Partial3_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while "Partial3" in line:
-                #     q.write(line)
-                #     line = archivo.readline()
+                while "Partial3" in line:
+                    q.write(line)
+                    line = archivo.readline()
                         
-                # q.close()
+                q.close()
                     
                 
-                # r = open ('Null_ObjZs_Scenarios_280224_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                r = open ('Null_ObjZs_Scenarios_280224_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
-                # while "Null" in line:
-                #     r.write(line)
-                #     line = archivo.readline()
+                while "Null" in line:
+                    r.write(line)
+                    line = archivo.readline()
                         
-                # r.close()
+                r.close()
                 
                 # verif=0.4
                 h = open('Instances_DemandFixed_'

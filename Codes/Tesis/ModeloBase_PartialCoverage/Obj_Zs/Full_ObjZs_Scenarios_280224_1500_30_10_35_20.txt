@@ -129,7 +129,7 @@ Full 3 594 0
 Full 3 602 0
 Full 3 616 0
 Full 3 617 0
-Full 3 619 0
+Full 3 619 1
 Full 3 632 1
 Full 3 700 0
 Full 3 701 1
@@ -154,7 +154,7 @@ Full 3 753 0
 Full 3 755 1
 Full 3 758 0
 Full 3 759 1
-Full 3 762 1
+Full 3 762 0
 Full 3 765 0
 Full 3 766 0
 Full 3 789 1
@@ -490,7 +490,7 @@ Full 10 510 0
 Full 10 516 1
 Full 10 521 1
 Full 10 523 1
-Full 10 529 0
+Full 10 529 1
 Full 10 555 0
 Full 10 563 1
 Full 10 571 1
@@ -501,7 +501,7 @@ Full 10 578 1
 Full 10 580 0
 Full 10 581 1
 Full 10 585 1
-Full 10 587 0
+Full 10 587 1
 Full 10 598 1
 Full 10 599 1
 Full 10 601 0
@@ -538,7 +538,7 @@ Full 10 747 0
 Full 10 748 0
 Full 10 750 1
 Full 10 752 1
-Full 10 759 1
+Full 10 759 0
 Full 10 771 0
 Full 10 786 1
 Full 10 877 0
@@ -547,7 +547,7 @@ Full 10 891 1
 Full 10 899 1
 Full 10 917 0
 Full 10 930 1
-Full 10 931 1
+Full 10 931 0
 Full 10 942 0
 Full 10 946 0
 Full 10 950 0
