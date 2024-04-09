@@ -5,7 +5,7 @@ amb <- rbind(c(35,20))
 # len_L <- c(16, 30, 50, 70, 100)
 # len_S <- c(10, 50, 100, 150, 200)
 
-len_I <- c(168, 270, 500, 900)
+len_I <- c(168, 270, 500, 900, 1500)
 len_L <- c(100)
 len_S <- c(10, 50, 100, 150, 200)
 
@@ -100,7 +100,7 @@ for (a in 1:length(amb[,1])){
          legend = c("best objective", "best bound"), # Textos de la leyenda
          lty = c(1, 2),          # Tipo de líneas
          col = c(1, 1),          # Colores de las líneas
-         lwd = 2, bty = "n", cex = 2.3)
+         lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
 }
@@ -199,7 +199,7 @@ for (a in 1:length(amb[,1])){
          legend = c("best objective", "best bound"), # Textos de la leyenda
          lty = c(1, 2),          # Tipo de líneas
          col = c(1, 1),          # Colores de las líneas
-         lwd = 2, bty = "n", cex = 2.3)
+         lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
 }
@@ -311,7 +311,7 @@ for (a in 1:length(amb[,1])){
   points(matrix[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
   lines(matrix[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6)
   legend(x="top", legend = len_S, horiz=TRUE,
-         fill = c(1, 2, 3, 4, 6), title = "Scenarios",bty = "n", cex = 2.3)
+         fill = c(1, 2, 3, 4, 6), title = "Scenarios",bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
 }
@@ -376,7 +376,7 @@ for (a in 1:length(amb[,1])){
   points(matrix_1[(4*length(len_S)+1):(5*length(len_S))], pch=19, cex=1.5, col=6)
   lines(matrix_1[(4*length(len_S)+1):(5*length(len_S))], lwd=3, col=6)
   legend(x="top", legend = len_I, horiz=TRUE,
-         fill = c(1, 2, 3, 4, 6), title = "Demand points",bty = "n", cex = 2.3)
+         fill = c(1, 2, 3, 4, 6), title = "Demand points",bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
 }
