@@ -26,9 +26,9 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [1500]
-tamaños_L = [16, 30, 50, 70, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_I = [900]
+tamaños_L = [50]
+tamaños_S = [100]
 
 #tamaños_I = [900] 
 #tamaños_L = [100]
@@ -40,8 +40,8 @@ timelim = 10800 #15 horas
 rates = [0.4]
 verif = 0.4
 
-#ambulance = [[10,6], [20,11], [35,20]]
-ambulance = [[35,20]]
+ambulance = [[10,6], [20,11]]
+#ambulance = [[35,20]]
 t = 10
 tmax = 30
 wi = [0.65, 0.2, 0.1, 0.05]
@@ -49,7 +49,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_ObjZs_Scenarios_280224', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_ObjZs_Scenarios_090424', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -469,7 +469,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                with open('data_ObjZs_Scenarios_090424_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -506,7 +506,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_280224_'
+                f = open ('Resultados_Prueba_ObjZs_Scenarios_090424_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -561,12 +561,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                # coberturas = open ('Coberturas_Obj_Zs_280224_'
+                # coberturas = open ('Coberturas_Obj_Zs_090424_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                # lectura = open ('Resultados_Prueba_Obj_Zs_280224_'
+                # lectura = open ('Resultados_Prueba_Obj_Zs_090424_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -906,12 +906,12 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 
-                # model.write('model_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_Scenarios_090424_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               #+str(len(K))+str('_')
                 #               #+str(len(N))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
-                # model.write('model_ObjZs_Scenarios_280224_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_Scenarios_090424_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
@@ -1060,4 +1060,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_ObjZs_Scenarios_280224_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_ObjZs_Scenarios_090424_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
