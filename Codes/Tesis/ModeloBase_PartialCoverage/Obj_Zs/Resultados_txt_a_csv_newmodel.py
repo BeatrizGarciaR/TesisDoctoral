@@ -15,12 +15,12 @@ Created on Wed Nov 15 11:57:32 2023
 # tamaños_S = [10, 50]
 
 
-tamaños_I = [900, 1500] 
-tamaños_L = [16, 30, 50, 70, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_I = [900] 
+tamaños_L = [50]
+tamaños_S = [100]
 
-#amb = [[10, 6], [20, 11], [35,20]] 
-amb = [[35,20]]
+amb = [[10, 6], [20, 11], [35,20]] 
+#amb = [[6,6]]
 rates = [0.4]
 
 
@@ -34,7 +34,7 @@ for iconj in range(len(tamaños_I)):
                 eta = amb[a]
                 
                 
-                archivo = open('Resultados_Prueba_NewModel_Supuesto_280224_'
+                archivo = open('Resultados_Prueba_NewModel_Supuesto_090424_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -44,7 +44,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_Obj_NewModel_Supuesto_280224_'
+                f = open ('Location_Obj_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -57,7 +57,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('OnTime_Obj_NewModel_Supuesto_280224_'
+                g = open ('OnTime_Obj_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -82,7 +82,7 @@ for iconj in range(len(tamaños_I)):
                 g.close()
                 
                
-                h = open ('Delayed_Obj_NewModel_Supuesto_280224_'
+                h = open ('Delayed_Obj_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -106,7 +106,7 @@ for iconj in range(len(tamaños_I)):
                 h.close()
                 
                 
-                r = open ('NotAssigned_Obj_NewModel_Supuesto_280224_'
+                r = open ('NotAssigned_Obj_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -156,12 +156,12 @@ for iconj in range(len(tamaños_I)):
                     line_1 = h.readline()
                     
                     
-                u = open ('Accidents_NewModel_Supuesto_280224_'
+                u = open ('Accidents_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
                 
-                v = open ('I_Accidents_NewModel_Supuesto_280224_'
+                v = open ('I_Accidents_NewModel_Supuesto_090424_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'.txt','w')
