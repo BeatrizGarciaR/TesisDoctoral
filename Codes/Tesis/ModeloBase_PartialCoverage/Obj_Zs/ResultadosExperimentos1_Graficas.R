@@ -1,6 +1,6 @@
 # datos COMPLETOS
-#amb <- rbind(c(10, 6), c(20, 11), c(35,20))
-amb <- rbind(c(35,20))
+amb <- rbind(c(10, 6), c(20, 11), c(35,20))
+#amb <- rbind(c(35,20))
 # len_I <- c(168, 270, 500, 900, 1500)
 # len_L <- c(16, 30, 50, 70, 100)
 # len_S <- c(10, 50, 100, 150, 200)
@@ -13,13 +13,13 @@ len_S <- c(10, 50, 100, 150, 200)
 # objective value graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_ObjZs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("Objective_ObjZs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_280224_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_090424_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
@@ -111,13 +111,13 @@ dev.off()
 # objective value graphics scenarios vs demand point
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_ObjZs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("Objective_ObjZs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_280224_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_090424_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
@@ -215,7 +215,7 @@ dev.off()
 #   # run time
 #   eta <- amb[a,]
 #   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-#   #aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_280224_AllAmb.csv', sep="")))
+#   #aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_090424_AllAmb.csv', sep="")))
 #   aux <- as.data.frame(aux_0[filas, c(3,4,8)])
 #   matrix <- matrix(nrow=5, ncol=5)
 #   colnames(matrix) <- len_S
@@ -259,13 +259,13 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_ObjZs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("TimeVal_ObjZs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_280224_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_090424_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
   colnames(matrix) <- len_S
@@ -323,13 +323,13 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_ObjZs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("TimeVal_ObjZs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_280224_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_090424_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
   colnames(matrix_1) <- len_I
@@ -391,12 +391,12 @@ for (a in 1:length(amb[,1])){
   for (i in 1:length(len_I)){
     for (l in 1:length(len_L)){
       for (s in 1: length(len_S)){
-        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-        print(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
+        print(paste('Accidents_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
         datos <- c()
         datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
 
-        full <- as.data.frame(read.table(paste('Full_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        full <- as.data.frame(read.table(paste('Full_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         full_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_full = 0
@@ -412,7 +412,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
 
 
-        partial1 <- as.data.frame(read.table(paste('Partial1_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial1 <- as.data.frame(read.table(paste('Partial1_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial1_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial1 = 0
@@ -428,7 +428,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)
 
 
-        partial2 <- as.data.frame(read.table(paste('Partial2_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial2 <- as.data.frame(read.table(paste('Partial2_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial2_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial2 = 0
@@ -444,7 +444,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial2_expected = mean(partial2_expected)*100)
 
 
-        partial3 <- as.data.frame(read.table(paste('Partial3_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial3 <- as.data.frame(read.table(paste('Partial3_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial3_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial3 = 0
@@ -460,7 +460,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial3_expected = mean(partial3_expected)*100)
 
 
-        null <- as.data.frame(read.table(paste('Null_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        null <- as.data.frame(read.table(paste('Null_ObjZs_Scenarios_090424_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         null_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_null = 0
@@ -479,12 +479,12 @@ for (a in 1:length(amb[,1])){
     }
   }
   colnames(accidents_covered) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage")
-  write.csv(accidents_covered, file = paste('ExpectedCoverage_ObjZs_Scenarios_280224_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+  write.csv(accidents_covered, file = paste('ExpectedCoverage_ObjZs_Scenarios_090424_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
   aux <- cbind(accidents_covered, eta[1], eta[2])
   colnames(aux) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage", "BLS ambulances", "ALS ambulances")
   accidents_covered_total <- rbind(accidents_covered_total, aux)
 }
-write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_ObjZs_Scenarios_280224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_ObjZs_Scenarios_090424_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 ##### mean coverage percentage graphics scenarios
@@ -510,11 +510,11 @@ for (a in 1:length(amb[,1])){
   }
 }
 colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage, file = paste('MeanCoverageTotal_ObjZs_Scenarios_280224_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(prom_coverage, file = paste('MeanCoverageTotal_ObjZs_Scenarios_090424_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 #coverage mean scenarios graphics
-pdf(paste("Coverage_Obj_Zs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("Coverage_Obj_Zs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
@@ -576,11 +576,11 @@ for (a in 1:length(amb[,1])){
   }
 }
 colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_ObjZs_Scenarios_280224_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_ObjZs_Scenarios_090424_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 #coverage graphics
-pdf(paste("Coverage_Obj_Zs_Scenarios_280224_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("Coverage_Obj_Zs_Scenarios_090424_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
