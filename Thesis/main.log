@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  8 DEC 2023 11:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  10 JUN 2024 17:19
 entering extended mode
 **./main.tex
 (main.tex
@@ -221,6 +221,13 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/natbib\natbib.st
+y"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count105
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
 sty"
@@ -281,8 +288,8 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen122
-\Hy@linkcounter=\count105
-\Hy@pagecounter=\count106
+\Hy@linkcounter=\count106
+\Hy@pagecounter=\count107
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.de
 f"
@@ -290,7 +297,7 @@ File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count107
+\Hy@SavedSpaceFactor=\count108
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/00miktex\hyperref.
 cfg"
@@ -303,10 +310,10 @@ Package hyperref Info: Plain pages OFF on input line 4534.
 Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count108
+\c@Hy@tempcnt=\count109
 LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen123
-\Fld@menulength=\count109
+\Fld@menulength=\count110
 \Field@Width=\dimen124
 \Fld@charsize=\dimen125
 Package hyperref Info: Hyper figures OFF on input line 6380.
@@ -318,17 +325,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6405.
 Package hyperref Info: PDF/A mode OFF on input line 6410.
 LaTeX Info: Redefining \ref on input line 6450.
 LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count110
-\c@Item=\count111
-\c@Hfootnote=\count112
+\Hy@abspage=\count111
+\c@Item=\count112
+\c@Hfootnote=\count113
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex.d
 ef"
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count113
-\c@bookmark@seq@number=\count114
+\Fld@listcount=\count114
+\c@bookmark@seq@number=\count115
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\rerunfile
 check.sty"
@@ -336,10 +343,10 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip51
+\Hy@SectionHShift=\skip53
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 14.
-Package hyperref Info: Option `colorlinks' set `true' on input line 14.
+Package hyperref Info: Option `breaklinks' set `true' on input line 18.
+Package hyperref Info: Option `colorlinks' set `true' on input line 18.
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorit
 hm.sty"
@@ -348,7 +355,7 @@ nment
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count115
+\c@float@type=\count116
 \float@exts=\toks27
 \float@box=\box32
 \@float@everytoks=\toks28
@@ -358,7 +365,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks29
-\c@algorithm=\count116
+\c@algorithm=\count117
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithmicx\algps
 eudocode.sty"
@@ -369,32 +376,32 @@ ithmicx.sty"
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count117
-\c@ALG@rem=\count118
-\c@ALG@nested=\count119
-\ALG@tlm=\skip52
-\ALG@thistlm=\skip53
-\c@ALG@Lnr=\count120
-\c@ALG@blocknr=\count121
-\c@ALG@storecount=\count122
-\c@ALG@tmpcounter=\count123
-\ALG@tmplength=\skip54
+\c@ALG@line=\count118
+\c@ALG@rem=\count119
+\c@ALG@nested=\count120
+\ALG@tlm=\skip54
+\ALG@thistlm=\skip55
+\c@ALG@Lnr=\count121
+\c@ALG@blocknr=\count122
+\c@ALG@storecount=\count123
+\c@ALG@tmpcounter=\count124
+\ALG@tmplength=\skip56
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigur
 e.sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
-\subfigtopskip=\skip55
-\subfigcapskip=\skip56
+\subfigtopskip=\skip57
+\subfigcapskip=\skip58
 \subfigcaptopadj=\dimen126
-\subfigbottomskip=\skip57
+\subfigbottomskip=\skip59
 \subfigcapmargin=\dimen127
-\subfiglabelskip=\skip58
-\c@subfigure=\count124
-\c@lofdepth=\count125
-\c@subtable=\count126
-\c@lotdepth=\count127
+\subfiglabelskip=\skip60
+\c@subfigure=\count125
+\c@lofdepth=\count126
+\c@subtable=\count127
+\c@lotdepth=\count128
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -402,24 +409,24 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigur
 e.cfg")
-\subfig@top=\skip59
-\subfig@bottom=\skip60
+\subfig@top=\skip61
+\subfig@bottom=\skip62
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdfpages\pdfpages.
 sty"
 Package: pdfpages 2019/11/21 v0.5o Insert pages of external PDF documents (AM)
  ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\calc.sty"
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count128
-\calc@Bcount=\count129
+\calc@Acount=\count129
+\calc@Bcount=\count130
 \calc@Adimen=\dimen128
 \calc@Bdimen=\dimen129
-\calc@Askip=\skip61
-\calc@Bskip=\skip62
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count130
-\calc@Cskip=\skip63
+\calc@Ccount=\count131
+\calc@Cskip=\skip65
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/eso-pic\eso-pic.st
 y"
@@ -435,48 +442,48 @@ File: pppdftex.def 2019/11/21 v0.5o Pdfpages driver for pdfTeX (AM)
 \AM@pagebox=\box34
 \AM@global@opts=\toks30
 \AM@toc@title=\toks31
-\c@AM@survey=\count131
+\c@AM@survey=\count132
 \AM@templatesizebox=\box35
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.
 sty"
 Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
-\multirow@colwidth=\skip64
-\multirow@cntb=\count132
-\multirow@dima=\skip65
+\multirow@colwidth=\skip66
+\multirow@cntb=\count133
+\multirow@dima=\skip67
 \bigstrutjot=\dimen132
 ) (main.aux (Portadas.aux) (Dedicatoria.aux) (Agradecimientos.aux)
 (Resumen.aux) (Capitulo.aux) (Apendice.aux) (Autobiografia.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
 df.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
+\scratchcounter=\count134
 \scratchdimen=\dimen133
 \scratchbox=\box36
-\nofMPsegments=\count134
-\nofMParguments=\count135
+\nofMPsegments=\count135
+\nofMParguments=\count136
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count136
+\MPscratchCnt=\count137
 \MPscratchDim=\dimen134
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
+\MPnumerator=\count138
+\makeMPintoPDFobject=\count139
 \everyMPtoPDFconversion=\toks33
 )
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
@@ -495,7 +502,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring ON on input line 50.
+Package hyperref Info: Link coloring ON on input line 56.
 
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
 ty"
@@ -505,11 +512,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 estring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count139
+\c@section@level=\count140
 )
-LaTeX Info: Redefining \ref on input line 50.
-LaTeX Info: Redefining \pageref on input line 50.
-LaTeX Info: Redefining \nameref on input line 50.
+LaTeX Info: Redefining \ref on input line 56.
+LaTeX Info: Redefining \pageref on input line 56.
+LaTeX Info: Redefining \nameref on input line 56.
  (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -532,22 +539,17 @@ Package epstopdf Info: Source file: <Figuras/uanl.eps>
 (epstopdf)                    date: 2023-10-18 11:48:59
 (epstopdf)                    size: 828415 bytes
 (epstopdf)             Output file: <Figuras/uanl-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-10-18 11:48:58
+(epstopdf)                    date: 2023-12-08 11:06:16
 (epstopdf)                    size: 51325 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/uanl-eps-converted-
 to.pdf Figuras/uanl.eps>
 (epstopdf)             \includegraphics on input line 20.
-runsystem(epstopdf --outfile=Figuras/uanl-eps-converted-to.pdf Figuras/uanl.eps
-)...executed (allowed).
-
-Package epstopdf Info: Result file: <Figuras/uanl-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-12-08 11:06:16
-(epstopdf)                    size: 51325 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/uanl-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/uanl-eps-converted-to.pdf, id=95, 87.32625pt x 78.2925pt>
+<Figuras/uanl-eps-converted-to.pdf, id=131, 87.32625pt x 78.2925pt>
 File: Figuras/uanl-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/uanl-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/uanl-eps-converted-to.pdf  used on input line 
@@ -570,22 +572,17 @@ Package epstopdf Info: Source file: <Figuras/fime.eps>
 (epstopdf)                    date: 2023-10-18 11:48:58
 (epstopdf)                    size: 400640 bytes
 (epstopdf)             Output file: <Figuras/fime-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-10-18 11:48:57
+(epstopdf)                    date: 2023-12-08 11:06:19
 (epstopdf)                    size: 226226 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figuras/fime-eps-converted-
 to.pdf Figuras/fime.eps>
 (epstopdf)             \includegraphics on input line 49.
-runsystem(epstopdf --outfile=Figuras/fime-eps-converted-to.pdf Figuras/fime.eps
-)...executed (allowed).
-
-Package epstopdf Info: Result file: <Figuras/fime-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-12-08 11:06:19
-(epstopdf)                    size: 226226 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/fime-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/fime-eps-converted-to.pdf, id=110, 108.405pt x 143.53625pt>
+<Figuras/fime-eps-converted-to.pdf, id=146, 108.405pt x 143.53625pt>
 File: Figuras/fime-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/fime-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/fime-eps-converted-to.pdf  used on input line 
@@ -628,7 +625,7 @@ Overfull \hbox (31.06377pt too wide) in paragraph at lines 75--81
  []
 
 
-Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
+Overfull \hbox (8.40742pt too wide) in paragraph at lines 101--136
  [][] 
  []
 
@@ -641,7 +638,13 @@ Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
 ] (main.toc [5
 
 
-])
+]
+Overfull \hbox (6.14413pt too wide) in paragraph at lines 26--26
+ [][] [][][]\OT1/cmr/m/n/12 Experimental analysis of the MEC, SABC, and MEC(SAB
+C) stochastic 
+ []
+
+)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
@@ -655,8 +658,7 @@ Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
-
-[8
+ [8
 
 ]
 \openout2 = `Agradecimientos.aux'.
@@ -664,10 +666,22 @@ Overfull \hbox (8.15799pt too wide) in paragraph at lines 100--129
  (Agradecimientos.tex [9
 
 
-]) [10]
+])
+Overfull \hbox (31.89116pt too wide) in paragraph at lines 19--71
+[]\OT1/cmr/m/n/12 Agradezco al Consejo Nacional de Humanidades Ciencias y Tecno
+loga (CONAHCyT)
+ []
+
+[10]
 \openout2 = `Resumen.aux'.
 
- (Resumen.tex [11
+ (Resumen.tex
+Overfull \hbox (7.17957pt too wide) in paragraph at lines 17--18
+ []\OT1/cmr/m/n/12 Ttulo del estudio: \OT1/cmr/m/sc/12 Stochastic me-tho-do-l
+o-gies for locating and dispatching
+ []
+
+[11
 
 
 
@@ -681,243 +695,405 @@ Chapter 1.
 
 
 
-] [2]
-Overfull \hbox (2.21898pt too wide) in paragraph at lines 21--22
-\OT1/cmr/m/n/12 Mexico, public and private organizations work together, but the
-y do not communicate
+]
+Overfull \hbox (14.90866pt too wide) in paragraph at lines 12--13
+\OT1/cmr/m/n/12 [[][]2013[][]]. Tactical plannings made decisions for a middle 
+time, such as locating ambulances
  []
 
-[3] [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
 
+Overfull \hbox (16.60634pt too wide) in paragraph at lines 21--22
+\OT1/cmr/m/n/12 Our interest is to improve the Emergency Medical Service System
+ in Mexico, particularly
+ []
+
+[2] [3]
+Overfull \hbox (5.12173pt too wide) in paragraph at lines 49--50
+\OT1/cmr/m/n/12 This investigation aims to improve an Emergency Medical Service
+s System considering
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
 ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
 
-[5]
+[4] [5]
 Chapter 2.
+
+Overfull \hbox (1.1099pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/m/n/12 The classical emergency vehicle planning (EVP) \OT1/cmr/bx/n/
+12 segura que esto es conocido
+ []
+
 [6
 
 ] [7]
-Overfull \hbox (0.3205pt too wide) in paragraph at lines 91--93
-\OT1/cmr/m/n/12 approach to calculate the response time threshold (RTT), a clas
-s of EMS performance
+Overfull \hbox (16.24965pt too wide) in paragraph at lines 81--82
+[]\OT1/cmr/m/n/12 Some works propose stochastic programming models based on cal
+l-arrival scenarios
  []
 
-[8] [9]
-Overfull \hbox (3.13702pt too wide) in paragraph at lines 112--113
-\OT1/cmr/m/n/12 minimize the fraction of late-arrivals without requiring ambula
-nces to be repositioned,
+[8]
+Overfull \hbox (9.04704pt too wide) in paragraph at lines 104--105
+[]\OT1/cmr/m/n/12 A year later, Karasakal and Karasakal [][]Karasakal and Karas
+akal[][] [[][]2004[][]] introduced
  []
 
-[10] [11] [12]
+[9] [10]
+Overfull \hbox (16.80504pt too wide) in paragraph at lines 131--132
+\OT1/cmr/m/n/12 decisions for EMS vehicles in the same mathematical model with 
+two focuses, minimizing
+ []
+
+[11]
+Overfull \hbox (8.42447pt too wide) in paragraph at lines 139--140
+\OT1/cmr/m/n/12 determined considering the expected traveling cost from ambulan
+ce stations to demand
+ []
+
+
+Overfull \hbox (0.13428pt too wide) in paragraph at lines 139--140
+\OT1/cmr/m/n/12 number of life-threatening calls and number of non-life-threate
+ning calls, respectively.
+ []
+
+
+Overfull \hbox (0.52594pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/n/12 robust formulation for ambulance deployment and dispatch for a 
+problem constructed
+ []
+
+
+Overfull \hbox (2.48425pt too wide) in paragraph at lines 143--144
+\OT1/cmr/m/n/12 manages multiple emergency call responses, divided into high pr
+iority and low priority
+ []
+
+[12] [13] [14]
 Chapter 3.
 
-Overfull \hbox (5.45229pt too wide) in paragraph at lines 136--137
-\OT1/cmr/m/n/12 For a preliminar model, we classified if an accident needs one,
- two, or three ambulances
+Overfull \hbox (11.4925pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/12 number of two heterogeneous types of ambulances in different ci
+ty points and dispatches
  []
 
 
-Overfull \hbox (5.07895pt too wide) in paragraph at lines 138--139
-[]\OT1/cmr/m/n/12 The following is a preliminar model for the Ambulance Locatio
-n and Dispatching
+Overfull \hbox (2.81064pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/12 them to the emergency scenes, considering the uncertainty of th
+e emergency locations,
+ []
+
+[15
+
+]
+<figures/IntroTotalCoverage.png, id=492, 954.56625pt x 470.75874pt>
+File: figures/IntroTotalCoverage.png Graphic file (type png)
+<use figures/IntroTotalCoverage.png>
+Package pdftex.def Info: figures/IntroTotalCoverage.png  used on input line 204
+.
+(pdftex.def)             Requested size: 415.36815pt x 204.84305pt.
+ [16]
+Overfull \hbox (8.01903pt too wide) in paragraph at lines 249--252
+\OT1/cmr/m/n/12 The Maximum Expected Coverage (MEC) formulation is a stochastic
+ integer quadratic
+ []
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.252  \begin{equation*}
+                         <./figures/IntroTotalCoverage.png>] [18pdfTeX warning 
+(ext4): destination with the same identifier (name{table.3.1}) has been already
+ used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.309 \end{equation}
+                    ] [19pdfTeX warning (ext4): destination with the same ident
+ifier (name{equation.3.3.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.356 C
+       onstraints (\ref{eq3}) establish the available number of ambulances p...
+]
+Overfull \hbox (26.19353pt too wide) in paragraph at lines 356--359
+[]\OT1/cmr/m/n/12 Constraints ([][]3.2[][]) establish the available number of a
+mbulances per type. Constraints
  []
 
 
-Overfull \hbox (11.72272pt too wide) in paragraph at lines 138--139
-\OT1/cmr/m/n/12 considering Partial Coverage (ALDPC) Problem. We will describe 
-the sets, parameters,
+LaTeX Warning: Reference `Exp' on page 20 undefined on input line 364.
+
+
+Overfull \hbox (15.92172pt too wide) in paragraph at lines 364--365
+\OT1/cmr/m/n/12 obtain approximate solutions for the EVCP problem based on an a
+uxiliary disaggregated
+ []
+
+[20] [21]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 429.
+
+Overfull \hbox (8.0055pt too wide) in paragraph at lines 426--445
+[]\OT1/cmr/m/n/12 As mentioned, the SABC auxiliary model is a surrogate for the
+ MEC formulation.
  []
 
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 140.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (9.60654pt too wide) in paragraph at lines 179--190
- [][] 
+Overfull \hbox (2.4215pt too wide) in paragraph at lines 426--445
+\OT1/cmr/m/n/12 Thus, the solutions obtained by the MEC and SABC are not equiva
+lent. Nevertheless,
  []
 
+[22]
+Overfull \hbox (12.04565pt too wide) in paragraph at lines 446--447
+[]\OT1/cmr/m/n/12 The next section compares the MEC, MEC(SABC), and even the SA
+BC solutions. 
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13
-
-] [14pdfTeX warning (ext4): destination with the same identifier (name{table.3.
-1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.228 \end{equation}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{table.3.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.228 \end{equation}
-                    ] [15]
-
-LaTeX Warning: Reference `eq3' on page 16 undefined on input line 308.
-
-
-LaTeX Warning: Reference `eq4' on page 16 undefined on input line 308.
-
-
-LaTeX Warning: Reference `eq15' on page 16 undefined on input line 308.
-
-
-LaTeX Warning: Reference `eq4' on page 16 undefined on input line 308.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[16] [17pdfTeX warning (ext4): destination with the same identifier (name{table
-.3.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.416 \end{equation}
-                    ] [18pdfTeX warning (ext4): destination with the same ident
-ifier (name{table.3.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.442 \end{equation}
-                    ] [19]
+[23]
 Chapter 4.
 
-Overfull \hbox (3.33286pt too wide) in paragraph at lines 487--489
+Overfull \hbox (14.85219pt too wide) in paragraph at lines 453--454
+[]\OT1/cmr/m/n/12 Do model construction to represent the thesis' problem propos
+ed and an intelligent
+ []
+
+
+Overfull \hbox (3.33286pt too wide) in paragraph at lines 461--463
 \OT1/cmr/m/n/12 ambulances within potential sites, and the second is how to dis
 patch them to accidents
  []
 
-[20
+[24
 
 ]
-Overfull \hbox (21.08823pt too wide) in paragraph at lines 490--491
+Overfull \hbox (21.08823pt too wide) in paragraph at lines 464--465
 \OT1/cmr/m/n/12 receiving emergency calls will have policies to determine what 
 ambulance (or ambulances)
  []
 
-[21]
-Chapter 5.
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 507.
+Overfull \hbox (8.56525pt too wide) in paragraph at lines 472--482
+ [][] 
+ []
 
-[22
-
-] [23pdfTeX warning (ext4): destination with the same identifier (name{table.5.
-1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.539 
-      ]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 540.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 576.
-
-[24pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}
+[25pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.623 \chapter
-              {Conclusions}\label{cap:concl}] [25pdfTeX warning (ext4): destina
-tion with the same identifier (name{table.5.3}) has been already used, duplicat
-e ignored
+l.490 
+      ]
+Overfull \hbox (29.1649pt too wide) in paragraph at lines 491--492
+[]\OT1/cmr/m/n/12 For the MEC formulation, we use the following weights in the 
+objective function []:
+ []
+
+[26]
+Chapter 5.
+
+Overfull \hbox (3.22406pt too wide) in paragraph at lines 507--508
+\OT1/cmr/m/n/12 performance of the objective values of our stochastic methodolo
+gies. Several questions
+ []
+
+<figures/M1objectiveValue.png, id=613, 722.7pt x 655.44875pt>
+File: figures/M1objectiveValue.png Graphic file (type png)
+<use figures/M1objectiveValue.png>
+Package pdftex.def Info: figures/M1objectiveValue.png  used on input line 513.
+(pdftex.def)             Requested size: 385.39003pt x 349.52646pt.
+
+Overfull \hbox (3.083pt too wide) in paragraph at lines 509--518
+\OT1/cmr/bx/n/12 we solve WHAT MODELS, WHAT INSTANCES. The results are presnted
+
+ []
+
+[27
+
+]
+<figures/M2objectiveValue.png, id=620, 1040.88875pt x 955.57pt>
+File: figures/M2objectiveValue.png Graphic file (type png)
+<use figures/M2objectiveValue.png>
+Package pdftex.def Info: figures/M2objectiveValue.png  used on input line 525.
+(pdftex.def)             Requested size: 385.39003pt x 353.80324pt.
+ [28pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.623 \chapter
+l.530 
+       <./figures/M1objectiveValue.png>]
+<figures/M2M1objectiveValue.png, id=627, 713.66624pt x 659.46375pt>
+File: figures/M2M1objectiveValue.png Graphic file (type png)
+<use figures/M2M1objectiveValue.png>
+Package pdftex.def Info: figures/M2M1objectiveValue.png  used on input line 533
+.
+(pdftex.def)             Requested size: 385.39003pt x 356.11517pt.
+ [29pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.541 
+       <./figures/M2objectiveValue.png>] [30pdfTeX warning (ext4): destination 
+with the same identifier (name{figure.5.3}) has been already used, duplicate ig
+nored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.541 
+       <./figures/M2M1objectiveValue.png>]
+Overfull \hbox (4.40128pt too wide) in paragraph at lines 548--549
+\OT1/cmr/bx/n/12 desde mi perspectiva,e sta es una seccion medio inutil, cual e
+s su proposito?
+ []
+
+
+Overfull \hbox (12.88599pt too wide) in paragraph at lines 548--549
+\OT1/cmr/bx/n/12 realemnet no quieres mostrar el tiempo de SABC, el mesnaje REA
+LEMNTE
+ []
+
+<figures/M1Time16.png, id=640, 578.16pt x 372.39125pt>
+File: figures/M1Time16.png Graphic file (type png)
+<use figures/M1Time16.png>
+Package pdftex.def Info: figures/M1Time16.png  used on input line 558.
+(pdftex.def)             Requested size: 205.54091pt x 132.38449pt.
+<figures/M2Time100.png, id=641, 320.19624pt x 228.855pt>
+File: figures/M2Time100.png Graphic file (type png)
+<use figures/M2Time100.png>
+Package pdftex.def Info: figures/M2Time100.png  used on input line 561.
+(pdftex.def)             Requested size: 192.695pt x 137.7261pt.
+<figures/M1M2Time.png, id=642, 332.24126pt x 223.83624pt>
+File: figures/M1M2Time.png Graphic file (type png)
+<use figures/M1M2Time.png>
+Package pdftex.def Info: figures/M1M2Time.png  used on input line 564.
+(pdftex.def)             Requested size: 192.695pt x 129.82169pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--564
+[]\OT1/cmr/m/n/10 (c) MEC(SABC) methodology with 100
+ []
+
+
+Overfull \hbox (15.00522pt too wide) in paragraph at lines 554--569
+[]\OT1/cmr/m/n/12 In this section, we explicitly present the computational time
+s of our methodologies.
+ []
+
+[31] [32pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.5.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.573 
+       <./figures/M1Time16.png> <./figures/M2Time100.png> <./figures/M1M2Time.p
+ng>]
+Overfull \hbox (3.12895pt too wide) in paragraph at lines 579--583
+[]\OT1/cmr/m/n/12 The objective values and execution times are crucial to evalu
+ate the performance
+ []
+
+<figures/CoverageTodos.png, id=662, 937.5025pt x 635.37375pt>
+File: figures/CoverageTodos.png Graphic file (type png)
+<use figures/CoverageTodos.png>
+Package pdftex.def Info: figures/CoverageTodos.png  used on input line 586.
+(pdftex.def)             Requested size: 428.21405pt x 290.21043pt.
+[33] [34pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.5.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.592 
+       <./figures/CoverageTodos.png>]
+<figures/AmbComp.png, id=673, 1032.85875pt x 631.35875pt>
+File: figures/AmbComp.png Graphic file (type png)
+<use figures/AmbComp.png>
+Package pdftex.def Info: figures/AmbComp.png  used on input line 600.
+(pdftex.def)             Requested size: 385.39003pt x 235.57399pt.
+ [35pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.607 
+       <./figures/AmbComp.png>]
+Overfull \hbox (12.82178pt too wide) in paragraph at lines 620--621
+\OT1/cmr/bx/n/12 porque, o no se puede... A MENOS QUE.... USANDO nuestro metodo
+logia,
+ []
+
+[36]
+Overfull \hbox (12.00638pt too wide) in paragraph at lines 622--623
+\OT1/cmr/m/n/12 parameters that [][]Yoon et al.[][] [[][]2021[][]] present for 
+their case study of the city of Mecklenburg
+ []
+
+[37pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.790 \chapter
               {Conclusions}\label{cap:concl}]
 Chapter 6.
+[38
 
-Overfull \hbox (8.24623pt too wide) in paragraph at lines 629--630
-\OT1/cmr/m/n/12 solved because the solver has not had sufficient memory to supp
-ort them. Nevertheless,
+]
+Overfull \hbox (33.54391pt too wide) in paragraph at lines 801--802
+[]\OT1/cmr/m/n/12 Our experimental results showed the efficiency of the Intelli
+gent feedback methodology
  []
 
-
-Overfull \hbox (17.23688pt too wide) in paragraph at lines 629--630
-\OT1/cmr/m/n/12 small instances results generate feasible solutions for ambulan
-ce location and dispatching
- []
-
-
-Overfull \hbox (8.28584pt too wide) in paragraph at lines 631--632
-[]\OT1/cmr/m/n/12 These results help us cover more demand points in the system,
- allowing beginning
- []
-
-[26
-
-]) [27]
+) [39]
 \openout2 = `Apendice.aux'.
 
- (Apendice.tex) (main.bbl
-Underfull \hbox (badness 2111) in paragraph at lines 35--40
-\OT1/cmr/m/n/12 deployment and dispatch.  \OT1/cmr/m/it/12 European Journal of 
-Operational Research\OT1/cmr/m/n/12 ,
- []
-
-[28
+ (Apendice.tex) (main.bbl [40
 
 
 
 
 
-]) [29]
+] [41] [42]) [43]
 \openout2 = `Autobiografia.aux'.
 
- (Autobiografia.tex) [30
+ (Autobiografia.tex)
+[44
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
- (main.aux (Portadas.aux) (Dedicatoria.aux)
-(Agradecimientos.aux) (Resumen.aux) (Capitulo.aux) (Apendice.aux)
-(Autobiografia.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
+ (main.aux (Portadas.aux) (Dedicatoria.aux) (Agradecimientos.aux)
+(Resumen.aux) (Capitulo.aux) (Apendice.aux) (Autobiografia.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1F04079A10600C60327D2E1A9085CEE6;1397.
+(rerunfilecheck)             Checksum: 03115D18B97721D429FADD6A3A3FE319;2294.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 74 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 9212 strings out of 492945
- 135162 string characters out of 3126252
- 264973 words of memory out of 3000000
- 12758 multiletter control sequences out of 15000+200000
- 12288 words of font info for 46 fonts, out of 3000000 for 9000
+ 9733 strings out of 492945
+ 143530 string characters out of 3126252
+ 275548 words of memory out of 3000000
+ 13227 multiletter control sequences out of 15000+200000
+ 13140 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,41p,1492b,755s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,41p,2157b,891s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Progra
@@ -928,15 +1104,17 @@ b><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmmi8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmr10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/beatr/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/beatr/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/beatr/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/U
-sers/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
-i12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/symbols/msbm10.pfb>
-Output written on main.pdf (42 pages, 555449 bytes).
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/beatr/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/beatr/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
+s/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmti12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (56 pages, 1816136 bytes).
 PDF statistics:
- 499 PDF objects out of 1000 (max. 8388607)
- 136 named destinations out of 1000 (max. 500000)
- 195 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 821 PDF objects out of 1000 (max. 8388607)
+ 170 named destinations out of 1000 (max. 500000)
+ 312 words of extra memory for PDF output out of 10000 (max. 10000000)
 

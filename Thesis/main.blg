@@ -5,6 +5,87 @@ A level-1 auxiliary file: Agradecimientos.aux
 A level-1 auxiliary file: Resumen.aux
 A level-1 auxiliary file: Capitulo.aux
 A level-1 auxiliary file: Apendice.aux
-The style file: plain.bst
+The style file: plainnat.bst
 A level-1 auxiliary file: Autobiografia.aux
 Database file #1: Biblio.bib
+Repeated entry---line 281 of file Biblio.bib
+ : @article{brotcorne2003ambulance
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 292 of file Biblio.bib
+ : @article{mclay2012hanover
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 304 of file Biblio.bib
+ : @article{berman2003gradual
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 315 of file Biblio.bib
+ : @article{karasakal2004maximal
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 326 of file Biblio.bib
+ : @article{galvao2008emergency
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 349 of file Biblio.bib
+ : @article{mclay2010evaluating
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 360 of file Biblio.bib
+ : @article{mclay2011evaluating
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 371 of file Biblio.bib
+ : @article{li2011covering
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 417 of file Biblio.bib
+ : @article{boujemaa2018stochastic
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 522 of file Biblio.bib
+ : @article{belanger2019recent
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 547 of file Biblio.bib
+ : @article{brotcorne2003ambulance
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 582 of file Biblio.bib
+ : @article{hulshof2012taxonomic
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 593 of file Biblio.bib
+ : @article{bandara2012optimal
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 606 of file Biblio.bib
+ : @article{aboueljinane2013review
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 617 of file Biblio.bib
+ : @article{toro2013joint
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 640 of file Biblio.bib
+ : @article{wang2016new
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 650 of file Biblio.bib
+ : @article{dibene2017optimizing
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 661 of file Biblio.bib
+ : @article{amorim2019traffic
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 671 of file Biblio.bib
+ : @article{bertsimas2019robust
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 682 of file Biblio.bib
+ : @article{yoon2021stochastic
+ :                            ,
+I'm skipping whatever remains of this entry
+(There were 20 error messages)

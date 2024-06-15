@@ -13,39 +13,49 @@ EMS systems have different strategic, tactical, and operational types of plan\-n
 
 Our interest is in the EMS systems of Mexico. In Mexico exists the 9-1-1 number controled by the C-5 organization (Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado), which receives emergency calls. Some calls are for medical emergencies, others for police e\-mer\-gen\-cies, and others for fire emergencies. When a call enters the system, and an operator decides that it is a medical emergency, the operator has to determine if it is necessary to send an ambulance or not. Also, a doctor can continue the call to guide the person on the phone if the patient needs immediate attention while the ambulance arrives. Then the paramedics can attend to the patient and transfer the patient to a hospital.
 
-The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (Centro Regulador de Urgencias Medicas) and Red Cross. There exists in some states the Proteccion Civil and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system. That is one reason why an uncoordinated system exists in our country. CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. Each service provider decides where to locate their ambulances without consulting the other. Furthermore, when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention. Red Cross dispatch ambulances that are supposed to be available in 9-1-1 systems for its direct emergency calls.We could improve this uncoordinated system if each service provider made its decisions considering others. Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes the rest of the hospitals to have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
+%The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (Centro Regulador de Urgencias Medicas) and Red Cross. There exists in some states the Proteccion Civil and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system. That is one reason why an uncoordinated system exists in our country. CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. Each service provider decides where to locate their ambulances without consulting the other. Furthermore, when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention. Red Cross dispatch ambulances that are supposed to be available in 9-1-1 systems for its direct emergency calls.We could improve this uncoordinated system if each service provider made its decisions considering others. Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes the rest of the hospitals to have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
 
 We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching, considering two service providers to obtain a coordinated EMS system to solve those problems. The following sections present the background investigations about EMS sys\-tems (Chapter \ref{cap:back}) and the usually used models. We describe the problem and factors that affect the EMS system in Mexico (Chapter \ref{cap:problem}). Then, we solve the problem and define the model (Chapter \ref{cap:exper}) used to do the experiments. Finally, we show conclusions (Chapter \ref{cap:concl}) that we obtain from experiments that we describe in the previous section.
 
 \section{Motivation}
-Our interest is to improve the Emergency Medical Service System in Mexico. This system has different characteristics than others that have been studied. Especially in Mexico, public and private organizations work together, but they do not communicate what others do to make their decisions. 
+Our interest is to improve the Emergency Medical Service System in Mexico, particularly in Nuevo León. World Health Organization (WHO) establishes that it has to be four ambulances per one thousand habitants, which is not available in the states throughout our country.
 
-Also, since the Covid-19 pandemic in Mexico started, fewer hospitals are attending general medical emergencies, and ambulances do queues outside the hos\-pi\-tals waiting for patient attention due there are no available rooms for new patients. 
+Due to the lack of available ambulances, emergency calls are answered late. However, buying more ambulances so that there are a greater number of them available to distribute is not an option. Improving the distribution of ambulances, and locating and dispatching them in a better way, could improve the EMS systems.
+
+%Our interest is to improve the Emergency Medical Service System in Mexico. This system has different characteristics than others that have been studied. Especially in Mexico, public and private organizations work together, but they do not communicate what others do to make their decisions. 
+
+%Also, since the Covid-19 pandemic in Mexico started, fewer hospitals are attending general medical emergencies, and ambulances do queues outside the hos\-pi\-tals waiting for patient attention due there are no available rooms for new patients. 
 
 \section{Problem Description}
-The Uncoordinated Emergency Medical Service System (UEMSS) Problem is focused on improving an EMS system that involves more than one service provider. We have factors that affect service provider decisions for this system that we discuss below. We called patients at people who need some medical attention due to an accident or a medical condition that affects the person's health. There are some demand points where someone made an emergency call because the patient needs medical attention. Also, some potential sites are spaces in the zones attending to the EMS system where ambulances can be located in the system.
+\textbf{Yo creo que al decirlo asi es como que el EVCP es un problema conocido que YA existe, lo cual no es cierto... Creo seria emjor que abordamos un problema sobre EMS y en todo caso, el problema particular de nuetsro paper lo denotamos o bautazamos como EVCP... reescribop el abstract para que lo vean...}
+The Emergency Vehicle Covering and Planning (EVCP) problem locates a limited number of two heterogeneous types of ambulances in different city points and dispatches them to the emergency scenes, considering the uncertainty of the emergency locations, to maximize the emergency total and partial coverage and the response time in which the patients receive medical first aids. We propose a novel two-stage quadratic stochastic program for the EVCP problem that locates the limited number of heterogeneous types of ambulances in the first stage. In the second stage, the dispatching of the ambulances to accidents is determined. The EVCP stochastic model allows partial coverage of the accidents by the ambulances based on a decay function. Instead of decomposing the stochastic model, we propose a location-allocation methodology that relies on the solution in an auxiliary surrogate model, which is faster to solve. The location of the ambulances obtained by this surrogate model is input to the original model. Experimental results show that we obtain high-quality solutions in a reasonable time.
+\textbf{We address a problem where we have to locate a limited number of two heterogeneous types of ambulances in different city points and dispatch them to the sites where accidents occur.  Our problem considers uncertainty of the accident (demand) points. Our goal to maximize the total and partial coverage and the response time in which the patients receive medical first aids. We propose a two-stage quadratic stochastic program for this problem. In the first stage, the location of the limited number of two types of ambulances is decided. In the second stage, the dispatching of the ambulances to accidents is determined. This stochastic model allows partial coverage of the accidents by the ambulances based on a decay function. Given the model is intractable even for medium-sized instances, we propose a location-allocation methodology that relies on the solution of an auxiliary surrogate model, which is faster to solve. This location-allocation heuristic consists of two phases.  In the location phase, the location of the ambulances is obtained by solving the surrogate model.  Then, this information is the input for the allocation phase, where the original model is solved. Experimental results show the effectiveness and efficiency of this proposed approach, obtaining high-quality solutions in reasonable times.}
 
-An uncoordinated EMS system has more than one service provider involved in the emergency number system to attend emergency calls. These service providers have a certain number of ambulances available for patients' medical attention. The total ambulance available number may vary depending on the day of the week and the period time of the day. The ambulances need some material resources but also human resources. The EMS system has to consider the paramedics attending to the patients. If there are not enough paramedics for the total ambulances, not all the ambulances are available for the system. 
+%The Uncoordinated Emergency Medical Service System (UEMSS) Problem is focused on improving an EMS system that involves more than one service provider. We have factors that affect service provider decisions for this system that we discuss below. We called patients at people who need some medical attention due to an accident or a medical condition that affects the person's health. There are some demand points where someone made an emergency call because the patient needs medical attention. Also, some potential sites are spaces in the zones attending to the EMS system where ambulances can be located in the system.
 
-There are two different ambulance types: basic life support (BLS), which attend not severity accidents, and advanced life support, which attend severity accidents. Each ambulance has a response time for travel from the potential site where it is located to the demand point where the patient will be served. Also, hospitals know where patients will move after their attention. Paramedics need to know if a patient has health insurance to decide where a patient will be transferred. 
+%An uncoordinated EMS system has more than one service provider involved in the emergency number system to attend emergency calls. These service providers have a certain number of ambulances available for patients' medical attention. The total ambulance available number may vary depending on the day of the week and the period time of the day. The ambulances need some material resources but also human resources. The EMS system has to consider the paramedics attending to the patients. If there are not enough paramedics for the total ambulances, not all the ambulances are available for the system. 
 
-For our UEMSS Problem, we consider scenarios with information about ac\-ci\-dents at the demand point. Each element of one scenario has information about how many BLS and ALS need each demand point, and the sum of ambulances needed can be one, two, or three ambulances for point.
+%There are two different ambulance types: basic life support (BLS), which attend not severity accidents, and advanced life support, which attend severity accidents. Each ambulance has a response time for travel from the potential site where it is located to the demand point where the patient will be served. Also, hospitals know where patients will move after their attention. Paramedics need to know if a patient has health insurance to decide where a patient will be transferred. 
+
+%For our UEMSS Problem, we consider scenarios with information about ac\-ci\-dents at the demand point. Each element of one scenario has information about how many BLS and ALS need each demand point, and the sum of ambulances needed can be one, two, or three ambulances for point.
 
 \section{Hypothesis}
-This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system. The model includes characteristics of each service provider, and the decisions are taken coordinate considering these characteristics. The ambulance location and dispatching in the system are optimized.
+This investigation hypothesizes that we can model the Emergency Vehicle Covering and Planning problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system. The ambulance location and dispatching in the system are optimized.
+
+%This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system. The model includes characteristics of each service provider, and the decisions are taken coordinate considering these characteristics. The ambulance location and dispatching in the system are optimized.
 
 
 \section{Objectives}
-This investigation aims to improve an Emergency Medical Services System with more than one service provider. The main idea is to obtain an optimal ambulance location and optimal policies for ambulance dispatching. The system that we consider for the problem to solve includes different factors that affect the system. Those factors are:
+This investigation aims to improve an Emergency Medical Services System considering partial coverage. The main idea is to obtain an optimal ambulance location and optimal policies for ambulance dispatching. The system that we consider for the problem to solve includes different factors that affect the system. Those factors are:
 \begin{itemize}
 
 \item Various types of accidents and variations on maximal response times depending on accident types; 
 
 \item Different ambulances types, which are ambulances for basic life support (BLS) and ambulances for advanced life support (ALS);
 
-\item Variation in demand points depending on the day of the week and the hour of the day, which can be considered making different scenarios;
+\item And variation in demand points depending on the day of the week and the hour of the day, which can be considered making different scenarios.
 
-\item And queues at hospitals for patients' attention that increase the service time for an emergency call.
+%\item And queues at hospitals for patients' attention that increase the service time for an emergency call.
 
 \end{itemize} 
 
@@ -53,6 +63,26 @@ The objective for solving the problem is to create a scenario-based stochastical
 
 
 \chapter{Background}\label{cap:back}
+
+Emergency Medical Services (EMS) systems provide basic but urgent in-situ medical care for people who suffer a medical incident and then transport patients to hospitals \citep{aringhieri2017emergency, belanger2019recent, reuter2017logistics}.  
+The first phase of an EMS is the response to an emergency call by an operator that identifies the emergency type: accident, medical, security, fire, etc. The second phase is dispatching one or several ambulances to the emergency scene to provide urgent medical care. Some emergency situations, such as a multiple-car accident, may involve several people; thus, more than one ambulance could be needed. Moreover, different types of ambulances may be required in an emergency: Basic Life Support (BLS), usually with two Emergency Medical Technicians (EMTs), and Advanced Life Support (ALS) units with an EMT, an advanced EMT, and one or two Paramedics. The third phase involves the paramedics' treatment of the patients and transporting them to a hospital~\citep{aringhieri2017emergency}. 
+
+EMS systems in developing countries, as is the case in Mexico, lack around 30-60\%\footnote{Anonymous interviews done by the authors.} of the number of ambulances suggested by the World Health Organization (WHO), which is at least four ambulances per 100,000 people \citep{braun1990characteristics}. For the Red Cross, an EMS operating with this small number of ambulances is considered similar to a war situation$^1$. Thus, one of the main contributions of this work is to deal with the problem of deciding if an emergency will be totally or partially covered. Sadly, some emergencies may remain uncovered by an emergency unit. 
+
+The classical emergency vehicle planning (EVP) \textbf{segura que esto es conocido y clásico? lo busqué y no lo hallé} problem's main objective is to reduce the average response time of a patient's initial treatment given by a paramedic in an emergency \citep{amorim2019traffic, bandara2012optimal,toro2013joint, toro2015reducing}. Indeed, the quickness and the number of ambulances dispatched to the accidents are crucial. Each ambulance has a response time for travel from the potential site where it is located to the demand point where the patient will be cared for. Every minute of treatment delay in a cardiac patient reduces the survival probability by 24\% \citep{o2010role}. 
+
+%In this work, we also \textbf{?? Entonces nuestro probelma optimiza dos cosas? es bi-objetivo?} minimize the average response time of a patient treated by a paramedic \citep{mclay2010evaluating, mclay2011evaluating, mclay2012hanover}.Still, 
+The novelty in this work resides in additionally maximizing the coverage of emergency situations and considering different types of ambulances. When a BLS ambulance is dispatched to an emergency requiring an ALS, it may reduce the patient's survival. Thus, this work considers that ALS ambulances can be used as BLS units, but the contrary is not allowed~\citep{bakalos2011advanced}. There are a few works that deal with different types of ambulances as we do in this work. \citet{mclay2009maximum} determines how to optimally locate and use ambulances to improve patient survivability and coordinate multiple medical units with a hypercube queuing model. \citet{grannan2015maximum} determine how to dispatch multiple types of air assets to prioritized service calls to maintain a high likelihood of survival of the most urgent casualties in a military medical evacuation by a binary linear programming model. In \citet{yoon2021stochastic}, two types of vehicles are considered, but one of them is a rapid one that cannot offer the first care services of an ambulance. Moreover, neither of these works considers partial covering of the calls. 
+
+We denote our problem as the \textit{Emergency Vehicle Covering and Planning} (EVCP) problem which consists of locating the limited number of two heterogeneous types of ambulances in different city points and dispatch them to the accident points, considering the uncertainty of the accident points, so as to maximize the coverage (even if partially) and the response time in which the patients receive medical first aids \textbf{AND... es bi-objetivo?}. Usually, the location and dispatching decisions are made separately \citep{belanger2019recent, dibene2017optimizing, wang2012modeling}. In the EVCP problem, these two interrelated decisions are simultaneously determined as done by \citet{toro2015reducing, ansari2017maximum, amorim2019traffic}. 
+
+We propose a novel two-stage stochastic program for the EVCP problem. The stochastic program locates the limited number of heterogeneous types of ambulances in the first stage, and in the second stage, the dispatching of ambulances to accidents is determined. The EVCP stochastic model allows partial coverage of the accidents by the ambulances based on a decay function \citep{wang2016new}. Similarly to \citet{yoon2021stochastic}, we generate the call-arrival scenarios by sampling from emergency call logs to use them in the second stage of our stochastic model. In this manner, we address the volume of calls during a short period, such as Friday night hours. Thus, time is not explicitly measured, and it is assumed that a vehicle can be assigned only once during this high ambulance demand period~\citep{zhou2015spatio}. \citet{boujemaa2018stochastic} use a bundle of calls but do not consider a heterogeneous ambulance fleet. 
+
+  Some works propose stochastic programming models based on call-arrival scenarios as a bundle of calls, the total number of emergency calls in each demand node during a given period. As we do in this work, a two-stage stochastic program deploys the ambulances in the first stage and dispatches them to respond to demand in the second stage. \citet{beraldi2009probabilistic} and \citet{noyan2010alternate} induce a reliability approach by using probabilistic constraints. \citet{nickel2016ambulance} minimize the total cost of locating the ambulances while assuring a minimum coverage level. By considering a bundle of calls, they address the volume of calls during a short period, such as the Friday night hours. \citet{bertsimas2019robust} implemented stochastic and robust formulations for ambulance deployment and dispatch to minimize the fraction of late arrivals without requiring ambulances to be relocated, sending to demand points the closest available ambulance, and maintaining a call at a queue if there are no ambulances available at the system.  
+ 
+Another contribution of this work is the methodology to solve the EVCP stochastic model. Indeed, the proposed model can only be solved for relatively small instances with a restrictive number of scenarios. Thus, instead of decomposing the model with Bender's methods as it is usually done \cite{zhang2023multi, sung2018scenario}, we propose a location-allocation methodology \cite{shaw2022location, van2018demand} that relies on the solution in an auxiliary surrogate model, which is faster to solve. We name this method \textbf{an intelligent feedback approach} because the location of the ambulances obtained by this surrogate model is used as input to the original model. Thus, we obtain high-quality solutions in a reasonable time with an off-the-shelf solver without complex decomposition techniques. 
+
+Some works use metaheuristic methods to solve their stochastic models. \citet{toro2013joint} integrate location and dispatching decisions for EMS vehicles to minimize the mean response time of an emergency call and maximize the expected coverage demand, using a continuous-time Markov process to balance flow equations that control the busy fraction of each ambulance. A genetic algorithm can solve mid-size instances. Some others, such as \citet{amorim2019traffic}, use simulation to decide if ambulances stay at the potential sites established by a mathematical model or must be moved to another potential site to maximize the patient's survival. They work on a complete day period while we focus on high-demand periods of some hours. Moreover, we do not need a metaheuristic due to the high-quality solutions that we obtained with the Intelligent feedback approach.
 
 When scientists talk about EMS systems, many terms explain the problem. Two of these terms are demand points and potential sites. Demand points are sites where an emergency call is usually done. Commonly, there is a different demand for each point depending on the number of calls made within a period. Potential sites are places where a vehicle (ambulance) could be located if necessary to cover some demand points either statically or dynamically.
 
@@ -63,7 +93,6 @@ There are many models to solve the problems of EMS systems divided into determin
 These models are used to solve a system that only considers a particular point in time. When these models are used to solve EMS systems, it refers to allocating ambulances that will not be moved from the base. 
 
 There are two early models for statics problems: Location Set Covering Model (LSCM) and Maximal Covering Location Problem (MCLP), which are problems focused on covering the maximal demand points in the entire zone.
-
 
 
 \subsection{Deterministic models}
@@ -88,14 +117,14 @@ Finally, there exist two other probabilistic models created in the nineties. The
 
 The second model is the two-tiered model (TTM), which consider two types of vehicles to allocate at potential sites (BLS and ALS) considering two different coverage radii and having an associated probability for the combination of how many ALS vehicles can be located at the radius A, how many ALS can be located at the radius B and how many BLS vehicles can be located at the same radius B for each demand point. 
 
-Laura Albert and Maria Mayorga researched the EMS systems of Hanover, Virginia. All these investigations about Hanover, Virginia, were applied to this county to obtain practical solutions, but all models can be used to any other EMS system changing data inputs.
-The first research is focused on considering a new approach to calculate the response time threshold (RTT), a class of EMS performance measures \cite{mclay2010evaluating}. The approach uses the patient survival rate considering that patients have a cardiac arrest and random response times that depend on the distance between demand points and potential sites instead of patient outcomes, which is most used. 
+%Laura Albert and Maria Mayorga researched the EMS systems of Hanover, Virginia. All these investigations about Hanover, Virginia, were applied to this county to obtain practical solutions, but all models can be used to any other EMS system changing data inputs.
+%The first research is focused on considering a new approach to calculate the response time threshold (RTT), a class of EMS performance measures \cite{mclay2010evaluating}. The approach uses the patient survival rate considering that patients have a cardiac arrest and random response times that depend on the distance between demand points and potential sites instead of patient outcomes, which is most used. 
 
-Then, they use these measures on a hypercube model to evaluate different RTTs needed to input a model that considers fire stations and rescue stations to be potential sites where ambulances could be located distributed on Hanover's rural and urban areas. This model optimizes the location of ambulances on potential sites to maximize patient survival. 
+%Then, they use these measures on a hypercube model to evaluate different RTTs needed to input a model that considers fire stations and rescue stations to be potential sites where ambulances could be located distributed on Hanover's rural and urban areas. This model optimizes the location of ambulances on potential sites to maximize patient survival. 
 
-Later, Albert and Mayorga et al. used the performance measures as an input of the performance measure dispatching problem. According to survival patient rate, they used a Markov decision process that identifies the best and most robust RTT to maximize the covering level, prioritizing patient location. The research concludes that the optimal survival rate is obtained when the system has an eight minutes RTT \cite{mclay2011evaluating}. 
+%Later, Albert and Mayorga et al. used the performance measures as an input of the performance measure dispatching problem. According to survival patient rate, they used a Markov decision process that identifies the best and most robust RTT to maximize the covering level, prioritizing patient location. The research concludes that the optimal survival rate is obtained when the system has an eight minutes RTT \cite{mclay2011evaluating}. 
 
-However, this time for RTT does not apply to Hanover because of the number of the ambulance that they have, so they started a pilot program called quick-response vehicle to have more vehicles for patient attention obtaining a nine minutes RTT, these new vehicles are as ALS vehicles without transporting patients to the hospital, only attending patients at the scene and BLS ambulances transport patients if is necessary \cite{mclay2012hanover}. The idea of including these quick-response vehicles is to minimize the need to use ALS ambulances.
+%However, this time for RTT does not apply to Hanover because of the number of the ambulance that they have, so they started a pilot program called quick-response vehicle to have more vehicles for patient attention obtaining a nine minutes RTT, these new vehicles are as ALS vehicles without transporting patients to the hospital, only attending patients at the scene and BLS ambulances transport patients if is necessary \cite{mclay2012hanover}. The idea of including these quick-response vehicles is to minimize the need to use ALS ambulances.
 
 When talking about optimizing EMS systems, one can also speak about dis\-pat\-ching. Bandara et al. \cite{bandara2012optimal} considers demand priorities for the different emergency calls arriving at the system. The objective is to maximize the patient's survival probability when an ambulance is dispatched to demand points, calculating a reward for each dispatch. They used a Markov Decision Process model formulation to determine the optimal dispatching strategies for an EMS system.
 
@@ -130,182 +159,85 @@ We propose a two-stage stochastic problem with recourse where the first stage is
 
 ALS and BLS vehicles are considered for this problem. Any ambulance type can serve accidents that need BLS ambulances, but accidents that need ALS ambulances can be only served by ALS ambulance type. For our scenarios, we have two data: the first is for the number of BLS vehicles needed at the demand point, and the second is the quantity of ALS vehicles required for the same demand point.
 
-In the literature, we do not find a system where exists more than one service provider and considers all factors that we assume. However, it is essential to study it because public and private service providers are involved in Mexico. Sometimes, there is a conflict with them when dispatching is done for an accident. So we want to consider both of them to obtain a coordinated EMS system. 
+Additionally, we propose an intelligent feedback to obtain ambulance location in a faster time that will be use as an input for the stochastic programming model that decides how to dispatch them to demand points.
 
-\chapter{Problem desciption}\label{cap:problem}
-For a preliminar model, we classified if an accident needs one, two, or three ambulances for patients' attention. And we consider the response time between every potential site to every demand point.
+%In the literature, we do not find a system where exists more than one service provider and considers all factors that we assume. However, it is essential to study it because public and private service providers are involved in Mexico. Sometimes, there is a conflict with them when dispatching is done for an accident. So we want to consider both of them to obtain a coordinated EMS system. 
 
-The following is a preliminar model for the Ambulance Location and Dispatching considering Partial Coverage (ALDPC) Problem. We will describe the sets, parameters, and variables we used and the assumptions we took to model this problem.
+\chapter{Problem desciption}\label{cap:problem}%\label{sec:descr}%
+The Emergency Vehicle Covering and Planning problem (EVCP) locates a limited number of two heterogeneous types of ambulances in different city points and dispatches them to the emergency scenes, considering the uncertainty of the emergency locations, to maximize the emergency total and partial coverage and the response time in which the patients receive medical first aids.
 
-\subsection{Mathematical Model}
+\section{Description and assumptions}\label{sec:description}
 
-To describe the location and dispatching for two types of vehicles considering the partial coverage problem we define some sets, parameters in Table \ref{tab:my-table1},  and variables in Table \ref{tab:my-table2} used in the mathematical model presented as follows: 
+Let us formally describe the Emergency Vehicle Covering and Planning problem.
+Let set $I$ include the possible demand points where patients may need medical attention in a city or region. This set can be very large, so we consider all the demand points observed in the historical data. In our case study, $|I|$ can be as large as 1500 demand points. Set $L$ provides the potential sites or ambulance stations where ambulances could be located, such as hospitals, firehouses, malls, or similar places where the ambulance and the paramedics can wait for emergency calls. We consider instances with up to 30 potential sites for the experimental results. Set $K$ contains the two types of ambulances available in the system: the BLS (labeled with index $k=1$) and the ALS ambulances (labeled with index $k=2$), which are limited by a known parameter $\eta_k$ for each type $k \in K$. These ambulances must be allocated to a potential site $l \in L$ and dispatched toward a demand point $i \in I$ if there is an emergency situation. 
+
+The traveling time of any ambulance type from a potential site $l \in L$ to a demand point $i \in I$ is given by $r_{li}$. Ideally, ambulances should arrive in less than $\tau$ minutes in a life-threatening emergency. Usually, $\tau$ is a fixed value in the $[8,15]$ range. This work also considers that the emergency is not covered if an ambulance takes more than a maximum time $\tau_{\max}$ to arrive. In this case, sadly, the accident has probably been dealt with by other means. 
+
+Since the aim of the EVCP problem is to reduce the response time of the patient's first medical aid, even if it is in a partial or late way, we define a benefit  decay function that only depends on the response time of a location $l\in L$ to any demand point $i\in I$:
+   \begin{equation*}
+       c_{li} = \left\{ 
+        \begin{array}{lcc} 
+            1 & \text{ if } & r_{li} \leq \tau, \\ 
+            1- \frac{r_{li}-\tau}{\tau_{\max} -\tau}  & \text{ if }  & \tau < r_{li} < \tau_{\max}, \\       
+            0 &   \text{ if }  & r_{li} \geq \tau_{\max} .
+    \end{array} \right.
+   \end{equation*}
+
+\section{Information related to the scenarios}
+   
+The operational level is represented by a set of scenarios $S$ with a bundle list of arriving calls. Each scenario $s \in S$ represents a realization of accidents in the demand points.  Thus, a scenario is represented by the number and type of ambulances needed at each demand points.
+%For each $s\in S$, we know the number and type of ambulances that should be dispatched to the emergency calls. 
+Recall that an ALS ambulance can be sent instead of a BLS ambulance, but not the other way around. Thus, each scenario $s\in S$ indicates if there is an accident on a demand point $i \in I$ and provides the value $a_{ki}^s$ related to the number of required ambulances of type $k \in K$.  
+
+For each scenario $s\in S$, let $I^s\subseteq I$ contain only the demand points $i\in I$ where ambulances are needed, that is, where $a_{ki}^s\neq 0 $ for any $k\in K$. We define five different types of ambulance coverage related to the response times cases for each demand point $i\in I^s$:
+\begin{itemize}
+    \item Total: the $a_{ki}^s$ required ambulances of each type $k$ are dispatched to $i$, and all arrive in less than~$\tau$ time.
+    \item Total-late: the $a_{ki}^s$ required ambulances of each type $k$ are dispatched, but at least one arrives between $(\tau,\tau_{\max})$ time.
+    \item Partial: at least one of the $a_{ki}^s$ required ambulances is not dispatched, for $k\in K$, but all the dispatched ones arrive in less than $\tau$ time.
+    \item Partial-late: at least one of the $a_{ki}^s$ required ambulances is not dispatched, for $k\in K$, but at least one of the dispatched arrives between $(\tau,\tau_{\max})$ time.
+    \item Null: none of the $a_{ki}^s$ required ambulances arrives in less than $\tau_{\max}$ time, for $k\in K$.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.97\textwidth]{figures/coverage-types.png}
+    \includegraphics[width=0.97\textwidth]{figures/IntroTotalCoverage.png}
+    \caption{Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau$. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau,\tau_{\max})$.}
+    \label{coverage-types}
+\end{figure}
+
+Figure~\ref{coverage-types} illustrates two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (indicated in blue) and $a_{2i}^s=1$ advanced one (indicated in red). All ambulances arrive in less than the ideal time $\tau$ for the Total coverage (left-hand-side figure). In the Total-late coverage line, at least one of the ambulances is late since it arrives between $ (\tau,\tau_{\max})$ (right-hand-side figure). In the Partial coverage, the number of required ambulances is not met, but at least they arrive in less than the ideal time $\tau$. In the Partial-late coverage, not only are there not enough ambulances to cover the demand point, but they arrive late, that is, between $ (\tau,\tau_{\max})$. In the Null coverage, ambulances may be dispatched to the demand point, but since the arrival times are larger than $\tau_{\max}$, the demand point is considered uncovered. 
 
 
-%%%%%%%%%%%%%%%%%%%%5
-%%%%%%%%%%%%%%%%%%%
-%%%%% NEW MODEL
-%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-
-\begin{table}[h]
+Table~\ref{general_parameters} summarizes the sets and parameters used to describe the EVCP problem.
+\begin{table}[htb]
 \centering
 \begin{tabular}{ll}
+%\hline
+%\multicolumn{2}{c}{Sets and parameters for the EVCP problem}   \\ 
 \hline
-\multicolumn{2}{c}{Sets and Parameters}                                                                         \\ \hline
-$I$          & Set of demand points                            \\
-$L$          & Set of potential sites                         \\
-$K$          & Set of ambulance types                         \\
-$S$      & Set of scenarios; tuples of accidents at demand points $i \in I$ that need \\
-         & ambulances of type $k_1 \in K$, and ambulances of type $k_2 \in K$           \\
-$a_{ik}^s$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
-& in scenario $s \in S$                          \\
-$c_{li}$ & Benefit from traveling from potential site $l \in L$ to demand point $i \in I$   \\
+$I$      & set of possible demand points (possible accident places)   \\
+$L$          & set of possible ambulance location sites                         \\
+$K$          & set of ambulance types                         \\
+$\eta_k$    & total number of ambulances in the system of type $k \in K$                  \\
 $r_{li}$ & response time from potential site $l \in L$ to demand point $i \in I$       \\
-$n_k$    & total number of ambulances in the system of type $k \in K$                  \\
-$\alpha$   & benefit from covering on time an accident      \\
-$\beta$    & benefit from covering delayed an accident \\
-$\rho$       & a penalty from not covering an accident          \\
-$\tau$       &    ideal response time to cover an accident                                  \\
-$\tau_{max}$ &     maximum response time to cover an accident                                           \\ \hline
-
-\end{tabular}
-\caption{Sets and parameters for new Model }
-\label{tab:my-table1}
-\end{table}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{ll}
+$\tau$       &    ideal response time to give the patients the first medical aid in \\ & an emergency                                  \\
+$\tau_{max}$ &     maximum response time to cover an accident                                           \\ 
+$c_{li}$ & benefit from traveling from potential site $l \in L$ to demand \\ & point $i \in I$   \\
 \hline
-\multicolumn{2}{c}{Variables}                                                                                   \\ \hline
-$x_{lk}$      & number of ambulances type $k \in K$ located at potential site $l \in L$                         \\                
-$u_{lki}^s$  & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched on time                  \\
-              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                                                                                    \\
-$v_i^s$ & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched delayed                  \\
-              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                                   \\
-$\gamma_i^s$  & $1$ if an ambulance $k \in K$ is not dispatched to an accident at demand point          \\
-              & $i \in I$ in scenario $ s \in S$; $0$ otherwise      \\ \hline                
+$S$      & set of scenarios \\
+$a_{ki}^s$ & number of needed ambulances of type $k \in K$ at demand \\ & point $ i \in I, s \in S$                          \\
+$I^s$         &   set of demand points for $s\in S$ with at least a value \\ & $a_{ki}^s \neq 0$ for $ i \in I, k\in K$  \\
+\hline
 \end{tabular}
-\caption{Variables for new Model}
-\label{tab:my-table2}
+\caption{Sets and parameters to describe the EVCP problem.}
+\label{general_parameters}
 \end{table}
 
-Objective Function
-
-\begin{equation}
-    z = \max_{x} \mathbb{E}_s [ \mathcal{Q}^s(x)]
-    \label{obj}
-\end{equation}
-
-where 
-\begin{equation}
-    \mathcal{Q}^s(x) = \max_{u^s, v^s, \gamma^s} \left[ {\sum_{l \in L} \sum_{k \in K} \sum_{i \in I}} (\alpha u_{lki}^s + \beta v_{lki}^s) - \sum_{k \in K} \sum_{i \in I} p \gamma_{ki}^s \right]
-    \label{obj2}
-\end{equation}
-
-Subject to
-
-\begin{equation}
-    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
-    \label{eq3}
-\end{equation}
-
-\begin{equation}
-    \sum_{i\in I}u_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall s \in S,
-    \label{eq4}
-\end{equation}
-
-\begin{equation}
-    \sum_{i\in I}u_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall s \in S,
-    \label{eq5}
-\end{equation}
+ 
 
 
-\begin{equation}
-    \sum_{l\in L}u_{l1i}^s \leq a_{1i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq6}
-\end{equation}
-
-\begin{equation}
-    \sum_{l\in L}u_{l2i}^s \leq a_{2i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq7}
-\end{equation}
-
-\begin{equation}
-    u_{l1i}^s \leq c_{li} \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
-    \label{eq8}
-\end{equation}
-
-
-\begin{equation}
-    u_{l2i}^s \leq c_{li} \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
-    \label{eq9}
-\end{equation}
-
-
-\begin{equation}
-    u_{l1i}^s + v_{l1i}^s \leq 1 \qquad \qquad \qquad \qquad \qquad  \textrm{if } a_{1i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
-    \label{eq10}
-\end{equation}
-
-
-\begin{equation}
-    u_{l2i}^s + v_{l2i}^s \leq 1 \qquad \qquad \qquad \qquad \qquad  \textrm{if } a_{2i}^s \neq 0, \forall l \in L,  \forall i \in I, \forall s \in S,
-    \label{eq11}
-\end{equation}
-
-\begin{equation}
-    a_{1i}^s = \sum_{l \in L} (u_{l1i}^s + v_{l1i}^s) + \gamma_{1i}^s \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0,  \forall i \in I, \forall s \in S,
-    \label{eq12}
-\end{equation}
-
-
-\begin{equation}
-    a_{2i}^s = \sum_{l \in L} (u_{l2i}^s + v_{l2i}^s) + \gamma_{2i}^s \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0,  \forall i \in I, \forall s \in S,
-    \label{eq13}
-\end{equation}
-
-
-\begin{equation}
-    \sum_{l\in L}v_{l1i}^s \leq a_{1i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq14}
-\end{equation}
-
-\begin{equation}
-    \sum_{l\in L}v_{l2i}^s \leq a_{2i}^s \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq15}
-\end{equation}
-
-
-\begin{equation}
-    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall l \in L, \forall k \in K,
-    \label{eq16}
-\end{equation}
-
-\begin{equation}
-    \gamma_{1i}^s \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad  \hspace{3.5mm}\textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
-    \label{eq17}
-\end{equation}
-
-\begin{equation}
-    \gamma_{2i}^s \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad  \hspace{3.5mm}\textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
-    \label{eq18}
-\end{equation}
-
-\begin{equation}
-    u_{l1i}^s, v_{l1i}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
-    \label{eq19}
-\end{equation}
-
-\begin{equation}
-    u_{l2i}^s, v_{l2i}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall i \in I, \forall s \in S,
-    \label{eq20}
-\end{equation}
-
-The objective function maximizes the expected value of the sum of benefits to covering an accident subtracting a penalty value to not covering an accident. The penalties decrease as the types of coverage are defined.
-
-Equation (\ref{eq3}) represents the first stage of the stochastic programming model. This constraint states that the sum of all ambulances located through the potential sites does not exceed the number of ambulances available in the system. From equation (\ref{eq4}) to (\ref{eq15}), we establish the second stage of the model. Equation (\ref{eq4}) 
+\section{Maximum Expected Coverage stochastic formulation for the EVCP problem}\label{sec:Modelo1}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -314,170 +246,212 @@ Equation (\ref{eq3}) represents the first stage of the stochastic programming mo
 %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 
-% PARAMETERS
+The Maximum Expected Coverage (MEC) formulation is a stochastic integer quadratic programming model in which the first stage variables $x_{lk}$ correspond to the number of ambulances of type $k\in K$ located at $l\in L$,
+and the second-stage variables correspond
+to the ambulance dispatching decisions at each demand point for each scenario $s \in S$: % $x_{lk} $ is the number of ambulances of type $k  \in K$  located at potential site $l \in L$. Also,
+ \begin{equation*}
+       y^s_{lki} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if an ambulance of type } k\in K \text{ in location } l\in L \\
+        & \text{ is dispatched to demand point }i\in I^s, \text{ for scenario }  s\in S, \\
+        0 & \text{otherwise}.
+       \end{array} \right.
+\end{equation*}
+%We consider that all scenarios have the same probability of occurrence. DECIR QUE ES UN MUESTREO.
+%Each active demand point is considered a whole event, contrary to the disaggregated model presented in Section~\ref{Modelo2}. So, 
+We defined the following binary variables related to the \textit{total} and \textit{total-late} coverages related to the response times of the ambulances to the demand point $i\in I^s, s\in S$:
+\begin{equation*}
+       f^s_{i} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if demand point  } i\in I^s \text{ has a \textit{total} coverage}, \\
+         0 & \text{otherwise},
+       \end{array} \right.
+\end{equation*}
+\begin{equation*}
+       g^s_{i} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if demand point  } i\in I^s \text{ has a \textit{total-late} coverage}, \\
+         0 & \text{otherwise}.
+       \end{array} \right.
+\end{equation*}
+The following sets of binary variables are for the \textit{partial} and \textit{partial-late} coverages of the ambulances to the emergencies:
+\begin{equation*}
+       h^s_{i} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if demand point  } i\in I^s \text{ has a \textit{partial} coverage}, \\
+         0 & \text{otherwise},
+       \end{array} \right.
+\end{equation*}
+\begin{equation*}
+       w^s_{i} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if demand point  } i\in I^s \text{ has a \textit{partial-late} coverage}, \\
+         0 & \text{otherwise}.
+       \end{array} \right.
+\end{equation*}
+Finally, to indicate a null coverage of a demand point, we define
+\begin{equation*}
+       z^s_{i} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if active demand point  } i\in I^s \text{ has a \textit{null} coverage}, \\
+         0 & \text{otherwise}.
+       \end{array} \right.
+\end{equation*}
 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{ll}
-\hline
-\multicolumn{2}{c}{Sets and Parameters}                                                                         \\ \hline
-$I$          & Set of demand points                            \\
-$L$          & Set of potential sites                         \\
-$K$          & Set of ambulance types                         \\
-$S$      & Set of scenarios; tuples of accidents at demand points $i \in I$ that need \\
-         & ambulances of type $k_1 \in K$, and ambulances of type $k_2 \in K$           \\
-$a_{ki}^s$ & number of ambulances needed of type $k \in K$ at demand point $ i \in I$    \\
-             & in scenario $s \in S$                          \\
-$c_{li}$ & Benefit from traveling from potential site $l \in L$ to demand point $i \in I$   \\
-$r_{li}$ & response time from potential site $l \in L$ to demand point $i \in I$       \\
-$n_k$    & total number of ambulances in the system of type $k \in K$                  \\
-$w_\alpha$   & benefit from covering as Full an accident      \\
-$w_\beta$    & benefit from covering as Partial 1 an accident \\
-$w_\delta$   & benefit from covering as Partial 2 an accident \\
-$w_\varphi$  & benefit from covering as Partial 3 an accident \\
-$\rho$       & a penalty from not covering an accident          \\
-$\tau$       &    ideal response time to cover an accident                                            \\
-$\tau_{max}$ &     maximum response time to cover an accident                                           \\ \hline
-
-\end{tabular}
-\caption{Sets and parameters for SBALD Model }
-\label{tab:table1}
-\end{table}
-
-
-
-% VARIABLES
-
-\begin{table}[h]
-\centering
-\begin{tabular}{ll}
-\hline
-\multicolumn{2}{c}{Variables}                                                                                   \\ \hline
-$x_{lk}$      & number of ambulances type $k \in K$ located at potential site $l \in L$                         \\
-$y_{lki}^s$   & $1$ if an ambulance type $k \in K$ from potential site $l \in L$ is dispatched                  \\
-              & for an accident at demand point $I \in I$ in scenario $s \in S$; $0$ otherwise                  \\
-$\alpha_i^s$  & $1$ if an accident at demand point $i \in I$ has $Full$ coverage in         \\
-              & scenario $ s \in S$; $0$ otherwise                                                                                   \\
-$\beta_i^s$   & $1$ if an accident at demand point $i \in I$ has $Partial$ $1$ coverage  \\
-              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
-$\delta_i^s$  & $1$ if an accident at demand point $i \in I$ has $Partial$ $2$ coverage  \\
-              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
-$\varphi_i^s$ & $1$ if an accident at demand point $i \in I$ has $Partial$ $3$ coverage  \\
-              & in scenario $ s \in S$; $0$ otherwise                                                                                   \\
-$\gamma_i^s$  & $1$ if an accident at demand point $i \in I$ has $Null$ coverage in         \\
-              & scenario $ s \in S$; $0$ otherwise      \\ \hline                                                                            
-\end{tabular}
-\caption{Variables for SBALD Model}
-\label{tab:table2}
-\end{table}
-
-
+ 
 % MODEL
 
-Objective Function
-
+The MEC formulation is as follows.
 \begin{equation}
-    z = \max_{x} \mathbb{E}_s [ \mathcal{Q}^s(x)]
+    \max_{x} \mathbb{E}_{s\in S} [ \mathcal{Q}^s(x)]
+    \label{eq1}
 \end{equation}
+where
+\begin{equation}
+    \mathcal{Q}^s(x) = %\max_{y^s, \alpha^s, \beta^s, \delta^s, \varphi^s, \gamma^s} 
+    \sum_{i \in I^s}  (  \alpha_1 f_i^s + \alpha_2 g_i^s + \alpha_3 h_i^s + \alpha_4  w_i^s -\phi z_i^s ) \nonumber
+    %\label{eq2}
+\end{equation}
+subject to
+\begin{alignat}{2}
+   & \sum_{l \in L} x_{lk} \leq \eta_k   &\quad&  k \in K
+    \label{eq3}\\
+   & \sum_{i\in I^s}y_{lki}^s \leq x_{lk}  &&  l \in L,   k \in K,  s \in S 
+    \label{eq4}\\
+ %       & \textcolor{magenta}{y_{l1i}^s \leq a_{i1}^s} && \textcolor{magenta}{i \in I, l \in L,  s \in S \label{eq5}\\
+%    & \textcolor{magenta}{y_{l2i}^s \leq a_{ik}^s} && \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S } \label{eq5_1}\\ 
+     &  a_{1i}^s f_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s, \quad a_{2i}^s f_i^s \leq \sum_{l \in L}   c_{li} y_{l2i}^s &&  i \in I^s,   s \in S \label{eq6}\\
+     %&  a_{2i}^s f_i^s \leq \sum_{l \in L}   c_{li} y_{l2i}^s &&  i \in I^s,   s \in S \label{eq6}\\
+   % & \sum_{k \in K } a_{ki}^s f_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s &&  i \in I^s,   s \in S \label{eq6}\\
+%\end{alignat}
+%\begin{align}
+     &   a_{1i}^s g_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad  a_{2i}^s g_i^s \leq \sum_{l \in L}   y_{l2i}^s &&   i \in I^s, s \in S \label{eq7}\\
+    & g_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right) &&  i \in I^s,   s\in S   \label{eq8}\\
+  %Parcial  
+  & h_i^s \leq   a_{i1}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad h_i^s \leq   a_{i2}^s - \sum_{l \in L}   y_{l2i}^s  && i \in I^s,   s\in S
+    \label{eq9}\\
+ %Parcial 
+ & \sum_{l \in L} \sum_{k \in K} y_{lki}^s h_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s && i \in I^s,  s\in S
+    \label{eq10}\\
+   %P-late 
+   & w_i^s \leq  a_{i1}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad w_i^s \leq   a_{i2}^s - \sum_{l \in L}   y_{l2i}^s &&  i \in I^s,  s\in S
+    \label{eq11}\\
+   & w_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right)  && i \in I^s,  s\in S 
+    \label{eq12}\\
+  %Null 
+  & \sum_{l \in L} \sum_{k \in K} y_{lki}^s + z_i^s \geq 1 && i \in I^s,   s \in S  \label{eq13}\\
+    & f_i^s + g_i^s + h_i^s + w_i^s + z_i^s = 1  && i \in I^s,  s \in S 
+    \label{eq14}\\
+  &  x_{lk} \in \mathbb{Z}^+ , y_{lki}^s \in \{ 0,1 \} && l \in L,   k \in K, i \in I^s, s \in S
+    \label{eq15}\\
+    & f_i^s, g_i^s, h_i^s, w_i^s, z_i^s \in \{ 0,1 \}  && i \in I^s,   s \in S.
+    \label{eq16}
+\end{alignat}
 
+The objective function (\ref{eq1}) maximizes the expected value of the weighted coverage of the emergencies. %The last term is a penalty for uncovered demand points.
+%Vector $x$ contains all the variables $x_{lk} \in \mathbb{Z}^+$ for $l \in L,   k \in K$. 
+The parameters $\alpha_1 , \alpha_2, \alpha_3$ and $\alpha_4$ are normalized weights that ponder the coverage type, and $\phi$ is the penalty for the null coverage. We assume that every scenario is equally probable since each $s\in S$ represents a sample of the high-demand period we are interested in.
+
+Constraints (\ref{eq3}) establish the available number of ambulances per type.
+Constraints (\ref{eq4}) establish the relationship between the first and second-stage variables, meaning no ambulances can be dispatched from a potential site if no ambulances are located there.
+The \textit{total} coverage of an emergency is defined by constraints (\ref{eq6}). Indeed, if the time response of the location of the ambulances to the emergency is less than $\tau$, then all $c_{li}=1$ and total coverage variables $f_i^s$ can be equal to one, for $l\in L, i\in I^s, s\in S$. The \textit{total-late} coverage is defined by constraints (\ref{eq7}) and (\ref{eq8}). Constraints (\ref{eq7}) allow the total-late coverage variables $g_i^s$ to be one when dispatching variables are active. Meanwhile, constraints (\ref{eq8}) track the demand points where the response time is between $(\tau,\tau_{\max})$ when the difference in the right-hand side of the equation is positive, that is, when there is a value $c_{lj}<1$ associated to a dispatched ambulance, for $l\in L, i\in I^s, s\in S$. Note that this difference may be decimal, so we include a big $M$ value. The \textit{partial} coverage is defined by constraints (\ref{eq9}) and (\ref{eq10}). Recall that, in this case, not all the needed ambulances are dispatched to the emergencies, but the ones that are dispatched have an ideal response time. Thus, constraints (\ref{eq9}) activate variables $h_i^s$ if the number of dispatched ambulances is less than the required ones. Quadratic constraints (\ref{eq10}) guarantee that the dispatched ambulances arrive within the ideal response time, that is, their corresponding value $c_{li}=1$, for $l\in L, i\in I^s, s\in S$. Constraints (\ref{eq11}) and (\ref{eq12}) define the \textit{partial-late} coverage. Constraints (\ref{eq11}) activate the $w_i^s$ variables when the number of required ambulances exceeds the number of dispatched ones. Similarly to the total-late coverage, constraints (\ref{eq12}) track the ambulances with a response time larger than the ideal one and must be multiplied by a big $M$. The \textit{null} coverage is activated by constraints (\ref{eq13}). All the coverage constraints are related to constraint (\ref{eq14}) that ensures only one type of coverage for each emergency. Finally, (\ref{eq15}) and (\ref{eq16}) establish the nature of the decision variables. 
+
+The novelty of the MEC model is the stochastic total/partial coverage per emergency by two types of ambulances. Nevertheless, the related number of variables and constraints is usually large. Moreover, constraints (\ref{eq10}) are quadratic. An integer linear stochastic model with a classical linearization method could be easily formulated. Still, previous experiments showed similar times between the linearized and the quadratically constrained models when solved with integer programming solvers, so we keep the quadratic one for the Intelligent Feedback methodology presented in the next section.
+
+\section{Intelligent Feedback methodology for the EVCP problem} \label{IF}
+
+The MEC model is experimentally hard to solve, even for medium-size instances, as shown in Section~\ref{Exp}. Thus, we propose the  Intelligent Feedback methodology to obtain approximate solutions for the EVCP problem based on an auxiliary disaggregated model, named \textit{Surrogate Ambulance-Based Coverage} (SABC) model. 
+
+In addition to the location variables $x_{li}$, the SABC model requires the following binary ambulance dispatching variables for $k\in K, l\in L, i\in I^s, s\in~S$: 
+\begin{equation*}
+       u^s_{lki} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if ambulance of type $k$ is dispatched from site $l$ 
+             to point $i$} \\
+          &   \text{ with response time less than $\tau$},\\
+         0 & \text{otherwise},
+       \end{array} \right.
+\end{equation*}
+\begin{equation*}
+       v^s_{lki} = \left\{
+       \begin{array}{ll} 
+        1 & \text{if ambulance of type $k$ is dispatched from site $l$ 
+             to $i$ }\\
+             &   \text{ with response time in $(\tau,\tau_{\max})$},\\
+         0 & \text{otherwise}.
+       \end{array} \right.
+\end{equation*}
+Variables $u^s_{lki}$ indicate the ambulances with an ideal response time dispatched from the location sites corresponding to a decay function value $c_{li}=1$. While variables $v^s_{lki}$ indicate the ones with a larger than $\tau$ response time which have a value $c_{li} < 1$. The number of required ambulances $k$ in an emergency demand point $i$ that are not dispatched are counted by integer variable $\zeta^s_{ki}$, for  $k\in K, i\in I^s, s \in S$. The SABC is as follows. 
+\begin{equation}
+      \max_{x} \mathbb{E}_s [ \mathcal{G}^s(x)]
+    \label{eq18}
+\end{equation}
 where 
-\begin{equation}
-    \mathcal{Q}^s(x) = \max_{y^s, \alpha^s, \beta^s, \delta^s, \varphi^s, \gamma^s} \sum_{i \in I} \left[ w_{\alpha} \alpha_i^s + w{_\beta} \beta_i^s + w_{\delta} \delta_i^s + w_{\varphi} \varphi_i^s - p \gamma_i^s \right]
-\end{equation}
+\begin{equation*}
+    \mathcal{G}^s(x) =  \left[ {\sum_{l \in L} \sum_{k \in K} \sum_{i \in I^s}} (\beta_1 u_{lki}^s + \beta_2 v_{lki}^s) - \sum_{k \in K} \sum_{i \in I^s}  \phi \zeta_{ki}^s \right]
+    \label{obj19}
+\end{equation*}
+subject to
+\begin{align}
+  &  \sum_{l \in L} x_{lk} \leq \eta_k  & k \in K \label{eq20}  
+  \\
+  &    \sum_{i\in I^s}(u_{lki}^s + v_{lki}^s) \leq x_{lk} &   l \in L,   k \in K,  s \in S  
+   \label{eq21}  \\  
+  &  u_{lki}^s \leq c_{li}  & l \in L,  i \in I^s,   k \in K,  s \in S    \label{eq22}\\
+  &  u_{lki}^s + v_{lki}^s \leq 1 & l \in L,    i \in I^s,   k \in K,   s \in S
+    \label{eq23}\\
+    & a_{1i}^s = \sum_{l \in L}\sum_{k \in K}( u_{lki}^s + v_{lki}^s + \zeta_{ki}^s )  & i \in I^s, s \in S
+    \label{eq24}\\
+    &   a_{2i}^s = \sum_{l \in L}( u_{l2i}^s + v_{l2i}^s + \zeta_{2i}^s )  & i \in I^s, s \in S
+    \label{eq24bis}\\
+     & \sum_{k\in K}  u_{lki}^s \leq  a_{i1}^s , \quad u_{l2i}^s \leq a_{i2}^s &  i \in I, l \in L,  s \in S
+    \label{ALS1}\\
+    %& \textcolor{magenta}{} & \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S }\label{eq25_1}\\
+    & \sum_{k\in K} v_{lki}^s \leq a_{i1}^s, \quad v_{l2i}^s \leq a_{i2}^s  &  i \in I, l \in L,  s \in S
+    \label{ALS2}\\
+    %& \textcolor{magenta}{v_{l2i}^s \leq a_{ik}^s} & \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S }\label{eq26_1}\\ 
+%   & \sum_{l\in L} (u_{lki}^s + v_{lki}^s) \leq a_{ki}^s  &  i \in I^s,   k \in K,   s \in S    \label{eq25}\\
+   & x_{lk}, \zeta_{ki}^s \in \mathbb{Z}^+, u_{lki}^s, v_{lki}^s \in \{ 0,1 \}  & l \in L,   k \in K, i \in I^s, s \in S      \nonumber
+\end{align}
 
-Subject to
+The objective function \eqref{eq18} maximizes the expected value of the on-time and late dispatched ambulances minus a penalty $\phi$ for the required ambulances that could not be dispatched in less than $\tau_{\max}$ time response. Weights $\beta_1 > \beta_2$ are normalized parameters prioritizing the dispatched ambulances with a response time less than $\tau$. As in the previous model, no more than the available ambulances can be located in the sites, corresponding to constraints \eqref{eq20}. The number of on-time or late dispatched ambulances is less than the number of located ambulances, as indicated by constraints \eqref{eq21}. Constraints (\ref{eq22}) define the dispatched ambulances with an ideal response time of less than $\tau$. Thus, if $c_{li}=1$, then the ambulance will have an ideal response time, while constraints (\ref{eq23}) activate the late variables for which their response time is between $(\tau, \tau_{\max})$. With constraints (\ref{eq24}) and (\ref{eq24bis}), the non-covered emergencies, $\zeta_{ki}^s$ variables, are defined, for $i \in I^s, s \in S$. To allow advanced ambulances to be dispatched instead of basic ones, we add restrictions \eqref{ALS1} and \eqref{ALS2}. Finally, the nature of the variables is stated. 
+ 
+The key characteristic of the SABC model is that the objective function does not rely on emergency coverage as in the MEC model; it only counts the number of on-time, late, or null ambulances sent to the emergency demand points. Moreover, its resolution time is extremely fast since it requires fewer variables and constraints than the MEC one. Nevertheless, disaggregating an emergency situation into the number of required ambulances does not capture emergency coverage, which is crucial for an EMS system.
 
-\begin{equation}
-    \sum_{l \in L} x_{lk} \leq n_k  \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall k \in K,
-    \label{eq23}
-\end{equation}
-
-\begin{equation}
-    \sum_{i\in I}y_{l1i}^s \leq x_{l1} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{1i}^s \neq 0, \forall l \in L, \forall s \in S,
-    \label{eq24}
-\end{equation}
-
-
-\begin{equation}
-    \sum_{i\in I}y_{l2i}^s \leq x_{l2} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textrm{if } a_{2i}^s \neq 0, \forall l \in L, \forall s \in S,
-    \label{eq25}
-\end{equation}
-
-
-\begin{equation}
-    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq26}
-\end{equation}
-
-\begin{equation}
-    \sum_{k \in K } a_{ik}^s \alpha_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad \qquad \qquad \qquad \qquad  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq27}
-\end{equation}
-
-\begin{equation}
-    \sum_{k \in K } a_{ik}^s \beta_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq28}
-\end{equation}
-
-\begin{equation}
-    \beta_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right)   \qquad  \qquad  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S, 
-    \label{eq29}
-\end{equation}
+In the Intelligent Feedback methodology for the EVCP problem, we first solve the SABC stochastic model.  From this optimal solution, we obtain the location of the ambulances of the first stage corresponding to the value of $x_{lk}$ variables, for $l\in L , k \in K$. We use these values as input to the MEC model.
+Since the first stage variables are fixed, the MEC(SABC) becomes easier to solve and yields high-quality solutions. To diversify the solution, we could implement a local search neighborhood based on the location variables $x_{lj}$. Nevertheless, experimental results show that the quality of the solutions using the MEC(SABC) methodology is extremely high with a single feedback.    
 
 
-\begin{equation}
-    \delta_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s  \qquad  \qquad \qquad \qquad  \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S, 
-    \label{eq30}
-\end{equation}
+As mentioned, the SABC auxiliary model is a surrogate for the MEC formulation. Thus, the solutions obtained by the MEC and SABC are not equivalent. Nevertheless, the solutions of the SABC model can be mapped into solutions for the EVCP problem, as shown in Algorithm \ref{alg:cap}. In this manner, we can compare both models regarding emergency coverage, even if the SABC model is short-sighted regarding this objective. 
+Step 3 activates the total coverage when all the required ambulances arrive in less than $\tau$ response time. Step 4 verifies if a dispatched ambulance has a response time in $(\tau,\tau_{\max})$, corresponding to the total-late coverage. Step 6 checks that not all the required ambulances are dispatched but they arrive between the ideal time, while Step 8 verifies that the dispatched ambulances are not all the required ones and at least one of them has a response time in $(\tau,\tau_{\max})$. Finally, Step 10 activates the null variable. 
+\begin{algorithm}
+\caption{Transformation of a SABC solution into a MEC solution }\label{alg:cap}
+\begin{algorithmic}[1]
+\State \textbf{require} solution of the SABC model $(\bar{x},\bar{u},\bar{v})$
+\For{ $i\in I^s, s\in S$}
+    \State \textbf{if } $\sum_{l\in L,k\in K} \bar{u}^s_{lki}= a^s_{ki}$ \textbf{then}  $f^s_i=1$ \Comment{total coverage}
+    \State \textbf{if} $\sum_{l\in L,k\in K} \bar{u}^s_{lki}  < a^s_{ki}$ and $ \sum_{l\in L,k\in K} \bar{u}^s_{lki} +\bar{v}^s_{lki} = a^s_{ki}$ 
+    \State $\quad $ \textbf{then} $g^s_i=1$ \Comment{total-late coverage}
+    \State \textbf{if } $ \sum_{l\in L,k\in K} \bar{u}^s_{lki}  < a^s_{ki}$ and $\sum_{l\in L,k\in K}\bar{v}^s_{lki}=0$ 
+    \State $\quad $ \textbf{then} $h^s_i=1$ \Comment{partial coverage}
+    \State \textbf{if} $ \sum_{l\in L,k\in K} \bar{u}^s_{lki} +\bar{v}^s_{lki} < a^s_{ki}$ and $\sum_{l\in L,k\in K}\bar{v}^s_{lki}>0$ 
+    \State $\quad $ \textbf{then} $w^s_i=1$ \Comment{partial-late coverage}
+    \State \textbf{otherwise} $z^s_i=1$ \Comment{null coverage}
+\EndFor
+\State{ \textbf{return} MEC solution $(\bar{x},f,g,h,w, z)$   }
+\end{algorithmic}
+\end{algorithm}
 
-\begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s \delta_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \qquad  \qquad \qquad \qquad \hspace{2mm}  \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
-    \label{eq31}
-\end{equation}
+The next section compares the MEC, MEC(SABC), and even the SABC solutions.  
 
-\begin{equation}
-    \varphi_i^s \leq \sum_{k \in K} a_{ik}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s \qquad \qquad \qquad \qquad \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
-    \label{eq32}
-\end{equation}
-
-\begin{equation}
-    \varphi_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right) \qquad \qquad \textrm{if } \sum_{k \in K}a_{ki}^s \neq 0, \forall i \in I, \forall s\in S,
-    \label{eq33}
-\end{equation}
-
-\begin{equation}
-    \sum_{l \in L} \sum_{k \in K} y_{lki}^s + \gamma_i^s \geq 1 \qquad \qquad \qquad \qquad \qquad \qquad \hspace{3mm} \textrm{if} \sum_{k \in K} a_{ik}^s \neq 0, \forall i \in I, \forall s \in S,
-    \label{eq34}
-\end{equation}
-
-\begin{equation}
-    \alpha_i^s + \beta_i^s + \delta_i^s + \varphi_i^s + \gamma_i^s = 1 \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall s \in S,
-    \label{eq35}
-\end{equation}
-
-\begin{equation}
-    x_{lk} \in \mathbb{Z}^+ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \hspace{5mm} \forall l \in L, \forall k \in K,
-    \label{eq36}
-\end{equation}
-
-\begin{equation}
-    \alpha_i^s, \beta_i^s, \delta_i^s, \varphi_i^s, \gamma_i^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \hspace{4mm} \forall i \in I, \forall s \in S.
-    \label{eq37}
-\end{equation}
-
-
-\begin{equation}
-    y_{lki}^s \in \{ 0,1 \} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \forall i \in I, \forall l \in L, \forall k \in K, \forall s \in S,
-    \label{eq38}
-\end{equation}
 
 \chapter{Solution description}
 
 The methodology we will follow is:
 \begin{itemize}
-\item Do models construction to represent the thesis' problem proposed. We will consider some different versions to decide which is the best to describe the problem exactly. Versions model will include the following factors: different vehicle types, partial coverage, partial distance, more than one service provider, and hospitals capacity.
-\item Evaluate each model as an exact model version for small instances. With these results, we can discuss if the models are well implemented or not according to the problem. We will use Gurobi Optimizer to program models' codes.
+\item Do model construction to represent the thesis' problem proposed and an intelligent feedback formulation to obtain a similar location solution in less time. We will consider solutions from both formulations to decide which is the best to apply in a real case EMS system problem. The model will 
+\item Evaluate each one (model and intelligent feedback formulation) with a solver for small and medium instances. With these results, we can discuss if the formulations are well implemented or not according to the problem. We will use Gurobi Optimizer to program formulations' codes.
 \item Study stochastic programming in Julia, which is recently in the literature. We will see if Julia can solve our models, or we will study Branch and Benders cut solution used in a recent problem.
 \item Solve small and large-scale problems and evaluate the EMS system to know if we can improve patients' attention.
 \end{itemize}
@@ -489,13 +463,205 @@ We will consider a demand point set $I = \{1, 2, 3, 4\}$. A possible scenario fo
 
 Ambulance location is a fixed decision. Once the EMS system locates its ambulances at potential sites, these ambulances attend emergency calls and return to the potential sites where they were located. Considering this location, operators receiving emergency calls will have policies to determine what ambulance (or ambulances) is (are) best to attend an emergency at the demand call point. The mean idea for the EMS system's solution is to provide information about where to locate their ambulances depending on the number of ambulances needed at demand points in all scenarios.
 
-\section{Computing tools description}
-We will use the latest version of the Gurobi Optimizer modeling with the Gurobi Python Interface to solve the exact small-scale problems. 
+\subsection{Parameters} \label{instances}
 
-For large-scale problems, we will try the latest version of the Julia Programming Language for stochastic problems, which suggests some model decompositions into a master problem and a set of subproblems to solve stochastic models quickly and effectively \cite{biel2022efficient}. If these decompositions can not solve our problem, we will use a Branch and Benders cut to decompose our model, and we will code in Python.
+Our instance generator is based on real-world data taken from the city of Monterrey, Mexico. Table \ref{tab:yoon_p} compares our parameter settings with the ones used by of \cite{yoon2021stochastic}, a benchmark from the literature \textbf{for a similar problem??}.  
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{ccc}
+    \hline
+       Parameters  &  Monterrey & Hannover, Mecklenburg \cite{yoon2021stochastic} \\
+       \hline
+       $|I|$  & $\{168, 270, 500, 900, 1500\}$ & \{168, 270\} \\
+        $|L|$  & $ \{16,50,100\}$ & \{16, 30\} \\
+        $(\eta_1,\eta_2)$ & $ (35,20) $ & $\{(3,3), (6,6)\}$\\
+       $|S|$   & $ \{10,50,100, 150, 200\}$  &   $ \{ 10, 50, 100, 150, 200\}$\\
+       \hline 
+    \end{tabular}
+    \caption{Comparison of instance size used for experimentation between our case study (Monterrey) and one form the literature.}
+    \label{tab:yoon_p}
+\end{table}
+The databases for the Monterrey case study showed a larger number of possible demand points $|I|$ compared to the one from the literature. The number of possible locations of the ambulances $|L|$ is also larger than the one from the literature since not only hospitals and fire stations can be considered. Since we consider the whole city of Monterrey, the number of ambulances $(\eta_1,\eta_2)$ is also larger than the ones from the literature cases. Finally, we noted that the number of scenarios could be as large as the ones from the literature. Thus, our benchmark has 15 instances for which five different scenario settings were built. The ideal ambulance response time is $\tau = 10$ minutes while the maximal response time is $\tau_{\max}=30$ minutes.  
+  
+For each instance, we simulated a two-hour high-demand period. Each scenario $s\in S$ consists of a set of demand values per type of ambulance and per demand point $\{a^s_{ki}\}_{k\in K, i\in I,s\in S}$. %\textcolor{magenta}{Each value $a_{ki}$ has a probability of being either null or positive depending on a Binomial distribution with probability $0 < N(0.5, 0.2)$, which is based on a Normal distribution. 
+%VALOR DE LA BINOMIAL * 500 Y LO TRUNCO A ENTEROSSuppose $\{a^s_{ki}\}_{k\in K, i\in I}$ is not zero. In that case, its value, which corresponds to the number of ambulances type $k$ at location $i$ in scenario $s$, is drawn from a sample function with probability taken by an Exponential distribution with $\lambda = \frac{d^s_i}{D}$ where $d_i$ is the sum of values $a_{ki}$ for each demand point $i \in I$, and $D$ is the total number of accidents for the $s \in S$ scenarios.}  
+Fewer demand points imply a larger grid of the city and a larger proportion of emergencies per demand point. Thus, when $|I|=168$, around 30\% of the demand points may have a value different from 0. On the contrary, when $|I|=1500$, only 1\% of the demand points will require ambulances. This setting reflects the number of emergencies per hour observed in the case study. The instances are built such that most emergencies require a single ambulance. 
+ 
+  For the MEC formulation, we use the following weights in the objective function~\eqref{eq1}: $\alpha_1= 0.65, \alpha_2= 0.2, \alpha_3= 0.1$, and $\alpha_4= 0.05$. In this manner, the total coverage is the most sought one, while the partial-late cover is the one with less benefit. For the SABC objective function~\eqref{obj19} we use $\beta_1 = 0.7$ and $\beta_2 = 0.3$. These values reflect the aim to send primordially the required ambulances with an ideal response time. The penalty for null coverage in the MEC model or when a required ambulance cannot be dispatched to the emergency in less than $\tau_{\max}$ time in the SABC is set to $\phi =   1/ |S|  + 0.0005$.
+
+All the instances with their related scenarios are available at \textcolor{magenta}{FALTA figshare}.
+
+\section{Computing tools description}
+We used Gurobi Optimizer 10.0.2 with Python 3.10 to solve the integer programming models MEC, SABC, and MEC(SABC).
+The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers has a CPU time limit of 10800 seconds. 
+
+%For large-scale problems, we will try the latest version of the Julia Programming Language for stochastic problems, which suggests some model decompositions into a master problem and a set of subproblems to solve stochastic models quickly and effectively \cite{biel2022efficient}. If these decompositions can not solve our problem, we will use a Branch and Benders cut to decompose our model, and we will code in Python.
 
 
 \chapter{Experimental work}\label{cap:exper}
+
+\section{Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations} \label{obj val}
+
+
+In this section, we analyze the parameters of the EVCP problem that impact the performance of the objective values of our stochastic methodologies. Several questions arise. Does the number of scenarios impact the objective function? Does a high number of demand points imply a harder instance? Does the number of possible locations impact the efficiency of the models? 
+
+\textbf{aqui primero tienes qu decor que haces!!  To investigate these issues, we solve WHAT MODELS, WHAT INSTANCES.  The results are presnted in Figures XXX}
+ To answer these questions, we start with Figures \ref{fig:M1objV} and \ref{fig:M2objV} corresponding to the MEC and the SABC models \textbf{WHAAT??? DOS modelos?? Parece solo uno}. Each figure consists of six plots. The three plots on the first column vary the number of demand points (x-axis), comparing each one to the objective function value when different scenarios are tested. The three plots in the second column vary the number of scenarios tested and show the variation in the solution value for each number of demand points. The upper plots consider a number of possible locations for the ambulances of $|L|=16$, the middle plots of $|L|=50$, and the lower plots of $|L|=100$. The straight lines are the best objective values while dotted ones are the best bound found.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.9\linewidth]{figures/M1objectiveValue.png}
+    \caption{Best objective and the best bound of the objective function obtained by the MEC model with respect to the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$. }
+    \label{fig:M1objV}
+\end{figure}
+%Figure \ref{fig:M1objV} we analyze the value of the objective function (y-axis) obtained by the MEC model with respect to the demand points on the left side and the scenarios on the right side, for different sizes of potential sites $|L|$. The number of ambulances is \textcolor{magenta}{$(\eta_1,\eta_2)=   (35,20) $}.  The best objective and the best bound are plotted.
+
+As can be seen from this figure,
+%Figure \ref{fig:M1objV} shows that 
+the relative optimality gaps\footnote{(best objective -  best bound)/best objective.} are negligible for small instances with 16 potential location sites. Still, the gaps become larger for the instances with 50 and 100 potential sites. The number of demand points where accidents may occur and the considered scenarios make the instances harder to solve optimally within the time limit. Thus, the MEC problem can only handle small instances with a few scenarios, demand points (accidents), and potential sites for ambulances. Note that in the left-hand-side plots, the larger the number of scenarios, the better the objective function. This implies that a better sampling of the accidents benefits the solution quality related to the ambulance's response time to emergencies. The right-hand-side plots show that the larger the size of demand point sets, the harder to solve the instance is. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.9\linewidth]{figures/M2objectiveValue.png}
+    \caption{Best objective and the best bound of the objective function obtained by the SABC model concerning the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$.}
+    \label{fig:M2objV}
+\end{figure}
+Figure \ref{fig:M2objV} presents the results when solving the same instances but using the SABC model. Since SABC is a surrogate model, the value of the objective function cannot be compared to that of the MEC model. Nevertheless, the importance of a larger number of scenarios is remarkable, as shown in the left-hand-side plots. Indeed, a few scenarios lead to objective function values that differ from those obtained with more than 100 scenarios or more. Remarkably, the objective values for the SABC model tend to converge for more than 100 scenarios, 500 demand points, and 50 potential sites for ambulances. The number of demand points do not seem to affect the value of the objective function, as shown in the right-hand-side plots. Moreover, the difference between the best objective and the best bound is always equal to zero since the SABC model always reaches its optimum within the time limit. The SABC model is not sensitive to the number of potential location sites. The SABC surrogated model is very tractable; nevertheless, it does not consider the coverage per emergency as an objective function, as does the MEC model.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\linewidth]{figures/M2M1objectiveValue.png}
+    \caption{Best objective and the best bound of the objective function obtained by the MEC(SABC) model concerning the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$.}
+    \label{fig:M2M1objV}
+\end{figure}
+Now, we apply the proposed solution methodology, named MEC(SABC), to the same instances and present the results in Figure \ref{fig:M2M1objV}.
+%Figure \ref{fig:M2M1objV} is similar to the previous ones, but the plots correspond to the objective values of the MEC model compared to the MEC(SABC) methodology. 
+As can be seen, while the number of scenarios, demand points, and potential sites slightly affect the model's performance, it obtains better results than those obtained by the MEC model, especially for the larger instances. Moreover, the MEC(SABC) model optimality gaps are always equal to 0 within the time limit we established. Note that the objective function values obtained by the MEC(SABC) are better than those from the MEC model. Also, the MEC(SABC) model tends to be less dependent on the number of scenarios. Thus, although we cannot guarantee optimality with the MEC(SABC) model, it obtains faster and higher-quality solutions
+than those obtained by the MEC model. %We reduced the gaps in the objective function and improved the quality of the solution values obtained with MEC for the medium and large instances.  
+
+
+
+
+
+\section{Computational time of the MEC, SABC and MEC(SABC)} \label{runtime}
+
+\textbf{desde mi perspectiva,e sta es una seccion medio inutil, cual es su proposito? realemnet no quieres mostrar el tiempo de SABC, el mesnaje REALEMNTE que quieres dar aqui es comprar los tiempos de MEX y MEC(SABC) poniendo como argumento que gracias a que el SABC se resuelve muy rapido el MEC(SABC) le parte la madre al MEC... entonces tienes que empeza siemrpe diciendo cual es el prpoisto dele xperimento. luefo QUE HACES , QUE CORRES; QUE INSBTANCIAS; ETC y ya luego presentas resultados, aqui lo arrancas bioen abrupto}
+
+\textbf{The purpose of this experiment is to compare the running times of (1) solving the original MEC by a branch-and-bound solver vs. (2) Applying the MEC(SABAC) method.  Recall from the previous section that MEC(SABC) attempts to exploit the fact that the surrogate model SABC is very tractable and solved relatively fast.  To this end, we... Y PON QUE CORRES, QUE HACES, QUE INSTANCIAS!!}
+
+\textbf{Y luego si los resulytados (sin mostrar SABC)}
+
+In this section, we explicitly present the computational times of our methodologies. Figure \ref{M1M2Time} presents three plots, for which the y-axis is the execution time in seconds and the x-axis is the number of scenarios. We present the case with a) 16 potential sites for the MEC, while the b) SABC and the c) MEC(SABC) correspond to the 100 potential site instances. Indeed, the MEC model with $|L|=\{50,100\}$ reaches the time-limit even for 10 scenarios. 
+\begin{figure}[!tb]
+  \begin{center}
+    \subfigure[MEC model with 16 potential sites]{
+    \includegraphics[width=0.48\textwidth]{figures/M1Time16.png}}
+    \subfigure[ SABC model with 100 potential sites]{
+        \includegraphics[width=0.45\textwidth]{figures/M2Time100.png}
+      }
+        \subfigure[ MEC(SABC) methodology with 100 potential sites]{
+        \includegraphics[width=0.45\textwidth]{figures/M1M2Time.png}
+         }
+    \caption{Computational time for the a) MEC, b) SABC, and c) MEC(SABC) model with respect to the number of scenarios.}
+    \label{M1M2Time}
+  \end{center}
+\end{figure}
+
+Figure \ref{M1M2Time} a) shows that the principal disadvantage of the MEC model is its computational time, which increases significantly with the number of demand points, potential sites, and scenarios, even for small instances with 16 potential location sites for the ambulances. The SABC model is extremely fast, even for large instances (Figure \ref{M1M2Time} b)), but it loses coverage per emergency, which is the aim of the EVCP problem. Thus, the utility of the SABC model is explicit in plot c), which is to obtain an initial solution for the ambulance location assignment in a short time to allow the MEC(SABC) model to be solved faster than the MEC model and obtain high-quality solutions. The location-allocation strategy of the MEC(SABC) inherits not only its fast computational time from the SABC but also yields coverage per emergency situation, which is the main objective for the EVCP problem. The MEC(SABC) model is an approximated approach, but it gives solutions that are as good as the MEC and even better when the MEC instances do not reach optimality and its gaps are large.  %We noticed that not only did the quality of the solutions improves with the MEC(SABC) model, but also its computational time, as seen in  Even for small instances, the MEC model reaches the time limit when the scenarios increase to more than 100. The surrogated model SABC is very fast, and its computational time is always less than one hour, even for the large instances with 200 scenarios, 1500 demand points, and 100 potential sites. Interestingly, the MEC(SABC) method inherits the fast computational time of. All the execution times are less than one hour. 
+
+An interesting advantage of the MEC(SABC) intelligent feedback method is that only one iteration is needed. Indeed, once the location of the ambulances has been retrieved from the SABC model and feeded back to the MEC model, we could perturbate either randomly or with a local search, the allocation of the ambulances and iterate again. Nevertheless, we could not systematically generate a neighborhood around a location solution that yield better solutions with the MEC(SABC). This implies that local maximums are reached with this first feed back and that complex or more diverse neighborhoods should be built to allow escaping from these solutions. Probably, it would be interesting to allow local search movement that do not yield immediate benefit.  
+
+\section{Emergency coverage percentage for MEC, SABC and MEC(SABC)} \label{cov type}
+
+
+\textbf{Algo parecido aqui, tu realmente no te intresa el SABC pro si solo, mas bien es un modelo interemdio que usas a tu convenniencia, para resolver MEC(SABC) y comppararlo con MEC}
+
+ The objective values and execution times are crucial to evaluate the performance of the models. Nonetheless, the most important objective of the EVCP problem is to cover the largest number of demand points involved in the system within a fixed response time. Thus, a main question arises: is the emergency coverage quality of the MEC(SABC) as good as the one yielded by the MEC model? In this section, we evaluate the coverage percentage of the emergency situations for the MEC, SABC, and MEC(SABC).% to prove if the fast initial solution from SABC implemented in MEC(SABC) is as good as the solution from MEC. 
+\textbf{Di que instnacias corres, que haces, y ay luego discutes los ersultados}
+Figure \ref{fig:Coverage} shows three columns with three plots each, varying the number of scenarios. Each plot shows the type of ambulance percentage coverage obtained by the a) MEC and b) SABC models, and the c) MEC(SABC) methodology: T is for Total coverage (all required ambulances on time), TL is for Total-late coverage (all required ambulances, but at least one arrives late), P is for Partial coverage (at least one required ambulance is not dispatched, but the dispatched ones all arrive in time), PL is for Partial-late coverage (at least one required ambulances is not dispatched, at least one of the dispatched arrives late), and N for Null (no ambulances assigned to the demand point). The upper plots are for  $|L|=\{16\}$ potential sites, the middle ones for $|L|=50$, and the lower ones for $|L|=100$.
+The SABC objective function differs from the MEC and the MEC(SABC). However, once a solution has been found for the SABC model, we can compute the type of coverage that each demand point received with the help of Algorithm \ref{alg:cap}. In this manner, we can compare the three approaches with respect to the demand point coverage.  
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figures/CoverageTodos.png}
+    \caption{Coverage percentage per type obtained by the a) MEC model, b) SABC model, and the c) MEC(SABC) methodology for potential sites $|L|=\{16,50,100\}$.}
+    \label{fig:Coverage}
+\end{figure}
+
+Figure \ref{fig:Coverage} column a), shows that the MEC model tends to leave very few demand points with null coverage, which is the main concern of the emergency services in our case study. As the number of potential sites $|L|$ increases, the coverage tends to be partial-late for the MEC model. This behavior is probably linked to the large gaps obtained by the MEC model for large instances, but the number of null coverage is still remarkably low. Column b) shows that the number of demand points with null coverage for the surrogated SABC model is larger than for the MEC model. Indeed, the SABC model does not consider demand points (accidents) as a whole event. Nevertheless, null coverage is reduced as potential ambulance sites increase. Column c) shows that the MEC(SABC) methodology is robust regarding the number of scenarios. That is, the demand point coverage is independent of the scenario number. In this manner, 100 scenarios are sufficient for handling a high-quality coverage solution. Moreover, the MEC(SABC) model inherits the characteristic of having very few null demand point coverage from the MEC model. Interestingly, partial coverage tends to be larger than partial late coverage, which is mostly desired in real life since it can be translated into medical care on time, increasing the probability of saving lives. 
+
+
+
+\section{Number of ambulances available in the system}\label{num amb}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/AmbComp.png}
+    \caption{Objective value and execution time versus the number of ambulances for a)~MEC model and b) MEC(SABC) methodology.}
+    \label{fig:amb}
+\end{figure}
+
+ All the previous experiments were executed with the number of ambulances equal to $(\eta_1,\eta_2)=   (35,20) $. A main feature of the EVCP problem is that an ALS ambulance can be sent instead of the BLS one, which gives a more flexible setting but may induce difficulty when solving the models. 
+ Thus, one issue that would investigate in this section is the influence or effect that the number of available ambulances in the EVCP problem on objective function value and running time.
+
+ \textbf{Y ,o miso, di QUE HACES; QUE CORRES!!
+ }
+ In Figure \ref{fig:amb}, we show two columns of two plots each.  The objective value (upper plots) and the execution time (lower plots) are on the y-axis, while the x-axis varies the number of ambulances: (10,6), (20,11), and  (35,20). The left plots correspond to the MEC stochastic model, while the right ones are for the MEC8SABC) methodology. The demand points are fixed at 900, 100 scenarios, and 50 ambulance potential sites. 
+
+ From Figure \ref{fig:amb}, we observe that the difference between the best objective and the best bound for the MEC model (left plots) slightly increases with the number of ambulances. Thus, the larger the number of ambulances the harder the instances for the MEC model. Meanwhile, the time limit is reached for every tested instance in the MEC model. For the MEC(SABC) methodology, the gaps are equal to 0 for all instances. Moreover, the objective values are comparable to the MEC model for setting up ambulances, which is a main characteristic. The MEC(SABC) methodology solves the instances in less than one minute, and this computational time is unaffected by the number of ambulances. %The left column that the number of ambulances does not impact the efficiency of the a) MEC model or the b) MEC(SABC) methodology.
+
+
+ 
+\section{Solving instances similar to the literature benchmark} \label{benchmark}
+
+\textcolor{magenta}{A ver si esto quedo mejor, sino para quitarlo porque va a causar mas ruido que ayuda.}
+
+The EVCP problem cannot be compared with other models or methodologies in the literature. Nevertheless,  \cite{yoon2021stochastic} address the problem of locating two ambulance types and dispatching them to the demand points. Still, the main difference with the EVCP problem is that they do not consider different types of coverage. They propose a two-stage stochastic programming model (DEF) and a solution technique based on Benders cuts (BBC). Although we cannot compare the objective functions of the MEC or MEC(SABC) with their solutions since they are different problems, we can only compare the gaps and execution times. \textbf{es que caemops en lo mismo, devimos que los OF no peuden ser comparados, pero comparamos los gaps que a find e cuentas dan cuenta de la OF, es como que contradictorio, o se puede comparar y se argumenta bien porque, o no se puede... A MENOS QUE.... USANDO nuestro metodologia, se proceda (si se puede) RESOLVER el otro problema y ahi si pueiera compararse}... 
+
+With our instance generator, we produced a set of instances based on the parameters that \cite{yoon2021stochastic} present for their case study of the city of Mecklenburg County: 168 demand points, 30 potential locations, 6 ALS and 6 BLS ambulances, and $\tau= 9$ minutes. The time limit is set to 7200 seconds. Table \ref{tab:yoon} presents the comparison results between the MEC model and the MEC(SABC) methodology with DEF model and the Benders approach BBC of \cite{yoon2021stochastic}. Note that this comparison is only indicative since the problems and the instances are not equivalent; the algorithms were executed in different computer configurations. Nevertheless, the orders of magnitude allow us to emit some comparisons. The first column indicates the number of scenarios. For each approach, we report the gap and the computational time. The symbol ``-" indicates that the approach could not yield a feasible solution within the time limit. 
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{ccccccccccccc}
+\hline
+ &
+   &
+  \multicolumn{2}{c}{ DEF} &
+   &
+ \multicolumn{2}{c}{BBC}  &
+   &
+  \multicolumn{2}{c}{MEC } &
+   &
+  \multicolumn{2}{c}{MEC(SABC) } \\ %\cline{3-3} \cline{5-5} \cline{7-8} \cline{10-11} 
+$|S|$ &
+   &
+    gap  & time &
+   &
+     gap  & time &
+   &
+   gap  &
+  time  &
+   &
+    gap   &
+    time   \\ \hline
+10  &  & 0.3  &7200     &        & 0.4   &7200     &  & 0.0  & 47   &  & 0.0 & 1  \\
+50  &  & 12.6  &7200     &        & 1.3    &7200   &  & 2.2  & 7200 &  & 0.0 & 6  \\
+100 &  & -    &7200      &        & 2.7 &7200      &  & 5.9  & 7200 &  & 0.0 & 11 \\
+150 &  & -  &7200        &        & 3.2   &7200    &  & 7.5  & 7200 &  & 0.0 & 18 \\
+200 &  & - &7200         &        & 3.8   &7200    &  & 23.0 & 7200 &  & 0.0 & 22 \\ \hline
+\end{tabular}
+    \caption{Comparison results between the MEC model and the MEC(SABC) methodology with DEF model and the Benders approach BBC of \cite{yoon2021stochastic}. Note that this comparison is only indicative.}
+    \label{tab:yoon}
+\end{table}
+
+The DEF stochastic model cannot solve instances with 100 scenarios or more. Meanwhile, the MEC model can find feasible solutions for all instances, even if the gap increases considerably with the number of scenarios. The bender approach BBC reaches the time limit for every set of scenarios, but it yields reasonable gaps. The MEC(SABC) methodology solves all instances with a null gap in less than one minute for all instances. Note that the solutions obtained with the MEC(SABC) methodology may not be the optimal solution to the MEC model.%, but Figure \ref{fig:M2M1objV} shows the high quality of its solutions. 
+
+The Intelligent Feedback method MEC(SABC) can solve similar instances from the literature in a fast computational time and deliver high-quality solutions. 
+
+
+\begin{comment}
 We first study solutions to the preliminar model for the UEMSS Problem. In this preliminar model, we obtain results about where to locate available ambulances of each type of ALS and BLS and how the dispatches were in each scenario, knowing how was each coverage. We do not include different service providers in this model yet. 
 
 We consider random instances containing information about the total available ambulances for ALS and BLS types, the distance between each potential site and demand point, the possible scenarios, and the value of response time's decay function. For preliminar results, which have information about how the model is solved, we consider 50, 200, and 350 demand point sizes, 20, 40, and 55 potential sites' sizes, and 15, 50, and 75 scenarios' sizes. 
@@ -619,16 +785,30 @@ Instance\_350\_55\_75 & 350 & 55 & 75 & 124.7983 & 200.6852 & 575.8865 & 186.960
 \end{table}
 
 With these experiments, we are sure our model has to be solved by a model decomposition, especially when dealing with large-scale problems, which is our next step. 
+\end{comment}
 
 \chapter{Conclusions}\label{cap:concl}
 
-For now, we have only conclusions about our preliminar model.
+%For now, we have only conclusions about our preliminar model.
+
+In this investigation, we deal with the second phase of Emergency Medical Services (EMS), which dispatches one or several ambulances to the emergency scenes to provide urgent medical care. \textbf{what do you mean 2nd phase?? No se supone estas resolviendo AMBSAS fases, la de localizacion y despachamiento??} In some emergency situations, more than one ambulance could be needed. Moreover, different types of ambulances may be required in an emergency situation. Since EMS systems in Mexico lack around 30-60\% of the number of ambulances suggested by the World Health Organization, one of the main contributions of this work is to deal with the problem of deciding if an emergency will be totally or partially be covered, and of course, make the best possible assignment of the scare resources. Sadly, some emergencies may remain uncovered by an emergency unit. 
+
+We study the \textit{Emergency Vehicle Covering and Planning} (EVCP) problem that locates a limited number of two heterogeneous types of ambulances in different city points and dispatches them to the emergency or demand points, considering the uncertainty of accident points so as to maximize the emergency coverage (even if partially) and the response time in which the patients receive medical first aids \textbf{mismo comentario de antes... bi-objetivo?}.
+
+We propose a novel two-stage stochastic program for the EVCP problem that can be solved by branch-and-bound for small instances with a restrictive number of scenarios. We propose an Intelligent Feedback methodology, which is escentially a location-allocation procedure that relies on the solution of an auxiliary surrogate model, which is faster to solve. With this method, we obtain high-quality solutions significantly faster than the previous approach. The Intelligent Feedback method was tested over a wide set of randomly generated instances based on real-world data from the city of Monterrey.
+The proposed approach has significant value since it can be implemented by just calling any off-the-shelf IP solver without complex decomposition techniques.
+
+ Our experimental results showed the efficiency of the Intelligent feedback methodology in terms of time and solution quality . The fact that our current solutions are local maximums imply that complex or more diverse neighborhoods should be built to allow escaping from these solutions when implementing several iterations withing the intelligent feedback methodology.  
+
+ \textbf{hay algo mas de future reserach q valga la pena discutirse??}
 
 \section{Main contributions and conclusions}
 
-Our preliminar model experiments show us that large-scale problems can not be solved because the solver has not had sufficient memory to support them. Nevertheless, small instances results generate feasible solutions for ambulance location and dispatching decisions in different scenarios. Partial rate coverage allows sending ambulances even if there are not enough ambulances to cover an accident totally or if an ambulance (or more than one ambulance) is (are) out of the desired response time for patient attention. 
+Our stochastic model can solve large-scale instances but as the sizes of the instances increase, the convergence time becomes very long. This is why one of the main contributions of this thesis is the intelligent feedback.
 
-These results help us cover more demand points in the system, allowing beginning attention for patients, which can be finished after providing the first aid to them in those demand points where not all ambulances were sent. 
+%Our preliminar model experiments show us that large-scale problems can not be solved because the solver has not had sufficient memory to support them. Nevertheless, small instances results generate feasible solutions for ambulance location and dispatching decisions in different scenarios. Partial rate coverage allows sending ambulances even if there are not enough ambulances to cover an accident totally or if an ambulance (or more than one ambulance) is (are) out of the desired response time for patient attention. 
+
+%These results help us cover more demand points in the system, allowing beginning attention for patients, which can be finished after providing the first aid to them in those demand points where not all ambulances were sent. 
 
 
 \section{Future work}

@@ -69,7 +69,7 @@
 %\begin{comment}
 \newpage
 \thispagestyle{empty}
-\enlargethispage{5mm}
+\enlargethispage{8mm}
 
 {\renewcommand{\baselinestretch}{1.1}\selectfont
 \begin{center}\vspace*{-25mm}\hspace*{-10mm}
@@ -87,9 +87,10 @@
 %{\bf \depg}
 %\end{center}
 
-\vskip 4mm
+%\vskip 4mm
+\vskip 2mm
 
-Los miembros del Comité de Tesis recomendamos que la Tesis <<\titulo>>, realizada por el alumno \autor, con número de matrícula \matricula, sea aceptada para su defensa como requisito parcial para obtener el grado de \grado\orientacion .
+Los miembros del Comité de Tesis recomendamos que la Tesis \textit{\titulo}, realizada por el alumno \autor, con número de matrícula \matricula, sea aceptada para su defensa como requisito parcial para obtener el grado de \grado\orientacion .
 \ifdoctorado{\vskip 10mm}\else{\vskip 8mm}\fi
 
 \begin{center}
@@ -97,17 +98,23 @@ El Comité de Tesis\\
 \ifdoctorado{\vskip 15mm}\else{\vskip 25mm}\fi
 
 \ifdoctorado{%%%
-\begin{tabular}{p{37mm}p{21mm}p{12mm}p{21mm}p{37mm}}
-	\cline{2-4}
-	& \multicolumn{3}{c}{\asesor} & \\
-	& \multicolumn{3}{c}{Asesor}  & \\[15mm]
+\begin{tabular}{p{37mm}p{21mm}p{12mm}p{21mm}p{37mm}p{21mm}}
+	\cline{1-2} \cline{4-5}
+	\multicolumn{2}{c}{\asesor} & & \multicolumn{2}{c}{\coasesor} \\
+	\multicolumn{2}{c}{Asesor}   & & \multicolumn{2}{c}{Co-Asesor}   \\[10mm]
+	%\cline{2-4}
+	%& \multicolumn{3}{c}{\asesor} & \\
+	%& \multicolumn{3}{c}{Asesor}  & \\[15mm]
 	\cline{1-2} \cline{4-5}
 	\multicolumn{2}{c}{\revisorA} & & \multicolumn{2}{c}{\revisorB} \\
-	\multicolumn{2}{c}{Revisor}   & & \multicolumn{2}{c}{Revisor}   \\[17mm]
+	\multicolumn{2}{c}{Revisor}   & & \multicolumn{2}{c}{Revisor}   \\[10mm]
 	\cline{1-2} \cline{4-5}
 	\multicolumn{2}{c}{\revisorC} & & \multicolumn{2}{c}{\revisorD} \\
-	\multicolumn{2}{c}{Revisor}   & & \multicolumn{2}{c}{Revisor}   \\[2mm]
-	& \multicolumn{3}{c}{Vo. Bo.} & \\[14mm]
+	\multicolumn{2}{c}{Revisor}   & & \multicolumn{2}{c}{Revisor}   \\[10mm]
+	\cline{2-4}
+	& \multicolumn{3}{c}{\revisorE} & \\
+	& \multicolumn{3}{c}{Revisor}  & \\[5mm]
+	& \multicolumn{3}{c}{Vo. Bo.} & \\[7mm]
 	\cline{2-4}
 	& \multicolumn{3}{c}{\vobo}   & \\
 	& \multicolumn{3}{c}{\bety}   & \\ &&&&

@@ -1,127 +1,261 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{37}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{aboueljinane2013review}
+\bibitem[Aboueljinane et~al.(2013)Aboueljinane, Sahin, and
+  Jemai]{aboueljinane2013review}
 L.~Aboueljinane, E.~Sahin, and Z.~Jemai.
 \newblock A review on simulation models applied to emergency medical service
   operations.
-\newblock {\em Computers \& Industrial Engineering}, 66(4):734--750, 2013.
+\newblock \emph{Computers \& Industrial Engineering}, 66\penalty0 (4):\penalty0
+  734--750, 2013.
 
-\bibitem{amorim2019traffic}
+\bibitem[Amorim et~al.(2019)Amorim, Ferreira, and Couto]{amorim2019traffic}
 M.~Amorim, S.~Ferreira, and A.~Couto.
 \newblock How do traffic and demand daily changes define urban emergency
   medical service (uems) strategic decisions?: A robust survival model.
-\newblock {\em Journal of Transport \& Health}, 12:60--74, 2019.
+\newblock \emph{Journal of Transport \& Health}, 12:\penalty0 60--74, 2019.
 
-\bibitem{bandara2012optimal}
+\bibitem[Ansari et~al.(2015)Ansari, McLay, and Mayorga]{ansari2017maximum}
+S.~Ansari, L.~A. McLay, and M.~E Mayorga.
+\newblock A maximum expected covering problem for district design.
+\newblock \emph{Transportation Science}, 51\penalty0 (1):\penalty0 376--390,
+  2015.
+
+\bibitem[Aringhieri et~al.(2017)Aringhieri, Bruni, Khodaparasti, and van
+  Essen]{aringhieri2017emergency}
+R.~Aringhieri, M.~E. Bruni, S.~Khodaparasti, and J.~T. van Essen.
+\newblock Emergency medical services and beyond: Addressing new challenges
+  through a wide literature review.
+\newblock \emph{Computers \& Operations Research}, 78:\penalty0 349--368, 2017.
+
+\bibitem[Bakalos et~al.(2011)Bakalos, Mamali, Komninos, Koukou, Tsantilas,
+  Tzima, and Rosenberg]{bakalos2011advanced}
+G.~Bakalos, M.~Mamali, C.~Komninos, E~Koukou, A.~Tsantilas, S.~Tzima, and
+  T.~Rosenberg.
+\newblock Advanced life support versus basic life support in the pre-hospital
+  setting: A meta-analysis.
+\newblock \emph{Resuscitation}, 82\penalty0 (9):\penalty0 1130--1137, 2011.
+
+\bibitem[Bandara et~al.(2012)Bandara, Mayorga, and McLay]{bandara2012optimal}
 D.~Bandara, M.~E. Mayorga, and L.~A. McLay.
 \newblock Optimal dispatching strategies for emergency vehicles to increase
   patient survivability.
-\newblock {\em International Journal of Operational Research}, 15(2):195--214,
-  2012.
+\newblock \emph{International Journal of Operational Research}, 15\penalty0
+  (2):\penalty0 195--214, 2012.
 
-\bibitem{belanger2019recent}
+\bibitem[B{\'e}langer et~al.(2019)B{\'e}langer, Ruiz, and
+  Soriano]{belanger2019recent}
 V.~B{\'e}langer, A.~Ruiz, and P.~Soriano.
 \newblock Recent optimization models and trends in location, relocation, and
   dispatching of emergency medical vehicles.
-\newblock {\em European Journal of Operational Research}, 272(1):1--23, 2019.
+\newblock \emph{European Journal of Operational Research}, 272\penalty0
+  (1):\penalty0 1--23, 2019.
 
-\bibitem{berman2003gradual}
+\bibitem[Beraldi and Bruni(2009)]{beraldi2009probabilistic}
+P.~Beraldi and M.~E. Bruni.
+\newblock A probabilistic model applied to emergency service vehicle location.
+\newblock \emph{European Journal of Operational Research}, 196\penalty0
+  (1):\penalty0 323--331, 2009.
+
+\bibitem[Berman et~al.(2003)Berman, Krass, and Drezner]{berman2003gradual}
 O.~Berman, D.~Krass, and Z.~Drezner.
 \newblock The gradual covering decay location problem on a network.
-\newblock {\em European Journal of Operational Research}, 151(3):474--480,
-  2003.
+\newblock \emph{European Journal of Operational Research}, 151\penalty0
+  (3):\penalty0 474--480, 2003.
 
-\bibitem{bertsimas2019robust}
+\bibitem[Bertsimas and Ng(2019)]{bertsimas2019robust}
 D.~Bertsimas and Y.~Ng.
 \newblock Robust and stochastic formulations for ambulance deployment and
   dispatch.
-\newblock {\em European Journal of Operational Research}, 279(2):557--571,
-  2019.
+\newblock \emph{European Journal of Operational Research}, 279\penalty0
+  (2):\penalty0 557--571, 2019.
 
-\bibitem{biel2022efficient}
-M.~Biel and M.~Johansson.
-\newblock Efficient stochastic programming in julia.
-\newblock {\em INFORMS Journal on Computing}, 2022.
-
-\bibitem{boujemaa2018stochastic}
+\bibitem[Boujemaa et~al.(2018)Boujemaa, Jebali, Hammami, Ruiz, and
+  Bouchriha]{boujemaa2018stochastic}
 R.~Boujemaa, A.~Jebali, S.~Hammami, A.~Ruiz, and H.~Bouchriha.
 \newblock A stochastic approach for designing two-tiered emergency medical
   service systems.
-\newblock {\em Flexible Services and Manufacturing Journal}, 30(1):123--152,
-  2018.
+\newblock \emph{Flexible Services and Manufacturing Journal}, 30\penalty0
+  (1):\penalty0 123--152, 2018.
 
-\bibitem{brotcorne2003ambulance}
+\bibitem[Braun et~al.(1990)Braun, McCallion, and
+  Fazackerley]{braun1990characteristics}
+O.~Braun, R.~McCallion, and J.~Fazackerley.
+\newblock Characteristics of midsized urban {EMS} systems.
+\newblock \emph{Annals of Emergency Medicine}, 19\penalty0 (5):\penalty0
+  536--546, 1990.
+
+\bibitem[Brotcorne et~al.(2003)Brotcorne, Laporte, and
+  Semet]{brotcorne2003ambulance}
 L.~Brotcorne, G.~Laporte, and F.~Semet.
 \newblock Ambulance location and relocation models.
-\newblock {\em European journal of operational research}, 147(3):451--463,
-  2003.
+\newblock \emph{European journal of operational research}, 147\penalty0
+  (3):\penalty0 451--463, 2003.
 
-\bibitem{dibene2017optimizing}
+\bibitem[Dibene et~al.(2017)Dibene, Maldonado, Vera, de~Oliveira, Trujillo, and
+  Sch{\"u}tze]{dibene2017optimizing}
 J.~C. Dibene, Y.~Maldonado, C.~Vera, M.~de~Oliveira, L.~Trujillo, and
   O.~Sch{\"u}tze.
 \newblock Optimizing the location of ambulances in tijuana, mexico.
-\newblock {\em Computers in biology and medicine}, 80:107--115, 2017.
+\newblock \emph{Computers in biology and medicine}, 80:\penalty0 107--115,
+  2017.
 
-\bibitem{galvao2008emergency}
+\bibitem[Galvao and Morabito(2008)]{galvao2008emergency}
 R.~D. Galvao and R.~Morabito.
 \newblock Emergency service systems: The use of the hypercube queueing model in
   the solution of probabilistic location problems.
-\newblock {\em International Transactions in Operational Research},
-  15(5):525--549, 2008.
+\newblock \emph{International Transactions in Operational Research},
+  15\penalty0 (5):\penalty0 525--549, 2008.
 
-\bibitem{hulshof2012taxonomic}
+\bibitem[Grannan et~al.(2015)Grannan, Bastian, and McLay]{grannan2015maximum}
+B.~C. Grannan, N.~D. Bastian, and L.~A. McLay.
+\newblock A maximum expected covering problem for locating and dispatching two
+  classes of military medical evacuation air assets.
+\newblock \emph{Optimization Letters}, 9:\penalty0 1511--1531, 2015.
+
+\bibitem[Hulshof et~al.(2012)Hulshof, Kortbeek, Boucherie, Hans, and
+  Bakker]{hulshof2012taxonomic}
 P.~J.~H. Hulshof, N.~Kortbeek, R.~J. Boucherie, E.~W. Hans, and P.~J.~M.
   Bakker.
 \newblock Taxonomic classification of planning decisions in health care: a
   structured review of the state of the art in or/ms.
-\newblock {\em Health systems}, 1(2):129--175, 2012.
+\newblock \emph{Health systems}, 1\penalty0 (2):\penalty0 129--175, 2012.
 
-\bibitem{karasakal2004maximal}
+\bibitem[Karasakal and Karasakal(2004)]{karasakal2004maximal}
 O.~Karasakal and E.~K. Karasakal.
 \newblock A maximal covering location model in the presence of partial
   coverage.
-\newblock {\em Computers \& Operations Research}, 31(9):1515--1526, 2004.
+\newblock \emph{Computers \& Operations Research}, 31\penalty0 (9):\penalty0
+  1515--1526, 2004.
 
-\bibitem{li2011covering}
+\bibitem[Li et~al.(2011)Li, Zhao, Zhu, and Wyatt]{li2011covering}
 X.~Li, Z.~Zhao, X.~Zhu, and T.~Wyatt.
 \newblock Covering models and optimization techniques for emergency response
   facility location and planning: a review.
-\newblock {\em Mathematical Methods of Operations Research}, 74(3):281--310,
-  2011.
+\newblock \emph{Mathematical Methods of Operations Research}, 74\penalty0
+  (3):\penalty0 281--310, 2011.
 
-\bibitem{mclay2010evaluating}
+\bibitem[McLay(2009)]{mclay2009maximum}
+L.~A. McLay.
+\newblock A maximum expected covering location model with two types of servers.
+\newblock \emph{IIE Transactions}, 41\penalty0 (8):\penalty0 730--741, 2009.
+
+\bibitem[McLay and Mayorga(2010)]{mclay2010evaluating}
 L.~A. McLay and M.~E. Mayorga.
 \newblock Evaluating emergency medical service performance measures.
-\newblock {\em Health care management science}, 13(2):124--136, 2010.
+\newblock \emph{Health care management science}, 13\penalty0 (2):\penalty0
+  124--136, 2010.
 
-\bibitem{mclay2011evaluating}
+\bibitem[McLay and Mayorga(2011)]{mclay2011evaluating}
 L.~A. McLay and M.~E. Mayorga.
 \newblock Evaluating the impact of performance goals on dispatching decisions
   in emergency medical service.
-\newblock {\em IIE Transactions on Healthcare Systems Engineering},
-  1(3):185--196, 2011.
+\newblock \emph{IIE Transactions on Healthcare Systems Engineering}, 1\penalty0
+  (3):\penalty0 185--196, 2011.
 
-\bibitem{mclay2012hanover}
+\bibitem[McLay and Moore(2012)]{mclay2012hanover}
 L.~A. McLay and H.~Moore.
 \newblock Hanover county improves its response to emergency medical 911
   patients.
-\newblock {\em Interfaces}, 42(4):380--394, 2012.
+\newblock \emph{Interfaces}, 42\penalty0 (4):\penalty0 380--394, 2012.
 
-\bibitem{toro2013joint}
+\bibitem[Nickel et~al.(2016)Nickel, Reuter-Oppermann, and Saldanha-da
+  Gama]{nickel2016ambulance}
+S.~Nickel, M.~Reuter-Oppermann, and F.~Saldanha-da Gama.
+\newblock Ambulance location under stochastic demand: A sampling approach.
+\newblock \emph{Operations Research for Health Care}, 8:\penalty0 24--32, 2016.
+
+\bibitem[Noyan(2010)]{noyan2010alternate}
+N.~Noyan.
+\newblock Alternate risk measures for emergency medical service system design.
+\newblock \emph{Annals of Operations Research}, 181:\penalty0 559--589, 2010.
+
+\bibitem[O'Keeffe et~al.(2011)O'Keeffe, Nicholl, Turner, and
+  Goodacre]{o2010role}
+C.~O'Keeffe, J.~Nicholl, J.~Turner, and S.~Goodacre.
+\newblock Role of ambulance response times in the survival of patients with
+  out-of-hospital cardiac arrest.
+\newblock \emph{Emergency Medicine Journal}, 28\penalty0 (8):\penalty0
+  703--706, 2011.
+
+\bibitem[Reuter-Oppermann et~al.(2017)Reuter-Oppermann, van~den Berg, and
+  Vile]{reuter2017logistics}
+M.~Reuter-Oppermann, P.~L. van~den Berg, and J.~L. Vile.
+\newblock Logistics for emergency medical service systems.
+\newblock \emph{Health Systems}, 6\penalty0 (3):\penalty0 187--208, 2017.
+
+\bibitem[Shaw et~al.(2022)Shaw, Das, and Roy]{shaw2022location}
+L.~Shaw, S.~K. Das, and S.~K. Roy.
+\newblock Location-allocation problem for resource distribution under
+  uncertainty in disaster relief operations.
+\newblock \emph{Socio-Economic Planning Sciences}, 82:\penalty0 101232, 2022.
+
+\bibitem[Sung and Lee(2018)]{sung2018scenario}
+I.~Sung and T.~Lee.
+\newblock Scenario-based approach for the ambulance location problem with
+  stochastic call arrivals under a dispatching policy.
+\newblock \emph{Flexible Services and Manufacturing Journal}, 30:\penalty0
+  153--170, 2018.
+
+\bibitem[Toro-D{\'\i}az et~al.(2013)Toro-D{\'\i}az, Mayorga, Chanta, and
+  Mclay]{toro2013joint}
 H.~Toro-D{\'\i}az, M.~E. Mayorga, S.~Chanta, and L.~A. Mclay.
 \newblock Joint location and dispatching decisions for emergency medical
   services.
-\newblock {\em Computers \& Industrial Engineering}, 64(4):917--928, 2013.
+\newblock \emph{Computers \& Industrial Engineering}, 64\penalty0 (4):\penalty0
+  917--928, 2013.
 
-\bibitem{wang2016new}
+\bibitem[Toro-D{\'\i}az et~al.(2015)Toro-D{\'\i}az, Mayorga, McLay,
+  Rajagopalan, and Saydam]{toro2015reducing}
+H.~Toro-D{\'\i}az, M.~E. Mayorga, L.~A. McLay, H.~K. Rajagopalan, and
+  C.~Saydam.
+\newblock Reducing disparities in large-scale emergency medical service
+  systems.
+\newblock \emph{Journal of the Operational Research Society}, 66\penalty0
+  (7):\penalty0 1169--1181, 2015.
+
+\bibitem[van Buuren et~al.(2018)van Buuren, van~der Mei, and
+  Bhulai]{van2018demand}
+M.~van Buuren, R.~van~der Mei, and S.~Bhulai.
+\newblock Demand-point constrained ems vehicle allocation problems for regions
+  with both urban and rural areas.
+\newblock \emph{Operations Research for Health Care}, 18:\penalty0 65--83,
+  2018.
+
+\bibitem[Wang et~al.(2016)Wang, Liu, An, and Cui]{wang2016new}
 J.~Wang, H.~Liu, S.~An, and N.~Cui.
 \newblock A new partial coverage locating model for cooperative fire services.
-\newblock {\em Information Sciences}, 373:527--538, 2016.
+\newblock \emph{Information Sciences}, 373:\penalty0 527--538, 2016.
 
-\bibitem{yoon2021stochastic}
+\bibitem[Wang et~al.(2012)Wang, Luangkesorn, and Shuman]{wang2012modeling}
+Y.~Wang, K.~L. Luangkesorn, and L.~Shuman.
+\newblock Modeling emergency medical response to a mass casualty incident using
+  agent based simulation.
+\newblock \emph{Socio-Economic Planning Sciences}, 46\penalty0 (4):\penalty0
+  281--290, 2012.
+
+\bibitem[Yoon et~al.(2021)Yoon, Albert, and White]{yoon2021stochastic}
 S.~Yoon, L.~A. Albert, and V.~M. White.
 \newblock A stochastic programming approach for locating and dispatching two
   types of ambulances.
-\newblock {\em Transportation Science}, 55(2):275--296, 2021.
+\newblock \emph{Transportation Science}, 55\penalty0 (2):\penalty0 275--296,
+  2021.
+
+\bibitem[Zhang et~al.(2023)Zhang, Li, and Zhao]{zhang2023multi}
+Y.~Zhang, Z.~Li, and Y.~Zhao.
+\newblock Multi-mitigation strategies in medical supplies for epidemic
+  outbreaks.
+\newblock \emph{Socio-Economic Planning Sciences}, 87:\penalty0 101516, 2023.
+
+\bibitem[Zhou et~al.(2015)Zhou, Matteson, Woodard, Henderson, and
+  Micheas]{zhou2015spatio}
+Z.~Zhou, D.~S. Matteson, D.~B. Woodard, S.~G. Henderson, and A.~C. Micheas.
+\newblock A spatio-temporal point process model for ambulance demand.
+\newblock \emph{Journal of the American Statistical Association}, 110\penalty0
+  (509):\penalty0 6--15, 2015.
 
 \end{thebibliography}

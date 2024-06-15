@@ -3,6 +3,10 @@
 %%%%%%%%%%%%%%%%%%%%%
 \documentclass[table]{fime}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{natbib}
+
+%\usepackage{comment}
+%\usepackage{soul,color}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cargando paquetes y definiendo opciones %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,7 +27,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 % Definiendo campos %
 %%%%%%%%%%%%%%%%%%%%%
-\def\titulo{}
+\def\titulo{Stochastic me\-tho\-do\-lo\-gies for locating and dispatching two types of ambulances with partial coverage}
 \def\autor{Beatriz Alejandra García Ramos}
 \def\matricula{1550385}
 \def\grado{Doctorado en Ciencias en Ingeniería de Sistemas}
@@ -34,13 +38,15 @@
 \def\fecha{2024} % Coloca el mes con mayÃºscula inicial
 
 \def\asesor{Dr. Roger Z. Ríos Mercado}
-\def\revisorA{Dra. Yasmín Águeda Ríos Solís}
-\def\revisorB{Nombre del revisor B}
+\def\coasesor{Dra. Yasmín Á. Ríos Solis}
+\def\revisorA{Dra. Iris Abril Martínez Salazar}
+\def\revisorB{Dra. María Angélica Salazar Aguilar}
 % En el caso de que tu tesis sea de doctorado activa la variable cambiÃ¡ndola a \doctoradotrue
 % y define tus otros dos revisores
 \newif\ifdoctorado\doctoradotrue
-\def\revisorC{Nombre del revisor C}
-\def\revisorD{Nombre del revisor D}
+\def\revisorC{Dr. Vincent André Lionel Boyer}
+\def\revisorD{Dra. Yajaira Cardona Valdés}
+\def\revisorE{Dra. Irma Delia García Calvillo}
 % El visto bueno siempre va
 \def\vobo{}
 
@@ -84,7 +90,8 @@
 %%% en el paquete, cuyos diseÃ±os armonizan con el diseÃ±o de tesis provisto por
 %%% fime.cls. Para muestra, basta un botÃ³n:
 
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \bibliography{Biblio}
 
 \label{lastpage}
