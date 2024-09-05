@@ -33,13 +33,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [150, 200]
 
-tamaños_I = [168, 270, 500, 900, 1500] 
-tamaños_L = [16, 50, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+# tamaños_I = [168, 270, 500, 900, 1500] 
+# tamaños_L = [16, 50, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [168] 
-# tamaños_L = [16]
-# tamaños_S = [10]
+tamaños_I = [168] 
+tamaños_L = [16]
+tamaños_S = [10]
 
 K = [1,2]
 
@@ -54,6 +54,7 @@ tmax = 30
 wi = [0.65, 0.2, 0.1, 0.05]
 
 countcsv = 1
+countcsv1 = 1
 
 
 ##############################################
@@ -62,6 +63,9 @@ countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
 sheet = book.add_sheet('Tesis_Matheuristic_040924', cell_overwrite_ok=True)
+
+book1 = xlwt.Workbook(encoding="utf-8",style_compression=0)
+sheet1 = book1.add_sheet('Tesis_Matheuristic1_040924', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -497,15 +501,21 @@ for iconj in range(len(tamaños_I)):
                 colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
                 for column in range(len(colnames)):
                     sheet.write(0, column, colnames[column])
+                    sheet1.write(0, column, colnames[column])
                 name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
                 sheet.write(countcsv, 0, name)
+                sheet1.write(countcsv1, 0, name)
                 sheet.write(countcsv, 1, len(I))
+                sheet1.write(countcsv1, 1, len(I))
                 sheet.write(countcsv, 2, len(L))
+                sheet1.write(countcsv1, 2, len(L))
                 sheet.write(countcsv, 3, len(S))
+                sheet1.write(countcsv1, 3, len(S))
                 if len(model._data) != 0:
                     datos = model._data[len(model._data)-1]
                     for row in range(len(datos)):
                         sheet.write(countcsv, row+4, datos[row])
+                        sheet1.write(countcsv1, row+4, datos[row])
                 
                 
                 #Nombre: Resultados_I_L_M_N_S
@@ -569,8 +579,10 @@ for iconj in range(len(tamaños_I)):
                 total_time = end_time - initial_time 
                 
                 sheet.write(countcsv, 9, total_time)
+                sheet1.write(countcsv1, 9, total_time)
                 
                 countcsv = countcsv + 1
+                countcsv1 = countcsv1 + 1
                 
                 
                 #book.save('Tesis_Matheuristic_040924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
@@ -1100,6 +1112,22 @@ for i1 in range(len(pares_nocero)):
             
             
             if model.objVal > mejor_obj:
+                
+                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                for column in range(len(colnames)):
+                    sheet1.write(0, column, colnames[column])
+                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                sheet1.write(countcsv1, 0, name)
+                sheet1.write(countcsv1, 1, len(I))
+                sheet1.write(countcsv1, 2, len(L))
+                sheet1.write(countcsv1, 3, len(S))
+                if len(model._data) != 0:
+                    datos = model._data[len(model._data)-1]
+                    for row in range(len(datos)):
+                        sheet1.write(countcsv1, row+4, datos[row])
+                        
+                countcsv1 = countcsv1 + 1
+                
                 best.write('Obj (ACT VS ACT BLS): %g' % model.objVal + '\n')
                 best.write(str(x_vars_list))
                 best.write('\n')
@@ -2084,6 +2112,22 @@ if len(pares_cero) > 0:
                 
                 
                 if model.objVal > mejor_obj:
+                    
+                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                    for column in range(len(colnames)):
+                        sheet1.write(0, column, colnames[column])
+                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                    sheet1.write(countcsv1, 0, name)
+                    sheet1.write(countcsv1, 1, len(I))
+                    sheet1.write(countcsv1, 2, len(L))
+                    sheet1.write(countcsv1, 3, len(S))
+                    if len(model._data) != 0:
+                        datos = model._data[len(model._data)-1]
+                        for row in range(len(datos)):
+                            sheet1.write(countcsv1, row+4, datos[row])
+                            
+                    countcsv1 = countcsv1 + 1
+                    
                     best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
                     best.write(str(x_vars_list))
                     best.write('\n')
@@ -2596,6 +2640,22 @@ for i1 in range(len(pares_nocero)):
             
             
             if model.objVal > mejor_obj:
+                
+                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                for column in range(len(colnames)):
+                    sheet1.write(0, column, colnames[column])
+                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                sheet1.write(countcsv1, 0, name)
+                sheet1.write(countcsv1, 1, len(I))
+                sheet1.write(countcsv1, 2, len(L))
+                sheet1.write(countcsv1, 3, len(S))
+                if len(model._data) != 0:
+                    datos = model._data[len(model._data)-1]
+                    for row in range(len(datos)):
+                        sheet1.write(countcsv1, row+4, datos[row])
+                        
+                countcsv1 = countcsv1 + 1
+                
                 best.write('Obj (MEDIOS ACT VS ACT BLS): %g' % model.objVal + '\n')
                 best.write(str(x_vars_list))
                 best.write('\n')
@@ -3099,6 +3159,22 @@ if len(pares_cero) > 0:
             
             
             if model.objVal > mejor_obj:
+                
+                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                for column in range(len(colnames)):
+                    sheet1.write(0, column, colnames[column])
+                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                sheet1.write(countcsv1, 0, name)
+                sheet1.write(countcsv1, 1, len(I))
+                sheet1.write(countcsv1, 2, len(L))
+                sheet1.write(countcsv1, 3, len(S))
+                if len(model._data) != 0:
+                    datos = model._data[len(model._data)-1]
+                    for row in range(len(datos)):
+                        sheet1.write(countcsv1, row+4, datos[row])
+                        
+                countcsv1 = countcsv1 + 1
+                
                 best.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal + '\n')
                 best.write(str(x_vars_list))
                 best.write('\n')
@@ -3632,3 +3708,4 @@ g.close()
                 
                 
 book.save('Tesis_Matheuristic_040924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+book1.save('Tesis_Matheuristic_Mejoras_040924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
