@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Sep 12 07:27:53 2024
+Created on Thu Sep 12 14:53:51 2024
 
 @author: beatr
 """
@@ -42,7 +42,7 @@ alpha_i = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_FirstModel_120924', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_FirstModelModified_120924', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -143,8 +143,12 @@ for iconj in range(len(tamaños_I)):
                     line = archivo.readline().strip().split()
                     cli.append([])
                     for i in range(len(I)):
-                        cli[l].append(float(line[i])) 
-                
+                        if float(line[i]) == 1:
+                            cli[l].append(1)
+                        else:
+                            cli[l].append(0)
+                            
+                #break
                 
                 # Other parameters #
                 #pi = 100
@@ -190,7 +194,7 @@ for iconj in range(len(tamaños_I)):
                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
                                 cantVarY += 1
                                 
-                            if S[s][i-1][1] != 0:
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.INTEGER, 
                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
                                 cantVarY += 1
@@ -201,7 +205,6 @@ for iconj in range(len(tamaños_I)):
                 for s in range(len(S)):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            #f_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
                             f_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
                                                            name="Total "+str(s+1)+str(' ')+str(i))
                             cantVarAlpha += 1
@@ -323,50 +326,44 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0:
                                 sum_g2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(S[s][i-1][1]*g_vars[s+1,i] <= sum_g2, "c5_1")        
-                            
-                            
-                    # Restricción 6: g (total late)
-                    
-                    for i in I:
-                        sum_g = gp.LinExpr()
-                        sum_g_aux = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                sum_g += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                sum_g_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
-                                sum_g += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                sum_g_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(g_vars[s+1,i] <= 100000000*(sum_g - sum_g_aux), "c6" )
-                    
+                  
            
-                    # Restricción 7: h (partial)
+                    # Restricción 6: h (partial)
                     
                     for i in I:
                         sum_h2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
-                                sum_h2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
-                                sum_h2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c7")
+                                sum_h2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                sum_h2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                            model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c6")
                            
                                 
-                    # Restricción 8: h (partial) 
+                    # Restricción 7: h (partial) 
                     
                     for i in I:
-                        sum_h3 = gp.LinExpr()
-                        sum_h3_aux = gp.LinExpr()
+                        for k in K:
+                            for l in L:
+                                if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    if cli[l-1][i-1] == 0:
+                                        if k == 1:
+                                            model.addConstr(S[s][i-1][k-1]*h_vars[s+1,i] + y_vars[s+1,l,k,i] <= S[s][i-1][k-1], "c7")
+                                        else:
+                                            model.addConstr(S[s][i-1][k-1]*h_vars[s+1,i] + y_vars[s+1,l,k,i] <= S[s][i-1][k-1], "c7")
+                        
+                    # Restricción 8: w (partial late)
+                    
+                    for i in I:
+                        sum_w2 = gp.LinExpr()
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
-                                sum_h3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                sum_h3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                sum_w2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                             if S[s][i-1][1] != 0:
-                                sum_h3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                sum_h3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(sum_h3*h_vars[s+1,i] <= sum_h3_aux, "c8")
+                                sum_w2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                            model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c8")
                             
-                    
+                            
                     # Restricción 9: w (partial late)
                     
                     for i in I:
@@ -376,24 +373,9 @@ for iconj in range(len(tamaños_I)):
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                             if S[s][i-1][1] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c9")
-                       
-                            
-               
-                    # Restricción 10: w (partial late)
-                    
-                    for i in I:
-                        sum_w3 = gp.LinExpr()
-                        sum_w3_aux = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
-                                sum_w3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                sum_w3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
-                                sum_w3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                sum_w3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(w_vars[s+1,i] <= 1000000000*(sum_w3 - sum_w3_aux), "c_10")    
-                    
+                            model.addConstr(w_vars[s+1,i] <= sum_w2, "c9")
+
+
                     # Restricción 11: gamma (null)
                     
                     for i in I:
@@ -422,7 +404,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_FirstModel_120924_'+str(len(I))+str('_')
+                with open('data_FirstModel_Modified_120924_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -450,7 +432,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_FirstModel_120924_'
+                f = open ('Resultados_Prueba_FirstModel_Modified_120924_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -486,11 +468,12 @@ for iconj in range(len(tamaños_I)):
                 
                 countcsv = countcsv + 1
                 
-                model.write('model_FirstModel_120924_'+str(len(I))+str('_')
+                
+                model.write('model_FirstModel_Modified_120924_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 
                 
-                book.save('Tesis_FirstModel_120924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_FirstModel_Modified_120924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
