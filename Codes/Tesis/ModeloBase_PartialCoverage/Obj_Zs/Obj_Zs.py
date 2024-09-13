@@ -24,8 +24,8 @@ import xlwt
 
 
 tamaños_I = [168]
-tamaños_L = [30]
-tamaños_S = [10, 50, 100, 150, 200]
+tamaños_L = [16]
+tamaños_S = [10]
 
 K = [1,2]
 
@@ -34,7 +34,7 @@ rates = [0.4]
 verif = 0.4
 
 #ambulance = [[10,6], [20,11]]
-ambulance = [[6,6]]
+ambulance = [[10,6]]
 t = 10
 tmax = 30
 wi = [0.65, 0.2, 0.1, 0.05]
@@ -42,7 +42,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_ObjZs_Scenarios_100424', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_ObjZs_Scenarios_120924', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -430,7 +430,7 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(phi_vars[s+1,i] <= 1,000,000,000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                            model.addConstr(phi_vars[s+1,i] <= 1000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
                     
                     # Restricción 13: Activar gamma (cobertura nula)
                     
@@ -462,7 +462,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_ObjZs_Scenarios_100424_'+str(len(I))+str('_')
+                with open('data_ObjZs_Scenarios_120924_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -499,7 +499,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_100424_'
+                f = open ('Resultados_Prueba_ObjZs_Scenarios_120924_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -554,12 +554,12 @@ for iconj in range(len(tamaños_I)):
                 f.close()
                 
                 
-                # coberturas = open ('Coberturas_Obj_Zs_100424_'
+                # coberturas = open ('Coberturas_Obj_Zs_120924_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
-                # lectura = open ('Resultados_Prueba_Obj_Zs_100424_'
+                # lectura = open ('Resultados_Prueba_Obj_Zs_120924_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
@@ -899,12 +899,12 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 
-                # model.write('model_ObjZs_Scenarios_100424_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_Scenarios_120924_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               #+str(len(K))+str('_')
                 #               #+str(len(N))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
-                # model.write('model_ObjZs_Scenarios_100424_'+str(len(I))+str('_')
+                # model.write('model_ObjZs_Scenarios_120924_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
@@ -1053,4 +1053,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_ObjZs_Scenarios_100424_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_ObjZs_Scenarios_120924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
