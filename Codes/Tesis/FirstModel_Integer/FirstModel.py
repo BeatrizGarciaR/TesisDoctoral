@@ -280,10 +280,10 @@ for iconj in range(len(tamaños_I)):
                     for l in L:
                         amb2 = gp.LinExpr()
                         for i in I:
-                            if S[s][i-1][0] != 0:
-                                amb2 += y_vars[s+1,l,2,i] 
-                            if S[s][i-1][1] != 0:
-                                amb2 += y_vars[s+1,l,2,i] 
+                            if S[s][i-1][0] != 0 or S[s][i-1][1] != 0:
+                                amb2 += y_vars[s+1,l,2,i]  
+                            #if S[s][i-1][1] != 0:
+                            #    amb2 += y_vars[s+1,l,2,i] 
                         model.addConstr(amb2 <= x_vars[l,2], "c3_1")
                         
                     
@@ -294,7 +294,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_f2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*f_vars[s+1,i] <= sum_f2, "c4")
+                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*f_vars[s+1,i] <= sum_f2, "c4")
                     
                     
                     # Restricción 4_1: f (total)
@@ -304,7 +304,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][1] != 0:
                                 sum_f2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(S[s][i-1][1]*f_vars[s+1,i] <= sum_f2, "c4_1")
+                                model.addConstr(S[s][i-1][1]*f_vars[s+1,i] <= sum_f2, "c4_1")
                 
                     # Restricción 5: g (total late)
                     
@@ -313,7 +313,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_g2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*g_vars[s+1,i] <= sum_g2, "c5")
+                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*g_vars[s+1,i] <= sum_g2, "c5")
                             
                     #Restricción 5_1: g (total late)
                     
@@ -322,7 +322,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][1] != 0:
                                 sum_g2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(S[s][i-1][1]*g_vars[s+1,i] <= sum_g2, "c5_1")        
+                                model.addConstr(S[s][i-1][1]*g_vars[s+1,i] <= sum_g2, "c5_1")        
                             
                             
                     # Restricción 6: g (total late)
@@ -347,9 +347,10 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_h2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
+                                model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c7")
+                            elif S[s][i-1][1] != 0:
                                 sum_h2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c7")
+                                model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c7")
                            
                                 
                     # Restricción 8: h (partial) 
@@ -366,7 +367,13 @@ for iconj in range(len(tamaños_I)):
                                 sum_h3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(sum_h3*h_vars[s+1,i] <= sum_h3_aux, "c8")
                             
-                    
+                    for i in I:
+                    	if S[s][i-1][0] + S[s][i-1][1] > 0:
+		                    sum_h2 = gp.LinExpr()
+		                    sum_h2 -= gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+		                    sum_h2 += h_vars[s+1,i]
+		                    model.addConstr(sum_h2 <= 0,"hBound")
+		                    
                     # Restricción 9: w (partial late)
                     
                     for i in I:
@@ -374,7 +381,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
+                            elif S[s][i-1][1] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c9")
                        

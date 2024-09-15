@@ -277,17 +277,22 @@ for iconj in range(len(tamaños_I)):
                             if S[s][i-1][0] != 0:                            
                                 amb1 += y_vars[s+1,l,1,i]
                         model.addConstr(amb1 <= x_vars[l,1], "c3")
-                    
+                   
+                        
+                   
                     # Restricción 3_1: No enviar más ambulancias de las localizadas para k = 2
+                    
+                    
                     
                     for l in L:
                         amb2 = gp.LinExpr()
                         for i in I:
-                            if S[s][i-1][0] != 0:
-                                amb2 += y_vars[s+1,l,2,i] 
-                            if S[s][i-1][1] != 0:
-                                amb2 += y_vars[s+1,l,2,i] 
+                            if S[s][i-1][0] != 0 or S[s][i-1][1] != 0:
+                                amb2 += y_vars[s+1,l,2,i]  
                         model.addConstr(amb2 <= x_vars[l,2], "c3_1")
+                        
+
+                    
                         
                     
                     # Restricción 4: f (total)
@@ -297,9 +302,8 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_f2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*f_vars[s+1,i] <= sum_f2, "c4")
-                    
-                    
+                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*f_vars[s+1,i] <= sum_f2, "c4")
+                                
                     # Restricción 4_1: f (total)
                     
                     for i in I:
@@ -307,7 +311,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][1] != 0:
                                 sum_f2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(S[s][i-1][1]*f_vars[s+1,i] <= sum_f2, "c4_1")
+                                model.addConstr(S[s][i-1][1]*f_vars[s+1,i] <= sum_f2, "c4_1")
                 
                     # Restricción 5: g (total late)
                     
@@ -316,7 +320,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_g2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*g_vars[s+1,i] <= sum_g2, "c5")
+                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*g_vars[s+1,i] <= sum_g2, "c5")
                             
                     #Restricción 5_1: g (total late)
                     
@@ -325,7 +329,7 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][1] != 0:
                                 sum_g2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(S[s][i-1][1]*g_vars[s+1,i] <= sum_g2, "c5_1")        
+                                model.addConstr(S[s][i-1][1]*g_vars[s+1,i] <= sum_g2, "c5_1")        
                   
            
                     # Restricción 6: h (partial)
@@ -335,9 +339,10 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_h2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c6")
+                            elif S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
                                 sum_h2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c6")
+                                model.addConstr(h_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_h2, "c6")
                            
                                 
                     # Restricción 7: h (partial) 
@@ -351,7 +356,8 @@ for iconj in range(len(tamaños_I)):
                                             model.addConstr(S[s][i-1][k-1]*h_vars[s+1,i] + y_vars[s+1,l,k,i] <= S[s][i-1][k-1], "c7")
                                         else:
                                             model.addConstr(S[s][i-1][k-1]*h_vars[s+1,i] + y_vars[s+1,l,k,i] <= S[s][i-1][k-1], "c7")
-                        
+                                            
+                            
                     # Restricción 8: w (partial late)
                     
                     for i in I:
@@ -359,9 +365,10 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
+                                model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c8")
+                            elif S[s][i-1][1] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c8")
+                                model.addConstr(w_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - sum_w2, "c8")
                             
                             
                     # Restricción 9: w (partial late)
@@ -371,9 +378,10 @@ for iconj in range(len(tamaños_I)):
                         if S[s][i-1][0] + S[s][i-1][1] > 0:
                             if S[s][i-1][0] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0:
+                                model.addConstr(w_vars[s+1,i] <= sum_w2, "c9")
+                            elif S[s][i-1][1] != 0:
                                 sum_w2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(w_vars[s+1,i] <= sum_w2, "c9")
+                                model.addConstr(w_vars[s+1,i] <= sum_w2, "c9")
 
 
                     # Restricción 11: gamma (null)
