@@ -477,11 +477,11 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                model.write('model_FirstModel_Modified_160924_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                # model.write('model_FirstModel_Modified_160924_'+str(len(I))+str('_')
+                #               +str(len(L))+str('_')
+                #               #+str(len(K))+str('_')
+                #               #+str(len(N))+str('_')
+                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 
                 
                 book.save('Tesis_FirstModel_Modified_160924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
