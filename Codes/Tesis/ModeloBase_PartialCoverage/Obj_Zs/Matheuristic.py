@@ -43,7 +43,7 @@ tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
 
-timelim = 10800 #3 horas 
+timelim = 300 #5 min
 rates = [0.4]
 verif = 0.4
 sale = 0
@@ -57,16 +57,18 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
 countcsv1 = 1
 
+time_limit_final = 1800 #30 min
+
 
 ##############################################
 ######## INSTANCIAS ORIGINALES (YA LOCALIZADO)
 ##############################################
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_Matheuristic_240924', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_Matheuristic_081024', cell_overwrite_ok=True)
 
 book1 = xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet1 = book1.add_sheet('Tesis_Matheuristic1_240924', cell_overwrite_ok=True)
+sheet1 = book1.add_sheet('Tesis_Matheuristic1_081024', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -487,7 +489,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -521,7 +523,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Matheuristic_240924_'
+                f = open ('Resultados_Matheuristic_081024_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -586,7 +588,7 @@ for iconj in range(len(tamaños_I)):
                 countcsv1 = countcsv1 + 1
                 
                 
-                #book.save('Tesis_Matheuristic_240924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                #book.save('Tesis_Matheuristic_081024_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
  
  
 
@@ -594,14 +596,14 @@ for iconj in range(len(tamaños_I)):
                 ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y ACTIVOS
                 ##########################################################
                            
-                soluciones = open('Solutions_Matheuristic_240924_'
+                soluciones = open('Solutions_Matheuristic_081024_'
                                   +str(tamaños_I[iconj])+str('_')
                                   +str(tamaños_L[jconj])+str('_')
                                   +str(tamaños_S[sconj])+'_'
                                   +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                 
                 
-                best = open('Mejoras_Matheuristic_240924_'
+                best = open('Mejoras_Matheuristic_081024_'
                                   +str(tamaños_I[iconj])+str('_')
                                   +str(tamaños_L[jconj])+str('_')
                                   +str(tamaños_S[sconj])+'_'
@@ -647,7 +649,7 @@ for iconj in range(len(tamaños_I)):
                 best.write('\n')
                 
                 
-                mejor = open('Best_Matheuristic_240924_'
+                mejor = open('Best_Matheuristic_081024_'
                                   +str(tamaños_I[iconj])+str('_')
                                   +str(tamaños_L[jconj])+str('_')
                                   +str(tamaños_S[sconj])+'_'
@@ -1019,7 +1021,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #imprimir variables 
                             
-                            with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                            with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
                                           #+str(len(N))+str('_')
@@ -1047,7 +1049,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #Nombre: Resultados_I_L_M_N_S
                             
-                            f = open ('Resultados_Matheuristic_240924_New_'
+                            f = open ('Resultados_Matheuristic_081024_New_'
                                           +str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
@@ -1140,7 +1142,7 @@ for iconj in range(len(tamaños_I)):
                                 best.write('\n')
                                 mejor_obj = model.objVal
                                 
-                                mejor = open('Best_Matheuristic_240924_'
+                                mejor = open('Best_Matheuristic_081024_'
                                                   +str(tamaños_I[iconj])+str('_')
                                                   +str(tamaños_L[jconj])+str('_')
                                                   +str(tamaños_S[sconj])+'_'
@@ -1194,11 +1196,20 @@ for iconj in range(len(tamaños_I)):
                             if sale == 1:
                                 break
                             
+                            if elapsed_time < time_limit_final:
+                                break
+                            
                         
                         if sale == 1:
                             break
                         
+                        if elapsed_time < time_limit_final:
+                            break
+                        
                     if sale == 1:
+                        break
+                    
+                    if elapsed_time < time_limit_final:
                         break
                 
                 
@@ -1527,7 +1538,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #imprimir variables 
                             
-                            with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                            with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
                                           #+str(len(N))+str('_')
@@ -1555,7 +1566,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #Nombre: Resultados_I_L_M_N_S
                             
-                            f = open ('Resultados_Matheuristic_240924_New_'
+                            f = open ('Resultados_Matheuristic_081024_New_'
                                           +str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
@@ -1629,7 +1640,7 @@ for iconj in range(len(tamaños_I)):
                                 best.write('\n')
                                 mejor_obj = model.objVal
                                 
-                                mejor = open('Best_Matheuristic_240924_'
+                                mejor = open('Best_Matheuristic_081024_'
                                                   +str(tamaños_I[iconj])+str('_')
                                                   +str(tamaños_L[jconj])+str('_')
                                                   +str(tamaños_S[sconj])+'_'
@@ -1686,11 +1697,20 @@ for iconj in range(len(tamaños_I)):
                 
                             if sale == 1:
                                 break
+                            
+                            if elapsed_time < time_limit_final:
+                                break
                           
                         if sale == 1:
                             break
+                        
+                        if elapsed_time < time_limit_final:
+                            break
                           
                     if sale == 1:
+                        break
+                    
+                    if elapsed_time < time_limit_final:
                         break
                 
                 
@@ -1698,7 +1718,7 @@ for iconj in range(len(tamaños_I)):
                 ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS
                 ################################################################
                 
-                g = open('Best_Matheuristic_240924_'
+                g = open('Best_Matheuristic_081024_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])+'_'
@@ -2055,7 +2075,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #imprimir variables 
                                 
-                                with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                                with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
                                               #+str(len(N))+str('_')
@@ -2083,7 +2103,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_I_L_M_N_S
                                 
-                                f = open ('Resultados_Matheuristic_240924_New_'
+                                f = open ('Resultados_Matheuristic_081024_New_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
@@ -2174,7 +2194,7 @@ for iconj in range(len(tamaños_I)):
                                     best.write('\n')
                                     mejor_obj = model.objVal
                                     
-                                    mejor = open('Best_Matheuristic_240924_'
+                                    mejor = open('Best_Matheuristic_081024_'
                                                       +str(tamaños_I[iconj])+str('_')
                                                       +str(tamaños_L[jconj])+str('_')
                                                       +str(tamaños_S[sconj])+'_'
@@ -2228,11 +2248,20 @@ for iconj in range(len(tamaños_I)):
                                 if sale == 1:
                                     break
                                 
+                                if elapsed_time < time_limit_final:
+                                    break
+                                
                             
                             if sale == 1:
                                 break
                             
+                            if elapsed_time < time_limit_final:
+                                break
+                            
                         if sale == 1:
+                            break
+                        
+                        if elapsed_time < time_limit_final:
                             break
                             
                             
@@ -2241,7 +2270,7 @@ for iconj in range(len(tamaños_I)):
                 ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS
                 #################################################################
                 
-                g = open('Best_Matheuristic_240924_'
+                g = open('Best_Matheuristic_081024_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])+'_'
@@ -2598,7 +2627,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #imprimir variables 
                             
-                            with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                            with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
                                           #+str(len(N))+str('_')
@@ -2626,7 +2655,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #Nombre: Resultados_I_L_M_N_S
                             
-                            f = open ('Resultados_Matheuristic_240924_New_'
+                            f = open ('Resultados_Matheuristic_081024_New_'
                                           +str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
@@ -2717,7 +2746,7 @@ for iconj in range(len(tamaños_I)):
                                 best.write('\n')
                                 mejor_obj = model.objVal
                                 
-                                mejor = open('Best_Matheuristic_240924_'
+                                mejor = open('Best_Matheuristic_081024_'
                                                   +str(tamaños_I[iconj])+str('_')
                                                   +str(tamaños_L[jconj])+str('_')
                                                   +str(tamaños_S[sconj])+'_'
@@ -2771,11 +2800,20 @@ for iconj in range(len(tamaños_I)):
                             if sale == 1:
                                 break
                             
+                            if elapsed_time < time_limit_final:
+                                break
+                            
                         
                         if sale == 1:
                             break
+                        
+                        if elapsed_time < time_limit_final:
+                            break
                     
                     if sale == 1:
+                        break
+                    
+                    if elapsed_time < time_limit_final:
                         break
                 
                 
@@ -2783,7 +2821,7 @@ for iconj in range(len(tamaños_I)):
                 ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS
                 ##########################################################
                 
-                g = open('Best_Matheuristic_240924_'
+                g = open('Best_Matheuristic_081024_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])+'_'
@@ -3132,7 +3170,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #imprimir variables 
                             
-                            with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                            with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
                                           #+str(len(N))+str('_')
@@ -3160,7 +3198,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #Nombre: Resultados_I_L_M_N_S
                             
-                            f = open ('Resultados_Matheuristic_240924_New_'
+                            f = open ('Resultados_Matheuristic_081024_New_'
                                           +str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
@@ -3251,7 +3289,7 @@ for iconj in range(len(tamaños_I)):
                                 best.write('\n')
                                 mejor_obj = model.objVal
                                 
-                                mejor = open('Best_Matheuristic_240924_'
+                                mejor = open('Best_Matheuristic_081024_'
                                                   +str(tamaños_I[iconj])+str('_')
                                                   +str(tamaños_L[jconj])+str('_')
                                                   +str(tamaños_S[sconj])+'_'
@@ -3305,10 +3343,19 @@ for iconj in range(len(tamaños_I)):
                             if sale == 1:
                                 break
                             
+                            if elapsed_time < time_limit_final:
+                                break
+                            
                         if sale == 1:
+                            break
+                        
+                        if elapsed_time < time_limit_final:
                             break
                     
                     if sale == 1:
+                        break
+                    
+                    if elapsed_time < time_limit_final:
                         break
                     
                     
@@ -3629,7 +3676,7 @@ for iconj in range(len(tamaños_I)):
                         
                         #imprimir variables 
                         
-                        with open('data_Matheuristic_240924_'+str(len(I))+str('_')
+                        with open('data_Matheuristic_081024_'+str(len(I))+str('_')
                                       +str(len(L))+str('_')
                                       #+str(len(K))+str('_')
                                       #+str(len(N))+str('_')
@@ -3657,7 +3704,7 @@ for iconj in range(len(tamaños_I)):
                         
                         #Nombre: Resultados_I_L_M_N_S
                         
-                        f = open ('Resultados_Matheuristic_240924_New_'
+                        f = open ('Resultados_Matheuristic_081024_New_'
                                       +str(len(I))+str('_')
                                       +str(len(L))+str('_')
                                       #+str(len(K))+str('_')
@@ -3731,7 +3778,7 @@ for iconj in range(len(tamaños_I)):
                             best.write('\n')
                             mejor_obj = model.objVal
                             
-                            mejor = open('Best_Matheuristic_240924_'
+                            mejor = open('Best_Matheuristic_081024_'
                                               +str(tamaños_I[iconj])+str('_')
                                               +str(tamaños_L[jconj])+str('_')
                                               +str(tamaños_S[sconj])+'_'
@@ -3787,11 +3834,20 @@ for iconj in range(len(tamaños_I)):
                 
                         if sale == 1:
                             break
+                        
+                        if elapsed_time < time_limit_final:
+                            break
                             
                     if sale == 1:
                         break
+                    
+                    if elapsed_time < time_limit_final:
+                        break
                      
                 if sale == 1:
+                    break
+                
+                if elapsed_time < time_limit_final:
                     break
                 
                 
@@ -3801,9 +3857,9 @@ for iconj in range(len(tamaños_I)):
                 mejor.close()
                 g.close()
                 
-                book.save('Tesis_Matheuristic_240924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
-                book1.save('Tesis_Matheuristic_Mejoras_240924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
-#book.save('Tesis_Matheuristic_240924_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Matheuristic_081024_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book1.save('Tesis_Matheuristic_Mejoras_081024_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+#book.save('Tesis_Matheuristic_081024_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 
 
                 
