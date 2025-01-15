@@ -4,7 +4,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau $. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau ,\tau _{\qopname \relax m{max}})$.}}{17}{figure.3.1}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau $. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau ,\tau _{\qopname \relax m{max}})$.}}{16}{figure.3.1}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Best objective and the best bound of the objective function obtained by the MEC model with respect to the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$. }}{28}{figure.5.1}% 
