@@ -23,13 +23,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [168] #Aquí batalla pero sí lo hace aún
-# tamaños_L = [16]
-# tamaños_S = [10]
+tamaños_I = [168] #Aquí batalla pero sí lo hace aún
+tamaños_L = [16]
+tamaños_S = [10]
 
-tamaños_I = [168, 270, 500, 900, 1500] 
-tamaños_L = [16, 50, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+# tamaños_I = [168, 270, 500, 900, 1500] 
+# tamaños_L = [16, 50, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
 
 K = [1,2]
 
