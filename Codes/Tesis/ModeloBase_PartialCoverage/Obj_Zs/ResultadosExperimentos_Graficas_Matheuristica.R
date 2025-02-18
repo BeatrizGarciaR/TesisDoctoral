@@ -15,15 +15,16 @@ eta <- amb[1,]
 # objective value graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_Matheuristic_Mejoras__1-1_081024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("Objective_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_Mejoras__1-1_081024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
   
-  aux <- as.data.frame(aux_0[filas, c(2,4,6)])
+  aux <- as.data.frame(aux_0[filas, c(2,4,5)])
+  #print(aux)
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
   colnames(matrix) <- len_S
   rownames(matrix) <- len_I
@@ -40,8 +41,9 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
-  
-  aux_bb <- as.data.frame(aux_0[filas, c(2,4,7)])
+  #print(matrix)
+  aux_bb <- as.data.frame(aux_0[filas, c(2,4,6)])
+  #print(aux_bb)
   matrix_bestbound <- matrix(nrow=length(len_I), ncol=length(len_S))
   colnames(matrix_bestbound) <- len_S
   rownames(matrix_bestbound) <- len_I
@@ -58,6 +60,25 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
+  #print(matrix_bestbound)
+  aux_bb1 <- as.data.frame(aux_0[filas, c(2,4,7)])
+  #print(aux_bb)
+  matrix_bestbound1 <- matrix(nrow=length(len_I), ncol=length(len_S))
+  colnames(matrix_bestbound1) <- len_S
+  rownames(matrix_bestbound1) <- len_I
+  count = 1
+  for (s in 1:length(len_I)){
+    for (l in 1:length(len_S)){
+      #matrix[s,l] = aux[count,3]
+      if (is.na(aux_bb1[count,3]) == FALSE){
+        matrix_bestbound1[s,l] = aux_bb1[count,3]
+      }
+      else{
+        matrix_bestbound1[s,l] = 0
+      }
+      count = count + 1
+    }
+  }
   if(a == 1){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
@@ -70,7 +91,7 @@ for (a in 1:length(amb[,1])){
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
-  # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
+  # #pdf(paste("Objval_",eta[1],"_",eta[2],"_Comparaciones.pdf", sep=""))
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix_bestbound)+2),
   #      xlab="demand points", ylab="objective value", xaxt = "n",
   #      main=paste("Objective value for 16 potential sites \n considering",eta[1],
@@ -79,29 +100,43 @@ for (a in 1:length(amb[,1])){
   lines(matrix[1:length(len_I)], lwd=3, col=1)
   points(matrix_bestbound[1:length(len_I)], pch=15, cex=1.5, col=1)
   lines(matrix_bestbound[1:length(len_I)], lwd=3, col=1, lty=2)
+  points(matrix_bestbound1[1:length(len_I)], pch=15, cex=1.5, col=1)
+  lines(matrix_bestbound1[1:length(len_I)], lwd=3, col=1, lty=3)
+  
   points(matrix[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
   lines(matrix[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2)
   points(matrix_bestbound[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
   lines(matrix_bestbound[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2, lty=2)
+  points(matrix_bestbound1[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
+  lines(matrix_bestbound1[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2, lty=3)
+  
   points(matrix[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
   lines(matrix[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3)
   points(matrix_bestbound[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
   lines(matrix_bestbound[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3, lty=2)
+  points(matrix_bestbound1[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
+  lines(matrix_bestbound1[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3, lty=3)
+  
   points(matrix[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
   lines(matrix[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4)
   points(matrix_bestbound[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
   lines(matrix_bestbound[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4, lty=2)
+  points(matrix_bestbound1[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
+  lines(matrix_bestbound1[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4, lty=3)
+  
   points(matrix[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
   lines(matrix[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6)
   points(matrix_bestbound[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
   lines(matrix_bestbound[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6, lty=2)
+  points(matrix_bestbound1[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
+  lines(matrix_bestbound1[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6, lty=3)
   legend(x="top", legend = len_S, horiz=TRUE, cex = 2.1,
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best objective", "best bound"), # Textos de la leyenda
-         lty = c(1, 2),          # Tipo de l??neas
-         col = c(1, 1),          # Colores de las l??neas
+         legend = c("best obj mec", "best obj sabc", "best obj math"), # Textos de la leyenda
+         lty = c(1, 2, 3),          # Tipo de l??neas
+         col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
@@ -113,15 +148,16 @@ dev.off()
 # objective value graphics scenarios vs demand point
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_Matheuristic_Mejoras__1-1_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("Objective_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_Mejoras__1-1_081024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
   
-  aux <- as.data.frame(aux_0[filas, c(2,4,6)])
+  aux <- as.data.frame(aux_0[filas, c(2,4,5)])
+  #print(aux)
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
   colnames(matrix_1) <- len_I
   rownames(matrix_1) <- len_S
@@ -139,7 +175,7 @@ for (a in 1:length(amb[,1])){
     }
   }
   
-  aux_bb <- as.data.frame(aux_0[filas, c(2,4,7)])
+  aux_bb <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix_bestbound_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
   colnames(matrix_bestbound_1) <- len_I
   rownames(matrix_bestbound_1) <- len_S
@@ -156,51 +192,82 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
-  
+  aux_bb1 <- as.data.frame(aux_0[filas, c(2,4,7)])
+  #print(aux_bb)
+  matrix_bestbound1 <- matrix(nrow=length(len_I), ncol=length(len_S))
+  colnames(matrix_bestbound1) <- len_S
+  rownames(matrix_bestbound1) <- len_I
+  count = 1
+  for (s in 1:length(len_I)){
+    for (l in 1:length(len_S)){
+      #matrix[s,l] = aux[count,3]
+      if (is.na(aux_bb1[count,3]) == FALSE){
+        matrix_bestbound1[s,l] = aux_bb1[count,3]
+      }
+      else{
+        matrix_bestbound1[s,l] = 0
+      }
+      count = count + 1
+    }
+  }
   if(a == 1){
-    plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound_1)+30),
-         cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="objective value",
+    plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
+         cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
-    plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound_1)+30),
-         cex.lab=2.7, cex.axis = 2.5,xlab="scenarios", xaxt = "n",
+    plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
+         cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
-  axis(1, at=1:length(len_S), labels=len_S, cex.axis = 2.5, tck = 0.02)
-  # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
+  axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
+  # #pdf(paste("Objval_",eta[1],"_",eta[2],"_Comparaciones.pdf", sep=""))
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix_bestbound)+2),
   #      xlab="demand points", ylab="objective value", xaxt = "n",
   #      main=paste("Objective value for 16 potential sites \n considering",eta[1],
   #                 "BLS and",eta[2],"ALS ambulances", sep=" "))
   # axis(1, at=1:5, labels=len_I)
-  lines(matrix_1[1:length(len_S)], lwd=3, col=1)
-  points(matrix_bestbound_1[1:length(len_S)], pch=15, cex=1.5, col=1)
-  lines(matrix_bestbound_1[1:length(len_S)], lwd=3, col=1, lty=2)
-  points(matrix_1[(length(len_S)+1):(2*length(len_S))], pch=16, cex=1.5, col=2)
-  lines(matrix_1[(length(len_S)+1):(2*length(len_S))], lwd=3, col=2)
-  points(matrix_bestbound_1[(length(len_S)+1):(2*length(len_S))], pch=16, cex=1.5, col=2)
-  lines(matrix_bestbound_1[(length(len_S)+1):(2*length(len_S))], lwd=3, col=2, lty=2)
-  points(matrix_1[(2*length(len_S)+1):(3*length(len_S))], pch=17, cex=1.5, col=3)
-  lines(matrix_1[(2*length(len_S)+1):(3*length(len_S))], lwd=3, col=3)
-  points(matrix_bestbound_1[(2*length(len_S)+1):(3*length(len_S))], pch=17, cex=1.5, col=3)
-  lines(matrix_bestbound_1[(2*length(len_S)+1):(3*length(len_S))], lwd=3, col=3, lty=2)
-  points(matrix_1[(3*length(len_S)+1):(4*length(len_S))], pch=18, cex=1.5, col=4)
-  lines(matrix_1[(3*length(len_S)+1):(4*length(len_S))], lwd=3, col=4)
-  points(matrix_bestbound_1[(3*length(len_S)+1):(4*length(len_S))], pch=18, cex=1.5, col=4)
-  lines(matrix_bestbound_1[(3*length(len_S)+1):(4*length(len_S))], lwd=3, col=4, lty=2)
-  points(matrix_1[(4*length(len_S)+1):(5*length(len_S))], pch=19, cex=1.5, col=6)
-  lines(matrix_1[(4*length(len_S)+1):(5*length(len_S))], lwd=3, col=6)
-  points(matrix_bestbound_1[(4*length(len_S)+1):(5*length(len_S))], pch=19, cex=1.5, col=6)
-  lines(matrix_bestbound_1[(4*length(len_S)+1):(5*length(len_S))], lwd=3, col=6, lty=2)
+  lines(matrix[1:length(len_I)], lwd=3, col=1)
+  points(matrix_bestbound[1:length(len_I)], pch=15, cex=1.5, col=1)
+  lines(matrix_bestbound[1:length(len_I)], lwd=3, col=1, lty=2)
+  points(matrix_bestbound1[1:length(len_I)], pch=15, cex=1.5, col=1)
+  lines(matrix_bestbound1[1:length(len_I)], lwd=3, col=1, lty=3)
+  
+  points(matrix[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
+  lines(matrix[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2)
+  points(matrix_bestbound[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
+  lines(matrix_bestbound[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2, lty=2)
+  points(matrix_bestbound1[(length(len_I)+1):(2*length(len_I))], pch=16, cex=1.5, col=2)
+  lines(matrix_bestbound1[(length(len_I)+1):(2*length(len_I))], lwd=3, col=2, lty=3)
+  
+  points(matrix[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
+  lines(matrix[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3)
+  points(matrix_bestbound[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
+  lines(matrix_bestbound[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3, lty=2)
+  points(matrix_bestbound1[(2*length(len_I)+1):(3*length(len_I))], pch=17, cex=1.5, col=3)
+  lines(matrix_bestbound1[(2*length(len_I)+1):(3*length(len_I))], lwd=3, col=3, lty=3)
+  
+  points(matrix[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
+  lines(matrix[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4)
+  points(matrix_bestbound[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
+  lines(matrix_bestbound[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4, lty=2)
+  points(matrix_bestbound1[(3*length(len_I)+1):(4*length(len_I))], pch=18, cex=1.5, col=4)
+  lines(matrix_bestbound1[(3*length(len_I)+1):(4*length(len_I))], lwd=3, col=4, lty=3)
+  
+  points(matrix[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
+  lines(matrix[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6)
+  points(matrix_bestbound[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
+  lines(matrix_bestbound[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6, lty=2)
+  points(matrix_bestbound1[(4*length(len_I)+1):(5*length(len_I))], pch=19, cex=1.5, col=6)
+  lines(matrix_bestbound1[(4*length(len_I)+1):(5*length(len_I))], lwd=3, col=6, lty=3)
   legend(x="top", legend = len_I, horiz=TRUE, cex = 2.1,
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best objective", "best bound"), # Textos de la leyenda
-         lty = c(1, 2),          # Tipo de l??neas
-         col = c(1, 1),          # Colores de las l??neas
+         legend = c("best obj mec", "best obj sabc", "best obj math"), # Textos de la leyenda
+         lty = c(1, 2, 3),          # Tipo de l??neas
+         col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
@@ -217,7 +284,7 @@ dev.off()
 #   # run time
 #   eta <- amb[a,]
 #   filas = c(seq(from=(1+counti*25), to=((1+counti*25)+24)))
-#   #aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_Mejoras__1-1_081024_AllAmb.csv', sep="")))
+#   #aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_AllAmb.csv', sep="")))
 #   aux <- as.data.frame(aux_0[filas, c(3,4,8)])
 #   matrix <- matrix(nrow=5, ncol=5)
 #   colnames(matrix) <- len_S
@@ -235,7 +302,7 @@ dev.off()
 #       count = count + 1
 #     }
 #   }
-#   pdf(paste("Gapval_",eta[1],"_",eta[2],".pdf", sep=""))
+#   pdf(paste("Gapval_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
 #   plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(min(matrix)-2, max(matrix)+2),
 #        xlab="demand points", ylab="objective value", xaxt = "n",
 #        main=paste("Gap for 16 potential sites \n considering",eta[1],
@@ -261,14 +328,14 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_Matheuristic_Mejoras__1-1_081024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("TimeVal_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_Mejoras__1-1_081024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
-  aux <- as.data.frame(aux_0[filas, c(2,4,10)])
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
+  aux <- as.data.frame(aux_0[filas, c(2,4,12)])
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
   colnames(matrix) <- len_S
   rownames(matrix) <- len_I
@@ -285,7 +352,7 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
-  #pdf(paste("Timeval_",eta[1],"_",eta[2],".pdf", sep=""))
+  #pdf(paste("Timeval_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
   if(a == 1){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="runtime in seconds",
@@ -325,13 +392,13 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_Matheuristic_Mejoras__1-1_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("TimeVal_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_Mejoras__1-1_081024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
   colnames(matrix_1) <- len_I
@@ -350,7 +417,7 @@ for (a in 1:length(amb[,1])){
     }
   }
   
-  #pdf(paste("Timeval_",eta[1],"_",eta[2],".pdf", sep=""))
+  #pdf(paste("Timeval_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
   if(a == 1){
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="runtime in seconds",
@@ -516,11 +583,11 @@ dev.off()
 # 
 # 
 # #coverage mean scenarios graphics
-# pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+# pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"Comparaciones.pdf", sep=""), width = 10)
 # par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 # for (a in 1:length(amb[,1])){
 #   eta = amb[a,]
-#   #pdf(paste("Coverage_",eta[1],"_",eta[2],".pdf", sep=""))
+#   #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
 #   if(a == 1){
 #     plot(as.numeric(prom_coverage[a*length(len_I)-((length(len_I)-1)), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
 #          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
@@ -586,7 +653,7 @@ dev.off()
 # par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 # for (a in 1:length(amb[,1])){
 #   eta = amb[a,]
-#   #pdf(paste("Coverage_",eta[1],"_",eta[2],".pdf", sep=""))
+#   #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
 #   if(a == 1){
 #     plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
 #          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
