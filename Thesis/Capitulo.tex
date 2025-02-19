@@ -316,28 +316,29 @@ where
     %\label{eq2}
 \end{equation}
 subject to
-\begin{alignat}{2}
-   & \sum_{l \in L} x_{lk} \leq \eta_k   &\quad&  k \in K
+\text{ s.t. } & \sum_{l \in L} x_{lk} \leq \eta_k   &\quad&  k \in K
     \label{eq3}\\
    & \sum_{i\in I^s}y_{lki}^s \leq x_{lk}  &&  l \in L,   k \in K,  s \in S 
     \label{eq4}\\
  %       & \textcolor{magenta}{y_{l1i}^s \leq a_{i1}^s} && \textcolor{magenta}{i \in I, l \in L,  s \in S \label{eq5}\\
 %    & \textcolor{magenta}{y_{l2i}^s \leq a_{ik}^s} && \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S } \label{eq5_1}\\ 
-     &  a_{1i}^s f_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s, \quad a_{2i}^s f_i^s \leq \sum_{l \in L}   c_{li} y_{l2i}^s &&  i \in I^s,   s \in S \label{eq6}\\
+     &    f_i^s\sum_{k \in K}a_{ki}^s   \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s, \quad   a_{2i}^s f_i^s \leq \sum_{l \in L}   c_{li} y_{l2i}^s &&  i \in I^s,   s \in S \label{eq6}\\
      %&  a_{2i}^s f_i^s \leq \sum_{l \in L}   c_{li} y_{l2i}^s &&  i \in I^s,   s \in S \label{eq6}\\
    % & \sum_{k \in K } a_{ki}^s f_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s &&  i \in I^s,   s \in S \label{eq6}\\
 %\end{alignat}
 %\begin{align}
-     &   a_{1i}^s g_i^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad  a_{2i}^s g_i^s \leq \sum_{l \in L}   y_{l2i}^s &&   i \in I^s, s \in S \label{eq7}\\
+     &   g_i^s  \sum_{k \in K}  a_{ki}^s \leq \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad   a_{2i}^s g_i^s \leq \sum_{l \in L}   y_{l2i}^s &&   i \in I^s, s \in S \label{eq7}\\
     & g_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right) &&  i \in I^s,   s\in S   \label{eq8}\\
   %Parcial  
-  & h_i^s \leq   a_{i1}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad h_i^s \leq   a_{i2}^s - \sum_{l \in L}   y_{l2i}^s  && i \in I^s,   s\in S
+  &  h_i^s \leq   \sum_{k \in K}  a_{ki}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad  h_i^s \leq   a_{2i}^s - \sum_{l \in L}   y_{l2i}^s  && i \in I^s,    s\in S
     \label{eq9}\\
  %Parcial 
  & \sum_{l \in L} \sum_{k \in K} y_{lki}^s h_i^s \leq \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s && i \in I^s,  s\in S
-    \label{eq10}\\
+    \label{eq10}
+     \end{align}
+\begin{align}
    %P-late 
-   & w_i^s \leq  a_{i1}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad w_i^s \leq   a_{i2}^s - \sum_{l \in L}   y_{l2i}^s &&  i \in I^s,  s\in S
+   &  w_i^s \leq  \sum_{k\in K}a_{ki}^s - \sum_{l \in L} \sum_{k \in K} y_{lki}^s, \quad  w_i^s \leq   a_{2i}^s - \sum_{l \in L}   y_{l2i}^s &&  i \in I^s,  s\in S
     \label{eq11}\\
    & w_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K} y_{lki}^s - \sum_{l \in L} \sum_{k \in K} c_{li} y_{lki}^s \right)  && i \in I^s,  s\in S 
     \label{eq12}\\
@@ -349,7 +350,7 @@ subject to
     \label{eq15}\\
     & f_i^s, g_i^s, h_i^s, w_i^s, z_i^s \in \{ 0,1 \}  && i \in I^s,   s \in S.
     \label{eq16}
-\end{alignat}
+\end{align}
 
 The objective function (\ref{eq1}) maximizes the expected value of the weighted coverage of the emergencies. %The last term is a penalty for uncovered demand points.
 %Vector $x$ contains all the variables $x_{lk} \in \mathbb{Z}^+$ for $l \in L,   k \in K$. 
@@ -361,6 +362,74 @@ The \textit{total} coverage of an emergency is defined by constraints (\ref{eq6}
 
 The novelty of the MEC model is the stochastic total/partial coverage per emergency by two types of ambulances. Nevertheless, the related number of variables and constraints is usually large. Moreover, constraints (\ref{eq10}) are quadratic. An integer linear stochastic model with a classical linearization method could be easily formulated. Still, previous experiments showed similar times between the linearized and the quadratically constrained models when solved with integer programming solvers, so we keep the quadratic one for the Intelligent Feedback methodology presented in the next section.
 
+
+\section{Surrogate-based feedback method for the EVCP problem} \label{IF}
+
+
+The EVCP problem is $\mathcal{NP}$-hard since the classical $\mathcal{NP}$-hard facility location problem \citep{megiddo1982complexity} could be polynomially reduced to it. The MEC model is experimentally challenging to solve, even for medium-sized instances, as shown in Section~\ref{Exp}. Thus, we propose a surrogate-based feedback method (SBFM) to obtain approximate solutions to the EVCP problem based on an auxiliary disaggregated model, named \textit{Surrogate Ambulance-Based Coverage} (SABC) model, which is faster to solve. 
+
+The SABC model's essential characteristic is that its objective function does not rely on emergency coverage, as in the MEC model; it only counts the number of ambulances sent on time, late, or null to emergency demand points. Moreover, its resolution time is extremely fast since it requires fewer variables and constraints than the MEC model. However, disaggregating an emergency situation into the number of ambulances needed does not capture emergency coverage, which is crucial for an EMS system.
+
+In addition to the location variables $x_{li}$, the SABC model requires the following ambulance dispatching binary variables for $k\in K, l\in L, i\in I^s, s\in~S$: 
+\begin{alignat}{2}
+       u^s_{lki} & = \left\{
+       \begin{array}{ll} 
+        1 & \text{if ambulance of type $k$ is dispatched from site $l$ 
+             to point $i$} \\
+          &   \text{with response time less than $\tau$},\\
+         0 & \text{otherwise},
+       \end{array} \right.\nonumber\\
+%
+       v^s_{lki} & = \left\{
+       \begin{array}{ll} 
+        1 & \text{if ambulance of type $k$ is dispatched from site $l$ 
+             to $i$ }\\
+             &   \text{with response time in $(\tau,\tau_{\max})$},\\
+         0 & \text{otherwise}.
+       \end{array} \right.\nonumber
+\end{alignat}
+Variables $u^s_{lki}$ indicate the ambulances with an ideal response time dispatched from the location sites corresponding to a decay function value $c_{li}=1$. While variables $v^s_{lki}$ indicate the ones with a larger than $\tau$ response time which have a value $c_{li} < 1$. The number of required ambulances $k$ in an emergency demand point $i$ that are not dispatched are counted by integer variable $\zeta^s_{ki}$, for  $k\in K, i\in I^s, s \in S$. The SABC is as follows. 
+\begin{align}
+      \max_{x} \ \ & \mathbb{E}_s [ \mathcal{G}^s(x)],
+    \label{eq18}\\
+ \text{ where } &  \mathcal{G}^s(x) =  \left[ {\sum_{l \in L} \sum_{k \in K} \sum_{i \in I^s}} (\beta_1 u_{lki}^s + \beta_2 v_{lki}^s) - \sum_{k \in K} \sum_{i \in I^s}  \phi \zeta_{ki}^s \right]
+    \label{obj19}
+\end{align}
+\begin{align}
+\text{s.t. }  &  \sum_{l \in L} x_{lk} \leq \eta_k  && k \in K \label{eq20}  
+  \\
+  &    \sum_{i\in I^s}(u_{lki}^s + v_{lki}^s) \leq x_{lk} &&   l \in L,   k \in K,  s \in S  
+   \label{eq21}  \\  
+  &  u_{lki}^s \leq c_{li}  && l \in L,  i \in I^s,   k \in K,  s \in S    \label{eq22}\\
+  &  u_{lki}^s + v_{lki}^s \leq 1 && l \in L,    i \in I^s,   k \in K,   s \in S
+    \label{eq23}\\
+    &  a_{1i}^s +a_{2i}^s = \sum_{l \in L}\sum_{k \in K}( u_{lki}^s + v_{lki}^s + \zeta_{ki}^s )  && i \in I^s, s \in S
+    \label{eq24}\\
+    &   a_{2i}^s  \leq  \sum_{l \in L}( u_{l2i}^s + v_{l2i}^s  + \zeta_{2i}^s ) &&  i \in I^s, s \in S
+    \label{eq24bis}\\
+%     & \textcolor{red}{NOVAN\sum_{k\in K}  u_{lki}^s \leq  a_{i1}^s , \quad   \sum_{l\in L}(u_{l2i}^s +v_{l2i}^s)\leq \sum_{k\in K}a_{ik}^s } &&  i \in I, l \in L,  s \in S \label{ALS1}\\
+    %& \textcolor{magenta}{} & \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S }\label{eq25_1}\\
+%    & \textcolor{red}{NOVAN}\sum_{k\in K} v_{lki}^s \leq a_{i1}^s, \quad v_{l2i}^s \leq a_{i2}^s  &&  i \in I, l \in L,  s \in S    \label{ALS2}\\
+    %& \textcolor{magenta}{v_{l2i}^s \leq a_{ik}^s} & \textcolor{magenta}{i \in I, l \in L,   k \in K,  s \in S }\label{eq26_1}\\ 
+%   & \sum_{l\in L} (u_{lki}^s + v_{lki}^s) \leq a_{ki}^s  &  i \in I^s,   k \in K,   s \in S    \label{eq25}\\
+   & x_{lk}, \zeta_{ki}^s \in \mathbb{Z}^+, u_{lki}^s, v_{lki}^s \in \{ 0,1 \}  && l \in L,   k \in K, i \in I^s, s \in S      \nonumber
+\end{align}
+
+The objective function \eqref{eq18} maximizes the expected value of the on-time and late dispatched ambulances minus a penalty $\phi$ for the required ambulances that could not be dispatched in less than $\tau_{\max}$ time response. The weights $\beta_1 > \beta_2$ are normalized parameters that prioritize the ambulances dispatched with a response time less than $\tau$. As in the previous model, no more than the available ambulances can be located on the sites, corresponding to constraints \eqref{eq20}. The number of ambulances dispatched on time or late is less than the number of ambulances located, as indicated by constraints \eqref{eq21}. Constraints (\ref{eq22}) define the ambulances dispatched with an ideal response time of less than $\tau$. Thus, if $c_{li}=1$, then the ambulance will have an ideal response time, while constraints (\ref{eq23}) activate the late variables for which their response time is between $(\tau, \tau_{\max})$. With constraints (\ref{eq24}) and (\ref{eq24bis}), the non-covered emergencies, $\zeta_{ki}^s$ variables are defined for $i \in I^s, s \in S$. Recall that advanced ambulances can be dispatched instead of basic ones. %, we add restrictions \eqref{ALS1} and \eqref{ALS2}. 
+Finally, the nature of the variables is stated. 
+
+
+\textit{The surrogate-based feedback method:} Under the SBFM,
+the SABC stochastic model is solved first.
+From its optimal solution, we obtain the location of the ambulances of the first stage corresponding to the value of $x_{lk}$ variables, for $l\in L, k \in K$. Let the solution vector of these values be called $x^\text{SABC}$. 
+Then, in the allocation stage, we solve MEC 
+taking $x^\text{SABC}$ as input. We call this
+model MEC($x^\text{SABC}$), or simply MEC(SABC), implying
+that it is the solution of the MEC model with the location variables fixed with the solution of the surrogate model SABC.
+Since the first stage variables are fixed, the MEC(SABC) model becomes easier to solve and yields high-quality solutions. We could implement a local search neighborhood based on the location variables $x_{lj}$ to diversify the solution yield by variables $x^\text{SABC}$. However, experimental results show that the quality of the SBFM solutions is exceptionally high with a single feedback.  
+
+
+\begin{comment}
 \section{Intelligent Feedback methodology for the EVCP problem} \label{IF}
 
 The MEC model is experimentally hard to solve, even for medium-size instances, as shown in Section~\ref{Exp}. Thus, we propose the  Intelligent Feedback methodology to obtain approximate solutions for the EVCP problem based on an auxiliary disaggregated model, named \textit{Surrogate Ambulance-Based Coverage} (SABC) model. 
@@ -426,7 +495,10 @@ Since the first stage variables are fixed, the MEC(SABC) becomes easier to solve
 
 
 As mentioned, the SABC auxiliary model is a surrogate for the MEC formulation. Thus, the solutions obtained by the MEC and SABC are not equivalent. Nevertheless, the solutions of the SABC model can be mapped into solutions for the EVCP problem, as shown in Algorithm \ref{alg:cap}. In this manner, we can compare both models regarding emergency coverage, even if the SABC model is short-sighted regarding this objective. 
-Step 3 activates the total coverage when all the required ambulances arrive in less than $\tau$ response time. Step 4 verifies if a dispatched ambulance has a response time in $(\tau,\tau_{\max})$, corresponding to the total-late coverage. Step 6 checks that not all the required ambulances are dispatched but they arrive between the ideal time, while Step 8 verifies that the dispatched ambulances are not all the required ones and at least one of them has a response time in $(\tau,\tau_{\max})$. Finally, Step 10 activates the null variable. 
+Step 3 activates the total coverage when all the required ambulances arrive in less than $\tau$ response time. Step 4 verifies if a dispatched ambulance has a response time in $(\tau,\tau_{\max})$, corresponding to the total-late coverage. Step 6 checks that not all the required ambulances are dispatched but they arrive between the ideal time, while Step 8 verifies that the dispatched ambulances are not all the required ones and at least one of them has a response time in $(\tau,\tau_{\max})$. Finally, Step 10 activates the null variable.
+\end{comment}
+
+ 
 \begin{algorithm}
 \caption{Transformation of a SABC solution into a MEC solution }\label{alg:cap}
 \begin{algorithmic}[1]
@@ -534,6 +606,272 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 
 
 \chapter{Experimental work}\label{cap:exper}
+
+\section{Objectives}
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf}}{}
+\caption{Objective MEC.}
+\label{Obj_MEC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Obj_SABC_100_1.pdf}}{}
+\caption{Objective SABC.}
+\label{Obj_SABC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf}}{}
+\caption{Objective M2M1.}
+\label{Obj_M2M1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100_1.pdf}}{}
+\caption{Objective Math.}
+\label{Obj_Math}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf}}{}
+\caption{Objective Comp.}
+\label{Obj_Comp}
+\end{figure}
+
+\section{Time}
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_100_1.pdf}}{}
+\caption{Time MEC.}
+\label{Time_MEC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Time_SABC_100_1.pdf}}{}
+\caption{Time SABC.}
+\label{Time_SABC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf}}{}
+\caption{Time M2M1.}
+\label{Time_M2M1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_100_1.pdf}}{}
+\caption{Time Math.}
+\label{Time_Math}
+\end{figure}
+
+
+\begin{comment}
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Time_Comp_100_1.pdf}}{}
+\caption{Time Comp.}
+\label{Time_Comp}
+\end{figure}
+\end{comment}
+
+
+\section{coverage}
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf}}{}
+\caption{Coverage MEC.}
+\label{Cov_MEC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/SABC/Cov_SABC_100_1.pdf}}{}
+\caption{Coverage SABC.}
+\label{Cov_SABC}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf}}{}
+\caption{Coverage M2M1.}
+\label{Cov_M2M1}
+\end{figure}
 
 \section{Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations} \label{obj val}
 

@@ -1,12 +1,12 @@
-\babel@toc {nil}{}
+\babel@toc {nil}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Sets and parameters to describe the EVCP problem.}}{17}{table.3.1}% 
+\contentsline {table}{\numberline {3.1}{\ignorespaces Sets and parameters to describe the EVCP problem.}}{17}{table.caption.7}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of instance size used for experimentation between our case study (Monterrey) and one form the literature.}}{25}{table.4.1}% 
+\contentsline {table}{\numberline {3.2}{\ignorespaces Comparison of instance size used for experimentation between our case study (Monterrey) and one form the literature.}}{27}{table.caption.9}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Comparison results between the MEC model and the MEC(SABC) methodology with DEF model and the Benders approach BBC of \cite {yoon2021stochastic}. Note that this comparison is only indicative.}}{37}{table.5.1}% 
+\contentsline {table}{\numberline {3.3}{\ignorespaces Comparison results between the MEC model and the MEC(SABC) methodology with DEF model and the Benders approach BBC of \cite {yoon2021stochastic}. Note that this comparison is only indicative.}}{54}{table.caption.29}%
 \addvspace {10\p@ }

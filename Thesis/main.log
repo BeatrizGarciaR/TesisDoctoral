@@ -1,588 +1,684 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.26)  31 JAN 2025 19:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.19)  19 FEB 2025 07:40
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **./main.tex
 (main.tex
-LaTeX2e <2018-12-01>
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
 (fime.cls
 Document Class: fime 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\book.cls"
-Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\bk12.clo"
-File: bk12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\bk12.clo
+File: bk12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@chapter=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
-\c@figure=\count87
-\c@table=\count88
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+\c@part=\count187
+\c@chapter=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.sty"
-Package: babel 2019/04/01 3.28 The Babel package
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\switch.def
-"
-File: switch.def 2019/04/01 3.28 Babel switching mechanism
-)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count196
+\U@D=\dimen141
+\l@unhyphenated=\language79
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count197
+
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-Package babel Info: You haven't specified a language. I'll use 'nil'
-(babel)             as the main language. Reported on input line 499.
- ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\nil.ldf"
-Language: nil 2019/04/01 3.28 Nil language
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.def"
-File: babel.def 2019/04/01 3.28 Babel common definitions
-\babel@savecnt=\count89
-\U@D=\dimen103
+Package babel Info: You haven't specified a language as a class or package
+(babel)             option. I'll load 'nil'. Reported on input line 4342.
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\txtbabel.d
-ef")
-\bbl@dirlevel=\count90
-)))
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.sty"
-Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/babel\nil.ldf
+Language: nil 2024/01/07 v24.1 Nil language
+\l@nil=\language80
+))
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
-y"
-Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip43
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.st
-y"
-Package: amstext 2000/06/29 v2.01 AMS text
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
-"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks16
-\ex@=\dimen104
+\@emptytoks=\toks19
+\ex@=\dimen142
 ))
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
-"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen105
+\pmbraise@=\dimen143
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
-"
-Package: amsopn 2016/03/08 v2.02 operator names
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count91
-LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count92
-\leftroot@=\count93
-LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count94
-\DOTSCASE@=\count95
-LaTeX Info: Redefining \ldots on input line 482.
-LaTeX Info: Redefining \dots on input line 485.
-LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box27
-\strutbox@=\box28
-\big@size=\dimen106
-LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count96
-\c@MaxMatrixCols=\count97
-\dotsspace@=\muskip10
-\c@parentequation=\count98
-\dspbrk@lvl=\count99
-\tag@help=\toks17
-\row@=\count100
-\column@=\count101
-\maxfields@=\count102
-\andhelp@=\toks18
-\eqnshift@=\dimen107
-\alignsep@=\dimen108
-\tagshift@=\dimen109
-\tagwidth@=\dimen110
-\totwidth@=\dimen111
-\lineht@=\dimen112
-\@envbody=\toks19
-\multlinegap=\skip44
-\multlinetaggap=\skip45
-\mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2844.
-LaTeX Info: Redefining \] on input line 2845.
+\inf@bad=\count198
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count199
+\leftroot@=\count266
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count267
+\DOTSCASE@=\count268
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen144
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count269
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count270
+\dotsspace@=\muskip16
+\c@parentequation=\count271
+\dspbrk@lvl=\count272
+\tag@help=\toks20
+\row@=\count273
+\column@=\count274
+\maxfields@=\count275
+\andhelp@=\toks21
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks22
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.
-sty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.s
-ty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
-sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
-y"
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
-sty"
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
-ics.cfg"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 107.
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
-x.def"
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen113
-\Gin@req@width=\dimen114
-)
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.sty
-"
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks22
-\verbatim@line=\toks23
-\verbatim@in@stream=\read1
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+) (C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read3
 ) (titlesec.sty
 Package: titlesec 2007/08/12 v2.8 Sectioning titles
-\ttl@box=\box29
-\beforetitleunit=\skip46
-\aftertitleunit=\skip47
-\ttl@plus=\dimen115
-\ttl@minus=\dimen116
-\ttl@toksa=\toks24
-\titlewidth=\dimen117
-\titlewidthlast=\dimen118
-\titlewidthfirst=\dimen119
+\ttl@box=\box53
+\beforetitleunit=\skip53
+\aftertitleunit=\skip54
+\ttl@plus=\dimen153
+\ttl@minus=\dimen154
+\ttl@toksa=\toks27
+\titlewidth=\dimen155
+\titlewidthlast=\dimen156
+\titlewidthfirst=\dimen157
  (ttlps.def
 File: ttlps.def 2007/08/12
 ))
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
-\Urlmuskip=\muskip11
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@teorema=\count103
+\c@teorema=\count276
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
-.cfg"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/colortbl\colortbl.
-sty"
-Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
-Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen120
-\ar@mcellbox=\box30
-\extrarowheight=\dimen121
-\NC@list=\toks25
-\extratabsurround=\skip48
-\backup@length=\skip49
-\ar@cellbox=\box31
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen158
+\ar@mcellbox=\box54
+\extrarowheight=\dimen159
+\NC@list=\toks28
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box55
 )
-\everycr=\toks26
-\minrowclearance=\skip50
+\everycr=\toks29
+\minrowclearance=\skip57
+\rownum=\count277
 )
-\rownum=\count104
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/natbib\natbib.st
-y"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip51
-\bibsep=\skip52
+\bibhang=\skip58
+\bibsep=\skip59
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count105
+\c@NAT@ctr=\count278
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
-sty"
-Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/comment\comment.sty
+\CommentStream=\write3
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\hobsub-
-hyperref.sty"
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+Excluding comment 'comment')
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2023-11-26 v7.01g Hypertext links for LaTeX
 
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\hobsub-
-generic.sty"
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
-Package pdftexcmds Info: LuaTeX not detected.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+))
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.
-sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\auxhook.s
-ty"
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-)
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions
-.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen122
-\Hy@linkcounter=\count106
-\Hy@pagecounter=\count107
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.de
-f"
-File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count279
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count280
+)
+\@linkdim=\dimen160
+\Hy@linkcounter=\count281
+\Hy@pagecounter=\count282
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2023-11-26 v7.01g Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count108
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/00miktex\hyperref.
-cfg"
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4519.
-Package hyperref Info: Link nesting OFF on input line 4524.
-Package hyperref Info: Hyper index ON on input line 4527.
-Package hyperref Info: Plain pages OFF on input line 4534.
-Package hyperref Info: Backreferencing OFF on input line 4539.
+\Hy@SavedSpaceFactor=\count283
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2023-11-26 v7.01g Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4181.
+Package hyperref Info: Link nesting OFF on input line 4186.
+Package hyperref Info: Hyper index ON on input line 4189.
+Package hyperref Info: Plain pages OFF on input line 4196.
+Package hyperref Info: Backreferencing OFF on input line 4201.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count109
-LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen123
-\Fld@menulength=\count110
-\Field@Width=\dimen124
-\Fld@charsize=\dimen125
-Package hyperref Info: Hyper figures OFF on input line 6380.
-Package hyperref Info: Link nesting OFF on input line 6385.
-Package hyperref Info: Hyper index ON on input line 6388.
-Package hyperref Info: backreferencing OFF on input line 6395.
-Package hyperref Info: Link coloring OFF on input line 6400.
-Package hyperref Info: Link coloring with OCG OFF on input line 6405.
-Package hyperref Info: PDF/A mode OFF on input line 6410.
-LaTeX Info: Redefining \ref on input line 6450.
-LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count111
-\c@Item=\count112
-\c@Hfootnote=\count113
+Package hyperref Info: Bookmarks ON on input line 4448.
+\c@Hy@tempcnt=\count284
+LaTeX Info: Redefining \url on input line 4786.
+\XeTeXLinkMargin=\dimen161
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count285
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
+Package hyperref Info: Hyper figures OFF on input line 6065.
+Package hyperref Info: Link nesting OFF on input line 6070.
+Package hyperref Info: Hyper index ON on input line 6073.
+Package hyperref Info: backreferencing OFF on input line 6080.
+Package hyperref Info: Link coloring OFF on input line 6085.
+Package hyperref Info: Link coloring with OCG OFF on input line 6090.
+Package hyperref Info: PDF/A mode OFF on input line 6095.
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count286
+\c@Item=\count287
+\c@Hfootnote=\count288
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2023-11-26 v7.01g Hyperref driver for pdfTeX
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex.d
-ef"
-File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count114
-\c@bookmark@seq@number=\count115
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\rerunfile
-check.sty"
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
 )
-\Hy@SectionHShift=\skip53
+\Fld@listcount=\count289
+\c@bookmark@seq@number=\count290
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip60
 )
 Package hyperref Info: Option `breaklinks' set `true' on input line 18.
 Package hyperref Info: Option `colorlinks' set `true' on input line 18.
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorit
-hm.sty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
+ (C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count116
-\float@exts=\toks27
-\float@box=\box32
-\@float@everytoks=\toks28
-\@floatcapt=\box33
+\c@float@type=\count291
+\float@exts=\toks30
+\float@box=\box56
+\@float@everytoks=\toks31
+\@floatcapt=\box57
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks29
-\c@algorithm=\count117
+\@float@every@algorithm=\toks32
+\c@algorithm=\count292
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithmicx\algps
-eudocode.sty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
 Package: algpseudocode 
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithmicx\algor
-ithmicx.sty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count118
-\c@ALG@rem=\count119
-\c@ALG@nested=\count120
-\ALG@tlm=\skip54
-\ALG@thistlm=\skip55
-\c@ALG@Lnr=\count121
-\c@ALG@blocknr=\count122
-\c@ALG@storecount=\count123
-\c@ALG@tmpcounter=\count124
-\ALG@tmplength=\skip56
+\c@ALG@line=\count293
+\c@ALG@rem=\count294
+\c@ALG@nested=\count295
+\ALG@tlm=\skip61
+\ALG@thistlm=\skip62
+\c@ALG@Lnr=\count296
+\c@ALG@blocknr=\count297
+\c@ALG@storecount=\count298
+\c@ALG@tmpcounter=\count299
+\ALG@tmplength=\skip63
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigur
-e.sty"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/subfigure\subfigure.sty
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
-\subfigtopskip=\skip57
-\subfigcapskip=\skip58
-\subfigcaptopadj=\dimen126
-\subfigbottomskip=\skip59
-\subfigcapmargin=\dimen127
-\subfiglabelskip=\skip60
-\c@subfigure=\count125
-\c@lofdepth=\count126
-\c@subtable=\count127
-\c@lotdepth=\count128
-
+\subfigtopskip=\skip64
+\subfigcapskip=\skip65
+\subfigcaptopadj=\dimen164
+\subfigbottomskip=\skip66
+\subfigcapmargin=\dimen165
+\subfiglabelskip=\skip67
+\c@subfigure=\count300
+\c@lofdepth=\count301
+\c@subtable=\count302
+\c@lotdepth=\count303
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigur
-e.cfg")
-\subfig@top=\skip61
-\subfig@bottom=\skip62
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/subfigure\subfigure.cfg
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdfpages\pdfpages.
-sty"
-Package: pdfpages 2019/11/21 v0.5o Insert pages of external PDF documents (AM)
- ("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\calc.sty"
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count129
-\calc@Bcount=\count130
-\calc@Adimen=\dimen128
-\calc@Bdimen=\dimen129
-\calc@Askip=\skip63
-\calc@Bskip=\skip64
+\subfig@top=\skip68
+\subfig@bottom=\skip69
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2025/01/30 v0.6e Insert pages of external PDF documents (AM)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count304
+\calc@Bcount=\count305
+\calc@Adimen=\dimen166
+\calc@Bdimen=\dimen167
+\calc@Askip=\skip70
+\calc@Bskip=\skip71
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count131
-\calc@Cskip=\skip65
+\calc@Ccount=\count306
+\calc@Cskip=\skip72
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/eso-pic\eso-pic.st
-y"
-Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen168
+\ESO@tempdimb=\dimen169
 )
-\AM@pagewidth=\dimen130
-\AM@pageheight=\dimen131
+\AM@pagewidth=\dimen170
+\AM@pageheight=\dimen171
+\AM@fboxrule=\dimen172
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdfpages\pppdftex.
-def"
-File: pppdftex.def 2019/11/21 v0.5o Pdfpages driver for pdfTeX (AM)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
+File: pppdftex.def 2025/01/30 v0.6e Pdfpages driver for pdfTeX (AM)
 )
-\AM@pagebox=\box34
-\AM@global@opts=\toks30
-\AM@toc@title=\toks31
-\c@AM@survey=\count132
-\AM@templatesizebox=\box35
+\pdfpages@includegraphics@status=\count307
+\AM@pagebox=\box58
+\AM@global@opts=\toks33
+\AM@pagecnt=\count308
+\AM@toc@title=\toks34
+\AM@lof@heading=\toks35
+\c@AM@survey=\count309
+\AM@templatesizebox=\box59
+) (C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip73
+\multirow@cntb=\count310
+\multirow@dima=\skip74
+\bigstrutjot=\dimen173
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.
-sty"
-Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
-\multirow@colwidth=\skip66
-\multirow@cntb=\count133
-\multirow@dima=\skip67
-\bigstrutjot=\dimen132
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/stackengine\stackengine
+.sty
+Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient 
+ways
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/listofitems\listofitems
+.sty
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/generic/listofitems\listofite
+ms.tex
+\loi_cnt_foreach_nest=\count311
+\loi_nestcnt=\count312
+)
+Package: listofitems 2024/03/09 v1.65 Grab items in lists using user-specified 
+sep char (CT)
+)
+\c@@stackindex=\count313
+\@boxshift=\skip75
+\stack@tmplength=\skip76
+\temp@stkl=\skip77
+\@stackedboxwidth=\skip78
+\@addedbox=\box60
+\@anchorbox=\box61
+\@insetbox=\box62
+\se@backgroundbox=\box63
+\stackedbox=\box64
+\@centerbox=\box65
+\c@ROWcellindex@=\count314
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen174
+\captionmargin=\dimen175
+\caption@leftmargin=\dimen176
+\caption@rightmargin=\dimen177
+\caption@width=\dimen178
+\caption@indent=\dimen179
+\caption@parindent=\dimen180
+\caption@hangindent=\dimen181
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count315
+\c@continuedfloat=\count316
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: subfigure package is loaded.
+)
+\c@KVtest=\count317
+\sf@farskip=\skip79
+\sf@captopadj=\dimen182
+\sf@capskip=\skip80
+\sf@nearskip=\skip81
+\sf@top=\skip82
+\sf@bottom=\skip83
+)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count318
+\l__pdf_internal_box=\box66
 ) (main.aux (Portadas.aux) (Dedicatoria.aux) (Agradecimientos.aux)
 (Resumen.aux) (Capitulo.aux) (Apendice.aux) (Autobiografia.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
-df.mkii"
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
-\scratchdimen=\dimen133
-\scratchbox=\box36
-\nofMPsegments=\count135
-\nofMParguments=\count136
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count137
-\MPscratchDim=\dimen134
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
-\everyMPtoPDFconversion=\toks33
+\scratchcounter=\count319
+\scratchdimen=\dimen183
+\scratchbox=\box67
+\nofMPsegments=\count320
+\nofMParguments=\count321
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count322
+\MPscratchDim=\dimen184
+\MPnumerator=\count323
+\makeMPintoPDFobject=\count324
+\everyMPtoPDFconversion=\toks37
 )
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.st
-y"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
-\AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring ON on input line 56.
+85.
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
-ty"
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\gettitl
-estring.sty"
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
-)
-\c@section@level=\count140
-)
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring ON on input line 63.
  (main.out) (main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
+\@outlinefile=\write4
+\openout4 = `main.out'.
 
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\pdflscape
-.sty"
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\lscape.st
-y"
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
+etadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-)
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+! Undefined control sequence.
+<argument> \sf@counterlist 
+                           
+l.63 \begin{document}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 \openout2 = `Portadas.aux'.
 
- (Portadas.tex
+(Portadas.tex
 Package epstopdf Info: Source file: <Figuras/uanl.eps>
 (epstopdf)                    date: 2023-10-18 11:48:59
 (epstopdf)                    size: 828415 bytes
 (epstopdf)             Output file: <Figuras/uanl-eps-converted-to.pdf>
 (epstopdf)                    date: 2023-12-08 11:06:16
 (epstopdf)                    size: 51325 bytes
-(epstopdf)             Command: <epstopdf --outfile=Figuras/uanl-eps-converted-
-to.pdf Figuras/uanl.eps>
+(epstopdf)             Command: <miktex-epstopdf --outfile=Figuras/uanl-eps-con
+verted-to.pdf Figuras/uanl.eps>
 (epstopdf)             \includegraphics on input line 20.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/uanl-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/uanl-eps-converted-to.pdf, id=131, 87.32625pt x 78.2925pt>
+<Figuras/uanl-eps-converted-to.pdf, id=143, 87.32625pt x 78.2925pt>
 File: Figuras/uanl-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/uanl-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/uanl-eps-converted-to.pdf  used on input line 
 20.
 (pdftex.def)             Requested size: 174.57079pt x 156.49014pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+
+
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+[1
 
 
 
-{C:/Users/beatr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Figuras/u
-anl-eps-converted-to.pdf>]
+{C:/Users/beatr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Figuras/ua
+nl-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figuras/fime.eps>
 (epstopdf)                    date: 2023-10-18 11:48:58
 (epstopdf)                    size: 400640 bytes
 (epstopdf)             Output file: <Figuras/fime-eps-converted-to.pdf>
 (epstopdf)                    date: 2023-12-08 11:06:19
 (epstopdf)                    size: 226226 bytes
-(epstopdf)             Command: <epstopdf --outfile=Figuras/fime-eps-converted-
-to.pdf Figuras/fime.eps>
+(epstopdf)             Command: <miktex-epstopdf --outfile=Figuras/fime-eps-con
+verted-to.pdf Figuras/fime.eps>
 (epstopdf)             \includegraphics on input line 49.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figuras/fime-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/fime-eps-converted-to.pdf, id=146, 108.405pt x 143.53625pt>
+<Figuras/fime-eps-converted-to.pdf, id=158, 108.405pt x 143.53625pt>
 File: Figuras/fime-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/fime-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/fime-eps-converted-to.pdf  used on input line 
@@ -595,8 +691,8 @@ Package epstopdf Info: Source file: <Figuras/uanl.eps>
 (epstopdf)             Output file: <Figuras/uanl-eps-converted-to.pdf>
 (epstopdf)                    date: 2023-12-08 11:06:16
 (epstopdf)                    size: 51325 bytes
-(epstopdf)             Command: <epstopdf --outfile=Figuras/uanl-eps-converted-
-to.pdf Figuras/uanl.eps>
+(epstopdf)             Command: <miktex-epstopdf --outfile=Figuras/uanl-eps-con
+verted-to.pdf Figuras/uanl.eps>
 (epstopdf)             \includegraphics on input line 77.
 Package epstopdf Info: Output file is already uptodate.
 File: Figuras/uanl-eps-converted-to.pdf Graphic file (type pdf)
@@ -610,8 +706,8 @@ Package epstopdf Info: Source file: <Figuras/fime.eps>
 (epstopdf)             Output file: <Figuras/fime-eps-converted-to.pdf>
 (epstopdf)                    date: 2023-12-08 11:06:19
 (epstopdf)                    size: 226226 bytes
-(epstopdf)             Command: <epstopdf --outfile=Figuras/fime-eps-converted-
-to.pdf Figuras/fime.eps>
+(epstopdf)             Command: <miktex-epstopdf --outfile=Figuras/fime-eps-con
+verted-to.pdf Figuras/fime.eps>
 (epstopdf)             \includegraphics on input line 77.
 Package epstopdf Info: Output file is already uptodate.
 File: Figuras/fime-eps-converted-to.pdf Graphic file (type pdf)
@@ -635,62 +731,66 @@ Overfull \hbox (8.40742pt too wide) in paragraph at lines 101--136
  (Dedicatoria.tex) [4
 
 
+
 ] (main.toc [5
 
 
+
 ]
-Overfull \hbox (6.14413pt too wide) in paragraph at lines 26--26
+Overfull \hbox (6.14413pt too wide) in paragraph at lines 29--29
  [][] [][][]\OT1/cmr/m/n/12 Experimental analysis of the MEC, SABC, and MEC(SAB
 C) stochastic 
  []
 
 )
-\tf@toc=\write4
-\openout4 = `main.toc'.
+\tf@toc=\write5
+\openout5 = `main.toc'.
 
- [6] (main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+ [6] (main.lof [7
 
- [7
+])
+\tf@lof=\write6
+\openout6 = `main.lof'.
 
-] (main.lot)
-\tf@lot=\write6
-\openout6 = `main.lot'.
+ [8] (main.lot)
+\tf@lot=\write7
+\openout7 = `main.lot'.
 
- [8
+ [9
 
 ]
 \openout2 = `Agradecimientos.aux'.
 
- (Agradecimientos.tex [9
+ (Agradecimientos.tex [10
 
 
 ])
-Overfull \hbox (31.89116pt too wide) in paragraph at lines 19--71
+Overfull \hbox (31.89116pt too wide) in paragraph at lines 19--78
 []\OT1/cmr/m/n/12 Agradezco al Consejo Nacional de Humanidades Ciencias y Tecno
-loga (CONAHCyT)
+log^^S^^Pa (CONAHCyT)
  []
 
-[10]
+[11]
 \openout2 = `Resumen.aux'.
 
  (Resumen.tex
 Overfull \hbox (7.17957pt too wide) in paragraph at lines 17--18
- []\OT1/cmr/m/n/12 Ttulo del estudio: \OT1/cmr/m/sc/12 Stochastic me-tho-do-l
-o-gies for locating and dispatching
+ []\OT1/cmr/m/n/12 T^^S^^Ptulo del estudio: \OT1/cmr/m/sc/12 Stochastic me-tho-
+do-lo-gies for locating and dispatching
  []
 
-[11
+[12
 
 
 
-]) [12]
+
+]) [13]
 \openout2 = `Capitulo.aux'.
 
  (Capitulo.tex
 Chapter 1.
 [1
+
 
 
 
@@ -712,13 +812,6 @@ Overfull \hbox (5.12173pt too wide) in paragraph at lines 49--50
 \OT1/cmr/m/n/12 This investigation aims to improve an Emergency Medical Service
 s System considering
  []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
-("C:\Users\beatr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
 
 [4]
 Chapter 2.
@@ -795,7 +888,7 @@ e emergency locations,
 [14
 
 ]
-<figures/IntroTotalCoverage.png, id=500, 954.56625pt x 470.75874pt>
+<figures/IntroTotalCoverage.png, id=544, 954.56625pt x 470.75874pt>
 File: figures/IntroTotalCoverage.png Graphic file (type png)
 <use figures/IntroTotalCoverage.png>
 Package pdftex.def Info: figures/IntroTotalCoverage.png  used on input line 206
@@ -807,338 +900,1218 @@ Overfull \hbox (8.01903pt too wide) in paragraph at lines 251--254
  integer quadratic
  []
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
-}) has been already used, duplicate ignored
+[16 <./figures/IntroTotalCoverage.png>] [17]
+! Misplaced alignment tab character &.
+l.319 \text{ s.t. } &
+                      \sum_{l \in L} x_{lk} \leq \eta_k   &\quad&  k \in K
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.254  \begin{equation*}
-                         <./figures/IntroTotalCoverage.png>] [17pdfTeX warning 
-(ext4): destination with the same identifier (name{table.3.1}) has been already
- used, duplicate ignored
+! Missing $ inserted.
+<inserted text> 
+                $
+l.319 \text{ s.t. } & \sum
+                          _{l \in L} x_{lk} \leq \eta_k   &\quad&  k \in K
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.311 \end{equation}
-                    ] [18pdfTeX warning (ext4): destination with the same ident
-ifier (name{equation.3.3.2}) has been already used, duplicate ignored
+! Misplaced alignment tab character &.
+l.319 ...} & \sum_{l \in L} x_{lk} \leq \eta_k   &
+                                                  \quad&  k \in K
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.358 C
-       onstraints (\ref{eq3}) establish the available number of ambulances p...
-]
-Overfull \hbox (26.19353pt too wide) in paragraph at lines 358--361
+! Misplaced alignment tab character &.
+l.319 ...um_{l \in L} x_{lk} \leq \eta_k   &\quad&
+                                                    k \in K
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.321    &
+           \sum_{i\in I^s}y_{lki}^s \leq x_{lk}  &&  l \in L,   k \in K,  s ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.321    & \sum_{i\in I^s}y_{lki}^s \leq x_{lk}  &
+                                                  &  l \in L,   k \in K,  s ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.321 ... \sum_{i\in I^s}y_{lki}^s \leq x_{lk}  &&
+                                                    l \in L,   k \in K,  s \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.325      &
+                f_i^s\sum_{k \in K}a_{ki}^s   \leq \sum_{l \in L} \sum_{k \i...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.325 ... \leq \sum_{l \in L}   c_{li} y_{l2i}^s &
+                                                  &  i \in I^s,   s \in S \l...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.325 ...\leq \sum_{l \in L}   c_{li} y_{l2i}^s &&
+                                                    i \in I^s,   s \in S \la...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.330      &
+               g_i^s  \sum_{k \in K}  a_{ki}^s \leq \sum_{l \in L} \sum_{k \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.330 ...s g_i^s \leq \sum_{l \in L}   y_{l2i}^s &
+                                                  &   i \in I^s, s \in S \la...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.330 ... g_i^s \leq \sum_{l \in L}   y_{l2i}^s &&
+                                                     i \in I^s, s \in S \lab...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.331     &
+            g_i^s \leq M \left( \sum_{l \in L} \sum_{k \in K } y_{lki}^s - \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.331 ...\sum_{k \in K} c_{li} y_{lki}^s \right) &
+                                                  &  i \in I^s,   s\in S   \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.331 ...sum_{k \in K} c_{li} y_{lki}^s \right) &&
+                                                    i \in I^s,   s\in S   \l...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.333   &
+           h_i^s \leq   \sum_{k \in K}  a_{ki}^s - \sum_{l \in L} \sum_{k \i...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.333 ... a_{2i}^s - \sum_{l \in L}   y_{l2i}^s  &
+                                                  & i \in I^s,    s\in S
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.333 ...a_{2i}^s - \sum_{l \in L}   y_{l2i}^s  &&
+                                                   i \in I^s,    s\in S
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.336  &
+         \sum_{l \in L} \sum_{k \in K} y_{lki}^s h_i^s \leq \sum_{l \in L} \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.336 ... \in L} \sum_{k \in K} c_{li} y_{lki}^s &
+                                                  & i \in I^s,  s\in S
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.336 ...\in L} \sum_{k \in K} c_{li} y_{lki}^s &&
+                                                   i \in I^s,  s\in S
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \cr.
+\math@cr@@@ ->\cr 
+                  
+l.338      \end{align}
+                      
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \noalign.
+\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
+                                                  {\vskip #1\relax }
+l.338      \end{align}
+                      
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.338      \end{align}
+                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.338      \end{align}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Misplaced \noalign.
+\black@ #1->\noalign 
+                     {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
+l.338      \end{align}
+                      
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Too many }'s.
+\endalign ->\math@cr \black@ \totwidth@ \egroup 
+                                                \ifingather@ \restorealignst...
+l.338      \end{align}
+                      
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+! LaTeX Error: \begin{document} ended by \end{align}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.338      \end{align}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.338      \end{align}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.338      \end{align}
+                      
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.338      \end{align}
+                      
+Things are pretty mixed up, but I think the worst is over.
+
+
+Overfull \hbox (26.19353pt too wide) in paragraph at lines 359--362
 []\OT1/cmr/m/n/12 Constraints ([][]3.2[][]) establish the available number of a
 mbulances per type. Constraints
  []
 
+[18
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3.
+2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.362 
+      ] [19]
 
-LaTeX Warning: Reference `Exp' on page 19 undefined on input line 366.
+Package natbib Warning: Citation `megiddo1982complexity' on page 20 undefined o
+n input line 369.
 
 
-Overfull \hbox (15.92172pt too wide) in paragraph at lines 366--367
-\OT1/cmr/m/n/12 obtain approximate solutions for the EVCP problem based on an a
-uxiliary disaggregated
+LaTeX Warning: Reference `Exp' on page 20 undefined on input line 369.
+
+
+Overfull \hbox (6.70845pt too wide) in paragraph at lines 369--370
+\OT1/cmr/m/n/12 [\OT1/cmr/bx/n/12 ?\OT1/cmr/m/n/12 ] could be polynomially redu
+ced to it. The MEC model is experimentally challenging
  []
 
-[19] [20]
+[20] [21] Excluding 'comment' comment.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 431.
+put line 503.
 
-Overfull \hbox (8.0055pt too wide) in paragraph at lines 428--447
-[]\OT1/cmr/m/n/12 As mentioned, the SABC auxiliary model is a surrogate for the
- MEC formulation.
- []
-
-
-Overfull \hbox (2.4215pt too wide) in paragraph at lines 428--447
-\OT1/cmr/m/n/12 Thus, the solutions obtained by the MEC and SABC are not equiva
-lent. Nevertheless,
- []
-
-[21]
-Overfull \hbox (4.32904pt too wide) in paragraph at lines 451--452
+Overfull \hbox (4.32904pt too wide) in paragraph at lines 523--524
 []\OT1/cmr/m/n/12 To improve the solution from SABC model we proposed a local s
 earch procedure.
  []
 
-
-Overfull \hbox (6.91893pt too wide) in paragraph at lines 453--454
+[22]
+Overfull \hbox (6.91893pt too wide) in paragraph at lines 525--526
 []\OT1/cmr/m/n/12 Neighborhood 1: exchange one active potential site with one n
 on-active potential
  []
 
 
-Overfull \hbox (5.61339pt too wide) in paragraph at lines 454--455
+Overfull \hbox (5.61339pt too wide) in paragraph at lines 526--527
 []\OT1/cmr/m/n/12 Neighborhood 2: exchange one active potential site with anoth
 er active potential
  []
 
-[22]
-Overfull \hbox (12.04565pt too wide) in paragraph at lines 460--461
+
+Overfull \hbox (12.04565pt too wide) in paragraph at lines 532--533
 []\OT1/cmr/m/n/12 The next section compares the MEC, MEC(SABC), and even the SA
 BC solutions. 
  []
 
-[23]
-Chapter 4.
-
-Overfull \hbox (14.85219pt too wide) in paragraph at lines 487--488
+[23] [24]
+Overfull \hbox (14.85219pt too wide) in paragraph at lines 559--560
 []\OT1/cmr/m/n/12 Do model construction to represent the thesis' problem propos
 ed and an intelligent
  []
 
 
-Overfull \hbox (3.33286pt too wide) in paragraph at lines 495--497
+Overfull \hbox (3.33286pt too wide) in paragraph at lines 567--569
 \OT1/cmr/m/n/12 ambulances within potential sites, and the second is how to dis
 patch them to accidents
  []
 
-[24
+[25
 
 ]
-Overfull \hbox (21.08823pt too wide) in paragraph at lines 498--499
+Overfull \hbox (21.08823pt too wide) in paragraph at lines 570--571
 \OT1/cmr/m/n/12 receiving emergency calls will have policies to determine what 
 ambulance (or ambulances)
  []
 
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
+82.
+(C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
+File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 582.
 
-Overfull \hbox (8.56525pt too wide) in paragraph at lines 506--516
+Overfull \hbox (8.56525pt too wide) in paragraph at lines 578--588
  [][] 
  []
 
-[25pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.524 
-      ]
-Overfull \hbox (29.1649pt too wide) in paragraph at lines 525--526
+[26]
+Overfull \hbox (29.1649pt too wide) in paragraph at lines 597--598
 []\OT1/cmr/m/n/12 For the MEC formulation, we use the following weights in the 
 objective function []:
  []
 
-[26]
-Chapter 5.
+[27] [28]
+<Imagenes_Tesis/MEC/Obj_MEC_16.pdf, id=683, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_16.pdf  used on input line 
+615.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf, id=684, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf  used on input lin
+e 618.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Obj_MEC_50.pdf, id=685, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_50.pdf  used on input line 
+619.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf, id=686, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf  used on input lin
+e 622.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Obj_MEC_100.pdf, id=687, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_100.pdf  used on input line
+ 623.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf, id=688, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf  used on input li
+ne 626.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [29
 
-Overfull \hbox (3.22406pt too wide) in paragraph at lines 541--542
+]
+Overfull \vbox (31.79707pt too high) has occurred while \output is active []
+
+
+[30 <./Imagenes_Tesis/MEC/Obj_MEC_16.pdf> <./Imagenes_Tesis/MEC/Obj_MEC_16_1.pd
+f> <./Imagenes_Tesis/MEC/Obj_MEC_50.pdf> <./Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf
+> <./Imagenes_Tesis/MEC/Obj_MEC_100.pdf> <./Imagenes_Tesis/MEC/Obj_MEC_100_1.pd
+f>]
+<Imagenes_Tesis/SABC/Obj_SABC_16.pdf, id=736, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_16.pdf  used on input lin
+e 635.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Obj_SABC_16_1.pdf, id=737, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_16_1.pdf  used on input l
+ine 638.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Obj_SABC_50.pdf, id=738, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_50.pdf  used on input lin
+e 639.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Obj_SABC_50_1.pdf, id=739, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_50_1.pdf  used on input l
+ine 642.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Obj_SABC_100.pdf, id=740, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_100.pdf  used on input li
+ne 643.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Obj_SABC_100_1.pdf, id=741, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Obj_SABC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Obj_SABC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Obj_SABC_100_1.pdf  used on input 
+line 646.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf, id=742, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf  used on input lin
+e 655.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf, id=743, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf  used on input l
+ine 658.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf, id=744, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf  used on input lin
+e 659.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf, id=745, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf  used on input l
+ine 662.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf, id=746, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf  used on input li
+ne 663.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf, id=747, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf  used on input 
+line 666.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [31 <./Imagenes_Tesis/SABC/Obj_SABC_16.pdf> <./Imagenes_Tesis/SABC/Obj_SABC_16
+_1.pdf> <./Imagenes_Tesis/SABC/Obj_SABC_50.pdf> <./Imagenes_Tesis/SABC/Obj_SABC
+_50_1.pdf> <./Imagenes_Tesis/SABC/Obj_SABC_100.pdf> <./Imagenes_Tesis/SABC/Obj_
+SABC_100_1.pdf>]
+<Imagenes_Tesis/Math/Obj_Math_16.pdf, id=788, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_16.pdf  used on input lin
+e 675.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Obj_Math_16_1.pdf, id=789, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_16_1.pdf  used on input l
+ine 678.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Obj_Math_50.pdf, id=790, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_50.pdf  used on input lin
+e 679.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Obj_Math_50_1.pdf, id=791, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_50_1.pdf  used on input l
+ine 682.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Obj_Math_100.pdf, id=792, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_100.pdf  used on input li
+ne 683.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Obj_Math_100_1.pdf, id=793, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Obj_Math_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Obj_Math_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_100_1.pdf  used on input 
+line 686.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [32 <./Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf> <./Imagenes_Tesis/M2M1/Obj_M2M1_16
+_1.pdf> <./Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf> <./Imagenes_Tesis/M2M1/Obj_M2M1
+_50_1.pdf> <./Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf> <./Imagenes_Tesis/M2M1/Obj_
+M2M1_100_1.pdf>]
+<Imagenes_Tesis/Comp/Obj_Comp_16.pdf, id=834, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_16.pdf  used on input lin
+e 695.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf, id=835, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf  used on input l
+ine 698.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Comp/Obj_Comp_50.pdf, id=836, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_50.pdf  used on input lin
+e 699.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf, id=837, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf  used on input l
+ine 702.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Comp/Obj_Comp_100.pdf, id=838, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_100.pdf  used on input li
+ne 703.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf, id=839, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf  used on input 
+line 706.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [33 <./Imagenes_Tesis/Math/Obj_Math_16.pdf> <./Imagenes_Tesis/Math/Obj_Math_16
+_1.pdf> <./Imagenes_Tesis/Math/Obj_Math_50.pdf> <./Imagenes_Tesis/Math/Obj_Math
+_50_1.pdf> <./Imagenes_Tesis/Math/Obj_Math_100.pdf> <./Imagenes_Tesis/Math/Obj_
+Math_100_1.pdf>]
+<Imagenes_Tesis/MEC/Time_MEC_16.pdf, id=886, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_16.pdf  used on input line
+ 716.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Time_MEC_16_1.pdf, id=887, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_16_1.pdf  used on input li
+ne 719.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Time_MEC_50.pdf, id=888, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_50.pdf  used on input line
+ 720.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Time_MEC_50_1.pdf, id=889, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_50_1.pdf  used on input li
+ne 723.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Time_MEC_100.pdf, id=890, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_100.pdf  used on input lin
+e 724.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Time_MEC_100_1.pdf, id=891, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Time_MEC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Time_MEC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_100_1.pdf  used on input l
+ine 727.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [34 <./Imagenes_Tesis/Comp/Obj_Comp_16.pdf> <./Imagenes_Tesis/Comp/Obj_Comp_16
+_1.pdf> <./Imagenes_Tesis/Comp/Obj_Comp_50.pdf> <./Imagenes_Tesis/Comp/Obj_Comp
+_50_1.pdf> <./Imagenes_Tesis/Comp/Obj_Comp_100.pdf> <./Imagenes_Tesis/Comp/Obj_
+Comp_100_1.pdf>]
+<Imagenes_Tesis/SABC/Time_SABC_16.pdf, id=938, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_16.pdf  used on input li
+ne 736.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Time_SABC_16_1.pdf, id=939, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_16_1.pdf  used on input 
+line 739.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Time_SABC_50.pdf, id=940, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_50.pdf  used on input li
+ne 740.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Time_SABC_50_1.pdf, id=941, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_50_1.pdf  used on input 
+line 743.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Time_SABC_100.pdf, id=942, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_100.pdf  used on input l
+ine 744.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Time_SABC_100_1.pdf, id=943, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Time_SABC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Time_SABC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Time_SABC_100_1.pdf  used on input
+ line 747.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [35 <./Imagenes_Tesis/MEC/Time_MEC_16.pdf> <./Imagenes_Tesis/MEC/Time_MEC_16_1
+.pdf> <./Imagenes_Tesis/MEC/Time_MEC_50.pdf> <./Imagenes_Tesis/MEC/Time_MEC_50_
+1.pdf> <./Imagenes_Tesis/MEC/Time_MEC_100.pdf> <./Imagenes_Tesis/MEC/Time_MEC_1
+00_1.pdf>]
+<Imagenes_Tesis/M2M1/Time_M2M1_16.pdf, id=985, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Time_M2M1_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Time_M2M1_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_16.pdf  used on input li
+ne 756.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf, id=986, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf  used on input 
+line 759.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+File: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf  used on input lin
+e 760.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf, id=987, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf  used on input 
+line 763.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Time_M2M1_100.pdf, id=988, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Time_M2M1_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Time_M2M1_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_100.pdf  used on input l
+ine 764.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf, id=989, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf  used on input
+ line 767.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+
+[36 <./Imagenes_Tesis/SABC/Time_SABC_16.pdf> <./Imagenes_Tesis/SABC/Time_SABC_1
+6_1.pdf> <./Imagenes_Tesis/SABC/Time_SABC_50.pdf> <./Imagenes_Tesis/SABC/Time_S
+ABC_50_1.pdf> <./Imagenes_Tesis/SABC/Time_SABC_100.pdf> <./Imagenes_Tesis/SABC/
+Time_SABC_100_1.pdf>]
+<Imagenes_Tesis/Math/Time_Math_16.pdf, id=1031, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_16.pdf  used on input li
+ne 776.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Time_Math_16_1.pdf, id=1032, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_16_1.pdf  used on input 
+line 779.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Time_Math_50.pdf, id=1033, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_50.pdf  used on input li
+ne 780.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Time_Math_50_1.pdf, id=1034, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_50_1.pdf  used on input 
+line 783.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Time_Math_100.pdf, id=1035, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_100.pdf  used on input l
+ine 784.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/Math/Time_Math_100_1.pdf, id=1036, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/Math/Time_Math_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/Math/Time_Math_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/Math/Time_Math_100_1.pdf  used on input
+ line 787.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [37 <./Imagenes_Tesis/M2M1/Time_M2M1_16.pdf> <./Imagenes_Tesis/M2M1/Time_M2M1_
+16_1.pdf> <./Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf> <./Imagenes_Tesis/M2M1/Tim
+e_M2M1_100.pdf> <./Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf>] Excluding 'comment
+' comment.
+<Imagenes_Tesis/MEC/Cov_MEC_16.pdf, id=1071, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_16.pdf  used on input line 
+820.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf, id=1072, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf  used on input lin
+e 823.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Cov_MEC_50.pdf, id=1073, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_50.pdf  used on input line 
+824.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf, id=1074, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf  used on input lin
+e 827.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Cov_MEC_100.pdf, id=1075, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_100.pdf  used on input line
+ 828.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf, id=1076, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf  used on input li
+ne 831.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [38 <./Imagenes_Tesis/Math/Time_Math_16.pdf> <./Imagenes_Tesis/Math/Time_Math_
+16_1.pdf> <./Imagenes_Tesis/Math/Time_Math_50.pdf> <./Imagenes_Tesis/Math/Time_
+Math_50_1.pdf> <./Imagenes_Tesis/Math/Time_Math_100.pdf> <./Imagenes_Tesis/Math
+/Time_Math_100_1.pdf>]
+<Imagenes_Tesis/SABC/Cov_SABC_16.pdf, id=1123, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_16.pdf  used on input lin
+e 840.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Cov_SABC_16_1.pdf, id=1124, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_16_1.pdf  used on input l
+ine 843.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Cov_SABC_50.pdf, id=1125, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_50.pdf  used on input lin
+e 844.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Cov_SABC_50_1.pdf, id=1126, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_50_1.pdf  used on input l
+ine 847.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Cov_SABC_100.pdf, id=1127, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_100.pdf  used on input li
+ne 848.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/SABC/Cov_SABC_100_1.pdf, id=1128, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/SABC/Cov_SABC_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/SABC/Cov_SABC_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/SABC/Cov_SABC_100_1.pdf  used on input 
+line 851.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [39 <./Imagenes_Tesis/MEC/Cov_MEC_16.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_16_1.p
+df> <./Imagenes_Tesis/MEC/Cov_MEC_50.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_50_1.pd
+f> <./Imagenes_Tesis/MEC/Cov_MEC_100.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_100_1.p
+df>]
+<Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf, id=1170, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf  used on input lin
+e 860.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf, id=1171, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf  used on input l
+ine 863.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf, id=1172, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf  used on input lin
+e 864.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf, id=1173, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf  used on input l
+ine 867.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf, id=1174, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf  used on input li
+ne 868.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+<Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf, id=1175, 722.7pt x 505.89pt>
+File: Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf Graphic file (type pdf)
+<use Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf>
+Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf  used on input 
+line 871.
+(pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
+ [40 <./Imagenes_Tesis/SABC/Cov_SABC_16.pdf> <./Imagenes_Tesis/SABC/Cov_SABC_16
+_1.pdf> <./Imagenes_Tesis/SABC/Cov_SABC_50.pdf> <./Imagenes_Tesis/SABC/Cov_SABC
+_50_1.pdf> <./Imagenes_Tesis/SABC/Cov_SABC_100.pdf> <./Imagenes_Tesis/SABC/Cov_
+SABC_100_1.pdf>]
+Overfull \hbox (3.22406pt too wide) in paragraph at lines 879--880
 \OT1/cmr/m/n/12 performance of the objective values of our stochastic methodolo
 gies. Several questions
  []
 
-<figures/M1objectiveValue.png, id=626, 722.7pt x 655.44875pt>
+[41 <./Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_16_
+1.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_
+50_1.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf> <./Imagenes_Tesis/M2M1/Cov_M
+2M1_100_1.pdf>]
+<figures/M1objectiveValue.png, id=1259, 722.7pt x 655.44875pt>
 File: figures/M1objectiveValue.png Graphic file (type png)
 <use figures/M1objectiveValue.png>
-Package pdftex.def Info: figures/M1objectiveValue.png  used on input line 547.
+Package pdftex.def Info: figures/M1objectiveValue.png  used on input line 885.
 (pdftex.def)             Requested size: 385.39003pt x 349.52646pt.
 
-Overfull \hbox (3.083pt too wide) in paragraph at lines 543--552
+Overfull \hbox (3.083pt too wide) in paragraph at lines 881--890
 \OT1/cmr/bx/n/12 we solve WHAT MODELS, WHAT INSTANCES. The results are presnted
 
  []
 
-[27
-
-]
-<figures/M2objectiveValue.png, id=633, 1040.88875pt x 955.57pt>
+<figures/M2objectiveValue.png, id=1261, 1040.88875pt x 955.57pt>
 File: figures/M2objectiveValue.png Graphic file (type png)
 <use figures/M2objectiveValue.png>
-Package pdftex.def Info: figures/M2objectiveValue.png  used on input line 559.
+Package pdftex.def Info: figures/M2objectiveValue.png  used on input line 897.
 (pdftex.def)             Requested size: 385.39003pt x 353.80324pt.
- [28pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.564 
-       <./figures/M1objectiveValue.png>]
-<figures/M2M1objectiveValue.png, id=640, 713.66624pt x 659.46375pt>
+[42] [43 <./figures/M1objectiveValue.png>]
+<figures/M2M1objectiveValue.png, id=1274, 713.66624pt x 659.46375pt>
 File: figures/M2M1objectiveValue.png Graphic file (type png)
 <use figures/M2M1objectiveValue.png>
-Package pdftex.def Info: figures/M2M1objectiveValue.png  used on input line 567
+Package pdftex.def Info: figures/M2M1objectiveValue.png  used on input line 905
 .
 (pdftex.def)             Requested size: 385.39003pt x 356.11517pt.
- [29pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.575 
-       <./figures/M2objectiveValue.png>] [30pdfTeX warning (ext4): destination 
-with the same identifier (name{figure.5.3}) has been already used, duplicate ig
-nored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.575 
-       <./figures/M2M1objectiveValue.png>]
-Overfull \hbox (4.40128pt too wide) in paragraph at lines 582--583
+ [44 <./figures/M2objectiveValue.png>] [45 <./figures/M2M1objectiveValue.png>]
+Overfull \hbox (4.40128pt too wide) in paragraph at lines 920--921
 \OT1/cmr/bx/n/12 desde mi perspectiva,e sta es una seccion medio inutil, cual e
 s su proposito?
  []
 
 
-Overfull \hbox (12.88599pt too wide) in paragraph at lines 582--583
+Overfull \hbox (12.88599pt too wide) in paragraph at lines 920--921
 \OT1/cmr/bx/n/12 realemnet no quieres mostrar el tiempo de SABC, el mesnaje REA
 LEMNTE
  []
 
-<figures/M1Time16.png, id=653, 578.16pt x 372.39125pt>
+<figures/M1Time16.png, id=1287, 578.16pt x 372.39125pt>
 File: figures/M1Time16.png Graphic file (type png)
 <use figures/M1Time16.png>
-Package pdftex.def Info: figures/M1Time16.png  used on input line 592.
+Package pdftex.def Info: figures/M1Time16.png  used on input line 930.
 (pdftex.def)             Requested size: 205.54091pt x 132.38449pt.
-<figures/M2Time100.png, id=654, 320.19624pt x 228.855pt>
+<figures/M2Time100.png, id=1288, 320.19624pt x 228.855pt>
 File: figures/M2Time100.png Graphic file (type png)
 <use figures/M2Time100.png>
-Package pdftex.def Info: figures/M2Time100.png  used on input line 595.
+Package pdftex.def Info: figures/M2Time100.png  used on input line 933.
 (pdftex.def)             Requested size: 192.695pt x 137.7261pt.
-<figures/M1M2Time.png, id=655, 332.24126pt x 223.83624pt>
+<figures/M1M2Time.png, id=1289, 332.24126pt x 223.83624pt>
 File: figures/M1M2Time.png Graphic file (type png)
 <use figures/M1M2Time.png>
-Package pdftex.def Info: figures/M1M2Time.png  used on input line 598.
+Package pdftex.def Info: figures/M1M2Time.png  used on input line 936.
 (pdftex.def)             Requested size: 192.695pt x 129.82169pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 936--936
 []\OT1/cmr/m/n/10 (c) MEC(SABC) methodology with 100
  []
 
 
-Overfull \hbox (15.00522pt too wide) in paragraph at lines 588--603
+Overfull \hbox (15.00522pt too wide) in paragraph at lines 926--941
 []\OT1/cmr/m/n/12 In this section, we explicitly present the computational time
 s of our methodologies.
  []
 
-[31] [32pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.5.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.607 
-       <./figures/M1Time16.png> <./figures/M2Time100.png> <./figures/M1M2Time.p
-ng>]
-Overfull \hbox (3.12895pt too wide) in paragraph at lines 613--617
+[46] [47 <./figures/M1Time16.png> <./figures/M2Time100.png> <./figures/M1M2Time
+.png>]
+Overfull \hbox (3.12895pt too wide) in paragraph at lines 951--955
 []\OT1/cmr/m/n/12 The objective values and execution times are crucial to evalu
 ate the performance
  []
 
-<figures/CoverageTodos.png, id=675, 937.5025pt x 635.37375pt>
+[48]
+<figures/CoverageTodos.png, id=1315, 937.5025pt x 635.37375pt>
 File: figures/CoverageTodos.png Graphic file (type png)
 <use figures/CoverageTodos.png>
-Package pdftex.def Info: figures/CoverageTodos.png  used on input line 620.
+Package pdftex.def Info: figures/CoverageTodos.png  used on input line 958.
 (pdftex.def)             Requested size: 428.21405pt x 290.21043pt.
-[33] [34pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.5.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.626 
-       <./figures/CoverageTodos.png>]
-<figures/AmbComp.png, id=686, 1032.85875pt x 631.35875pt>
+ [49] [50 <./figures/CoverageTodos.png>]
+<figures/AmbComp.png, id=1327, 1032.85875pt x 631.35875pt>
 File: figures/AmbComp.png Graphic file (type png)
 <use figures/AmbComp.png>
-Package pdftex.def Info: figures/AmbComp.png  used on input line 634.
+Package pdftex.def Info: figures/AmbComp.png  used on input line 972.
 (pdftex.def)             Requested size: 385.39003pt x 235.57399pt.
- [35pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.641 
-       <./figures/AmbComp.png>]
-Overfull \hbox (12.82178pt too wide) in paragraph at lines 654--655
+ [51 <./figures/AmbComp.png>]
+Overfull \hbox (12.82178pt too wide) in paragraph at lines 992--993
 \OT1/cmr/bx/n/12 porque, o no se puede... A MENOS QUE.... USANDO nuestro metodo
 logia,
  []
 
-[36]
-Overfull \hbox (12.00638pt too wide) in paragraph at lines 656--657
+[52]
+Overfull \hbox (12.00638pt too wide) in paragraph at lines 994--995
 \OT1/cmr/m/n/12 parameters that [][]Yoon et al.[][] [[][]2021[][]] present for 
 their case study of the city of Mecklenburg
  []
 
-[37pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.824 \chapter
-              {Conclusions}\label{cap:concl}]
-Chapter 6.
-[38
+[53] Excluding 'comment' comment. [54] [55
 
 ]
-Overfull \hbox (33.54391pt too wide) in paragraph at lines 835--836
+Overfull \hbox (33.54391pt too wide) in paragraph at lines 1173--1174
 []\OT1/cmr/m/n/12 Our experimental results showed the efficiency of the Intelli
 gent feedback methodology
  []
 
-) [39]
+[56]) [57]
 \openout2 = `Apendice.aux'.
 
- (Apendice.tex) (main.bbl [40
+ (Apendice.tex) (main.bbl [58
 
 
 
 
 
-] [41] [42]) [43]
+
+
+] [59] [60] [61]) [62]
 \openout2 = `Autobiografia.aux'.
 
- (Autobiografia.tex)
-[44
+
+(Autobiografia.tex) [63
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
- (main.aux (Portadas.aux) (Dedicatoria.aux) (Agradecimientos.aux)
-(Resumen.aux) (Capitulo.aux) (Apendice.aux) (Autobiografia.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6B83759491396FE49EB66B0A2813C43B;2317.
+
+Package natbib Warning: There were undefined citations.
+
+(main.aux (Portadas.aux) (Dedicatoria.aux) (Agradecimientos.aux) (Resumen.aux)
+(Capitulo.aux) (Apendice.aux) (Autobiografia.aux))
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+ ***********
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
- )
-(\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 74 ({)
-### bottom level 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: FBC05D2FB5625A602D26961B3653C06A;6421
+(rerunfilecheck)             After:  47F016CCD8ABF153C2E71CE59AC32357;6451.
+ ) 
 Here is how much of TeX's memory you used:
- 9745 strings out of 492945
- 143707 string characters out of 3126252
- 275718 words of memory out of 3000000
- 13238 multiletter control sequences out of 15000+200000
- 13140 words of font info for 50 fonts, out of 3000000 for 9000
+ 16891 strings out of 474485
+ 290315 string characters out of 5743734
+ 1951542 words of memory out of 5000000
+ 38647 multiletter control sequences out of 15000+600000
+ 567906 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,41p,2157b,891s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/beatr/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/
-beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pf
-b><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/beatr/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/beatr/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/beatr/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
-s/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmti12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (56 pages, 1819763 bytes).
+ 75i,20n,79p,2157b,842s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{equation.3.4.21} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.4.20} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.4.19} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.4.18} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.4.17} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.4.16} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.14} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.13} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.12} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.11} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.10} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.9} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.3.3.8} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.27} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.8} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.10} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.9} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.6.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.6.1} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter.6} has been referenced but does not exist, 
+replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.8} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.7} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.6} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.5} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.4} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.3} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.1} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter.5} has been referenced but does not exist, 
+replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.4.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.1.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.4.1} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
+replaced by a fixed one
+
+ <C:\Users\beatr\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
+00.pk><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmcsc10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmex10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/beatr/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/beatr/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/beatr/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/be
+atr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.p
+fb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr7.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb><C:/Users/beatr/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/beatr/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (76 pages, 2264590 bytes).
 PDF statistics:
- 831 PDF objects out of 1000 (max. 8388607)
- 171 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1525 PDF objects out of 1728 (max. 8388607)
+ 231 named destinations out of 1000 (max. 500000)
+ 691 words of extra memory for PDF output out of 10000 (max. 10000000)
 
