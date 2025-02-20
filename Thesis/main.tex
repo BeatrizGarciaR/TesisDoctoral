@@ -3,16 +3,17 @@
 %%%%%%%%%%%%%%%%%%%%%
 \documentclass[table]{fime}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{natbib}
-
-\usepackage{comment}
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage{natbib}
 %\usepackage{soul,color}$•$
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cargando paquetes y definiendo opciones %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AquÃ­ puedes cargar los paquetes que vas a usar. La clase
 % fime ya incluye babel, inputenc, graphicx y los de la AMS.
 % Cargar un paquete estÃ¡ a tu libertad (y responsabilidad).
+
 \usepackage{hyperref}
     \hypersetup{breaklinks=true,colorlinks=true,
         linkcolor=black,citecolor=black,urlcolor=black}
@@ -23,14 +24,37 @@
 \usepackage{pdfpages}
 \usepackage{multirow}
 \usepackage{stackengine}
-\usepackage{subfigure}
-\usepackage{graphicx}
 \usepackage{float}
-\usepackage{subfig}
-%\usepackage[table,xcdraw]{xcolor}
-%\usepackage{verbatim}
+%\usepackage{subfig}
+\usepackage{epstopdf}
+\usepackage[doublespacing]{setspace}
+%\bibpunct[, ]{[}{]}{,}{n}{,}{,}
+%\renewcommand\bibfont{\fontsize{10}{12}\selectfont}
+%\bibpunct[, ]{[}{]}{,}{n}{,}{,}% Citation support using natbib.sty
+%\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
 
-%\usepackage[spanish,onelanguage]{algorithm2e} 
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proposition}[theorem]{Proposition}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{example}[theorem]{Example}
+
+%\theoremstyle{remark}
+%\newtheorem{remark}{Remark}
+%\newtheorem{notation}{Notation}
+
+\usepackage{amssymb}
+%\usepackage[noend]{algpseudocode}
+\usepackage{amsthm}
+\usepackage{hyperref}
+%\bibliographystyle{plainnat}
+\usepackage{comment}
+\usepackage{soul,color}
+
 %%%%%%%%%%%%%%%%%%%%%
 % Definiendo campos %
 %%%%%%%%%%%%%%%%%%%%%
@@ -60,6 +84,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 % Inicia el documento %
 %%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \frontmatter

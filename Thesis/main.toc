@@ -18,19 +18,19 @@
 \contentsline {section}{\numberline {3.3}Maximum Expected Coverage stochastic formulation for the EVCP problem}{16}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Surrogate-based feedback method for the EVCP problem}{20}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Matheuristic to improve the MEC model}{22}{section.3.5}%
-\contentsline {chapter}{Solution description}{25}{chapter*.8}%
-\contentsline {section}{\numberline {3.6}Proposed solution}{25}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Parameters}{26}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Computing tools description}{28}{section.3.7}%
-\contentsline {chapter}{Experimental work}{29}{chapter*.10}%
-\contentsline {section}{\numberline {3.8}Objectives}{30}{section.3.8}%
-\contentsline {section}{\numberline {3.9}Time}{35}{section.3.9}%
-\contentsline {section}{\numberline {3.10}coverage}{39}{section.3.10}%
-\contentsline {section}{\numberline {3.11}Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations}{41}{section.3.11}%
-\contentsline {section}{\numberline {3.12}Computational time of the MEC, SABC and MEC(SABC)}{46}{section.3.12}%
-\contentsline {section}{\numberline {3.13}Emergency coverage percentage for MEC, SABC and MEC(SABC)}{48}{section.3.13}%
-\contentsline {section}{\numberline {3.14}Number of ambulances available in the system}{51}{section.3.14}%
-\contentsline {section}{\numberline {3.15}Solving instances similar to the literature benchmark}{52}{section.3.15}%
-\contentsline {chapter}{Conclusions}{55}{chapter*.30}%
-\contentsline {section}{\numberline {3.16}Main contributions and conclusions}{56}{section.3.16}%
-\contentsline {section}{\numberline {3.17}Future work}{56}{section.3.17}%
+\contentsline {chapter}{\numberline {4}Solution description}{24}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Proposed solution}{24}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Parameters}{25}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Computing tools description}{26}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Experimental work}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Objectives}{28}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Time}{33}{section.5.2}%
+\contentsline {section}{\numberline {5.3}coverage}{37}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations}{39}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Computational time of the MEC, SABC and MEC(SABC)}{43}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Emergency coverage percentage for MEC, SABC and MEC(SABC)}{45}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Number of ambulances available in the system}{48}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Solving instances similar to the literature benchmark}{48}{section.5.8}%
+\contentsline {chapter}{\numberline {6}Conclusions}{50}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Main contributions and conclusions}{51}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Future work}{51}{section.6.2}%
