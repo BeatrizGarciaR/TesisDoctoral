@@ -436,7 +436,7 @@ Step 3 activates the total coverage when all the required ambulances arrive in l
 \begin{comment}
 \section{Intelligent Feedback methodology for the EVCP problem} \label{IF}
 
-The MEC model is experimentally hard to solve, even for medium-size instances, as shown in Section~\ref{Exp}. Thus, we propose the  Intelligent Feedback methodology to obtain approximate solutions for the EVCP problem based on an auxiliary disaggregated model, named \textit{Surrogate Ambulance-Based Coverage} (SABC) model. 
+The MEC model is experimentally hard to solve, even for medium-size instances, as shown in Section~\ref{cap:Exp}. Thus, we propose the  Intelligent Feedback methodology to obtain approximate solutions for the EVCP problem based on an auxiliary disaggregated model, named \textit{Surrogate Ambulance-Based Coverage} (SABC) model. 
 
 In addition to the location variables $x_{li}$, the SABC model requires the following binary ambulance dispatching variables for $k\in K, l\in L, i\in I^s, s\in~S$: 
 \begin{equation*}
@@ -531,15 +531,15 @@ Step 3 activates the total coverage when all the required ambulances arrive in l
 \end{algorithm}
 
 \section{Matheuristic to improve the MEC model}
-The Surrogate-based feedback method for the MEC(SABC) model has good results. However, a disadvantage for this method is that we obtain only one solution for the ambulance location from the surrogate model SABC. This is a problem because we disown the optimal solution for the MEC model and we are not sure if the SABC solution is close to that solution.
-
-To improve the solution from SABC model we proposed a local search procedure. For each solution we have from the SABC model, we do exchanges with four different neighborhoods which are taken as follows:
+The Surrogate-based feedback method for the MEC(SABC) model has good results. However, a disadvantage of this method is that we obtain only one solution for the ambulance location from the surrogate model SABC. This is a problem because we disown the optimal solution for the MEC model and we are not sure if the SABC solution is close to that optimality. Trying to improve the solution $x^{SABC}$ we proposed a local search procedure, which is a matheuristic considering four neighborhoods, named as SABC Matheuristic. These four different neighborhoods are as follows:
 \begin{itemize}
  \item Neighborhood 1: exchange one active potential site with one non-active potential site.
 \item Neighborhood 2: exchange one active potential site with another active potential site.
 \item Neighborhood 3: pick half of an active potential site and add it to a non-active potential site.
 \item Neighborhood 4: pick half of an active potential site and add it to another active potential site.
 \end{itemize}
+
+The algorithm to solve the SABC Matheuristic has the x^{SABC} as an initial solution. 
 
 
 The next section compares the MEC, MEC(SABC), and even the SABC solutions.  
