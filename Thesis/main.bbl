@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -162,6 +162,12 @@ L.~A. McLay and H.~Moore.
 \newblock Hanover county improves its response to emergency medical 911
   patients.
 \newblock \emph{Interfaces}, 42\penalty0 (4):\penalty0 380--394, 2012.
+
+\bibitem[Megiddo and Tamir(1982)]{megiddo1982complexity}
+Nimrod Megiddo and Arie Tamir.
+\newblock On the complexity of locating linear facilities in the plane.
+\newblock \emph{Operations research letters}, 1\penalty0 (5):\penalty0
+  194--197, 1982.
 
 \bibitem[Nickel et~al.(2016)Nickel, Reuter-Oppermann, and Saldanha-da
   Gama]{nickel2016ambulance}

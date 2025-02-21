@@ -1,11 +1,22 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: Portadas.aux
+Reallocating 'name_of_file' (item size: 1) to 16 items.
 A level-1 auxiliary file: Dedicatoria.aux
+Reallocating 'name_of_file' (item size: 1) to 20 items.
 A level-1 auxiliary file: Agradecimientos.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
 A level-1 auxiliary file: Resumen.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: Capitulo.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: Apendice.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'name_of_file' (item size: 1) to 18 items.
 A level-1 auxiliary file: Autobiografia.aux
 Database file #1: Biblio.bib
 Repeated entry---line 281 of file Biblio.bib
@@ -88,4 +99,45 @@ Repeated entry---line 682 of file Biblio.bib
  : @article{yoon2021stochastic
  :                            ,
 I'm skipping whatever remains of this entry
+You've used 38 entries,
+            2773 wiz_defined-function locations,
+            836 strings with 11853 characters,
+and the built_in function-call counts, 19446 in all, are:
+= -- 1760
+> -- 1199
+< -- 11
++ -- 401
+- -- 363
+* -- 1768
+:= -- 2991
+add.period$ -- 114
+call.type$ -- 38
+change.case$ -- 235
+chr.to.int$ -- 38
+cite$ -- 76
+duplicate$ -- 787
+empty$ -- 1531
+format.name$ -- 419
+if$ -- 3990
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 38
+newline$ -- 198
+num.names$ -- 152
+pop$ -- 396
+preamble$ -- 1
+purify$ -- 197
+quote$ -- 0
+skip$ -- 596
+stack$ -- 0
+substring$ -- 1000
+swap$ -- 38
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 418
+warning$ -- 0
+while$ -- 188
+width$ -- 0
+write$ -- 501
 (There were 20 error messages)

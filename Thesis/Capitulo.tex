@@ -429,6 +429,9 @@ model MEC($x^\text{SABC}$), or simply MEC(SABC), implying
 that it is the solution of the MEC model with the location variables fixed with the solution of the surrogate model SABC.
 Since the first stage variables are fixed, the MEC(SABC) model becomes easier to solve and yields high-quality solutions. We could implement a local search neighborhood based on the location variables $x_{lj}$ to diversify the solution yield by variables $x^\text{SABC}$. However, experimental results show that the quality of the SBFM solutions is exceptionally high with a single feedback.  
 
+As mentioned, the SABC auxiliary model is a surrogate for the MEC formulation. Thus, the solutions obtained by the MEC and SABC are not equivalent. Nevertheless, the solutions of the SABC model can be mapped into solutions for the EVCP problem, as shown in Algorithm \ref{alg:cap}. In this manner, we can compare both models regarding emergency coverage, even if the SABC model is short-sighted regarding this objective. 
+Step 3 activates the total coverage when all the required ambulances arrive in less than $\tau$ response time. Step 4 verifies if a dispatched ambulance has a response time in $(\tau,\tau_{\max})$, corresponding to the total-late coverage. Step 6 checks that not all the required ambulances are dispatched but they arrive between the ideal time, while Step 8 verifies that the dispatched ambulances are not all the required ones and at least one of them has a response time in $(\tau,\tau_{\max})$. Finally, Step 10 activates the null variable.
+
 
 \begin{comment}
 \section{Intelligent Feedback methodology for the EVCP problem} \label{IF}
@@ -499,7 +502,7 @@ Then, in the allocation stage, we solve MEC
 taking $x^\text{SABC}$ as input. We call this
 model MEC($x^\text{SABC}$), or simply MEC(SABC), implying
 that it is the solution of the MEC model with the location variables fixed with the solution of the surrogate model SABC.
-Since the first stage variables are fixed, the MEC(SABC) model becomes easier to solve and yields high-quality solutions. We could implement a local search neighborhood based on the location variables $x_{lj}$ to diversify the solution yield by variables $x^\text{SABC}$. However, experimental results show that the quality of the SBFM solutions is exceptionally high with a single feedback.    
+Since the first stage variables are fixed, the MEC(SABC) model becomes easier to solve and yields high-quality solutions. We could implement a local search neighborhood based on the location variables $x_{lj}$ to diversify the solution yield by variables $x^\text{SABC}$. However, experimental results show that the quality of the SBFM solutions is exceptionally high with a single feedback.  
 
 %In the Intelligent Feedback methodology for the EVCP problem, we first solve the SABC stochastic model.  From this optimal solution, we obtain the location of the ambulances of the first stage corresponding to the value of $x_{lk}$ variables, for $l\in L , k \in K$. We use these values as input to the MEC model.
 %Since the first stage variables are fixed, the MEC(SABC) becomes easier to solve and yields high-quality solutions. To diversify the solution, we could implement a local search neighborhood based on the location variables $x_{lj}$. Nevertheless, experimental results show that the quality of the solutions using the MEC(SABC) methodology is extremely high with a single feedback.    
@@ -528,7 +531,7 @@ Step 3 activates the total coverage when all the required ambulances arrive in l
 \end{algorithm}
 
 \section{Matheuristic to improve the MEC model}
-The Surrogate-based feedback method for the MEC(SABC) model has good results. However, a disadvantage is that we obtain only one solution for the ambulance location from the surrogate model SABC. This is a problem because we disown the optimal solution for the MEC model and we are not sure if the SABC solution is close to that solution.
+The Surrogate-based feedback method for the MEC(SABC) model has good results. However, a disadvantage for this method is that we obtain only one solution for the ambulance location from the surrogate model SABC. This is a problem because we disown the optimal solution for the MEC model and we are not sure if the SABC solution is close to that solution.
 
 To improve the solution from SABC model we proposed a local search procedure. For each solution we have from the SABC model, we do exchanges with four different neighborhoods which are taken as follows:
 \begin{itemize}
@@ -615,7 +618,7 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 %For large-scale problems, we will try the latest version of the Julia Programming Language for stochastic problems, which suggests some model decompositions into a master problem and a set of subproblems to solve stochastic models quickly and effectively \cite{biel2022efficient}. If these decompositions can not solve our problem, we will use a Branch and Benders cut to decompose our model, and we will code in Python.
 
 
-\chapter{Experimental work}\label{cap:exper}
+\chapter{Experimental work}\label{cap:Exp}
 
 \section{Objectives}
 
