@@ -530,16 +530,21 @@ Step 3 activates the total coverage when all the required ambulances arrive in l
 \end{algorithmic}
 \end{algorithm}
 
+
 \section{Matheuristic to improve the MEC model}
 The Surrogate-based feedback method for the MEC(SABC) model has good results. However, a disadvantage of this method is that we obtain only one solution for the ambulance location from the surrogate model SABC. This is a problem because we disown the optimal solution for the MEC model and we are not sure if the SABC solution is close to that optimality. Trying to improve the solution $x^{SABC}$ we proposed a local search procedure, which is a matheuristic considering four neighborhoods, named as SABC Matheuristic. These four different neighborhoods are as follows:
 \begin{itemize}
- \item Neighborhood 1: exchange one active potential site with one non-active potential site.
-\item Neighborhood 2: exchange one active potential site with another active potential site.
-\item Neighborhood 3: pick half of an active potential site and add it to a non-active potential site.
-\item Neighborhood 4: pick half of an active potential site and add it to another active potential site.
+ \item Neighborhood 1, $(N_1)$: exchange one active potential site with another active potential site.
+\item Neighborhood 2, $(N_2)$: pick half of an active potential site and add it to a non-active potential site.
+\item Neighborhood 3, $(N_3)$: pick half of an active potential site and add it to another active potential site.
+\item Neighborhood 4, $(N_4)$: exchange one active potential site with one non-active potential site.
 \end{itemize}
 
-The algorithm to solve the SABC Matheuristic has the x^{SABC} as an initial solution. 
+$N_1$ and $N_4$ change BLS ambulances with BLS ambulances and then ALS ambulances with ALS ambulances. $N_2$ and $N_3$ change only BLS ambulances with BLS ambulances due to the small quantity of ALS ambulances in the EMS system.
+
+The algorithm to solve the SABC Matheuristic has the $x^{SABC}$ as an initial solution. First, we obtain the value of the objective function for this initial solution, defined as $t^{SABC}$, which is the best solution at this point. Then, we construct the first neighborhood from the $x^{SABC}$. The $t^{SABC}$ objective value is compared with each neighbor's objective value, obtained as the MEC(SABC) methodology. If a neighbor's solution is better than $t^{SABC}$, we consider this solution as the best one for the Matheuristic and we save the objective value and variables results. Otherwise, we have the initial solution as the best one when the algorithm is finished. Regardless new best solution is the initial solution or not, we construct the second neighborhood from the $x^{SABC}$, and each neighbor is compared with the best solution at the moment. We repeat this procedure for the other two neighborhoods and, when the comparisons are finished, we obtain the best solution, as we can see at the Algorithm \ref{alg:cap_1}.
+
+This procedure calculates each neighbor's objective value as in the MEC(SABC) methodology in the four different neighborhoods, which makes the SABC Matheuristic take so much time to check each neighborhood. This Matheuristic aids in improving $x^{SABC}$ solutions but not for all the instances, as we can see in Chapter \ref{cap:Exp}.
 
 
 The next section compares the MEC, MEC(SABC), and even the SABC solutions.  
@@ -547,25 +552,46 @@ The next section compares the MEC, MEC(SABC), and even the SABC solutions.
 
 
 \begin{algorithm}
-\caption{MEC(SABC) Matheuristic}\label{alg:cap_1}
+\caption{SABC Matheuristic to improve the MEC model}\label{alg:cap_1}
 \begin{algorithmic}[1]
-\State \textbf{require} solution of the SABC model $(\bar{x},\bar{u},\bar{v})$
-\State $x^* = \bar{x}$
-\State $t^* = MEC(\bar{x})$
-\While{not all neighborhoods have been visited}
-	\For{$j \in J$}
-		\For{$x' \in N_j$}
-			\State Evaluate $t'=MEC(x')$ 
-    		\State \textbf{if } $t' < t^*$ \textbf{then}  $x^* = x', t^*=t'$ 
-    	\EndFor 
+\State \textbf{require} solution of the SABC model $x^{SABC}$
+\State $x^* = x^{SABC}$
+\State $t^* = MEC(x^{SABC}) = t^{SABC}$
+\While{not all neighborhoods $N_i$, where $i \in \{1,2,3,4\}$, have been visited}
+	\For{$x' \in N_i$}
+		\State Evaluate $t'=MEC(x')$ 
+    	\State \textbf{if } $t' > t^*$ \textbf{then}  $x^* = x', t^*=t'$ 
     \EndFor
 \EndWhile
-\State{ \textbf{return} MEC solution $(x^*,f,g,h,w,z)$ and $t^*$ }
+\State{ \textbf{return} solution $(x^*,f,g,h,w,z)$ and objective value $t^*$ }
 \end{algorithmic}
 \end{algorithm}
 
 
-\chapter{Solution description}
+%\chapter{Solution description}
+
+\chapter{Experimental assessment}\label{Exp}
+
+  This chapter presents an empirical assessment of models and the solution methodology previously described to solve the EVCP problem.  
+We used Gurobi Optimizer 10.0.2 with Python 3.10 to solve the integer programming models MEC, SABC, and MEC(SABC).
+The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers had a CPU time limit of 10800 seconds. 
+
+\section{Instance generation} \label{instances}
+
+The value ranges of our instance generator are based on real-world data taken from Monterrey, Mexico. In the literature, there are no suitable benchmarks for our problem. The databases for the Monterrey case study showed a larger number of possible demand points, $|I|\in \{168, 270, 500, 900, 1500\}$ compared to the one from the literature with $|I| \leq 270$ \citep{yoon2021stochastic}. The number of possible locations for ambulances in Monterrey is $|L|\in \{16,50,100\}$,  which is also larger than the one from the literature ($\leq$30) since not only hospitals and fire stations can be considered. We consider the whole city of Monterrey, so the number of ambulances $(\eta_1,\eta_2)= (35,20)$ is also greater than the ones from the literature cases (6 ambulances per type \citep{yoon2021stochastic}).
+The number of scenarios is set to be as large as that in the literature $|S| \in \{10,50,100, 150, 200\}$. Thus, our benchmark has 15 instances for which five different scenario settings were built.
+ 
+For each instance, we simulated a two-hour high-demand period. Each scenario $s\in S$ consists of a set of demand values per ambulance type and per demand point $\{a^s_{ki}\}_{k\in K, i\in I,s\in S}$.  
+Fewer demand points imply a larger city grid and a larger proportion of emergencies per demand point. Therefore, when $|I|=168$, around 30\% of the demand points may have a value different from 0. In contrast, when $|I|=1500$, only 1\% of the demand points will require ambulances. This setting reflects the number of emergencies per hour observed in the case study. Instances are built such that most emergencies require a single ambulance, but as observed in real cases, some of them may require up to three ambulances. 
+ 
+The ideal ambulance response time is $\tau = 10$ minutes, while the maximum response time is $\tau_{\max}=30$ minutes. For the MEC formulation, we use the following weights in the objective function~\eqref{eq1}: $\alpha_1= 0.65, \alpha_2= 0.2, \alpha_3= 0.1$, and $\alpha_4= 0.05$. In this manner, the total coverage is the most sought-after, while the partial-late cover has less benefit. Surprisingly, the value of the big $M$ of the model is not the main cause of the execution time of the MEC model. Thus, a simple value $M=1000$ is set. 
+
+For the SABC objective function~\eqref{obj19} we use $\beta_1 = 0.7$ and $\beta_2 = 0.3$. These values reflect the aim to send primordially the required ambulances with an ideal response time. The penalty for null coverage in the MEC model or when a required ambulance cannot be dispatched to the emergency in less than $\tau_{\max}$ time in the SABC model is set to $\phi =   1/ |S|  + 0.0005$. 
+
+All instances with their related scenarios and detailed solutions are available at \url{https://doi.org/10.6084/m9.figshare.25928401}.
+
+\begin{comment}
+\section{Proposed solution}
 
 The methodology we will follow is:
 \begin{itemize}
@@ -574,8 +600,6 @@ The methodology we will follow is:
 \item Study stochastic programming in Julia, which is recently in the literature. We will see if Julia can solve our models, or we will study Branch and Benders cut solution used in a recent problem.
 \item Solve small and large-scale problems and evaluate the EMS system to know if we can improve patients' attention.
 \end{itemize}
-
-\section{Proposed solution}
 
 Our problem is focused on two decisions. The first is where to locate available ambulances within potential sites, and the second is how to dispatch them to accidents in scenarios. For these scenarios we have a sample set $S = \{s_1, s_2, ..., s_n\}$ taken from infinite scenarios possibles. Each scenario determines the number of ambulances type 1 and type 2 needed for each demand point. A scenario can be seen as follow:
 We will consider a demand point set $I = \{1, 2, 3, 4\}$. A possible scenario for these demand points will be $s_1 = \{(0, 1), (1, 2), (3, 0), (1, 1)\}$, which means that demand point $1$ needs zero type $1$ ambulances and one type $2$ ambulances, demand point $2$ needs one type $1$ ambulances and two type $2$ ambulances, and so on.
@@ -616,6 +640,7 @@ We used Gurobi Optimizer 10.0.2 with Python 3.10 to solve the integer programmin
 The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers has a CPU time limit of 10800 seconds. 
 
 %For large-scale problems, we will try the latest version of the Julia Programming Language for stochastic problems, which suggests some model decompositions into a master problem and a set of subproblems to solve stochastic models quickly and effectively \cite{biel2022efficient}. If these decompositions can not solve our problem, we will use a Branch and Benders cut to decompose our model, and we will code in Python.
+\end{comment}
 
 
 \chapter{Experimental work}\label{cap:Exp}

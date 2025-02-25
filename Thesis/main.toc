@@ -18,10 +18,8 @@
 \contentsline {section}{\numberline {3.3}Maximum Expected Coverage stochastic formulation for the EVCP problem}{16}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Surrogate-based feedback method for the EVCP problem}{20}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Matheuristic to improve the MEC model}{22}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Solution description}{24}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Proposed solution}{24}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Parameters}{25}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Computing tools description}{26}{section.4.2}%
+\contentsline {chapter}{\numberline {4}Experimental assessment}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Instance generation}{25}{section.4.1}%
 \contentsline {chapter}{\numberline {5}Experimental work}{27}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Objectives}{28}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Time}{33}{section.5.2}%
