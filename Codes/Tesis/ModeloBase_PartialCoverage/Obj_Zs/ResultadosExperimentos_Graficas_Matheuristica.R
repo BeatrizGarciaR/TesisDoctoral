@@ -6,7 +6,7 @@ amb <- rbind(c(35,20))
 # len_S <- c(10, 50, 100, 150, 200)
 
 len_I <- c(168, 270, 500, 900, 1500)
-len_L <- c(16)
+len_L <- c(100)
 len_S <- c(10, 50, 100, 150, 200)
 
 eta <- amb[1,]
@@ -134,7 +134,7 @@ for (a in 1:length(amb[,1])){
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best obj mec", "best obj sabc", "best obj math"), # Textos de la leyenda
+         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective SABC Matheuristic"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
@@ -265,7 +265,7 @@ for (a in 1:length(amb[,1])){
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best obj mec", "best obj sabc", "best obj math"), # Textos de la leyenda
+         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective SABC Matheuristic"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
@@ -416,7 +416,7 @@ for (a in 1:length(amb[,1])){
       count = count + 1
     }
   }
-  
+
   #pdf(paste("Timeval_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
   if(a == 1){
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),

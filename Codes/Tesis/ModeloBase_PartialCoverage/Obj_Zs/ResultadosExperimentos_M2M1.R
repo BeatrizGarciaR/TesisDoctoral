@@ -64,12 +64,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
