@@ -86,6 +86,8 @@ for iconj in range(len(tamaños_I)):
                         
                 h.close()
                 
+                line = archivo.readline()
+                
                 o = open ('Partial1_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')

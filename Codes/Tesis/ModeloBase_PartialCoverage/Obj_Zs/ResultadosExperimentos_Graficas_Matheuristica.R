@@ -461,7 +461,7 @@ for (a in 1:length(amb[,1])){
     for (l in 1:length(len_L)){
       for (s in 1: length(len_S)){
         accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-        print(paste('Accidents_ObjZs_Scenarios_280224', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+        print(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
         datos <- c()
         datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
 
