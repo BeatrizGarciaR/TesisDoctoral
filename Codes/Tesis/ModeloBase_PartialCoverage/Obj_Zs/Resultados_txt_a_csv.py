@@ -72,7 +72,9 @@ for iconj in range(len(tamaños_I)):
                         
                 g.close()
                 
+                line = archivo.readline()
                 
+                #print(line)
                 h = open ('Full_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
@@ -95,6 +97,7 @@ for iconj in range(len(tamaños_I)):
                         
                 o.close()
                 
+                line = archivo.readline()
                 
                 p = open ('Partial2_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
@@ -107,6 +110,7 @@ for iconj in range(len(tamaños_I)):
                         
                 p.close()
                 
+                line = archivo.readline()
                 
                 q = open ('Partial3_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
@@ -119,6 +123,7 @@ for iconj in range(len(tamaños_I)):
                         
                 q.close()
                     
+                line = archivo.readline()
                 
                 r = open ('Null_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
