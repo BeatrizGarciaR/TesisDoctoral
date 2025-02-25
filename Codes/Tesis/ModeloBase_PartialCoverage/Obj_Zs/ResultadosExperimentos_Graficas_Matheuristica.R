@@ -6,7 +6,7 @@ amb <- rbind(c(35,20))
 # len_S <- c(10, 50, 100, 150, 200)
 
 len_I <- c(168, 270, 500, 900, 1500)
-len_L <- c(100)
+len_L <- c(16)
 len_S <- c(10, 50, 100, 150, 200)
 
 eta <- amb[1,]
@@ -83,12 +83,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],"_Comparaciones.pdf", sep=""))
@@ -214,12 +214,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],"_Comparaciones.pdf", sep=""))
@@ -357,12 +357,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="runtime in seconds",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="runtime in seconds", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
@@ -422,12 +422,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="runtime in seconds",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5,xlab="scenarios", xaxt = "n",
          ylab="runtime in seconds", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_S), labels=len_S, cex.axis = 2.5, tck = 0.02)
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
@@ -452,239 +452,239 @@ for (a in 1:length(amb[,1])){
 dev.off()
 #}
 
-# # # coverage
-# accidents_covered_total <- data.frame()
-# for (a in 1:length(amb[,1])){
-#   eta <- amb[a,]
-#   accidents_covered <- data.frame()
-#   for (i in 1:length(len_I)){
-#     for (l in 1:length(len_L)){
-#       for (s in 1: length(len_S)){
-#         accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-#         print(paste('Accidents_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
-#         datos <- c()
-#         datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
-#         
-#         full <- as.data.frame(read.table(paste('Full_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
-#         full_expected <- matrix(ncol=len_S[s], nrow=1)
-#         for (scenario in 1:len_S[s]){
-#           total_full = 0
-#           for (j in 1:length(full[,1])){
-#             if (full[j,2] == scenario && full[j,4] == 1){
-#               total_full = total_full + 1
-#             }
-#           }
-#           full_expected_s = total_full/as.integer(accidents[scenario])
-#           #print(full_expected_s)
-#           full_expected[1, scenario] = full_expected_s
-#         }
-#         datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
-#         
-#         
-#         partial1 <- as.data.frame(read.table(paste('Partial1_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
-#         partial1_expected <- matrix(ncol=len_S[s], nrow=1)
-#         for (scenario in 1:len_S[s]){
-#           total_partial1 = 0
-#           for (j in 1:length(partial1[,1])){
-#             if (partial1[j,2] == scenario && partial1[j,4] == 1){
-#               total_partial1 = total_partial1 + 1
-#             }
-#           }
-#           partial1_expected_s = total_partial1/as.integer(accidents[scenario])
-#           #print(partial1_expected_s)
-#           partial1_expected[1, scenario] = partial1_expected_s
-#         }
-#         datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)
-#         
-#         
-#         partial2 <- as.data.frame(read.table(paste('Partial2_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
-#         partial2_expected <- matrix(ncol=len_S[s], nrow=1)
-#         for (scenario in 1:len_S[s]){
-#           total_partial2 = 0
-#           for (j in 1:length(partial2[,1])){
-#             if (partial2[j,2] == scenario && partial2[j,4] == 1){
-#               total_partial2 = total_partial2 + 1
-#             }
-#           }
-#           partial2_expected_s = total_partial2/as.integer(accidents[scenario])
-#           #print(partial2_expected_s)
-#           partial2_expected[1, scenario] = partial2_expected_s
-#         }
-#         datos <- cbind(datos, prom_partial2_expected = mean(partial2_expected)*100)
-#         
-#         
-#         partial3 <- as.data.frame(read.table(paste('Partial3_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
-#         partial3_expected <- matrix(ncol=len_S[s], nrow=1)
-#         for (scenario in 1:len_S[s]){
-#           total_partial3 = 0
-#           for (j in 1:length(partial3[,1])){
-#             if (partial3[j,2] == scenario && partial3[j,4] == 1){
-#               total_partial3 = total_partial3 + 1
-#             }
-#           }
-#           partial3_expected_s = total_partial3/as.integer(accidents[scenario])
-#           #print(partial3_expected_s)
-#           partial3_expected[1, scenario] = partial3_expected_s
-#         }
-#         datos <- cbind(datos, prom_partial3_expected = mean(partial3_expected)*100)
-#         
-#         
-#         null <- as.data.frame(read.table(paste('Null_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
-#         null_expected <- matrix(ncol=len_S[s], nrow=1)
-#         for (scenario in 1:len_S[s]){
-#           total_null = 0
-#           for (j in 1:length(null[,1])){
-#             if (null[j,2] == scenario && null[j,4] == 1){
-#               total_null = total_null + 1
-#             }
-#           }
-#           null_expected_s = total_null/as.integer(accidents[scenario])
-#           #print(null_expected_s)
-#           null_expected[1, scenario] = null_expected_s
-#         }
-#         datos <- cbind(datos, prom_null_expected = mean(null_expected)*100)
-#         accidents_covered <- rbind(accidents_covered, datos)
-#       }
-#     }
-#   }
-#   colnames(accidents_covered) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage")
-#   write.csv(accidents_covered, file = paste('ExpectedCoverage_ObjZs_Scenarios__Modif_121024_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
-#   aux <- cbind(accidents_covered, eta[1], eta[2])
-#   colnames(aux) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage", "BLS ambulances", "ALS ambulances")
-#   accidents_covered_total <- rbind(accidents_covered_total, aux)
-# }
-# write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_ObjZs_Scenarios__Modif_121024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
-# 
-# 
-# ##### mean coverage percentage graphics scenarios
-# ###### IR CAMBIANDO ESTO POR LOS L ############
-# ind_1 = 1
-# ind_2 = 5
-# prom_coverage <- data.frame()
-# for (a in 1:length(amb[,1])){
-#   eta = amb[a,]
-#   for (i in 1:length(len_I)){
-#     datos <- c()
-#     datos <- cbind(datos, len_I[i], len_L[1], eta[1], eta[2])
-#     datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,4]))
-#     datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,5]))
-#     datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,6]))
-#     datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,7]))
-#     datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,8]))
-#     
-#     prom_coverage <- rbind(prom_coverage, datos)
-#     
-#     ind_1 = ind_1 + length(len_I)
-#     ind_2 = ind_2 + length(len_S)
-#   }
-# }
-# colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-# write.csv(prom_coverage, file = paste('MeanCoverageTotal_ObjZs_Scenarios__Modif_121024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
-# 
-# 
-# #coverage mean scenarios graphics
-# pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"Comparaciones.pdf", sep=""), width = 10)
-# par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
-# for (a in 1:length(amb[,1])){
-#   eta = amb[a,]
-#   #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
-#   if(a == 1){
-#     plot(as.numeric(prom_coverage[a*length(len_I)-((length(len_I)-1)), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
-#          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
-#          xaxt= "n", tck = 0.02) #ann = FALSE,
-#     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
-#   } else{
-#     plot(as.numeric(prom_coverage[a*length(len_I)-(length(len_I)-1), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
-#          cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
-#          ylab="% accident coverage", tck = 0.02)
-#     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
-#   }
-#   axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"), cex.axis = 2.5, tck = 0.02)
-#   # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
-#   #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
-#   #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],
-#   #                 "BLS and",eta[2],"ALS ambulances", sep=" "))
-#   #
-#   # axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
-#   lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-1), 5:9]), lwd=3, col=1)
-#   points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-2), 5:9]), pch=16, cex=1.5, col=2)
-#   lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-2), 5:9]), lwd=3, col=2)
-#   points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-3), 5:9]), pch=17, cex=1.5, col=3)
-#   lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-3), 5:9]), lwd=3, col=3)
-#   points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-4), 5:9]), pch=18, cex=1.5, col=4)
-#   lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-4), 5:9]), lwd=3, col=4)
-#   #points(as.integer(prom_coverage[a*length(len_I), 5:9]), pch=19, cex=1.5, col=6)
-#   #lines(as.integer(prom_coverage[a*length(len_I), 5:9]), lwd=3, col=6)
-#   legend(x="top", legend = len_I, horiz=TRUE,
-#          fill = c(1, 2, 3, 4, 6), title = "Demand points",bty = "n", cex = 2.2)
-#   # legend(x="topleft", legend = len_I, cex=0.75, fill = c(1, 2, 3, 4, 6),
-#   #        title = "Demand points", bty="n")
-#   # dev.off()
-# }
-# dev.off()
-# 
-# 
-# ##### mean coverage demand points percentage graphics
-# ###### IR CAMBIANDO ESTO POR LOS L ############
-# ind_1 = 1
-# prom_coverage_1 <- data.frame()
-# for (a in 1:length(amb[,1])){
-#   eta = amb[a,]
-#   for (s in 1:length(len_S)){
-#     datos <- c()
-#     datos <- cbind(datos, len_S[s], len_L[1], eta[1], eta[2])
-#     datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),4]))
-#     datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),5]))
-#     datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),6]))
-#     datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),7]))
-#     datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),8]))
-#     
-#     prom_coverage_1 <- rbind(prom_coverage_1, datos)
-#     
-#     ind_1 = ind_1 + 1
-#   }
-# }
-# colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-# write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_ObjZs_Scenarios__Modif_121024_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
-# 
-# 
-# #coverage graphics
-# pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
-# par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
-# for (a in 1:length(amb[,1])){
-#   eta = amb[a,]
-#   #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
-#   if(a == 1){
-#     plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
-#          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
-#          xaxt= "n", tck = 0.02) #ann = FALSE,
-#     title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
-#   } else{
-#     plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
-#          cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
-#          ylab="% accident coverage", tck = 0.02)
-#     title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
-#   }
-#   axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"), cex.axis = 2.5, tck = 0.02)
-#   # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
-#   #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
-#   #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],
-#   #                 "BLS and",eta[2],"ALS ambulances", sep=" "))
-#   #
-#   # axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
-#   lines(as.integer(prom_coverage_1[a*5-4, 5:9]), lwd=3, col=1)
-#   points(as.integer(prom_coverage_1[a*5-3, 5:9]), pch=16, cex=1.5, col=2)
-#   lines(as.integer(prom_coverage_1[a*5-3, 5:9]), lwd=3, col=2)
-#   points(as.integer(prom_coverage_1[a*5-2, 5:9]), pch=17, cex=1.5, col=3)
-#   lines(as.integer(prom_coverage_1[a*5-2, 5:9]), lwd=3, col=3)
-#   points(as.integer(prom_coverage_1[a*5-1, 5:9]), pch=18, cex=1.5, col=4)
-#   lines(as.integer(prom_coverage_1[a*5-1, 5:9]), lwd=3, col=4)
-#   points(as.integer(prom_coverage_1[a*5, 5:9]), pch=19, cex=1.5, col=6)
-#   lines(as.integer(prom_coverage_1[a*5, 5:9]), lwd=3, col=6)
-#   legend(x="top", legend = len_S, horiz=TRUE,
-#          fill = c(1, 2, 3, 4, 6), title = "Scenarios",bty = "n", cex = 2.2)
-#   # legend(x="topleft", legend = len_I, cex=0.75, fill = c(1, 2, 3, 4, 6),
-#   #        title = "Demand points", bty="n")
-#   # dev.off()
-# }
-# dev.off()
+# # coverage
+accidents_covered_total <- data.frame()
+for (a in 1:length(amb[,1])){
+  eta <- amb[a,]
+  accidents_covered <- data.frame()
+  for (i in 1:length(len_I)){
+    for (l in 1:length(len_L)){
+      for (s in 1: length(len_S)){
+        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
+        print(paste('Accidents_ObjZs_Scenarios_280224', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+        datos <- c()
+        datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
+
+        full <- as.data.frame(read.table(paste('Full_Matheuristic_081024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        full_expected <- matrix(ncol=len_S[s], nrow=1)
+        for (scenario in 1:len_S[s]){
+          total_full = 0
+          for (j in 1:length(full[,1])){
+            if (full[j,2] == scenario && full[j,4] == 1){
+              total_full = total_full + 1
+            }
+          }
+          full_expected_s = total_full/as.integer(accidents[scenario])
+          #print(full_expected_s)
+          full_expected[1, scenario] = full_expected_s
+        }
+        datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
+
+
+        partial1 <- as.data.frame(read.table(paste('Partial1_Matheuristic_081024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial1_expected <- matrix(ncol=len_S[s], nrow=1)
+        for (scenario in 1:len_S[s]){
+          total_partial1 = 0
+          for (j in 1:length(partial1[,1])){
+            if (partial1[j,2] == scenario && partial1[j,4] == 1){
+              total_partial1 = total_partial1 + 1
+            }
+          }
+          partial1_expected_s = total_partial1/as.integer(accidents[scenario])
+          #print(partial1_expected_s)
+          partial1_expected[1, scenario] = partial1_expected_s
+        }
+        datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)
+
+
+        partial2 <- as.data.frame(read.table(paste('Partial2_Matheuristic_081024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial2_expected <- matrix(ncol=len_S[s], nrow=1)
+        for (scenario in 1:len_S[s]){
+          total_partial2 = 0
+          for (j in 1:length(partial2[,1])){
+            if (partial2[j,2] == scenario && partial2[j,4] == 1){
+              total_partial2 = total_partial2 + 1
+            }
+          }
+          partial2_expected_s = total_partial2/as.integer(accidents[scenario])
+          #print(partial2_expected_s)
+          partial2_expected[1, scenario] = partial2_expected_s
+        }
+        datos <- cbind(datos, prom_partial2_expected = mean(partial2_expected)*100)
+
+
+        partial3 <- as.data.frame(read.table(paste('Partial3_Matheuristic_081024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial3_expected <- matrix(ncol=len_S[s], nrow=1)
+        for (scenario in 1:len_S[s]){
+          total_partial3 = 0
+          for (j in 1:length(partial3[,1])){
+            if (partial3[j,2] == scenario && partial3[j,4] == 1){
+              total_partial3 = total_partial3 + 1
+            }
+          }
+          partial3_expected_s = total_partial3/as.integer(accidents[scenario])
+          #print(partial3_expected_s)
+          partial3_expected[1, scenario] = partial3_expected_s
+        }
+        datos <- cbind(datos, prom_partial3_expected = mean(partial3_expected)*100)
+
+
+        null <- as.data.frame(read.table(paste('Null_Matheuristic_081024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        null_expected <- matrix(ncol=len_S[s], nrow=1)
+        for (scenario in 1:len_S[s]){
+          total_null = 0
+          for (j in 1:length(null[,1])){
+            if (null[j,2] == scenario && null[j,4] == 1){
+              total_null = total_null + 1
+            }
+          }
+          null_expected_s = total_null/as.integer(accidents[scenario])
+          #print(null_expected_s)
+          null_expected[1, scenario] = null_expected_s
+        }
+        datos <- cbind(datos, prom_null_expected = mean(null_expected)*100)
+        accidents_covered <- rbind(accidents_covered, datos)
+      }
+    }
+  }
+  colnames(accidents_covered) <- c("I", "L", "S", "% T", "% TL", "% P", "% PL", "% NULL")
+  write.csv(accidents_covered, file = paste('ExpectedCoverage_Matheuristic_081024_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+  aux <- cbind(accidents_covered, eta[1], eta[2])
+  colnames(aux) <- c("I", "L", "S", "% T", "% TL", "% P", "% PL", "% Null ", "BLS ambulances", "ALS ambulances")
+  accidents_covered_total <- rbind(accidents_covered_total, aux)
+}
+write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_Matheuristic_081024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+
+
+##### mean coverage percentage graphics scenarios
+###### IR CAMBIANDO ESTO POR LOS L ############
+ind_1 = 1
+ind_2 = 5
+prom_coverage <- data.frame()
+for (a in 1:length(amb[,1])){
+  eta = amb[a,]
+  for (i in 1:length(len_I)){
+    datos <- c()
+    datos <- cbind(datos, len_I[i], len_L[1], eta[1], eta[2])
+    datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,4]))
+    datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,5]))
+    datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,6]))
+    datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,7]))
+    datos <- cbind(datos, mean(accidents_covered_total[ind_1:ind_2,8]))
+
+    prom_coverage <- rbind(prom_coverage, datos)
+
+    ind_1 = ind_1 + length(len_I)
+    ind_2 = ind_2 + length(len_S)
+  }
+}
+colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % T", "Mean % TL", "Mean % P", "Mean % PL", "Mean % Null")
+write.csv(prom_coverage, file = paste('MeanCoverageTotal_Matheuristic_081024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+
+
+#coverage mean scenarios graphics
+pdf(paste("Coverage_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"Comparaciones.pdf", sep=""), width = 10)
+par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
+for (a in 1:length(amb[,1])){
+  eta = amb[a,]
+  #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
+  if(a == 1){
+    plot(as.numeric(prom_coverage[a*length(len_I)-((length(len_I)-1)), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
+         cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
+         xaxt= "n", tck = 0.02) #ann = FALSE,
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+  } else{
+    plot(as.numeric(prom_coverage[a*length(len_I)-(length(len_I)-1), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
+         cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
+         ylab="% accident coverage", tck = 0.02)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+  }
+  axis(1, at=1:5, labels=c("T", "TL", "P", "PL", "N"), cex.axis = 2.5, tck = 0.02)
+  # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
+  #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
+  #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],
+  #                 "BLS and",eta[2],"ALS ambulances", sep=" "))
+  #
+  # axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
+  lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-1), 5:9]), lwd=3, col=1)
+  points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-2), 5:9]), pch=16, cex=1.5, col=2)
+  lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-2), 5:9]), lwd=3, col=2)
+  points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-3), 5:9]), pch=17, cex=1.5, col=3)
+  lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-3), 5:9]), lwd=3, col=3)
+  points(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-4), 5:9]), pch=18, cex=1.5, col=4)
+  lines(as.integer(prom_coverage[a*length(len_I)-(length(len_I)-4), 5:9]), lwd=3, col=4)
+  #points(as.integer(prom_coverage[a*length(len_I), 5:9]), pch=19, cex=1.5, col=6)
+  #lines(as.integer(prom_coverage[a*length(len_I), 5:9]), lwd=3, col=6)
+  legend(x="top", legend = len_I, horiz=TRUE,
+         fill = c(1, 2, 3, 4, 6), title = "Demand points",bty = "n", cex = 2.2)
+  # legend(x="topleft", legend = len_I, cex=0.75, fill = c(1, 2, 3, 4, 6),
+  #        title = "Demand points", bty="n")
+  # dev.off()
+}
+dev.off()
+
+
+##### mean coverage demand points percentage graphics
+###### IR CAMBIANDO ESTO POR LOS L ############
+ind_1 = 1
+prom_coverage_1 <- data.frame()
+for (a in 1:length(amb[,1])){
+  eta = amb[a,]
+  for (s in 1:length(len_S)){
+    datos <- c()
+    datos <- cbind(datos, len_S[s], len_L[1], eta[1], eta[2])
+    datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),4]))
+    datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),5]))
+    datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),6]))
+    datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),7]))
+    datos <- cbind(datos, mean(accidents_covered_total[c(ind_1,ind_1+5,ind_1+10),8]))
+
+    prom_coverage_1 <- rbind(prom_coverage_1, datos)
+
+    ind_1 = ind_1 + 1
+  }
+}
+colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % T", "Mean % TL", "Mean % P", "Mean % PL", "Mean % N")
+write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_Matheuristic_081024_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+
+
+#coverage graphics
+pdf(paste("Coverage_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
+for (a in 1:length(amb[,1])){
+  eta = amb[a,]
+  #pdf(paste("Coverage_",eta[1],"_",eta[2],"Comparaciones.pdf", sep=""))
+  if(a == 1){
+    plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
+         cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
+         xaxt= "n", tck = 0.02) #ann = FALSE,
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+  } else{
+    plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
+         cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
+         ylab="% accident coverage", tck = 0.02)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+  }
+  axis(1, at=1:5, labels=c("T", "TL", "P", "PL", "N"), cex.axis = 2.5, tck = 0.02)
+  # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
+  #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
+  #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],
+  #                 "BLS and",eta[2],"ALS ambulances", sep=" "))
+  #
+  # axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"))
+  lines(as.integer(prom_coverage_1[a*5-4, 5:9]), lwd=3, col=1)
+  points(as.integer(prom_coverage_1[a*5-3, 5:9]), pch=16, cex=1.5, col=2)
+  lines(as.integer(prom_coverage_1[a*5-3, 5:9]), lwd=3, col=2)
+  points(as.integer(prom_coverage_1[a*5-2, 5:9]), pch=17, cex=1.5, col=3)
+  lines(as.integer(prom_coverage_1[a*5-2, 5:9]), lwd=3, col=3)
+  points(as.integer(prom_coverage_1[a*5-1, 5:9]), pch=18, cex=1.5, col=4)
+  lines(as.integer(prom_coverage_1[a*5-1, 5:9]), lwd=3, col=4)
+  points(as.integer(prom_coverage_1[a*5, 5:9]), pch=19, cex=1.5, col=6)
+  lines(as.integer(prom_coverage_1[a*5, 5:9]), lwd=3, col=6)
+  legend(x="top", legend = len_S, horiz=TRUE,
+         fill = c(1, 2, 3, 4, 6), title = "Scenarios",bty = "n", cex = 2.2)
+  # legend(x="topleft", legend = len_I, cex=0.75, fill = c(1, 2, 3, 4, 6),
+  #        title = "Demand points", bty="n")
+  # dev.off()
+}
+dev.off()

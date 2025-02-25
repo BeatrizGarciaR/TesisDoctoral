@@ -6,22 +6,23 @@ amb <- rbind(c(35,20))
 # len_S <- c(10, 50, 100, 150, 200)
 
 len_I <- c(168, 270, 500, 900, 1500)
-len_L <- c(100)
+len_L <- c(50)
 len_S <- c(10, 50, 100, 150, 200)
 
 eta <- amb[1,]
+name <- 'ObjZs_M2M1_280224'
 
 
 # objective value graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_ObjZs_Scenarios_Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("Objective_",name,"_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_Modif_121024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_',name,'_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
@@ -62,12 +63,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound)+30),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="objective value", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
@@ -98,10 +99,10 @@ for (a in 1:length(amb[,1])){
   legend(x="top", legend = len_S, horiz=TRUE, cex = 2.1,
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
-  legend(x = "left",         # Posición
+  legend(x = "left",         # Posici??n
          legend = c("best objective", "best bound"), # Textos de la leyenda
-         lty = c(1, 2),          # Tipo de líneas
-         col = c(1, 1),          # Colores de las líneas
+         lty = c(1, 2),          # Tipo de l??neas
+         col = c(1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
@@ -113,13 +114,13 @@ dev.off()
 # objective value graphics scenarios vs demand point
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_ObjZs_Scenarios_Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("Objective_",name,"_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_Modif_121024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_',name,'_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,6)])
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
@@ -161,12 +162,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound_1)+30),
          cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="objective value",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,max(matrix_bestbound_1)+30),
          cex.lab=2.7, cex.axis = 2.5,xlab="scenarios", xaxt = "n",
          ylab="objective value", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_S), labels=len_S, cex.axis = 2.5, tck = 0.02)
   # #pdf(paste("Objval_",eta[1],"_",eta[2],".pdf", sep=""))
@@ -197,10 +198,10 @@ for (a in 1:length(amb[,1])){
   legend(x="top", legend = len_I, horiz=TRUE, cex = 2.1,
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
-  legend(x = "left",         # Posición
+  legend(x = "left",         # Posici??n
          legend = c("best objective", "best bound"), # Textos de la leyenda
-         lty = c(1, 2),          # Tipo de líneas
-         col = c(1, 1),          # Colores de las líneas
+         lty = c(1, 2),          # Tipo de l??neas
+         col = c(1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
   #dev.off()
   counti = counti+1
@@ -261,13 +262,13 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_ObjZs_Scenarios_Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("TimeVal_",name,"_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_Modif_121024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_',name,'_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix <- matrix(nrow=length(len_I), ncol=length(len_S))
   colnames(matrix) <- len_S
@@ -290,12 +291,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="demand points", ylab="runtime in seconds",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix[1:length(len_I)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5,xlab="demand points", xaxt = "n",
          ylab="runtime in seconds", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_I), labels=len_I, cex.axis = 2.5, tck = 0.02)
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
@@ -325,13 +326,13 @@ dev.off()
 # time value graphics
 counti = 0
 #for (i in len_I){
-pdf(paste("TimeVal_ObjZs_Scenarios_Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("TimeVal_",name,"_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_ObjZs_Scenarios_Modif_121024_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_',name,'_',len_L[1],'_',eta[1],'_',eta[2],'.csv', sep="")))
   aux <- as.data.frame(aux_0[filas, c(2,4,10)])
   matrix_1 <- matrix(nrow=length(len_S), ncol=length(len_I))
   colnames(matrix_1) <- len_I
@@ -355,12 +356,12 @@ for (a in 1:length(amb[,1])){
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5, xlab="scenarios", ylab="runtime in seconds",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(matrix_1[1:length(len_S)], pch=15, col=1, cex=1.5, ylim=c(0,15000),
          cex.lab=2.7, cex.axis = 2.5,xlab="scenarios", xaxt = "n",
          ylab="runtime in seconds", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
   axis(1, at=1:length(len_S), labels=len_S, cex.axis = 2.5, tck = 0.02)
   # plot(matrix[1:5], pch=15, col=1, cex=1.5, ylim=c(0, 15000),
@@ -393,12 +394,12 @@ for (a in 1:length(amb[,1])){
   for (i in 1:length(len_I)){
     for (l in 1:length(len_L)){
       for (s in 1: length(len_S)){
-        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
-        print(paste('Accidents_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
+        accidents <- suppressWarnings(as.data.frame(read.table(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))))
+        print(paste('Accidents_ObjZs_Scenarios_280224_', len_I[i], '_', len_L[l], '_', len_S[s], '.txt', sep=""))
         datos <- c()
         datos <- cbind(datos, len_I[i], len_L[l], len_S[s])
 
-        full <- as.data.frame(read.table(paste('Full_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        full <- as.data.frame(read.table(paste('Full_',name,'_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         full_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_full = 0
@@ -414,7 +415,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_full_expected = mean(full_expected)*100)
 
 
-        partial1 <- as.data.frame(read.table(paste('Partial1_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial1 <- as.data.frame(read.table(paste('Partial1_',name,'_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial1_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial1 = 0
@@ -430,7 +431,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial1_expected = mean(partial1_expected)*100)
 
 
-        partial2 <- as.data.frame(read.table(paste('Partial2_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial2 <- as.data.frame(read.table(paste('Partial2_',name,'_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial2_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial2 = 0
@@ -446,7 +447,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial2_expected = mean(partial2_expected)*100)
 
 
-        partial3 <- as.data.frame(read.table(paste('Partial3_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        partial3 <- as.data.frame(read.table(paste('Partial3_',name,'_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         partial3_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_partial3 = 0
@@ -462,7 +463,7 @@ for (a in 1:length(amb[,1])){
         datos <- cbind(datos, prom_partial3_expected = mean(partial3_expected)*100)
 
 
-        null <- as.data.frame(read.table(paste('Null_ObjZs_Scenarios__Modif_121024_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
+        null <- as.data.frame(read.table(paste('Null_',name,'_', len_I[i], '_', len_L[l], '_', len_S[s], '_',eta[1],'_',eta[2],'.txt', sep="")))
         null_expected <- matrix(ncol=len_S[s], nrow=1)
         for (scenario in 1:len_S[s]){
           total_null = 0
@@ -480,13 +481,13 @@ for (a in 1:length(amb[,1])){
       }
     }
   }
-  colnames(accidents_covered) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage")
-  write.csv(accidents_covered, file = paste('ExpectedCoverage_ObjZs_Scenarios__Modif_121024_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+  colnames(accidents_covered) <- c("I", "L", "S", "% T", "% TL", "% P", "% PL", "% Null")
+  write.csv(accidents_covered, file = paste('ExpectedCoverage_',name,'_', eta[1],'_',eta[2],'.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
   aux <- cbind(accidents_covered, eta[1], eta[2])
-  colnames(aux) <- c("I", "L", "S", "% Full accident coverage", "% Partial1 accident coverage", "% Partial2 accident coverage", "% Partial3 accident coverage", "% Null accident coverage", "BLS ambulances", "ALS ambulances")
+  colnames(aux) <- c("I", "L", "S", "% T", "% TL", "% P", "% PL", "% Null", "BLS ambulances", "ALS ambulances")
   accidents_covered_total <- rbind(accidents_covered_total, aux)
 }
-write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_ObjZs_Scenarios__Modif_121024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+write.csv(accidents_covered_total, file = paste('ExpectedCoverageTotal_',name,'_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 ##### mean coverage percentage graphics scenarios
@@ -511,12 +512,12 @@ for (a in 1:length(amb[,1])){
     ind_2 = ind_2 + length(len_S)
   }
 }
-colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage, file = paste('MeanCoverageTotal_ObjZs_Scenarios__Modif_121024_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+colnames(prom_coverage) <- c("I", "L", "Amb 1", "Amb 2", "Mean % T", "Mean % TL", "Mean % P", "Mean % PL", "Mean % Null")
+write.csv(prom_coverage, file = paste('MeanCoverageTotal_',name,'_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 #coverage mean scenarios graphics
-pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
+pdf(paste("Coverage_",name,"_",len_L[1],'_',eta[1],'_',eta[2],".pdf", sep=""), width = 10)
 par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
@@ -525,14 +526,14 @@ for (a in 1:length(amb[,1])){
     plot(as.numeric(prom_coverage[a*length(len_I)-((length(len_I)-1)), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(as.numeric(prom_coverage[a*length(len_I)-(length(len_I)-1), 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
          cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
          ylab="% accident coverage", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
-  axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"), cex.axis = 2.5, tck = 0.02)
+  axis(1, at=1:5, labels=c("T", "TL", "P", "PL", "N"), cex.axis = 2.5, tck = 0.02)
   # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
   #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
   #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],
@@ -577,12 +578,12 @@ for (a in 1:length(amb[,1])){
     ind_1 = ind_1 + 1
   }
 }
-colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % Full", "Mean % P1", "Mean % P2", "Mean % P3", "Mean % Null")
-write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_ObjZs_Scenarios__Modif_121024_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
+colnames(prom_coverage_1) <- c("I", "L", "Amb 1", "Amb 2", "Mean % T", "Mean % TL", "Mean % P", "Mean % PL", "Mean % Null")
+write.csv(prom_coverage_1, file = paste('MeanCoverageTotal_',name,'_1_','.csv', sep=""), col.names=TRUE, row.names=FALSE, dec = ".")
 
 
 #coverage graphics
-pdf(paste("Coverage_Obj_Zs_Scenarios__Modif_121024_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
+pdf(paste("Coverage_",name,"_",len_L[1],'_',eta[1],'_',eta[2],"_1.pdf", sep=""), width = 10)
 par(mfrow = c(1,  length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   eta = amb[a,]
@@ -591,14 +592,14 @@ for (a in 1:length(amb[,1])){
     plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
          cex.lab=2.7, cex.axis = 2.5, xlab="coverage type", ylab="% accidents coverage",
          xaxt= "n", tck = 0.02) #ann = FALSE,
-    title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
+    #title(paste(eta[1],"BLS and",eta[2],"ALS ambulances", sep=" "), cex.main = 3.5)
   } else{
     plot(as.numeric(prom_coverage_1[a*5-4, 5:9]), pch=15, col=1, cex=1.5, ylim=c(0,100),
          cex.lab=2.7, cex.axis = 2.5,xlab="coverage type", xaxt = "n",
          ylab="% accident coverage", tck = 0.02)
-    title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
+    #title(paste(eta[1], "BLS and",eta[2],"ALS ambulances", sep=" "), cex.main=3.5)
   }
-  axis(1, at=1:5, labels=c("Full", "Partial1", "Partial2", "Partial3", "Null"), cex.axis = 2.5, tck = 0.02)
+  axis(1, at=1:5, labels=c("T", "TL", "P", "PL", "N"), cex.axis = 2.5, tck = 0.02)
   # plot(as.numeric(prom_coverage[a*5-4, 5:9]), pch=15, col=1, cex=1.5,
   #      ylim=c(0, 100), ylab="% accidents coverage", xlab = "Coverage type", xaxt = "n",
   #      main=paste("Mean coverage percentage for 16 potential sites \n considering",eta[1],

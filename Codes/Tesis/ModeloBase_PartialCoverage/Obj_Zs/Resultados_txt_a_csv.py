@@ -31,7 +31,14 @@ for iconj in range(len(tamaños_I)):
                 
                 eta = ambulance[k]
 
-                archivo = open('Resultados_Prueba_ObjZs_Scenarios__Modif_121024_'
+                # archivo = open('Resultados_Prueba_ObjZs_Scenarios__Modif_121024_'
+                #           +str(tamaños_I[iconj])+str('_')
+                #           +str(tamaños_L[jconj])+str('_')
+                #           +str(tamaños_S[sconj])
+                #           +'_'+str(eta[0])+'_'+str(eta[1])
+                #           +'.txt', "r")
+
+                archivo = open('Best_Matheuristic_081024_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -41,7 +48,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_ObjZs_Scenarios__Modif_121024_'
+                f = open ('Location_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -54,7 +61,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('Dispatch_ObjZs_Scenarios__Modif_121024_'
+                g = open ('Dispatch_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -66,7 +73,7 @@ for iconj in range(len(tamaños_I)):
                 g.close()
                 
                 
-                h = open ('Full_ObjZs_Scenarios__Modif_121024_'
+                h = open ('Full_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -77,7 +84,7 @@ for iconj in range(len(tamaños_I)):
                         
                 h.close()
                 
-                o = open ('Partial1_ObjZs_Scenarios__Modif_121024_'
+                o = open ('Partial1_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -89,7 +96,7 @@ for iconj in range(len(tamaños_I)):
                 o.close()
                 
                 
-                p = open ('Partial2_ObjZs_Scenarios__Modif_121024_'
+                p = open ('Partial2_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -101,7 +108,7 @@ for iconj in range(len(tamaños_I)):
                 p.close()
                 
                 
-                q = open ('Partial3_ObjZs_Scenarios__Modif_121024_'
+                q = open ('Partial3_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -113,7 +120,7 @@ for iconj in range(len(tamaños_I)):
                 q.close()
                     
                 
-                r = open ('Null_ObjZs_Scenarios__Modif_121024_'
+                r = open ('Null_Matheuristic_081024_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
