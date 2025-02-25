@@ -1,6 +1,6 @@
 \babel@toc {nil}{}\relax 
-\contentsline {chapter}{Acknowledgment}{x}{chapter*.4}%
-\contentsline {chapter}{Abstract}{xii}{chapter*.5}%
+\contentsline {chapter}{Acknowledgment}{ix}{chapter*.4}%
+\contentsline {chapter}{Abstract}{xi}{chapter*.5}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Problem Description}{3}{section.1.2}%
@@ -21,14 +21,11 @@
 \contentsline {chapter}{\numberline {4}Experimental assessment}{25}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Instance generation}{25}{section.4.1}%
 \contentsline {chapter}{\numberline {5}Experimental work}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Objectives}{28}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Time}{33}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Coverage}{37}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations}{40}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Computational time of the MEC, SABC and MEC(SABC)}{44}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Emergency coverage percentage for MEC, SABC and MEC(SABC)}{46}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Number of ambulances available in the system}{49}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Solving instances similar to the literature benchmark}{49}{section.5.8}%
-\contentsline {chapter}{\numberline {6}Conclusions}{51}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Main contributions and conclusions}{52}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Future work}{52}{section.6.2}%
+\contentsline {section}{\numberline {5.1}Objective values for the MEC, MEC(SABC) and SABC Matheuristic}{27}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Response time for the MEC, MEC(SABC) and SABC Matheuristic}{35}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Coverage for the MEC, MEC(SABC) and SABC Matheuristic}{38}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Coverage}{41}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations}{44}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{45}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Main contributions and conclusions}{46}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Future work}{46}{section.6.2}%

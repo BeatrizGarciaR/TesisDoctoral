@@ -574,7 +574,7 @@ The next section compares the MEC, MEC(SABC), and even the SABC solutions.
 
   This chapter presents an empirical assessment of models and the solution methodology previously described to solve the EVCP problem.  
 We used Gurobi Optimizer 10.0.2 with Python 3.10 to solve the integer programming models MEC, SABC, and MEC(SABC).
-The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers had a CPU time limit of 10800 seconds. 
+The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers had a CPU time limit of 10800 seconds. For SABC Matheuristic the solver had a CPU limit of 300 seconds for neighbor's evaluation and 10800 (\textbf{CHECAR}) second in total.
 
 \section{Instance generation} \label{instances}
 
@@ -645,26 +645,466 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 
 \chapter{Experimental work}\label{cap:Exp}
 
-\section{Objectives}
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=.8\linewidth]{M1objectiveValue.png}
+%    \caption{Best objective and the best bound of the objective function obtained by the MEC model concerning the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$. }
+%    \label{fig:M1objV}
+%\end{figure}
+
+In this chapter, we analyze the parameters of the EVCP problem that impact the performance of the objective values of our stochastic methodologies. Several questions arise. We wish to investigate how sensitive the model is to the number of scenarios in terms of solution quality and solution time. We also want to determine the size of tractable instances.
+%and to assess the impact in solution qualityDoes a high number of demand points imply a more challenging instance? Does the number of possible locations impact the efficiency of the models? 
+
+\section{Objective values for the MEC, MEC(SABC) and SABC Matheuristic}
+
+In this first experiment, we solve the instances using the original MEC model.
+%RZand then using the SBFM.
+% In this manner, we can evaluate the size of the instances for which MEC %can give optimal solutions and be able to compare this to the SBFM. 
+ Figure~\ref{Obj_MEC} consists of six plots. The three plots in the left column vary the number of demand points (x-axis), comparing each one to the value of the objective function when different scenarios are tested. The three plots in the right-hand side column vary the tested number of scenarios and show the variation in the solution value for each number of demand points. The upper plots consider a number of possible locations for the ambulances of $|L|=16$, the middle plots of $|L|=50$, and the lower plots of $|L|=100$. Straight lines are the best objective values, while dotted ones are the best bounds found.
 
 \begin{figure}[H]
 \centering
 \footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16.pdf}}{$|L|=16$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf}}{$|L|=16$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50.pdf}}{$|L|=50$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf}}{$|L|=50$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100.pdf}}{$|L|=100$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf}}{$|L|=100$}
 \caption{Objective MEC.}
 \label{Obj_MEC}
 \end{figure}
+
+
+As can be seen from the plots, the difference between the best objective and the best bound (and thus, the relative optimality gaps\footnote{(best objective -  best bound)/best objective.}) are negligible for small instances with 16 potential locations sites. Still, the gaps become larger for the instances with 50 and 100 potential sites. The number of demand points where emergencies may occur and the scenarios considered make the instances harder to solve optimally within the time limit. Thus, the deterministic equivalent integer program of MEC can only handle small instances with a few scenarios, demand points (emergency points), and potential ambulance sites. Note that the larger the number of scenarios in the plots on the left-hand side, the better the objective function. This implies that a better sampling of the emergency demand points benefits the quality of the solution related to the ambulance response time. The plots on the right side show that the larger the size of the demand point set, the harder it is to solve the instance. 
+
+   
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=.8\linewidth]{M2M1objectiveValue.png}
+%    \caption{Comparison of the best objective values of MEC and MEC(SABC) concerning the demand points on the left side and the scenarios on the right side for different sizes of potential sites $|L|=\{16,50,100\}$.}
+%    \label{fig:M2M1objV}
+%\end{figure}
+
+For the MEC(SABC) methodology, we have the solution represented in Figure \ref{Obj_M2M1}, which have a similar structure to the previous one. For this methodology, the number of scenarios not affects the results for the objective value due to the MEC(SABC) only considers the ambulances serving the accidents. To this methodology, the optimal is found in a easier and faster way than the MEC, but it is different to the optimal at the MEC so we need to compare the objective values of both of them. 
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf}}{$|L|=16$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf}}{$|L|=16$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{$|L|=50$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf}}{$|L|=50$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf}}{$|L|=100$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf}}{$|L|=100$}
+\caption{Objective M2M1.}
+\label{Obj_M2M1}
+\end{figure}
+
+Now, we compare the solution values of the equivalent integer program of MEC with the ones obtained by MEC(SABC) in Figure \ref{Obj_M2M1-M1}. As can be seen, while the number of scenarios, demand points, and potential sites slightly affects the performance of MEC(SABC), it obtains better objective function values than those obtained by the MEC model for the larger instances that reported positive gaps. Indeed, the optimality gaps of the MEC(SABC) model always equal 0 within the time limit that we established. In addition, the MEC(SABC) model tends to be less dependent on the number of scenarios. Thus, although we cannot guarantee optimality with the MEC(SABC) model, it obtains faster and higher-quality solutions than those obtained by the MEC equivalent model. 
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf}}{$|L|=16$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf}}{$|L|=16$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf}}{$|L|=50$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf}}{$|L|=50$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf}}{$|L|=100$}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf}}{$|L|=100$}
+\caption{Objective M2M1-M1.}
+\label{Obj_M2M1-M1}
+\end{figure}
+
+Another experimental results that we have in Figure \ref{Obj_Math} are for the SABC Matheuristic.\textbf{CHECAR}.
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100_1.pdf}}{}
+\caption{Objective Math.}
+\label{Obj_Math}
+\end{figure}
+
+
+To see if the Matheuristic shows better results than MEC(SABC) methodology we compare the results between the objective values obtained from both of them. As we can see, there is not a significant difference in the objective value result. This small improvement may be due to the computational limit time the solver had to solve each instance. \textbf{CAMBIAR GRÁFICAS POR COMPARACIÓN SOLO DE MEC Y MATH}. Although, we can see the improvement percentage between the MEC and the MEC(SABC) in column five of the Table \ref{table:objval}, and the improvement percentage between the MEC(SABC) and the SABC Matheuristic in column six. Something interesting is that SABC Matheuristic mostly improves MEC solution for those instances where MEC(SABC) not improves the objective value.
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf}}{}
+\caption{Objective Comp.}
+\label{Obj_Comp}
+\end{figure}
+
+
+% \usepackage{tabularray}
+\begin{small}
+\begin{longtblr}[
+  caption = {Objective Values Comparison},
+]{
+  row{1} = {c},
+  row{2} = {c},
+  cell{1}{1} = {c=6}{},
+  cell{3}{2} = {c},
+  cell{3}{3} = {c},
+  cell{3}{4} = {c},
+  cell{3}{5} = {c},
+  cell{3}{6} = {c},
+  cell{4}{2} = {c},
+  cell{4}{3} = {c},
+  cell{4}{4} = {c},
+  cell{4}{5} = {c},
+  cell{4}{6} = {c},
+  cell{5}{2} = {c},
+  cell{5}{3} = {c},
+  cell{5}{4} = {c},
+  cell{5}{5} = {c},
+  cell{5}{6} = {c},
+  cell{6}{2} = {c},
+  cell{6}{3} = {c},
+  cell{6}{4} = {c},
+  cell{6}{5} = {c},
+  cell{6}{6} = {c},
+  cell{7}{2} = {c},
+  cell{7}{3} = {c},
+  cell{7}{4} = {c},
+  cell{7}{5} = {c},
+  cell{7}{6} = {c},
+  cell{8}{2} = {c},
+  cell{8}{3} = {c},
+  cell{8}{4} = {c},
+  cell{8}{5} = {c},
+  cell{8}{6} = {c},
+  cell{9}{2} = {c},
+  cell{9}{3} = {c},
+  cell{9}{4} = {c},
+  cell{9}{5} = {c},
+  cell{9}{6} = {c},
+  cell{10}{2} = {c},
+  cell{10}{3} = {c},
+  cell{10}{4} = {c},
+  cell{10}{5} = {c},
+  cell{10}{6} = {c},
+  cell{11}{2} = {c},
+  cell{11}{3} = {c},
+  cell{11}{4} = {c},
+  cell{11}{5} = {c},
+  cell{11}{6} = {c},
+  cell{12}{2} = {c},
+  cell{12}{3} = {c},
+  cell{12}{4} = {c},
+  cell{12}{5} = {c},
+  cell{12}{6} = {c},
+  cell{13}{2} = {c},
+  cell{13}{3} = {c},
+  cell{13}{4} = {c},
+  cell{13}{5} = {c},
+  cell{13}{6} = {c},
+  cell{14}{2} = {c},
+  cell{14}{3} = {c},
+  cell{14}{4} = {c},
+  cell{14}{5} = {c},
+  cell{14}{6} = {c},
+  cell{15}{2} = {c},
+  cell{15}{3} = {c},
+  cell{15}{4} = {c},
+  cell{15}{5} = {c},
+  cell{15}{6} = {c},
+  cell{16}{2} = {c},
+  cell{16}{3} = {c},
+  cell{16}{4} = {c},
+  cell{16}{5} = {c},
+  cell{16}{6} = {c},
+  cell{17}{2} = {c},
+  cell{17}{3} = {c},
+  cell{17}{4} = {c},
+  cell{17}{5} = {c},
+  cell{17}{6} = {c},
+  cell{18}{2} = {c},
+  cell{18}{3} = {c},
+  cell{18}{4} = {c},
+  cell{18}{5} = {c},
+  cell{18}{6} = {c},
+  cell{19}{2} = {c},
+  cell{19}{3} = {c},
+  cell{19}{4} = {c},
+  cell{19}{5} = {c},
+  cell{19}{6} = {c},
+  cell{20}{2} = {c},
+  cell{20}{3} = {c},
+  cell{20}{4} = {c},
+  cell{20}{5} = {c},
+  cell{20}{6} = {c},
+  cell{21}{2} = {c},
+  cell{21}{3} = {c},
+  cell{21}{4} = {c},
+  cell{21}{5} = {c},
+  cell{21}{6} = {c},
+  cell{22}{2} = {c},
+  cell{22}{3} = {c},
+  cell{22}{4} = {c},
+  cell{22}{5} = {c},
+  cell{22}{6} = {c},
+  cell{23}{2} = {c},
+  cell{23}{3} = {c},
+  cell{23}{4} = {c},
+  cell{23}{5} = {c},
+  cell{23}{6} = {c},
+  cell{24}{2} = {c},
+  cell{24}{3} = {c},
+  cell{24}{4} = {c},
+  cell{24}{5} = {c},
+  cell{24}{6} = {c},
+  cell{25}{2} = {c},
+  cell{25}{3} = {c},
+  cell{25}{4} = {c},
+  cell{25}{5} = {c},
+  cell{25}{6} = {c},
+  cell{26}{2} = {c},
+  cell{26}{3} = {c},
+  cell{26}{4} = {c},
+  cell{26}{5} = {c},
+  cell{26}{6} = {c},
+  cell{27}{2} = {c},
+  cell{27}{3} = {c},
+  cell{27}{4} = {c},
+  cell{27}{5} = {c},
+  cell{27}{6} = {c},
+  cell{28}{2} = {c},
+  cell{28}{3} = {c},
+  cell{28}{4} = {c},
+  cell{28}{5} = {c},
+  cell{28}{6} = {c},
+  cell{29}{2} = {c},
+  cell{29}{3} = {c},
+  cell{29}{4} = {c},
+  cell{29}{5} = {c},
+  cell{29}{6} = {c},
+  cell{30}{2} = {c},
+  cell{30}{3} = {c},
+  cell{30}{4} = {c},
+  cell{30}{5} = {c},
+  cell{30}{6} = {c},
+  cell{31}{2} = {c},
+  cell{31}{3} = {c},
+  cell{31}{4} = {c},
+  cell{31}{5} = {c},
+  cell{31}{6} = {c},
+  cell{32}{2} = {c},
+  cell{32}{3} = {c},
+  cell{32}{4} = {c},
+  cell{32}{5} = {c},
+  cell{32}{6} = {c},
+  cell{33}{2} = {c},
+  cell{33}{3} = {c},
+  cell{33}{4} = {c},
+  cell{33}{5} = {c},
+  cell{33}{6} = {c},
+  cell{34}{2} = {c},
+  cell{34}{3} = {c},
+  cell{34}{4} = {c},
+  cell{34}{5} = {c},
+  cell{34}{6} = {c},
+  cell{35}{2} = {c},
+  cell{35}{3} = {c},
+  cell{35}{4} = {c},
+  cell{35}{5} = {c},
+  cell{35}{6} = {c},
+  cell{36}{2} = {c},
+  cell{36}{3} = {c},
+  cell{36}{4} = {c},
+  cell{36}{5} = {c},
+  cell{36}{6} = {c},
+  cell{37}{2} = {c},
+  cell{37}{3} = {c},
+  cell{37}{4} = {c},
+  cell{37}{5} = {c},
+  cell{37}{6} = {c},
+  cell{38}{2} = {c},
+  cell{38}{3} = {c},
+  cell{38}{4} = {c},
+  cell{38}{5} = {c},
+  cell{38}{6} = {c},
+  cell{39}{2} = {c},
+  cell{39}{3} = {c},
+  cell{39}{4} = {c},
+  cell{39}{5} = {c},
+  cell{39}{6} = {c},
+  cell{40}{2} = {c},
+  cell{40}{3} = {c},
+  cell{40}{4} = {c},
+  cell{40}{5} = {c},
+  cell{40}{6} = {c},
+  cell{41}{2} = {c},
+  cell{41}{3} = {c},
+  cell{41}{4} = {c},
+  cell{41}{5} = {c},
+  cell{41}{6} = {c},
+  cell{42}{2} = {c},
+  cell{42}{3} = {c},
+  cell{42}{4} = {c},
+  cell{42}{5} = {c},
+  cell{42}{6} = {c},
+  cell{43}{2} = {c},
+  cell{43}{3} = {c},
+  cell{43}{4} = {c},
+  cell{43}{5} = {c},
+  cell{43}{6} = {c},
+  cell{44}{2} = {c},
+  cell{44}{3} = {c},
+  cell{44}{4} = {c},
+  cell{44}{5} = {c},
+  cell{44}{6} = {c},
+  cell{45}{2} = {c},
+  cell{45}{3} = {c},
+  cell{45}{4} = {c},
+  cell{45}{5} = {c},
+  cell{45}{6} = {c},
+  cell{46}{2} = {c},
+  cell{46}{3} = {c},
+  cell{46}{4} = {c},
+  cell{46}{5} = {c},
+  cell{46}{6} = {c},
+  cell{47}{2} = {c},
+  cell{47}{3} = {c},
+  cell{47}{4} = {c},
+  cell{47}{5} = {c},
+  cell{47}{6} = {c},
+  cell{48}{2} = {c},
+  cell{48}{3} = {c},
+  cell{48}{4} = {c},
+  cell{48}{5} = {c},
+  cell{48}{6} = {c},
+  cell{49}{2} = {c},
+  cell{49}{3} = {c},
+  cell{49}{4} = {c},
+  cell{49}{5} = {c},
+  cell{49}{6} = {c},
+  cell{50}{2} = {c},
+  cell{50}{3} = {c},
+  cell{50}{4} = {c},
+  cell{50}{5} = {c},
+  cell{50}{6} = {c},
+  cell{51}{2} = {c},
+  cell{51}{3} = {c},
+  cell{51}{4} = {c},
+  cell{51}{5} = {c},
+  cell{51}{6} = {c},
+  cell{52}{2} = {c},
+  cell{52}{3} = {c},
+  cell{52}{4} = {c},
+  cell{52}{5} = {c},
+  cell{52}{6} = {c},
+  cell{53}{2} = {c},
+  cell{53}{3} = {c},
+  cell{53}{4} = {c},
+  cell{53}{5} = {c},
+  cell{53}{6} = {c},
+  hlines,
+  vlines,
+}
+Objective values~ &            &             &                        &                                  &                                   \\
+{Instance \\ $|I|$ $|L|$ $|S|$}          & MEC        & MEC(SABC)   & {Matheuristic\\(Math)} & {\% Improve\\MEC vs \\MEC(SABC)} & {\% Improve\\MEC(SABC) \\vs Math} \\
+1500 16 200       & 11.0536    & 11.05635    & 11.05635               & 0.024878773                      & -                                 \\
+168 50 10         & 7.285      & 6.485       & 6.53                   & -                                & 0.693909021                       \\
+168 50 50         & 6.5825     & 6.441       & 6.441                  & -                                & -                                 \\
+168 50 100        & 5.86825    & 6.4167      & 6.4167                 & 9.346057172                      & -                                 \\
+168 50 150        & 5.04052222 & 6.375988893 & 6.375988893            & 26.4946093                       & -                                 \\
+168 50 200        & 4.6735     & 6.3773      & 6.3773                 & 36.4566171                       & -                                 \\
+270 50 10         & 8.725      & 8.05        & 8.085                  & -                                & 0.434782609                       \\
+270 50 50         & 7.535      & 7.381       & 7.389                  & -                                & 0.108386398                       \\
+270 50 100        & 6.85685    & 7.83305     & 7.83305                & 14.23685803                      & -                                 \\
+270 50 150        & 5.9789     & 7.80876667  & 7.80876667             & 30.60540685                      & -                                 \\
+270 50 200        & 4.59045    & 7.504750002 & 7.504750002            & 63.48615064                      & -                                 \\
+500 50 10         & 10.1585    & 9.2465      & 9.2465                 & -                                & -                                 \\
+500 50 50         & 9.4105     & 9.547000009 & 9.547000009            & 1.450507504                      & -                                 \\
+500 50 100        & 8.02305    & 9.9521      & 9.9521                 & 24.04384866                      & -                                 \\
+500 50 150        & 7.61198889 & 9.7781      & 9.7781                 & 28.45657216                      & -                                 \\
+500 50 200        & 4.17615    & 9.883800001 & 9.883800001            & 136.6725333                      & -                                 \\
+900 50 10         & 13.4365    & 12.535      & 12.603                 & -                                & 0.542481053                       \\
+900 50 50         & 11.987     & 12.286      & 12.301                 & 2.4943689                        & 0.122090184                       \\
+900 50 100        & 10.8234    & 12.29315    & 12.29565               & 13.57937432                      & 0.020336529                       \\
+900 50 150        & 9.11984444 & 11.83602222 & 11.91226667            & 29.78315908                      & 0.644172873                       \\
+900 50 200        & 5.26805    & 11.98405    & 12.04855               & 127.4855022                      & 0.53821538                        \\
+1500 50 10        & 13.7735    & 12.78400001 & 12.78400001            & -                                & -                                 \\
+1500 50 50        & 14.084     & 13.709      & 13.7235                & -                                & 0.10576994                        \\
+1500 50 100       & 12.6053    & 13.82855    & 13.82855               & 9.704251386                      & -                                 \\
+1500 50 150       & 11.2970444 & 14.03975556 & 14.03975556            & 24.27812983                      & -                                 \\
+1500 50 200       & 5.9664     & 14.0559     & 14.0723                & 135.5842719                      & 0.116676984                       \\
+168 100 10        & 7.865      & 7.070000095 & 7.070000095            & -                                & -                                 \\
+168 100 50        & 5.156      & 6.463000009 & 6.463000009            & 25.34910801                      & -                                 \\
+168 100 100       & 1.8485     & 6.6976      & 6.6976                 & 262.3262105                      & -                                 \\
+168 100 150       & 1.9081     & 6.85182223  & 6.85182223             & 259.0913594                      & -                                 \\
+168 100 200       & 1.93335    & 6.8329      & 6.8329                 & 253.4228153                      & -                                 \\
+270 100 10        & 8.82500001 & 8.255000064 & 8.355                  & -                                & 1.211386255                       \\
+270 100 50        & 6.71       & 8.6855      & 8.6855                 & 29.44113264                      & -                                 \\
+270 100 100       & 2.32665    & 8.208650004 & 8.208650004            & 252.8098341                      & -                                 \\
+270 100 150       & 2.41097778 & 8.375244449 & 8.375244449            & 247.3795788                      & -                                 \\
+270 100 200       & 2.4159     & 8.15665     & 8.15665                & 237.6236599                      & -                                 \\
+500 100 10        & 10.6315    & 10.0945     & 10.0945                & -                                & -                                 \\
+500 100 50        & 8.169      & 10.101      & 10.124                 & 23.6503856                       & 0.22770023                        \\
+500 100 100       & 2.97905    & 10.40835    & 10.4282                & 249.384871                       & 0.190712265                       \\
+500 100 150       & 2.86453333 & 10.12661111 & 10.12661111            & 253.5169584                      & -                                 \\
+500 100 200       & 2.78645    & 10.29585    & 10.29585               & 269.4970304                      & -                                 \\
+900 100 10        & 13.5535    & 12.79       & 12.8315                & -                                & 0.324472244                       \\
+900 100 50        & 9.42       & 12.4165     & 12.4165                & 31.80997877                      & -                                 \\
+900 100 100       & 3.59       & 12.18375    & 12.18375               & 239.3802228                      & -                                 \\
+900 100 150       & 3.78992222 & 12.71902222 & 12.71902222            & 235.6011411                      & -                                 \\
+900 100 200       & 3.5589     & 12.4005     & 12.4005                & 248.4363146                      & -                                 \\
+1500 100 10       & 13.206     & 12.887      & 12.889                 & -                                & 0.015519516                       \\
+1500 100 50       & 12.063     & 13.6875     & 13.6875                & 13.4667993                       & -                                 \\
+1500 100 100      & 8.8318     & 14.67245    & 14.67245               & 66.13204556                      & -                                 \\
+1500 100 150      & 4.62758889 & 14.60712222 & 14.60712222            & 215.6529798                      & -                                 \\
+1500 100 200      & 4.2533     & 14.3678     & 14.41435               & 237.8035878                      & 0.323988387                        
+\label{table:objval}
+\end{longtblr}
+\end{small}
+
+\textbf{AGREGAR LA TABLA QUE COMPARA OBJETIVOS CON TIEMPOS DE EJECUCIÓN MÁS LARGOS}.
+
 
 \begin{comment}
 \begin{figure}[H]
@@ -688,87 +1128,11 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 \end{comment}
 
 
-\begin{figure}[H]
-\centering
-\footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf}}{}
-\caption{Objective M2M1.}
-\label{Obj_M2M1}
-\end{figure}
 
-
-\begin{figure}[H]
-\centering
-\footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf}}{}
-\caption{Objective M2M1-M1.}
-\label{Obj_M2M1-M1}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100_1.pdf}}{}
-\caption{Objective Math.}
-\label{Obj_Math}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf}}{}
-\caption{Objective Comp.}
-\label{Obj_Comp}
-\end{figure}
-
-\section{Time}
-
+\section{Response time for the MEC, MEC(SABC) and SABC Matheuristic}
+ The following experiment compares the running times of the equivalent MEC model with the MEC(SABC) method. Recall that MEC(SABC) attempts to exploit that the surrogate model SABC is very tractable and solved relatively quickly. To this end, Figure \ref{Time_MEC} shows plots of the running time in seconds of the instances with $|L|=16$, $|L|=50$ and $|L|=100$ potential location sites for the equivalent MEC, and Figure \ref{Time_M2M1} shows response times for the SBFM with the same potential sites. The x-axis of the plots corresponds to the number of scenarios, and we vary the number of emergency demand points. Recall that the MEC model with $|L|=\{50,100\}$ reaches the time limit even for ten scenarios and few demand points. 
+ 
+ 
 \begin{figure}[H]
 \centering
 \footnotesize
@@ -786,9 +1150,50 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Time_MEC_100_1.pdf}}{}
 \caption{Time MEC.}
 \label{Time_MEC}
+\end{figure} 
+
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf}}{}
+\caption{Time M2M1.}
+\label{Time_M2M1}
 \end{figure}
+ 
+%\begin{figure}[!tb]
+%  \begin{center}
+%    \subfigure[MEC with $|L|=16$.]{
+%    \includegraphics[width=0.48\textwidth]{M1Time16.png}}
+%    %\subfigure[ SABC model with 100 potential sites]{
+%        %\includegraphics[width=0.45\textwidth]{figures/M2Time100.png}
+%     %}
+%        \subfigure[MEC(SABC) with $|L|=100$.]{
+%        \includegraphics[width=0.45\textwidth]{M1M2Time.png}
+%         }
+%    \caption{Computational time for the a) MEC and b) MEC(SABC) model concerning the number of scenarios varying the number of emergency demand points.}
+%    \label{M1M2Time}
+%  \end{center}
+%\end{figure}
 
+Figure \ref{Time_MEC} shows that the main disadvantage of the MEC model is its computational time, which increases significantly with the number of demand points, potential sites, and scenarios, even for small instances with 16 potential location sites for ambulances. The SABC model is extremely fast, even for large instances, and yields an initial solution to the assignment of ambulance location in a short time to allow the MEC(SABC) model, Figure \ref{Time_M2M1}, to be solved faster than the MEC model and obtain high-quality solutions. The MEC(SABC) location-allocation strategy inherits not only its fast computational time from the SABC, but also yields coverage per emergency situation, which is the main objective for the EVCP problem. The MEC(SABC) model is an approximated mathod, but it gives solutions that are as good as the MEC and even better when the MEC instances do not reach optimality and its gaps are large. The SBFM solves most instances in less than a minute.  
 
+An interesting advantage of the SBFM is that only one iteration is needed. In fact, once the location of the ambulances has been retrieved from the SABC model and fed back to the MEC model, we could perturb the ambulances either randomly or with a local search, the allocation of the ambulances, and iterate again. Nevertheless, we could not systematically generate a neighborhood around a location solution that yields better solutions with the MEC(SABC) approach. This implies that local maximums are often reached with this first feedback and that complex or more diverse neighborhoods should be built to allow escaping from these solutions. It would probably be interesting to enable local search movements that do not yield immediate benefits.  
+
+%\begin{comment}
+
+\begin{comment}
 \begin{figure}[H]
 \centering
 \footnotesize
@@ -812,26 +1217,6 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 \begin{figure}[H]
 \centering
 \footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100.pdf}}{}%
-\hspace{0.4cm}%
-\vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf}}{}
-\caption{Time M2M1.}
-\label{Time_M2M1}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\footnotesize
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Time_Math_16.pdf}}{}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
@@ -848,8 +1233,6 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 \label{Time_Math}
 \end{figure}
 
-
-\begin{comment}
 \begin{figure}[H]
 \centering
 \footnotesize
@@ -868,7 +1251,47 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 \caption{Time Comp.}
 \label{Time_Comp}
 \end{figure}
+
 \end{comment}
+
+
+\section{Coverage for the MEC, MEC(SABC) and SABC Matheuristic}
+
+ The objective values and running times are crucial for evaluating the models' performance. However, the most critical objective of the EVCP problem is to cover the largest number of demand points within a fixed response time. Thus, a central question arises: Is the emergency coverage quality of the MEC(SABC) as good as the one yielded by the MEC model?  
+ 
+
+The percentage of emergency coverage for all instances is presented with the equivalent MEC model and the SBFM in Figure \ref{fig:Coverage}. Two columns with three plots each, varying the number of scenarios and the location sites. Each plot shows the type of ambulance percentage coverage obtained by the a) MEC and b) SBFM: T is for Total coverage (all required ambulances on time), TL is for Total-late coverage (all required ambulances, but at least one arrives late), P is for Partial coverage (at least one required ambulance is not dispatched, but the dispatched ones all arrive in time), PL is for Partial-late coverage (at least one required ambulance is not dispatched, at least one of the dispatched arrives late), and N for Null (no ambulances assigned to the demand point). The upper plots are for  $|L|=\{16\}$ potential sites, the middle ones for $|L|=50$, and the lower ones for $|L|=100$.
+   
+
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{CoverageTodos.png}
+%    \caption{Coverage percentage per type obtained by the a) MEC model and the b) SBFM for potential sites $|L|=\{16,50,100\}$.}
+%    \label{fig:Coverage}
+%\end{figure}
+
+Figure \ref{fig:Coverage}a, shows that the MEC model tends to leave very few demand points with null coverage, which is the primary concern of the emergency services in our case study. As the number of potential sites $|L|$ increases, the coverage tends to be partial-late for the MEC model. This behavior is probably related to the large gaps obtained by the MEC model for large instances, but the number of null coverage is still remarkably low.  
+Column b) shows that the SBFM is robust in terms of the number of scenarios. That is, the demand point coverage is independent of the scenario number. In this way, 100 scenarios are sufficient to handle a high-quality coverage solution. Moreover, the MEC(SABC) model inherits the characteristic of having very few null demand point coverage from the MEC model. Interestingly, partial coverage tends to be larger than partial late coverage, which is mainly desired in real life because it can be translated into first-aid medical care on time, increasing the probability of saving lives. 
+
+
+
+%\subsection{Number of ambulances available in the system}\label{num amb}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{AmbComp.png}
+    \caption{Objective value and running time versus the number of ambulances for a)~MEC model and b) SBFM.}
+    \label{fig:amb}
+\end{figure}
+
+ All the previous experiments were executed with the number of ambulances equal to $(\eta_1,\eta_2)=   (35,20) $. A central feature of the EVCP problem is that an ALS ambulance can be sent instead of the BLS one, which gives a more flexible setting but may induce difficulty when solving the models. 
+ Thus, what is the effect of the number of available ambulances in the EVCP problem on the objective function value and the running time?
+
+  
+ We execute all the instances with emergency demand points fixed to 900, 100 scenarios, and 50 ambulance location sites. For this experiment, we vary the number of ambulances. Figure \ref{fig:amb} shows two columns of two plots each. The objective value (upper plots) and the running time (lower plots) are on the y-axis, while the x-axis varies the number of ambulances: $(\eta_1,\eta_2)$=(10,6), (20,11), and  $(\eta_1,\eta_2)$=m,(35,20). The left plots correspond to the MEC stochastic model, while the right ones are for the SBFM. 
+
+ From Figure \ref{fig:amb}a, we observe that the difference between the best objective and the best bound for the MEC model (left-hand side plots) slightly increases with the number of ambulances. Thus, the larger the number of ambulances, the harder the instances for the MEC model. Furthermore, the time limit is reached for every tested instance of the MEC model. For the SBFM, the relative optimality gaps are equal to 0 for all instances. Moreover, the objective values are comparable to the MEC model for all different ambulance settings, which is a prominent characteristic. Furthermore, under the SBFM, all instances are solved in less than one minute, and this time is unaffected by the number of ambulances.  
 
 
 \section{Coverage}
@@ -955,7 +1378,7 @@ The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RA
 
 \section{Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations} \label{obj val}
 
-
+\begin{comment}
 In this section, we analyze the parameters of the EVCP problem that impact the performance of the objective values of our stochastic methodologies. Several questions arise. Does the number of scenarios impact the objective function? Does a high number of demand points imply a harder instance? Does the number of possible locations impact the efficiency of the models? 
 
 \textbf{aqui primero tienes qu decor que haces!!  To investigate these issues, we solve WHAT MODELS, WHAT INSTANCES.  The results are presnted in Figures XXX}
@@ -1112,6 +1535,7 @@ The DEF stochastic model cannot solve instances with 100 scenarios or more. Mean
 
 The Intelligent Feedback method MEC(SABC) can solve similar instances from the literature in a fast computational time and deliver high-quality solutions. 
 
+\end{comment}
 
 \begin{comment}
 We first study solutions to the preliminar model for the UEMSS Problem. In this preliminar model, we obtain results about where to locate available ambulances of each type of ALS and BLS and how the dispatches were in each scenario, knowing how was each coverage. We do not include different service providers in this model yet. 
@@ -1239,10 +1663,37 @@ Instance\_350\_55\_75 & 350 & 55 & 75 & 124.7983 & 200.6852 & 575.8865 & 186.960
 With these experiments, we are sure our model has to be solved by a model decomposition, especially when dealing with large-scale problems, which is our next step. 
 \end{comment}
 
+
+
 \chapter{Conclusions}\label{cap:concl}
 
 %For now, we have only conclusions about our preliminar model.
 
+EMS systems in developing countries such as Mexico suffer from a shortage of ambulances. Thus, one of the main goals addressed in this work was
+to investigate and develop tools that allow us to decide
+whether an emergency can be uncovered, or totally or partially covered.    
+
+The \textit{Emergency Vehicle Covering and Planning} (EVCP) problem consists
+of locating a limited number of two heterogeneous types of ambulances in different city locations and dispatching them to the emergency points so as to maximize the coverage with short medical first aid response time. In the EVCP problem, these two interrelated decisions are simultaneously considered in a novel two-stage stochastic program. The EVCP stochastic model allows for partial coverage of the accidents by the ambulances based on a decay function.
+
+ 
+
+We propose a two-stage stochastic program for the EVCP problem that can be solved by branch-and-bound for small instances with a restrictive number of scenarios. We also propose a surrogate-based feedback method, which is essentially a location-allocation procedure that relies on the solution of an auxiliary surrogate model. This method is faster to solve and allows us to obtain high-quality solutions significantly faster than the previous model. The SBFM was tested over a broad set of randomly generated instances based on real-world data from a local system.
+An important feature of the proposed 
+approach is that it can be implemented by calling any off-the-shelf integer solver without employing complex decomposition techniques.
+
+%\hl{No me gusta mucho este parrafo, como que muy desconectado, ver alternativa abajo}
+ % Future research includes incorporating bi-level programming since several EMS operate in the city. Hospitals are congested, and not all emergencies can be handled. Moreover, patients are in the ambulance until they are admitted to the hospital emergency area. Concerning the SBFM, different variations of neighborhood structures could be derived to explore different regions of the solution space. 
+
+%\hl{Alternativa:}
+  Naturally, there are several lines of work that can be further investigated.
+For instance, one interesting aspect we observed is that
+there are some private EMS services that also dispatch vehicles
+to the accident sites.  Some of these are not regulated
+nor coordinated by the state.  In some cases, this
+provokes a conflict as too many ambulances arrived at the site, leaving other points unattended.  This situation could of course benefit if coordinated through decision-making tools as the ones developed here.
+
+\begin{comment}
 In this investigation, we deal with the second phase of Emergency Medical Services (EMS), which dispatches one or several ambulances to the emergency scenes to provide urgent medical care. \textbf{what do you mean 2nd phase?? No se supone estas resolviendo AMBSAS fases, la de localizacion y despachamiento??} In some emergency situations, more than one ambulance could be needed. Moreover, different types of ambulances may be required in an emergency situation. Since EMS systems in Mexico lack around 30-60\% of the number of ambulances suggested by the World Health Organization, one of the main contributions of this work is to deal with the problem of deciding if an emergency will be totally or partially be covered, and of course, make the best possible assignment of the scare resources. Sadly, some emergencies may remain uncovered by an emergency unit. 
 
 We study the \textit{Emergency Vehicle Covering and Planning} (EVCP) problem that locates a limited number of two heterogeneous types of ambulances in different city points and dispatches them to the emergency or demand points, considering the uncertainty of accident points so as to maximize the emergency coverage (even if partially) and the response time in which the patients receive medical first aids \textbf{mismo comentario de antes... bi-objetivo?}.
@@ -1253,10 +1704,12 @@ The proposed approach has significant value since it can be implemented by just 
  Our experimental results showed the efficiency of the Intelligent feedback methodology in terms of time and solution quality . The fact that our current solutions are local maximums imply that complex or more diverse neighborhoods should be built to allow escaping from these solutions when implementing several iterations withing the intelligent feedback methodology.  
 
  \textbf{hay algo mas de future reserach q valga la pena discutirse??}
+ 
+\end{comment}
 
 \section{Main contributions and conclusions}
 
-Our stochastic model can solve large-scale instances but as the sizes of the instances increase, the convergence time becomes very long. This is why one of the main contributions of this thesis is the intelligent feedback.
+Our stochastic model can solve large-scale instances but as the sizes of the instances increase, the convergence time becomes very long. This is why one of the main contributions of this thesis is the SAFM.
 
 %Our preliminar model experiments show us that large-scale problems can not be solved because the solver has not had sufficient memory to support them. Nevertheless, small instances results generate feasible solutions for ambulance location and dispatching decisions in different scenarios. Partial rate coverage allows sending ambulances even if there are not enough ambulances to cover an accident totally or if an ambulance (or more than one ambulance) is (are) out of the desired response time for patient attention. 
 
