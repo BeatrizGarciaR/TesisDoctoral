@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.19)  25 FEB 2025 11:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.19)  25 FEB 2025 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,7 +1428,7 @@ l.1174
 50_1.pdf> <./Imagenes_Tesis/MEC/Time_MEC_100.pdf> <./Imagenes_Tesis/MEC/Time_ME
 C_100_1.pdf>]
 Overfull \hbox (19.63445pt too wide) in paragraph at lines 1190--1191
-[]\OT1/cmr/m/n/12 Figure [][]5.7[][] shows that the main disadvantage of the ME
+[]\OT1/cmr/m/n/12 Figure [][]5.6[][] shows that the main disadvantage of the ME
 C model is its computational
  []
 
@@ -1686,9 +1686,6 @@ L3 programming layer <2024-01-04>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C3E248C5B9909399FB3CFF62F4D3A050;5740.
  )
@@ -1732,7 +1729,7 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/beatr/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/beatr/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/beatr/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (63 pages, 1207270 bytes).
+Output written on main.pdf (63 pages, 1207266 bytes).
 PDF statistics:
  1242 PDF objects out of 1440 (max. 8388607)
  178 named destinations out of 1000 (max. 500000)
