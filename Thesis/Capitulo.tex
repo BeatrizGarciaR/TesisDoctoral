@@ -1,4 +1,10 @@
-\chapter{Introduction}
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %for the color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\begin{document}
+\[\chapter{Introduction}
 
 Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the 9-1-1. These systems have two phases. The first phase is the response to an emergency call: an operator responds to the call and identifies the emergency type, such as medical emergencies, security emergencies, and fire emergencies. The operator asks some questions to identify the type of emergency (dismissing prank calls). If the patient needs medical care, the operator contacts an ambulance (commonly the nearest) and asks for attention at the emergency scene. The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend to the patient, ambulance leaves its base, arrives to scene, treat the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
 
@@ -675,10 +681,9 @@ In this first experiment, we solve the instances using the original MEC model.
 \hspace{0.4cm}%
 \vspace{0.4cm}
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf}}{$|L|=100$}
-\caption{Objective MEC.}
+\caption{Objective values for the MEC problem.}
 \label{Obj_MEC}
 \end{figure}
-
 
 As can be seen from the plots, the difference between the best objective and the best bound (and thus, the relative optimality gaps\footnote{(best objective -  best bound)/best objective.}) are negligible for small instances with 16 potential locations sites. Still, the gaps become larger for the instances with 50 and 100 potential sites. The number of demand points where emergencies may occur and the scenarios considered make the instances harder to solve optimally within the time limit. Thus, the deterministic equivalent integer program of MEC can only handle small instances with a few scenarios, demand points (emergency points), and potential ambulance sites. Note that the larger the number of scenarios in the plots on the left-hand side, the better the objective function. This implies that a better sampling of the emergency demand points benefits the quality of the solution related to the ambulance response time. The plots on the right side show that the larger the size of the demand point set, the harder it is to solve the instance. 
 
@@ -707,7 +712,7 @@ For the MEC(SABC) methodology, we have the solution represented in Figure \ref{O
 \hspace{0.4cm}%
 \vspace{0.4cm}
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf}}{$|L|=100$}
-\caption{Objective M2M1.}
+\caption{Objective values for the MEC(SABC) methodology.}
 \label{Obj_M2M1}
 \end{figure}
 
@@ -729,11 +734,11 @@ Now, we compare the solution values of the equivalent integer program of MEC wit
 \hspace{0.4cm}%
 \vspace{0.4cm}
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf}}{$|L|=100$}
-\caption{Objective M2M1-M1.}
+\caption{Objective values of MEC(SABC).}
 \label{Obj_M2M1-M1}
 \end{figure}
 
-Another experimental results that we have in Figure \ref{Obj_Math} are for the SABC Matheuristic.
+Once we analyze the MEC(SABC) we have in Figure \ref{Obj_Math} the SABC Matheuristic results. The axis on the left-hand and the right-hand sides of the Figure can be described as previous ones. Straight lines indicates the best objective value found throughout the Matheuristic, i.e. the solution for the best neighbor found from the four neighborhoods explored. As we can see, even for the larger scenarios, we can obtain a solution close to the best bound, which is represented by none straight lines. This means that fixing locations facilitates the exploration in the second stage of the MEC and solutions for Matheuristic can be found efficiently. Although, we need to compare this solutions with the solutions from the MEC and MEC(SABC) to evaluate this mat heuristic.
 
 \begin{figure}[H]
 \centering
@@ -750,12 +755,12 @@ Another experimental results that we have in Figure \ref{Obj_Math} are for the S
 \hspace{0.4cm}%
 \vspace{0.4cm}
 \stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Obj_Math_100_1.pdf}}{$|L|=100$}
-\caption{Objective Math.}
+\caption{Objective values of SABC Matheuristic.}
 \label{Obj_Math}
 \end{figure}
 
 
-To see if the Matheuristic shows better results than MEC(SABC) methodology we compare the results between the objective values obtained from both of them. As we can see, there is not a significant difference in the objective value result. This small improvement may be due to the computational limit time the solver had to solve each instance. Although, we can see the improvement percentage between the MEC and the MEC(SABC) in column five of the Table \ref{table:objval}, and the improvement percentage between the MEC(SABC) and the SABC Matheuristic in column six. Something interesting is that SABC Matheuristic mostly improves MEC solution for those instances where MEC(SABC) not improves the objective value.
+To see if the Matheuristic shows better results than MEC and MEC(SABC) methodology we compare the results between the objective values obtained from three of them. Figure \ref{Obj_Comp} shows these results. MEC objective values are represented for the straight lines and we can see that the other two types of lines, the dotted and the dashed ones, have better solutions than the straight line. Nonetheless, there is not a significant difference between MEC(SABC) and SABC Matheuristic. This small improvement may be due to the computational limit time the solver had to solve each instance. Although, we can see the improvement percentage between the MEC and the MEC(SABC) in column five of the Table \ref{table:objval}, and the improvement percentage between the MEC(SABC) and the SABC Matheuristic in column six. Something interesting is that SABC Matheuristic mostly improves MEC solution for those instances where MEC(SABC) not improves the objective value.
 
 
 \begin{figure}[H]
@@ -1097,6 +1102,8 @@ Objective values~ &            &             &                        &         
 \end{small}
 
 \textbf{AGREGAR LA TABLA QUE COMPARA OBJETIVOS CON TIEMPOS DE EJECUCIÓN MÁS LARGOS}.
+
+
 
 % \usepackage{tabularray}
 \begin{longtblr}[
@@ -1737,4 +1744,5 @@ Our future work involves more than one service provider in the system, consideri
 
 To solve the preliminar model and future models, we will include Benders cuts or another solution method that we are studying. The difficulty is that our problem considers integer and binary variables, which are not the same as models in the literature.
 
-Also, we want to include queues at hospitals. During the beginning of the Covid-19 pandemic, some hospitals only attended to Covid-19 patients, which caused other hospitals to have ambulance queues due to overdemand. This time wasted waiting for attention affects ambulance availability and has to be counted in the EMS system. 
+Also, we want to include queues at hospitals. During the beginning of the Covid-19 pandemic, some hospitals only attended to Covid-19 patients, which caused other hospitals to have ambulance queues due to overdemand. This time wasted waiting for attention affects ambulance availability and has to be counted in the EMS system. \]
+\end{document}
