@@ -7,10 +7,10 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau $. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau ,\tau _{\max })$.}}{16}{figure.3.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Objective MEC.}}{28}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Objective M2M1.}}{30}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Objective M2M1-M1.}}{31}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Objective Math.}}{32}{figure.5.4}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Objective values for the MEC problem.}}{28}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Objective values for the MEC(SABC) methodology.}}{30}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Objective values of MEC(SABC).}}{31}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Objective values of SABC Matheuristic.}}{32}{figure.5.4}%
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Objective Comp.}}{33}{figure.5.5}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Time MEC.}}{37}{figure.5.6}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Time M2M1.}}{38}{figure.5.7}%

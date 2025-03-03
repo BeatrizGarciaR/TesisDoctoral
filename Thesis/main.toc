@@ -24,8 +24,6 @@
 \contentsline {section}{\numberline {5.1}Objective values for the MEC, MEC(SABC) and SABC Matheuristic}{27}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Response time for the MEC, MEC(SABC) and SABC Matheuristic}{36}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Coverage for the MEC, MEC(SABC) and SABC Matheuristic}{40}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Coverage}{45}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations}{45}{section.5.5}%
 \contentsline {chapter}{\numberline {6}Conclusions}{46}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Main contributions and conclusions}{47}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Future work}{47}{section.6.2}%

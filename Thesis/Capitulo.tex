@@ -1,10 +1,11 @@
-\documentclass[10pt]{article}
-\usepackage[usenames]{color} %for the color
-\usepackage{amssymb} %maths
-\usepackage{amsmath} %maths
-\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
-\begin{document}
-\[\chapter{Introduction}
+%\documentclass[10pt]{article}
+%\usepackage[usenames]{color} %for the color
+%\usepackage{amssymb} %maths
+%\usepackage{amsmath} %maths
+%\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\begin{document}
+%\[
+\chapter{Introduction}
 
 Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the 9-1-1. These systems have two phases. The first phase is the response to an emergency call: an operator responds to the call and identifies the emergency type, such as medical emergencies, security emergencies, and fire emergencies. The operator asks some questions to identify the type of emergency (dismissing prank calls). If the patient needs medical care, the operator contacts an ambulance (commonly the nearest) and asks for attention at the emergency scene. The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend to the patient, ambulance leaves its base, arrives to scene, treat the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
 
@@ -1119,26 +1120,26 @@ Objective values~ &            &             &                        &         
 }
 Objective values                                                                          &             &             &                      &                                  &                                         \\
 {Instance\\ \textbar{}I\textbar{} \textbar{}L\textbar{} \textbar{}S\textbar{}} & MEC         & MEC(SABC)   & {Matheuristic\\Math} & {\% Improve\\MEC vs \\MEC(SABC)} & {\% Improve\\MEC(SABC)\\vs Math} \\
-168 16 10                                                                                 & 4.995000008 & 4.995       & 4.995000016          &                                  & 3.16983E-07                             \\
-168 16 50                                                                                 & 4.849       & 4.848       & 4.848000001          &                                  & 1.43126E-08                             \\
-168 16 100                                                                                & 4.91145     & 4.88345     & 4.887450001          &                                  & 0,081909319                             \\
-168 16 150                                                                                & 4.713244444 & 4.677400001 & 4.678066671          &                                  & 0,014252984                             \\
-168 16 200                                                                                & 4.84205     & 4.8221      & 4.82355              &                                  & 0,030069887                             \\
-168 50 10                                                                                 & 7.285       & 6.485       & 6.540000002          &                                  & 0,848111051                             \\
-168 50 50                                                                                 & 6.5825      & 6.441       & 6.464                &                                  & 0,357087409                             \\
+168 16 10                                                                                 & 4.995000008 & 4.995       & 4.995000016          &         -                         & 3.16983E-07                             \\
+168 16 50                      -                                                          & 4.849       & 4.848       & 4.848000001          &         -                       & 1.43126E-08                             \\
+168 16 100                     -                                                           & 4.91145     & 4.88345     & 4.887450001          &         -                        & 0,081909319                             \\
+168 16 150                     -                                                          & 4.713244444 & 4.677400001 & 4.678066671          &         -                        & 0,014252984                             \\
+168 16 200                     -                                                          & 4.84205     & 4.8221      & 4.82355              &         -                        & 0,030069887                             \\
+168 50 10                      -                                                          & 7.285       & 6.485       & 6.540000002          &         -                        & 0,848111051                             \\
+168 50 50                      -                                                          & 6.5825      & 6.441       & 6.464                &         -                         & 0,357087409                             \\
 168 50 100                                                                                & 5.86825     & 6.4167      & 6.4623               & 9.346057172                      & 0,710645659                             \\
 168 50 150                                                                                & 5.040522223 & 6.375988893 & 6.417422223          & 26.4946093                       & 0,649833788                             \\
 168 50 200                                                                                & 4.6735      & 6.3773      & 6.4149               & 36.4566171                       & 0,589591206                             \\
-168 100 10                                                                                & 7.865       & 7.070000095 & 7.18                 &                                  & 1.555868511                             \\
+168 100 10                                                                                & 7.865       & 7.070000095 & 7.18                 &         -                        & 1.555868511                             \\
 168 100 50                                                                                & 5.156       & 6.463000009 & 6.513                & 25.34910801                      & 0,773634398                             \\
 168 100 100                                                                               & 1.8485      & 6.6976      & 6.717600001          & 262.3262105                      & 0,298614435                             \\
 168 100 150                                                                               & 1.9081      & 6.85182223  & 6.8787               & 259.0913594                      & 0,392271858                             \\
 168 100 200                                                                               & 1.93335     & 6.8329      & 6.8721               & 253.4228153                      & 0,573694917                             \\
-270 16 10                                                                                 & 5.580000003 & 5.525       & 5.535                &                                  & 0,180995475                             \\
-270 16 50                                                                                 & 5.9145      & 5.8675      & 5.872500001          &                                  & 0,085215177                             \\
-270 16 100                                                                                & 5.719       & 5.70245     & 5.70465              &                                  & 0,038579906                             \\
-270 16 150                                                                                & 5.857844447 & 5.834588893 & 5.835666673          &                                  & 0,018472238                             \\
-270 16 200                                                                                & 5.7808      & 5.77065     & 5.771                &                                  & 0,006065175                             
+270 16 10                                                                                 & 5.580000003 & 5.525       & 5.535                &       -                           & 0,180995475                             \\
+270 16 50                                                                                 & 5.9145      & 5.8675      & 5.872500001          &       -                           & 0,085215177                             \\
+270 16 100                                                                                & 5.719       & 5.70245     & 5.70465              &       -                           & 0,038579906                             \\
+270 16 150                                                                                & 5.857844447 & 5.834588893 & 5.835666673          &       -                           & 0,018472238                             \\
+270 16 200                                                                                & 5.7808      & 5.77065     & 5.771                &       -                           & 0,006065175                             
 \end{longtblr}
 
 %\begin{figure}[H]
@@ -1381,10 +1382,9 @@ Column b) shows that the SBFM is robust in terms of the number of scenarios. Tha
 
  From Figure \ref{fig:amb}a, we observe that the difference between the best objective and the best bound for the MEC model (left-hand side plots) slightly increases with the number of ambulances. Thus, the larger the number of ambulances, the harder the instances for the MEC model. Furthermore, the time limit is reached for every tested instance of the MEC model. For the SBFM, the relative optimality gaps are equal to 0 for all instances. Moreover, the objective values are comparable to the MEC model for all different ambulance settings, which is a prominent characteristic. Furthermore, under the SBFM, all instances are solved in less than one minute, and this time is unaffected by the number of ambulances.  
 
+\textbf{REVISAR ALGUNOS RESULTADOS DE TODOS LOS DEMÁS EXPERIMENTOS CON LAS DIFERENTES CANTIDADES DE LAS AMBULANCIAS}
 
-\section{Coverage}
-
-
+%\section{Coverage}
 %\begin{figure}[H]
 %\centering
 %\footnotesize
@@ -1405,7 +1405,7 @@ Column b) shows that the SBFM is robust in terms of the number of scenarios. Tha
 %\end{figure}
 
 
-\section{Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations} \label{obj val}
+%\section{Experimental analysis of the MEC, SABC, and MEC(SABC) stochastic formulations} \label{obj val}
 
 %In this section, we analyze the parameters of the EVCP problem that impact the performance of the objective values of our stochastic methodologies. Several questions arise. Does the number of scenarios impact the objective function? Does a high number of demand points imply a harder instance? Does the number of possible locations impact the efficiency of the models? 
 %
@@ -1744,5 +1744,6 @@ Our future work involves more than one service provider in the system, consideri
 
 To solve the preliminar model and future models, we will include Benders cuts or another solution method that we are studying. The difficulty is that our problem considers integer and binary variables, which are not the same as models in the literature.
 
-Also, we want to include queues at hospitals. During the beginning of the Covid-19 pandemic, some hospitals only attended to Covid-19 patients, which caused other hospitals to have ambulance queues due to overdemand. This time wasted waiting for attention affects ambulance availability and has to be counted in the EMS system. \]
-\end{document}
+Also, we want to include queues at hospitals. During the beginning of the Covid-19 pandemic, some hospitals only attended to Covid-19 patients, which caused other hospitals to have ambulance queues due to overdemand. This time wasted waiting for attention affects ambulance availability and has to be counted in the EMS system. 
+%\]
+%\end{document}
