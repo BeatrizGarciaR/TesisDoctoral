@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.19)  2 MAR 2025 22:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.19)  3 MAR 2025 18:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,7 +750,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./Figuras/uanl-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/uanl-eps-converted-to.pdf, id=123, 87.32625pt x 78.2925pt>
+<Figuras/uanl-eps-converted-to.pdf, id=115, 87.32625pt x 78.2925pt>
 File: Figuras/uanl-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/uanl-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/uanl-eps-converted-to.pdf  used on input line 
@@ -787,7 +787,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./Figuras/fime-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<Figuras/fime-eps-converted-to.pdf, id=138, 108.405pt x 143.53625pt>
+<Figuras/fime-eps-converted-to.pdf, id=130, 108.405pt x 143.53625pt>
 File: Figuras/fime-eps-converted-to.pdf Graphic file (type pdf)
 <use Figuras/fime-eps-converted-to.pdf>
 Package pdftex.def Info: Figuras/fime-eps-converted-to.pdf  used on input line 
@@ -845,13 +845,7 @@ Overfull \hbox (8.40742pt too wide) in paragraph at lines 101--136
 
 
 
-]
-Overfull \hbox (6.14413pt too wide) in paragraph at lines 28--28
- [][] [][][]\OT1/cmr/m/n/12 Experimental analysis of the MEC, SABC, and MEC(SAB
-C) stochastic 
- []
-
-)
+])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
@@ -865,7 +859,8 @@ C) stochastic
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
- [8
+
+[8
 
 ]
 \openout2 = `Agradecimientos.aux'.
@@ -977,7 +972,7 @@ e emergency locations,
 [14
 
 ]
-<figures/IntroTotalCoverage.png, id=423, 954.56625pt x 470.75874pt>
+<figures/IntroTotalCoverage.png, id=412, 954.56625pt x 470.75874pt>
 File: figures/IntroTotalCoverage.png Graphic file (type png)
 <use figures/IntroTotalCoverage.png>
 Package pdftex.def Info: figures/IntroTotalCoverage.png  used on input line 213
@@ -1070,37 +1065,37 @@ ABC, and MEC(SABC).
 
 ] [26]
 Chapter 5.
-<Imagenes_Tesis/MEC/Obj_MEC_16.pdf, id=548, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_16.pdf, id=537, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_16.pdf  used on input line 
 673.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf, id=549, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf, id=538, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_16_1.pdf  used on input lin
 e 676.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Obj_MEC_50.pdf, id=550, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_50.pdf, id=539, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_50.pdf  used on input line 
 677.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf, id=551, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf, id=540, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_50_1.pdf  used on input lin
 e 680.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Obj_MEC_100.pdf, id=552, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_100.pdf, id=541, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_100.pdf  used on input line
  681.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf, id=553, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf, id=542, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Obj_MEC_100_1.pdf  used on input li
@@ -1123,37 +1118,37 @@ Overfull \hbox (15.61293pt too wide) in paragraph at lines 699--700
 To this methodology,
  []
 
-<Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf, id=602, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf, id=591, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_16.pdf  used on input lin
 e 704.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf, id=603, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf, id=592, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_16_1.pdf  used on input l
 ine 707.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf, id=604, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf, id=593, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_50.pdf  used on input lin
 e 708.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf, id=605, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf, id=594, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_50_1.pdf  used on input l
 ine 711.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf, id=606, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf, id=595, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_100.pdf  used on input li
 ne 712.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf, id=607, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf, id=596, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Obj_M2M1_100_1.pdf  used on input 
@@ -1165,37 +1160,37 @@ Overfull \hbox (2.14409pt too wide) in paragraph at lines 720--721
 er-quality solutions
  []
 
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf, id=613, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf, id=602, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16.pdf  used on inp
 ut line 726.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf, id=614, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf, id=603, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_16_1.pdf  used on i
 nput line 729.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf, id=615, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf, id=604, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf  used on inp
 ut line 730.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf, id=616, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf, id=605, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf  used on i
 nput line 733.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf, id=617, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf, id=606, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.pdf  used on in
 put line 734.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf, id=618, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf, id=607, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf  used on 
@@ -1226,37 +1221,37 @@ l.743
 Obj_M2M1-M1_16_1.pdf> <./Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_50.pdf> <./Imagenes
 _Tesis/M2M1-M1/Obj_M2M1-M1_50_1.pdf> <./Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100.
 pdf> <./Imagenes_Tesis/M2M1-M1/Obj_M2M1-M1_100_1.pdf>]
-<Imagenes_Tesis/Math/Obj_Math_16.pdf, id=701, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_16.pdf, id=690, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_16.pdf  used on input lin
 e 747.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Obj_Math_16_1.pdf, id=702, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_16_1.pdf, id=691, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_16_1.pdf  used on input l
 ine 750.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Obj_Math_50.pdf, id=703, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_50.pdf, id=692, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_50.pdf  used on input lin
 e 751.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Obj_Math_50_1.pdf, id=704, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_50_1.pdf, id=693, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_50_1.pdf  used on input l
 ine 754.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Obj_Math_100.pdf, id=705, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_100.pdf, id=694, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_100.pdf  used on input li
 ne 755.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Obj_Math_100_1.pdf, id=706, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Obj_Math_100_1.pdf, id=695, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Obj_Math_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Obj_Math_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Obj_Math_100_1.pdf  used on input 
@@ -1272,37 +1267,37 @@ l.765
 16_1.pdf> <./Imagenes_Tesis/Math/Obj_Math_50.pdf> <./Imagenes_Tesis/Math/Obj_Ma
 th_50_1.pdf> <./Imagenes_Tesis/Math/Obj_Math_100.pdf> <./Imagenes_Tesis/Math/Ob
 j_Math_100_1.pdf>]
-<Imagenes_Tesis/Comp/Obj_Comp_16.pdf, id=749, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_16.pdf, id=739, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_16.pdf  used on input lin
 e 770.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf, id=750, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf, id=740, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_16_1.pdf  used on input l
 ine 773.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Obj_Comp_50.pdf, id=751, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_50.pdf, id=741, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_50.pdf  used on input lin
 e 774.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf, id=752, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf, id=742, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_50_1.pdf  used on input l
 ine 777.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Obj_Comp_100.pdf, id=753, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_100.pdf, id=743, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_100.pdf  used on input li
 ne 778.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf, id=754, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf, id=744, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Obj_Comp_100_1.pdf  used on input 
@@ -1340,8 +1335,9 @@ Overfull \hbox (13.19852pt too wide) detected at line 1102
  []
 
 
-Overfull \hbox (27.58931pt too wide) in paragraph at lines 1105--1106
-[]\OT1/cmr/bx/n/12 AGREGAR LA TABLA QUE COMPARA OBJETIVOS CON TIEMPOS
+Overfull \hbox (24.88716pt too wide) in paragraph at lines 1106--1107
+[]\OT1/cmr/m/n/12 SABC Matheuristic depends on the time we allow for the neighb
+orhoods exploration.
  []
 
 > Step: init table outer spec.
@@ -1352,12 +1348,12 @@ Overfull \hbox (27.58931pt too wide) in paragraph at lines 1105--1106
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-143.
+144.
 (C:\Users\beatr\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
 File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1143.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1144.
 
 
 
@@ -1365,99 +1361,99 @@ Package tabularray Warning: Table width is too small, need 41.86241pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (41.86241pt too wide) detected at line 1143
+Overfull \hbox (41.86241pt too wide) detected at line 1144
  [] 
  []
 
 [35]
-Overfull \hbox (41.86241pt too wide) detected at line 1143
+Overfull \hbox (41.86241pt too wide) detected at line 1144
  [] 
  []
 
-<Imagenes_Tesis/MEC/Time_MEC_16.pdf, id=805, 722.7pt x 505.89pt>
+[36]
+<Imagenes_Tesis/MEC/Time_MEC_16.pdf, id=800, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_16.pdf  used on input line
- 1172.
+ 1173.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Time_MEC_16_1.pdf, id=806, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Time_MEC_16_1.pdf, id=801, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_16_1.pdf  used on input li
-ne 1175.
+ne 1176.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Time_MEC_50.pdf, id=807, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Time_MEC_50.pdf, id=802, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_50.pdf  used on input line
- 1176.
+ 1177.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Time_MEC_50_1.pdf, id=808, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Time_MEC_50_1.pdf, id=803, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_50_1.pdf  used on input li
-ne 1179.
+ne 1180.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Time_MEC_100.pdf, id=809, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Time_MEC_100.pdf, id=804, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_100.pdf  used on input lin
-e 1180.
+e 1181.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Time_MEC_100_1.pdf, id=810, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Time_MEC_100_1.pdf, id=805, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Time_MEC_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Time_MEC_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Time_MEC_100_1.pdf  used on input l
-ine 1183.
+ine 1184.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-[36]
-<Imagenes_Tesis/M2M1/Time_M2M1_16.pdf, id=815, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_16.pdf, id=806, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_16.pdf  used on input li
-ne 1192.
+ne 1193.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf, id=816, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf, id=807, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_16_1.pdf  used on input 
-line 1195.
+line 1196.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Time_M2M1_50.pdf, id=817, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_50.pdf, id=808, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_50.pdf  used on input li
-ne 1196.
+ne 1197.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf, id=818, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf, id=809, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_50_1.pdf  used on input 
-line 1199.
+line 1200.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Time_M2M1_100.pdf, id=819, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_100.pdf, id=810, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_100.pdf  used on input l
-ine 1200.
+ine 1201.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf, id=820, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf, id=811, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Time_M2M1_100_1.pdf  used on input
- line 1203.
+ line 1204.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
  [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.6}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1207 
+l.1208 
         <./Imagenes_Tesis/MEC/Time_MEC_16.pdf> <./Imagenes_Tesis/MEC/Time_MEC_1
 6_1.pdf> <./Imagenes_Tesis/MEC/Time_MEC_50.pdf> <./Imagenes_Tesis/MEC/Time_MEC_
 50_1.pdf> <./Imagenes_Tesis/MEC/Time_MEC_100.pdf> <./Imagenes_Tesis/MEC/Time_ME
 C_100_1.pdf>]
-Overfull \hbox (19.63445pt too wide) in paragraph at lines 1223--1224
+Overfull \hbox (19.63445pt too wide) in paragraph at lines 1224--1225
 []\OT1/cmr/m/n/12 Figure [][]5.6[][] shows that the main disadvantage of the ME
 C model is its computational
  []
@@ -1467,49 +1463,49 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.7})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1224 
+l.1225 
         <./Imagenes_Tesis/M2M1/Time_M2M1_16.pdf> <./Imagenes_Tesis/M2M1/Time_M2
 M1_16_1.pdf> <./Imagenes_Tesis/M2M1/Time_M2M1_50.pdf> <./Imagenes_Tesis/M2M1/Ti
 me_M2M1_50_1.pdf> <./Imagenes_Tesis/M2M1/Time_M2M1_100.pdf> <./Imagenes_Tesis/M
 2M1/Time_M2M1_100_1.pdf>]
-<Imagenes_Tesis/Comp/Time_Comp_16.pdf, id=905, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_16.pdf, id=896, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_16.pdf  used on input li
-ne 1231.
+ne 1234.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Time_Comp_16_1.pdf, id=906, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_16_1.pdf, id=897, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_16_1.pdf  used on input 
-line 1234.
+line 1237.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Time_Comp_50.pdf, id=907, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_50.pdf, id=898, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_50.pdf  used on input li
-ne 1235.
+ne 1238.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Time_Comp_50_1.pdf, id=908, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_50_1.pdf, id=899, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_50_1.pdf  used on input 
-line 1238.
+line 1241.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Time_Comp_100.pdf, id=909, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_100.pdf, id=900, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_100.pdf  used on input l
-ine 1239.
+ine 1242.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Comp/Time_Comp_100_1.pdf, id=910, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Comp/Time_Comp_100_1.pdf, id=901, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Comp/Time_Comp_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Comp/Time_Comp_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Comp/Time_Comp_100_1.pdf  used on input
- line 1242.
+ line 1245.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
  [39]
-Overfull \hbox (24.67847pt too wide) in paragraph at lines 1292--1293
+Overfull \hbox (24.67847pt too wide) in paragraph at lines 1295--1296
 \OT1/cmr/m/n/12 The objective values and running times are crucial for evaluati
 ng the models' performance.
  []
@@ -1519,160 +1515,151 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.8})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1295 T
+l.1297 T
         he percentage of emergency coverage for all instances is presented w...
  <./Imagenes_Tesis/Comp/Time_Comp_16.pdf> <./Imagenes_Tesis/Comp/Time_Comp_16_1
 .pdf> <./Imagenes_Tesis/Comp/Time_Comp_50.pdf> <./Imagenes_Tesis/Comp/Time_Comp
 _50_1.pdf> <./Imagenes_Tesis/Comp/Time_Comp_100.pdf> <./Imagenes_Tesis/Comp/Tim
 e_Comp_100_1.pdf>]
-
-LaTeX Warning: Reference `fig:Coverage' on page 41 undefined on input line 1295
-.
-
-<Imagenes_Tesis/MEC/Cov_MEC_16.pdf, id=955, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_16.pdf, id=948, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_16.pdf  used on input line 
-1300.
+1302.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf, id=956, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf, id=949, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_16_1.pdf  used on input lin
-e 1303.
+e 1305.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Cov_MEC_50.pdf, id=957, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_50.pdf, id=950, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_50.pdf  used on input line 
-1304.
+1306.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf, id=958, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf, id=951, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_50_1.pdf  used on input lin
-e 1307.
+e 1309.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Cov_MEC_100.pdf, id=959, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_100.pdf, id=952, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_100.pdf  used on input line
- 1308.
+ 1310.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf, id=960, 722.7pt x 505.89pt>
+<Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf, id=953, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/MEC/Cov_MEC_100_1.pdf  used on input li
-ne 1311.
+ne 1313.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-[41]
-
-LaTeX Warning: Reference `fig:Coverage' on page 42 undefined on input line 1324
-.
-
-[42
+ [41] [42
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.9}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1326 
+l.1328 
         <./Imagenes_Tesis/MEC/Cov_MEC_16.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_16_
 1.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_50.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_50_1
 .pdf> <./Imagenes_Tesis/MEC/Cov_MEC_100.pdf> <./Imagenes_Tesis/MEC/Cov_MEC_100_
 1.pdf>]
-<Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf, id=1005, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf, id=1000, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf  used on input lin
-e 1330.
+e 1332.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf, id=1006, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf, id=1001, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf  used on input l
-ine 1333.
+ine 1335.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf, id=1007, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf, id=1002, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf  used on input lin
-e 1334.
+e 1336.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf, id=1008, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf, id=1003, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf  used on input l
-ine 1337.
+ine 1339.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf, id=1009, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf, id=1004, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf  used on input li
-ne 1338.
+ne 1340.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf, id=1010, 722.7pt x 505.89pt>
+<Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf, id=1005, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf  used on input 
-line 1341.
+line 1343.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_16.pdf, id=1011, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_16.pdf, id=1008, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_16.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_16.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_16.pdf  used on input lin
-e 1350.
+e 1353.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_16_1.pdf, id=1012, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_16_1.pdf, id=1009, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_16_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_16_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_16_1.pdf  used on input l
-ine 1353.
+ine 1356.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_50.pdf, id=1013, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_50.pdf, id=1010, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_50.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_50.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_50.pdf  used on input lin
-e 1354.
+e 1357.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_50_1.pdf, id=1014, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_50_1.pdf, id=1011, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_50_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_50_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_50_1.pdf  used on input l
-ine 1357.
+ine 1360.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_100.pdf, id=1015, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_100.pdf, id=1012, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_100.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_100.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_100.pdf  used on input li
-ne 1358.
+ne 1361.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
-<Imagenes_Tesis/Math/Cov_Math_100_1.pdf, id=1016, 722.7pt x 505.89pt>
+<Imagenes_Tesis/Math/Cov_Math_100_1.pdf, id=1013, 722.7pt x 505.89pt>
 File: Imagenes_Tesis/Math/Cov_Math_100_1.pdf Graphic file (type pdf)
 <use Imagenes_Tesis/Math/Cov_Math_100_1.pdf>
 Package pdftex.def Info: Imagenes_Tesis/Math/Cov_Math_100_1.pdf  used on input 
-line 1361.
+line 1364.
 (pdftex.def)             Requested size: 179.8491pt x 125.89323pt.
  [43
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.10})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1365 
+l.1368 
         <./Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1
 _16_1.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf> <./Imagenes_Tesis/M2M1/Cov_M
 2M1_50_1.pdf> <./Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf> <./Imagenes_Tesis/M2M1/C
 ov_M2M1_100_1.pdf>]
-<AmbComp.png, id=1058, 871.255pt x 542.025pt>
+<AmbComp.png, id=1055, 871.255pt x 542.025pt>
 File: AmbComp.png Graphic file (type png)
 <use AmbComp.png>
-Package pdftex.def Info: AmbComp.png  used on input line 1372.
+Package pdftex.def Info: AmbComp.png  used on input line 1375.
 (pdftex.def)             Requested size: 385.39003pt x 239.75714pt.
  [44
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.11})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1382 
+l.1385 
         <./Imagenes_Tesis/Math/Cov_Math_16.pdf> <./Imagenes_Tesis/Math/Cov_Math
 _16_1.pdf> <./Imagenes_Tesis/Math/Cov_Math_50.pdf> <./Imagenes_Tesis/Math/Cov_M
 ath_50_1.pdf> <./Imagenes_Tesis/Math/Cov_Math_100.pdf> <./Imagenes_Tesis/Math/C
@@ -1681,7 +1668,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.12})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1691 \chapter
+l.1694 \chapter
                {Conclusions}\label{cap:concl} <./AmbComp.png>]
 Chapter 6.
 [46
@@ -1714,24 +1701,18 @@ L3 programming layer <2024-01-04>
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: C3E248C5B9909399FB3CFF62F4D3A050;5740
-(rerunfilecheck)             After:  65BD66EBCFFBCFBBFC2107ED894CCA9F;5172.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 65BD66EBCFFBCFBBFC2107ED894CCA9F;5172.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 74 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19207 strings out of 474485
- 366576 string characters out of 5743734
- 2103542 words of memory out of 5000000
- 40982 multiletter control sequences out of 15000+600000
+ 19202 strings out of 474485
+ 366521 string characters out of 5743734
+ 2102542 words of memory out of 5000000
+ 40979 multiletter control sequences out of 15000+600000
  578264 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,20n,115p,2157b,1882s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1741,14 +1722,6 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.5.5} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.5.4} has been referenced but does not exist
 , replaced by a fixed one
 
  <C:\Users\beatr\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
@@ -1771,9 +1744,9 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/beatr/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/beatr/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/beatr/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (64 pages, 1218211 bytes).
+Output written on main.pdf (64 pages, 1219234 bytes).
 PDF statistics:
- 1251 PDF objects out of 1440 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
- 591 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1248 PDF objects out of 1440 (max. 8388607)
+ 178 named destinations out of 1000 (max. 500000)
+ 575 words of extra memory for PDF output out of 10000 (max. 10000000)
 

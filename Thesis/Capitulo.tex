@@ -761,7 +761,7 @@ Once we analyze the MEC(SABC) we have in Figure \ref{Obj_Math} the SABC Matheuri
 \end{figure}
 
 
-To see if the Matheuristic shows better results than MEC and MEC(SABC) methodology we compare the results between the objective values obtained from three of them. Figure \ref{Obj_Comp} shows these results. MEC objective values are represented for the straight lines and we can see that the other two types of lines, the dotted and the dashed ones, have better solutions than the straight line. Nonetheless, there is not a significant difference between MEC(SABC) and SABC Matheuristic. This small improvement may be due to the computational limit time the solver had to solve each instance. Although, we can see the improvement percentage between the MEC and the MEC(SABC) in column five of the Table \ref{table:objval}, and the improvement percentage between the MEC(SABC) and the SABC Matheuristic in column six. Something interesting is that SABC Matheuristic mostly improves MEC solution for those instances where MEC(SABC) not improves the objective value.
+To see if the Matheuristic shows better results than MEC and MEC(SABC) methodology we compare the results between the objective values obtained from three of them. Figure \ref{Obj_Comp} shows these results. MEC objective values are represented for the straight lines and we can see that the other two types of lines, the dotted and the dashed ones, have better solutions than the straight line. Nonetheless, there is not a significant difference between MEC(SABC) and SABC Matheuristic. This small improvement may be due to the computational limit time the solver had to solve each instance. Although, we can see the improvement percentage between the MEC and the MEC(SABC) in column five of the Table \ref{table:objval}, and the improvement percentage between the MEC(SABC) and the SABC Matheuristic in column six. Column one define the instance name, which is given by the number of demand points, potential sites and scenarios. And columns two three and four have the objective values for the MEC, the MEC(SABC) and the SABC MAtheuristic respectively. Something interesting is that SABC Matheuristic mostly improves MEC solution for those instances where MEC(SABC) not improves the objective value. Table \ref{table:objval} shows only those instances where we obtain an improvement for the optimal solution. 
 
 
 \begin{figure}[H]
@@ -1102,8 +1102,8 @@ Objective values~ &            &             &                        &         
 \end{longtblr}
 \end{small}
 
-\textbf{AGREGAR LA TABLA QUE COMPARA OBJETIVOS CON TIEMPOS DE EJECUCIÓN MÁS LARGOS}.
 
+SABC Matheuristic depends on the time we allow for the neighborhoods exploration. As the number of demand points, potential sites and scenarios increases, the number of neighbors in each neighborhood also increases. Considering that each neighbor is verified for the MEC(SABC), the computational time required is very large if we let SABC Matheuristic doing a complete procedure. Although, we checked some instances increasing the computational time to 10800 seconds per neighbor. Results for a selected set are in Table \ref{table:moretime}, whose structure is similar to the previous table. In these result we can see that improvements are very small but we were able to get an improvement for instances where we didn't get improvements before. Even so, since these are small instances, the MEC is still better.
 
 
 % \usepackage{tabularray}
@@ -1140,6 +1140,7 @@ Objective values                                                                
 270 16 100                                                                                & 5.719       & 5.70245     & 5.70465              &       -                           & 0,038579906                             \\
 270 16 150                                                                                & 5.857844447 & 5.834588893 & 5.835666673          &       -                           & 0,018472238                             \\
 270 16 200                                                                                & 5.7808      & 5.77065     & 5.771                &       -                           & 0,006065175                             
+\label{table:moretime}
 \end{longtblr}
 
 %\begin{figure}[H]
@@ -1224,7 +1225,9 @@ Figure \ref{Time_MEC} shows that the main disadvantage of the MEC model is its c
 
 An interesting advantage of the SBFM is that only one iteration is needed. In fact, once the location of the ambulances has been retrieved from the SABC model and fed back to the MEC model, we could perturb the ambulances either randomly or with a local search, the allocation of the ambulances, and iterate again. Nevertheless, we could not systematically generate a neighborhood around a location solution that yields better solutions with the MEC(SABC) approach. This implies that local maximums are often reached with this first feedback and that complex or more diverse neighborhoods should be built to allow escaping from these solutions. It would probably be interesting to enable local search movements that do not yield immediate benefits.  
 
-Comparing SABC Matheuristic runtime with MEC and MEC(SABC) we show Figure \ref{Time_Comp} 
+Comparing SABC Matheuristic runtime with MEC and MEC(SABC) we show Figure \ref{Time_Comp}. MEC still has a very large computational time compared to the other two methodologies. As we can see, MEC(SABC) methodology computaional time is always less or equal to SABC MAtheuristic computational time. Even SABC Matheuristic is a local search procedure, the evaluation in MEC(SABC) for each neighbor increases the computational time when instances are large. Still, it is not a time that should alarm us, which indicates that it is a good procedure.
+
+
 \begin{figure}[H]
 \centering
 \footnotesize
@@ -1291,8 +1294,7 @@ Comparing SABC Matheuristic runtime with MEC and MEC(SABC) we show Figure \ref{T
 
  The objective values and running times are crucial for evaluating the models' performance. However, the most critical objective of the EVCP problem is to cover the largest number of demand points within a fixed response time. Thus, a central question arises: Is the emergency coverage quality of the MEC(SABC) as good as the one yielded by the MEC model?  
  
-
-The percentage of emergency coverage for all instances is presented with the equivalent MEC model and the SBFM in Figure \ref{fig:Coverage}. Two columns with three plots each, varying the number of scenarios and the location sites. Each plot shows the type of ambulance percentage coverage obtained by the a) MEC and b) SBFM: T is for Total coverage (all required ambulances on time), TL is for Total-late coverage (all required ambulances, but at least one arrives late), P is for Partial coverage (at least one required ambulance is not dispatched, but the dispatched ones all arrive in time), PL is for Partial-late coverage (at least one required ambulance is not dispatched, at least one of the dispatched arrives late), and N for Null (no ambulances assigned to the demand point). The upper plots are for  $|L|=\{16\}$ potential sites, the middle ones for $|L|=50$, and the lower ones for $|L|=100$.
+The percentage of emergency coverage for all instances is presented with the equivalent MEC model and the SBFM in Figures \ref{Cov_MEC} and \ref{Cov_M2M1} respectively.. Two columns with three plots each, varying the number of scenarios and the location sites. Each plot shows the type of ambulance percentage coverage obtained¿: T is for Total coverage (all required ambulances on time), TL is for Total-late coverage (all required ambulances, but at least one arrives late), P is for Partial coverage (at least one required ambulance is not dispatched, but the dispatched ones all arrive in time), PL is for Partial-late coverage (at least one required ambulance is not dispatched, at least one of the dispatched arrives late), and N for Null (no ambulances assigned to the demand point). The upper plots are for  $|L|=\{16\}$ potential sites, the middle ones for $|L|=50$, and the lower ones for $|L|=100$.
 
 \begin{figure}[H]
 \centering
@@ -1321,8 +1323,8 @@ The percentage of emergency coverage for all instances is presented with the equ
 %    \label{fig:Coverage}
 %\end{figure}
 
-Figure \ref{fig:Coverage}a, shows that the MEC model tends to leave very few demand points with null coverage, which is the primary concern of the emergency services in our case study. As the number of potential sites $|L|$ increases, the coverage tends to be partial-late for the MEC model. This behavior is probably related to the large gaps obtained by the MEC model for large instances, but the number of null coverage is still remarkably low.  
-Column b) shows that the SBFM is robust in terms of the number of scenarios. That is, the demand point coverage is independent of the scenario number. In this way, 100 scenarios are sufficient to handle a high-quality coverage solution. Moreover, the MEC(SABC) model inherits the characteristic of having very few null demand point coverage from the MEC model. Interestingly, partial coverage tends to be larger than partial late coverage, which is mainly desired in real life because it can be translated into first-aid medical care on time, increasing the probability of saving lives. 
+Figure \ref{Cov_MEC}, shows that the MEC model tends to leave very few demand points with null coverage, which is the primary concern of the emergency services in our case study. As the number of potential sites $|L|$ increases, the coverage tends to be partial-late for the MEC model. This behavior is probably related to the large gaps obtained by the MEC model for large instances, but the number of null coverage is still remarkably low.  
+Figure \ref{Cov_M2M1} shows that the SBFM is robust in terms of the number of scenarios. That is, the demand point coverage is independent of the scenario number. In this way, 100 scenarios are sufficient to handle a high-quality coverage solution. Moreover, the MEC(SABC) model inherits the characteristic of having very few null demand point coverage from the MEC model. Interestingly, partial coverage tends to be larger than partial late coverage, which is mainly desired in real life because it can be translated into first-aid medical care on time, increasing the probability of saving lives. 
 
 \begin{figure}[H]
 \centering
@@ -1343,6 +1345,7 @@ Column b) shows that the SBFM is robust in terms of the number of scenarios. Tha
 \label{Cov_M2M1}
 \end{figure}
 
+For the SABC MAtheuristic the coverage results are in Figure \ref{Cov_Math}. As we saw in Figure \ref{Cov_M2M1}, SABC Matheuristic tends to have a large partial coverage. The results are for the best neighbor found throughout the matheuristic, which has not a significant difference to the MEC(SABC) results.
 
 \begin{figure}[H]
 \centering
