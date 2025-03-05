@@ -1,31 +1,31 @@
-%\documentclass[10pt]{article}
-%\usepackage[usenames]{color} %for the color
-%\usepackage{amssymb} %maths
-%\usepackage{amsmath} %maths
-%\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
-%\begin{document}
-%\[
 \chapter{Introduction}
 
-Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the 9-1-1. These systems have two phases. The first phase is the response to an emergency call: an operator responds to the call and identifies the emergency type, such as medical emergencies, security emergencies, and fire emergencies. The operator asks some questions to identify the type of emergency (dismissing prank calls). If the patient needs medical care, the operator contacts an ambulance (commonly the nearest) and asks for attention at the emergency scene. The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend to the patient, ambulance leaves its base, arrives to scene, treat the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call.
+Emergency Medical Services (EMS) systems provide medical care for people who suffer a medical incident. These systems control emergency calls' services received at the emergency number established for emergencies, commonly the  \text{9-1-1}. These systems have two phases. As we can see in Figure \ref{fig:ems}, the first phase is the response to an emergency call: an operator responds to the call and identifies the emergency type, such as medical emergencies, security emergencies, and fire emergencies. The operator asks some questions to identify the type of emergency (dismissing prank calls) \cite{911_Unk}. If the patient needs medical care, the operator contacts an ambulance (commonly the nearest) and asks for attention at the emergency scene. The second phase is the response of an ambulance: paramedics prepare to go to the emergency scene, the ambulance is ready with material resources needed to attend to the patient, ambulance leaves its base, arrives to scene, treat the patient, leaves the scene, and arrive at a hospital (commonly the nearest) if it is necessary, and finally return to its base to wait for another emergency call \cite{neil2023}.
 
-EMS systems have significantly impacted operational research and medical investigations in the last decades. Scientists are concerned about the impact of calls emergency' average response time for attending a patient who suffers a medical incident. Moreover, the cost of buying material resources, medical vehicles, or building a new medical center, among other things, can limit the service to patients. Not having human and material resources can cause deficient patients' attention.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.82\linewidth]{EMS_System.png}
+    \caption{An Emergency Medical Service System Process.}
+    \label{fig:ems}
+\end{figure}
 
-The most studied problem is reducing the average response time when an emergency call arrives at a call center and someone needs medical attention. 
-The objective is to provide, as soon as possible, the initial treatment for a patient that has a medical problem caused by an accident, a trauma, or a natural disaster to reduce patients' mortality. For short response time, more likely people survive. Another objective that EMS system problems consider is to maximize coverage to attend all emergency calls that enter the system. Also, some problems exist that consider improving the patients' survival or reducing the patients' mortality. 
+EMS systems have significantly impacted operational research and medical investigations in the last decades \cite{ball1993reliability, olave2021modeling, aboueljinane2013review}. Scientists are concerned about the impact of calls emergency' average response time for attending a patient who suffers a medical incident. Moreover, the cost of buying material resources, medical vehicles, or building a new medical center, among other things, can limit the service to patients~\cite{hulshof2012taxonomic}. Lack of human and material resources can cause insufficient attention in patients \cite{kabene2006importance, ahlenius2017patients, garcia2018patient}.
 
-There exist different types of problems. Various focus on statics systems, where the decisions are fixed after they are taken. Others are dynamic~\cite{brotcorne2003ambulance}, where decisions change throughout time passing or after a change on the system, for example, when a call is received. Many investigations focus their problems on solving optimal locations of their ambulances to improve the system. In contrast, others want to obtain optimal policies to decide which ambulance or ambulances are the best to attend the emergency calls received.
+The most studied problem is reducing the average response time when an emergency call arrives at a call center and someone needs medical attention \cite{blackwell2002response}. 
+The objective is to provide, as soon as possible, the initial treatment for a patient that has a medical problem caused by an accident, a trauma, or a natural disaster to reduce patients' mortality. For short response time, more likely people survive. Another objective that EMS system problems consider is to maximize coverage to attend all emergency calls that enter the system \cite{chanta2014improving}. Also, some problems exist that consider improving the patients' survival or reducing the patients' mortality \cite{zaffar2016coverage}. 
 
-EMS systems have different strategic, tactical, and operational types of plan\-ning~\cite{galvao2008emergency}. Strategic planning focuses on long-term decisions, such as fixed potential locations or the acquisition of resources~\cite{aboueljinane2013review}. Tactical plannings made decisions for a middle time, such as locating ambulances at potential sites or planning which is the best option to dispatch an ambulance for all emergency calls types. Finally, operational planning takes decisions in a short time. These decisions are made frequently when a call enters the system and are divided into online and offline decisions. Online decisions are taken over the full service of a call, and offline decisions are taken when a call is received following the plannings made at tactical plannings, for example, to decide which ambulance will send to attend to the pa\-tient~\cite{hulshof2012taxonomic}.
+%There exist different types of problems. Various focus on statics systems, where the decisions are fixed after they are taken. Others are dynamic~\cite{brotcorne2003ambulance}, where decisions change throughout time passing or after a change on the system, for example, when a call is received. Many investigations focus their problems on solving optimal locations of their ambulances to improve the system. In contrast, others want to obtain optimal policies to decide which ambulance or ambulances are the best to attend the emergency calls received.
 
-Our interest is in the EMS systems of Mexico. In Mexico exists the 9-1-1 number controled by the C-5 organization (Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado), which receives emergency calls. Some calls are for medical emergencies, others for police e\-mer\-gen\-cies, and others for fire emergencies. When a call enters the system, and an operator decides that it is a medical emergency, the operator has to determine if it is necessary to send an ambulance or not. Also, a doctor can continue the call to guide the person on the phone if the patient needs immediate attention while the ambulance arrives. Then the paramedics can attend to the patient and transfer the patient to a hospital.
+%EMS systems have different strategic, tactical, and operational types of plan\-ning~\cite{galvao2008emergency}. Strategic planning focuses on long-term decisions, such as fixed potential locations or the acquisition of resources~\cite{aboueljinane2013review}. Tactical plannings made decisions for a middle time, such as locating ambulances at potential sites or planning which is the best option to dispatch an ambulance for all emergency calls types. Finally, operational planning takes decisions in a short time. These decisions are made frequently when a call enters the system and are divided into online and offline decisions. Online decisions are taken over the full service of a call, and offline decisions are taken when a call is received following the plannings made at tactical plannings, for example, to decide which ambulance will send to attend to the pa\-tient~\cite{hulshof2012taxonomic}.
 
-%The problem in our country is that more than one service provider is involved in the 9-1-1 system. The two most important are CRUM (Centro Regulador de Urgencias Medicas) and Red Cross. There exists in some states the Proteccion Civil and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the 9-1-1 system. That is one reason why an uncoordinated system exists in our country. CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. Each service provider decides where to locate their ambulances without consulting the other. Furthermore, when an ambulance is needed to attend an emergency call for 9-1-1, CRUM has preferences because Red Cross has its private number where people can call for medical attention. Red Cross dispatch ambulances that are supposed to be available in 9-1-1 systems for its direct emergency calls.We could improve this uncoordinated system if each service provider made its decisions considering others. Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes the rest of the hospitals to have more demand than before the pandemic. So the ambulances from the 9-1-1 system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
+Our interest is in the EMS systems of Mexico. In Mexico exists the \text{\text{9-1-1}} number controled by the C-5 organization (Centro de Coordinación Integral, de Control, Comando, Comunicaciones y Cómputo del Estado), which receives e\-mer\-gen\-cy calls. Some calls are for medical emergencies, others for police e\-mer\-gen\-cies, and others for fire emergencies. When a call enters the system, and an operator decides that it is a medical emergency, the operator has to determine if it is necessary to send an ambulance or not. Also, a doctor can continue the call to guide the person on the phone if the patient needs immediate attention while the ambulance arrives. Then the paramedics can attend to the patient and transfer the patient to a hospital~\cite{911_op}.
 
-We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching, considering two service providers to obtain a coordinated EMS system to solve those problems. The following sections present the background investigations about EMS sys\-tems (Chapter \ref{cap:back}) and the usually used models. We describe the problem and factors that affect the EMS system in Mexico (Chapter \ref{cap:problem}). Then, we solve the problem and define the model (Chapter \ref{cap:exper}) used to do the experiments. Finally, we show conclusions (Chapter \ref{cap:concl}) that we obtain from experiments that we describe in the previous section.
+%The problem in our country is that more than one service provider is involved in the \text{\text{9-1-1}} system. The two most important are CRUM (Centro Regulador de Urgencias Medicas) and Red Cross. There exists in some states the Proteccion Civil and the Green Cross too, but CRUM controls them. Also, other private organizations exist, but they are not involved in the \text{\text{9-1-1}} system. That is one reason why an uncoordinated system exists in our country. CRUM is part of the government, and they control the public ambulances, while Red Cross is a private organization. Each service provider decides where to locate their ambulances without consulting the other. Furthermore, when an ambulance is needed to attend an emergency call for \text{\text{9-1-1}}, CRUM has preferences because Red Cross has its private number where people can call for medical attention. Red Cross dispatch ambulances that are supposed to be available in \text{\text{9-1-1}} systems for its direct emergency calls.We could improve this uncoordinated system if each service provider made its decisions considering others. Moreover, the system has the problem of queues at hospitals, which delays the patients' attention. Since the pandemic for Covid-19 started, some hospitals attend only Covid-19 patients. That causes the rest of the hospitals to have more demand than before the pandemic. So the ambulances from the \text{\text{9-1-1}} system are busy longer than before, and it has to be considered to improve the EMS system in Mexico.
+
+We propose a two-stage stochastic programming model with recourses for ambulance location and dispatching, considering two service providers to obtain a coordinated EMS system to solve those problems. The following sections present the background investigations about EMS sys\-tems (Chapter \ref{cap:back}) and the usually used models. We describe the problem and factors that affect the EMS system in Mexico (Chapter \ref{cap:problem}). Also we describe (Chapter \ref{cap:assess}) the instance generation and experimental assessments. Then, we solve the problem and define the model (Chapter \ref{cap:Exp}) used to do the experiments. Finally, we show conclusions (Chapter \ref{cap:concl}) that we obtain from experiments described in the previous section, in this section we also propose a future work.
 
 \section{Motivation}
-Our interest is to improve the Emergency Medical Service System in Mexico, particularly in Nuevo León. World Health Organization (WHO) establishes that it has to be four ambulances per one thousand habitants, which is not available in the states throughout our country.
+Our interest is to improve the Emergency Medical Service System in Mexico, par\-ti\-cu\-lar\-ly in Nuevo León. World Health Organization (WHO) establishes that it has to be four ambulances per one thousand habitants, which is not available in the states throughout our country.
 
 Due to the lack of available ambulances, emergency calls are answered late. However, buying more ambulances so that there are a greater number of them available to distribute is not an option. Improving the distribution of ambulances, and locating and dispatching them in a better way, could improve the EMS systems.
 
@@ -47,13 +47,13 @@ We address a problem where we have to locate a limited number of two heterogeneo
 %For our UEMSS Problem, we consider scenarios with information about ac\-ci\-dents at the demand point. Each element of one scenario has information about how many BLS and ALS need each demand point, and the sum of ambulances needed can be one, two, or three ambulances for point.
 
 \section{Hypothesis}
-This investigation hypothesizes that we can model the Emergency Vehicle Covering and Planning problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system. The ambulance location and dispatching in the system are optimized.
+This investigation hypothesizes that we can model the Emergency Vehicle Covering and Planning problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the \text{9-1-1} system. The ambulance location and dispatching in the system are optimized.
 
-%This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the 9-1-1 system. The model includes characteristics of each service provider, and the decisions are taken coordinate considering these characteristics. The ambulance location and dispatching in the system are optimized.
+%This investigation hypothesizes that we can model the Uncoordinated Emergency Medical Service System Problem as a stochastic programming model with resources based on different scenarios. These scenarios consider accident types in each demand point; many of them can help know what to do when a situation occurs in the \text{9-1-1} system. The model includes characteristics of each service provider, and the decisions are taken coordinate considering these characteristics. The ambulance location and dispatching in the system are optimized.
 
 
 \section{Objectives}
-This investigation aims to improve an Emergency Medical Services System considering partial coverage. The main idea is to obtain an optimal ambulance location and optimal policies for ambulance dispatching. The system that we consider for the problem to solve includes different factors that affect the system. Those factors are:
+This investigation aims to improve an Emergency Medical Services System con\-si\-de\-ring partial coverage. The main idea is to obtain an optimal ambulance location and optimal policies for ambulance dispatching. The system that we consider for the problem to solve includes different factors that affect the system. Those factors are:
 \begin{itemize}
 
 \item Various types of accidents and variations on maximal response times depending on accident types; 
@@ -69,17 +69,23 @@ This investigation aims to improve an Emergency Medical Services System consider
 The objective for solving the problem is to create a scenario-based stochastical programming model with resources considering more than one service provider in\-vol\-ved in the system to attend incoming emergency calls. 
 
 
+\section{Scientific dissemination}
+Over these years, this investigations has been presented in different national and international conferences. National conferences are CSMIO (Congreso de la Sociedad Mexicana de Investigación de Operaciones) in the years 2021 (online), 2022, and 2023; CSMM (Congreso de la Sociedad Matemática Mexicana) in the years 2021 (online) and 2023. Also we participated in ELAVIO (Escuela Latinoamericana de Verano en Investigación Operativa) in the year 2022; the \textit{Coloquio VNL de Gráficas, Combinatoria y sus Aplicaciones} in the year 2023 and some seminars in one middle school (Preparatoria 7 Puentes) in the year 2022 and two high schools (Facultad de Ciencias Físico Matemáticas and Facultad de Ingeniería Mecánica y Eléctrica), in the year 2021 and 2024, of the UANL (Universidad Autónoma de Nuevo León). The international conferences are CLAIO (Latin-Iberoamerican Conference on Operations Research) in the year 2024; and the INFORMS ALIO-ASOCIO International Conference also in the year 2024.
+
+An article of this investigation has been accepted.  
+
+
 \chapter{Background}\label{cap:back}
 
 Emergency Medical Services (EMS) systems provide basic but urgent in-situ medical care for people who suffer a medical incident and then transport patients to hospitals \citep{aringhieri2017emergency, belanger2019recent, reuter2017logistics}. When scientists talk about EMS systems, many terms explain the problem. Two of these terms are demand points and potential sites. Demand points are sites where an emergency call is usually done. Commonly, there is a different demand for each point depending on the number of calls made within a period. Potential sites are places where a vehicle (ambulance) could be located if necessary to cover some demand points either statically or dynamically.
 
-The first phase of an EMS is the response to an emergency call by an operator that identifies the emergency type: accident, medical, security, fire, etc. The second phase is dispatching one or several ambulances to the emergency scene to provide urgent medical care. Some emergency situations, such as a multiple-car accident, may involve several people; thus, more than one ambulance could be needed. Moreover, different types of ambulances may be required in an emergency: Basic Life Support (BLS), usually with two Emergency Medical Technicians (EMTs), and Advanced Life Support (ALS) units with an EMT, an advanced EMT, and one or two Paramedics. The third phase involves the paramedics' treatment of the patients and transporting them to a hospital~\citep{aringhieri2017emergency}. 
+The first phase of an EMS is the response to an emergency call by an operator that identifies the emergency type: accident, medical, security, fire, etc. The second phase is dispatching one or several ambulances to the emergency scene to provide urgent medical care. Some emergency situations, such as a multiple-car accident, may involve several people; thus, more than one ambulance could be needed. More\-over, different types of ambulances may be required in an emergency: Basic Life Support (BLS), usually with two Emergency Medical Technicians (EMTs), and Advanced Life Support (ALS) units with an EMT, an advanced EMT, and one or two Paramedics. The third phase involves the paramedics' treatment of the patients and transporting them to a hospital~\citep{aringhieri2017emergency}. 
 
 EMS systems in developing countries, as is the case in Mexico, lack around 30-60\%\footnote{Anonymous interviews done by the authors.} of the number of ambulances suggested by the World Health Organization (WHO), which is at least four ambulances per 100,000 people \citep{braun1990characteristics}. For the Red Cross, an EMS operating with this small number of ambulances is considered similar to a war situation$^1$. Thus, one of the main contributions of this work is to deal with the problem of deciding if an emergency will be totally or partially covered. Sadly, some emergencies may remain uncovered by an emergency unit. 
 
 Commonly, emergency vehicle planning problems' main objective is to reduce the average response time of a patient's initial treatment given by a paramedic in an emergency \citep{amorim2019traffic, bandara2012optimal,toro2013joint, toro2015reducing}. Indeed, the quickness and the number of ambulances dispatched to the accidents are crucial. Each ambulance has a response time for travel from the potential site where it is located to the demand point where the patient will be cared for. Every minute of treatment delay in a cardiac patient reduces the survival probability by 24\% \citep{o2010role}.  
 
-There are many models to solve the problems of EMS systems divided into deterministic, probabilistic, and stochastic problems, which use different solution methods to solve them. The first problems that we studied are the statics. 
+There are many models to solve the problems of EMS systems divided into deterministic, probabilistic, and stochastic problems, which use different solution methods to solve them \cite{brotcorne2003ambulance}. The first problems that we studied are the statics. 
 
 \section{Static models}
 
@@ -120,9 +126,9 @@ Later, Albert and Mayorga et al. used the performance measures as an input of th
 
 When talking about optimizing EMS systems, one can also speak about dis\-pat\-ching. Bandara et al. \cite{bandara2012optimal} considers demand priorities for the different emergency calls arriving at the system. The objective is to maximize the patient's survival probability when an ambulance is dispatched to demand points, calculating a reward for each dispatch. They used a Markov Decision Process model formulation to determine the optimal dispatching strategies for an EMS system.
 
-\cite{toro2013joint} involves location and dispatching decisions for EMS vehicles in the same mathematical model with two focuses, minimizing the mean response time that takes since an emergency call is received and maximizing the expected coverage demand, using a continuous-time Markov process to balancing flow equations needed to control the busy fraction for each ambulance. Balancing these equations takes exponential time, and authors consider a genetic algorithm to obtain some solutions and combine them to create new solutions to reduce the computational time. This genetic algorithm was applied to Hanover, Virginia, and when they have mid-size problems, the nearest dispatch rule is the best solution. It can vary depending on the zone where it is applied.
+\citet{toro2013joint} involves location and dispatching decisions for EMS vehicles in the same mathematical model with two focuses, minimizing the mean response time that takes since an emergency call is received and maximizing the expected coverage demand, using a continuous-time Markov process to balancing flow e\-qua\-tions needed to control the busy fraction for each ambulance. Balancing these equations takes exponential time, and authors consider a genetic algorithm to obtain some solutions and combine them to create new solutions to reduce the computational time. This genetic algorithm was applied to Hanover, Virginia, and when they have mid-size problems, the nearest dispatch rule is the best solution. It can vary depending on the zone where it is applied.
 
-\cite{amorim2019traffic} involve a simulation inputting an initial solution to decide if ambulances have to stay at the potential sites establishes when the mathematical model is solved or if some of them have to be moved to another potential site. To decide how to proceed, they used different day's period times when traffic in the city is changing on each week's days, which they called \textit{scenarios}, to maximize the patient's survival. 
+\citet{amorim2019traffic} involve a simulation inputting an initial solution to decide if ambulances have to stay at the potential sites establishes when the mathematical model is solved or if some of them have to be moved to another potential site. To decide how to proceed, they used different day's period times when traffic in the city is changing on each week's days, which they called \textit{scenarios}, to maximize the patient's survival. 
 
 Transitioning from probabilistic models to scenario-based models in the management of EMS systems is imperative, as scenarios provide a more robust framework for addressing uncertainty. Probabilistic models frequently require assumptions regarding the likelihood of various events, such as the busy fraction of ambulances, which can be challenging to estimate accurately and may not adequately capture real-world complexities. In contrast, scenario-based models allow for the incorporation of various demand and traffic conditions, enabling more realistic and flexible planning. By utilizing scenarios, researchers can ensure a more reliable and adaptive emergency response system, improving also dispatching decisions, as we can see in the next section.
 
@@ -137,6 +143,9 @@ Later, Bertsimas and Ng \cite{bertsimas2019robust} implemented stochastic and ro
 Recently, Yoon et al. \cite{yoon2021stochastic} studied a two-stage stochastic problem for locating and dispatching two types of emergency vehicles: ALS and BLS. The first stage locates the ambulances at potential sites, while the second stage dispatch ambulances from places where they were located to demand points when a call arrives. The objective is to maximize the expected coverage considering a penalty when a call is not serviced. One difference from other problems is that the system manages multiple emergency call responses, divided into high priority and low priority calls. Any vehicle type can serve low priority calls. However, high-priority calls have two options for the service: the first option is that these calls can be responded to an ALS ambulance. The second option is that a nearby BLS ambulance can service the call first, followed by an ALS ambulance that is not necessarily closed. An SAA deterministic equivalent formulation solved this problem for small data, while a Branch-and-Benders-Cut Solution solved a large-scale problem. And they did another problem version considering non-transport vehicles which can attend patients without translating them to hospitals.
 
 Some works propose stochastic programming models based on call-arrival sce\-na\-rios as a bundle of calls, the total number of emergency calls in each demand node during a given period. As we do in this work, a two-stage stochastic program deploys the ambulances in the first stage and dispatches them to respond to demand in the second stage. \citet{beraldi2009probabilistic} and \citet{noyan2010alternate} induce a reliability approach by using probabilistic constraints. \citet{nickel2016ambulance} minimize the total cost of locating the ambulances while assuring a minimum coverage level. By considering a bundle of calls, they address the volume of calls during a short period, such as the Friday night hours. \citet{bertsimas2019robust} implemented stochastic and robust formulations for ambulance deployment and dispatch to minimize the fraction of late arrivals without requiring ambulances to be relocated, sending to demand points the closest available ambulance, and maintaining a call at a queue if there are no ambulances available at the system. 
+
+\section{Heuristics}
+AGREGAR AQUÍ INFORMACIÓN SOBRE ESTOS PROCEDIMIENTOS
 
 All the information gathered will be utilized collectively to formulate a novel problem that can integrate and utilize the previously mentioned knowledge and strategies. This approach aims to provide a comprehensive and advanced method for optimizing EMS systems.
 
@@ -577,11 +586,11 @@ The next section compares the MEC, MEC(SABC), and even the SABC solutions.
 
 %\chapter{Solution description}
 
-\chapter{Experimental assessment}\label{Exp}
+\chapter{Experimental assessment}\label{cap:assess}
 
   This chapter presents an empirical assessment of models and the solution methodology previously described to solve the EVCP problem.  
 We used Gurobi Optimizer 10.0.2 with Python 3.10 to solve the integer programming models MEC, SABC, and MEC(SABC).
-The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers had a CPU time limit of 10800 seconds. For SABC Matheuristic the solver had a CPU limit of 300 seconds for neighbor's evaluation and 10800 (\textbf{CHECAR}) second in total.
+The experiments were carried out on an Intel Core i7 at 3.1~GHz with 16~GB of RAM under the macOS Catalina 10.15.7 operating system. Each execution of the integer linear programming solvers had a CPU time limit of 10800 seconds. For SABC Matheuristic the solver had a CPU limit of 300 seconds for neighbor's evaluation and 10800 second in total.
 
 \section{Instance generation} \label{instances}
 
@@ -1314,6 +1323,7 @@ The percentage of emergency coverage for all instances is presented with the equ
 \caption{Coverage MEC.}
 \label{Cov_MEC}
 \end{figure}
+
    
 
 %\begin{figure}[htb]
@@ -1329,45 +1339,81 @@ Figure \ref{Cov_M2M1} shows that the SBFM is robust in terms of the number of sc
 \begin{figure}[H]
 \centering
 \footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16.pdf}}{$|L|=16$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_16_1.pdf}}{$|L|=16$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50.pdf}}{$|L|=50$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_50_1.pdf}}{$|L|=50$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100.pdf}}{$|L|=100$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/M2M1/Cov_M2M1_100_1.pdf}}{$|L|=100$}
 \caption{Coverage M2M1.}
 \label{Cov_M2M1}
 \end{figure}
 
-For the SABC MAtheuristic the coverage results are in Figure \ref{Cov_Math}. As we saw in Figure \ref{Cov_M2M1}, SABC Matheuristic tends to have a large partial coverage. The results are for the best neighbor found throughout the matheuristic, which has not a significant difference to the MEC(SABC) results.
+For the SABC Matheuristic the coverage results are in Figure \ref{Cov_Math}. As we saw in Figure \ref{Cov_M2M1}, SABC Matheuristic tends to have a large partial coverage. The results are for the best neighbor found throughout the matheuristic, which has not a significant difference to the MEC(SABC) results.
 
 \begin{figure}[H]
 \centering
 \footnotesize
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_16.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_16.pdf}}{$|L|=16$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_16_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_50.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_16_1.pdf}}{$|L|=16$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_50.pdf}}{$|L|=50$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_50_1.pdf}}{}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_100.pdf}}{}%
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_50_1.pdf}}{$|L|=50$}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_100.pdf}}{$|L|=100$}%
 \hspace{0.4cm}%
 \vspace{0.4cm}
-\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_100_1.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.42\textwidth]{Imagenes_Tesis/Math/Cov_Math_100_1.pdf}}{$|L|=100$}
 \caption{Coverage Math.}
 \label{Cov_Math}
 \end{figure}
 
 
 %\subsection{Number of ambulances available in the system}\label{num amb}
+
+ All the previous experiments were executed with the number of ambulances equal to $(\eta_1,\eta_2)=   (35,20) $. A central feature of the EVCP problem is that an ALS ambulance can be sent instead of the BLS one, which gives a more flexible setting but may induce difficulty when solving the models. 
+ Thus, what is the effect of the number of available ambulances in the EVCP problem on the objective function value and the running time?
+
+For a preliminary evaluation we launched experiments changing the number of ambulances for the MEC problem considering $|L|=16$ potential sites for all sizes of demand points and scenarios. Figure \ref{Obj_Prelim} presents objective values. As we expected, the number of ambulances increases the gap between best objective and best bound found in some cases, mostly when the number of scenarios increases for  $(\eta_1,\eta_2)$=(10,6) and (20,11). Although, as the number of ambulances increases, the gap decreases, and we decided to reduce our instances set considering just $(\eta_1,\eta_2)$=(35,20) to obtain more realistic results according to the number of ambulances in our case of the EMS system in Nuevo León. Besides, in Figure \ref{Time_Prelim} we can see there is a none significant difference for the runtime varying the number of ambulances so considering a few number of them does not help the model to use a low computational time.
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Objval_10_6.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Objval_20_11.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Objval_35_20.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\caption{Objective preliminar.}
+\label{Obj_Prelim}
+\end{figure}
+  
+  
+\begin{figure}[H]
+\centering
+\footnotesize
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Timeval_10_6.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Timeval_20_11.pdf}}{}
+\stackunder[4pt]{\includegraphics[width=0.48\textwidth]{Imagenes_Tesis/Preliminar/Timeval_35_20.pdf}}{}%
+\hspace{0.4cm}%
+\vspace{0.4cm}
+\caption{Time preliminar.}
+\label{Time_Prelim}
+\end{figure}
+
+ We execute all the instances with emergency demand points fixed to 900, 100 scenarios, and 50 ambulance location sites. For this experiment, we vary the number of ambulances. Figure \ref{fig:amb} shows two columns of two plots each. The objective value (upper plots) and the running time (lower plots) are on the y-axis, while the x-axis varies the number of ambulances: $(\eta_1,\eta_2)$=(10,6), (20,11), and  $(\eta_1,\eta_2)$=m,(35,20). The left plots correspond to the MEC stochastic model, while the right ones are for the SBFM. 
 
 
 \begin{figure}[htb]
@@ -1377,15 +1423,8 @@ For the SABC MAtheuristic the coverage results are in Figure \ref{Cov_Math}. As 
     \label{fig:amb}
 \end{figure}
 
- All the previous experiments were executed with the number of ambulances equal to $(\eta_1,\eta_2)=   (35,20) $. A central feature of the EVCP problem is that an ALS ambulance can be sent instead of the BLS one, which gives a more flexible setting but may induce difficulty when solving the models. 
- Thus, what is the effect of the number of available ambulances in the EVCP problem on the objective function value and the running time?
 
-  
- We execute all the instances with emergency demand points fixed to 900, 100 scenarios, and 50 ambulance location sites. For this experiment, we vary the number of ambulances. Figure \ref{fig:amb} shows two columns of two plots each. The objective value (upper plots) and the running time (lower plots) are on the y-axis, while the x-axis varies the number of ambulances: $(\eta_1,\eta_2)$=(10,6), (20,11), and  $(\eta_1,\eta_2)$=m,(35,20). The left plots correspond to the MEC stochastic model, while the right ones are for the SBFM. 
-
- From Figure \ref{fig:amb}a, we observe that the difference between the best objective and the best bound for the MEC model (left-hand side plots) slightly increases with the number of ambulances. Thus, the larger the number of ambulances, the harder the instances for the MEC model. Furthermore, the time limit is reached for every tested instance of the MEC model. For the SBFM, the relative optimality gaps are equal to 0 for all instances. Moreover, the objective values are comparable to the MEC model for all different ambulance settings, which is a prominent characteristic. Furthermore, under the SBFM, all instances are solved in less than one minute, and this time is unaffected by the number of ambulances.  
-
-\textbf{REVISAR ALGUNOS RESULTADOS DE TODOS LOS DEMÁS EXPERIMENTOS CON LAS DIFERENTES CANTIDADES DE LAS AMBULANCIAS}
+From Figure \ref{fig:amb}a, we observe that the difference between the best objective and the best bound for the MEC model (left-hand side plots) slightly increases with the number of ambulances. Thus, the larger the number of ambulances, the harder the instances for the MEC model. Furthermore, the time limit is reached for every tested instance of the MEC model. For the SBFM, the relative optimality gaps are equal to 0 for all instances. Moreover, the objective values are comparable to the MEC model for all different ambulance settings, which is a prominent characteristic. Furthermore, under the SBFM, all instances are solved in less than one minute, and this time is unaffected by the number of ambulances.  
 
 %\section{Coverage}
 %\begin{figure}[H]
@@ -1748,5 +1787,3 @@ Our future work involves more than one service provider in the system, consideri
 To solve the preliminar model and future models, we will include Benders cuts or another solution method that we are studying. The difficulty is that our problem considers integer and binary variables, which are not the same as models in the literature.
 
 Also, we want to include queues at hospitals. During the beginning of the Covid-19 pandemic, some hospitals only attended to Covid-19 patients, which caused other hospitals to have ambulance queues due to overdemand. This time wasted waiting for attention affects ambulance availability and has to be counted in the EMS system. 
-%\]
-%\end{document}

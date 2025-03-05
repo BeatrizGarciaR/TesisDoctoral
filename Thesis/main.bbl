@@ -1,9 +1,14 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{49}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[911(2017)]{911_op}
+Así opera el 911 ante una llamada de emergencia.
+\newblock \url{https://www.excelsior.com.mx/nacional/2017/01/19/1140428}, 2017.
+\newblock Accessed: (04/03/2025).
 
 \bibitem[Aboueljinane et~al.(2013)Aboueljinane, Sahin, and
   Jemai]{aboueljinane2013review}
@@ -12,6 +17,13 @@ L.~Aboueljinane, E.~Sahin, and Z.~Jemai.
   operations.
 \newblock \emph{Computers \& Industrial Engineering}, 66\penalty0 (4):\penalty0
   734--750, 2013.
+
+\bibitem[Ahlenius et~al.(2017)Ahlenius, Lindstr{\"o}m, and
+  Vicente]{ahlenius2017patients}
+Marie Ahlenius, Veronica Lindstr{\"o}m, and Veronica Vicente.
+\newblock Patients’ experience of being badly treated in the ambulance
+  service: A qualitative study of deviation reports in sweden.
+\newblock \emph{International emergency nursing}, 30:\penalty0 25--30, 2017.
 
 \bibitem[Amorim et~al.(2019)Amorim, Ferreira, and Couto]{amorim2019traffic}
 M.~Amorim, S.~Ferreira, and A.~Couto.
@@ -39,6 +51,11 @@ G.~Bakalos, M.~Mamali, C.~Komninos, E~Koukou, A.~Tsantilas, S.~Tzima, and
 \newblock Advanced life support versus basic life support in the pre-hospital
   setting: A meta-analysis.
 \newblock \emph{Resuscitation}, 82\penalty0 (9):\penalty0 1130--1137, 2011.
+
+\bibitem[Ball and Lin(1993)]{ball1993reliability}
+Michael~O Ball and Feng~L Lin.
+\newblock A reliability model applied to emergency service vehicle location.
+\newblock \emph{Operations research}, 41\penalty0 (1):\penalty0 18--36, 1993.
 
 \bibitem[Bandara et~al.(2012)Bandara, Mayorga, and McLay]{bandara2012optimal}
 D.~Bandara, M.~E. Mayorga, and L.~A. McLay.
@@ -74,6 +91,13 @@ D.~Bertsimas and Y.~Ng.
 \newblock \emph{European Journal of Operational Research}, 279\penalty0
   (2):\penalty0 557--571, 2019.
 
+\bibitem[Blackwell and Kaufman(2002)]{blackwell2002response}
+Thomas~H Blackwell and Jay~S Kaufman.
+\newblock Response time effectiveness: comparison of response time and survival
+  in an urban emergency medical services system.
+\newblock \emph{Academic Emergency Medicine}, 9\penalty0 (4):\penalty0
+  288--295, 2002.
+
 \bibitem[Boujemaa et~al.(2018)Boujemaa, Jebali, Hammami, Ruiz, and
   Bouchriha]{boujemaa2018stochastic}
 R.~Boujemaa, A.~Jebali, S.~Hammami, A.~Ruiz, and H.~Bouchriha.
@@ -96,6 +120,17 @@ L.~Brotcorne, G.~Laporte, and F.~Semet.
 \newblock \emph{European journal of operational research}, 147\penalty0
   (3):\penalty0 451--463, 2003.
 
+\bibitem[Chanta et~al.(2014)Chanta, Mayorga, and McLay]{chanta2014improving}
+Sunarin Chanta, Maria~E Mayorga, and Laura~A McLay.
+\newblock Improving emergency service in rural areas: a bi-objective covering
+  location model for ems systems.
+\newblock \emph{Annals of Operations Research}, 221:\penalty0 133--159, 2014.
+
+\bibitem[Cook(2023)]{neil2023}
+Neil Cook.
+\newblock Multiple operational resource on scene procedure.
+\newblock \emph{NHS Foundation Trust}, 2023.
+
 \bibitem[Dibene et~al.(2017)Dibene, Maldonado, Vera, de~Oliveira, Trujillo, and
   Sch{\"u}tze]{dibene2017optimizing}
 J.~C. Dibene, Y.~Maldonado, C.~Vera, M.~de~Oliveira, L.~Trujillo, and
@@ -111,6 +146,17 @@ R.~D. Galvao and R.~Morabito.
 \newblock \emph{International Transactions in Operational Research},
   15\penalty0 (5):\penalty0 525--549, 2008.
 
+\bibitem[Garc{\'\i}a-Alfranca et~al.(2018)Garc{\'\i}a-Alfranca, Puig, Galup,
+  Aguado, Cerd{\'a}, Guilabert, P{\'e}rez-Jover, Carrillo, and
+  Mira]{garcia2018patient}
+Fernando Garc{\'\i}a-Alfranca, Anna Puig, Carles Galup, Hortensia Aguado,
+  Ismael Cerd{\'a}, Mercedes Guilabert, Virtudes P{\'e}rez-Jover, Irene
+  Carrillo, and Jos{\'e}~Joaqu{\'\i}n Mira.
+\newblock Patient satisfaction with pre-hospital emergency services. a
+  qualitative study comparing professionals’ and patients’ views.
+\newblock \emph{International journal of environmental research and public
+  health}, 15\penalty0 (2):\penalty0 233, 2018.
+
 \bibitem[Grannan et~al.(2015)Grannan, Bastian, and McLay]{grannan2015maximum}
 B.~C. Grannan, N.~D. Bastian, and L.~A. McLay.
 \newblock A maximum expected covering problem for locating and dispatching two
@@ -125,12 +171,26 @@ P.~J.~H. Hulshof, N.~Kortbeek, R.~J. Boucherie, E.~W. Hans, and P.~J.~M.
   structured review of the state of the art in or/ms.
 \newblock \emph{Health systems}, 1\penalty0 (2):\penalty0 129--175, 2012.
 
+\bibitem[Kabene et~al.(2006)Kabene, Orchard, Howard, Soriano, and
+  Leduc]{kabene2006importance}
+Stefane~M Kabene, Carole Orchard, John~M Howard, Mark~A Soriano, and Raymond
+  Leduc.
+\newblock The importance of human resources management in health care: a global
+  context.
+\newblock \emph{Human resources for health}, 4:\penalty0 1--17, 2006.
+
 \bibitem[Karasakal and Karasakal(2004)]{karasakal2004maximal}
 O.~Karasakal and E.~K. Karasakal.
 \newblock A maximal covering location model in the presence of partial
   coverage.
 \newblock \emph{Computers \& Operations Research}, 31\penalty0 (9):\penalty0
   1515--1526, 2004.
+
+\bibitem[Layton()]{911_Unk}
+Julia Layton.
+\newblock How 9-1-1 works.
+\newblock \url{https://people.howstuffworks.com/9-1-1.htm}.
+\newblock Accessed: (04/03/2025).
 
 \bibitem[Li et~al.(2011)Li, Zhao, Zhu, and Wyatt]{li2011covering}
 X.~Li, Z.~Zhao, X.~Zhu, and T.~Wyatt.
@@ -187,6 +247,13 @@ C.~O'Keeffe, J.~Nicholl, J.~Turner, and S.~Goodacre.
   out-of-hospital cardiac arrest.
 \newblock \emph{Emergency Medicine Journal}, 28\penalty0 (8):\penalty0
   703--706, 2011.
+
+\bibitem[Olave-Rojas and Nickel(2021)]{olave2021modeling}
+David Olave-Rojas and Stefan Nickel.
+\newblock Modeling a pre-hospital emergency medical service using hybrid
+  simulation and a machine learning approach.
+\newblock \emph{Simulation Modelling Practice and Theory}, 109:\penalty0
+  102302, 2021.
 
 \bibitem[Reuter-Oppermann et~al.(2017)Reuter-Oppermann, van~den Berg, and
   Vile]{reuter2017logistics}
@@ -250,6 +317,15 @@ S.~Yoon, L.~A. Albert, and V.~M. White.
   types of ambulances.
 \newblock \emph{Transportation Science}, 55\penalty0 (2):\penalty0 275--296,
   2021.
+
+\bibitem[Zaffar et~al.(2016)Zaffar, Rajagopalan, Saydam, Mayorga, and
+  Sharer]{zaffar2016coverage}
+Muhammad~Adeel Zaffar, Hari~K Rajagopalan, Cem Saydam, Maria Mayorga, and
+  Elizabeth Sharer.
+\newblock Coverage, survivability or response time: A comparative study of
+  performance statistics used in ambulance location models via
+  simulation--optimization.
+\newblock \emph{Operations research for health care}, 11:\penalty0 1--12, 2016.
 
 \bibitem[Zhang et~al.(2023)Zhang, Li, and Zhao]{zhang2023multi}
 Y.~Zhang, Z.~Li, and Y.~Zhao.

@@ -99,45 +99,56 @@ Repeated entry---line 682 of file Biblio.bib
  : @article{yoon2021stochastic
  :                            ,
 I'm skipping whatever remains of this entry
-You've used 38 entries,
+You're missing a field part---line 707 of file Biblio.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 897 of file Biblio.bib
+ : @article{sung2018scenario
+ :                          ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in 911_op
+Warning--empty year in 911_Unk
+You've used 49 entries,
             2773 wiz_defined-function locations,
-            836 strings with 11853 characters,
-and the built_in function-call counts, 19446 in all, are:
-= -- 1760
-> -- 1199
-< -- 11
-+ -- 401
-- -- 363
-* -- 1768
-:= -- 2991
-add.period$ -- 114
-call.type$ -- 38
-change.case$ -- 235
-chr.to.int$ -- 38
-cite$ -- 76
-duplicate$ -- 787
-empty$ -- 1531
-format.name$ -- 419
-if$ -- 3990
+            897 strings with 14161 characters,
+and the built_in function-call counts, 24505 in all, are:
+= -- 2208
+> -- 1522
+< -- 16
++ -- 511
+- -- 462
+* -- 2189
+:= -- 3770
+add.period$ -- 148
+call.type$ -- 49
+change.case$ -- 301
+chr.to.int$ -- 49
+cite$ -- 101
+duplicate$ -- 1001
+empty$ -- 1933
+format.name$ -- 534
+if$ -- 5038
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 38
-newline$ -- 198
-num.names$ -- 152
-pop$ -- 396
+missing$ -- 47
+newline$ -- 254
+num.names$ -- 192
+pop$ -- 528
 preamble$ -- 1
-purify$ -- 197
+purify$ -- 252
 quote$ -- 0
-skip$ -- 596
+skip$ -- 763
 stack$ -- 0
-substring$ -- 1000
-swap$ -- 38
+substring$ -- 1170
+swap$ -- 49
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 418
-warning$ -- 0
-while$ -- 188
+type$ -- 539
+warning$ -- 2
+while$ -- 232
 width$ -- 0
-write$ -- 501
-(There were 20 error messages)
+write$ -- 642
+(There were 22 error messages)
