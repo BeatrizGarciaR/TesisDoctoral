@@ -19,136 +19,136 @@ Reallocating 'name_of_file' (item size: 1) to 7 items.
 Reallocating 'name_of_file' (item size: 1) to 18 items.
 A level-1 auxiliary file: Autobiografia.aux
 Database file #1: Biblio.bib
-Repeated entry---line 281 of file Biblio.bib
+Repeated entry---line 352 of file Biblio.bib
  : @article{brotcorne2003ambulance
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 292 of file Biblio.bib
+Repeated entry---line 363 of file Biblio.bib
  : @article{mclay2012hanover
  :                          ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 304 of file Biblio.bib
+Repeated entry---line 375 of file Biblio.bib
  : @article{berman2003gradual
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 315 of file Biblio.bib
+Repeated entry---line 386 of file Biblio.bib
  : @article{karasakal2004maximal
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 326 of file Biblio.bib
+Repeated entry---line 397 of file Biblio.bib
  : @article{galvao2008emergency
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 349 of file Biblio.bib
+Repeated entry---line 420 of file Biblio.bib
  : @article{mclay2010evaluating
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 360 of file Biblio.bib
+Repeated entry---line 431 of file Biblio.bib
  : @article{mclay2011evaluating
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 371 of file Biblio.bib
+Repeated entry---line 442 of file Biblio.bib
  : @article{li2011covering
  :                        ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 417 of file Biblio.bib
+Repeated entry---line 488 of file Biblio.bib
  : @article{boujemaa2018stochastic
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 522 of file Biblio.bib
+Repeated entry---line 593 of file Biblio.bib
  : @article{belanger2019recent
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 547 of file Biblio.bib
+Repeated entry---line 618 of file Biblio.bib
  : @article{brotcorne2003ambulance
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 582 of file Biblio.bib
+Repeated entry---line 653 of file Biblio.bib
  : @article{hulshof2012taxonomic
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 593 of file Biblio.bib
+Repeated entry---line 664 of file Biblio.bib
  : @article{bandara2012optimal
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 606 of file Biblio.bib
+Repeated entry---line 677 of file Biblio.bib
  : @article{aboueljinane2013review
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 617 of file Biblio.bib
+Repeated entry---line 688 of file Biblio.bib
  : @article{toro2013joint
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 640 of file Biblio.bib
+Repeated entry---line 711 of file Biblio.bib
  : @article{wang2016new
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 650 of file Biblio.bib
+Repeated entry---line 721 of file Biblio.bib
  : @article{dibene2017optimizing
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 661 of file Biblio.bib
+Repeated entry---line 732 of file Biblio.bib
  : @article{amorim2019traffic
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 671 of file Biblio.bib
+Repeated entry---line 742 of file Biblio.bib
  : @article{bertsimas2019robust
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 682 of file Biblio.bib
+Repeated entry---line 753 of file Biblio.bib
  : @article{yoon2021stochastic
  :                            ,
 I'm skipping whatever remains of this entry
-You're missing a field part---line 707 of file Biblio.bib
+You're missing a field part---line 778 of file Biblio.bib
  : 
  : }
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 897 of file Biblio.bib
+Repeated entry---line 968 of file Biblio.bib
  : @article{sung2018scenario
  :                          ,
 I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in 911_op
 Warning--empty year in 911_Unk
-You've used 49 entries,
+You've used 56 entries,
             2773 wiz_defined-function locations,
-            897 strings with 14161 characters,
-and the built_in function-call counts, 24505 in all, are:
-= -- 2208
-> -- 1522
-< -- 16
-+ -- 511
-- -- 462
-* -- 2189
-:= -- 3770
-add.period$ -- 148
-call.type$ -- 49
-change.case$ -- 301
-chr.to.int$ -- 49
-cite$ -- 101
-duplicate$ -- 1001
-empty$ -- 1933
-format.name$ -- 534
-if$ -- 5038
+            933 strings with 15680 characters,
+and the built_in function-call counts, 27973 in all, are:
+= -- 2512
+> -- 1748
+< -- 19
++ -- 587
+- -- 531
+* -- 2489
+:= -- 4309
+add.period$ -- 170
+call.type$ -- 56
+change.case$ -- 344
+chr.to.int$ -- 56
+cite$ -- 115
+duplicate$ -- 1152
+empty$ -- 2205
+format.name$ -- 612
+if$ -- 5756
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 47
-newline$ -- 254
-num.names$ -- 192
-pop$ -- 528
+missing$ -- 55
+newline$ -- 289
+num.names$ -- 220
+pop$ -- 614
 preamble$ -- 1
-purify$ -- 252
+purify$ -- 289
 quote$ -- 0
-skip$ -- 763
+skip$ -- 872
 stack$ -- 0
-substring$ -- 1170
-swap$ -- 49
-text.length$ -- 0
+substring$ -- 1299
+swap$ -- 60
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 539
+type$ -- 611
 warning$ -- 2
-while$ -- 232
+while$ -- 264
 width$ -- 0
-write$ -- 642
+write$ -- 733
 (There were 22 error messages)

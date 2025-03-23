@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -91,6 +91,11 @@ D.~Bertsimas and Y.~Ng.
 \newblock \emph{European Journal of Operational Research}, 279\penalty0
   (2):\penalty0 557--571, 2019.
 
+\bibitem[Birge and Louveaux(2011)]{birge2011introduction}
+John~R Birge and Francois Louveaux.
+\newblock \emph{Introduction to stochastic programming}.
+\newblock Springer Science \& Business Media, 2011.
+
 \bibitem[Blackwell and Kaufman(2002)]{blackwell2002response}
 Thomas~H Blackwell and Jay~S Kaufman.
 \newblock Response time effectiveness: comparison of response time and survival
@@ -120,6 +125,13 @@ L.~Brotcorne, G.~Laporte, and F.~Semet.
 \newblock \emph{European journal of operational research}, 147\penalty0
   (3):\penalty0 451--463, 2003.
 
+\bibitem[Chanta et~al.(2012)Chanta, Mayorga, and McLay]{chanta2012hybrid}
+Sunarin Chanta, Maria Mayorga, and Laura McLay.
+\newblock A hybrid tabu search for locating and dispatching emergency response
+  units using an imbedded queuing model.
+\newblock In \emph{IISE Annual Conference. Proceedings}, page~1. Institute of
+  Industrial and Systems Engineers (IISE), 2012.
+
 \bibitem[Chanta et~al.(2014)Chanta, Mayorga, and McLay]{chanta2014improving}
 Sunarin Chanta, Maria~E Mayorga, and Laura~A McLay.
 \newblock Improving emergency service in rural areas: a bi-objective covering
@@ -138,6 +150,14 @@ J.~C. Dibene, Y.~Maldonado, C.~Vera, M.~de~Oliveira, L.~Trujillo, and
 \newblock Optimizing the location of ambulances in tijuana, mexico.
 \newblock \emph{Computers in biology and medicine}, 80:\penalty0 107--115,
   2017.
+
+\bibitem[Enayati et~al.(2019)Enayati, Mayorga, Toro-D{\'\i}az, and
+  Albert]{enayati2019identifying}
+Shakiba Enayati, Maria~E Mayorga, Hector Toro-D{\'\i}az, and Laura~A Albert.
+\newblock Identifying trade-offs in equity and efficiency for simultaneously
+  optimizing location and multipriority dispatch of ambulances.
+\newblock \emph{International Transactions in Operational Research},
+  26\penalty0 (2):\penalty0 415--438, 2019.
 
 \bibitem[Galvao and Morabito(2008)]{galvao2008emergency}
 R.~D. Galvao and R.~Morabito.
@@ -163,6 +183,22 @@ B.~C. Grannan, N.~D. Bastian, and L.~A. McLay.
   classes of military medical evacuation air assets.
 \newblock \emph{Optimization Letters}, 9:\penalty0 1511--1531, 2015.
 
+\bibitem[Gruler et~al.(2020)Gruler, Panadero, de~Armas, P{\'e}rez, and
+  Juan]{gruler2020variable}
+Aljoscha Gruler, Javier Panadero, Jesica de~Armas, Jos{\'e} A~Moreno P{\'e}rez,
+  and Angel~A Juan.
+\newblock A variable neighborhood search simheuristic for the multiperiod
+  inventory routing problem with stochastic demands.
+\newblock \emph{International Transactions in Operational Research},
+  27\penalty0 (1):\penalty0 314--335, 2020.
+
+\bibitem[Gutjahr(2011)]{gutjahr2011recent}
+Walter~J Gutjahr.
+\newblock Recent trends in metaheuristics for stochastic combinatorial
+  optimization.
+\newblock \emph{Central European Journal of Computer Science}, 1:\penalty0
+  58--66, 2011.
+
 \bibitem[Hulshof et~al.(2012)Hulshof, Kortbeek, Boucherie, Hans, and
   Bakker]{hulshof2012taxonomic}
 P.~J.~H. Hulshof, N.~Kortbeek, R.~J. Boucherie, E.~W. Hans, and P.~J.~M.
@@ -170,6 +206,14 @@ P.~J.~H. Hulshof, N.~Kortbeek, R.~J. Boucherie, E.~W. Hans, and P.~J.~M.
 \newblock Taxonomic classification of planning decisions in health care: a
   structured review of the state of the art in or/ms.
 \newblock \emph{Health systems}, 1\penalty0 (2):\penalty0 129--175, 2012.
+
+\bibitem[Juan et~al.(2015)Juan, Faulin, Grasman, Rabe, and
+  Figueira]{juan2015review}
+Angel~A Juan, Javier Faulin, Scott~E Grasman, Markus Rabe, and Gon{\c{c}}alo
+  Figueira.
+\newblock A review of simheuristics: Extending metaheuristics to deal with
+  stochastic combinatorial optimization problems.
+\newblock \emph{Operations Research Perspectives}, 2:\penalty0 62--72, 2015.
 
 \bibitem[Kabene et~al.(2006)Kabene, Orchard, Howard, Soriano, and
   Leduc]{kabene2006importance}
@@ -260,6 +304,14 @@ David Olave-Rojas and Stefan Nickel.
 M.~Reuter-Oppermann, P.~L. van~den Berg, and J.~L. Vile.
 \newblock Logistics for emergency medical service systems.
 \newblock \emph{Health Systems}, 6\penalty0 (3):\penalty0 187--208, 2017.
+
+\bibitem[Schermer et~al.(2019)Schermer, Moeini, and
+  Wendt]{schermer2019matheuristic}
+Daniel Schermer, Mahdi Moeini, and Oliver Wendt.
+\newblock A matheuristic for the vehicle routing problem with drones and its
+  variants.
+\newblock \emph{Transportation Research Part C: Emerging Technologies},
+  106:\penalty0 166--204, 2019.
 
 \bibitem[Shaw et~al.(2022)Shaw, Das, and Roy]{shaw2022location}
 L.~Shaw, S.~K. Das, and S.~K. Roy.

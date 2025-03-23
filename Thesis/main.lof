@@ -5,21 +5,21 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces An Emergency Medical Service System Process.}}{1}{figure.1.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau $. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau ,\tau _{\max })$.}}{17}{figure.3.1}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Two different coverage cases for a scenario $s\in S$ where $i\in I^s$ requires $a_{1i}^s=2$ basic ambulances (blue) and $a_{2i}^s=1$ advanced ones (red). Total coverage in the left: all ambulances arrive in less than the ideal time $\tau $. Total-late coverage in the right: at least one of the ambulances arrives between $ (\tau ,\tau _{\max })$.}}{18}{figure.3.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Objective values for the MEC problem.}}{29}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Objective values for the MEC(SABC) methodology.}}{31}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Objective values of MEC(SABC).}}{32}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Objective values of SABC Matheuristic.}}{33}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Objective Comp.}}{34}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Time MEC.}}{38}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Time M2M1.}}{39}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Time Comp.}}{41}{figure.5.8}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Coverage MEC.}}{43}{figure.5.9}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Coverage M2M1.}}{44}{figure.5.10}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Coverage Math.}}{45}{figure.5.11}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Objective preliminar.}}{46}{figure.5.12}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Time preliminar.}}{47}{figure.5.13}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Objective value and running time versus the number of ambulances for a)~MEC model and b) SBFM.}}{48}{figure.5.14}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Objective values for the MEC problem.}}{30}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Objective values for the MEC(SABC) methodology.}}{32}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Objective values of MEC(SABC).}}{33}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Objective values of SABC Matheuristic.}}{34}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Objective Comp.}}{35}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Time MEC.}}{39}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Time M2M1.}}{40}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Time Comp.}}{42}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Coverage MEC.}}{44}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Coverage M2M1.}}{45}{figure.5.10}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Coverage Math.}}{46}{figure.5.11}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Objective preliminar.}}{47}{figure.5.12}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Time preliminar.}}{48}{figure.5.13}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Objective value and running time versus the number of ambulances for a)~MEC model and b) SBFM.}}{49}{figure.5.14}%
 \addvspace {10\p@ }
