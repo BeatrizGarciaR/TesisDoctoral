@@ -37,24 +37,22 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [270, 500, 900, 1500] 
-tamaños_L = [16, 50, 100]
-tamaños_S = [10, 50, 100, 150, 200]
+# tamaños_I = [270, 500, 900, 1500] 
+# tamaños_L = [16, 50, 100]
+# tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168, 270, 500, 900, 1500] 
 # tamaños_L = [16, 50, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-# tamaños_I = [168] 
-# tamaños_L = [16]
-# tamaños_S = [10]
+tamaños_I = [270]
+tamaños_L = [16]
+tamaños_S = [100]
 
 K = [1,2]
-
-timelim = 600 #10 min
 rates = [0.4]
 verif = 0.4
-sale = 0
+sale = 1
 
 #ambulance = [[10, 6], [20,11], [35,20]]
 ambulance = [[35,20]]
@@ -65,9 +63,10 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
 countcsv1 = 1
 
+timelim = 600 #10 min
 time_limit_final = 3600 #60 min
-time_limit_ls = 7200 # 120 min
-num_iteraciones = 20
+time_limit_ls = 3600 # 60 min
+#num_iteraciones = 20
 
 
 ##############################################
@@ -603,62 +602,60 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 #book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
- 
- 
-                #AQUII
                 
-                for iteraciones in range(num_iteraciones):
+                mejor = open('Best_Matheuristic_230325_'
+                                  +str(tamaños_I[iconj])+str('_')
+                                  +str(tamaños_L[jconj])+str('_')
+                                  +str(tamaños_S[sconj])+'_'
+                                  +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                 
-                    ##########################################################
-                    ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y ACTIVOS
-                    ##########################################################
+                mejor.write('Obj: %g' % model.objVal)
+                mejor.write('\n')
+                
+                for l in L:
+                    for k in K:
+                        mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                        mejor.write('\n')
+                mejor.write('-1')
+                mejor.write('\n')
+                
+                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                name_ind = 0
+                new_name = names[name_ind]
+                
+                
+                if model.objVal != float("-inf"):
+                    for v in model.getVars():
+                        # if new_name == 'located':
+                        #     print(str(v) + '\n')
+                        #     print('%s %g' % (v.varName, v.x))
+                        if new_name not in v.varName:
+                            #print("entra new name \n")
+                            #print(new_name+'\n')
+                            mejor.write('-1')
+                            mejor.write('\n')
+                            name_ind = name_ind + 1
+                            new_name = names[name_ind]
+                        mejor.write('%s %g' % (v.varName, v.x))
+                        mejor.write('\n')
+                    
+                mejor.write('-1')
+                
+                mejor.close()
+                
+                
+                mejor_obj = model.objVal
+ 
+                ############################################################
+                ###### VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y ACTIVOS (BLS)
+                ############################################################
+                
+                while sale == 1:
                                
-                    
-                    mejor = open('Best_Matheuristic_230325_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    mejor.write('Obj: %g' % model.objVal)
-                    mejor.write('\n')
-                    
-                    for l in L:
-                        for k in K:
-                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                            mejor.write('\n')
-                    mejor.write('-1')
-                    mejor.write('\n')
-                    
-                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                    name_ind = 0
-                    new_name = names[name_ind]
-                    
-                    
-                    if model.objVal != float("-inf"):
-                        for v in model.getVars():
-                            # if new_name == 'located':
-                            #     print(str(v) + '\n')
-                            #     print('%s %g' % (v.varName, v.x))
-                            if new_name not in v.varName:
-                                #print("entra new name \n")
-                                #print(new_name+'\n')
-                                mejor.write('-1')
-                                mejor.write('\n')
-                                name_ind = name_ind + 1
-                                new_name = names[name_ind]
-                            mejor.write('%s %g' % (v.varName, v.x))
-                            mejor.write('\n')
-                        
-                    mejor.write('-1')
-                    
-                    mejor.close()
-                    
-                    
-                    mejor_obj = model.objVal
-                    
-                    
-                    # LEE DESDE BEST SOLUTION
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+
                     
                     soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
@@ -713,14 +710,8 @@ for iconj in range(len(tamaños_I)):
                     best.write('\n')
                     
                     
-                    
-                    
-                    
-                    #print(str(pares_cero) + ' ' + str(impares_cero) + str(pares_nocero) + ' ' + str(impares_nocero))
-                    
-                    
                     ###########################################################
-                    ######## VECINDARIO ACTIVOS VS ACTIVOS (CAMBIOS PARA BLS)
+                    ######## FIRST FOUND
                     ############################################################
                     
                     sale = 0
@@ -1132,7 +1123,7 @@ for iconj in range(len(tamaños_I)):
                                 sheet.write(countcsv, 9, total_time)
                                 #sheet1.write(countcsv1, 9, total_time)
                                 
-                                sheet.write(countcsv, 10, iteraciones+1)
+                                sheet.write(countcsv, 10, "V1 BLS")
                                 
                                 countcsv = countcsv + 1
                                 #countcsv1 = countcsv1 + 1
@@ -1160,7 +1151,7 @@ for iconj in range(len(tamaños_I)):
                                             
                                     sheet1.write(countcsv1, 9, total_time)
                                     
-                                    sheet1.write(countcsv1, 10, iteraciones+1)
+                                    sheet1.write(countcsv1, 10, "V1 BLS")
                                             
                                     countcsv1 = countcsv1 + 1
                                     
@@ -1210,10 +1201,7 @@ for iconj in range(len(tamaños_I)):
                                     mejor.close()
                                     
                                     sale = 1
-                        
-                                
-                                x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
-                                x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
+                    
                         
                                 # print('\n')
                                 # print("x_vars_list 2")
@@ -1222,6 +1210,9 @@ for iconj in range(len(tamaños_I)):
                                 
                                 if sale == 1:
                                     break
+                                else:
+                                    x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
+                                    x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
                                 
                                 if total_time < time_limit_final:
                                     break
@@ -1233,16 +1224,126 @@ for iconj in range(len(tamaños_I)):
                             if total_time < time_limit_final:
                                 break
                             
+                        
                         if sale == 1:
                             break
-                        
                         if total_time > time_limit_ls:
                             break
                     
                     
-                    # ###########################################################
-                    # ######## VECINDARIO ACTIVOS VS ACTIVOS (CAMBIOS PARA ALS)
-                    # ############################################################
+                # ###########################################################
+                # ######## VECINDARIO ACTIVOS VS ACTIVOS (CAMBIOS PARA ALS)
+                # ############################################################
+                
+                
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    mejor = open('Best_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    mejor.write('Obj: %g' % model.objVal)
+                    mejor.write('\n')
+                    
+                    for l in L:
+                        for k in K:
+                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                            mejor.write('\n')
+                    mejor.write('-1')
+                    mejor.write('\n')
+                    
+                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                    name_ind = 0
+                    new_name = names[name_ind]
+                    
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            # if new_name == 'located':
+                            #     print(str(v) + '\n')
+                            #     print('%s %g' % (v.varName, v.x))
+                            if new_name not in v.varName:
+                                #print("entra new name \n")
+                                #print(new_name+'\n')
+                                mejor.write('-1')
+                                mejor.write('\n')
+                                name_ind = name_ind + 1
+                                new_name = names[name_ind]
+                            mejor.write('%s %g' % (v.varName, v.x))
+                            mejor.write('\n')
+                        
+                    mejor.write('-1')
+                    
+                    mejor.close()
+                    
+                    
+                    mejor_obj = model.objVal
+                    
+                    
+                    # LEE DESDE BEST SOLUTION
+                    
+                    soluciones = open('Solutions_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    g = open('Best_Matheuristic_230325_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'
+                              +str(eta[0])+'_'+str(eta[1])+'.txt')
+                    
+                    
+                    g.readline().strip().split()
+                    
+                    # Create variables #
+                    x_vars_list = []
+                    pares_cero = []
+                    pares_nocero = []
+                    impares_cero = []
+                    impares_nocero = []
+                    count = 0
+                    for l in L:
+                        for k in K:
+                            line = g.readline().strip().split()
+                            x_vars_list.append(int(line[len(line)-1]))
+                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                                pares_cero.append([l,k,count])
+                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                                pares_nocero.append([l,k,count])
+                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                                impares_cero.append([l,k,count])
+                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                                impares_nocero.append([l,k,count])
+                            count = count + 1
+                    g.close()
+                    
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
+                    
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
                     
                     sale = 0
                     for i1 in range(len(impares_nocero)):
@@ -1653,7 +1754,7 @@ for iconj in range(len(tamaños_I)):
                                 sheet.write(countcsv, 9, total_time)
                                 #sheet1.write(countcsv1, 9, total_time)
                                 
-                                sheet.write(countcsv, 10, iteraciones+1)
+                                sheet.write(countcsv, 10, "V1 ALS")
                                 
                                 countcsv = countcsv + 1
                                 #countcsv1 = countcsv1 + 1
@@ -1681,7 +1782,7 @@ for iconj in range(len(tamaños_I)):
                                             
                                     sheet1.write(countcsv1, 9, total_time)
                                     
-                                    sheet1.write(countcsv1, 10, iteraciones+1)
+                                    sheet1.write(countcsv1, 10, "V1 ALS")
                                             
                                     countcsv1 = countcsv1 + 1
                                     
@@ -1733,8 +1834,7 @@ for iconj in range(len(tamaños_I)):
                                     sale = 1
                         
                                 
-                                x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
-                                x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
+                                
                         
                                 # print('\n')
                                 # print("x_vars_list 2")
@@ -1743,6 +1843,9 @@ for iconj in range(len(tamaños_I)):
                     
                                 if sale == 1:
                                     break
+                                else: 
+                                    x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
+                                    x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
                                 
                                 if total_time < time_limit_final:
                                     break
@@ -1760,9 +1863,74 @@ for iconj in range(len(tamaños_I)):
                             break
                     
                     
-                    ################################################################
-                    ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS
-                    ################################################################
+                #####################################################################
+                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS BLS
+                #####################################################################
+
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    mejor = open('Best_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    mejor.write('Obj: %g' % model.objVal)
+                    mejor.write('\n')
+                    
+                    for l in L:
+                        for k in K:
+                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                            mejor.write('\n')
+                    mejor.write('-1')
+                    mejor.write('\n')
+                    
+                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                    name_ind = 0
+                    new_name = names[name_ind]
+                    
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            # if new_name == 'located':
+                            #     print(str(v) + '\n')
+                            #     print('%s %g' % (v.varName, v.x))
+                            if new_name not in v.varName:
+                                #print("entra new name \n")
+                                #print(new_name+'\n')
+                                mejor.write('-1')
+                                mejor.write('\n')
+                                name_ind = name_ind + 1
+                                new_name = names[name_ind]
+                            mejor.write('%s %g' % (v.varName, v.x))
+                            mejor.write('\n')
+                        
+                    mejor.write('-1')
+                    
+                    mejor.close()
+                    
+                    
+                    mejor_obj = model.objVal
+                    
+                    
+                    # LEE DESDE BEST SOLUTION
+                    
+                    soluciones = open('Solutions_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
@@ -1770,7 +1938,8 @@ for iconj in range(len(tamaños_I)):
                               +str(tamaños_S[sconj])+'_'
                               +str(eta[0])+'_'+str(eta[1])+'.txt')
                     
-                    line = g.readline().strip().split()
+                    
+                    g.readline().strip().split()
                     
                     # Create variables #
                     x_vars_list = []
@@ -1794,10 +1963,18 @@ for iconj in range(len(tamaños_I)):
                             count = count + 1
                     g.close()
                     
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
                     
-                    ##############################################################################
-                    ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS (CAMBIOS BLS)
-                    ##############################################################################
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
                     
                     sale = 0
                     if len(pares_cero) > 0:
@@ -2209,7 +2386,7 @@ for iconj in range(len(tamaños_I)):
                                     sheet.write(countcsv, 9, total_time)
                                     #sheet1.write(countcsv1, 9, total_time)
                                     
-                                    sheet.write(countcsv, 10, iteraciones+1)
+                                    sheet.write(countcsv, 10, "V2 BLS")
                                     
                                     countcsv = countcsv + 1
                                     #countcsv1 = countcsv1 + 1
@@ -2235,7 +2412,7 @@ for iconj in range(len(tamaños_I)):
                                                 sheet1.write(countcsv1, row+4, datos[row])
                                                 
                                         sheet1.write(countcsv1, 9, total_time)
-                                        sheet1.write(countcsv1, 10, iteraciones+1)
+                                        sheet1.write(countcsv1, 10, "V2 BLS")
                                         countcsv1 = countcsv1 + 1
                                         
                                         best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
@@ -2284,11 +2461,7 @@ for iconj in range(len(tamaños_I)):
                                         mejor.close()
                                         
                                         sale = 1
-                            
-                                    
-                                    x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
-                                    x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
-                            
+    
                                     # print('\n')
                                     # print("x_vars_list 2")
                                     # print(str(x_vars_list))
@@ -2296,6 +2469,9 @@ for iconj in range(len(tamaños_I)):
                                     
                                     if sale == 1:
                                         break
+                                    else:
+                                        x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
+                                        x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
                                     
                                     if total_time < time_limit_final:
                                         break
@@ -2314,10 +2490,75 @@ for iconj in range(len(tamaños_I)):
                                 break
                                 
                                 
-                                
-                    ################################################################
-                    ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS
-                    #################################################################
+                            
+                #################################################################
+                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS BLS
+                #################################################################
+    
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    mejor = open('Best_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    mejor.write('Obj: %g' % model.objVal)
+                    mejor.write('\n')
+                    
+                    for l in L:
+                        for k in K:
+                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                            mejor.write('\n')
+                    mejor.write('-1')
+                    mejor.write('\n')
+                    
+                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                    name_ind = 0
+                    new_name = names[name_ind]
+                    
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            # if new_name == 'located':
+                            #     print(str(v) + '\n')
+                            #     print('%s %g' % (v.varName, v.x))
+                            if new_name not in v.varName:
+                                #print("entra new name \n")
+                                #print(new_name+'\n')
+                                mejor.write('-1')
+                                mejor.write('\n')
+                                name_ind = name_ind + 1
+                                new_name = names[name_ind]
+                            mejor.write('%s %g' % (v.varName, v.x))
+                            mejor.write('\n')
+                        
+                    mejor.write('-1')
+                    
+                    mejor.close()
+                    
+                    
+                    mejor_obj = model.objVal
+                    
+                    
+                    # LEE DESDE BEST SOLUTION
+                    
+                    soluciones = open('Solutions_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
@@ -2325,7 +2566,8 @@ for iconj in range(len(tamaños_I)):
                               +str(tamaños_S[sconj])+'_'
                               +str(eta[0])+'_'+str(eta[1])+'.txt')
                     
-                    line = g.readline().strip().split()
+                    
+                    g.readline().strip().split()
                     
                     # Create variables #
                     x_vars_list = []
@@ -2349,11 +2591,18 @@ for iconj in range(len(tamaños_I)):
                             count = count + 1
                     g.close()
                     
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
                     
-                    ##############################################################################
-                    ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS (CAMBIOS BLS)
-                    ##############################################################################
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
                     
+                    
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
                     
                     sale = 0
                     for i1 in range(len(pares_nocero)):
@@ -2764,7 +3013,7 @@ for iconj in range(len(tamaños_I)):
                                 sheet.write(countcsv, 9, total_time)
                                 
                                 #sheet1.write(countcsv1, 9, total_time)
-                                sheet.write(countcsv, 10, iteraciones+1)
+                                sheet.write(countcsv, 10, "V3 BLS")
                                 
                                 countcsv = countcsv + 1
                                 #countcsv1 = countcsv1 + 1
@@ -2790,7 +3039,7 @@ for iconj in range(len(tamaños_I)):
                                             sheet1.write(countcsv1, row+4, datos[row])
                                             
                                     sheet1.write(countcsv1, 9, total_time)
-                                    sheet1.write(countcsv1, 10, iteraciones+1)
+                                    sheet1.write(countcsv1, 10, "V3 BLS")
                                     countcsv1 = countcsv1 + 1
                                     
                                     best.write('Obj (MEDIOS ACT VS ACT BLS): %g' % model.objVal + '\n')
@@ -2839,11 +3088,7 @@ for iconj in range(len(tamaños_I)):
                                     mejor.close()
                                     
                                     sale = 1
-                        
-                                
-                                x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
-                                x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
-                        
+            
                                 # print('\n')
                                 # print("x_vars_list 2")
                                 # print(str(x_vars_list))
@@ -2851,6 +3096,9 @@ for iconj in range(len(tamaños_I)):
                                 
                                 if sale == 1:
                                     break
+                                else:
+                                    x_vars_list[cambio2] = x_vars_list[cambio2] - x_vars_original_cambio1
+                                    x_vars_list[cambio1] = x_vars_list[cambio1] + x_vars_original_cambio1
                                 
                                 if total_time < time_limit_final:
                                     break
@@ -2869,9 +3117,74 @@ for iconj in range(len(tamaños_I)):
                             break
                     
                     
-                    ##########################################################
-                    ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS
-                    ##########################################################
+                ##############################################################
+                ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS BLS
+                ##############################################################
+            
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    mejor = open('Best_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    mejor.write('Obj: %g' % model.objVal)
+                    mejor.write('\n')
+                    
+                    for l in L:
+                        for k in K:
+                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                            mejor.write('\n')
+                    mejor.write('-1')
+                    mejor.write('\n')
+                    
+                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                    name_ind = 0
+                    new_name = names[name_ind]
+                    
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            # if new_name == 'located':
+                            #     print(str(v) + '\n')
+                            #     print('%s %g' % (v.varName, v.x))
+                            if new_name not in v.varName:
+                                #print("entra new name \n")
+                                #print(new_name+'\n')
+                                mejor.write('-1')
+                                mejor.write('\n')
+                                name_ind = name_ind + 1
+                                new_name = names[name_ind]
+                            mejor.write('%s %g' % (v.varName, v.x))
+                            mejor.write('\n')
+                        
+                    mejor.write('-1')
+                    
+                    mejor.close()
+                    
+                    
+                    mejor_obj = model.objVal
+                    
+                    
+                    # LEE DESDE BEST SOLUTION
+                    
+                    soluciones = open('Solutions_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
@@ -2879,7 +3192,8 @@ for iconj in range(len(tamaños_I)):
                               +str(tamaños_S[sconj])+'_'
                               +str(eta[0])+'_'+str(eta[1])+'.txt')
                     
-                    line = g.readline().strip().split()
+                    
+                    g.readline().strip().split()
                     
                     # Create variables #
                     x_vars_list = []
@@ -2903,10 +3217,18 @@ for iconj in range(len(tamaños_I)):
                             count = count + 1
                     g.close()
                     
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
                     
-                    # #######################################################################
-                    # ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS (CAMBIOS BLS)
-                    # #######################################################################
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
                     
                     sale = 0
                     if len(pares_cero) > 0:
@@ -3309,7 +3631,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 sheet.write(countcsv, 9, total_time)
                                 #sheet1.write(countcsv1, 9, total_time)
-                                sheet.write(countcsv, 10, iteraciones+1)
+                                sheet.write(countcsv, 10, "V4 BLS")
                                 
                                 countcsv = countcsv + 1
                                 #countcsv1 = countcsv1 + 1
@@ -3335,7 +3657,7 @@ for iconj in range(len(tamaños_I)):
                                             sheet1.write(countcsv1, row+4, datos[row])
                                             
                                     sheet1.write(countcsv1, 9, total_time)
-                                    sheet1.write(countcsv1, 10, iteraciones+1)
+                                    sheet1.write(countcsv1, 10, "V4 BLS")
                                     countcsv1 = countcsv1 + 1
                                     
                                     best.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal + '\n')
@@ -3386,8 +3708,7 @@ for iconj in range(len(tamaños_I)):
                                     sale = 1
                         
                                 
-                                x_vars_list[cambio2] = x_vars_list[cambio1]
-                                x_vars_list[cambio1] = 0
+                                
                         
                                 #print('\n')
                                 #print("x_vars_list 2")
@@ -3396,6 +3717,9 @@ for iconj in range(len(tamaños_I)):
                                 
                                 if sale == 1:
                                     break
+                                else:
+                                    x_vars_list[cambio2] = x_vars_list[cambio1]
+                                    x_vars_list[cambio1] = 0
                                 
                                 if total_time < time_limit_final:
                                     break
@@ -3412,10 +3736,119 @@ for iconj in range(len(tamaños_I)):
                         if total_time > time_limit_ls:
                             break
                         
+                    
+                ##########################################################
+                ######## VECINDARIO ACTIVOS VS NO ACTIVOS (CAMBIOS EN ALS)
+                ##########################################################
+               
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    mejor = open('Best_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    mejor.write('Obj: %g' % model.objVal)
+                    mejor.write('\n')
+                    
+                    for l in L:
+                        for k in K:
+                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                            mejor.write('\n')
+                    mejor.write('-1')
+                    mejor.write('\n')
+                    
+                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                    name_ind = 0
+                    new_name = names[name_ind]
+                    
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            # if new_name == 'located':
+                            #     print(str(v) + '\n')
+                            #     print('%s %g' % (v.varName, v.x))
+                            if new_name not in v.varName:
+                                #print("entra new name \n")
+                                #print(new_name+'\n')
+                                mejor.write('-1')
+                                mejor.write('\n')
+                                name_ind = name_ind + 1
+                                new_name = names[name_ind]
+                            mejor.write('%s %g' % (v.varName, v.x))
+                            mejor.write('\n')
                         
-                    ##########################################################
-                    ######## VECINDARIO ACTIVOS VS NO ACTIVOS (CAMBIOS EN ALS)
-                    ##########################################################
+                    mejor.write('-1')
+                    
+                    mejor.close()
+                    
+                    
+                    mejor_obj = model.objVal
+                    
+                    
+                    # LEE DESDE BEST SOLUTION
+                    
+                    soluciones = open('Solutions_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Matheuristic_230325_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    g = open('Best_Matheuristic_230325_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'
+                              +str(eta[0])+'_'+str(eta[1])+'.txt')
+                    
+                    
+                    g.readline().strip().split()
+                    
+                    # Create variables #
+                    x_vars_list = []
+                    pares_cero = []
+                    pares_nocero = []
+                    impares_cero = []
+                    impares_nocero = []
+                    count = 0
+                    for l in L:
+                        for k in K:
+                            line = g.readline().strip().split()
+                            x_vars_list.append(int(line[len(line)-1]))
+                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                                pares_cero.append([l,k,count])
+                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                                pares_nocero.append([l,k,count])
+                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                                impares_cero.append([l,k,count])
+                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                                impares_nocero.append([l,k,count])
+                            count = count + 1
+                    g.close()
+                    
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
+                    
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
                     
                     sale = 0
                     for i in range(len(impares_cero)):
@@ -3817,7 +4250,7 @@ for iconj in range(len(tamaños_I)):
                             
                             sheet.write(countcsv, 9, total_time)
                             #sheet1.write(countcsv1, 9, total_time)
-                            sheet.write(countcsv, 10, iteraciones+1)
+                            sheet.write(countcsv, 10, "V4 ALS")
                             
                             countcsv = countcsv + 1
                             #countcsv1 = countcsv1 + 1
@@ -3843,7 +4276,7 @@ for iconj in range(len(tamaños_I)):
                                         sheet1.write(countcsv1, row+4, datos[row])
                                         
                                 sheet1.write(countcsv1, 9, total_time)
-                                sheet1.write(countcsv1, 10, iteraciones+1)
+                                sheet1.write(countcsv1, 10, "V4 ALS")
                                 countcsv1 = countcsv1 + 1
                                 
                                 best.write('Obj (ACT VS NO ACT ALS): %g' % model.objVal + '\n')
@@ -3894,8 +4327,7 @@ for iconj in range(len(tamaños_I)):
                                 sale = 1
                     
                             
-                            x_vars_list[cambio2] = x_vars_list[cambio1]
-                            x_vars_list[cambio1] = 0
+                            
                     
                             #print('\n')
                             #print("x_vars_list 2")
@@ -3904,6 +4336,9 @@ for iconj in range(len(tamaños_I)):
                     
                             if sale == 1:
                                 break
+                            else:
+                                x_vars_list[cambio2] = x_vars_list[cambio1]
+                                x_vars_list[cambio1] = 0
                             
                             if total_time < time_limit_final:
                                 break
@@ -3921,11 +4356,11 @@ for iconj in range(len(tamaños_I)):
                         break
                     
                     
-                    
-                    soluciones.close()
-                    best.close()
-                    mejor.close()
-                    g.close()
+                
+                soluciones.close()
+                best.close()
+                mejor.close()
+                g.close()
                     
                 book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
                 book1.save('Tesis_Matheuristic_Mejoras_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
