@@ -25,9 +25,9 @@ import time
 
 import xlwt
 
-tamaños_I = [168] #Hasta aquí puede bien el modelo
-tamaños_L = [16]
-tamaños_S = [10]
+tamaños_I = [168, 500, 1500] #Hasta aquí puede bien el modelo
+tamaños_L = [16, 100]
+tamaños_S = [10, 100, 200]
 
 
 # tamaños_I = [168]
