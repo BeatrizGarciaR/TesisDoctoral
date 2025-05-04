@@ -1,4 +1,3 @@
-Null 1 22 -0
 Null 1 26 -0
 Null 1 42 -0
 Null 1 43 -0

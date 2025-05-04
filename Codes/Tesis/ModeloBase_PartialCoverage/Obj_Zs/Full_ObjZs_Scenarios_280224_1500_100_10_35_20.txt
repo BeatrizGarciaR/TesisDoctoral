@@ -1,4 +1,3 @@
-Full 1 171 1
 Full 1 178 -0
 Full 1 185 0
 Full 1 478 -0

@@ -1,4 +1,3 @@
-Null 1 82 -0
 Null 1 158 -0
 Null 1 172 -0
 Null 1 273 -0

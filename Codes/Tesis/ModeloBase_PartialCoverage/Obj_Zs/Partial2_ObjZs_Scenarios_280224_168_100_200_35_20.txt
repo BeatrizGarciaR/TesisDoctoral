@@ -1,4 +1,3 @@
-Partial2 1 25 0
 Partial2 1 34 0
 Partial2 1 36 0
 Partial2 1 39 0

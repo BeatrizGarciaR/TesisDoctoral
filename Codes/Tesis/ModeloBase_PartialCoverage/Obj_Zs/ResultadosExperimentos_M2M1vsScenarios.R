@@ -7,14 +7,14 @@ amb <- rbind(c(35,20))
 
 
 len_L <- c(16)
-len_I <- c(168, 270, 500, 900, 1500)
-len_S <- c(100, 150, 200)
+len_I <- c(168, 500, 1500)
+len_S <- c(10, 100, 200)
 
-name <- 'ObjZs_M2M1_rev1_280224'
-name_1 <- 'ObjZs_rev1_280224'
+name <- 'ObjZs_FullNull_110425'
+name_1 <- 'ObjZs_rev1_110425'
 
-name1 <- 'ObjZs_M2M1_rev1_1_280224'
-name1_1 <- 'ObjZs_rev1_1_280224'
+name1 <- 'ObjZs_FullNull_110425'
+name1_1 <- 'ObjZs_rev1_110425'
 
 
 ############# HACER GRAFICA DE BEST OBJ DE M2M1 CON BEST BOUND DE SCENARIOS

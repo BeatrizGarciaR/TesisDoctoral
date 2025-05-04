@@ -8,10 +8,15 @@ amb <- rbind(c(35,20))
 eta <- amb[1,]
 
 
-name <- 'ObjZs_rev1_280224'
-len_I <- c(168, 270, 500, 900, 1500)
+name <- 'ObjZs_FullNull_110425'
+len_I <- c(168, 500, 1500)
 len_L <- c(16)
-len_S <- c(100, 150, 200)
+len_S <- c(10, 100, 200)
+
+
+name1 <- 'ObjZs_FullNull_110425'
+len_I <- c(168, 500, 1500)
+len_S <- c(10, 100, 200)
 
 # objective value graphics demand point vs scenarios
 counti = 0
@@ -172,14 +177,10 @@ for (a in 1:length(amb[,1])){
 dev.off()
 #}
 
-############ 
+############
 ############
 ############
 
-
-name1 <- 'ObjZs_rev1_1_280224'
-len_I <- c(500, 900, 1500)
-len_S <- c(10, 50, 100, 150, 200)
 
 # objective value graphics scenarios vs demand point
 counti = 0
@@ -342,6 +343,24 @@ for (a in 1:length(amb[,1])){
 }
 dev.off()
 #}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # # # coverage
 # accidents_covered_total <- data.frame()
