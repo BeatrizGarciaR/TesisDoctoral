@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr  7 03:26:13 2022
+Created on Wed May 21 15:46:54 2025
 
-@author: beatr
+@author: BeatrizGarcia
 """
+
 
 ######################################################################
 ######################  INSTANCES ####################################
@@ -18,14 +20,16 @@ import time
 
 import xlwt
 
+import math
+
 # tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
 
-tamaños_I = [168]
+tamaños_I = [168, 270, 500, 900, 1500]
 tamaños_L = [16]
-tamaños_S = [10]
+tamaños_S = [10, 50]
 
 K = [1,2]
 
@@ -128,7 +132,32 @@ for iconj in range(len(tamaños_I)):
                         if any(auxI):
                             TotalAccidentes += 1
                             #S[l][i].append(int(line[i+1]))
-
+                            
+                ########################################
+                ############# agregado para promediar S
+                ###########################################
+                
+                escenario_nuevo = []
+                
+                for i in range(len(I)):
+                    escenario_nuevo.append([])
+                    
+                    suma = 0
+                    for s in range(len_S):
+                        suma = suma + S[s][i][0]
+                    prom = suma/len_S
+                    escenario_nuevo[i].append(math.ceil(prom))
+                    
+                    suma = 0
+                    for s in range(len_S):
+                        suma = suma + S[s][i][1]
+                    prom = suma/len_S
+                    escenario_nuevo[i].append(math.ceil(prom))
+                
+                print(escenario_nuevo)
+                
+                S = [escenario_nuevo]
+                
                 #break                   
                 #Response times
                 r_li = []
@@ -179,7 +208,7 @@ for iconj in range(len(tamaños_I)):
                         
                 y_vars = {}    
                 cantVarY = 0
-                for s in range(len(S)):        
+                for s in range(1):        
                     for l in L:
                         for i in I:
                             if S[s][i-1][0] != 0:
@@ -199,7 +228,7 @@ for iconj in range(len(tamaños_I)):
                 
                 alpha_vars = {}  ## z full
                 cantVarAlpha = 0
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
@@ -210,7 +239,7 @@ for iconj in range(len(tamaños_I)):
                 
                 beta_vars = {}  ## z partial 1
                 cantVarBeta = 0
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
@@ -220,7 +249,7 @@ for iconj in range(len(tamaños_I)):
                 
                 delta_vars = {}  ## z partial 2
                 cantVarDelta = 0
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
@@ -231,7 +260,7 @@ for iconj in range(len(tamaños_I)):
                 
                 phi_vars = {}   ## z partial 3
                 cantVarPhi = 0
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
@@ -242,7 +271,7 @@ for iconj in range(len(tamaños_I)):
                 
                 gamma_vars = {} ## z null
                 cantVarGamma = 0
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
@@ -251,17 +280,17 @@ for iconj in range(len(tamaños_I)):
                        
                             
                 obj = gp.LinExpr()
-                for s in range(len(S)):
+                for s in range(1):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             #obj += 0
-                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/1)
                 model.setObjective(obj, GRB.MAXIMIZE)  
     
                 
                 # Add constraints
                 
-                for s in range(len(S)):
+                for s in range(1):
                     
                     # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
                     for k in K:
@@ -467,7 +496,7 @@ for iconj in range(len(tamaños_I)):
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                              +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
                     writer = csv.writer(f)
                     writer.writerows(model._data)
                     
@@ -482,7 +511,7 @@ for iconj in range(len(tamaños_I)):
                 sheet.write(countcsv, 0, name)
                 sheet.write(countcsv, 1, len(I))
                 sheet.write(countcsv, 2, len(L))
-                sheet.write(countcsv, 3, len(S))
+                sheet.write(countcsv, 3, 1)
                 if len(model._data) != 0:
                     datos = model._data[len(model._data)-1]
                     for row in range(len(datos)):
@@ -491,7 +520,7 @@ for iconj in range(len(tamaños_I)):
                 
                 # with open('tesis.csv', 'a') as f:
                 #     writer = csv.writer(f)
-                #     name = str('Instance')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
+                #     name = str('Instance')+str(len(I))+str('_')+str(len(L))+str('_')+str(1)
                 #     f.write(str(name))
                 #     f.write('\n')
                 #     for row in range(len(model._data[len(model._data)-1])):
@@ -505,7 +534,7 @@ for iconj in range(len(tamaños_I)):
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                              +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
                 
                 #f.write("Start time: ")
                 #f.write(str(start_time))
@@ -558,12 +587,12 @@ for iconj in range(len(tamaños_I)):
                 # coberturas = open ('Coberturas_Obj_Zs_210525_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
-                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
+                #               +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')                      
                 
                 # lectura = open ('Resultados_Prueba_Obj_Zs_210525_'
                 #               +str(len(I))+str('_')
                 #               +str(len(L))+str('_')
-                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
+                #               +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','r')
                 # line = lectura.readline()
                 # #print("line", line)
                 # line = lectura.readline()
@@ -639,7 +668,7 @@ for iconj in range(len(tamaños_I)):
     #             feasible = open ('Feasible_'
     #                           +str(len(I))+str('_')
     #                           +str(len(L))+str('_')
-    #                           +str(len(S))+'.sol','w')
+    #                           +str(1)+'.sol','w')
                 
     #             # Guardando la información de x
     #             ambulancesNumber = []
@@ -678,7 +707,7 @@ for iconj in range(len(tamaños_I)):
                 
     #             # Guardando la información de y
     #             dispatches_original = []
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 dispatches_original.append([])
     #                 for i in I: 
     #                     dispatches_original[s].append([])
@@ -692,7 +721,7 @@ for iconj in range(len(tamaños_I)):
     #                         dispatches_original[s][i-1].append(conteo)
     
     #             # dispatches_copia = []
-    #             # for s in range(len(S)):
+    #             # for s in range(1):
     #             #     dispatches_copia.append([])
     #             #     for i in I: 
     #             #         dispatches_copia[s].append([])
@@ -709,7 +738,7 @@ for iconj in range(len(tamaños_I)):
     #             #                 dispatches_copia[s][i-1].append(conteo)         
                             
     #             dispatches = []
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 dispatches.append([])
     #                 for i in I: 
     #                     dispatches[s].append([])
@@ -725,7 +754,7 @@ for iconj in range(len(tamaños_I)):
     # ########################################
     
     #             coverage = []
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 coverage.append([])
     #                 for i in I: 
     #                     coverage[s].append([])
@@ -768,13 +797,13 @@ for iconj in range(len(tamaños_I)):
     #                                 if dispatches[s][i-1][1] > S[s][i-1][1]:
     #                                     coverage[s][i-1].append("over serviced")
                                 
-    #             #for s in range(len(S)):
+    #             #for s in range(1):
     #             #    print(coverage[s]) 
     #             #print()
                 
                 
     #             # VERIFICANDO QUE NO HAYA SOBRE COBERTURA
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 for i in I: 
     #                     for k in K:
     #                         if (coverage[s][i-1][k-1] == 'over serviced'):
@@ -785,7 +814,7 @@ for iconj in range(len(tamaños_I)):
                   
     #             # Número de ambulancias despachadas
     #             numberDispatched = []
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 numberDispatched.append([])
     #                 for l in L:
     #                     numberDispatched[s].append([])
@@ -817,7 +846,7 @@ for iconj in range(len(tamaños_I)):
                 
     #             # Verificando que se despachen la cantidad de ambulancias que están localizadas
     #             feasibleDispatched = []
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 feasibleDispatched.append([])
     #                 for l in L:
     #                     feasibleDispatched[s].append([])
@@ -840,7 +869,7 @@ for iconj in range(len(tamaños_I)):
     #             #print(" ")
                             
     #             # VERIFICANDO QUE NO SE DESPACHEN DE MÁS LAS AMBULANCIAS}
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 for l in L:
     #                     for k in K:
     #                          if (feasibleDispatched[s][l-1][k-1] == 'over used'):
@@ -877,21 +906,21 @@ for iconj in range(len(tamaños_I)):
                 
     #             feasible.write("Scnenario")
     #             feasible.write("\n")
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 feasible.write(str(S[s]))
     #                 feasible.write("\n")
     #             feasible.write("\n")
                 
     #             feasible.write("Dispatches")
     #             feasible.write("\n")
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 feasible.write(str(dispatches[s]))
     #                 feasible.write("\n")
     #             feasible.write("\n")
                 
     #             feasible.write("Coverage")
     #             feasible.write("\n")
-    #             for s in range(len(S)):
+    #             for s in range(1):
     #                 feasible.write(str(coverage[s]))
     #                 feasible.write("\n")
     #             feasible.write("\n")
@@ -904,10 +933,10 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               #+str(len(K))+str('_')
                 #               #+str(len(N))+str('_')
-                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
+                #               +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.lp')
                 # model.write('model_ObjZs_Scenarios_210525_'+str(len(I))+str('_')
                 #               +str(len(L))+str('_')
-                #               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
+                #               +str(1)+'_'+str(eta[0])+'_'+str(eta[1])+'.mps')
                 
                 
                 # resultados = open ('Resultados_Prueba_'
@@ -915,7 +944,7 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','r')
+                #               +str(1)+str('_')+str('Solution1_aik=0_todos')+'_.txt','r')
                 
                 # line = resultados.readline()
                 
@@ -926,13 +955,13 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+                #               +str(1)+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
                 
                 # fobj.write(str(len(I))+str('_')
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+str(' ')
+                #               +str(1)+str('_')+str(' ')
                 #               +line)
                 
                 # fobj.close()
@@ -944,7 +973,7 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+                #               +str(1)+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
                 
                 
                 # count = 0
@@ -963,7 +992,7 @@ for iconj in range(len(tamaños_I)):
                 #         #       +str(len(L))+str('_')
                 #         #       +str(len(K))+str('_')
                 #         #       +str(len(N))+str('_')
-                #         #       +str(len(S))+str('_'))
+                #         #       +str(1)+str('_'))
                 #         for j in range(len(aux)):
                 #             located.write(str(aux[j])+str(" "))
                 #         located.write("\n")
@@ -980,7 +1009,7 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
+                #               +str(1)+str('_')+str('Solution1_aik=0_todos')+'_.txt','w')
                 
                 # count = 0
                 # for i in range(len(y_vars)):
@@ -997,7 +1026,7 @@ for iconj in range(len(tamaños_I)):
                 #         #       +str(len(L))+str('_')
                 #         #       +str(len(K))+str('_')
                 #         #       +str(len(N))+str('_')
-                #         #       +str(len(S))+str('_'))
+                #         #       +str(1)+str('_'))
                 #         for j in range(len(aux)):
                 #             dispatched.write(str(aux[j])+str(" "))
                 #         dispatched.write("\n")
@@ -1014,7 +1043,7 @@ for iconj in range(len(tamaños_I)):
                 #               +str(len(L))+str('_')
                 #               +str(len(K))+str('_')
                 #               +str(len(N))+str('_')
-                #               +str(len(S))+str('_')+'_.txt','w')
+                #               +str(1)+str('_')+'_.txt','w')
                 
                 
                 # count = 0
