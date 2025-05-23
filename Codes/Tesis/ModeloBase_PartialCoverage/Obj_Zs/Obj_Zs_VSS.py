@@ -67,93 +67,93 @@ def data_cb(m, where):
 
 
 
-for iconj in range(len(tamaños_I)):
-    for jconj in range(len(tamaños_L)):
-        for sconj in range(len(tamaños_S)):
-            for k in range(len(ambulance)):
-            #for rep in range(repeticiones):
+# for iconj in range(len(tamaños_I)):
+#     for jconj in range(len(tamaños_L)):
+#         for sconj in range(len(tamaños_S)):
+#             for k in range(len(ambulance)):
+#             #for rep in range(repeticiones):
                 
-                initial_time = time.time()
+#                 initial_time = time.time()
                 
-                eta = ambulance[k]
+#                 eta = ambulance[k]
     
-                #Nombre: Instancias_Prueba_I_L_M_N_S_Rep
+#                 #Nombre: Instancias_Prueba_I_L_M_N_S_Rep
                 
                 
-                archivo = open('Instances_DemandFixed_'
-                          +str(tamaños_I[iconj])+str('_')
-                          +str(tamaños_L[jconj])+str('_')
-                          +str(tamaños_S[sconj])
-                          + '_' + str(verif) + '_'
-                          +'.txt', "r")
+#                 archivo = open('Instances_DemandFixed_'
+#                           +str(tamaños_I[iconj])+str('_')
+#                           +str(tamaños_L[jconj])+str('_')
+#                           +str(tamaños_S[sconj])
+#                           + '_' + str(verif) + '_'
+#                           +'.txt', "r")
                 
-                len_I = int(archivo.readline())
-                len_L = int(archivo.readline())
-                len_S = int(archivo.readline())
+#                 len_I = int(archivo.readline())
+#                 len_L = int(archivo.readline())
+#                 len_S = int(archivo.readline())
                 
-                # Sets #
-                I = []
-                for i in range(len_I):
-                    I.append(int(i+1))
+#                 # Sets #
+#                 I = []
+#                 for i in range(len_I):
+#                     I.append(int(i+1))
                     
-                L = []
-                for i in range(len_L):
-                    L.append(int(i+1))
+#                 L = []
+#                 for i in range(len_L):
+#                     L.append(int(i+1))
                     
-                Demand = []
-                for s in range(len_S):
-                    Demand.append([])
-                    line = archivo.readline().strip().split()
-                    for i in range(len_I):
-                        Demand[s].append(int(line[i]))
+#                 Demand = []
+#                 for s in range(len_S):
+#                     Demand.append([])
+#                     line = archivo.readline().strip().split()
+#                     for i in range(len_I):
+#                         Demand[s].append(int(line[i]))
                 
-                #Scenarios
-                S = []
-                TotalAccidentes = 0
-                auxI = [0, 0]
-                for l in range(len_S):
-                    count = 0
-                    line = archivo.readline().strip().split()
-                    #print("line", line)
-                    S.append([])
-                    for i in range(len(I)):
-                        #print("line[i]", line[count])
-                        #print("line[i]", line)
-                        S[l].append([])
-                        for k in range(len(K)):
-                            #print("line[count]", line[count])
-                            S[l][i].append(int(line[count]))
-                            if k == 0:
-                                auxI[0] = int(line[count])
-                            else:
-                                auxI[1] = int(line[count])
-                            if count < len(line)-1:
-                                count += 1
-                        if any(auxI):
-                            TotalAccidentes += 1
-                            #S[l][i].append(int(line[i+1]))
+#                 #Scenarios
+#                 S = []
+#                 TotalAccidentes = 0
+#                 auxI = [0, 0]
+#                 for l in range(len_S):
+#                     count = 0
+#                     line = archivo.readline().strip().split()
+#                     #print("line", line)
+#                     S.append([])
+#                     for i in range(len(I)):
+#                         #print("line[i]", line[count])
+#                         #print("line[i]", line)
+#                         S[l].append([])
+#                         for k in range(len(K)):
+#                             #print("line[count]", line[count])
+#                             S[l][i].append(int(line[count]))
+#                             if k == 0:
+#                                 auxI[0] = int(line[count])
+#                             else:
+#                                 auxI[1] = int(line[count])
+#                             if count < len(line)-1:
+#                                 count += 1
+#                         if any(auxI):
+#                             TotalAccidentes += 1
+#                             #S[l][i].append(int(line[i+1]))
                             
-                #Response times
-                r_li = []
-                for l in range(len(L)):
-                    line = archivo.readline().strip().split()
-                    r_li.append([])
-                    for i in range(len(I)):
-                        r_li[l].append(int(line[i]))   
+#                 #Response times
+#                 r_li = []
+#                 for l in range(len(L)):
+#                     line = archivo.readline().strip().split()
+#                     r_li.append([])
+#                     for i in range(len(I)):
+#                         r_li[l].append(int(line[i]))   
                     
                      
-                cli = []
-                for l in range(len(L)):
-                    line = archivo.readline().strip().split()
-                    cli.append([])
-                    for i in range(len(I)):
-                        cli[l].append(float(line[i])) 
+#                 cli = []
+#                 for l in range(len(L)):
+#                     line = archivo.readline().strip().split()
+#                     cli.append([])
+#                     for i in range(len(I)):
+#                         cli[l].append(float(line[i])) 
                 
                 
-                # Other parameters #
-                #pi = 100
-                pi = np.amax(cli)/len(S) + 0.005
-                V = [1,2]
+#                 # Other parameters #
+#                 #pi = 100
+#                 pi = np.amax(cli)/len(S) + 0.005
+#                 V = [1,2]
                             
 #                 ########################################
 #                 ############# agregado para promediar S
@@ -767,6 +767,89 @@ for iconj in range(len(tamaños_I)):
                 u.close()
                     
                 un.close()
+                
+                
+                initial_time = time.time()
+                
+                eta = ambulance[k]
+    
+                #Nombre: Instancias_Prueba_I_L_M_N_S_Rep
+                
+                
+                archivo = open('Instances_DemandFixed_'
+                          +str(tamaños_I[iconj])+str('_')
+                          +str(tamaños_L[jconj])+str('_')
+                          +str(tamaños_S[sconj])
+                          + '_' + str(verif) + '_'
+                          +'.txt', "r")
+                
+                len_I = int(archivo.readline())
+                len_L = int(archivo.readline())
+                len_S = int(archivo.readline())
+                
+                # Sets #
+                I = []
+                for i in range(len_I):
+                    I.append(int(i+1))
+                    
+                L = []
+                for i in range(len_L):
+                    L.append(int(i+1))
+                    
+                Demand = []
+                for s in range(len_S):
+                    Demand.append([])
+                    line = archivo.readline().strip().split()
+                    for i in range(len_I):
+                        Demand[s].append(int(line[i]))
+                
+                #Scenarios
+                S = []
+                TotalAccidentes = 0
+                auxI = [0, 0]
+                for l in range(len_S):
+                    count = 0
+                    line = archivo.readline().strip().split()
+                    #print("line", line)
+                    S.append([])
+                    for i in range(len(I)):
+                        #print("line[i]", line[count])
+                        #print("line[i]", line)
+                        S[l].append([])
+                        for k in range(len(K)):
+                            #print("line[count]", line[count])
+                            S[l][i].append(int(line[count]))
+                            if k == 0:
+                                auxI[0] = int(line[count])
+                            else:
+                                auxI[1] = int(line[count])
+                            if count < len(line)-1:
+                                count += 1
+                        if any(auxI):
+                            TotalAccidentes += 1
+                            #S[l][i].append(int(line[i+1]))
+                            
+                #Response times
+                r_li = []
+                for l in range(len(L)):
+                    line = archivo.readline().strip().split()
+                    r_li.append([])
+                    for i in range(len(I)):
+                        r_li[l].append(int(line[i]))   
+                    
+                     
+                cli = []
+                for l in range(len(L)):
+                    line = archivo.readline().strip().split()
+                    cli.append([])
+                    for i in range(len(I)):
+                        cli[l].append(float(line[i])) 
+                
+                
+                # Other parameters #
+                #pi = 100
+                pi = np.amax(cli)/len(S) + 0.005
+                V = [1,2]
                 
                 
                 ######################################################################
