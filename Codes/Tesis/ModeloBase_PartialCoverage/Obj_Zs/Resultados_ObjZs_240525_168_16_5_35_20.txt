@@ -1,5 +1,5 @@
-Elapsed time: 0.17285823822021484
-Obj: 3.95
+Elapsed time: 0.30628204345703125
+Obj: 0.79
 located 1 1 2
 located 1 2 2
 located 2 1 1
@@ -43,7 +43,7 @@ dispatched 1 1 1 70 -0
 dispatched 1 1 2 70 -0
 dispatched 1 1 1 72 -0
 dispatched 1 1 2 72 -0
-dispatched 1 1 1 79 1
+dispatched 1 1 1 79 -0
 dispatched 1 1 2 79 -0
 dispatched 1 1 1 80 -0
 dispatched 1 1 2 80 -0
@@ -59,8 +59,8 @@ dispatched 1 1 1 102 -0
 dispatched 1 1 2 102 -0
 dispatched 1 1 1 104 -0
 dispatched 1 1 2 104 -0
-dispatched 1 1 1 106 -0
-dispatched 1 1 2 106 1
+dispatched 1 1 1 106 1
+dispatched 1 1 2 106 -0
 dispatched 1 1 1 108 -0
 dispatched 1 1 2 108 -0
 dispatched 1 1 1 109 -0
@@ -68,21 +68,21 @@ dispatched 1 1 2 109 -0
 dispatched 1 1 1 111 -0
 dispatched 1 1 2 111 -0
 dispatched 1 1 1 120 -0
-dispatched 1 1 2 120 -0
+dispatched 1 1 2 120 1
 dispatched 1 1 1 122 -0
 dispatched 1 1 2 122 -0
 dispatched 1 2 1 46 -0
-dispatched 1 2 2 46 0
+dispatched 1 2 2 46 -0
 dispatched 1 2 1 50 -0
 dispatched 1 2 2 50 -0
 dispatched 1 2 1 58 -0
-dispatched 1 2 2 58 -0
+dispatched 1 2 2 58 0
 dispatched 1 2 1 70 -0
 dispatched 1 2 2 70 -0
-dispatched 1 2 1 72 0
+dispatched 1 2 1 72 -0
 dispatched 1 2 2 72 -0
 dispatched 1 2 1 79 1
-dispatched 1 2 2 79 -0
+dispatched 1 2 2 79 1
 dispatched 1 2 1 80 -0
 dispatched 1 2 2 80 -0
 dispatched 1 2 1 93 -0
@@ -94,7 +94,7 @@ dispatched 1 2 2 98 -0
 dispatched 1 2 1 101 -0
 dispatched 1 2 2 101 -0
 dispatched 1 2 1 102 -0
-dispatched 1 2 2 102 1
+dispatched 1 2 2 102 -0
 dispatched 1 2 1 104 -0
 dispatched 1 2 2 104 -0
 dispatched 1 2 1 106 -0
@@ -116,7 +116,7 @@ dispatched 1 3 2 50 -0
 dispatched 1 3 1 58 0
 dispatched 1 3 2 58 -0
 dispatched 1 3 1 70 0
-dispatched 1 3 2 70 0
+dispatched 1 3 2 70 1
 dispatched 1 3 1 72 0
 dispatched 1 3 2 72 -0
 dispatched 1 3 1 79 0
@@ -130,13 +130,13 @@ dispatched 1 3 2 97 -0
 dispatched 1 3 1 98 0
 dispatched 1 3 2 98 -0
 dispatched 1 3 1 101 0
-dispatched 1 3 2 101 -0
+dispatched 1 3 2 101 0
 dispatched 1 3 1 102 0
 dispatched 1 3 2 102 -0
 dispatched 1 3 1 104 0
 dispatched 1 3 2 104 -0
 dispatched 1 3 1 106 0
-dispatched 1 3 2 106 1
+dispatched 1 3 2 106 -0
 dispatched 1 3 1 108 0
 dispatched 1 3 2 108 -0
 dispatched 1 3 1 109 0
@@ -152,13 +152,13 @@ dispatched 1 4 2 46 1
 dispatched 1 4 1 50 1
 dispatched 1 4 2 50 -0
 dispatched 1 4 1 58 -0
-dispatched 1 4 2 58 0
+dispatched 1 4 2 58 -0
 dispatched 1 4 1 70 -0
 dispatched 1 4 2 70 -0
-dispatched 1 4 1 72 0
+dispatched 1 4 1 72 -0
 dispatched 1 4 2 72 -0
-dispatched 1 4 1 79 -0
-dispatched 1 4 2 79 1
+dispatched 1 4 1 79 1
+dispatched 1 4 2 79 -0
 dispatched 1 4 1 80 -0
 dispatched 1 4 2 80 -0
 dispatched 1 4 1 93 -0
@@ -174,12 +174,12 @@ dispatched 1 4 2 102 -0
 dispatched 1 4 1 104 -0
 dispatched 1 4 2 104 -0
 dispatched 1 4 1 106 -0
-dispatched 1 4 2 106 -0
-dispatched 1 4 1 108 1
+dispatched 1 4 2 106 1
+dispatched 1 4 1 108 -0
 dispatched 1 4 2 108 -0
 dispatched 1 4 1 109 -0
 dispatched 1 4 2 109 -0
-dispatched 1 4 1 111 -0
+dispatched 1 4 1 111 0
 dispatched 1 4 2 111 1
 dispatched 1 4 1 120 -0
 dispatched 1 4 2 120 -0
@@ -193,15 +193,15 @@ dispatched 1 5 1 58 -0
 dispatched 1 5 2 58 1
 dispatched 1 5 1 70 -0
 dispatched 1 5 2 70 -0
-dispatched 1 5 1 72 -0
-dispatched 1 5 2 72 0
+dispatched 1 5 1 72 1
+dispatched 1 5 2 72 -0
 dispatched 1 5 1 79 -0
-dispatched 1 5 2 79 -0
+dispatched 1 5 2 79 0
 dispatched 1 5 1 80 1
 dispatched 1 5 2 80 1
-dispatched 1 5 1 93 0
+dispatched 1 5 1 93 -0
 dispatched 1 5 2 93 -0
-dispatched 1 5 1 97 1
+dispatched 1 5 1 97 0
 dispatched 1 5 2 97 -0
 dispatched 1 5 1 98 -0
 dispatched 1 5 2 98 -0
@@ -212,7 +212,7 @@ dispatched 1 5 2 102 -0
 dispatched 1 5 1 104 -0
 dispatched 1 5 2 104 -0
 dispatched 1 5 1 106 1
-dispatched 1 5 2 106 1
+dispatched 1 5 2 106 -0
 dispatched 1 5 1 108 -0
 dispatched 1 5 2 108 -0
 dispatched 1 5 1 109 -0
@@ -220,7 +220,7 @@ dispatched 1 5 2 109 -0
 dispatched 1 5 1 111 -0
 dispatched 1 5 2 111 -0
 dispatched 1 5 1 120 -0
-dispatched 1 5 2 120 0
+dispatched 1 5 2 120 1
 dispatched 1 5 1 122 -0
 dispatched 1 5 2 122 -0
 dispatched 1 6 1 46 -0
@@ -229,11 +229,11 @@ dispatched 1 6 1 50 -0
 dispatched 1 6 2 50 1
 dispatched 1 6 1 58 -0
 dispatched 1 6 2 58 -0
-dispatched 1 6 1 70 1
-dispatched 1 6 2 70 -0
+dispatched 1 6 1 70 -0
+dispatched 1 6 2 70 0
 dispatched 1 6 1 72 -0
 dispatched 1 6 2 72 -0
-dispatched 1 6 1 79 0
+dispatched 1 6 1 79 -0
 dispatched 1 6 2 79 -0
 dispatched 1 6 1 80 -0
 dispatched 1 6 2 80 -0
@@ -250,10 +250,10 @@ dispatched 1 6 2 102 -0
 dispatched 1 6 1 104 -0
 dispatched 1 6 2 104 -0
 dispatched 1 6 1 106 1
-dispatched 1 6 2 106 0
+dispatched 1 6 2 106 -0
 dispatched 1 6 1 108 -0
 dispatched 1 6 2 108 -0
-dispatched 1 6 1 109 -0
+dispatched 1 6 1 109 1
 dispatched 1 6 2 109 -0
 dispatched 1 6 1 111 -0
 dispatched 1 6 2 111 -0
@@ -264,20 +264,20 @@ dispatched 1 6 2 122 -0
 dispatched 1 7 1 46 -0
 dispatched 1 7 2 46 -0
 dispatched 1 7 1 50 -0
-dispatched 1 7 2 50 0
+dispatched 1 7 2 50 1
 dispatched 1 7 1 58 -0
 dispatched 1 7 2 58 -0
-dispatched 1 7 1 70 -0
+dispatched 1 7 1 70 0
 dispatched 1 7 2 70 0
 dispatched 1 7 1 72 -0
 dispatched 1 7 2 72 -0
 dispatched 1 7 1 79 1
-dispatched 1 7 2 79 1
+dispatched 1 7 2 79 -0
 dispatched 1 7 1 80 -0
 dispatched 1 7 2 80 -0
 dispatched 1 7 1 93 -0
 dispatched 1 7 2 93 -0
-dispatched 1 7 1 97 0
+dispatched 1 7 1 97 -0
 dispatched 1 7 2 97 -0
 dispatched 1 7 1 98 -0
 dispatched 1 7 2 98 -0
@@ -301,7 +301,7 @@ dispatched 1 7 1 122 -0
 dispatched 1 7 2 122 -0
 dispatched 1 8 1 46 1
 dispatched 1 8 2 46 -0
-dispatched 1 8 1 50 1
+dispatched 1 8 1 50 -0
 dispatched 1 8 2 50 -0
 dispatched 1 8 1 58 -0
 dispatched 1 8 2 58 -0
@@ -313,7 +313,7 @@ dispatched 1 8 1 79 1
 dispatched 1 8 2 79 1
 dispatched 1 8 1 80 -0
 dispatched 1 8 2 80 -0
-dispatched 1 8 1 93 -0
+dispatched 1 8 1 93 0
 dispatched 1 8 2 93 -0
 dispatched 1 8 1 97 1
 dispatched 1 8 2 97 -0
@@ -322,11 +322,11 @@ dispatched 1 8 2 98 -0
 dispatched 1 8 1 101 -0
 dispatched 1 8 2 101 1
 dispatched 1 8 1 102 -0
-dispatched 1 8 2 102 0
+dispatched 1 8 2 102 -0
 dispatched 1 8 1 104 -0
 dispatched 1 8 2 104 -0
-dispatched 1 8 1 106 0
-dispatched 1 8 2 106 -0
+dispatched 1 8 1 106 1
+dispatched 1 8 2 106 0
 dispatched 1 8 1 108 -0
 dispatched 1 8 2 108 -0
 dispatched 1 8 1 109 -0
@@ -340,7 +340,7 @@ dispatched 1 8 2 122 -0
 dispatched 1 9 1 46 1
 dispatched 1 9 2 46 -0
 dispatched 1 9 1 50 1
-dispatched 1 9 2 50 -0
+dispatched 1 9 2 50 0
 dispatched 1 9 1 58 -0
 dispatched 1 9 2 58 -0
 dispatched 1 9 1 70 -0
@@ -351,7 +351,7 @@ dispatched 1 9 1 79 -0
 dispatched 1 9 2 79 -0
 dispatched 1 9 1 80 -0
 dispatched 1 9 2 80 -0
-dispatched 1 9 1 93 -0
+dispatched 1 9 1 93 0
 dispatched 1 9 2 93 -0
 dispatched 1 9 1 97 -0
 dispatched 1 9 2 97 -0
@@ -363,9 +363,9 @@ dispatched 1 9 1 102 -0
 dispatched 1 9 2 102 -0
 dispatched 1 9 1 104 -0
 dispatched 1 9 2 104 -0
-dispatched 1 9 1 106 1
+dispatched 1 9 1 106 -0
 dispatched 1 9 2 106 -0
-dispatched 1 9 1 108 -0
+dispatched 1 9 1 108 1
 dispatched 1 9 2 108 -0
 dispatched 1 9 1 109 -0
 dispatched 1 9 2 109 -0
@@ -379,14 +379,14 @@ dispatched 1 10 1 46 -0
 dispatched 1 10 2 46 -0
 dispatched 1 10 1 50 -0
 dispatched 1 10 2 50 -0
-dispatched 1 10 1 58 -0
+dispatched 1 10 1 58 0
 dispatched 1 10 2 58 -0
 dispatched 1 10 1 70 -0
 dispatched 1 10 2 70 -0
 dispatched 1 10 1 72 0
-dispatched 1 10 2 72 1
+dispatched 1 10 2 72 -0
 dispatched 1 10 1 79 -0
-dispatched 1 10 2 79 -0
+dispatched 1 10 2 79 0
 dispatched 1 10 1 80 -0
 dispatched 1 10 2 80 -0
 dispatched 1 10 1 93 1
@@ -395,21 +395,21 @@ dispatched 1 10 1 97 -0
 dispatched 1 10 2 97 -0
 dispatched 1 10 1 98 -0
 dispatched 1 10 2 98 -0
-dispatched 1 10 1 101 0
+dispatched 1 10 1 101 -0
 dispatched 1 10 2 101 -0
-dispatched 1 10 1 102 -0
-dispatched 1 10 2 102 0
+dispatched 1 10 1 102 1
+dispatched 1 10 2 102 -0
 dispatched 1 10 1 104 -0
 dispatched 1 10 2 104 -0
-dispatched 1 10 1 106 -0
-dispatched 1 10 2 106 -0
+dispatched 1 10 1 106 1
+dispatched 1 10 2 106 1
 dispatched 1 10 1 108 -0
 dispatched 1 10 2 108 -0
-dispatched 1 10 1 109 1
+dispatched 1 10 1 109 -0
 dispatched 1 10 2 109 -0
 dispatched 1 10 1 111 -0
 dispatched 1 10 2 111 -0
-dispatched 1 10 1 120 1
+dispatched 1 10 1 120 -0
 dispatched 1 10 2 120 -0
 dispatched 1 10 1 122 0
 dispatched 1 10 2 122 -0
@@ -423,13 +423,13 @@ dispatched 1 11 1 70 -0
 dispatched 1 11 2 70 -0
 dispatched 1 11 1 72 -0
 dispatched 1 11 2 72 -0
-dispatched 1 11 1 79 -0
-dispatched 1 11 2 79 -0
+dispatched 1 11 1 79 1
+dispatched 1 11 2 79 1
 dispatched 1 11 1 80 -0
 dispatched 1 11 2 80 -0
 dispatched 1 11 1 93 -0
 dispatched 1 11 2 93 -0
-dispatched 1 11 1 97 0
+dispatched 1 11 1 97 -0
 dispatched 1 11 2 97 -0
 dispatched 1 11 1 98 -0
 dispatched 1 11 2 98 -0
@@ -439,8 +439,8 @@ dispatched 1 11 1 102 -0
 dispatched 1 11 2 102 -0
 dispatched 1 11 1 104 -0
 dispatched 1 11 2 104 -0
-dispatched 1 11 1 106 1
-dispatched 1 11 2 106 0
+dispatched 1 11 1 106 -0
+dispatched 1 11 2 106 -0
 dispatched 1 11 1 108 -0
 dispatched 1 11 2 108 -0
 dispatched 1 11 1 109 -0
@@ -448,13 +448,13 @@ dispatched 1 11 2 109 -0
 dispatched 1 11 1 111 -0
 dispatched 1 11 2 111 -0
 dispatched 1 11 1 120 -0
-dispatched 1 11 2 120 1
+dispatched 1 11 2 120 0
 dispatched 1 11 1 122 -0
 dispatched 1 11 2 122 -0
-dispatched 1 12 1 46 -0
+dispatched 1 12 1 46 0
 dispatched 1 12 2 46 -0
 dispatched 1 12 1 50 -0
-dispatched 1 12 2 50 -0
+dispatched 1 12 2 50 0
 dispatched 1 12 1 58 -0
 dispatched 1 12 2 58 -0
 dispatched 1 12 1 70 -0
@@ -467,7 +467,7 @@ dispatched 1 12 1 80 -0
 dispatched 1 12 2 80 -0
 dispatched 1 12 1 93 -0
 dispatched 1 12 2 93 -0
-dispatched 1 12 1 97 -0
+dispatched 1 12 1 97 0
 dispatched 1 12 2 97 -0
 dispatched 1 12 1 98 1
 dispatched 1 12 2 98 -0
@@ -478,10 +478,10 @@ dispatched 1 12 2 102 -0
 dispatched 1 12 1 104 -0
 dispatched 1 12 2 104 -0
 dispatched 1 12 1 106 1
-dispatched 1 12 2 106 0
+dispatched 1 12 2 106 -0
 dispatched 1 12 1 108 0
 dispatched 1 12 2 108 -0
-dispatched 1 12 1 109 -0
+dispatched 1 12 1 109 0
 dispatched 1 12 2 109 -0
 dispatched 1 12 1 111 -0
 dispatched 1 12 2 111 -0
@@ -569,19 +569,19 @@ dispatched 1 15 1 46 -0
 dispatched 1 15 2 46 0
 dispatched 1 15 1 50 -0
 dispatched 1 15 2 50 0
-dispatched 1 15 1 58 0
+dispatched 1 15 1 58 -0
 dispatched 1 15 2 58 0
 dispatched 1 15 1 70 -0
 dispatched 1 15 2 70 0
 dispatched 1 15 1 72 -0
 dispatched 1 15 2 72 0
-dispatched 1 15 1 79 1
+dispatched 1 15 1 79 -0
 dispatched 1 15 2 79 0
 dispatched 1 15 1 80 -0
 dispatched 1 15 2 80 0
 dispatched 1 15 1 93 -0
 dispatched 1 15 2 93 0
-dispatched 1 15 1 97 -0
+dispatched 1 15 1 97 1
 dispatched 1 15 2 97 0
 dispatched 1 15 1 98 -0
 dispatched 1 15 2 98 0
@@ -595,7 +595,7 @@ dispatched 1 15 1 106 -0
 dispatched 1 15 2 106 0
 dispatched 1 15 1 108 -0
 dispatched 1 15 2 108 0
-dispatched 1 15 1 109 -0
+dispatched 1 15 1 109 0
 dispatched 1 15 2 109 0
 dispatched 1 15 1 111 -0
 dispatched 1 15 2 111 0
@@ -606,7 +606,7 @@ dispatched 1 15 2 122 0
 dispatched 1 16 1 46 -0
 dispatched 1 16 2 46 -0
 dispatched 1 16 1 50 -0
-dispatched 1 16 2 50 -0
+dispatched 1 16 2 50 0
 dispatched 1 16 1 58 -0
 dispatched 1 16 2 58 -0
 dispatched 1 16 1 70 -0
@@ -614,7 +614,7 @@ dispatched 1 16 2 70 -0
 dispatched 1 16 1 72 -0
 dispatched 1 16 2 72 -0
 dispatched 1 16 1 79 1
-dispatched 1 16 2 79 0
+dispatched 1 16 2 79 -0
 dispatched 1 16 1 80 1
 dispatched 1 16 2 80 -0
 dispatched 1 16 1 93 0
@@ -4665,113 +4665,113 @@ Null 1 109 0
 Null 1 111 -0
 Null 1 120 -0
 Null 1 122 -0
-Null 2 47 0
-Null 2 48 0
-Null 2 53 0
-Null 2 54 0
-Null 2 63 0
-Null 2 72 0
-Null 2 76 0
-Null 2 78 0
-Null 2 79 0
-Null 2 80 0
-Null 2 82 0
-Null 2 83 0
-Null 2 84 0
-Null 2 90 0
-Null 2 91 0
-Null 2 96 0
-Null 2 97 0
-Null 2 98 0
-Null 2 100 0
-Null 2 101 0
-Null 2 108 0
-Null 2 109 0
-Null 2 112 0
-Null 2 115 0
-Null 3 45 0
-Null 3 48 0
-Null 3 57 0
-Null 3 58 0
-Null 3 60 0
-Null 3 62 0
-Null 3 63 0
-Null 3 68 0
-Null 3 69 0
-Null 3 70 0
-Null 3 71 0
-Null 3 73 0
-Null 3 76 0
-Null 3 78 0
-Null 3 79 0
-Null 3 80 0
-Null 3 81 0
-Null 3 82 0
-Null 3 85 0
-Null 3 91 0
-Null 3 92 0
-Null 3 93 0
-Null 3 94 0
-Null 3 95 0
-Null 3 96 0
-Null 3 97 0
-Null 3 98 0
-Null 3 99 0
-Null 3 100 0
-Null 3 105 0
-Null 3 106 0
-Null 3 117 0
-Null 3 119 0
-Null 4 51 0
-Null 4 58 0
-Null 4 65 0
-Null 4 67 0
-Null 4 72 0
-Null 4 73 0
-Null 4 77 0
-Null 4 78 0
-Null 4 80 0
-Null 4 81 0
-Null 4 83 0
-Null 4 84 0
-Null 4 85 0
-Null 4 86 0
-Null 4 89 0
-Null 4 99 0
-Null 4 100 0
-Null 4 101 0
-Null 4 102 0
-Null 4 104 0
-Null 4 106 0
-Null 4 107 0
-Null 4 115 0
-Null 4 117 0
-Null 5 47 0
-Null 5 53 0
-Null 5 54 0
-Null 5 56 0
-Null 5 58 0
-Null 5 60 0
-Null 5 62 0
-Null 5 63 0
-Null 5 69 0
-Null 5 74 0
-Null 5 78 0
-Null 5 80 0
-Null 5 81 0
-Null 5 82 0
-Null 5 83 0
-Null 5 86 0
-Null 5 87 0
-Null 5 89 0
-Null 5 91 0
-Null 5 92 0
-Null 5 95 0
-Null 5 96 0
-Null 5 98 0
-Null 5 99 0
-Null 5 100 0
-Null 5 109 0
-Null 5 117 0
-Null 5 119 0
+Null 2 47 1
+Null 2 48 1
+Null 2 53 1
+Null 2 54 1
+Null 2 63 1
+Null 2 72 1
+Null 2 76 1
+Null 2 78 1
+Null 2 79 1
+Null 2 80 1
+Null 2 82 1
+Null 2 83 1
+Null 2 84 1
+Null 2 90 1
+Null 2 91 1
+Null 2 96 1
+Null 2 97 1
+Null 2 98 1
+Null 2 100 1
+Null 2 101 1
+Null 2 108 1
+Null 2 109 1
+Null 2 112 1
+Null 2 115 1
+Null 3 45 1
+Null 3 48 1
+Null 3 57 1
+Null 3 58 1
+Null 3 60 1
+Null 3 62 1
+Null 3 63 1
+Null 3 68 1
+Null 3 69 1
+Null 3 70 1
+Null 3 71 1
+Null 3 73 1
+Null 3 76 1
+Null 3 78 1
+Null 3 79 1
+Null 3 80 1
+Null 3 81 1
+Null 3 82 1
+Null 3 85 1
+Null 3 91 1
+Null 3 92 1
+Null 3 93 1
+Null 3 94 1
+Null 3 95 1
+Null 3 96 1
+Null 3 97 1
+Null 3 98 1
+Null 3 99 1
+Null 3 100 1
+Null 3 105 1
+Null 3 106 1
+Null 3 117 1
+Null 3 119 1
+Null 4 51 1
+Null 4 58 1
+Null 4 65 1
+Null 4 67 1
+Null 4 72 1
+Null 4 73 1
+Null 4 77 1
+Null 4 78 1
+Null 4 80 1
+Null 4 81 1
+Null 4 83 1
+Null 4 84 1
+Null 4 85 1
+Null 4 86 1
+Null 4 89 1
+Null 4 99 1
+Null 4 100 1
+Null 4 101 1
+Null 4 102 1
+Null 4 104 1
+Null 4 106 1
+Null 4 107 1
+Null 4 115 1
+Null 4 117 1
+Null 5 47 1
+Null 5 53 1
+Null 5 54 1
+Null 5 56 1
+Null 5 58 1
+Null 5 60 1
+Null 5 62 1
+Null 5 63 1
+Null 5 69 1
+Null 5 74 1
+Null 5 78 1
+Null 5 80 1
+Null 5 81 1
+Null 5 82 1
+Null 5 83 1
+Null 5 86 1
+Null 5 87 1
+Null 5 89 1
+Null 5 91 1
+Null 5 92 1
+Null 5 95 1
+Null 5 96 1
+Null 5 98 1
+Null 5 99 1
+Null 5 100 1
+Null 5 109 1
+Null 5 117 1
+Null 5 119 1
 -1
