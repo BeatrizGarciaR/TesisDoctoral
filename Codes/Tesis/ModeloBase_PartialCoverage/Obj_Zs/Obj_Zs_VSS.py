@@ -168,13 +168,13 @@ for iconj in range(len(tamaños_I)):
                     for s in range(len_S):
                         suma = suma + S[s][i][0]
                     prom = suma/len_S
-                    escenario_nuevo[i].append(math.ceil(prom))
+                    escenario_nuevo[i].append(math.floor(prom))
                     
                     suma = 0
                     for s in range(len_S):
                         suma = suma + S[s][i][1]
                     prom = suma/len_S
-                    escenario_nuevo[i].append(math.ceil(prom))
+                    escenario_nuevo[i].append(math.floor(prom))
                 
                 #print(escenario_nuevo)
                 
@@ -872,7 +872,7 @@ for iconj in range(len(tamaños_I)):
                 for l in L:
                     for k in K:
                         line = g.readline().strip().split()
-                        if line[len(line)-1] == '-4.44089e-16':
+                        if line[len(line)-1] == '-4.44089e-16' or line[len(line)-1] == '4.44089e-16':
                             line[len(line)-1] = '0'
                         #print(line)
                         #x_vars[l,k] = model.addVar(name="located "+str(l)+str(' ')+str(k))
