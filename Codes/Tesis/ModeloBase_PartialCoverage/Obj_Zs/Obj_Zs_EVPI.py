@@ -24,9 +24,9 @@ import xlwt
 # tamaños_S = [10, 50, 100, 150, 200]
 
 
-tamaños_I = [168]
+tamaños_I = [168, 270, 500, 900, 1500]
 tamaños_L = [16]
-tamaños_S = [5]
+tamaños_S = [5, 10]
 
 K = [1,2]
 
@@ -168,6 +168,8 @@ for iconj in range(len(tamaños_I)):
                 model._data = []
                 model._start = time.time()
                 
+                escenarios = []
+                
                 for sc in range(len(S)):
                     
                     sce = [S[sc]]
@@ -268,9 +270,9 @@ for iconj in range(len(tamaños_I)):
                     model.setObjective(obj, GRB.MAXIMIZE)  
     
                 
-                # Add constraints
-                
-                for s in range(len(S)):
+                    # Add constraints
+                    
+                    #for s in range(len(S)):
                     
                     # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
                     for k in K:
@@ -281,7 +283,7 @@ for iconj in range(len(tamaños_I)):
                     for l in L:
                         amb1 = gp.LinExpr()
                         for i in I:
-                            if S[s][i-1][0] != 0:                            
+                            if sce[s][i-1][0] != 0:                            
                                 amb1 += y_vars[s+1,l,1,i]
                         model.addConstr(amb1 <= x_vars[l,1], "c4")
                     
@@ -290,9 +292,9 @@ for iconj in range(len(tamaños_I)):
                     for l in L:
                         amb2 = gp.LinExpr()
                         for i in I:
-                            if S[s][i-1][0] != 0:
+                            if sce[s][i-1][0] != 0:
                                 amb2 += y_vars[s+1,l,2,i] 
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 amb2 += y_vars[s+1,l,2,i] 
                         model.addConstr(amb2 <= x_vars[l,2], "c4_1")
 
@@ -301,12 +303,12 @@ for iconj in range(len(tamaños_I)):
                     
                     for i in I:
                         suma_alpha2 = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                            model.addConstr((sce[s][i-1][0]+sce[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
                     
                     
     
@@ -314,12 +316,12 @@ for iconj in range(len(tamaños_I)):
                     
                     for i in I:
                         suma_beta2 = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                            model.addConstr((sce[s][i-1][0]+sce[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
                             
                             
                             
@@ -328,11 +330,11 @@ for iconj in range(len(tamaños_I)):
                     for i in I:
                         suma_beta = gp.LinExpr()
                         suma_beta_aux = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                                 suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
@@ -343,12 +345,12 @@ for iconj in range(len(tamaños_I)):
                     
                     for i in I:
                         suma_delta2 = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                            model.addConstr(delta_vars[s+1,i] <= (sce[s][i-1][0]+sce[s][i-1][1]) - suma_delta2, "c_9")
                            
                                 
                               
@@ -357,11 +359,11 @@ for iconj in range(len(tamaños_I)):
                     for i in I:
                         suma_delta3 = gp.LinExpr()
                         suma_delta3_aux = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                                 suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0  and sce[s][i-1][0] == 0:
                                 suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
@@ -371,12 +373,12 @@ for iconj in range(len(tamaños_I)):
                     
                     for i in I:
                         suma_phi2 = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                            model.addConstr(phi_vars[s+1,i] <= (sce[s][i-1][0]+sce[s][i-1][1]) - suma_phi2, "c_11")
                        
            
                
@@ -385,11 +387,11 @@ for iconj in range(len(tamaños_I)):
                     for i in I:
                         suma_phi3 = gp.LinExpr()
                         suma_phi3_aux = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(phi_vars[s+1,i] <= 1000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
@@ -398,111 +400,120 @@ for iconj in range(len(tamaños_I)):
                     
                     for i in I:
                         suma_gamma = gp.LinExpr()
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                            if S[s][i-1][0] != 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
+                            if sce[s][i-1][0] != 0:
                                 suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                            if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
                                 suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
                             model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
                             
                     #Restricción 14: Solo se puede activar un tipo de cobertura     
                     for i in I:
-                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                        if sce[s][i-1][0] + sce[s][i-1][1] > 0:
                             model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
                     
                     
-                # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
-                # objbnd = model.cbGet(GRB.Callback.MIP_OBJBND)
-                # gap = abs((objbst - objbnd) / objbst)     
-    
-                # Optimize model
-                model.optimize(callback=data_cb)
-                
-                end_time = time.time()
-                
-                elapsed_time = end_time - model._start 
-                
-                #imprimir variables 
-                
-                with open('data_ObjZs_Scenarios_270525_EVPI_'+str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                    writer = csv.writer(f)
-                    writer.writerows(model._data)
+                    # objbst = model.cbGet(GRB.Callback.MIP_OBJBST)
+                    # objbnd = model.cbGet(GRB.Callback.MIP_OBJBND)
+                    # gap = abs((objbst - objbnd) / objbst)     
+        
+                    # Optimize model
+                    model.optimize(callback=data_cb)
                     
-                
-                
-                #archivo = xlsxwriter.Workbook('tesis.csv')
-                #hoja = archivo.add_worksheet()
-                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                for column in range(len(colnames)):
-                    sheet.write(0, column, colnames[column])
-                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                sheet.write(countcsv, 0, name)
-                sheet.write(countcsv, 1, len(I))
-                sheet.write(countcsv, 2, len(L))
-                sheet.write(countcsv, 3, len(S))
-                if len(model._data) != 0:
-                    datos = model._data[len(model._data)-1]
-                    for row in range(len(datos)):
-                        sheet.write(countcsv, row+4, datos[row])
-                
-                
-                # with open('tesis.csv', 'a') as f:
-                #     writer = csv.writer(f)
-                #     name = str('Instance')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
-                #     f.write(str(name))
-                #     f.write('\n')
-                #     for row in range(len(model._data[len(model._data)-1])):
-                #         f.write(countcsv, row, str(model._data[len(model._data)-1][row]))
-                #     countcsv = countcsv + 1 
-                
-                #Nombre: Resultados_I_L_M_N_S
-                
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_270525_EVPI_'
-                              +str(len(I))+str('_')
-                              +str(len(L))+str('_')
-                              #+str(len(K))+str('_')
-                              #+str(len(N))+str('_')
-                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                
-                #f.write("Start time: ")
-                #f.write(str(start_time))
-                #f.write('\n')
-                #f.write("End time: ")
-                #f.write(str(end_time))
-                #f.write('\n')
-            
-                f.write("Elapsed time: ")
-                f.write(str(elapsed_time))
-                f.write('\n')
-    
+                    end_time = time.time()
+                    
+                    elapsed_time = end_time - model._start 
+                    
+                    #imprimir variables 
+                    
+                    with open('data_ObjZs_Scenarios_270525_EVPI_'+str(len(I))+str('_')
+                                  +str(len(L))+str('_')
+                                  #+str(len(K))+str('_')
+                                  #+str(len(N))+str('_')
+                                  +str(len(S))+'_'+str(sc)+'_'
+                                  +str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                        writer = csv.writer(f)
+                        writer.writerows(model._data)
                         
-                f.write('Obj: %g' % model.objVal)
-                f.write('\n')
+                    #Nombre: Resultados_I_L_M_N_S
+                    
+                    f = open ('Resultados_Prueba_ObjZs_Scenarios_270525_EVPI_'
+                                  +str(len(I))+str('_')
+                                  +str(len(L))+str('_')
+                                  #+str(len(K))+str('_')
+                                  #+str(len(N))+str('_')
+                                  +str(len(S))+'_'+str(sc)+'_'
+                                  +str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                    
+                    #f.write("Start time: ")
+                    #f.write(str(start_time))
+                    #f.write('\n')
+                    #f.write("End time: ")
+                    #f.write(str(end_time))
+                    #f.write('\n')
                 
-                if model.objVal != float("-inf"):
-                    for v in model.getVars():
-                        f.write('%s %g' % (v.varName, v.x))
-                        f.write('\n')
+                    f.write("Elapsed time: ")
+                    f.write(str(elapsed_time))
+                    f.write('\n')
+        
+                            
+                    f.write('Obj: %g' % model.objVal)
+                    f.write('\n')
+                    
+                    if model.objVal != float("-inf"):
+                        for v in model.getVars():
+                            f.write('%s %g' % (v.varName, v.x))
+                            f.write('\n')
+                    
+                    #imprimir el valor objetivo
+                    print('Obj: %g' % model.objVal)
+                    print("Finished")
+                    print(" ")
+                    print(" ")
+                    
+                    f.close()
+                    
+                    escenarios.append(model.objVal)
+                        
                 
-                #imprimir el valor objetivo
-                print('Obj: %g' % model.objVal)
-                print("Finished")
-                print(" ")
-                print(" ")
                 
-                f.close()
-                
- 
-                end_time = time.time()
-                total_time = end_time - initial_time 
-                
-                sheet.write(countcsv, 9, total_time)
-                
+                    #archivo = xlsxwriter.Workbook('tesis.csv')
+                    #hoja = archivo.add_worksheet()
+                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                    for column in range(len(colnames)):
+                        sheet.write(0, column, colnames[column])
+                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                    sheet.write(countcsv, 0, name)
+                    sheet.write(countcsv, 1, len(I))
+                    sheet.write(countcsv, 2, len(L))
+                    sheet.write(countcsv, 3, len(S))
+                    if len(model._data) != 0:
+                        datos = model._data[len(model._data)-1]
+                        for row in range(len(datos)):
+                            sheet.write(countcsv, row+4, datos[row])
+                    
+                    
+                    # with open('tesis.csv', 'a') as f:
+                    #     writer = csv.writer(f)
+                    #     name = str('Instance')+str(len(I))+str('_')+str(len(L))+str('_')+str(len(S))
+                    #     f.write(str(name))
+                    #     f.write('\n')
+                    #     for row in range(len(model._data[len(model._data)-1])):
+                    #         f.write(countcsv, row, str(model._data[len(model._data)-1][row]))
+                    #     countcsv = countcsv + 1 
+                    
+                    
+                    
+     
+                    end_time = time.time()
+                    total_time = end_time - initial_time 
+                    
+                    sheet.write(countcsv, 9, total_time)
+                    
+                    countcsv = countcsv + 1
+                    
+                sheet.write(countcsv, 5, sum(escenarios)/len(S))
                 countcsv = countcsv + 1
-                
-                
+                    
+                    
                 book.save('Tesis_ObjZs_Scenarios_270525_EVPI_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
