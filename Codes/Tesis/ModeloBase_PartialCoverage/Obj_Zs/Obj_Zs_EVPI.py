@@ -26,11 +26,11 @@ import xlwt
 
 tamaños_I = [168]
 tamaños_L = [16]
-tamaños_S = [10]
+tamaños_S = [5]
 
 K = [1,2]
 
-timelim = 7200 #2 horas 
+timelim = 10800 #3 horas 
 rates = [0.4]
 verif = 0.4
 
@@ -43,7 +43,7 @@ wi = [0.65, 0.2, 0.1, 0.05]
 countcsv = 1
        
 book=xlwt.Workbook(encoding="utf-8",style_compression=0)
-sheet = book.add_sheet('Tesis_ObjZs_Scenarios_230525', cell_overwrite_ok=True)
+sheet = book.add_sheet('Tesis_ObjZs_Scenarios_270525', cell_overwrite_ok=True)
 
 def data_cb(m, where):
     if where == gp.GRB.Callback.MIPSOL:
@@ -168,96 +168,104 @@ for iconj in range(len(tamaños_I)):
                 model._data = []
                 model._start = time.time()
                 
-                # Create variables #
-                x_vars = {}
-                cantVarX = 0
-                for l in L:
-                    for k in K:
-                        x_vars[l,k] = model.addVar(vtype=GRB.INTEGER, 
-                                         name="located "+str(l)+str(' ')+str(k))
-                        cantVarX += 1
-                        
-                        
-                y_vars = {}    
-                cantVarY = 0
-                for s in range(len(S)):        
+                for sc in range(len(S)):
+                    
+                    sce = [S[sc]]
+                    
+                    print(sce)
+                    
+                    #break
+                
+                    # Create variables #
+                    x_vars = {}
+                    cantVarX = 0
                     for l in L:
+                        for k in K:
+                            x_vars[l,k] = model.addVar(vtype=GRB.INTEGER, 
+                                             name="located "+str(l)+str(' ')+str(k))
+                            cantVarX += 1
+                            
+                            
+                    y_vars = {}    
+                    cantVarY = 0
+                    for s in range(1):        
+                        for l in L:
+                            for i in I:
+                                if sce[s][i-1][0] != 0:
+                                    y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                    cantVarY += 1
+                                    
+                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                    cantVarY += 1
+                                    
+                                if sce[s][i-1][1] != 0 and sce[s][i-1][0] == 0:
+                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                    cantVarY += 1
+        
+                    
+                    alpha_vars = {}  ## z full
+                    cantVarAlpha = 0
+                    for s in range(1):
                         for i in I:
-                            if S[s][i-1][0] != 0:
-                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                cantVarY += 1
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                               name="Full "+str(s+1)+str(' ')+str(i))
+                                cantVarAlpha += 1
                                 
-                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                cantVarY += 1
+                
+                    beta_vars = {}  ## z partial 1
+                    cantVarBeta = 0
+                    for s in range(1):
+                        for i in I:
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                cantVarBeta += 1
                                 
-                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                cantVarY += 1
-    
+                    
+                    delta_vars = {}  ## z partial 2
+                    cantVarDelta = 0
+                    for s in range(1):
+                        for i in I:
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                cantVarDelta += 1
+                           
+                    
+                    phi_vars = {}   ## z partial 3
+                    cantVarPhi = 0
+                    for s in range(1):
+                        for i in I:
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                cantVarPhi += 1
+                           
                 
-                alpha_vars = {}  ## z full
-                cantVarAlpha = 0
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                                                           name="Full "+str(s+1)+str(' ')+str(i))
-                            cantVarAlpha += 1
-                            
-                
-                beta_vars = {}  ## z partial 1
-                cantVarBeta = 0
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
-                            cantVarBeta += 1
-                            
-                
-                delta_vars = {}  ## z partial 2
-                cantVarDelta = 0
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
-                            cantVarDelta += 1
-                       
-                
-                phi_vars = {}   ## z partial 3
-                cantVarPhi = 0
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
-                            cantVarPhi += 1
-                       
-                
-                gamma_vars = {} ## z null
-                cantVarGamma = 0
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                                                     name="Null "+str(s+1)+str(' ')+str(i))
-                            cantVarGamma += 1
-                       
-                            
-                obj = gp.LinExpr()
-                for s in range(len(S)):
-                    for i in I:
-                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                            #obj += 0
-                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                model.setObjective(obj, GRB.MAXIMIZE)  
+                    gamma_vars = {} ## z null
+                    cantVarGamma = 0
+                    for s in range(1):
+                        for i in I:
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                         name="Null "+str(s+1)+str(' ')+str(i))
+                                cantVarGamma += 1
+                           
+                                
+                    obj = gp.LinExpr()
+                    for s in range(1):
+                        for i in I:
+                            if (sce[s][i-1][0] + sce[s][i-1][1]) > 0:
+                                #obj += 0
+                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/1)
+                    model.setObjective(obj, GRB.MAXIMIZE)  
     
                 
                 # Add constraints
@@ -416,7 +424,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_ObjZs_Scenarios_230525_'+str(len(I))+str('_')
+                with open('data_ObjZs_Scenarios_270525_EVPI_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -453,7 +461,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Prueba_ObjZs_Scenarios_230525_'
+                f = open ('Resultados_Prueba_ObjZs_Scenarios_270525_EVPI_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -497,4 +505,4 @@ for iconj in range(len(tamaños_I)):
                 countcsv = countcsv + 1
                 
                 
-                book.save('Tesis_ObjZs_Scenarios_230525_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_ObjZs_Scenarios_270525_EVPI_'+str(eta[0])+'_'+str(eta[1])+'.xls') 

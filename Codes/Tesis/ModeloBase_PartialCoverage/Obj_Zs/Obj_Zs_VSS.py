@@ -959,7 +959,7 @@ for iconj in range(len(tamaños_I)):
                       
                            
                 obj = gp.LinExpr()
-                for s in range(1):
+                for s in range(len(S)):
                     for i in I:
                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
                             #obj += 0
