@@ -498,7 +498,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #imprimir variables 
                 
-                with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
                               #+str(len(N))+str('_')
@@ -532,7 +532,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #Nombre: Resultados_I_L_M_N_S
                 
-                f = open ('Resultados_Matheuristic_230325_1500_'
+                f = open ('Resultados_Matheuristic_230325_'
                               +str(len(I))+str('_')
                               +str(len(L))+str('_')
                               #+str(len(K))+str('_')
@@ -601,9 +601,9 @@ for iconj in range(len(tamaños_I)):
                 countcsv1 = countcsv1 + 1
                 
                 
-                #book.save('Tesis_Matheuristic_230325_1500_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                #book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
                 
-                mejor = open('Best_Matheuristic_230325_1500_'
+                mejor = open('Best_Matheuristic_230325_'
                                   +str(tamaños_I[iconj])+str('_')
                                   +str(tamaños_L[jconj])+str('_')
                                   +str(tamaños_S[sconj])+'_'
@@ -658,20 +658,20 @@ for iconj in range(len(tamaños_I)):
                     ############################################################
 
                     
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -1036,7 +1036,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #imprimir variables 
                                 
-                                with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                                with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
                                               #+str(len(N))+str('_')
@@ -1064,7 +1064,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_I_L_M_N_S
                                 
-                                f = open ('Resultados_Matheuristic_230325_1500_New_'
+                                f = open ('Resultados_Matheuristic_230325_New_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
@@ -1161,7 +1161,7 @@ for iconj in range(len(tamaños_I)):
                                     best.write('\n')
                                     mejor_obj = model.objVal
                                     
-                                    mejor = open('Best_Matheuristic_230325_1500_'
+                                    mejor = open('Best_Matheuristic_230325_'
                                                       +str(tamaños_I[iconj])+str('_')
                                                       +str(tamaños_L[jconj])+str('_')
                                                       +str(tamaños_S[sconj])+'_'
@@ -1246,20 +1246,20 @@ for iconj in range(len(tamaños_I)):
                     ############################################################
            
                     
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -1624,7 +1624,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #imprimir variables 
                                 
-                                with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                                with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
                                               #+str(len(N))+str('_')
@@ -1652,7 +1652,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_I_L_M_N_S
                                 
-                                f = open ('Resultados_Matheuristic_230325_1500_New_'
+                                f = open ('Resultados_Matheuristic_230325_New_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
@@ -1749,7 +1749,7 @@ for iconj in range(len(tamaños_I)):
                                     best.write('\n')
                                     mejor_obj = model.objVal
                                     
-                                    mejor = open('Best_Matheuristic_230325_1500_'
+                                    mejor = open('Best_Matheuristic_230325_'
                                                       +str(tamaños_I[iconj])+str('_')
                                                       +str(tamaños_L[jconj])+str('_')
                                                       +str(tamaños_S[sconj])+'_'
@@ -1834,20 +1834,20 @@ for iconj in range(len(tamaños_I)):
                     ###### LEE LA MEJOR HASTA AHORA
                     ############################################################
               
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -2213,7 +2213,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #imprimir variables 
                                     
-                                    with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                                    with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   #+str(len(K))+str('_')
                                                   #+str(len(N))+str('_')
@@ -2241,7 +2241,7 @@ for iconj in range(len(tamaños_I)):
                                     
                                     #Nombre: Resultados_I_L_M_N_S
                                     
-                                    f = open ('Resultados_Matheuristic_230325_1500_New_'
+                                    f = open ('Resultados_Matheuristic_230325_New_'
                                                   +str(len(I))+str('_')
                                                   +str(len(L))+str('_')
                                                   #+str(len(K))+str('_')
@@ -2335,7 +2335,7 @@ for iconj in range(len(tamaños_I)):
                                         best.write('\n')
                                         mejor_obj = model.objVal
                                         
-                                        mejor = open('Best_Matheuristic_230325_1500_'
+                                        mejor = open('Best_Matheuristic_230325_'
                                                           +str(tamaños_I[iconj])+str('_')
                                                           +str(tamaños_L[jconj])+str('_')
                                                           +str(tamaños_S[sconj])+'_'
@@ -2421,20 +2421,20 @@ for iconj in range(len(tamaños_I)):
                     ############################################################
                     
                     
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -2799,7 +2799,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #imprimir variables 
                                 
-                                with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                                with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
                                               #+str(len(N))+str('_')
@@ -2827,7 +2827,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_I_L_M_N_S
                                 
-                                f = open ('Resultados_Matheuristic_230325_1500_New_'
+                                f = open ('Resultados_Matheuristic_230325_New_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
@@ -2921,7 +2921,7 @@ for iconj in range(len(tamaños_I)):
                                     best.write('\n')
                                     mejor_obj = model.objVal
                                     
-                                    mejor = open('Best_Matheuristic_230325_1500_'
+                                    mejor = open('Best_Matheuristic_230325_'
                                                       +str(tamaños_I[iconj])+str('_')
                                                       +str(tamaños_L[jconj])+str('_')
                                                       +str(tamaños_S[sconj])+'_'
@@ -3005,20 +3005,20 @@ for iconj in range(len(tamaños_I)):
                     ############################################################
                     
                     
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -3376,7 +3376,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #imprimir variables 
                                 
-                                with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                                with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
                                               #+str(len(N))+str('_')
@@ -3404,7 +3404,7 @@ for iconj in range(len(tamaños_I)):
                                 
                                 #Nombre: Resultados_I_L_M_N_S
                                 
-                                f = open ('Resultados_Matheuristic_230325_1500_New_'
+                                f = open ('Resultados_Matheuristic_230325_New_'
                                               +str(len(I))+str('_')
                                               +str(len(L))+str('_')
                                               #+str(len(K))+str('_')
@@ -3497,7 +3497,7 @@ for iconj in range(len(tamaños_I)):
                                     best.write('\n')
                                     mejor_obj = model.objVal
                                     
-                                    mejor = open('Best_Matheuristic_230325_1500_'
+                                    mejor = open('Best_Matheuristic_230325_'
                                                       +str(tamaños_I[iconj])+str('_')
                                                       +str(tamaños_L[jconj])+str('_')
                                                       +str(tamaños_S[sconj])+'_'
@@ -3582,20 +3582,20 @@ for iconj in range(len(tamaños_I)):
                     ###### LEE LA MEJOR HASTA AHORA
                     ############################################################
                     
-                    soluciones = open('Solutions_Matheuristic_230325_1500_'
+                    soluciones = open('Solutions_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
                     
-                    best = open('Mejoras_Matheuristic_230325_1500_'
+                    best = open('Mejoras_Matheuristic_230325_'
                                       +str(tamaños_I[iconj])+str('_')
                                       +str(tamaños_L[jconj])+str('_')
                                       +str(tamaños_S[sconj])+'_'
                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
                     
-                    g = open('Best_Matheuristic_230325_1500_'
+                    g = open('Best_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'
@@ -3952,7 +3952,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #imprimir variables 
                             
-                            with open('data_Matheuristic_230325_1500_'+str(len(I))+str('_')
+                            with open('data_Matheuristic_230325_'+str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
                                           #+str(len(N))+str('_')
@@ -3980,7 +3980,7 @@ for iconj in range(len(tamaños_I)):
                             
                             #Nombre: Resultados_I_L_M_N_S
                             
-                            f = open ('Resultados_Matheuristic_230325_1500_New_'
+                            f = open ('Resultados_Matheuristic_230325_New_'
                                           +str(len(I))+str('_')
                                           +str(len(L))+str('_')
                                           #+str(len(K))+str('_')
@@ -4073,7 +4073,7 @@ for iconj in range(len(tamaños_I)):
                                 best.write('\n')
                                 mejor_obj = model.objVal
                                 
-                                mejor = open('Best_Matheuristic_230325_1500_'
+                                mejor = open('Best_Matheuristic_230325_'
                                                   +str(tamaños_I[iconj])+str('_')
                                                   +str(tamaños_L[jconj])+str('_')
                                                   +str(tamaños_S[sconj])+'_'
@@ -4153,9 +4153,9 @@ for iconj in range(len(tamaños_I)):
                 mejor.close()
                 g.close()
                     
-                book.save('Tesis_Matheuristic_230325_1500_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
-                book1.save('Tesis_Matheuristic_Mejoras_230325_1500_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
-#book.save('Tesis_Matheuristic_230325_1500_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book1.save('Tesis_Matheuristic_Mejoras_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+#book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 
 
                 
