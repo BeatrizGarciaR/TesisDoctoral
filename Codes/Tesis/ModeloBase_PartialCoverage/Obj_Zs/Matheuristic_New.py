@@ -37,8 +37,8 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [1500] 
-tamaños_L = [100]
+tamaños_I = [168] 
+tamaños_L = [16, 50, 100]
 tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [168, 270, 500, 900, 1500] 
@@ -4153,8 +4153,8 @@ for iconj in range(len(tamaños_I)):
                 mejor.close()
                 g.close()
                     
-                book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
-                book1.save('Tesis_Matheuristic_Mejoras_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book.save('Tesis_Matheuristic_230325_168_'+str(eta[0])+'_'+str(eta[1])+'_.xls') 
+                book1.save('Tesis_Matheuristic_Mejoras_230325_168_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 #book.save('Tesis_Matheuristic_230325_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 
 
