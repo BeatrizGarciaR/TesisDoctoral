@@ -13,9 +13,9 @@ Created on Mon Oct  9 11:50:21 2023
 # tamaños_L = [16, 50, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168, 500, 1500] 
-tamaños_L = [16]
-tamaños_S = [10, 100, 200]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [100]
+tamaños_S = [10, 50, 100, 150, 200]
 
 rates = [0.4]
 verif = 0.4
@@ -38,7 +38,7 @@ for iconj in range(len(tamaños_I)):
                 #           +'_'+str(eta[0])+'_'+str(eta[1])
                 #           +'.txt', "r")
 
-                archivo = open('Resultados_Prueba_ObjZs_FullNull_110425_'
+                archivo = open('Best_Matheuristic_230325_'
                           +str(tamaños_I[iconj])+str('_')
                           +str(tamaños_L[jconj])+str('_')
                           +str(tamaños_S[sconj])
@@ -48,7 +48,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline().strip().split()
                 line = archivo.readline().strip().split()
                 
-                f = open ('Location_ObjZs_FullNull_110425_'
+                f = open ('Location_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -61,7 +61,7 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 line = archivo.readline()
-                g = open ('Dispatch_ObjZs_FullNull_110425_'
+                g = open ('Dispatch_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -76,7 +76,7 @@ for iconj in range(len(tamaños_I)):
                 
                 #print(line)
                 count_assigned = 0
-                h = open ('Full_ObjZs_FullNull_110425_'
+                h = open ('Full_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -92,7 +92,7 @@ for iconj in range(len(tamaños_I)):
                 
                 line = archivo.readline()
                 
-                o = open ('Partial1_ObjZs_FullNull_110425_'
+                o = open ('Partial1_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -105,7 +105,7 @@ for iconj in range(len(tamaños_I)):
                 
                 line = archivo.readline()
                 
-                p = open ('Partial2_ObjZs_FullNull_110425_'
+                p = open ('Partial2_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -118,7 +118,7 @@ for iconj in range(len(tamaños_I)):
                 
                 line = archivo.readline()
                 
-                q = open ('Partial3_ObjZs_FullNull_110425_'
+                q = open ('Partial3_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
@@ -132,7 +132,7 @@ for iconj in range(len(tamaños_I)):
                 line = archivo.readline()
                 
                 count_notassigned = 0
-                r = open ('Null_ObjZs_FullNull_110425_'
+                r = open ('Null_Matheuristic_230325_'
                               +str(tamaños_I[iconj])+str('_')
                               +str(tamaños_L[jconj])+str('_')
                               +str(tamaños_S[sconj])+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')

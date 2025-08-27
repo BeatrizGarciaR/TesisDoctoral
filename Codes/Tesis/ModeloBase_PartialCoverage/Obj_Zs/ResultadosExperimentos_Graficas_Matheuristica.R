@@ -15,13 +15,13 @@ eta <- amb[1,]
 # objective value graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
+pdf(paste("Objective_Matheuristic_230325_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_230325_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,5)])
   #print(aux)
@@ -134,7 +134,7 @@ for (a in 1:length(amb[,1])){
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective SABC Matheuristic"), # Textos de la leyenda
+         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective NLSH"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
@@ -148,13 +148,13 @@ dev.off()
 # objective value graphics scenarios vs demand point
 counti = 0
 #for (i in len_I){
-pdf(paste("Objective_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
+pdf(paste("Objective_Matheuristic_230325_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_230325_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,5)])
   #print(aux)
@@ -265,7 +265,7 @@ for (a in 1:length(amb[,1])){
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective SABC Matheuristic"), # Textos de la leyenda
+         legend = c("best objective MEC", "best objective MEC(SABC)", "best objective NLSH"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
@@ -328,13 +328,13 @@ dev.off()
 # runtime graphics demand point vs scenarios
 counti = 0
 #for (i in len_I){
-pdf(paste("Time_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
+pdf(paste("Time_Matheuristic_230325_",len_L[1],'_',eta[1],'_',eta[2],"_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_230325_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,12)])
   #print(aux)
@@ -447,7 +447,7 @@ for (a in 1:length(amb[,1])){
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Scenarios", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
   legend(x = "left",         # Posici??n
-         legend = c("runtime MEC", "runtime MEC(SABC)", "runtime SABC \n Matheuristic"), # Textos de la leyenda
+         legend = c("runtime MEC", "runtime MEC(SABC)", "runtime NLSH"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
@@ -461,13 +461,13 @@ dev.off()
 # runtime graphics scenarios vs demand point
 counti = 0
 #for (i in len_I){
-pdf(paste("Time_Matheuristic_081024_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
+pdf(paste("Time_Matheuristic_230325_",len_L[1],'_',eta[1],'_',eta[2],"_1_Comparaciones.pdf", sep=""), width = 10)
 par(mfrow = c(1, length(amb)/2), mar=c(4.5, 5, 3.1, 0.9))
 for (a in 1:length(amb[,1])){
   # run time
   eta <- amb[a,]
   filas = c(seq(from=(1+counti*(5*length(len_I))), to=((1+counti*(5*length(len_I)))+((5*length(len_I))-1))))
-  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_081024_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
+  aux_0 <- as.data.frame(read.csv(paste('Tesis_Matheuristic_230325_',len_L[1],'_',eta[1],'_',eta[2],'_Comparaciones.csv', sep="")))
 
   aux <- as.data.frame(aux_0[filas, c(2,4,12)])
   #print(aux)
@@ -577,8 +577,8 @@ for (a in 1:length(amb[,1])){
   legend(x="top", legend = len_I, horiz=TRUE, cex = 2.1,
          fill = c(1, 2, 3, 4, 6, 7, 8), title = "Demand points", bty="n")
   #legend(x="topleft", legend = len_S, horiz=TRUE, cex = 0.9, fill = c(1, 2, 3, 4, 6), title = "Scenarios")
-  legend(x = "left",         # Posici??n
-         legend = c("runtime MEC", "runtime MEC(SABC)", "runtime SABC \n Matheuristic"), # Textos de la leyenda
+  legend(x = "right",         # Posici??n
+         legend = c("runtime MEC", "runtime MEC(SABC)", "runtime NLSH"), # Textos de la leyenda
          lty = c(1, 2, 3),          # Tipo de l??neas
          col = c(1, 1, 1),          # Colores de las l??neas
          lwd = 2, bty = "n", cex = 2.2)
