@@ -737,8 +737,12 @@ for iconj in range(len(tamaños_I)):
                     for l1 in L:
                         for l2 in L:
                             print("eles ",str(l1),str(l2))
-
-                            cambio1_BLS = 
+                            
+                            cambio1_BLS = (l1,1)
+                            cambio1_ALS = (l1,2)
+                            
+                            cambio2_BLS = (l2,1)
+                            cambio2_ALS = (l2,2)
                             
                             # cambio1_BLS = pares_nocero[l1][2]
                             # print("cambio 1 tipo 1 ",cambio1_BLS)
@@ -750,13 +754,21 @@ for iconj in range(len(tamaños_I)):
                             # print("cambio 1 tipo 2 ",cambio2_ALS)
                             # #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
                             
-                            if cambio1_BLS != cambio2_BLS:
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if cambio1_BLS + cambio1_ALS != 0 and cambio2_BLS + cambio2_ALS != 0 and l1 != l2:
+                                x_vars_original_cambio1_BLS = x_vars_list[dict_cambios[(l1,1)]]
+                                x_vars_original_cambio1_ALS = x_vars_list[dict_cambios[(l1,2)]]
                                 
-                                x_vars_original_cambio1_BLS = x_vars_list[pares_nocero[l1][2]]
-                                x_vars_original_cambio2_BLS = x_vars_list[pares_nocero[l2][2]]
+                                x_vars_original_cambio2_BLS = x_vars_list[dict_cambios[(l2,1)]]
+                                x_vars_original_cambio2_ALS = x_vars_list[dict_cambios[(l2,2)]]
                                 
-                                x_vars_list[cambio1_BLS] = x_vars_original_cambio2_BLS
-                                x_vars_list[cambio2_BLS] = x_vars_original_cambio1_BLS
+                                x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio2_BLS
+                                x_vars_list[dict_cambios[(l1,2)]] = x_vars_original_cambio2_ALS
+                                
+                                x_vars_list[dict_cambios[(l2,1)]] = x_vars_original_cambio1_BLS
+                                x_vars_list[dict_cambios[(l2,2)]] = x_vars_original_cambio1_ALS
                                 
                                 print("nuevo  ", x_vars_list)
                             
