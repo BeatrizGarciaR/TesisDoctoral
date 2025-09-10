@@ -736,6 +736,9 @@ for iconj in range(len(tamaños_I)):
                         #for j in range(len(pares_nocero)):
                     for l1 in L:
                         for l2 in L:
+                            
+                            a = b = c = d = -1
+                            
                             print("eles ",str(l1),str(l2))
                             
                             cambio1_BLS = (l1,1)
@@ -754,21 +757,54 @@ for iconj in range(len(tamaños_I)):
                             # print("cambio 1 tipo 2 ",cambio2_ALS)
                             # #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
                             
+                            if cambio1_BLS in dict_cambios:
+                                a = dict_cambios[cambio1_BLS]
+                                
+                            if cambio1_ALS in dict_cambios:
+                                b = dict_cambios[cambio1_ALS]
+                                
+                            if cambio2_BLS in dict_cambios:
+                                c = dict_cambios[cambio2_BLS]
+                                
+                            if cambio2_ALS in dict_cambios:
+                                d = dict_cambios[cambio2_ALS]
+                            
                             
                             #if cambio1_BLS != cambio2_BLS:
 
-                            if cambio1_BLS + cambio1_ALS != 0 and cambio2_BLS + cambio2_ALS != 0 and l1 != l2:
-                                x_vars_original_cambio1_BLS = x_vars_list[dict_cambios[(l1,1)]]
-                                x_vars_original_cambio1_ALS = x_vars_list[dict_cambios[(l1,2)]]
+                            if a + b != -2 and c + d != -2 and l1 != l2:
                                 
-                                x_vars_original_cambio2_BLS = x_vars_list[dict_cambios[(l2,1)]]
-                                x_vars_original_cambio2_ALS = x_vars_list[dict_cambios[(l2,2)]]
+                                if a != -1:
+                                    x_vars_original_cambio1_BLS = x_vars_list[a]
+                                else:
+                                    x_vars_original_cambio1_BLS = 0
                                 
-                                x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio2_BLS
-                                x_vars_list[dict_cambios[(l1,2)]] = x_vars_original_cambio2_ALS
+                                if b != -1:
+                                    x_vars_original_cambio1_ALS = x_vars_list[b]
+                                else:
+                                    x_vars_original_cambio1_ALS
                                 
-                                x_vars_list[dict_cambios[(l2,1)]] = x_vars_original_cambio1_BLS
-                                x_vars_list[dict_cambios[(l2,2)]] = x_vars_original_cambio1_ALS
+                                if c != -1:
+                                    x_vars_original_cambio2_BLS = x_vars_list[c]
+                                else:
+                                    x_vars_original_cambio2_BLS = 0
+                                    
+                                if d != -1:
+                                    x_vars_original_cambio2_ALS = x_vars_list[d]
+                                else:
+                                    x_vars_original_cambio2_ALS = 0
+                                
+                                if a != -1:
+                                    x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio2_BLS
+                                
+                                if b != -1:
+                                    x_vars_list[dict_cambios[(l1,2)]] = x_vars_original_cambio2_ALS
+                                
+                                if c != -1:
+                                    x_vars_list[dict_cambios[(l2,1)]] = x_vars_original_cambio1_BLS
+                                
+                                if d != -1:
+                                    x_vars_list[dict_cambios[(l2,2)]] = x_vars_original_cambio1_ALS
                                 
                                 print("nuevo  ", x_vars_list)
                             
@@ -1271,20 +1307,20 @@ for iconj in range(len(tamaños_I)):
                             if total_time < time_limit_final:
                                 break
                             
-                            if cambio1_BLS != cambio2_BLS:
-                                break
+                            # if cambio1_BLS != cambio2_BLS:
+                            #     break
                         if sale == 1:
                             break
                         if total_time > time_limit_ls:
                             break
-                        if cambio1_BLS != cambio2_BLS:
-                            break
-                if cambio1_BLS != cambio2_BLS:
-                    break    
+                        # if cambio1_BLS != cambio2_BLS:
+                        #     break
+                # if cambio1_BLS != cambio2_BLS:
+                #     break    
                 # ###########################################################
                 # ######## VECINDARIO ACTIVOS VS ACTIVOS (CAMBIOS PARA ALS)
                 # ############################################################
-                
+                break
                 # sale = 1
                 # while sale == 1:
                                
