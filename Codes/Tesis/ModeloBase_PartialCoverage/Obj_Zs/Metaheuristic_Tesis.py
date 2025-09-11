@@ -782,7 +782,7 @@ for iconj in range(len(tamaños_I)):
                                 if b != -1:
                                     x_vars_original_cambio1_ALS = x_vars_list[b]
                                 else:
-                                    x_vars_original_cambio1_ALS
+                                    x_vars_original_cambio1_ALS = 0
                                 
                                 if c != -1:
                                     x_vars_original_cambio2_BLS = x_vars_list[c]
@@ -793,18 +793,40 @@ for iconj in range(len(tamaños_I)):
                                     x_vars_original_cambio2_ALS = x_vars_list[d]
                                 else:
                                     x_vars_original_cambio2_ALS = 0
+                                    
+                                print ("cambios ", x_vars_original_cambio1_BLS,
+                                       x_vars_original_cambio1_ALS, x_vars_original_cambio2_BLS,
+                                       x_vars_original_cambio2_ALS)
                                 
-                                if a != -1:
+                                if x_vars_original_cambio1_BLS != 0:
                                     x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio2_BLS
+                                    #print("entra c1 or")
+                                else:
+                                    x_vars_list[l1*2 - 2] = x_vars_original_cambio2_BLS
+                                    #print("entra c1", l1*2 - 2)
                                 
-                                if b != -1:
+                                if x_vars_original_cambio1_ALS != 0:
                                     x_vars_list[dict_cambios[(l1,2)]] = x_vars_original_cambio2_ALS
+                                    #print("entra c2 or")
+                                else:
+                                    x_vars_list[l1*2 - 1] = x_vars_original_cambio2_ALS
+                                    #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
                                 
-                                if c != -1:
+                                #print(x_vars_list)
+                                
+                                if x_vars_original_cambio2_BLS != 0:
                                     x_vars_list[dict_cambios[(l2,1)]] = x_vars_original_cambio1_BLS
+                                    #print("entra c3 or")
+                                else:
+                                    x_vars_list[l2*2 - 2] = x_vars_original_cambio1_BLS
+                                    #print("entra c3", l2*2 - 2)
                                 
-                                if d != -1:
+                                if x_vars_original_cambio2_ALS != 0:
                                     x_vars_list[dict_cambios[(l2,2)]] = x_vars_original_cambio1_ALS
+                                    #print("entra c4 or")
+                                else:
+                                    x_vars_list[l2*2 - 1] = x_vars_original_cambio1_ALS
+                                    #print("entra c4", l2*2 - 1)
                                 
                                 print("nuevo  ", x_vars_list)
                             
