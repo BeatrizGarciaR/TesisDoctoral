@@ -44,13 +44,13 @@ import xlwt
 # tamaños_L = [16, 30, 50, 70, 100]
 # tamaños_S = [10, 50, 100, 150, 200]
 
-tamaños_I = [168] 
-tamaños_L = [16]
-tamaños_S = [10]
+# tamaños_I = [168] 
+# tamaños_L = [16]
+# tamaños_S = [10]
 
-# tamaños_I = [168, 270, 500, 900, 1500] 
-# tamaños_L = [16, 50, 100]
-# tamaños_S = [10, 50, 100, 150, 200]
+tamaños_I = [168, 270, 500, 900, 1500] 
+tamaños_L = [16, 50, 100]
+tamaños_S = [10, 50, 100, 150, 200]
 
 # tamaños_I = [270]
 # tamaños_L = [16]
@@ -652,10 +652,3133 @@ for iconj in range(len(tamaños_I)):
                 
                 
                 mejor_obj = model.objVal
- 
-                ############################################################
-                ###### VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y ACTIVOS (BLS)
-                ############################################################
+                
+                
+                #####################################################################
+                ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS (BLS Y ALS)
+                #####################################################################
+            
+                sale = 1
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+                    
+                    
+                    soluciones = open('Solutions_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    g = open('Best_Metaheuristic_080925_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'
+                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
+                    
+                    
+                    g.readline().strip().split()
+                    
+                    # Create variables #
+                    x_vars_list = []
+                    pares_cero = []
+                    pares_nocero = []
+                    impares_cero = []
+                    impares_nocero = []
+                    count = 0
+                    dict_cambios_activos = {}
+                    dict_cambios_noactivos = {}
+                    for l in L:
+                        for k in K:
+                            
+                            line = g.readline().strip().split()
+                            x_vars_list.append(int(line[len(line)-1]))
+                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                                #pares_cero.append([(l,k),count])
+                                dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                                #pares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                                #impares_cero.append([(l,k),count])
+                                dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                                #impares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            count = count + 1
+                            
+                            # line = g.readline().strip().split()
+                            # x_vars_list.append(int(line[len(line)-1]))
+                            # if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                            #     pares_cero.append([l,k,count])
+                            # if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                            #     pares_nocero.append([l,k,count])
+                            # if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                            #     impares_cero.append([l,k,count])
+                            # if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                            #     impares_nocero.append([l,k,count])
+                            # count = count + 1
+                    g.close()
+                    
+                    #print("activos ", dict_cambios_activos, '\n')
+                    #print("no activos ", dict_cambios_noactivos, '\n')
+                    
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
+                    
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    #break
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
+                    
+                    sale = 0
+                    #for i1 in range(len(pares_nocero)):
+                        #for j in range(len(pares_nocero)):
+                    for l1 in L:
+                        for l2 in L:
+                            
+                            a = b = c = d = -1
+                            
+                            #print("eles ",str(l1),str(l2))
+                            
+                            cambio1_BLS = (l1,1)
+                            cambio1_ALS = (l1,2)
+                            
+                            cambio2_BLS = (l2,1)
+                            cambio2_ALS = (l2,2)
+                            
+                            # cambio1_BLS = pares_nocero[l1][2]
+                            # print("cambio 1 tipo 1 ",cambio1_BLS)
+                            # cambio1_ALS = impares_nocero[l1][2]
+                            # print("cambio 1 tipo 2 ",cambio1_ALS)
+                            # cambio2_BLS = pares_nocero[l2][2]
+                            # print("cambio 2 tipo 1 ", cambio2_BLS)
+                            # cambio2_ALS = impares_nocero[l2][2]
+                            # print("cambio 1 tipo 2 ",cambio2_ALS)
+                            # #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
+                            
+                            if cambio1_BLS in dict_cambios_activos or cambio1_ALS in dict_cambios_activos:
+                                a = 'TRUE' 
+                                
+                        
+                            if cambio2_BLS in dict_cambios_noactivos and cambio2_ALS in dict_cambios_noactivos:
+                                b = 'TRUE'
+                            
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if l1 != l2 and a == 'TRUE' and b == 'TRUE':
+                                
+                                #print("ENTRO", a, b, " \n")
+                                
+                                if cambio1_BLS in dict_cambios_activos:
+                                    x_vars_original_cambio1_BLS = x_vars_list[dict_cambios_activos[cambio1_BLS]]
+                                else:
+                                    x_vars_original_cambio1_BLS = x_vars_list[dict_cambios_noactivos[cambio1_BLS]]
+                                    
+                                if cambio1_ALS in dict_cambios_activos:
+                                    x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                else:
+                                    x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_noactivos[cambio1_ALS]]
+                                
+                                
+                                x_vars_original_cambio2_BLS = x_vars_list[dict_cambios_noactivos[cambio2_BLS]]
+                                x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                
+                                
+                                    
+                                #print ("cambios ", x_vars_original_cambio1_BLS,
+                                        # x_vars_original_cambio1_ALS, x_vars_original_cambio2_BLS,
+                                        # x_vars_original_cambio2_ALS)
+                                
+                                if cambio1_BLS in dict_cambios_activos:
+                                    x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_original_cambio2_BLS
+                                    #print("entra c1 or")
+                                else:
+                                    x_vars_list[dict_cambios_noactivos[cambio1_BLS]] = x_vars_original_cambio2_BLS
+                                    #print("entra c1", l1*2 - 2)
+                                
+                                if cambio1_ALS in dict_cambios_activos:
+                                    x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                    #print("entra c2 or")
+                                else:
+                                    x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                    #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                
+                                #print(x_vars_list)
+                                
+                                x_vars_list[dict_cambios_noactivos[cambio2_BLS]] = x_vars_original_cambio1_BLS
+                                
+                                x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio1_ALS
+                                   
+                                
+                                #print("nuevo  ", x_vars_list)
+                            
+                                #x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] - x_vars_original_cambio1_BLS
+                                #x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] + x_vars_original_cambio1_BLS
+                                
+                                #break
+                                
+                                # print("Original ", x_vars_original_cambio1_BLS)
+                        
+                                # print('\n')
+                                # print("x_vars_list 1")
+                                # print(x_vars_list)
+                                # print('\n')
+                    
+                                
+                                presolve = 0
+                                
+                                model = gp.Model("Swap1")
+                                
+                                model.setParam('TimeLimit', timelim)
+                                
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()        
+                                
+                                # Create variables #
+                                x_vars = {}
+                                cantVarX = 0
+                                count = 0
+                                for l in L:
+                                    for k in K:
+                                        x_vars[l,k] = int(x_vars_list[count])
+                                        cantVarX += 1
+                                        count = count + 1
+                                
+                                print(x_vars)
+                                        
+                                        
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
+                                    for l in L:
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                
+                                
+                                alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                                            name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
+                                            
+                                
+                                beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
+                                            
+                                
+                                delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
+                                       
+                                
+                                phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
+                                       
+                                
+                                gamma_vars = {} ## z null
+                                cantVarGamma = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
+                                       
+                                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #obj += 0
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                # Add constraints
+                                
+                                for s in range(len(S)):
+                                    
+                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                                    # for k in K:
+                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                                    
+                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                                    for l in L: 
+                                        amb1 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:                            
+                                                amb1 += y_vars[s+1,l,1,i]
+                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
+                                    
+                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
+                                    for l in L:
+                                        amb2 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
+                                        
+                                    
+                                    # # Restricción 5: Desactivar alpha (cobertura total)
+                                    # suma_alpha2 = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
+                                    
+                                    
+                                    # Restricción 6: Desactivar alpha (cobertura total)
+                                    for i in I:
+                                        suma_alpha2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                                    
+                                    
+                                    # # Restricción 6: Activar alpha (cobertura total) 
+                                    # suma_alpha = gp.LinExpr()
+                                    # for i in I: 
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                
+                                    
+                                
+                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                                            
+                                            
+                                            
+                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta = gp.LinExpr()
+                                        suma_beta_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
+                                
+                                    
+                                
+                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
+                                    for i in I:
+                                        suma_delta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                                           
+                                                
+                                        
+                                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                                    # suma_delta = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                                       
+                                              
+                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
+                                    for i in I:
+                                        suma_delta3 = gp.LinExpr()
+                                        suma_delta3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
+                                            
+                                    
+                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                                       
+                                            
+                                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                                    # suma_phi = gp.LinExpr()
+                                    # suma_phi_aux = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                                      
+                                    
+                                
+                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi3 = gp.LinExpr()
+                                        suma_phi3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                                    
+                                    # Restricción 13: Activar gamma (cobertura nula)
+                                    for i in I:
+                                        suma_gamma = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
+                                            
+                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
+                                    
+                                
+                                
+                                # Optimize model
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start 
+                                
+                                #imprimir variables 
+                                
+                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                                    writer = csv.writer(f)
+                                    writer.writerows(model._data)
+                                    
+                                
+                                
+                                #archivo = xlsxwriter.Workbook('tesis.csv')
+                                #hoja = archivo.add_worksheet()
+                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                for column in range(len(colnames)):
+                                    sheet.write(0, column, colnames[column])
+                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                sheet.write(countcsv, 0, name)
+                                sheet.write(countcsv, 1, len(I))
+                                sheet.write(countcsv, 2, len(L))
+                                sheet.write(countcsv, 3, len(S))
+                                if len(model._data) != 0:
+                                    datos = model._data[len(model._data)-1]
+                                    for row in range(len(datos)):
+                                        sheet.write(countcsv, row+4, datos[row])
+                                
+                                
+                                #Nombre: Resultados_I_L_M_N_S
+                                
+                                f = open ('Resultados_Metaheuristic_080925_New_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                                
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                                
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                
+                                for l in L:
+                                    for k in K:
+                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                                        f.write('\n')
+                                f.write('-1')
+                                f.write('\n')
+                                
+                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                name_ind = 0
+                                new_name = names[name_ind]
+                                
+                                
+                                if model.objVal != float("-inf"):
+                                    for v in model.getVars():
+                                        #print(v)
+                                        if new_name not in v.varName:
+                                            #print("entra new name \n")
+                                            #print(new_name+'\n')
+                                            f.write('-1')
+                                            f.write('\n')
+                                            name_ind = name_ind + 1
+                                            new_name = names[name_ind]
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                f.write('-1')
+                                    
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()
+                                
+                                
+                                end_time = time.time()
+                                total_time = end_time - initial_time 
+                                
+                                sheet.write(countcsv, 9, total_time)
+                                #sheet1.write(countcsv1, 9, total_time)
+                                sheet.write(countcsv, 10, "V4 BLS")
+                                
+                                countcsv = countcsv + 1
+                                #countcsv1 = countcsv1 + 1
+                                
+                                soluciones.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal +'\n')
+                                soluciones.write(str(x_vars_list))
+                                soluciones.write('\n')
+                                
+                                #sale = 0
+                                if model.objVal > mejor_obj:
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                    for column in range(len(colnames)):
+                                        sheet1.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                    sheet1.write(countcsv1, 0, name)
+                                    sheet1.write(countcsv1, 1, len(I))
+                                    sheet1.write(countcsv1, 2, len(L))
+                                    sheet1.write(countcsv1, 3, len(S))
+                                    if len(model._data) != 0:
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet1.write(countcsv1, row+4, datos[row])
+                                            
+                                    sheet1.write(countcsv1, 9, total_time)
+                                    sheet1.write(countcsv1, 10, "V4 BLS")
+                                    countcsv1 = countcsv1 + 1
+                                    
+                                    best.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal + '\n')
+                                    best.write(str(x_vars_list))
+                                    best.write('\n')
+                                    mejor_obj = model.objVal
+                                    
+                                    mejor = open('Best_Metaheuristic_080925_'
+                                                      +str(tamaños_I[iconj])+str('_')
+                                                      +str(tamaños_L[jconj])+str('_')
+                                                      +str(tamaños_S[sconj])+'_'
+                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                        
+                                    mejor.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal)
+                                    mejor.write('\n')
+                        
+                                    cont = 0
+                                    for l in L:
+                                        for k in K:
+                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
+                                            mejor.write('\n')
+                                            cont = cont + 1
+                                    mejor.write('-1')
+                                    mejor.write('\n')
+                        
+                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                    name_ind = 0
+                                    new_name = names[name_ind]
+                        
+                        
+                                    if model.objVal != float("-inf"):
+                                        for v in model.getVars():
+                                            # if new_name == 'located':
+                                            #     print(str(v) + '\n')
+                                            #     print('%s %g' % (v.varName, v.x))
+                                            if new_name not in v.varName:
+                                                #print("entra new name \n")
+                                                #print(new_name+'\n')
+                                                mejor.write('-1')
+                                                mejor.write('\n')
+                                                name_ind = name_ind + 1
+                                                new_name = names[name_ind]
+                                            mejor.write('%s %g' % (v.varName, v.x))
+                                            mejor.write('\n')
+                                        
+                                    mejor.write('-1')
+                        
+                                    mejor.close()
+                                    
+                                    sale = 1
+                        
+                                
+                                
+                        
+                                #print('\n')
+                                #print("x_vars_list 2")
+                                #print(str(x_vars_list))
+                                #print('\n')
+                                
+                                if sale == 1:
+                                    break
+                                else:
+                                    if cambio1_BLS in dict_cambios_activos:
+                                        x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_original_cambio1_BLS
+                                        #print("entra c1 or")
+                                    else:
+                                        x_vars_list[dict_cambios_noactivos[cambio1_BLS]] = x_vars_original_cambio1_BLS
+                                        #print("entra c1", l1*2 - 2)
+                                    
+                                    if cambio1_ALS in dict_cambios_activos:
+                                        x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio1_ALS
+                                        #print("entra c2 or")
+                                    else:
+                                        x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio1_ALS
+                                        #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                    
+                                    #print(x_vars_list)
+                                    
+                                    x_vars_list[dict_cambios_noactivos[cambio2_BLS]] = x_vars_original_cambio2_BLS
+                                    
+                                    x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio2_ALS
+                                
+                                if total_time > time_limit_final:
+                                    break
+                                
+                                #break
+                                
+                            if sale == 1:
+                                break
+                            
+                            if total_time > time_limit_final:
+                                break
+                            
+                            #break
+                        
+                        if sale == 1:
+                            break
+                        
+                        if total_time > time_limit_ls:
+                            break
+                        
+                        #break
+                    
+                    #break
+                        
+                #break   
+                
+                #####################################################################
+                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS BLS Y ALS
+                #####################################################################
+
+                sale = 1
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+              
+                    soluciones = open('Solutions_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    g = open('Best_Metaheuristic_080925_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'
+                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
+                    
+                    
+                    g.readline().strip().split()
+                    
+                    # Create variables #
+                    x_vars_list = []
+                    pares_cero = []
+                    pares_nocero = []
+                    impares_cero = []
+                    impares_nocero = []
+                    count = 0
+                    dict_cambios_activos = {}
+                    dict_cambios_noactivos = {}
+                    for l in L:
+                        for k in K:
+                            
+                            line = g.readline().strip().split()
+                            x_vars_list.append(int(line[len(line)-1]))
+                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                                #pares_cero.append([(l,k),count])
+                                dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                                #pares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                                #impares_cero.append([(l,k),count])
+                                dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                                #impares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            count = count + 1
+                    g.close()
+                    
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
+                    
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    print("activos ", dict_cambios_activos)
+                    
+                    print("noactivos: ", dict_cambios_noactivos)
+                    
+                   
+                    #print("\n viejo ",x_vars_list)
+                
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
+                    
+                    sale = 0
+                    #for i1 in range(len(pares_nocero)):
+                        #for j in range(len(pares_nocero)):
+                    for l1 in L:
+                        for l2 in L:
+                            
+                            a = b = c = d = -1
+                            
+                            #print("eles ",str(l1),str(l2))
+                            
+                            cambio1_BLS = (l1,1)
+                            
+                            cambio2_BLS = (l2,1)
+                            
+                            # cambio1_BLS = pares_nocero[l1][2]
+                            # print("cambio 1 tipo 1 ",cambio1_BLS)
+                            # cambio1_ALS = impares_nocero[l1][2]
+                            # print("cambio 1 tipo 2 ",cambio1_ALS)
+                            # cambio2_BLS = pares_nocero[l2][2]
+                            # print("cambio 2 tipo 1 ", cambio2_BLS)
+                            # cambio2_ALS = impares_nocero[l2][2]
+                            # print("cambio 1 tipo 2 ",cambio2_ALS)
+                            # #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
+                            
+                            if cambio1_BLS in dict_cambios_activos:
+                                a = 'TRUE' 
+                                
+                        
+                            if cambio2_BLS in dict_cambios_noactivos:
+                                b = 'TRUE'
+                                
+                            #print(a, b, '\n')
+                            
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if l1 != l2 and a == 'TRUE' and b == 'TRUE':
+                                
+                                #print("ENTRO", a, b, " \n")
+                                
+                                x_vars_original_cambio1_BLS = x_vars_list[dict_cambios_activos[cambio1_BLS]]
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                # else:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_noactivos[cambio1_ALS]]
+                                
+                                
+                                x_vars_original_cambio2_BLS = x_vars_list[dict_cambios_noactivos[cambio2_BLS]]
+                                # x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                
+                                
+                                    
+                                #print ("cambios ", x_vars_original_cambio1_BLS, x_vars_original_cambio2_BLS)
+                                
+                                x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_list[dict_cambios_activos[cambio1_BLS]] - 1
+                                    #print("entra c1 or")
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2 or")
+                                # else:
+                                #     x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                
+                                #print(x_vars_list)
+                                
+                                x_vars_list[dict_cambios_noactivos[cambio2_BLS]] = x_vars_list[dict_cambios_noactivos[cambio2_BLS]] + 1
+                                
+                                # x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio1_ALS
+                                   
+                                
+                                #print("nuevo  ", x_vars_list)
+                                
+                                
+                                
+                                # print("Original ", x_vars_original_cambio1_BLS)
+                        
+                                # print('\n')
+                                # print("x_vars_list 1")
+                                # print(x_vars_list)
+                                # print('\n')
+                                
+                                presolve = 0
+                                
+                                model = gp.Model("Swap1")
+                                
+                                model.setParam('TimeLimit', timelim)
+                                
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()        
+                                
+                                # Create variables #
+                                x_vars = {}
+                                cantVarX = 0
+                                count = 0
+                                for l in L:
+                                    for k in K:
+                                        x_vars[l,k] = int(x_vars_list[count])
+                                        cantVarX += 1
+                                        count = count + 1
+                                
+                                print(x_vars)
+                                        
+                                        
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
+                                    for l in L:
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                
+                                
+                                alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                                            name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
+                                            
+                                
+                                beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
+                                            
+                                
+                                delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
+                                       
+                                
+                                phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
+                                       
+                                
+                                gamma_vars = {} ## z null
+                                cantVarGamma = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
+                                       
+                                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #obj += 0
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                # Add constraints
+                                
+                                for s in range(len(S)):
+                                    
+                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                                    # for k in K:
+                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                                    
+                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                                    for l in L: 
+                                        amb1 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:                            
+                                                amb1 += y_vars[s+1,l,1,i]
+                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
+                                    
+                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
+                                    for l in L:
+                                        amb2 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
+                                        
+                                    
+                                    # # Restricción 5: Desactivar alpha (cobertura total)
+                                    # suma_alpha2 = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
+                                    
+                                    
+                                    # Restricción 6: Desactivar alpha (cobertura total)
+                                    for i in I:
+                                        suma_alpha2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                                    
+                                    
+                                    # # Restricción 6: Activar alpha (cobertura total) 
+                                    # suma_alpha = gp.LinExpr()
+                                    # for i in I: 
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                
+                                    
+                                
+                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                                            
+                                            
+                                            
+                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta = gp.LinExpr()
+                                        suma_beta_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
+                                
+                                    
+                                
+                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
+                                    for i in I:
+                                        suma_delta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                                           
+                                                
+                                        
+                                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                                    # suma_delta = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                                       
+                                              
+                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
+                                    for i in I:
+                                        suma_delta3 = gp.LinExpr()
+                                        suma_delta3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
+                                            
+                                    
+                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                                       
+                                            
+                                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                                    # suma_phi = gp.LinExpr()
+                                    # suma_phi_aux = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                                      
+                                    
+                                
+                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi3 = gp.LinExpr()
+                                        suma_phi3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                                    
+                                    # Restricción 13: Activar gamma (cobertura nula)
+                                    for i in I:
+                                        suma_gamma = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
+                                            
+                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
+                                    
+                                
+                                
+                                # Optimize model
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start 
+                                
+                                #imprimir variables 
+                                
+                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                                    writer = csv.writer(f)
+                                    writer.writerows(model._data)
+                                    
+                                
+                                
+                                #archivo = xlsxwriter.Workbook('tesis.csv')
+                                #hoja = archivo.add_worksheet()
+                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                for column in range(len(colnames)):
+                                    sheet.write(0, column, colnames[column])
+                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                sheet.write(countcsv, 0, name)
+                                sheet.write(countcsv, 1, len(I))
+                                sheet.write(countcsv, 2, len(L))
+                                sheet.write(countcsv, 3, len(S))
+                                if len(model._data) != 0:
+                                    datos = model._data[len(model._data)-1]
+                                    for row in range(len(datos)):
+                                        sheet.write(countcsv, row+4, datos[row])
+                                
+                                
+                                #Nombre: Resultados_I_L_M_N_S
+                                
+                                f = open ('Resultados_Metaheuristic_080925_New_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                                
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                                
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                
+                                for l in L:
+                                    for k in K:
+                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                                        f.write('\n')
+                                f.write('-1')
+                                f.write('\n')
+                                
+                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                name_ind = 0
+                                new_name = names[name_ind]
+                                
+                                
+                                if model.objVal != float("-inf"):
+                                    for v in model.getVars():
+                                        #print(v)
+                                        if new_name not in v.varName:
+                                            #print("entra new name \n")
+                                            #print(new_name+'\n')
+                                            f.write('-1')
+                                            f.write('\n')
+                                            name_ind = name_ind + 1
+                                            new_name = names[name_ind]
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                f.write('-1')
+                                    
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()
+                                
+                                
+                                end_time = time.time()
+                                total_time = end_time - initial_time 
+                                
+                                sheet.write(countcsv, 9, total_time)
+                                #sheet1.write(countcsv1, 9, total_time)
+                                
+                                sheet.write(countcsv, 10, "V2 BLS")
+                                
+                                countcsv = countcsv + 1
+                                #countcsv1 = countcsv1 + 1
+                                
+                                soluciones.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal +'\n')
+                                soluciones.write(str(x_vars_list))
+                                soluciones.write('\n')
+                                
+                                #sale = 0
+                                if model.objVal > mejor_obj:
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                    for column in range(len(colnames)):
+                                        sheet1.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                    sheet1.write(countcsv1, 0, name)
+                                    sheet1.write(countcsv1, 1, len(I))
+                                    sheet1.write(countcsv1, 2, len(L))
+                                    sheet1.write(countcsv1, 3, len(S))
+                                    if len(model._data) != 0:
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet1.write(countcsv1, row+4, datos[row])
+                                            
+                                    sheet1.write(countcsv1, 9, total_time)
+                                    sheet1.write(countcsv1, 10, "V2 BLS")
+                                    countcsv1 = countcsv1 + 1
+                                    
+                                    best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
+                                    best.write(str(x_vars_list))
+                                    best.write('\n')
+                                    mejor_obj = model.objVal
+                                    
+                                    mejor = open('Best_Metaheuristic_080925_'
+                                                      +str(tamaños_I[iconj])+str('_')
+                                                      +str(tamaños_L[jconj])+str('_')
+                                                      +str(tamaños_S[sconj])+'_'
+                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                        
+                                    mejor.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal)
+                                    mejor.write('\n')
+                                    
+                                    cont = 0
+                                    for l in L:
+                                        for k in K:
+                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
+                                            mejor.write('\n')
+                                            cont = cont + 1
+                                    mejor.write('-1')
+                                    mejor.write('\n')
+                                    
+                        
+                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                    name_ind = 0
+                                    new_name = names[name_ind]
+                        
+                        
+                                    if model.objVal != float("-inf"):
+                                        for v in model.getVars():
+                                            # if new_name == 'located':
+                                            #     print(str(v) + '\n')
+                                            #     print('%s %g' % (v.varName, v.x))
+                                            if new_name not in v.varName:
+                                                #print("entra new name \n")
+                                                #print(new_name+'\n')
+                                                mejor.write('-1')
+                                                mejor.write('\n')
+                                                name_ind = name_ind + 1
+                                                new_name = names[name_ind]
+                                            mejor.write('%s %g' % (v.varName, v.x))
+                                            mejor.write('\n')
+                                        
+                                    mejor.write('-1')
+                        
+                                    mejor.close()
+                                    
+                                    sale = 1
+
+                                # print('\n')
+                                # print("x_vars_list 2")
+                                # print(str(x_vars_list))
+                                # print('\n')
+                                
+                                if sale == 1:
+                                    break
+                                else:
+                                    x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_list[dict_cambios_activos[cambio1_BLS]] + 1
+                                    
+                                    x_vars_list[dict_cambios_noactivos[cambio2_BLS]] = x_vars_list[dict_cambios_noactivos[cambio2_BLS]] - 1
+                                
+                                if total_time > time_limit_final:
+                                    break
+                                
+                                
+                            #print("eles_2 ",str(l1),str(l2))
+                            
+                            cambio1_ALS = (l1,2)
+                            
+                            cambio2_ALS = (l2,2)
+                            
+                            if cambio1_ALS in dict_cambios_activos:
+                                c = 'TRUE' 
+                                
+                        
+                            if cambio2_ALS in dict_cambios_noactivos:
+                                d = 'TRUE'
+                            
+                            #print(c, d, " \n")
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if l1 != l2 and c == 'TRUE' and d == 'TRUE':
+                                
+                                #print("ENTRO", c, d)
+                                
+                                x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                # else:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_noactivos[cambio1_ALS]]
+                                
+                                
+                                x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                # x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                
+                                
+                                    
+                                #print ("cambios ", x_vars_original_cambio1_ALS, x_vars_original_cambio2_ALS)
+                                
+                                x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_list[dict_cambios_activos[cambio1_ALS]] - 1
+                                    #print("entra c1 or")
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2 or")
+                                # else:
+                                #     x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                
+                                #print(x_vars_list)
+                                
+                                x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_list[dict_cambios_noactivos[cambio2_ALS]] + 1
+                                
+                                # x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio1_ALS
+                                   
+                                
+                                #print("nuevo  ", x_vars_list)
+                                
+                                
+                                
+                                # print("Original ", x_vars_original_cambio1_BLS)
+                        
+                                # print('\n')
+                                # print("x_vars_list 1")
+                                # print(x_vars_list)
+                                # print('\n')
+                                
+                                presolve = 0
+                                
+                                model = gp.Model("Swap1")
+                                
+                                model.setParam('TimeLimit', timelim)
+                                
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()        
+                                
+                                # Create variables #
+                                x_vars = {}
+                                cantVarX = 0
+                                count = 0
+                                for l in L:
+                                    for k in K:
+                                        x_vars[l,k] = int(x_vars_list[count])
+                                        cantVarX += 1
+                                        count = count + 1
+                                
+                                print(x_vars)
+                                        
+                                        
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
+                                    for l in L:
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                
+                                
+                                alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                                            name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
+                                            
+                                
+                                beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
+                                            
+                                
+                                delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
+                                       
+                                
+                                phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
+                                       
+                                
+                                gamma_vars = {} ## z null
+                                cantVarGamma = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
+                                       
+                                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #obj += 0
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                # Add constraints
+                                
+                                for s in range(len(S)):
+                                    
+                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                                    # for k in K:
+                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                                    
+                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                                    for l in L: 
+                                        amb1 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:                            
+                                                amb1 += y_vars[s+1,l,1,i]
+                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
+                                    
+                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
+                                    for l in L:
+                                        amb2 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
+                                        
+                                    
+                                    # # Restricción 5: Desactivar alpha (cobertura total)
+                                    # suma_alpha2 = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
+                                    
+                                    
+                                    # Restricción 6: Desactivar alpha (cobertura total)
+                                    for i in I:
+                                        suma_alpha2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                                    
+                                    
+                                    # # Restricción 6: Activar alpha (cobertura total) 
+                                    # suma_alpha = gp.LinExpr()
+                                    # for i in I: 
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                
+                                    
+                                
+                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                                            
+                                            
+                                            
+                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta = gp.LinExpr()
+                                        suma_beta_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
+                                
+                                    
+                                
+                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
+                                    for i in I:
+                                        suma_delta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                                           
+                                                
+                                        
+                                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                                    # suma_delta = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                                       
+                                              
+                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
+                                    for i in I:
+                                        suma_delta3 = gp.LinExpr()
+                                        suma_delta3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
+                                            
+                                    
+                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                                       
+                                            
+                                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                                    # suma_phi = gp.LinExpr()
+                                    # suma_phi_aux = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                                      
+                                    
+                                
+                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi3 = gp.LinExpr()
+                                        suma_phi3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                                    
+                                    # Restricción 13: Activar gamma (cobertura nula)
+                                    for i in I:
+                                        suma_gamma = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
+                                            
+                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
+                                    
+                                
+                                
+                                # Optimize model
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start 
+                                
+                                #imprimir variables 
+                                
+                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                                    writer = csv.writer(f)
+                                    writer.writerows(model._data)
+                                    
+                                
+                                
+                                #archivo = xlsxwriter.Workbook('tesis.csv')
+                                #hoja = archivo.add_worksheet()
+                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                for column in range(len(colnames)):
+                                    sheet.write(0, column, colnames[column])
+                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                sheet.write(countcsv, 0, name)
+                                sheet.write(countcsv, 1, len(I))
+                                sheet.write(countcsv, 2, len(L))
+                                sheet.write(countcsv, 3, len(S))
+                                if len(model._data) != 0:
+                                    datos = model._data[len(model._data)-1]
+                                    for row in range(len(datos)):
+                                        sheet.write(countcsv, row+4, datos[row])
+                                
+                                
+                                #Nombre: Resultados_I_L_M_N_S
+                                
+                                f = open ('Resultados_Metaheuristic_080925_New_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                                
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                                
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                
+                                for l in L:
+                                    for k in K:
+                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                                        f.write('\n')
+                                f.write('-1')
+                                f.write('\n')
+                                
+                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                name_ind = 0
+                                new_name = names[name_ind]
+                                
+                                
+                                if model.objVal != float("-inf"):
+                                    for v in model.getVars():
+                                        #print(v)
+                                        if new_name not in v.varName:
+                                            #print("entra new name \n")
+                                            #print(new_name+'\n')
+                                            f.write('-1')
+                                            f.write('\n')
+                                            name_ind = name_ind + 1
+                                            new_name = names[name_ind]
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                f.write('-1')
+                                    
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()
+                                
+                                
+                                end_time = time.time()
+                                total_time = end_time - initial_time 
+                                
+                                sheet.write(countcsv, 9, total_time)
+                                #sheet1.write(countcsv1, 9, total_time)
+                                
+                                sheet.write(countcsv, 10, "V2 BLS")
+                                
+                                countcsv = countcsv + 1
+                                #countcsv1 = countcsv1 + 1
+                                
+                                soluciones.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal +'\n')
+                                soluciones.write(str(x_vars_list))
+                                soluciones.write('\n')
+                                
+                                #sale = 0
+                                if model.objVal > mejor_obj:
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                    for column in range(len(colnames)):
+                                        sheet1.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                    sheet1.write(countcsv1, 0, name)
+                                    sheet1.write(countcsv1, 1, len(I))
+                                    sheet1.write(countcsv1, 2, len(L))
+                                    sheet1.write(countcsv1, 3, len(S))
+                                    if len(model._data) != 0:
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet1.write(countcsv1, row+4, datos[row])
+                                            
+                                    sheet1.write(countcsv1, 9, total_time)
+                                    sheet1.write(countcsv1, 10, "V2 BLS")
+                                    countcsv1 = countcsv1 + 1
+                                    
+                                    best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
+                                    best.write(str(x_vars_list))
+                                    best.write('\n')
+                                    mejor_obj = model.objVal
+                                    
+                                    mejor = open('Best_Metaheuristic_080925_'
+                                                      +str(tamaños_I[iconj])+str('_')
+                                                      +str(tamaños_L[jconj])+str('_')
+                                                      +str(tamaños_S[sconj])+'_'
+                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                        
+                                    mejor.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal)
+                                    mejor.write('\n')
+                                    
+                                    cont = 0
+                                    for l in L:
+                                        for k in K:
+                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
+                                            mejor.write('\n')
+                                            cont = cont + 1
+                                    mejor.write('-1')
+                                    mejor.write('\n')
+                                    
+                        
+                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                    name_ind = 0
+                                    new_name = names[name_ind]
+                        
+                        
+                                    if model.objVal != float("-inf"):
+                                        for v in model.getVars():
+                                            # if new_name == 'located':
+                                            #     print(str(v) + '\n')
+                                            #     print('%s %g' % (v.varName, v.x))
+                                            if new_name not in v.varName:
+                                                #print("entra new name \n")
+                                                #print(new_name+'\n')
+                                                mejor.write('-1')
+                                                mejor.write('\n')
+                                                name_ind = name_ind + 1
+                                                new_name = names[name_ind]
+                                            mejor.write('%s %g' % (v.varName, v.x))
+                                            mejor.write('\n')
+                                        
+                                    mejor.write('-1')
+                        
+                                    mejor.close()
+                                    
+                                    sale = 1
+
+                                # # print('\n')
+                                # # print("x_vars_list 2")
+                                # # print(str(x_vars_list))
+                                # # print('\n')
+                                
+                                #print("sale 1 ", sale)
+                                if sale == 1:
+                                   # print("entra break 1")
+                                    break
+                                else:
+                                    x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_list[dict_cambios_activos[cambio1_ALS]] + 1
+                                    
+                                    x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_list[dict_cambios_noactivos[cambio2_ALS]] - 1
+                                
+                                if total_time > time_limit_final:
+                                    break
+                            
+                            #print("sale 2 ", sale)
+                            if sale == 1:
+                                #print("entra break 2")
+                                break
+                            
+                            #print(total_time, time_limit_final)
+                            if total_time > time_limit_final:
+                                #print("entra break 2_1")
+                                break
+                        
+                        #print("sale 3 ", sale)
+                        if sale == 1:
+                            #print("entra break 3")
+                            break
+                        
+                        if total_time > time_limit_ls:
+                            #print("entra break 3_1")
+                            break
+                            
+                              
+                #break    
+                
+                
+                #####################################################################
+                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS BLS Y ALS
+                #####################################################################
+
+                sale = 1
+                while sale == 1:
+                               
+                    ############################################################
+                    ###### LEE LA MEJOR HASTA AHORA
+                    ############################################################
+              
+                    soluciones = open('Solutions_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    
+                    best = open('Mejoras_Metaheuristic_080925_'
+                                      +str(tamaños_I[iconj])+str('_')
+                                      +str(tamaños_L[jconj])+str('_')
+                                      +str(tamaños_S[sconj])+'_'
+                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                    
+                    g = open('Best_Metaheuristic_080925_'
+                              +str(tamaños_I[iconj])+str('_')
+                              +str(tamaños_L[jconj])+str('_')
+                              +str(tamaños_S[sconj])+'_'
+                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
+                    
+                    
+                    g.readline().strip().split()
+                    
+                    # Create variables #
+                    x_vars_list = []
+                    pares_cero = []
+                    pares_nocero = []
+                    impares_cero = []
+                    impares_nocero = []
+                    count = 0
+                    dict_cambios_activos = {}
+                    #dict_cambios_noactivos = {}
+                    for l in L:
+                        for k in K:
+                            
+                            line = g.readline().strip().split()
+                            x_vars_list.append(int(line[len(line)-1]))
+                            # if int(line[len(line)-1]) == 0 and  count % 2 == 0:
+                            #     #pares_cero.append([(l,k),count])
+                            #     dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
+                                #pares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            # if int(line[len(line)-1]) == 0 and  count % 2 != 0:
+                            #     #impares_cero.append([(l,k),count])
+                            #     dict_cambios_noactivos[(l,k)]=count
+                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
+                                #impares_nocero.append([(l,k),count])
+                                dict_cambios_activos[(l,k)]=count
+                            count = count + 1
+                    g.close()
+                    
+                    soluciones.write('Obj: %g' % model.objVal + '\n')
+                    soluciones.write(str(x_vars_list))
+                    soluciones.write('\n')
+                    
+                    best.write('Obj: %g' % model.objVal + '\n')
+                    best.write(str(x_vars_list))
+                    best.write('\n')
+                    
+                    #print("activos ", dict_cambios_activos)
+                    
+                   # print("noactivos: ", dict_cambios_noactivos)
+                    
+                   
+                    #print("\n viejo ",x_vars_list)
+                
+                    ######################################
+                    ####### FIRST FOUND 
+                    ######################################
+                    
+                    sale = 0
+                    #for i1 in range(len(pares_nocero)):
+                        #for j in range(len(pares_nocero)):
+                    for l1 in L:
+                        for l2 in L:
+                            
+                            a = b = c = d = -1
+                            
+                            #print("eles ",str(l1),str(l2))
+                            
+                            cambio1_BLS = (l1,1)
+                            
+                            cambio2_BLS = (l2,1)
+                            
+                            # cambio1_BLS = pares_nocero[l1][2]
+                            # print("cambio 1 tipo 1 ",cambio1_BLS)
+                            # cambio1_ALS = impares_nocero[l1][2]
+                            # print("cambio 1 tipo 2 ",cambio1_ALS)
+                            # cambio2_BLS = pares_nocero[l2][2]
+                            # print("cambio 2 tipo 1 ", cambio2_BLS)
+                            # cambio2_ALS = impares_nocero[l2][2]
+                            # print("cambio 1 tipo 2 ",cambio2_ALS)
+                            # #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
+                            
+                            if cambio1_BLS in dict_cambios_activos:
+                                a = 'TRUE' 
+                                
+                        
+                            if cambio2_BLS in dict_cambios_activos:
+                                b = 'TRUE'
+                                
+                            #print(a, b, '\n')
+                            
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if l1 != l2 and a == 'TRUE' and b == 'TRUE':
+                                
+                                #print("ENTRO", a, b, " \n")
+                                
+                                x_vars_original_cambio1_BLS = x_vars_list[dict_cambios_activos[cambio1_BLS]]
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                # else:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_noactivos[cambio1_ALS]]
+                                
+                                
+                                x_vars_original_cambio2_BLS = x_vars_list[dict_cambios_activos[cambio2_BLS]]
+                                # x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                
+                                
+                                    
+                                #print ("cambios ", x_vars_original_cambio1_BLS, x_vars_original_cambio2_BLS)
+                                
+                                x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_list[dict_cambios_activos[cambio1_BLS]] - 1
+                                    #print("entra c1 or")
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2 or")
+                                # else:
+                                #     x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                
+                                #print(x_vars_list)
+                                
+                                x_vars_list[dict_cambios_activos[cambio2_BLS]] = x_vars_list[dict_cambios_activos[cambio2_BLS]] + 1
+                                
+                                # x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio1_ALS
+                                   
+                                
+                                #print("nuevo  ", x_vars_list)
+                                
+                                
+                                
+                                # print("Original ", x_vars_original_cambio1_BLS)
+                        
+                                # print('\n')
+                                # print("x_vars_list 1")
+                                # print(x_vars_list)
+                                # print('\n')
+                                
+                                presolve = 0
+                                
+                                model = gp.Model("Swap1")
+                                
+                                model.setParam('TimeLimit', timelim)
+                                
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()        
+                                
+                                # Create variables #
+                                x_vars = {}
+                                cantVarX = 0
+                                count = 0
+                                for l in L:
+                                    for k in K:
+                                        x_vars[l,k] = int(x_vars_list[count])
+                                        cantVarX += 1
+                                        count = count + 1
+                                
+                                print(x_vars)
+                                        
+                                        
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
+                                    for l in L:
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                
+                                
+                                alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                                            name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
+                                            
+                                
+                                beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
+                                            
+                                
+                                delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
+                                       
+                                
+                                phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
+                                       
+                                
+                                gamma_vars = {} ## z null
+                                cantVarGamma = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
+                                       
+                                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #obj += 0
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                # Add constraints
+                                
+                                for s in range(len(S)):
+                                    
+                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                                    # for k in K:
+                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                                    
+                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                                    for l in L: 
+                                        amb1 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:                            
+                                                amb1 += y_vars[s+1,l,1,i]
+                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
+                                    
+                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
+                                    for l in L:
+                                        amb2 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
+                                        
+                                    
+                                    # # Restricción 5: Desactivar alpha (cobertura total)
+                                    # suma_alpha2 = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
+                                    
+                                    
+                                    # Restricción 6: Desactivar alpha (cobertura total)
+                                    for i in I:
+                                        suma_alpha2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                                    
+                                    
+                                    # # Restricción 6: Activar alpha (cobertura total) 
+                                    # suma_alpha = gp.LinExpr()
+                                    # for i in I: 
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                
+                                    
+                                
+                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                                            
+                                            
+                                            
+                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta = gp.LinExpr()
+                                        suma_beta_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
+                                
+                                    
+                                
+                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
+                                    for i in I:
+                                        suma_delta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                                           
+                                                
+                                        
+                                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                                    # suma_delta = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                                       
+                                              
+                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
+                                    for i in I:
+                                        suma_delta3 = gp.LinExpr()
+                                        suma_delta3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
+                                            
+                                    
+                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                                       
+                                            
+                                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                                    # suma_phi = gp.LinExpr()
+                                    # suma_phi_aux = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                                      
+                                    
+                                
+                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi3 = gp.LinExpr()
+                                        suma_phi3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                                    
+                                    # Restricción 13: Activar gamma (cobertura nula)
+                                    for i in I:
+                                        suma_gamma = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
+                                            
+                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
+                                    
+                                
+                                
+                                # Optimize model
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start 
+                                
+                                #imprimir variables 
+                                
+                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                                    writer = csv.writer(f)
+                                    writer.writerows(model._data)
+                                    
+                                
+                                
+                                #archivo = xlsxwriter.Workbook('tesis.csv')
+                                #hoja = archivo.add_worksheet()
+                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                for column in range(len(colnames)):
+                                    sheet.write(0, column, colnames[column])
+                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                sheet.write(countcsv, 0, name)
+                                sheet.write(countcsv, 1, len(I))
+                                sheet.write(countcsv, 2, len(L))
+                                sheet.write(countcsv, 3, len(S))
+                                if len(model._data) != 0:
+                                    datos = model._data[len(model._data)-1]
+                                    for row in range(len(datos)):
+                                        sheet.write(countcsv, row+4, datos[row])
+                                
+                                
+                                #Nombre: Resultados_I_L_M_N_S
+                                
+                                f = open ('Resultados_Metaheuristic_080925_New_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                                
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                                
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                
+                                for l in L:
+                                    for k in K:
+                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                                        f.write('\n')
+                                f.write('-1')
+                                f.write('\n')
+                                
+                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                name_ind = 0
+                                new_name = names[name_ind]
+                                
+                                
+                                if model.objVal != float("-inf"):
+                                    for v in model.getVars():
+                                        #print(v)
+                                        if new_name not in v.varName:
+                                            #print("entra new name \n")
+                                            #print(new_name+'\n')
+                                            f.write('-1')
+                                            f.write('\n')
+                                            name_ind = name_ind + 1
+                                            new_name = names[name_ind]
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                f.write('-1')
+                                    
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()
+                                
+                                
+                                end_time = time.time()
+                                total_time = end_time - initial_time 
+                                
+                                sheet.write(countcsv, 9, total_time)
+                                #sheet1.write(countcsv1, 9, total_time)
+                                
+                                sheet.write(countcsv, 10, "V2 BLS")
+                                
+                                countcsv = countcsv + 1
+                                #countcsv1 = countcsv1 + 1
+                                
+                                soluciones.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal +'\n')
+                                soluciones.write(str(x_vars_list))
+                                soluciones.write('\n')
+                                
+                                #sale = 0
+                                if model.objVal > mejor_obj:
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                    for column in range(len(colnames)):
+                                        sheet1.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                    sheet1.write(countcsv1, 0, name)
+                                    sheet1.write(countcsv1, 1, len(I))
+                                    sheet1.write(countcsv1, 2, len(L))
+                                    sheet1.write(countcsv1, 3, len(S))
+                                    if len(model._data) != 0:
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet1.write(countcsv1, row+4, datos[row])
+                                            
+                                    sheet1.write(countcsv1, 9, total_time)
+                                    sheet1.write(countcsv1, 10, "V2 BLS")
+                                    countcsv1 = countcsv1 + 1
+                                    
+                                    best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
+                                    best.write(str(x_vars_list))
+                                    best.write('\n')
+                                    mejor_obj = model.objVal
+                                    
+                                    mejor = open('Best_Metaheuristic_080925_'
+                                                      +str(tamaños_I[iconj])+str('_')
+                                                      +str(tamaños_L[jconj])+str('_')
+                                                      +str(tamaños_S[sconj])+'_'
+                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                        
+                                    mejor.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal)
+                                    mejor.write('\n')
+                                    
+                                    cont = 0
+                                    for l in L:
+                                        for k in K:
+                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
+                                            mejor.write('\n')
+                                            cont = cont + 1
+                                    mejor.write('-1')
+                                    mejor.write('\n')
+                                    
+                        
+                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                    name_ind = 0
+                                    new_name = names[name_ind]
+                        
+                        
+                                    if model.objVal != float("-inf"):
+                                        for v in model.getVars():
+                                            # if new_name == 'located':
+                                            #     print(str(v) + '\n')
+                                            #     print('%s %g' % (v.varName, v.x))
+                                            if new_name not in v.varName:
+                                                #print("entra new name \n")
+                                                #print(new_name+'\n')
+                                                mejor.write('-1')
+                                                mejor.write('\n')
+                                                name_ind = name_ind + 1
+                                                new_name = names[name_ind]
+                                            mejor.write('%s %g' % (v.varName, v.x))
+                                            mejor.write('\n')
+                                        
+                                    mejor.write('-1')
+                        
+                                    mejor.close()
+                                    
+                                    sale = 1
+
+                                # print('\n')
+                                # print("x_vars_list 2")
+                                # print(str(x_vars_list))
+                                # print('\n')
+                                
+                                if sale == 1:
+                                    break
+                                else:
+                                    x_vars_list[dict_cambios_activos[cambio1_BLS]] = x_vars_list[dict_cambios_activos[cambio1_BLS]] + 1
+                                    
+                                    x_vars_list[dict_cambios_activos[cambio2_BLS]] = x_vars_list[dict_cambios_activos[cambio2_BLS]] - 1
+                                
+                                if total_time > time_limit_final:
+                                    break
+                                
+                                
+                            #print("eles_2 ",str(l1),str(l2))
+                            
+                            cambio1_ALS = (l1,2)
+                            
+                            cambio2_ALS = (l2,2)
+                            
+                            if cambio1_ALS in dict_cambios_activos:
+                                c = 'TRUE' 
+                                
+                        
+                            if cambio2_ALS in dict_cambios_activos:
+                                d = 'TRUE'
+                            
+                            #print(c, d, " \n")
+                            
+                            #if cambio1_BLS != cambio2_BLS:
+
+                            if l1 != l2 and c == 'TRUE' and d == 'TRUE':
+                                
+                                #print("ENTRO", c, d)
+                                
+                                x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_activos[cambio1_ALS]]
+                                # else:
+                                #     x_vars_original_cambio1_ALS = x_vars_list[dict_cambios_noactivos[cambio1_ALS]]
+                                
+                                
+                                x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_activos[cambio2_ALS]]
+                                # x_vars_original_cambio2_ALS = x_vars_list[dict_cambios_noactivos[cambio2_ALS]]
+                                
+                                
+                                    
+                                #print ("cambios ", x_vars_original_cambio1_ALS, x_vars_original_cambio2_ALS)
+                                
+                                x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_list[dict_cambios_activos[cambio1_ALS]] - 1
+                                    #print("entra c1 or")
+                                
+                                # if cambio1_ALS in dict_cambios_activos:
+                                #     x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2 or")
+                                # else:
+                                #     x_vars_list[dict_cambios_noactivos[cambio1_ALS]] = x_vars_original_cambio2_ALS
+                                #     #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                
+                                #print(x_vars_list)
+                                
+                                x_vars_list[dict_cambios_activos[cambio2_ALS]] = x_vars_list[dict_cambios_activos[cambio2_ALS]] + 1
+                                
+                                # x_vars_list[dict_cambios_noactivos[cambio2_ALS]] = x_vars_original_cambio1_ALS
+                                   
+                                
+                                #print("nuevo  ", x_vars_list)
+                                
+                                
+                                
+                                # print("Original ", x_vars_original_cambio1_BLS)
+                        
+                                # print('\n')
+                                # print("x_vars_list 1")
+                                # print(x_vars_list)
+                                # print('\n')
+                                
+                                presolve = 0
+                                
+                                model = gp.Model("Swap1")
+                                
+                                model.setParam('TimeLimit', timelim)
+                                
+                                model._obj = None
+                                model._bd = None
+                                model._data = []
+                                model._start = time.time()        
+                                
+                                # Create variables #
+                                x_vars = {}
+                                cantVarX = 0
+                                count = 0
+                                for l in L:
+                                    for k in K:
+                                        x_vars[l,k] = int(x_vars_list[count])
+                                        cantVarX += 1
+                                        count = count + 1
+                                
+                                print(x_vars)
+                                        
+                                        
+                                y_vars = {}    
+                                cantVarY = 0
+                                for s in range(len(S)):        
+                                    for l in L:
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                                
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
+                                                cantVarY += 1
+                                
+                                
+                                alpha_vars = {}  ## z full
+                                cantVarAlpha = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
+                                                                            name="Full "+str(s+1)+str(' ')+str(i))
+                                            cantVarAlpha += 1
+                                            
+                                
+                                beta_vars = {}  ## z partial 1
+                                cantVarBeta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
+                                            cantVarBeta += 1
+                                            
+                                
+                                delta_vars = {}  ## z partial 2
+                                cantVarDelta = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
+                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
+                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
+                                            cantVarDelta += 1
+                                       
+                                
+                                phi_vars = {}   ## z partial 3
+                                cantVarPhi = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
+                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
+                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
+                                            cantVarPhi += 1
+                                       
+                                
+                                gamma_vars = {} ## z null
+                                cantVarGamma = 0
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
+                                                                      name="Null "+str(s+1)+str(' ')+str(i))
+                                            cantVarGamma += 1
+                                       
+                                            
+                                obj = gp.LinExpr()
+                                for s in range(len(S)):
+                                    for i in I:
+                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
+                                            #obj += 0
+                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
+                                model.setObjective(obj, GRB.MAXIMIZE)  
+                                
+                                
+                                # Add constraints
+                                
+                                for s in range(len(S)):
+                                    
+                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
+                                    # for k in K:
+                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
+                                    
+                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
+                                    for l in L: 
+                                        amb1 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:                            
+                                                amb1 += y_vars[s+1,l,1,i]
+                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
+                                    
+                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
+                                    for l in L:
+                                        amb2 = gp.LinExpr()
+                                        for i in I:
+                                            if S[s][i-1][0] != 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                amb2 += y_vars[s+1,l,2,i] 
+                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
+                                        
+                                    
+                                    # # Restricción 5: Desactivar alpha (cobertura total)
+                                    # suma_alpha2 = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
+                                    
+                                    
+                                    # Restricción 6: Desactivar alpha (cobertura total)
+                                    for i in I:
+                                        suma_alpha2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
+                                    
+                                    
+                                    # # Restricción 6: Activar alpha (cobertura total) 
+                                    # suma_alpha = gp.LinExpr()
+                                    # for i in I: 
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
+                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
+                                
+                                    
+                                
+                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
+                                            
+                                            
+                                            
+                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
+                                    for i in I:
+                                        suma_beta = gp.LinExpr()
+                                        suma_beta_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
+                                
+                                    
+                                
+                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
+                                    for i in I:
+                                        suma_delta2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
+                                           
+                                                
+                                        
+                                    # # Restricción 10: Activar delta (cobertura parcial 2)
+                                    # suma_delta = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
+                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
+                                       
+                                              
+                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
+                                    for i in I:
+                                        suma_delta3 = gp.LinExpr()
+                                        suma_delta3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
+                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
+                                            
+                                    
+                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi2 = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
+                                       
+                                            
+                                    # # Restricción 13: Activar phi (cobertura parcial 3)
+                                    # suma_phi = gp.LinExpr()
+                                    # suma_phi_aux = gp.LinExpr()
+                                    # for i in I:
+                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                    #         if S[s][i-1][0] != 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
+                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
+                                      
+                                    
+                                
+                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
+                                    for i in I:
+                                        suma_phi3 = gp.LinExpr()
+                                        suma_phi3_aux = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
+                                    
+                                    # Restricción 13: Activar gamma (cobertura nula)
+                                    for i in I:
+                                        suma_gamma = gp.LinExpr()
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            if S[s][i-1][0] != 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
+                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
+                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
+                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
+                                            
+                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
+                                    for i in I:
+                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
+                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
+                                    
+                                
+                                
+                                # Optimize model
+                                model.optimize(callback=data_cb)
+                                
+                                end_time = time.time()
+                                
+                                elapsed_time = end_time - model._start 
+                                
+                                #imprimir variables 
+                                
+                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
+                                    writer = csv.writer(f)
+                                    writer.writerows(model._data)
+                                    
+                                
+                                
+                                #archivo = xlsxwriter.Workbook('tesis.csv')
+                                #hoja = archivo.add_worksheet()
+                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                for column in range(len(colnames)):
+                                    sheet.write(0, column, colnames[column])
+                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                sheet.write(countcsv, 0, name)
+                                sheet.write(countcsv, 1, len(I))
+                                sheet.write(countcsv, 2, len(L))
+                                sheet.write(countcsv, 3, len(S))
+                                if len(model._data) != 0:
+                                    datos = model._data[len(model._data)-1]
+                                    for row in range(len(datos)):
+                                        sheet.write(countcsv, row+4, datos[row])
+                                
+                                
+                                #Nombre: Resultados_I_L_M_N_S
+                                
+                                f = open ('Resultados_Metaheuristic_080925_New_'
+                                              +str(len(I))+str('_')
+                                              +str(len(L))+str('_')
+                                              #+str(len(K))+str('_')
+                                              #+str(len(N))+str('_')
+                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
+                                
+                                
+                                f.write("Elapsed time: ")
+                                f.write(str(elapsed_time))
+                                f.write('\n')
+                                
+                                        
+                                f.write('Obj: %g' % model.objVal)
+                                f.write('\n')
+                                
+                                
+                                for l in L:
+                                    for k in K:
+                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
+                                        f.write('\n')
+                                f.write('-1')
+                                f.write('\n')
+                                
+                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                name_ind = 0
+                                new_name = names[name_ind]
+                                
+                                
+                                if model.objVal != float("-inf"):
+                                    for v in model.getVars():
+                                        #print(v)
+                                        if new_name not in v.varName:
+                                            #print("entra new name \n")
+                                            #print(new_name+'\n')
+                                            f.write('-1')
+                                            f.write('\n')
+                                            name_ind = name_ind + 1
+                                            new_name = names[name_ind]
+                                        f.write('%s %g' % (v.varName, v.x))
+                                        f.write('\n')
+                                    
+                                f.write('-1')
+                                    
+                                
+                                #imprimir el valor objetivo
+                                print('Obj: %g' % model.objVal)
+                                print("Finished")
+                                print(" ")
+                                print(" ")
+                                
+                                f.close()
+                                
+                                
+                                end_time = time.time()
+                                total_time = end_time - initial_time 
+                                
+                                sheet.write(countcsv, 9, total_time)
+                                #sheet1.write(countcsv1, 9, total_time)
+                                
+                                sheet.write(countcsv, 10, "V2 BLS")
+                                
+                                countcsv = countcsv + 1
+                                #countcsv1 = countcsv1 + 1
+                                
+                                soluciones.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal +'\n')
+                                soluciones.write(str(x_vars_list))
+                                soluciones.write('\n')
+                                
+                                #sale = 0
+                                if model.objVal > mejor_obj:
+                                    
+                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
+                                    for column in range(len(colnames)):
+                                        sheet1.write(0, column, colnames[column])
+                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
+                                    sheet1.write(countcsv1, 0, name)
+                                    sheet1.write(countcsv1, 1, len(I))
+                                    sheet1.write(countcsv1, 2, len(L))
+                                    sheet1.write(countcsv1, 3, len(S))
+                                    if len(model._data) != 0:
+                                        datos = model._data[len(model._data)-1]
+                                        for row in range(len(datos)):
+                                            sheet1.write(countcsv1, row+4, datos[row])
+                                            
+                                    sheet1.write(countcsv1, 9, total_time)
+                                    sheet1.write(countcsv1, 10, "V2 BLS")
+                                    countcsv1 = countcsv1 + 1
+                                    
+                                    best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
+                                    best.write(str(x_vars_list))
+                                    best.write('\n')
+                                    mejor_obj = model.objVal
+                                    
+                                    mejor = open('Best_Metaheuristic_080925_'
+                                                      +str(tamaños_I[iconj])+str('_')
+                                                      +str(tamaños_L[jconj])+str('_')
+                                                      +str(tamaños_S[sconj])+'_'
+                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
+                        
+                                    mejor.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal)
+                                    mejor.write('\n')
+                                    
+                                    cont = 0
+                                    for l in L:
+                                        for k in K:
+                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
+                                            mejor.write('\n')
+                                            cont = cont + 1
+                                    mejor.write('-1')
+                                    mejor.write('\n')
+                                    
+                        
+                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
+                                    name_ind = 0
+                                    new_name = names[name_ind]
+                        
+                        
+                                    if model.objVal != float("-inf"):
+                                        for v in model.getVars():
+                                            # if new_name == 'located':
+                                            #     print(str(v) + '\n')
+                                            #     print('%s %g' % (v.varName, v.x))
+                                            if new_name not in v.varName:
+                                                #print("entra new name \n")
+                                                #print(new_name+'\n')
+                                                mejor.write('-1')
+                                                mejor.write('\n')
+                                                name_ind = name_ind + 1
+                                                new_name = names[name_ind]
+                                            mejor.write('%s %g' % (v.varName, v.x))
+                                            mejor.write('\n')
+                                        
+                                    mejor.write('-1')
+                        
+                                    mejor.close()
+                                    
+                                    sale = 1
+
+                                # print('\n')
+                                # print("x_vars_list 2")
+                                # print(str(x_vars_list))
+                                # print('\n')
+                                
+                                #print("sale 1 ", sale)
+                                if sale == 1:
+                                   # print("entra break 1")
+                                    break
+                                else:
+                                    x_vars_list[dict_cambios_activos[cambio1_ALS]] = x_vars_list[dict_cambios_activos[cambio1_ALS]] + 1
+                                    
+                                    x_vars_list[dict_cambios_activos[cambio2_ALS]] = x_vars_list[dict_cambios_activos[cambio2_ALS]] - 1
+                                
+                                if total_time > time_limit_final:
+                                    break
+                            
+                            #print("sale 2 ", sale)
+                            if sale == 1:
+                                #print("entra break 2")
+                                break
+                            
+                            #print(total_time, time_limit_final)
+                            if total_time > time_limit_final:
+                                #print("entra break 2_1")
+                                break
+                        
+                        #print("sale 3 ", sale)
+                        if sale == 1:
+                            #print("entra break 3")
+                            break
+                        
+                        if total_time > time_limit_ls:
+                            #print("entra break 3_1")
+                            break
+                
+            
+                
+                ################################################################
+                ###### VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y ACTIVOS (BLS Y ALS)
+                ################################################################
                 
                 sale = 1
                 while sale == 1:
@@ -714,7 +3837,7 @@ for iconj in range(len(tamaños_I)):
                             count = count + 1
                     g.close()
                     
-                    print(dict_cambios, '\n')
+                    #print(dict_cambios, '\n')
                     
                     soluciones.write('Obj: %g' % model.objVal + '\n')
                     soluciones.write(str(x_vars_list))
@@ -724,7 +3847,7 @@ for iconj in range(len(tamaños_I)):
                     best.write(str(x_vars_list))
                     best.write('\n')
                     
-                    print("viejo ",x_vars_list)
+                    #print("viejo ",x_vars_list)
                     
                     
                     ###########################################################
@@ -739,7 +3862,7 @@ for iconj in range(len(tamaños_I)):
                             
                             a = b = c = d = -1
                             
-                            print("eles ",str(l1),str(l2))
+                            #print("eles ",str(l1),str(l2))
                             
                             cambio1_BLS = (l1,1)
                             cambio1_ALS = (l1,2)
@@ -794,9 +3917,9 @@ for iconj in range(len(tamaños_I)):
                                 else:
                                     x_vars_original_cambio2_ALS = 0
                                     
-                                print ("cambios ", x_vars_original_cambio1_BLS,
-                                       x_vars_original_cambio1_ALS, x_vars_original_cambio2_BLS,
-                                       x_vars_original_cambio2_ALS)
+                                # print ("cambios ", x_vars_original_cambio1_BLS,
+                                #        x_vars_original_cambio1_ALS, x_vars_original_cambio2_BLS,
+                                #        x_vars_original_cambio2_ALS)
                                 
                                 if x_vars_original_cambio1_BLS != 0:
                                     x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio2_BLS
@@ -828,12 +3951,12 @@ for iconj in range(len(tamaños_I)):
                                     x_vars_list[l2*2 - 1] = x_vars_original_cambio1_ALS
                                     #print("entra c4", l2*2 - 1)
                                 
-                                print("nuevo  ", x_vars_list)
+                                #print("nuevo  ", x_vars_list)
                             
                                 #x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] - x_vars_original_cambio1_BLS
                                 #x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] + x_vars_original_cambio1_BLS
                                 
-                                break
+                                #break
                                 
                                 # print("Original ", x_vars_original_cambio1_BLS)
                         
@@ -1316,17 +4439,45 @@ for iconj in range(len(tamaños_I)):
                                 if sale == 1:
                                     break
                                 else:
-                                    x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] - x_vars_original_cambio1_BLS
-                                    x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] + x_vars_original_cambio1_BLS
+                                    if x_vars_original_cambio1_BLS != 0:
+                                        x_vars_list[dict_cambios[(l1,1)]] = x_vars_original_cambio1_BLS
+                                        #print("entra c1 or")
+                                    else:
+                                        x_vars_list[l1*2 - 2] = x_vars_original_cambio1_BLS
+                                        #print("entra c1", l1*2 - 2)
+                                    
+                                    if x_vars_original_cambio1_ALS != 0:
+                                        x_vars_list[dict_cambios[(l1,2)]] = x_vars_original_cambio1_ALS
+                                        #print("entra c2 or")
+                                    else:
+                                        x_vars_list[l1*2 - 1] = x_vars_original_cambio1_ALS
+                                        #print("entra c2", l1*2 - 1, x_vars_original_cambio2_ALS)
+                                    
+                                    #print(x_vars_list)
+                                    
+                                    if x_vars_original_cambio2_BLS != 0:
+                                        x_vars_list[dict_cambios[(l2,1)]] = x_vars_original_cambio2_BLS
+                                        #print("entra c3 or")
+                                    else:
+                                        x_vars_list[l2*2 - 2] = x_vars_original_cambio2_BLS
+                                        #print("entra c3", l2*2 - 2)
+                                    
+                                    if x_vars_original_cambio2_ALS != 0:
+                                        x_vars_list[dict_cambios[(l2,2)]] = x_vars_original_cambio2_ALS
+                                        #print("entra c4 or")
+                                    else:
+                                        x_vars_list[l2*2 - 1] = x_vars_original_cambio2_ALS
+                                        #print("entra c4", l2*2 - 1)
+                                    #print('\n regresa ', x_vars_list)
                                 
-                                if total_time < time_limit_final:
+                                if total_time > time_limit_final:
                                     break
                                 
                             
                             if sale == 1:
                                 break
                             
-                            if total_time < time_limit_final:
+                            if total_time > time_limit_final:
                                 break
                             
                             # if cambio1_BLS != cambio2_BLS:
@@ -1339,2917 +4490,7 @@ for iconj in range(len(tamaños_I)):
                         #     break
                 # if cambio1_BLS != cambio2_BLS:
                 #     break    
-                # ###########################################################
-                # ######## VECINDARIO ACTIVOS VS ACTIVOS (CAMBIOS PARA ALS)
-                # ############################################################
-                break
-                # sale = 1
-                # while sale == 1:
-                               
-                #     ############################################################
-                #     ###### LEE LA MEJOR HASTA AHORA
-                #     ############################################################
-           
-                    
-                #     soluciones = open('Solutions_Metaheuristic_080925_'
-                #                       +str(tamaños_I[iconj])+str('_')
-                #                       +str(tamaños_L[jconj])+str('_')
-                #                       +str(tamaños_S[sconj])+'_'
-                #                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    
-                #     best = open('Mejoras_Metaheuristic_080925_'
-                #                       +str(tamaños_I[iconj])+str('_')
-                #                       +str(tamaños_L[jconj])+str('_')
-                #                       +str(tamaños_S[sconj])+'_'
-                #                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                #     g = open('Best_Metaheuristic_080925_'
-                #               +str(tamaños_I[iconj])+str('_')
-                #               +str(tamaños_L[jconj])+str('_')
-                #               +str(tamaños_S[sconj])+'_'
-                #               +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
-                    
-                    
-                #     g.readline().strip().split()
-                    
-                #     # Create variables #
-                #     x_vars_list = []
-                #     pares_cero = []
-                #     pares_nocero = []
-                #     impares_cero = []
-                #     impares_nocero = []
-                #     count = 0
-                #     for l in L:
-                #         for k in K:
-                #             line = g.readline().strip().split()
-                #             x_vars_list.append(int(line[len(line)-1]))
-                #             if int(line[len(line)-1]) == 0 and  count % 2 == 0:
-                #                 pares_cero.append([l,k,count])
-                #             if int(line[len(line)-1]) != 0 and  count % 2 == 0:
-                #                 pares_nocero.append([l,k,count])
-                #             if int(line[len(line)-1]) == 0 and  count % 2 != 0:
-                #                 impares_cero.append([l,k,count])
-                #             if int(line[len(line)-1]) != 0 and  count % 2 != 0:
-                #                 impares_nocero.append([l,k,count])
-                #             count = count + 1
-                #     g.close()
-                    
-                #     soluciones.write('Obj: %g' % model.objVal + '\n')
-                #     soluciones.write(str(x_vars_list))
-                #     soluciones.write('\n')
-                    
-                #     best.write('Obj: %g' % model.objVal + '\n')
-                #     best.write(str(x_vars_list))
-                #     best.write('\n')
-                    
-                    
-                #     ######################################
-                #     ####### FIRST FOUND 
-                #     ######################################
-                    
-                #     sale = 0
-                #     for i1 in range(len(impares_nocero)):
-                #         cambio1_BLS = impares_nocero[i1][2]
-                #         #print(cambio1_BLS)
-                #         for j in range(len(impares_nocero)):
-                #             cambio2_BLS = impares_nocero[j][2]
-                #             #print(cambio2_BLS)
-                #             #print(x_vars[impares_nocero[j][0],impares_nocero[j][1]])
-                            
-                #             if cambio1_BLS != cambio2_BLS:
-                                
-                #                 x_vars_original_cambio1_BLS = x_vars_list[impares_nocero[i1][2]]
-                            
-                #                 x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] - x_vars_original_cambio1_BLS
-                #                 x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] + x_vars_original_cambio1_BLS
-                                
-                                
-                                
-                #                 print("Original ", x_vars_original_cambio1_BLS)
-                        
-                #                 print('\n')
-                #                 print("x_vars_list 1")
-                #                 print(x_vars_list)
-                #                 print('\n')
-                                
-                #                 presolve = 0
-                                
-                #                 model = gp.Model("Swap1")
-                                
-                #                 model.setParam('TimeLimit', timelim)
-                                
-                #                 model._obj = None
-                #                 model._bd = None
-                #                 model._data = []
-                #                 model._start = time.time()        
-                                
-                #                 # Create variables #
-                #                 x_vars = {}
-                #                 cantVarX = 0
-                #                 count = 0
-                #                 for l in L:
-                #                     for k in K:
-                #                         x_vars[l,k] = int(x_vars_list[count])
-                #                         cantVarX += 1
-                #                         count = count + 1
-                                
-                #                 print(x_vars)
-                                        
-                                        
-                #                 y_vars = {}    
-                #                 cantVarY = 0
-                #                 for s in range(len(S)):        
-                #                     for l in L:
-                #                         for i in I:
-                #                             if S[s][i-1][0] != 0:
-                #                                 y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                #                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                #                                 cantVarY += 1
-                                                
-                #                                 y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                #                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                #                                 cantVarY += 1
-                                                
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                #                                                 name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                #                                 cantVarY += 1
-                                
-                                
-                #                 alpha_vars = {}  ## z full
-                #                 cantVarAlpha = 0
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                #                             alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                #                                                             name="Full "+str(s+1)+str(' ')+str(i))
-                #                             cantVarAlpha += 1
-                                            
-                                
-                #                 beta_vars = {}  ## z partial 1
-                #                 cantVarBeta = 0
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                #                                                       name="Partial1 "+str(s+1)+str(' ')+str(i))
-                #                             cantVarBeta += 1
-                                            
-                                
-                #                 delta_vars = {}  ## z partial 2
-                #                 cantVarDelta = 0
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                #                             delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                #                                                       name="Partial2 "+str(s+1)+str(' ')+str(i))
-                #                             cantVarDelta += 1
-                                       
-                                
-                #                 phi_vars = {}   ## z partial 3
-                #                 cantVarPhi = 0
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                #                             phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                #                                                       name="Partial3 "+str(s+1)+str(' ')+str(i))
-                #                             cantVarPhi += 1
-                                       
-                                
-                #                 gamma_vars = {} ## z null
-                #                 cantVarGamma = 0
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                #                                                       name="Null "+str(s+1)+str(' ')+str(i))
-                #                             cantVarGamma += 1
-                                       
-                                            
-                #                 obj = gp.LinExpr()
-                #                 for s in range(len(S)):
-                #                     for i in I:
-                #                         if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                #                             #obj += 0
-                #                             obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                #                 model.setObjective(obj, GRB.MAXIMIZE)  
-                                
-                                
-                #                 # Add constraints
-                                
-                #                 for s in range(len(S)):
-                                    
-                #                     # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                #                     # for k in K:
-                #                     #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
-                                    
-                #                     # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
-                #                     for l in L: 
-                #                         amb1 = gp.LinExpr()
-                #                         for i in I:
-                #                             if S[s][i-1][0] != 0:                            
-                #                                 amb1 += y_vars[s+1,l,1,i]
-                #                         model.addConstr(amb1 <= x_vars[l,1], "c4")
-                                    
-                #                     # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                #                     for l in L:
-                #                         amb2 = gp.LinExpr()
-                #                         for i in I:
-                #                             if S[s][i-1][0] != 0:
-                #                                 amb2 += y_vars[s+1,l,2,i] 
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 amb2 += y_vars[s+1,l,2,i] 
-                #                         model.addConstr(amb2 <= x_vars[l,2], "c4_1")
-                                        
-                                    
-                #                     # # Restricción 5: Desactivar alpha (cobertura total)
-                #                     # suma_alpha2 = gp.LinExpr()
-                #                     # for i in I:
-                #                     #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                     #         if S[s][i-1][0] != 0:
-                #                     #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                     #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                     #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                     #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
-                                    
-                                    
-                #                     # Restricción 6: Desactivar alpha (cobertura total)
-                #                     for i in I:
-                #                         suma_alpha2 = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
-                                    
-                                    
-                #                     # # Restricción 6: Activar alpha (cobertura total) 
-                #                     # suma_alpha = gp.LinExpr()
-                #                     # for i in I: 
-                #                     #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                     #         if S[s][i-1][0] != 0:
-                #                     #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                #                     #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                     #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                #                     #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
-                                
-                                    
-                                
-                #                     # Restricción 7: Desactivar beta (cobertura parcial 1)
-                #                     for i in I:
-                #                         suma_beta2 = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
-                                            
-                                            
-                                            
-                #                     # Restricción 8: Desactivar beta (cobertura parcial 1)
-                #                     for i in I:
-                #                         suma_beta = gp.LinExpr()
-                #                         suma_beta_aux = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
-                                
-                                    
-                                
-                #                     # Restricción 9: Desactivar delta (cobertura parcial 2)
-                #                     for i in I:
-                #                         suma_delta2 = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
-                                           
-                                                
-                                        
-                #                     # # Restricción 10: Activar delta (cobertura parcial 2)
-                #                     # suma_delta = gp.LinExpr()
-                #                     # for i in I:
-                #                     #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                     #         if S[s][i-1][0] != 0:
-                #                     #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                     #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                     #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                #                     #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
-                                       
-                                              
-                #                     # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                #                     for i in I:
-                #                         suma_delta3 = gp.LinExpr()
-                #                         suma_delta3_aux = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
-                #                                 suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
-                                            
-                                    
-                #                     # Restricción 11: Desactivar phi (cobertura parcial 3)
-                #                     for i in I:
-                #                         suma_phi2 = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
-                                       
-                                            
-                #                     # # Restricción 13: Activar phi (cobertura parcial 3)
-                #                     # suma_phi = gp.LinExpr()
-                #                     # suma_phi_aux = gp.LinExpr()
-                #                     # for i in I:
-                #                     #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                     #         if S[s][i-1][0] != 0:
-                #                     #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                     #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                     #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                     #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                     #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                #                     #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
-                                      
-                                    
-                                
-                #                     # Restricción 12: Desactivar phi (cobertura parcial 3)
-                #                     for i in I:
-                #                         suma_phi3 = gp.LinExpr()
-                #                         suma_phi3_aux = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                                 suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
-                                    
-                #                     # Restricción 13: Activar gamma (cobertura nula)
-                #                     for i in I:
-                #                         suma_gamma = gp.LinExpr()
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             if S[s][i-1][0] != 0:
-                #                                 suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                #                             if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                #                                 suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                #                             model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
-                                            
-                #                     #Restricción 14: Solo se puede activar un tipo de cobertura     
-                #                     for i in I:
-                #                         if S[s][i-1][0] + S[s][i-1][1] > 0:
-                #                             model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
-                                    
-                                
-                                
-                #                 # Optimize model
-                #                 model.optimize(callback=data_cb)
-                                
-                #                 end_time = time.time()
-                                
-                #                 elapsed_time = end_time - model._start 
-                                
-                #                 #imprimir variables 
-                                
-                #                 with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
-                #                               +str(len(L))+str('_')
-                #                               #+str(len(K))+str('_')
-                #                               #+str(len(N))+str('_')
-                #                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                #                     writer = csv.writer(f)
-                #                     writer.writerows(model._data)
-                                    
-                                
-                                
-                #                 #archivo = xlsxwriter.Workbook('tesis.csv')
-                #                 #hoja = archivo.add_worksheet()
-                #                 colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                #                 for column in range(len(colnames)):
-                #                     sheet.write(0, column, colnames[column])
-                #                 name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                #                 sheet.write(countcsv, 0, name)
-                #                 sheet.write(countcsv, 1, len(I))
-                #                 sheet.write(countcsv, 2, len(L))
-                #                 sheet.write(countcsv, 3, len(S))
-                #                 if len(model._data) != 0:
-                #                     datos = model._data[len(model._data)-1]
-                #                     for row in range(len(datos)):
-                #                         sheet.write(countcsv, row+4, datos[row])
-                                
-                                
-                #                 #Nombre: Resultados_I_L_M_N_S
-                                
-                #                 f = open ('Resultados_Metaheuristic_080925_New_'
-                #                               +str(len(I))+str('_')
-                #                               +str(len(L))+str('_')
-                #                               #+str(len(K))+str('_')
-                #                               #+str(len(N))+str('_')
-                #                               +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                                
-                                
-                #                 f.write("Elapsed time: ")
-                #                 f.write(str(elapsed_time))
-                #                 f.write('\n')
-                                
-                                        
-                #                 f.write('Obj: %g' % model.objVal)
-                #                 f.write('\n')
-                                
-                                
-                #                 for l in L:
-                #                     for k in K:
-                #                         f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                #                         f.write('\n')
-                #                 f.write('-1')
-                #                 f.write('\n')
-                                
-                #                 names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                #                 name_ind = 0
-                #                 new_name = names[name_ind]
-                                
-                                
-                #                 if model.objVal != float("-inf"):
-                #                     for v in model.getVars():
-                #                         #print(v)
-                #                         if new_name not in v.varName:
-                #                             #print("entra new name \n")
-                #                             #print(new_name+'\n')
-                #                             f.write('-1')
-                #                             f.write('\n')
-                #                             name_ind = name_ind + 1
-                #                             new_name = names[name_ind]
-                #                         f.write('%s %g' % (v.varName, v.x))
-                #                         f.write('\n')
-                                    
-                #                 f.write('-1')
-                                    
-                                
-                #                 #imprimir el valor objetivo
-                #                 print('Obj: %g' % model.objVal)
-                #                 print("Finished")
-                #                 print(" ")
-                #                 print(" ")
-                                
-                #                 f.close()
-                                
-                                
-                #                 end_time = time.time()
-                #                 total_time = end_time - initial_time 
-                                
-                #                 sheet.write(countcsv, 9, total_time)
-                #                 #sheet1.write(countcsv1, 9, total_time)
-                                
-                #                 sheet.write(countcsv, 10, "V1 ALS")
-                                
-                #                 countcsv = countcsv + 1
-                #                 #countcsv1 = countcsv1 + 1
-                                
-                #                 soluciones.write('Obj (ACT VS ACT ALS): %g' % model.objVal +'\n')
-                #                 soluciones.write(str(x_vars_list))
-                #                 soluciones.write('\n')
-                                
-                #                 #sale = 0
-                                
-                #                 if model.objVal > mejor_obj:
-                                    
-                #                     colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                #                     for column in range(len(colnames)):
-                #                         sheet1.write(0, column, colnames[column])
-                #                     name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                #                     sheet1.write(countcsv1, 0, name)
-                #                     sheet1.write(countcsv1, 1, len(I))
-                #                     sheet1.write(countcsv1, 2, len(L))
-                #                     sheet1.write(countcsv1, 3, len(S))
-                #                     if len(model._data) != 0:
-                #                         datos = model._data[len(model._data)-1]
-                #                         for row in range(len(datos)):
-                #                             sheet1.write(countcsv1, row+4, datos[row])
-                                            
-                #                     sheet1.write(countcsv1, 9, total_time)
-                                    
-                #                     sheet1.write(countcsv1, 10, "V1 ALS")
-                                            
-                #                     countcsv1 = countcsv1 + 1
-                                    
-                #                     best.write('Obj (ACT VS ACT ALS): %g' % model.objVal + '\n')
-                #                     best.write(str(x_vars_list))
-                #                     best.write('\n')
-                #                     mejor_obj = model.objVal
-                                    
-                #                     mejor = open('Best_Metaheuristic_080925_'
-                #                                       +str(tamaños_I[iconj])+str('_')
-                #                                       +str(tamaños_L[jconj])+str('_')
-                #                                       +str(tamaños_S[sconj])+'_'
-                #                                       +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                        
-                #                     mejor.write('Obj (ACT VS ACT ALS): %g' % model.objVal)
-                #                     mejor.write('\n')
-                        
-                #                     cont = 0
-                #                     for l in L:
-                #                         for k in K:
-                #                             mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
-                #                             mejor.write('\n')
-                #                             cont = cont + 1
-                #                     mejor.write('-1')
-                #                     mejor.write('\n')
-                        
-                #                     names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                #                     name_ind = 0
-                #                     new_name = names[name_ind]
-                        
-                        
-                #                     if model.objVal != float("-inf"):
-                #                         for v in model.getVars():
-                #                             # if new_name == 'located':
-                #                             #     print(str(v) + '\n')
-                #                             #     print('%s %g' % (v.varName, v.x))
-                #                             if new_name not in v.varName:
-                #                                 #print("entra new name \n")
-                #                                 #print(new_name+'\n')
-                #                                 mejor.write('-1')
-                #                                 mejor.write('\n')
-                #                                 name_ind = name_ind + 1
-                #                                 new_name = names[name_ind]
-                #                             mejor.write('%s %g' % (v.varName, v.x))
-                #                             mejor.write('\n')
-                                        
-                #                     mejor.write('-1')
-                        
-                #                     mejor.close()
-                    
-                #                     sale = 1
-                        
-                                
-                                
-                        
-                #                 # print('\n')
-                #                 # print("x_vars_list 2")
-                #                 # print(str(x_vars_list))
-                #                 # print('\n')
-                    
-                #                 if sale == 1:
-                #                     break
-                #                 else: 
-                #                     x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] - x_vars_original_cambio1_BLS
-                #                     x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] + x_vars_original_cambio1_BLS
-                                
-                #                 if total_time < time_limit_final:
-                #                     break
-                              
-                #             if sale == 1:
-                #                 break
-                            
-                #             if total_time < time_limit_final:
-                #                 break
-                              
-                #         if sale == 1:
-                #             break
-                        
-                #         if total_time > time_limit_ls:
-                #             break
-                    
-                    
-                #####################################################################
-                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS BLS
-                #####################################################################
-
-                sale = 1
-                while sale == 1:
-                               
-                    ############################################################
-                    ###### LEE LA MEJOR HASTA AHORA
-                    ############################################################
-              
-                    soluciones = open('Solutions_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    
-                    best = open('Mejoras_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    g = open('Best_Metaheuristic_080925_'
-                              +str(tamaños_I[iconj])+str('_')
-                              +str(tamaños_L[jconj])+str('_')
-                              +str(tamaños_S[sconj])+'_'
-                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
-                    
-                    
-                    g.readline().strip().split()
-                    
-                    # Create variables #
-                    x_vars_list = []
-                    pares_cero = []
-                    pares_nocero = []
-                    impares_cero = []
-                    impares_nocero = []
-                    count = 0
-                    for l in L:
-                        for k in K:
-                            line = g.readline().strip().split()
-                            x_vars_list.append(int(line[len(line)-1]))
-                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
-                                pares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
-                                pares_nocero.append([l,k,count])
-                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
-                                impares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
-                                impares_nocero.append([l,k,count])
-                            count = count + 1
-                    g.close()
-                    
-                    soluciones.write('Obj: %g' % model.objVal + '\n')
-                    soluciones.write(str(x_vars_list))
-                    soluciones.write('\n')
-                    
-                    best.write('Obj: %g' % model.objVal + '\n')
-                    best.write(str(x_vars_list))
-                    best.write('\n')
-                    
-                    
-                    ######################################
-                    ####### FIRST FOUND 
-                    ######################################
-                    
-                    sale = 0
-                    if len(pares_cero) > 0:
-                        for i1 in range(len(pares_nocero)):
-                            cambio1_BLS = pares_nocero[i1][2]
-                            #print(cambio1_BLS)
-                            for j in range(len(pares_cero)):
-                                cambio2_BLS = pares_cero[j][2]
-                                #print(cambio2_BLS)
-                                #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
-                                
-                                if cambio1_BLS != cambio2_BLS:
-                                    
-                                    x_vars_original_cambio1_BLS = math.floor(x_vars_list[pares_nocero[i1][2]]/2)
-                                
-                                    x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] - x_vars_original_cambio1_BLS
-                                    x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] + x_vars_original_cambio1_BLS
-                                    
-                                    
-                                    
-                                    # print("Original ", x_vars_original_cambio1_BLS)
-                            
-                                    # print('\n')
-                                    # print("x_vars_list 1")
-                                    # print(x_vars_list)
-                                    # print('\n')
-                                    
-                                    presolve = 0
-                                    
-                                    model = gp.Model("Swap1")
-                                    
-                                    model.setParam('TimeLimit', timelim)
-                                    
-                                    model._obj = None
-                                    model._bd = None
-                                    model._data = []
-                                    model._start = time.time()        
-                                    
-                                    # Create variables #
-                                    x_vars = {}
-                                    cantVarX = 0
-                                    count = 0
-                                    for l in L:
-                                        for k in K:
-                                            x_vars[l,k] = int(x_vars_list[count])
-                                            cantVarX += 1
-                                            count = count + 1
-                                    
-                                    print(x_vars)
-                                            
-                                            
-                                    y_vars = {}    
-                                    cantVarY = 0
-                                    for s in range(len(S)):        
-                                        for l in L:
-                                            for i in I:
-                                                if S[s][i-1][0] != 0:
-                                                    y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                                    cantVarY += 1
-                                                    
-                                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                    cantVarY += 1
-                                                    
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                    name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                    cantVarY += 1
-                                    
-                                    
-                                    alpha_vars = {}  ## z full
-                                    cantVarAlpha = 0
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                                alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                                                                                name="Full "+str(s+1)+str(' ')+str(i))
-                                                cantVarAlpha += 1
-                                                
-                                    
-                                    beta_vars = {}  ## z partial 1
-                                    cantVarBeta = 0
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                                cantVarBeta += 1
-                                                
-                                    
-                                    delta_vars = {}  ## z partial 2
-                                    cantVarDelta = 0
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                                                delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                          name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                                cantVarDelta += 1
-                                           
-                                    
-                                    phi_vars = {}   ## z partial 3
-                                    cantVarPhi = 0
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                                phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                                                                          name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                                cantVarPhi += 1
-                                           
-                                    
-                                    gamma_vars = {} ## z null
-                                    cantVarGamma = 0
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                                                                          name="Null "+str(s+1)+str(' ')+str(i))
-                                                cantVarGamma += 1
-                                           
-                                                
-                                    obj = gp.LinExpr()
-                                    for s in range(len(S)):
-                                        for i in I:
-                                            if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                                #obj += 0
-                                                obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                    model.setObjective(obj, GRB.MAXIMIZE)  
-                                    
-                                    
-                                    # Add constraints
-                                    
-                                    for s in range(len(S)):
-                                        
-                                        # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                                        # for k in K:
-                                        #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
-                                        
-                                        # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
-                                        for l in L: 
-                                            amb1 = gp.LinExpr()
-                                            for i in I:
-                                                if S[s][i-1][0] != 0:                            
-                                                    amb1 += y_vars[s+1,l,1,i]
-                                            model.addConstr(amb1 <= x_vars[l,1], "c4")
-                                        
-                                        # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                                        for l in L:
-                                            amb2 = gp.LinExpr()
-                                            for i in I:
-                                                if S[s][i-1][0] != 0:
-                                                    amb2 += y_vars[s+1,l,2,i] 
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    amb2 += y_vars[s+1,l,2,i] 
-                                            model.addConstr(amb2 <= x_vars[l,2], "c4_1")
-                                            
-                                        
-                                        # # Restricción 5: Desactivar alpha (cobertura total)
-                                        # suma_alpha2 = gp.LinExpr()
-                                        # for i in I:
-                                        #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                        #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
-                                        
-                                        
-                                        # Restricción 6: Desactivar alpha (cobertura total)
-                                        for i in I:
-                                            suma_alpha2 = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
-                                        
-                                        
-                                        # # Restricción 6: Activar alpha (cobertura total) 
-                                        # suma_alpha = gp.LinExpr()
-                                        # for i in I: 
-                                        #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                        #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                        #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                        #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
-                                    
-                                        
-                                    
-                                        # Restricción 7: Desactivar beta (cobertura parcial 1)
-                                        for i in I:
-                                            suma_beta2 = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
-                                                
-                                                
-                                                
-                                        # Restricción 8: Desactivar beta (cobertura parcial 1)
-                                        for i in I:
-                                            suma_beta = gp.LinExpr()
-                                            suma_beta_aux = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                    suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                    suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
-                                    
-                                        
-                                    
-                                        # Restricción 9: Desactivar delta (cobertura parcial 2)
-                                        for i in I:
-                                            suma_delta2 = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
-                                               
-                                                    
-                                            
-                                        # # Restricción 10: Activar delta (cobertura parcial 2)
-                                        # suma_delta = gp.LinExpr()
-                                        # for i in I:
-                                        #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                        #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                                        #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
-                                           
-                                                  
-                                        # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                                        for i in I:
-                                            suma_delta3 = gp.LinExpr()
-                                            suma_delta3_aux = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                    suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
-                                                    suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                    suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
-                                                
-                                        
-                                        # Restricción 11: Desactivar phi (cobertura parcial 3)
-                                        for i in I:
-                                            suma_phi2 = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
-                                           
-                                                
-                                        # # Restricción 13: Activar phi (cobertura parcial 3)
-                                        # suma_phi = gp.LinExpr()
-                                        # suma_phi_aux = gp.LinExpr()
-                                        # for i in I:
-                                        #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        #         if S[s][i-1][0] != 0:
-                                        #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                        #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                                        #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
-                                          
-                                        
-                                    
-                                        # Restricción 12: Desactivar phi (cobertura parcial 3)
-                                        for i in I:
-                                            suma_phi3 = gp.LinExpr()
-                                            suma_phi3_aux = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                    suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                    suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
-                                        
-                                        # Restricción 13: Activar gamma (cobertura nula)
-                                        for i in I:
-                                            suma_gamma = gp.LinExpr()
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                if S[s][i-1][0] != 0:
-                                                    suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                    suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
-                                                
-                                        #Restricción 14: Solo se puede activar un tipo de cobertura     
-                                        for i in I:
-                                            if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                                model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
-                                        
-                                    
-                                    
-                                    # Optimize model
-                                    model.optimize(callback=data_cb)
-                                    
-                                    end_time = time.time()
-                                    
-                                    elapsed_time = end_time - model._start 
-                                    
-                                    #imprimir variables 
-                                    
-                                    with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
-                                                  +str(len(L))+str('_')
-                                                  #+str(len(K))+str('_')
-                                                  #+str(len(N))+str('_')
-                                                  +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                                        writer = csv.writer(f)
-                                        writer.writerows(model._data)
-                                        
-                                    
-                                    
-                                    #archivo = xlsxwriter.Workbook('tesis.csv')
-                                    #hoja = archivo.add_worksheet()
-                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                    for column in range(len(colnames)):
-                                        sheet.write(0, column, colnames[column])
-                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                    sheet.write(countcsv, 0, name)
-                                    sheet.write(countcsv, 1, len(I))
-                                    sheet.write(countcsv, 2, len(L))
-                                    sheet.write(countcsv, 3, len(S))
-                                    if len(model._data) != 0:
-                                        datos = model._data[len(model._data)-1]
-                                        for row in range(len(datos)):
-                                            sheet.write(countcsv, row+4, datos[row])
-                                    
-                                    
-                                    #Nombre: Resultados_I_L_M_N_S
-                                    
-                                    f = open ('Resultados_Metaheuristic_080925_New_'
-                                                  +str(len(I))+str('_')
-                                                  +str(len(L))+str('_')
-                                                  #+str(len(K))+str('_')
-                                                  #+str(len(N))+str('_')
-                                                  +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                                    
-                                    
-                                    f.write("Elapsed time: ")
-                                    f.write(str(elapsed_time))
-                                    f.write('\n')
-                                    
-                                            
-                                    f.write('Obj: %g' % model.objVal)
-                                    f.write('\n')
-                                    
-                                    
-                                    for l in L:
-                                        for k in K:
-                                            f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                                            f.write('\n')
-                                    f.write('-1')
-                                    f.write('\n')
-                                    
-                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                    name_ind = 0
-                                    new_name = names[name_ind]
-                                    
-                                    
-                                    if model.objVal != float("-inf"):
-                                        for v in model.getVars():
-                                            #print(v)
-                                            if new_name not in v.varName:
-                                                #print("entra new name \n")
-                                                #print(new_name+'\n')
-                                                f.write('-1')
-                                                f.write('\n')
-                                                name_ind = name_ind + 1
-                                                new_name = names[name_ind]
-                                            f.write('%s %g' % (v.varName, v.x))
-                                            f.write('\n')
-                                        
-                                    f.write('-1')
-                                        
-                                    
-                                    #imprimir el valor objetivo
-                                    print('Obj: %g' % model.objVal)
-                                    print("Finished")
-                                    print(" ")
-                                    print(" ")
-                                    
-                                    f.close()
-                                    
-                                    
-                                    end_time = time.time()
-                                    total_time = end_time - initial_time 
-                                    
-                                    sheet.write(countcsv, 9, total_time)
-                                    #sheet1.write(countcsv1, 9, total_time)
-                                    
-                                    sheet.write(countcsv, 10, "V2 BLS")
-                                    
-                                    countcsv = countcsv + 1
-                                    #countcsv1 = countcsv1 + 1
-                                    
-                                    soluciones.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal +'\n')
-                                    soluciones.write(str(x_vars_list))
-                                    soluciones.write('\n')
-                                    
-                                    #sale = 0
-                                    if model.objVal > mejor_obj:
-                                        
-                                        colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                        for column in range(len(colnames)):
-                                            sheet1.write(0, column, colnames[column])
-                                        name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                        sheet1.write(countcsv1, 0, name)
-                                        sheet1.write(countcsv1, 1, len(I))
-                                        sheet1.write(countcsv1, 2, len(L))
-                                        sheet1.write(countcsv1, 3, len(S))
-                                        if len(model._data) != 0:
-                                            datos = model._data[len(model._data)-1]
-                                            for row in range(len(datos)):
-                                                sheet1.write(countcsv1, row+4, datos[row])
-                                                
-                                        sheet1.write(countcsv1, 9, total_time)
-                                        sheet1.write(countcsv1, 10, "V2 BLS")
-                                        countcsv1 = countcsv1 + 1
-                                        
-                                        best.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal + '\n')
-                                        best.write(str(x_vars_list))
-                                        best.write('\n')
-                                        mejor_obj = model.objVal
-                                        
-                                        mejor = open('Best_Metaheuristic_080925_'
-                                                          +str(tamaños_I[iconj])+str('_')
-                                                          +str(tamaños_L[jconj])+str('_')
-                                                          +str(tamaños_S[sconj])+'_'
-                                                          +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                            
-                                        mejor.write('Obj (MEDIOS ACT VS NO ACT BLS): %g' % model.objVal)
-                                        mejor.write('\n')
-                                        
-                                        cont = 0
-                                        for l in L:
-                                            for k in K:
-                                                mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
-                                                mejor.write('\n')
-                                                cont = cont + 1
-                                        mejor.write('-1')
-                                        mejor.write('\n')
-                                        
-                            
-                                        names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                        name_ind = 0
-                                        new_name = names[name_ind]
-                            
-                            
-                                        if model.objVal != float("-inf"):
-                                            for v in model.getVars():
-                                                # if new_name == 'located':
-                                                #     print(str(v) + '\n')
-                                                #     print('%s %g' % (v.varName, v.x))
-                                                if new_name not in v.varName:
-                                                    #print("entra new name \n")
-                                                    #print(new_name+'\n')
-                                                    mejor.write('-1')
-                                                    mejor.write('\n')
-                                                    name_ind = name_ind + 1
-                                                    new_name = names[name_ind]
-                                                mejor.write('%s %g' % (v.varName, v.x))
-                                                mejor.write('\n')
-                                            
-                                        mejor.write('-1')
-                            
-                                        mejor.close()
-                                        
-                                        sale = 1
-    
-                                    # print('\n')
-                                    # print("x_vars_list 2")
-                                    # print(str(x_vars_list))
-                                    # print('\n')
-                                    
-                                    if sale == 1:
-                                        break
-                                    else:
-                                        x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] - x_vars_original_cambio1_BLS
-                                        x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] + x_vars_original_cambio1_BLS
-                                    
-                                    if total_time < time_limit_final:
-                                        break
-                                    
-                                
-                                if sale == 1:
-                                    break
-                                
-                                if total_time < time_limit_final:
-                                    break
-                                
-                            if sale == 1:
-                                break
-                            
-                            if total_time > time_limit_ls:
-                                break
-                                
-                                
-                            
-                #################################################################
-                ######## VECINDARIO DE MEDIOS CAMBIOS ENTRE ACTIVOS Y ACTIVOS BLS
-                #################################################################
-    
-                sale = 1            
-                while sale == 1:
-                               
-                    ############################################################
-                    ###### LEE LA MEJOR HASTA AHORA
-                    ############################################################
-                    
-                    
-                    soluciones = open('Solutions_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    
-                    best = open('Mejoras_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    g = open('Best_Metaheuristic_080925_'
-                              +str(tamaños_I[iconj])+str('_')
-                              +str(tamaños_L[jconj])+str('_')
-                              +str(tamaños_S[sconj])+'_'
-                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
-                    
-                    
-                    g.readline().strip().split()
-                    
-                    # Create variables #
-                    x_vars_list = []
-                    pares_cero = []
-                    pares_nocero = []
-                    impares_cero = []
-                    impares_nocero = []
-                    count = 0
-                    for l in L:
-                        for k in K:
-                            line = g.readline().strip().split()
-                            x_vars_list.append(int(line[len(line)-1]))
-                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
-                                pares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
-                                pares_nocero.append([l,k,count])
-                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
-                                impares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
-                                impares_nocero.append([l,k,count])
-                            count = count + 1
-                    g.close()
-                    
-                    soluciones.write('Obj: %g' % model.objVal + '\n')
-                    soluciones.write(str(x_vars_list))
-                    soluciones.write('\n')
-                    
-                    best.write('Obj: %g' % model.objVal + '\n')
-                    best.write(str(x_vars_list))
-                    best.write('\n')
-                    
-                    
-                    ######################################
-                    ####### FIRST FOUND 
-                    ######################################
-                    
-                    sale = 0
-                    for i1 in range(len(pares_nocero)):
-                        cambio1_BLS = pares_nocero[i1][2]
-                        #print(cambio1_BLS)
-                        for j in range(len(pares_nocero)):
-                            cambio2_BLS = pares_nocero[j][2]
-                            #print(cambio2_BLS)
-                            #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
-                            
-                            if cambio1_BLS != cambio2_BLS:
-                                
-                                x_vars_original_cambio1_BLS = math.floor(x_vars_list[pares_nocero[i1][2]]/2)
-                            
-                                x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] - x_vars_original_cambio1_BLS
-                                x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] + x_vars_original_cambio1_BLS
-                                
-                                
-                                
-                                # print("Original ", x_vars_original_cambio1_BLS)
-                        
-                                # print('\n')
-                                # print("x_vars_list 1")
-                                # print(x_vars_list)
-                                # print('\n')
-                                
-                                presolve = 0
-                                
-                                model = gp.Model("Swap1")
-                                
-                                model.setParam('TimeLimit', timelim)
-                                
-                                model._obj = None
-                                model._bd = None
-                                model._data = []
-                                model._start = time.time()        
-                                
-                                # Create variables #
-                                x_vars = {}
-                                cantVarX = 0
-                                count = 0
-                                for l in L:
-                                    for k in K:
-                                        x_vars[l,k] = int(x_vars_list[count])
-                                        cantVarX += 1
-                                        count = count + 1
-                                
-                                print(x_vars)
-                                        
-                                        
-                                y_vars = {}    
-                                cantVarY = 0
-                                for s in range(len(S)):        
-                                    for l in L:
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:
-                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                                cantVarY += 1
-                                                
-                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                cantVarY += 1
-                                                
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                cantVarY += 1
-                                
-                                
-                                alpha_vars = {}  ## z full
-                                cantVarAlpha = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                                                                            name="Full "+str(s+1)+str(' ')+str(i))
-                                            cantVarAlpha += 1
-                                            
-                                
-                                beta_vars = {}  ## z partial 1
-                                cantVarBeta = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                            cantVarBeta += 1
-                                            
-                                
-                                delta_vars = {}  ## z partial 2
-                                cantVarDelta = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                            cantVarDelta += 1
-                                       
-                                
-                                phi_vars = {}   ## z partial 3
-                                cantVarPhi = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                            cantVarPhi += 1
-                                       
-                                
-                                gamma_vars = {} ## z null
-                                cantVarGamma = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                                                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                            cantVarGamma += 1
-                                       
-                                            
-                                obj = gp.LinExpr()
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #obj += 0
-                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                model.setObjective(obj, GRB.MAXIMIZE)  
-                                
-                                
-                                # Add constraints
-                                
-                                for s in range(len(S)):
-                                    
-                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                                    # for k in K:
-                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
-                                    
-                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
-                                    for l in L: 
-                                        amb1 = gp.LinExpr()
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:                            
-                                                amb1 += y_vars[s+1,l,1,i]
-                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
-                                    
-                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                                    for l in L:
-                                        amb2 = gp.LinExpr()
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:
-                                                amb2 += y_vars[s+1,l,2,i] 
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                amb2 += y_vars[s+1,l,2,i] 
-                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
-                                        
-                                    
-                                    # # Restricción 5: Desactivar alpha (cobertura total)
-                                    # suma_alpha2 = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
-                                    
-                                    
-                                    # Restricción 6: Desactivar alpha (cobertura total)
-                                    for i in I:
-                                        suma_alpha2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
-                                    
-                                    
-                                    # # Restricción 6: Activar alpha (cobertura total) 
-                                    # suma_alpha = gp.LinExpr()
-                                    # for i in I: 
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
-                                
-                                    
-                                
-                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
-                                    for i in I:
-                                        suma_beta2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
-                                            
-                                            
-                                            
-                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
-                                    for i in I:
-                                        suma_beta = gp.LinExpr()
-                                        suma_beta_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
-                                
-                                    
-                                
-                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
-                                    for i in I:
-                                        suma_delta2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
-                                           
-                                                
-                                        
-                                    # # Restricción 10: Activar delta (cobertura parcial 2)
-                                    # suma_delta = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
-                                       
-                                              
-                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                                    for i in I:
-                                        suma_delta3 = gp.LinExpr()
-                                        suma_delta3_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
-                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
-                                            
-                                    
-                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
-                                    for i in I:
-                                        suma_phi2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
-                                       
-                                            
-                                    # # Restricción 13: Activar phi (cobertura parcial 3)
-                                    # suma_phi = gp.LinExpr()
-                                    # suma_phi_aux = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
-                                      
-                                    
-                                
-                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
-                                    for i in I:
-                                        suma_phi3 = gp.LinExpr()
-                                        suma_phi3_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
-                                    
-                                    # Restricción 13: Activar gamma (cobertura nula)
-                                    for i in I:
-                                        suma_gamma = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
-                                            
-                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
-                                    for i in I:
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
-                                    
-                                
-                                
-                                # Optimize model
-                                model.optimize(callback=data_cb)
-                                
-                                end_time = time.time()
-                                
-                                elapsed_time = end_time - model._start 
-                                
-                                #imprimir variables 
-                                
-                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
-                                              +str(len(L))+str('_')
-                                              #+str(len(K))+str('_')
-                                              #+str(len(N))+str('_')
-                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                                    writer = csv.writer(f)
-                                    writer.writerows(model._data)
-                                    
-                                
-                                
-                                #archivo = xlsxwriter.Workbook('tesis.csv')
-                                #hoja = archivo.add_worksheet()
-                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                for column in range(len(colnames)):
-                                    sheet.write(0, column, colnames[column])
-                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                sheet.write(countcsv, 0, name)
-                                sheet.write(countcsv, 1, len(I))
-                                sheet.write(countcsv, 2, len(L))
-                                sheet.write(countcsv, 3, len(S))
-                                if len(model._data) != 0:
-                                    datos = model._data[len(model._data)-1]
-                                    for row in range(len(datos)):
-                                        sheet.write(countcsv, row+4, datos[row])
-                                
-                                
-                                #Nombre: Resultados_I_L_M_N_S
-                                
-                                f = open ('Resultados_Metaheuristic_080925_New_'
-                                              +str(len(I))+str('_')
-                                              +str(len(L))+str('_')
-                                              #+str(len(K))+str('_')
-                                              #+str(len(N))+str('_')
-                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                                
-                                
-                                f.write("Elapsed time: ")
-                                f.write(str(elapsed_time))
-                                f.write('\n')
-                                
-                                        
-                                f.write('Obj: %g' % model.objVal)
-                                f.write('\n')
-                                
-                                
-                                for l in L:
-                                    for k in K:
-                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                                        f.write('\n')
-                                f.write('-1')
-                                f.write('\n')
-                                
-                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                name_ind = 0
-                                new_name = names[name_ind]
-                                
-                                
-                                if model.objVal != float("-inf"):
-                                    for v in model.getVars():
-                                        #print(v)
-                                        if new_name not in v.varName:
-                                            #print("entra new name \n")
-                                            #print(new_name+'\n')
-                                            f.write('-1')
-                                            f.write('\n')
-                                            name_ind = name_ind + 1
-                                            new_name = names[name_ind]
-                                        f.write('%s %g' % (v.varName, v.x))
-                                        f.write('\n')
-                                    
-                                f.write('-1')
-                                    
-                                
-                                #imprimir el valor objetivo
-                                print('Obj: %g' % model.objVal)
-                                print("Finished")
-                                print(" ")
-                                print(" ")
-                                
-                                f.close()
-                                
-                                
-                                end_time = time.time()
-                                total_time = end_time - initial_time 
-                                
-                                sheet.write(countcsv, 9, total_time)
-                                
-                                #sheet1.write(countcsv1, 9, total_time)
-                                sheet.write(countcsv, 10, "V3 BLS")
-                                
-                                countcsv = countcsv + 1
-                                #countcsv1 = countcsv1 + 1
-                                
-                                soluciones.write('Obj (MEDIOS ACT VS ACT BLS): %g' % model.objVal +'\n')
-                                soluciones.write(str(x_vars_list))
-                                soluciones.write('\n')
-                                
-                                #sale = 0
-                                if model.objVal > mejor_obj:
-                                    
-                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                    for column in range(len(colnames)):
-                                        sheet1.write(0, column, colnames[column])
-                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                    sheet1.write(countcsv1, 0, name)
-                                    sheet1.write(countcsv1, 1, len(I))
-                                    sheet1.write(countcsv1, 2, len(L))
-                                    sheet1.write(countcsv1, 3, len(S))
-                                    if len(model._data) != 0:
-                                        datos = model._data[len(model._data)-1]
-                                        for row in range(len(datos)):
-                                            sheet1.write(countcsv1, row+4, datos[row])
-                                            
-                                    sheet1.write(countcsv1, 9, total_time)
-                                    sheet1.write(countcsv1, 10, "V3 BLS")
-                                    countcsv1 = countcsv1 + 1
-                                    
-                                    best.write('Obj (MEDIOS ACT VS ACT BLS): %g' % model.objVal + '\n')
-                                    best.write(str(x_vars_list))
-                                    best.write('\n')
-                                    mejor_obj = model.objVal
-                                    
-                                    mejor = open('Best_Metaheuristic_080925_'
-                                                      +str(tamaños_I[iconj])+str('_')
-                                                      +str(tamaños_L[jconj])+str('_')
-                                                      +str(tamaños_S[sconj])+'_'
-                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                        
-                                    mejor.write('Obj (MEDIOS ACT VS ACT BLS): %g' % model.objVal)
-                                    mejor.write('\n')
-                                    
-                                    cont = 0
-                                    for l in L:
-                                        for k in K:
-                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
-                                            mejor.write('\n')
-                                            cont = cont + 1
-                                    mejor.write('-1')
-                                    mejor.write('\n')
-                        
-                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                    name_ind = 0
-                                    new_name = names[name_ind]
-                        
-                        
-                                    if model.objVal != float("-inf"):
-                                        for v in model.getVars():
-                                            # if new_name == 'located':
-                                            #     print(str(v) + '\n')
-                                            #     print('%s %g' % (v.varName, v.x))
-                                            if new_name not in v.varName:
-                                                #print("entra new name \n")
-                                                #print(new_name+'\n')
-                                                mejor.write('-1')
-                                                mejor.write('\n')
-                                                name_ind = name_ind + 1
-                                                new_name = names[name_ind]
-                                            mejor.write('%s %g' % (v.varName, v.x))
-                                            mejor.write('\n')
-                                        
-                                    mejor.write('-1')
-                        
-                                    mejor.close()
-                                    
-                                    sale = 1
-            
-                                # print('\n')
-                                # print("x_vars_list 2")
-                                # print(str(x_vars_list))
-                                # print('\n')
-                                
-                                if sale == 1:
-                                    break
-                                else:
-                                    x_vars_list[cambio2_BLS] = x_vars_list[cambio2_BLS] - x_vars_original_cambio1_BLS
-                                    x_vars_list[cambio1_BLS] = x_vars_list[cambio1_BLS] + x_vars_original_cambio1_BLS
-                                
-                                if total_time < time_limit_final:
-                                    break
-                                
-                            
-                            if sale == 1:
-                                break
-                            
-                            if total_time < time_limit_final:
-                                break
-                        
-                        if sale == 1:
-                            break
-                        
-                        if total_time > time_limit_ls:
-                            break
-                    
-                    
-                ##############################################################
-                ######## VECINDARIO DE CAMBIOS ENTRE ACTIVOS Y NO ACTIVOS BLS
-                ##############################################################
-            
-                sale = 1
-                while sale == 1:
-                               
-                    ############################################################
-                    ###### LEE LA MEJOR HASTA AHORA
-                    ############################################################
-                    
-                    
-                    soluciones = open('Solutions_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    
-                    best = open('Mejoras_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    g = open('Best_Metaheuristic_080925_'
-                              +str(tamaños_I[iconj])+str('_')
-                              +str(tamaños_L[jconj])+str('_')
-                              +str(tamaños_S[sconj])+'_'
-                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
-                    
-                    
-                    g.readline().strip().split()
-                    
-                    # Create variables #
-                    x_vars_list = []
-                    pares_cero = []
-                    pares_nocero = []
-                    impares_cero = []
-                    impares_nocero = []
-                    count = 0
-                    for l in L:
-                        for k in K:
-                            line = g.readline().strip().split()
-                            x_vars_list.append(int(line[len(line)-1]))
-                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
-                                pares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
-                                pares_nocero.append([l,k,count])
-                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
-                                impares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
-                                impares_nocero.append([l,k,count])
-                            count = count + 1
-                    g.close()
-                    
-                    soluciones.write('Obj: %g' % model.objVal + '\n')
-                    soluciones.write(str(x_vars_list))
-                    soluciones.write('\n')
-                    
-                    best.write('Obj: %g' % model.objVal + '\n')
-                    best.write(str(x_vars_list))
-                    best.write('\n')
-                    
-                    
-                    ######################################
-                    ####### FIRST FOUND 
-                    ######################################
-                    
-                    sale = 0
-                    if len(pares_cero) > 0:
-                        for i in range(len(pares_cero)):
-                            cambio1_BLS = pares_cero[i][2]
-                            #print(cambio1_BLS)
-                            for j in range(len(pares_nocero)):
-                                cambio2_BLS = pares_nocero[j][2]
-                                #print(cambio2_BLS)
-                                #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
-                                
-                                x_vars_list[cambio1_BLS] = x_vars[pares_nocero[j][0],pares_nocero[j][1]]
-                                x_vars_list[cambio2_BLS] = 0
-                        
-                                #print('\n')
-                                #print("x_vars_list 1")
-                                #print(x_vars_list)
-                                #print('\n')
-                                
-                                presolve = 0
-                                
-                                model = gp.Model("Swap1")
-                                
-                                model.setParam('TimeLimit', timelim)
-                                
-                                model._obj = None
-                                model._bd = None
-                                model._data = []
-                                model._start = time.time()        
-                                
-                                # Create variables #
-                                x_vars = {}
-                                cantVarX = 0
-                                count = 0
-                                for l in L:
-                                    for k in K:
-                                        x_vars[l,k] = int(x_vars_list[count])
-                                        cantVarX += 1
-                                        count = count + 1
-                                
-                                print(x_vars)
-                                        
-                                        
-                                y_vars = {}    
-                                cantVarY = 0
-                                for s in range(len(S)):        
-                                    for l in L:
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:
-                                                y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                                cantVarY += 1
-                                                
-                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                cantVarY += 1
-                                                
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                                cantVarY += 1
-                                
-                                
-                                alpha_vars = {}  ## z full
-                                cantVarAlpha = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                            alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                                                                            name="Full "+str(s+1)+str(' ')+str(i))
-                                            cantVarAlpha += 1
-                                            
-                                
-                                beta_vars = {}  ## z partial 1
-                                cantVarBeta = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                      name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                            cantVarBeta += 1
-                                            
-                                
-                                delta_vars = {}  ## z partial 2
-                                cantVarDelta = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                                            delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                      name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                            cantVarDelta += 1
-                                       
-                                
-                                phi_vars = {}   ## z partial 3
-                                cantVarPhi = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                            phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                                                                      name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                            cantVarPhi += 1
-                                       
-                                
-                                gamma_vars = {} ## z null
-                                cantVarGamma = 0
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                                                                      name="Null "+str(s+1)+str(' ')+str(i))
-                                            cantVarGamma += 1
-                                       
-                                            
-                                obj = gp.LinExpr()
-                                for s in range(len(S)):
-                                    for i in I:
-                                        if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                            #obj += 0
-                                            obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                                model.setObjective(obj, GRB.MAXIMIZE)  
-                                
-                                
-                                # Add constraints
-                                
-                                for s in range(len(S)):
-                                    
-                                    # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                                    # for k in K:
-                                    #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
-                                    
-                                    # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
-                                    for l in L: 
-                                        amb1 = gp.LinExpr()
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:                            
-                                                amb1 += y_vars[s+1,l,1,i]
-                                        model.addConstr(amb1 <= x_vars[l,1], "c4")
-                                    
-                                    # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                                    for l in L:
-                                        amb2 = gp.LinExpr()
-                                        for i in I:
-                                            if S[s][i-1][0] != 0:
-                                                amb2 += y_vars[s+1,l,2,i] 
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                amb2 += y_vars[s+1,l,2,i] 
-                                        model.addConstr(amb2 <= x_vars[l,2], "c4_1")
-                                        
-                                    
-                                    # # Restricción 5: Desactivar alpha (cobertura total)
-                                    # suma_alpha2 = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                    #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
-                                    
-                                    
-                                    # Restricción 6: Desactivar alpha (cobertura total)
-                                    for i in I:
-                                        suma_alpha2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
-                                    
-                                    
-                                    # # Restricción 6: Activar alpha (cobertura total) 
-                                    # suma_alpha = gp.LinExpr()
-                                    # for i in I: 
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                    #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
-                                
-                                    
-                                
-                                    # Restricción 7: Desactivar beta (cobertura parcial 1)
-                                    for i in I:
-                                        suma_beta2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
-                                            
-                                            
-                                            
-                                    # Restricción 8: Desactivar beta (cobertura parcial 1)
-                                    for i in I:
-                                        suma_beta = gp.LinExpr()
-                                        suma_beta_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
-                                
-                                    
-                                
-                                    # Restricción 9: Desactivar delta (cobertura parcial 2)
-                                    for i in I:
-                                        suma_delta2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
-                                           
-                                                
-                                        
-                                    # # Restricción 10: Activar delta (cobertura parcial 2)
-                                    # suma_delta = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                                    #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
-                                       
-                                              
-                                    # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                                    for i in I:
-                                        suma_delta3 = gp.LinExpr()
-                                        suma_delta3_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
-                                                suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
-                                            
-                                    
-                                    # Restricción 11: Desactivar phi (cobertura parcial 3)
-                                    for i in I:
-                                        suma_phi2 = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
-                                       
-                                            
-                                    # # Restricción 13: Activar phi (cobertura parcial 3)
-                                    # suma_phi = gp.LinExpr()
-                                    # suma_phi_aux = gp.LinExpr()
-                                    # for i in I:
-                                    #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                    #         if S[s][i-1][0] != 0:
-                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                    #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                    #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                    #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                                    #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
-                                      
-                                    
-                                
-                                    # Restricción 12: Desactivar phi (cobertura parcial 3)
-                                    for i in I:
-                                        suma_phi3 = gp.LinExpr()
-                                        suma_phi3_aux = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                                suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
-                                    
-                                    # Restricción 13: Activar gamma (cobertura nula)
-                                    for i in I:
-                                        suma_gamma = gp.LinExpr()
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            if S[s][i-1][0] != 0:
-                                                suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                                suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
-                                            
-                                    #Restricción 14: Solo se puede activar un tipo de cobertura     
-                                    for i in I:
-                                        if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                            model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
-                                    
-                                
-                                
-                                # Optimize model
-                                model.optimize(callback=data_cb)
-                                
-                                end_time = time.time()
-                                
-                                elapsed_time = end_time - model._start 
-                                
-                                #imprimir variables 
-                                
-                                with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
-                                              +str(len(L))+str('_')
-                                              #+str(len(K))+str('_')
-                                              #+str(len(N))+str('_')
-                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                                    writer = csv.writer(f)
-                                    writer.writerows(model._data)
-                                    
-                                
-                                
-                                #archivo = xlsxwriter.Workbook('tesis.csv')
-                                #hoja = archivo.add_worksheet()
-                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                for column in range(len(colnames)):
-                                    sheet.write(0, column, colnames[column])
-                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                sheet.write(countcsv, 0, name)
-                                sheet.write(countcsv, 1, len(I))
-                                sheet.write(countcsv, 2, len(L))
-                                sheet.write(countcsv, 3, len(S))
-                                if len(model._data) != 0:
-                                    datos = model._data[len(model._data)-1]
-                                    for row in range(len(datos)):
-                                        sheet.write(countcsv, row+4, datos[row])
-                                
-                                
-                                #Nombre: Resultados_I_L_M_N_S
-                                
-                                f = open ('Resultados_Metaheuristic_080925_New_'
-                                              +str(len(I))+str('_')
-                                              +str(len(L))+str('_')
-                                              #+str(len(K))+str('_')
-                                              #+str(len(N))+str('_')
-                                              +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                                
-                                
-                                f.write("Elapsed time: ")
-                                f.write(str(elapsed_time))
-                                f.write('\n')
-                                
-                                        
-                                f.write('Obj: %g' % model.objVal)
-                                f.write('\n')
-                                
-                                
-                                for l in L:
-                                    for k in K:
-                                        f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                                        f.write('\n')
-                                f.write('-1')
-                                f.write('\n')
-                                
-                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                name_ind = 0
-                                new_name = names[name_ind]
-                                
-                                
-                                if model.objVal != float("-inf"):
-                                    for v in model.getVars():
-                                        #print(v)
-                                        if new_name not in v.varName:
-                                            #print("entra new name \n")
-                                            #print(new_name+'\n')
-                                            f.write('-1')
-                                            f.write('\n')
-                                            name_ind = name_ind + 1
-                                            new_name = names[name_ind]
-                                        f.write('%s %g' % (v.varName, v.x))
-                                        f.write('\n')
-                                    
-                                f.write('-1')
-                                    
-                                
-                                #imprimir el valor objetivo
-                                print('Obj: %g' % model.objVal)
-                                print("Finished")
-                                print(" ")
-                                print(" ")
-                                
-                                f.close()
-                                
-                                
-                                end_time = time.time()
-                                total_time = end_time - initial_time 
-                                
-                                sheet.write(countcsv, 9, total_time)
-                                #sheet1.write(countcsv1, 9, total_time)
-                                sheet.write(countcsv, 10, "V4 BLS")
-                                
-                                countcsv = countcsv + 1
-                                #countcsv1 = countcsv1 + 1
-                                
-                                soluciones.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal +'\n')
-                                soluciones.write(str(x_vars_list))
-                                soluciones.write('\n')
-                                
-                                #sale = 0
-                                if model.objVal > mejor_obj:
-                                    
-                                    colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                    for column in range(len(colnames)):
-                                        sheet1.write(0, column, colnames[column])
-                                    name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                    sheet1.write(countcsv1, 0, name)
-                                    sheet1.write(countcsv1, 1, len(I))
-                                    sheet1.write(countcsv1, 2, len(L))
-                                    sheet1.write(countcsv1, 3, len(S))
-                                    if len(model._data) != 0:
-                                        datos = model._data[len(model._data)-1]
-                                        for row in range(len(datos)):
-                                            sheet1.write(countcsv1, row+4, datos[row])
-                                            
-                                    sheet1.write(countcsv1, 9, total_time)
-                                    sheet1.write(countcsv1, 10, "V4 BLS")
-                                    countcsv1 = countcsv1 + 1
-                                    
-                                    best.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal + '\n')
-                                    best.write(str(x_vars_list))
-                                    best.write('\n')
-                                    mejor_obj = model.objVal
-                                    
-                                    mejor = open('Best_Metaheuristic_080925_'
-                                                      +str(tamaños_I[iconj])+str('_')
-                                                      +str(tamaños_L[jconj])+str('_')
-                                                      +str(tamaños_S[sconj])+'_'
-                                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                        
-                                    mejor.write('Obj (ACT VS NO ACT BLS): %g' % model.objVal)
-                                    mejor.write('\n')
-                        
-                                    cont = 0
-                                    for l in L:
-                                        for k in K:
-                                            mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
-                                            mejor.write('\n')
-                                            cont = cont + 1
-                                    mejor.write('-1')
-                                    mejor.write('\n')
-                        
-                                    names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                    name_ind = 0
-                                    new_name = names[name_ind]
-                        
-                        
-                                    if model.objVal != float("-inf"):
-                                        for v in model.getVars():
-                                            # if new_name == 'located':
-                                            #     print(str(v) + '\n')
-                                            #     print('%s %g' % (v.varName, v.x))
-                                            if new_name not in v.varName:
-                                                #print("entra new name \n")
-                                                #print(new_name+'\n')
-                                                mejor.write('-1')
-                                                mejor.write('\n')
-                                                name_ind = name_ind + 1
-                                                new_name = names[name_ind]
-                                            mejor.write('%s %g' % (v.varName, v.x))
-                                            mejor.write('\n')
-                                        
-                                    mejor.write('-1')
-                        
-                                    mejor.close()
-                                    
-                                    sale = 1
-                        
-                                
-                                
-                        
-                                #print('\n')
-                                #print("x_vars_list 2")
-                                #print(str(x_vars_list))
-                                #print('\n')
-                                
-                                if sale == 1:
-                                    break
-                                else:
-                                    x_vars_list[cambio2_BLS] = x_vars_list[cambio1_BLS]
-                                    x_vars_list[cambio1_BLS] = 0
-                                
-                                if total_time < time_limit_final:
-                                    break
-                                
-                            if sale == 1:
-                                break
-                            
-                            if total_time < time_limit_final:
-                                break
-                        
-                        if sale == 1:
-                            break
-                        
-                        if total_time > time_limit_ls:
-                            break
-                        
-                    
-                ##########################################################
-                ######## VECINDARIO ACTIVOS VS NO ACTIVOS (CAMBIOS EN ALS)
-                ##########################################################
                
-                sale = 1
-                while sale == 1:
-                               
-                    ############################################################
-                    ###### LEE LA MEJOR HASTA AHORA
-                    ############################################################
-                    
-                    soluciones = open('Solutions_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    
-                    best = open('Mejoras_Metaheuristic_080925_'
-                                      +str(tamaños_I[iconj])+str('_')
-                                      +str(tamaños_L[jconj])+str('_')
-                                      +str(tamaños_S[sconj])+'_'
-                                      +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                    g = open('Best_Metaheuristic_080925_'
-                              +str(tamaños_I[iconj])+str('_')
-                              +str(tamaños_L[jconj])+str('_')
-                              +str(tamaños_S[sconj])+'_'
-                              +str(eta[0])+'_'+str(eta[1])+'.txt', "r")
-                    
-                    
-                    g.readline().strip().split()
-                    
-                    # Create variables #
-                    x_vars_list = []
-                    pares_cero = []
-                    pares_nocero = []
-                    impares_cero = []
-                    impares_nocero = []
-                    count = 0
-                    for l in L:
-                        for k in K:
-                            line = g.readline().strip().split()
-                            x_vars_list.append(int(line[len(line)-1]))
-                            if int(line[len(line)-1]) == 0 and  count % 2 == 0:
-                                pares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 == 0:
-                                pares_nocero.append([l,k,count])
-                            if int(line[len(line)-1]) == 0 and  count % 2 != 0:
-                                impares_cero.append([l,k,count])
-                            if int(line[len(line)-1]) != 0 and  count % 2 != 0:
-                                impares_nocero.append([l,k,count])
-                            count = count + 1
-                    g.close()
-                    
-                    soluciones.write('Obj: %g' % model.objVal + '\n')
-                    soluciones.write(str(x_vars_list))
-                    soluciones.write('\n')
-                    
-                    best.write('Obj: %g' % model.objVal + '\n')
-                    best.write(str(x_vars_list))
-                    best.write('\n')
-                    
-                    
-                    ######################################
-                    ####### FIRST FOUND 
-                    ######################################
-                    
-                    sale = 0
-                    for i in range(len(impares_cero)):
-                        cambio1_BLS = impares_cero[i][2]
-                        #print(cambio1_BLS)
-                        for j in range(len(impares_nocero)):
-                            cambio2_BLS = impares_nocero[j][2]
-                            #print(cambio2_BLS)
-                            #print(x_vars[pares_nocero[j][0],pares_nocero[j][1]])
-                            
-                            x_vars_list[cambio1_BLS] = x_vars[impares_nocero[j][0],impares_nocero[j][1]]
-                            x_vars_list[cambio2_BLS] = 0
-                    
-                            #print('\n')
-                            #print("x_vars_list 1")
-                            #print(x_vars_list)
-                            #print('\n')
-                            
-                            presolve = 0
-                            
-                            model = gp.Model("Swap1")
-                            
-                            model.setParam('TimeLimit', timelim)
-                            
-                            model._obj = None
-                            model._bd = None
-                            model._data = []
-                            model._start = time.time()        
-                            
-                            # Create variables #
-                            x_vars = {}
-                            cantVarX = 0
-                            count = 0
-                            for l in L:
-                                for k in K:
-                                    x_vars[l,k] = int(x_vars_list[count])
-                                    cantVarX += 1
-                                    count = count + 1
-                            
-                            #print(x_vars)
-                                    
-                                    
-                            y_vars = {}    
-                            cantVarY = 0
-                            for s in range(len(S)):        
-                                for l in L:
-                                    for i in I:
-                                        if S[s][i-1][0] != 0:
-                                            y_vars[s+1,l,1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                            name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(1)+str(' ')+str(i))
-                                            cantVarY += 1
-                                            
-                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                            name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                            cantVarY += 1
-                                            
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            y_vars[s+1,l,2,i] = model.addVar(vtype=GRB.BINARY, 
-                                                            name="dispatched "+str(s+1)+str(' ')+str(l)+str(' ')+str(2)+str(' ')+str(i))
-                                            cantVarY += 1
-                            
-                            
-                            alpha_vars = {}  ## z full
-                            cantVarAlpha = 0
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        #alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                        alpha_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,                                  
-                                                                        name="Full "+str(s+1)+str(' ')+str(i))
-                                        cantVarAlpha += 1
-                                        
-                            
-                            beta_vars = {}  ## z partial 1
-                            cantVarBeta = 0
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        beta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                  name="Partial1 "+str(s+1)+str(' ')+str(i))
-                                        cantVarBeta += 1
-                                        
-                            
-                            delta_vars = {}  ## z partial 2
-                            cantVarDelta = 0
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        #delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub = 0,
-                                        delta_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, 
-                                                                  name="Partial2 "+str(s+1)+str(' ')+str(i))
-                                        cantVarDelta += 1
-                                   
-                            
-                            phi_vars = {}   ## z partial 3
-                            cantVarPhi = 0
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        #phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY, ub=0, 
-                                        phi_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,
-                                                                  name="Partial3 "+str(s+1)+str(' ')+str(i))
-                                        cantVarPhi += 1
-                                   
-                            
-                            gamma_vars = {} ## z null
-                            cantVarGamma = 0
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        gamma_vars[s+1,i] = model.addVar(vtype=GRB.BINARY,  
-                                                                  name="Null "+str(s+1)+str(' ')+str(i))
-                                        cantVarGamma += 1
-                                   
-                                        
-                            obj = gp.LinExpr()
-                            for s in range(len(S)):
-                                for i in I:
-                                    if (S[s][i-1][0] + S[s][i-1][1]) > 0:
-                                        #obj += 0
-                                        obj += (wi[0]*alpha_vars[s+1,i] + wi[1]*beta_vars[s+1,i] + wi[2]*delta_vars[s+1,i] + wi[3]*phi_vars[s+1,i] - pi*gamma_vars[s+1,i]) * (1/len(S))
-                            model.setObjective(obj, GRB.MAXIMIZE)  
-                            
-                            
-                            # Add constraints
-                            
-                            for s in range(len(S)):
-                                
-                                # # Restricción 3: No localizar más ambulancias de las disponibles en el sistema
-                                # for k in K:
-                                #     model.addConstr(gp.quicksum(x_vars[l,k] for l in L) <= eta[k-1], "c3")
-                                
-                                # Restricción 4: No enviar más ambulancias de las localizadas para k = 1 
-                                for l in L: 
-                                    amb1 = gp.LinExpr()
-                                    for i in I:
-                                        if S[s][i-1][0] != 0:                            
-                                            amb1 += y_vars[s+1,l,1,i]
-                                    model.addConstr(amb1 <= x_vars[l,1], "c4")
-                                
-                                # Restricción 4_1: No enviar más ambulancias de las localizadas para k = 2
-                                for l in L:
-                                    amb2 = gp.LinExpr()
-                                    for i in I:
-                                        if S[s][i-1][0] != 0:
-                                            amb2 += y_vars[s+1,l,2,i] 
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            amb2 += y_vars[s+1,l,2,i] 
-                                    model.addConstr(amb2 <= x_vars[l,2], "c4_1")
-                                    
-                                
-                                # # Restricción 5: Desactivar alpha (cobertura total)
-                                # suma_alpha2 = gp.LinExpr()
-                                # for i in I:
-                                #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                #         if S[s][i-1][0] != 0:
-                                #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                #             suma_alpha2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                #         model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c5")
-                                
-                                
-                                # Restricción 6: Desactivar alpha (cobertura total)
-                                for i in I:
-                                    suma_alpha2 = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_alpha2 += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*alpha_vars[s+1,i] <= suma_alpha2, "c6")
-                                
-                                
-                                # # Restricción 6: Activar alpha (cobertura total) 
-                                # suma_alpha = gp.LinExpr()
-                                # for i in I: 
-                                #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                #         if S[s][i-1][0] != 0:
-                                #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                #             suma_alpha += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i]  for l in L) 
-                                #         model.addConstr(suma_alpha - (S[s][i-1][0]+S[s][i-1][1]) <= alpha_vars[s+1,i] - 1, "c6")
-                            
-                                
-                            
-                                # Restricción 7: Desactivar beta (cobertura parcial 1)
-                                for i in I:
-                                    suma_beta2 = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_beta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_beta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr((S[s][i-1][0]+S[s][i-1][1])*beta_vars[s+1,i] <= suma_beta2, "c7")
-                                        
-                                        
-                                        
-                                # Restricción 8: Desactivar beta (cobertura parcial 1)
-                                for i in I:
-                                    suma_beta = gp.LinExpr()
-                                    suma_beta_aux = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_beta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_beta += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            suma_beta_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(beta_vars[s+1,i] <= 100000000*(suma_beta - suma_beta_aux), "c8" )
-                            
-                                
-                            
-                                # Restricción 9: Desactivar delta (cobertura parcial 2)
-                                for i in I:
-                                    suma_delta2 = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_delta2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_delta2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(delta_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_delta2, "c_9")
-                                       
-                                            
-                                    
-                                # # Restricción 10: Activar delta (cobertura parcial 2)
-                                # suma_delta = gp.LinExpr()
-                                # for i in I:
-                                #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                #         if S[s][i-1][0] != 0:
-                                #             suma_delta += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                #             suma_delta += gp.quicksum(y_vars[s+1,l,2,i] for l in L) 
-                                #         model.addConstr(suma_delta - 1 <= (S[s][i-1][0]+S[s][i-1][1])*delta_vars[s+1,i], "c_10")
-                                   
-                                          
-                                # Restricción 10: Desactivar delta (cobertura parcial 2)   
-                                for i in I:
-                                    suma_delta3 = gp.LinExpr()
-                                    suma_delta3_aux = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_delta3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0  and S[s][i-1][0] == 0:
-                                            suma_delta3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            suma_delta3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(suma_delta3*delta_vars[s+1,i] <= suma_delta3_aux, "c_10")
-                                        
-                                
-                                # Restricción 11: Desactivar phi (cobertura parcial 3)
-                                for i in I:
-                                    suma_phi2 = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_phi2 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_phi2 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(phi_vars[s+1,i] <= (S[s][i-1][0]+S[s][i-1][1]) - suma_phi2, "c_11")
-                                   
-                                        
-                                # # Restricción 13: Activar phi (cobertura parcial 3)
-                                # suma_phi = gp.LinExpr()
-                                # suma_phi_aux = gp.LinExpr()
-                                # for i in I:
-                                #     if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                #         if S[s][i-1][0] != 0:
-                                #             suma_phi += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                #         if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                #             suma_phi += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                #             suma_phi_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)               
-                                #         model.addConstr(suma_phi - suma_phi_aux <= (S[s][i-1][0]+S[s][i-1][1])*phi_vars[s+1,i], "c_13")
-                                  
-                                
-                            
-                                # Restricción 12: Desactivar phi (cobertura parcial 3)
-                                for i in I:
-                                    suma_phi3 = gp.LinExpr()
-                                    suma_phi3_aux = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_phi3 += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                            suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,1,i] + cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_phi3 += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                            suma_phi3_aux += gp.quicksum(cli[l-1][i-1]*y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(phi_vars[s+1,i] <= 1000000000000*(suma_phi3 - suma_phi3_aux), "c_12")    
-                                
-                                # Restricción 13: Activar gamma (cobertura nula)
-                                for i in I:
-                                    suma_gamma = gp.LinExpr()
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        if S[s][i-1][0] != 0:
-                                            suma_gamma += gp.quicksum(y_vars[s+1,l,1,i] + y_vars[s+1,l,2,i] for l in L)
-                                        if S[s][i-1][1] != 0 and S[s][i-1][0] == 0:
-                                            suma_gamma += gp.quicksum(y_vars[s+1,l,2,i] for l in L)
-                                        model.addConstr(suma_gamma + gamma_vars[s+1,i] >= 1, "c_13")
-                                        
-                                #Restricción 14: Solo se puede activar un tipo de cobertura     
-                                for i in I:
-                                    if S[s][i-1][0] + S[s][i-1][1] > 0:
-                                        model.addConstr(alpha_vars[s+1,i] + beta_vars[s+1,i] + delta_vars[s+1,i] + phi_vars[s+1,i] + gamma_vars[s+1,i] == 1, "c_14")
-                                
-                            
-                            
-                            # Optimize model
-                            model.optimize(callback=data_cb)
-                            
-                            end_time = time.time()
-                            
-                            elapsed_time = end_time - model._start 
-                            
-                            #imprimir variables 
-                            
-                            with open('data_Metaheuristic_080925_'+str(len(I))+str('_')
-                                          +str(len(L))+str('_')
-                                          #+str(len(K))+str('_')
-                                          #+str(len(N))+str('_')
-                                          +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.csv', 'w') as f:
-                                writer = csv.writer(f)
-                                writer.writerows(model._data)
-                                
-                            
-                            
-                            #archivo = xlsxwriter.Workbook('tesis.csv')
-                            #hoja = archivo.add_worksheet()
-                            colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                            for column in range(len(colnames)):
-                                sheet.write(0, column, colnames[column])
-                            name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                            sheet.write(countcsv, 0, name)
-                            sheet.write(countcsv, 1, len(I))
-                            sheet.write(countcsv, 2, len(L))
-                            sheet.write(countcsv, 3, len(S))
-                            if len(model._data) != 0:
-                                datos = model._data[len(model._data)-1]
-                                for row in range(len(datos)):
-                                    sheet.write(countcsv, row+4, datos[row])
-                            
-                            
-                            #Nombre: Resultados_I_L_M_N_S
-                            
-                            f = open ('Resultados_Metaheuristic_080925_New_'
-                                          +str(len(I))+str('_')
-                                          +str(len(L))+str('_')
-                                          #+str(len(K))+str('_')
-                                          #+str(len(N))+str('_')
-                                          +str(len(S))+'_'+str(eta[0])+'_'+str(eta[1])+'.txt','w')
-                            
-                            
-                            f.write("Elapsed time: ")
-                            f.write(str(elapsed_time))
-                            f.write('\n')
-                            
-                                    
-                            f.write('Obj: %g' % model.objVal)
-                            f.write('\n')
-                            
-                            
-                            for l in L:
-                                for k in K:
-                                    f.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars[l,k]))
-                                    f.write('\n')
-                            f.write('-1')
-                            f.write('\n')
-                            
-                            names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                            name_ind = 0
-                            new_name = names[name_ind]
-                            
-                            
-                            if model.objVal != float("-inf"):
-                                for v in model.getVars():
-                                    #print(v)
-                                    if new_name not in v.varName:
-                                        #print("entra new name \n")
-                                        #print(new_name+'\n')
-                                        f.write('-1')
-                                        f.write('\n')
-                                        name_ind = name_ind + 1
-                                        new_name = names[name_ind]
-                                    f.write('%s %g' % (v.varName, v.x))
-                                    f.write('\n')
-                                
-                            f.write('-1')
-                                
-                            
-                            #imprimir el valor objetivo
-                            print('Obj: %g' % model.objVal)
-                            print("Finished")
-                            print(" ")
-                            print(" ")
-                            
-                            f.close()
-                            
-                            
-                            end_time = time.time()
-                            total_time = end_time - initial_time 
-                            
-                            sheet.write(countcsv, 9, total_time)
-                            #sheet1.write(countcsv1, 9, total_time)
-                            sheet.write(countcsv, 10, "V4 ALS")
-                            
-                            countcsv = countcsv + 1
-                            #countcsv1 = countcsv1 + 1
-                            
-                            soluciones.write('Obj (ACT VS NO ACT ALS): %g' % model.objVal +'\n')
-                            soluciones.write(str(x_vars_list))
-                            soluciones.write('\n')
-                            
-                            #sale = 0
-                            if model.objVal > mejor_obj:
-                                
-                                colnames = ["name", "I size", "L size", "S size", "model time", "best obj", "best bound", "gap %", "status", "total time"]
-                                for column in range(len(colnames)):
-                                    sheet1.write(0, column, colnames[column])
-                                name = str('Instance')+str('_')+str(len(I))+str('_')+str(len(L))+str('_')
-                                sheet1.write(countcsv1, 0, name)
-                                sheet1.write(countcsv1, 1, len(I))
-                                sheet1.write(countcsv1, 2, len(L))
-                                sheet1.write(countcsv1, 3, len(S))
-                                if len(model._data) != 0:
-                                    datos = model._data[len(model._data)-1]
-                                    for row in range(len(datos)):
-                                        sheet1.write(countcsv1, row+4, datos[row])
-                                        
-                                sheet1.write(countcsv1, 9, total_time)
-                                sheet1.write(countcsv1, 10, "V4 ALS")
-                                countcsv1 = countcsv1 + 1
-                                
-                                best.write('Obj (ACT VS NO ACT ALS): %g' % model.objVal + '\n')
-                                best.write(str(x_vars_list))
-                                best.write('\n')
-                                mejor_obj = model.objVal
-                                
-                                mejor = open('Best_Metaheuristic_080925_'
-                                                  +str(tamaños_I[iconj])+str('_')
-                                                  +str(tamaños_L[jconj])+str('_')
-                                                  +str(tamaños_S[sconj])+'_'
-                                                  +str(eta[0])+'_'+str(eta[1])+'.txt', "w")
-                    
-                                mejor.write('Obj (ACT VS NO ACT ALS): %g' % model.objVal)
-                                mejor.write('\n')
-                    
-                                cont = 0
-                                for l in L:
-                                    for k in K:
-                                        mejor.write("located "+str(l)+str(' ')+str(k)+str(' ')+str(x_vars_list[cont]))
-                                        mejor.write('\n')
-                                        cont = cont + 1
-                                mejor.write('-1')
-                                mejor.write('\n')
-                    
-                                names = ['dispatched', 'Full', 'Partial1', 'Partial2', 'Partial3', 'Null']
-                                name_ind = 0
-                                new_name = names[name_ind]
-                    
-                    
-                                if model.objVal != float("-inf"):
-                                    for v in model.getVars():
-                                        # if new_name == 'located':
-                                        #     print(str(v) + '\n')
-                                        #     print('%s %g' % (v.varName, v.x))
-                                        if new_name not in v.varName:
-                                            #print("entra new name \n")
-                                            #print(new_name+'\n')
-                                            mejor.write('-1')
-                                            mejor.write('\n')
-                                            name_ind = name_ind + 1
-                                            new_name = names[name_ind]
-                                        mejor.write('%s %g' % (v.varName, v.x))
-                                        mejor.write('\n')
-                                    
-                                mejor.write('-1')
-                    
-                                mejor.close()
-                    
-                                sale = 1
-                    
-                            
-                            
-                    
-                            #print('\n')
-                            #print("x_vars_list 2")
-                            #print(str(x_vars_list))
-                            #print('\n')
-                    
-                            if sale == 1:
-                                break
-                            else:
-                                x_vars_list[cambio2_BLS] = x_vars_list[cambio1_BLS]
-                                x_vars_list[cambio1_BLS] = 0
-                            
-                            if total_time < time_limit_final:
-                                break
-                                
-                        if sale == 1:
-                            break
-                        
-                        if total_time < time_limit_final:
-                            break
-                         
-                    if sale == 1:
-                        break
-                    
-                    if total_time > time_limit_ls:
-                        break
                     
                     
                 
@@ -4258,7 +4499,7 @@ for iconj in range(len(tamaños_I)):
                 mejor.close()
                 g.close()
                     
-                book.save('Tesis_Metaheuristic_080925_168_'+str(eta[0])+'_'+str(eta[1])+'_.xls') 
+                book.save('Tesis_Metaheuristic_080925_'+str(eta[0])+'_'+str(eta[1])+'_.xls') 
                 book1.save('Tesis_Metaheuristic_Mejoras_080925_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 #book.save('Tesis_Metaheuristic_080925_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 
