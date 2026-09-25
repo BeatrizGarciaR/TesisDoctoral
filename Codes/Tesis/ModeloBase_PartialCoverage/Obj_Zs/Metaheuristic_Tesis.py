@@ -40,21 +40,9 @@ import time
 import math
 import xlwt
 
-# tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
-# tamaños_L = [16, 30, 50, 70, 100]
-# tamaños_S = [10, 50, 100, 150, 200]
-
-# tamaños_I = [168] 
-# tamaños_L = [16]
-# tamaños_S = [10]
-
-tamaños_I = [900] 
-tamaños_L = [50, 100]
+tamaños_I = [168, 270, 500, 900, 1500] #Hasta aquí puede bien el modelo
+tamaños_L = [16, 30, 50, 70, 100]
 tamaños_S = [10, 50, 100, 150, 200]
-
-# tamaños_I = [270]
-# tamaños_L = [16]
-# tamaños_S = [100]
 
 K = [1,2]
 rates = [0.4]
@@ -4499,8 +4487,8 @@ for iconj in range(len(tamaños_I)):
                 mejor.close()
                 g.close()
                     
-                book.save('Tesis_Metaheuristic_080925_'+str(eta[0])+'_'+str(eta[1])+'_900.xls') 
-                book1.save('Tesis_Metaheuristic_Mejoras_080925_'+str(eta[0])+'_'+str(eta[1])+'_900.xls') 
+                book.save('Tesis_Metaheuristic_080925_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
+                book1.save('Tesis_Metaheuristic_Mejoras_080925_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 #book.save('Tesis_Metaheuristic_080925_'+str(eta[0])+'_'+str(eta[1])+'.xls') 
 
 
